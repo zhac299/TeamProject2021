@@ -1,10 +1,7 @@
 <h1>Waiter Menu</h1>
 <h2>Table Selection</h2>
-<ul *ngFor="let table of tables">
+<ul *ngFor="let table of tableList">
   <li>
-    <button>{{table.id}}. {{table.number}}</button>
-  </li>
-  <li>
-    <button>Table 2</button>
+    <button>{{table.number}}</button>
   </li>
 </ul>
