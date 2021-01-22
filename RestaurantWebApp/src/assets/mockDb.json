@@ -1,0 +1,14 @@
+{
+    "orders": [
+      {
+        "id": 1,
+        "meal": "Teriyaki Chicken",
+        "price": 12.95
+      },
+      {
+        "id": 2,
+        "meal": "Steak",
+        "price": 14
+      }
+    ]
+  }
