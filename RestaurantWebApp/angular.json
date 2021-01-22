@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "RestaurantWebApp"
+    }
+  },
+  "defaultProject": "RestaurantWebApp",
+  "cli": {
+    "analytics": "1fb24930-b8c8-40db-8c3d-9c4ab93780c3"
+  }
 }
