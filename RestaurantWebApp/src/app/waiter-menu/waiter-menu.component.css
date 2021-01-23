@@ -4,12 +4,16 @@ li {
   height: 25px;
 }
 
-.but {
+.hasOrder {
+  color: blue;
+}
+
+.noOrder {
   color: red;
 }
 
 h1 {
-  color: red;
+  color: teal;
 }
 
 /*# sourceMappingURL=waiter-menu.component.css.map */

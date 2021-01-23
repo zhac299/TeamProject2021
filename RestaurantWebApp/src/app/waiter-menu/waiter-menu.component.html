@@ -2,6 +2,11 @@
 <h2>Table Selection</h2>
 <ul *ngFor="let table of tableList">
   <li>
-    <button class="but">{{table.number}}</button>
+    <div *ngIf="table.hasOrder==true; else noOrderBlock">
+      <button class="hasOrder">{{table.number}}</button>
+    </div>
+    <ng-template #noOrderBlock>
+      <button class="noOrder">{{table.number}}</button>
+    </ng-template>
   </li>
 </ul>
