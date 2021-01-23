@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Login } from 'src/models/Login';
 import { InputService } from './login-input.service';
 
 @Component({
@@ -12,21 +13,25 @@ export class InputComponent implements OnInit {
     password: string = "";
 
     constructor(private input: InputService) { }
-
+    loginTwo: Login[] = [];
     ngOnInit(): void {
     }
     
     onSubmit() {
-        const login = {
+        const login2 = {
             username: this.username,
             password: this.password
         }
         
-        if (login.username.length >= 6 && login.password.length >= 6) {
-            this.input.getLogin(login);
-        } else { 
-            console.log("Enter your username and password!");
-        }
+    
+        this.input.getLogin().subscribe( login => {
+            this.loginTwo = login;        
+            for (var val of this.loginTwo) { 
+                if (val.username == login2.username && val.password == login2.password) {
+                    console.log("Welcome " + login2.username);
+                }
+            }
+        });
 
         this.username = "";
         this.password = "";

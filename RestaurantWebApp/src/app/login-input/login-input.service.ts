@@ -13,7 +13,7 @@ export class InputService {
     
     constructor(private httpClient: HttpClient) { }
     
-    public getLogin(login: Login): Observable<Login[]> {
+    public getLogin(): Observable<Login[]> {
         return this.httpClient.get<Login[]>(this.mockDbUrl)
           .pipe(
             map(response => response)
