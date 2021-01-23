@@ -10,5 +10,27 @@
         "meal": "Steak",
         "price": 14
       }
-    ]
+    ],
+  "tables": [
+    {
+      "id": 1,
+      "number": 5
+    },
+    {
+      "id": 2,
+      "number": 6
+    },
+    {
+      "id": 3,
+      "number": 7
+    },
+    {
+      "id": 4,
+      "number": 8
+    },
+    {
+      "id": 5,
+      "number": 12
+    }
+  ]
   }

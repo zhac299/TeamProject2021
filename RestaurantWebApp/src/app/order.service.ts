@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, tap} from "rxjs/operators";
-import {Order} from "../models/Order";
+import {Observable, of} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Order} from '../models/Order';
 import {map} from 'rxjs/operators';
 
 @Injectable({
