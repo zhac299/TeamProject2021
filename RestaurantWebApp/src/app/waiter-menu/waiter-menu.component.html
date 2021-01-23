@@ -6,7 +6,8 @@
     </li>
     <ng-template #noOrderBlock>
       <li>
-        <button class="noOrder" >Table {{table.number}}: No Order</button>
+        <button routerLink="/order/{{table.id}}" class="noOrder" >Table {{table.number}}: No Order</button>
       </li>
     </ng-template>
 </ul>
+<router-outlet></router-outlet>

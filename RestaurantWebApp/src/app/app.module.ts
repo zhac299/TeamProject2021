@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InitialMenuComponent } from './initial-menu/initial-menu.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { CustomerInterfaceComponent } from './customer-interface/customer-interface.component';
+import { OrderComponent } from './waiter-menu/order/order.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CustomerInterfaceComponent } from './customer-interface/customer-interf
     OrderListComponent,
     InitialMenuComponent,
     WaiterMenuComponent,
-    CustomerInterfaceComponent
+    CustomerInterfaceComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
