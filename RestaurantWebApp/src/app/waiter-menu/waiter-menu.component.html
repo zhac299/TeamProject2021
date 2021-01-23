@@ -1,12 +1,12 @@
 <h1>Waiter Menu</h1>
-<h2>Table Selection</h2>
-<ul *ngFor="let table of tableList">
-  <li>
-    <div *ngIf="table.hasOrder==true; else noOrderBlock">
-      <button class="hasOrder">{{table.number}}</button>
-    </div>
+<h2>Table Selection (Free tables: {{this.freeTables}})</h2>
+<ul *ngFor="let table of tableList" class="tableList">
+    <li *ngIf="table.hasOrder==true; else noOrderBlock">
+      <button class="hasOrder">Table {{table.number}}: Ordered</button>
+    </li>
     <ng-template #noOrderBlock>
-      <button class="noOrder">{{table.number}}</button>
+      <li>
+        <button class="noOrder" >Table {{table.number}}: No Order</button>
+      </li>
     </ng-template>
-  </li>
 </ul>
