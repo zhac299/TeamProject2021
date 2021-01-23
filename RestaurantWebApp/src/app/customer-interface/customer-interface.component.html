@@ -1,1 +1,13 @@
-<p>customer-interface works!</p>
+<html>
+    <body>
+    <h1>Menu</h1>
+    <div class = "searchBox">
+        <input type="text" ng-model="searchBox">
+    </div>
+    <ul *ngFor="let order of orderList" ng-repeat = "filter: searchBox">
+        <li>         
+            <button class="button">{{order.meal + '-' + order.price + '$'}}</button>
+        </li>
+    </ul>
+</body>
+</html>

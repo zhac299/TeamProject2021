@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {OrderService} from '../order.service';
+import {Order} from '../../models/Order';
 
 @Component({
   selector: 'app-customer-interface',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerInterfaceComponent implements OnInit {
 
-  constructor() { }
+  orderList: Order[] = [];
+
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.orderService.getOrders().subscribe( orders => {
+      this.orderList = orders;
+    });
   }
 
 }
