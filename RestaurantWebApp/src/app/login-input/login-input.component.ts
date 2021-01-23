@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/models/Login';
 import { InputService } from './login-input.service';
+import { Router } from '@angular/router'
 
 @Component({
     selector: 'app-login-input',
@@ -12,7 +13,7 @@ export class InputComponent implements OnInit {
     username: string = "";
     password: string = "";
 
-    constructor(private input: InputService) { }
+    constructor(private input: InputService, private router:Router) { }
     loginTwo: Login[] = [];
     ngOnInit(): void {
     }
@@ -28,7 +29,8 @@ export class InputComponent implements OnInit {
             this.loginTwo = login;        
             for (var val of this.loginTwo) { 
                 if (val.username == login2.username && val.password == login2.password) {
-                    console.log("Welcome " + login2.username);
+                    console.log("Welcome " + login2.username + ", Enjoy work today...");
+                    this.router.navigateByUrl('waiter-menu');
                     return;
                 }
             }
