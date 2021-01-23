@@ -38,5 +38,6 @@ export class InputComponent implements OnInit {
         });
         this.username = "";
         this.password = "";
+        this.staff = "";
     }
 }
