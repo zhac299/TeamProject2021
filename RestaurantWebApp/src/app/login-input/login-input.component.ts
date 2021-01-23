@@ -29,7 +29,6 @@ export class InputComponent implements OnInit {
             this.loginTwo = login;        
             for (var val of this.loginTwo) { 
                 if (val.username == login2.username && val.password == login2.password) {
-                    console.log("Welcome " + login2.username + ", Enjoy work today...");
                     this.router.navigateByUrl('waiter-menu');
                     return;
                 }
