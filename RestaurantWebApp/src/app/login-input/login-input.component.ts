@@ -24,7 +24,6 @@ export class InputComponent implements OnInit {
             password: this.password
         }
         
-    
         this.input.getLogin().subscribe( login => {
             this.loginTwo = login;        
             for (var val of this.loginTwo) { 
