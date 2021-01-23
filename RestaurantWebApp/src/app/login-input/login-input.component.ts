@@ -29,10 +29,11 @@ export class InputComponent implements OnInit {
             for (var val of this.loginTwo) { 
                 if (val.username == login2.username && val.password == login2.password) {
                     console.log("Welcome " + login2.username);
+                    return;
                 }
             }
+            console.log("Enter the right details...");
         });
-
         this.username = "";
         this.password = "";
     }
