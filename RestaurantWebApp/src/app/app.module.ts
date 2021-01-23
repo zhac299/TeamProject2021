@@ -9,6 +9,8 @@ import { InitialMenuComponent } from './initial-menu/initial-menu.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { CustomerInterfaceComponent } from './customer-interface/customer-interface.component';
 import { OrderComponent } from './waiter-menu/order/order.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { OrderComponent } from './waiter-menu/order/order.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

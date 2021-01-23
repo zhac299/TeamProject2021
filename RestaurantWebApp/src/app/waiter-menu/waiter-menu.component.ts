@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TableService} from '../table.service';
 import {Table} from '../../models/Table';
+import {MatDialog} from '@angular/material/dialog';
+import {OrderComponent} from './order/order.component';
 
 @Component({
   selector: 'app-waiter-menu',
@@ -9,10 +11,14 @@ import {Table} from '../../models/Table';
 })
 export class WaiterMenuComponent implements OnInit {
 
-  constructor(private tableService: TableService) { }
+  constructor(
+    private tableService: TableService,
+    public dialog: MatDialog
+  ) { }
 
   tableList: Table[] = [];
   freeTables = 0;
+  dialogTable: Table = new Table();
 
   ngOnInit(): void {
     this.tableService.getTables().subscribe( orders => {
@@ -25,4 +31,16 @@ export class WaiterMenuComponent implements OnInit {
     });
   }
 
+  openOrderDialog(table: Table): void {
+    // this.dialogTable = table;
+    const dialogRef = this.dialog.open(OrderComponent, {
+      data: table
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
+
 }
+
