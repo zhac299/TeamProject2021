@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InputService } from '../../services/login-input.service';
+import { InputService } from './login-input.service';
 
 @Component({
     selector: 'app-login-input',
@@ -23,7 +23,7 @@ export class InputComponent implements OnInit {
         }
         
         if (login.username.length >= 6 && login.password.length >= 6) {
-            this.input.queryDatabase(login);
+            this.input.getLogin(login);
         } else { 
             console.log("Enter your username and password!");
         }
