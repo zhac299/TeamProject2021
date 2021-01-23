@@ -8,7 +8,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Development Mock Database
 
-Run `npm i json-server`. Cd into the 'RestaurantWebApp' directory and then run `json-server --watch src/assets/mockDb.json` to run the mock database.
+Cd into the 'RestaurantWebApp' directory. Run `npm i json-server`. Next run `json-server --watch src/assets/mockDb.json` to run the mock database.
+
+For Windoze users: if `json-server --watch src/assets/mockDb.json` does not work try `npx json-server --watch src/assets/mockDb.json`
 
 For more info on the mock database look here (https://www.npmjs.com/package/json-server)
 

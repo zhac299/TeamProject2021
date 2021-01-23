@@ -8,15 +8,13 @@ import {OrderService} from "../order.service";
   styleUrls: ['./order-list.component.sass']
 })
 export class OrderListComponent implements OnInit {
-  
-  constructor(private orderService: OrderService) { }
 
+  constructor(private orderService: OrderService) { }
   orderList: Order[] = [];
 
   ngOnInit(): void {
     this.orderService.getOrders().subscribe( orders => {
       this.orderList = orders;
-    });  
+    });
   }
-
 }
