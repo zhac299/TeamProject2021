@@ -9,6 +9,8 @@
             <input class="pass" type = "password"  name = "password" [(ngModel)] = "password" placeholder = "Password"/>
             <br/>
             <input  (click) = "onSubmit()" type="submit" value="Login" class = "submit">
+            <br/><br/><br/><br/>
+        <section class="content" *ngIf="html" [innerHTML]="html"></section>
         </form>
     </div>
 </div>
