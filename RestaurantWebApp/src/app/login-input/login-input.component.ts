@@ -41,10 +41,9 @@ export class LoginInputComponent implements OnInit {
                     this.router.navigateByUrl('waiter-menu');
                     return;
                 } else if (val.username == login2.username && val.password == login2.password && login2.kitchen == true) {
-                    //this.router.navigateByUrl('waiter-menu');
+                    this.router.navigateByUrl('order-list');
                     return;
                 }
-               
             }
            this.html = "<p>Enter the <u>correct</u> login details / <a href = \"https://google.co.uk\" >Reset Password?</a></p>"
         });

@@ -8,6 +8,7 @@ import { InitialMenuComponent } from './initial-menu/initial-menu.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { CustomerInterfaceComponent } from './customer-interface/customer-interface.component';
 import { LoginInputComponent } from './login-input/login-input.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
-    LoginInputComponent
+    LoginInputComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
