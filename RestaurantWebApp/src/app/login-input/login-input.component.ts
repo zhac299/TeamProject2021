@@ -40,7 +40,7 @@ export class InputComponent implements OnInit {
                     return;
                 }
             }
-           this.html = "<p>Enter the correct login details / <a href = {{this.link}} >Reset Password?</a></p>"
+           this.html = "<p>Enter the correct login details / <a href = \"https://google.co.uk\" >Reset Password?</a></p>"
         });
         this.username = "";
         this.password = "";
