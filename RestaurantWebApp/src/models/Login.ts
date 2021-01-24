@@ -1,5 +1,6 @@
 export class Login {
     username!: string;
     password!: string;
-    staff!: string;
+    waiter!: boolean | undefined;
+    kitchen!: boolean | undefined;
   }
