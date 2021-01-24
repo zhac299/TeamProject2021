@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InitialMenuComponent } from './initial-menu/initial-menu.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { CustomerInterfaceComponent } from './customer-interface/customer-interface.component';
-import { InputComponent } from './login-input/login-input.component';
+import { LoginInputComponent } from './login-input/login-input.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
-    InputComponent
+    LoginInputComponent
   ],
   imports: [
     BrowserModule,

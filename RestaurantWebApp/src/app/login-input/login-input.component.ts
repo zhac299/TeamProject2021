@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/models/Login';
 import { InputService } from './login-input.service';
 import { Router } from '@angular/router'
-import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 
 @Component({
     selector: 'app-login-input',
     templateUrl: './login-input.component.html',
     styleUrls: ['./login-input.component.sass']
 })
-export class InputComponent implements OnInit {
+export class LoginInputComponent implements OnInit {
 
     username: string = "";
     password: string = "";
