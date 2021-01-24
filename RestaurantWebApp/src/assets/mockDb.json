@@ -36,7 +36,8 @@
   "Login": [
       {
         "username": "davidakinsanya",
-        "password": "cs2910"
+        "password": "cs2910",
+        "staff": "Boss"
       }
   ]
 }

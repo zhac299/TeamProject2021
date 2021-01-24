@@ -12,6 +12,7 @@ export class InputComponent implements OnInit {
 
     username: string = "";
     password: string = "";
+    staff:string = "";
 
     constructor(private input: InputService, private router:Router) { }
     loginTwo: Login[] = [];
@@ -21,7 +22,8 @@ export class InputComponent implements OnInit {
     onSubmit() {
         const login2 = {
             username: this.username,
-            password: this.password
+            password: this.password,
+            staff: this.staff 
         }
         
         this.input.getLogin().subscribe( login => {
@@ -36,5 +38,6 @@ export class InputComponent implements OnInit {
         });
         this.username = "";
         this.password = "";
+        this.staff = "";
     }
 }
