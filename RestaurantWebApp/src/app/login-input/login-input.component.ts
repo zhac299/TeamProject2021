@@ -12,7 +12,8 @@ export class InputComponent implements OnInit {
 
     username: string = "";
     password: string = "";
-    staff:string = "";
+    staff: string = "";
+    html: string = "";
 
     constructor(private input: InputService, private router:Router) { }
     loginTwo: Login[] = [];
@@ -26,7 +27,8 @@ export class InputComponent implements OnInit {
             staff: this.staff 
         }
         
-        this.input.getLogin().subscribe( login => {
+        this.input.getLogin().subscribe(login => {
+            this.html = "";
             this.loginTwo = login;        
             for (var val of this.loginTwo) { 
                 if (val.username == login2.username && val.password == login2.password) {
@@ -34,7 +36,7 @@ export class InputComponent implements OnInit {
                     return;
                 }
             }
-            console.log("Enter the right details...");
+           this.html = "<p>Enter the correct login details...</p>"
         });
         this.username = "";
         this.password = "";
