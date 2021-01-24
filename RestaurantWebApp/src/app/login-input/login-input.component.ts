@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/models/Login';
 import { InputService } from './login-input.service';
 import { Router } from '@angular/router'
+import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 
 @Component({
     selector: 'app-login-input',
@@ -13,7 +14,9 @@ export class InputComponent implements OnInit {
     username: string = "";
     password: string = "";
     staff: string = "";
+
     html: string = "";
+    link: string = "google.co.uk";
 
     constructor(private input: InputService, private router:Router) { }
     loginTwo: Login[] = [];
@@ -26,9 +29,10 @@ export class InputComponent implements OnInit {
             password: this.password,
             staff: this.staff 
         }
+
         
         this.input.getLogin().subscribe(login => {
-            this.html = "";
+
             this.loginTwo = login;        
             for (var val of this.loginTwo) { 
                 if (val.username == login2.username && val.password == login2.password) {
@@ -36,7 +40,7 @@ export class InputComponent implements OnInit {
                     return;
                 }
             }
-           this.html = "<p>Enter the correct login details...</p>"
+           this.html = "<p>Enter the correct login details / <a href = {{this.link}} >Reset Password?</a></p>"
         });
         this.username = "";
         this.password = "";
