@@ -1,5 +1,12 @@
 export class Drink {
-  id: number;
-  name: string;
-  price: number;
+  Draught: {
+    id: number;
+    name: string;
+    price: number;
+  };
+  Minerals: {
+    id: number;
+    name: string;
+    price: number;
+  };
 }

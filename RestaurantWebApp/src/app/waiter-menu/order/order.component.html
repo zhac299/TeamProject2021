@@ -36,6 +36,9 @@
             <mat-grid-tile *ngFor="let order of orders" colspan="1">
               <button mat-raised-button style="width: 100%; color: green">{{order.meal}}</button>
             </mat-grid-tile>
+            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">
+              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>
+            </mat-grid-tile>
           </mat-grid-list>
         </mat-card-content>
       </mat-card>

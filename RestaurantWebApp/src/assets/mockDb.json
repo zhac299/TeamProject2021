@@ -53,7 +53,7 @@
       "hasOrder": true
     }
   ],
-  "Drinks": [
+  "drinks": [
     {
       "Draught": [
         {
@@ -70,6 +70,18 @@
           "id": 3,
           "name": "Heineken",
           "price": 4.20
+        }
+      ],
+      "Minerals": [
+        {
+          "id": 1,
+          "name": "Coke",
+          "price": 2.95
+        },
+        {
+          "id": 2,
+          "name": "Diet Coke",
+          "price": 2.95
         }
       ]
     }
