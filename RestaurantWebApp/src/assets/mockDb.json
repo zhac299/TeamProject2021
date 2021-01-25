@@ -9,6 +9,21 @@
         "id": 2,
         "meal": "Steak",
         "price": 14
+      },
+      {
+        "id": 3,
+        "meal": "Burger meal",
+        "price": 7.65
+      },
+      {
+        "id": 4,
+        "meal": "Chips",
+        "price": 9.99
+      },
+      {
+        "id": 5,
+        "meal": "Mutton Chops",
+        "price": 10.15
       }
     ],
   "tables": [

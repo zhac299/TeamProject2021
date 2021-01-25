@@ -14,6 +14,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatDialogModule,
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

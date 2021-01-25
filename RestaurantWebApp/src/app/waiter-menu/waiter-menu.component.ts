@@ -35,8 +35,8 @@ export class WaiterMenuComponent implements OnInit {
     // this.dialogTable = table;
     const dialogRef = this.dialog.open(OrderComponent, {
       data: table,
-      width: '80%',
-      height: '80%'
+      width: '99%',
+      height: '99%'
     });
 
     dialogRef.afterClosed().subscribe(result => {

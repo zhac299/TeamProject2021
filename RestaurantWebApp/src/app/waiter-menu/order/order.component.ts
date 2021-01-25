@@ -2,6 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Table} from '../../../models/Table';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {WaiterMenuComponent} from "../waiter-menu.component";
+import {OrderService} from "../../order.service";
+import {Order} from "../../../models/Order";
 
 @Component({
   selector: 'app-order',
@@ -18,12 +20,15 @@ export class OrderComponent implements OnInit {
   ];
 
   table: Table;
+  orders: Order[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Table) {}
+    @Inject(MAT_DIALOG_DATA) public data: Table,
+    private orderService: OrderService) {}
 
   ngOnInit(): void {
+    this.orderService.getOrders().subscribe(orders => this.orders = orders);
   }
 
 }
