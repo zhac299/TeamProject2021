@@ -1,8 +1,8 @@
 <h1>Waiter Menu</h1>
-<h2>Table Selection (Free tables: {{this.freeTables}})</h2>
+<h2>Table Selection (Orders: {{this.freeTables}})</h2>
 <ul *ngFor="let table of tableList" class="tableList">
     <li *ngIf="table.hasOrder==true; else noOrderBlock">
-      <button class="hasOrder">Table {{table.number}}: Ordered</button>
+      <button mat-raised-button class="hasOrder">Table {{table.number}}: Ordered</button>
     </li>
     <ng-template #noOrderBlock>
       <li>
