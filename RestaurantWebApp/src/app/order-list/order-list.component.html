@@ -1,10 +1,15 @@
 <body>
-<div>
-    <div *ngFor="let order of orderList">
-        <p>
-            <button class="button">{{order.id}}. {{order.meal}} ---{{order.price}}</button>
-        </p>
+    <ul *ngFor="let order of orderList">
+        <li *ngif="order.selected==true; else notSelectedBlock">
+            <button mat-raised-button class="isSelected">
+                 {{order.id}}. {{order.meal}} ---{{order.price}}:selected
+            </button>
+        </li>
+        <ng-template #notSelectedBlock>
+            <li>
+                {{order.id}}. {{order.meal}} ---{{order.price}}
+            </li>
+        </ng-template>
         <mat-divider></mat-divider>
-    </div>
-</div>
+    </ul>
 </body>

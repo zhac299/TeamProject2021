@@ -2,9 +2,6 @@
 <h1>Menu</h1>
 
 <form>
-  <div>
-    <input type="text" ng-model="searchBox" class = "searchBox">
-  </div>
   <mat-form-field appearance="fill" class="centreDiv">
       <mat-label>Food Category</mat-label>
       <mat-select matNativeControl required name="food">
@@ -14,7 +11,6 @@
         </mat-option>
       </mat-select>
   </mat-form-field>
-  <p> Selected food: {{selectedValue}} </p>
 </form>
 <app-order-list></app-order-list>
 
