@@ -8,6 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { InitialMenuComponent } from './initial-menu/initial-menu.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { CustomerInterfaceComponent } from './customer-interface/customer-interface.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormField } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { CustomerInterfaceComponent } from './customer-interface/customer-interf
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
