@@ -32,7 +32,6 @@ export class LoginInputComponent implements OnInit {
             kitchen: this.kitchen
         }
 
-        console.log(login2.waiter);
         this.input.getLogin().subscribe(login => {
 
             this.loginTwo = login;        
