@@ -1,13 +1,21 @@
-<html>
-    <body>
-    <h1>Menu</h1>
-    <div class = "searchBox">
-        <input type="text" ng-model="searchBox">
-    </div>
-    <ul *ngFor="let order of orderList" ng-repeat = "filter: searchBox">
-        <li>         
-            <button class="button">{{order.meal + '-' + order.price + '$'}}</button>
-        </li>
-    </ul>
-</body>
-</html>
+
+<h1>Menu</h1>
+
+<form>
+  <mat-form-field appearance="fill">
+      <mat-label>Food Category</mat-label>
+      <select matNativeControl [(ngModel)]="selectedValue" name="food">
+        <option value="" selected></option>
+        <option *ngFor="let food of foods" [value]="food.value">
+          {{food.viewValue}}
+        </option>
+      </select>
+  </mat-form-field>
+  <p> Selected food: {{selectedValue}} </p>
+</form>
+
+<div>
+    <input type="text" ng-model="searchBox" class = "searchBox">
+</div>
+<app-order-list></app-order-list>
+

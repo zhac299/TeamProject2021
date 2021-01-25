@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {OrderService} from '../order.service';
 import {Order} from '../../models/Order';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-customer-interface',
@@ -10,7 +16,13 @@ import {Order} from '../../models/Order';
 export class CustomerInterfaceComponent implements OnInit {
 
   orderList: Order[] = [];
-
+  selectedValue: string;
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
+  
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
