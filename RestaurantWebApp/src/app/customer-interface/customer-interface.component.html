@@ -4,12 +4,12 @@
 <form>
   <mat-form-field appearance="fill">
       <mat-label>Food Category</mat-label>
-      <select matNativeControl [(ngModel)]="selectedValue" name="food">
-        <option value="" selected></option>
-        <option *ngFor="let food of foods" [value]="food.value">
+      <mat-select matNativeControl required name="food">
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let food of foods" [value]="food.value">
           {{food.viewValue}}
-        </option>
-      </select>
+        </mat-option>
+      </mat-select>
   </mat-form-field>
   <p> Selected food: {{selectedValue}} </p>
 </form>
