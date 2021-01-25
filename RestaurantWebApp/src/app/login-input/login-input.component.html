@@ -2,15 +2,22 @@
     <div class = "sign">
         <h1 class = "welcome">Sign In</h1>
         <form class = "form1">
-            <input class="pass" type = "text"  name = "staff" [(ngModel)] = "staff" placeholder = "Staff Type"/>
-            <br/>
             <input class="un"  type = "text" name = "username" [(ngModel)] = "username" placeholder = "Username" >
             <br/>
             <input class="pass" type = "password"  name = "password" [(ngModel)] = "password" placeholder = "Password"/>
             <br/>
+                <div class = "staff">
+                    <input  type = "radio" (change) = "isWaiter()" name = "staff"> 
+                    <label for = "waiter">Waiter</label>
+                    <input type = "radio" (change) = "isKitchen()"  name = "staff"> 
+                    <label for = "kitchen">Kitchen Staff</label>
+                </div>
+        
             <input  (click) = "onSubmit()" type="submit" value="Login" class = "submit">
-            <br/><br/><br/><br/>
-        <section class="content" *ngIf="html" [innerHTML]="html"></section>
+            <br/><br/><br/><br/><br/>
+            <section><a href = "https://google.co.uk">Create Account</a></section>      
+            <br/>      
+            <section class="content" *ngIf="html" [innerHTML]="html"></section>
         </form>
     </div>
 </div>

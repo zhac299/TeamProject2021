@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Login } from 'src/models/Login';
 import { InputService } from './login-input.service';
 import { Router } from '@angular/router'
@@ -13,7 +13,9 @@ export class LoginInputComponent implements OnInit {
     username: string = "";
     password: string = "";
     staff: string = "";
-
+    waiter: boolean = false;
+    kitchen: boolean = false;
+    
     html: string = "";
     link: string = "google.co.uk";
 
@@ -26,16 +28,20 @@ export class LoginInputComponent implements OnInit {
         const login2 = {
             username: this.username,
             password: this.password,
-            staff: this.staff 
+            waiter: this.waiter,
+            kitchen: this.kitchen
         }
 
-        
+        console.log(login2.waiter);
         this.input.getLogin().subscribe(login => {
 
             this.loginTwo = login;        
             for (var val of this.loginTwo) { 
-                if (val.username == login2.username && val.password == login2.password) {
+                if (val.username == login2.username && val.password == login2.password && login2.waiter == true) {
                     this.router.navigateByUrl('waiter-menu');
+                    return;
+                } else if (val.username == login2.username && val.password == login2.password && login2.kitchen == true) {
+                    this.router.navigateByUrl('order-list');
                     return;
                 }
             }
@@ -44,5 +50,14 @@ export class LoginInputComponent implements OnInit {
         this.username = "";
         this.password = "";
         this.staff = "";
+    }
+
+    isKitchen() {
+        this.kitchen = true
+        this.waiter = false;
+    }
+    isWaiter() {
+        this.waiter = true;
+        this.kitchen = false; 
     }
 }
