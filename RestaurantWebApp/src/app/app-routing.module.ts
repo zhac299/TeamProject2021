@@ -8,12 +8,13 @@ import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
+    { path: '', component: HomePageComponent },
     { path: 'login', component: LoginInputComponent },
     { path: 'waiter-menu', component: WaiterMenuComponent },
     { path: 'order-list', component: OrderListComponent },
     { path: 'initial-menu', component: InitialMenuComponent },
-    { path: 'home', component: CustomerInterfaceComponent },
-    { path: '', component: HomePageComponent }
+    { path: 'home', component: CustomerInterfaceComponent }
+   
 ];
 
 @NgModule({
