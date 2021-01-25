@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Table} from '../../../models/Table';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {WaiterMenuComponent} from "../waiter-menu.component";
 
 @Component({
   selector: 'app-order',
@@ -18,7 +20,8 @@ export class OrderComponent implements OnInit {
   table: Table;
 
   constructor(
-  ) { }
+    public dialogRef: MatDialogRef<WaiterMenuComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Table) {}
 
   ngOnInit(): void {
   }

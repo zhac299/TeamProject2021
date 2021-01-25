@@ -2,7 +2,7 @@
 <h2>Table Selection (Orders: {{this.freeTables}})</h2>
 <ul *ngFor="let table of tableList" class="tableList">
     <li *ngIf="table.hasOrder==true; else noOrderBlock">
-      <button mat-raised-button class="hasOrder">Table {{table.number}}: Ordered</button>
+      <button mat-raised-button class="hasOrder" (click)="openOrderDialog(table)">Table {{table.number}}: Ordered</button>
     </li>
     <ng-template #noOrderBlock>
       <li>
