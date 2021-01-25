@@ -33,7 +33,7 @@ export class LoginInputComponent implements OnInit {
         }
 
         this.input.getLogin().subscribe(login => {
-
+            
             this.loginTwo = login;        
             for (var val of this.loginTwo) { 
                 if (val.username == login2.username && val.password == login2.password && login2.waiter == true) {
