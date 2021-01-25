@@ -52,5 +52,26 @@
       "number": 12,
       "hasOrder": true
     }
+  ],
+  "Drinks": [
+    {
+      "Draught": [
+        {
+          "id": 1,
+          "name": "Amstel",
+          "price": 3.95
+        },
+        {
+          "id": 2,
+          "name": "Fosters",
+          "price": 2.95
+        },
+        {
+          "id": 3,
+          "name": "Heineken",
+          "price": 4.20
+        }
+      ]
+    }
   ]
   }
