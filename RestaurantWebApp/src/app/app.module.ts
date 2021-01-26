@@ -35,7 +35,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatFormFieldModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
