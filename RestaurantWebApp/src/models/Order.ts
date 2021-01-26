@@ -3,5 +3,6 @@ export class Order {
     category:string;
     meal: string;
     price: number;
+    nrSelections:number;
     selected: Boolean
 }
