@@ -1,15 +1,29 @@
-li {
+.tableList {
   display: grid;
-  width: 50px;
-  height: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  width: border-box;
 }
 
-.but {
+li {
+  display: flex;
+  flex-direction: row;
+  border: 5px;
+  width: auto;
+  height: 50px;
+  list-style-type: none;
+}
+
+.hasOrder {
+  color: green;
+}
+
+.noOrder {
   color: red;
 }
 
 h1 {
-  color: red;
+  color: teal;
 }
 
 /*# sourceMappingURL=waiter-menu.component.css.map */

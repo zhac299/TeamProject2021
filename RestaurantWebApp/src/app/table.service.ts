@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Order} from '../models/Order';
 import {map} from 'rxjs/operators';
 import {Table} from '../models/Table';
 
@@ -17,6 +16,13 @@ export class TableService {
   // Making an Http request to the database
   public getTables(): Observable<Table[]> {
     return this.httpClient.get<Table[]>(this.mockDbUrl)
+      .pipe(
+        map(response => response)
+      );
+  }
+
+  public getTable(id: number): Observable<Table> {
+    return this.httpClient.get<Table>(`${this.mockDbUrl}/${id}`)
       .pipe(
         map(response => response)
       );
