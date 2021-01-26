@@ -22,19 +22,19 @@ export class OrderListComponent implements OnInit {
       this.orderList = orders;
     });
 
-    for(let order of this.orderList){
+    for(let order of this.orderList) { 
       order.nrSelections = 0;
       console.log(order.nrSelections);
     }
   }
 
-  addItem(order: Order): void{
+  addItem(order: Order): void {
     order.selected = true;
-    order.nrSelections = 1;
+    order.nrSelections ++;
   }
 
   removeItem(order: Order): void{
     order.selected = false;
-    order.nrSelections = 0;
+    order.nrSelections --;
   }
 }

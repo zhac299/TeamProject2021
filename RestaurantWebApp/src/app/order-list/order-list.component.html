@@ -1,18 +1,18 @@
-<body>
+
     <div *ngFor="let order of orderList">
         <p *ngIf="order.selected==true; else notSelectedBlock">
             <button class="isSelected" (click)="removeItem(order)">
-                 {{order.id}}. {{order.meal}} ---{{order.price}} x{{order.nrSelections}}
+                 {{order.id}}. {{order.meal}} ---{{order.price}}$ <b>x{{order.nrSelections}}</b>
             </button>
         </p>
       
         <ng-template #notSelectedBlock>
             <p>
                 <button (click) = "addItem(order)">
-                    {{order.id}}. {{order.meal}} ---{{order.price}} 
+                    {{order.id}}. {{order.meal}} ---{{order.price}}$
                 </button>
             </p>
         </ng-template>
         <mat-divider></mat-divider>
     </div>
-</body>
+
