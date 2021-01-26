@@ -5,4 +5,4 @@ Make sure to download maven dependencies before running
 Change src/main/resources/application.properties to add your local/remote database URL
 
 # Running
-Run Spring by running the DemoApplication.java main file. Go to `http://localhost:8080/` once its running to see if it works. If it does you'll see "Hello World".
+Run Spring by running `mvn spring-boot:run`. Go to `http://localhost:8080/` once its running to see if it works. If it does you'll see "Hello World".
