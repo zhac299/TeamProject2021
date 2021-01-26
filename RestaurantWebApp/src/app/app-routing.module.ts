@@ -18,8 +18,9 @@ const routes: Routes = [
     { path: 'orders', component: OrderComponent }
 
 ]
-NgModule({
+@NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
+
 export class AppRoutingModule { }
