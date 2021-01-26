@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {OrderService} from '../order.service';
 import {Order} from '../../models/Order';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';  
 
 interface Food {
-  value: string;
   viewValue: string;
+  mappedOrders: Order[];
+  selected: boolean;
 }
 
 @Component({
@@ -16,11 +18,9 @@ interface Food {
 export class CustomerInterfaceComponent implements OnInit {
 
   orderList: Order[] = [];
-  selectedValue: string;
   foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    {viewValue: 'Main Course', mappedOrders:[this.orderList[0]], selected: false},
+    {viewValue: 'Steak', mappedOrders:[this.orderList[1]], selected: false}
   ];
   
   constructor(private orderService: OrderService) { }
@@ -31,4 +31,17 @@ export class CustomerInterfaceComponent implements OnInit {
     });
   }
 
+  findCategory(food): void {
+    food.selected = false;
+  }
+
+  normalView(food): void {
+    for(let f of this.foods) { 
+      if (food == f) {
+        f.selected = true;
+      } else {
+        f.selected = false;
+      }
+    }
+  }
 }
