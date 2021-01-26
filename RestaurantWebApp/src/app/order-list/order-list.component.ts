@@ -17,4 +17,9 @@ export class OrderListComponent implements OnInit {
       this.orderList = orders;
     });
   }
+
+  //Set dynamic classes.
+  setClasses(){
+    
+  }
 }
