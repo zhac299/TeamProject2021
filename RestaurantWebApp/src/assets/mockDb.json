@@ -3,12 +3,14 @@
       {
         "id": 1,
         "meal": "Teriyaki Chicken",
-        "price": 12.95
+        "price": 12.95,
+        "selected": false
       },
       {
         "id": 2,
         "meal": "Steak",
-        "price": 14
+        "price": 14,
+        "selected": false
       }
     ],
   "tables": [
