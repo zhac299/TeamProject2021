@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["waiter-menu.component.sass"],"names":[],"mappings":"AAIA;EACE;EACA;EACA;EACA;;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;;;AAEF;EACE,cAlBS;;;AAoBX;EACE,cAtBQ;;;AAwBV;EACE,OAvBM;;;AAyBR;EACE","file":"waiter-menu.component.css"}
+{"version":3,"sourceRoot":"","sources":["waiter-menu.component.sass"],"names":[],"mappings":"AAKA;EACE;EACA;EACA;EACA;;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;;;AAEF;EACE,cAnBS;EAoBT,OAlBQ;;;AAoBV;EACE,cAxBQ;EAyBR,OAtBQ;;;AAwBV;EACE,OA1BM;;;AA4BR;EACE","file":"waiter-menu.component.css"}

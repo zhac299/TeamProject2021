@@ -3,10 +3,12 @@
 <mat-grid-list cols="4" rowHeight="200px">
   <mat-grid-tile *ngFor="let table of tableList" >
     <div *ngIf="table.hasOrder==true; else noOrderBlock" colspan="1">
-      <button mat-raised-button class="hasOrder" color="primary" (click)="openOrderDialog(table)">Table {{table.number}}: Ordered</button>
+      <button mat-raised-button class="hasOrder" color="primary" (click)="openOrderDialog(table)">
+        Table {{table.number}}: Ordered</button>
     </div>
     <ng-template #noOrderBlock colspan="1">
-        <button mat-raised-button class="noOrder" color="warn" (click)="openOrderDialog(table)">Table {{table.number}}: No Order</button>
+        <button mat-raised-button class="noOrder" color="warn" (click)="openOrderDialog(table)">
+          Table {{table.number}}: No Order</button>
     </ng-template>
   </mat-grid-tile>
 </mat-grid-list>

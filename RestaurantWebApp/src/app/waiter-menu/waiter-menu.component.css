@@ -16,10 +16,12 @@ li {
 
 .hasOrder {
   border-color: green;
+  width: 100%;
 }
 
 .noOrder {
   border-color: red;
+  width: 100%;
 }
 
 h1 {
