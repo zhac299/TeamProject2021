@@ -20,15 +20,14 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping(path = "/api/v1/staff")
 public class StaffController {
 
     @Autowired
     StaffRepository staffRepo;
 
-    @GetMapping(value = "/")
-    public Page<Staff> index() {
-    PageRequest p = null;
-    return staffRepo.findAll(p);
+    @GetMapping
+    public List<Staff> index() {
+      return staffRepo.findAll();
   }  
 }

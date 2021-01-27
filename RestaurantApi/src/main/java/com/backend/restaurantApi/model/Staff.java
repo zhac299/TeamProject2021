@@ -16,16 +16,16 @@ public class Staff {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   
-  @Column
+  @Column(name = "userName")
   private String userName;
   
-  @Column
+  @Column(name = "password")
   private String password;
 
-  @Column
+  @Column(name = "email")
   private String email;
 
-  @Column
+  @Column(name = "isWaiter")
   private boolean isWaiter;
 
 // used to serialize object to json
