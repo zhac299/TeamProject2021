@@ -22,7 +22,7 @@ public class Drink {
     // used to serialize object to json
     @Override
     public String toString() {
-        return "Main{" +
+        return "Drink{" +
                 "id=" + id +
                 ", drinkName='" + drinkName + '\'' +
                 '}';
