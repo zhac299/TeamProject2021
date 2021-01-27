@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormField } from '@angular/material/form-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { OrderComponent } from './order/order.component';
+import { CommonModule } from '@angular/common';  
 
 @NgModule({
   declarations: [
@@ -22,8 +24,11 @@ import {MatSelectModule} from '@angular/material/select';
     InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
+    CustomerInterface,
+    OrderComponent,
     LoginInputComponent,
-    HomePageComponent
+    HomePageComponent,
+    main
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,8 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule,
     MatFormFieldModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
