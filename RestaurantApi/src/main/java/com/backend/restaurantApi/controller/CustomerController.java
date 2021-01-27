@@ -1,6 +1,6 @@
 package com.backend.restaurantApi.controller;
 
-import com.backend.restaurantApi.model.Staff;
+import com.backend.restaurantApi.model.Customer;
 
 import com.backend.restaurantApi.repository.*;
 
@@ -24,10 +24,10 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    StaffRepository staffRepo;
+    CustomerRepository customerRepo;
 
     @GetMapping
-    public List<Staff> index() {
-      return staffRepo.findAll();
+    public List<Customer> index() {
+      return customerRepo.findAll();
   }  
 }
