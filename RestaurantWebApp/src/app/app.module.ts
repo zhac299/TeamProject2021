@@ -24,11 +24,9 @@ import { CommonModule } from '@angular/common';
     InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
-    CustomerInterface,
     OrderComponent,
     LoginInputComponent,
     HomePageComponent,
-    main
   ],
   imports: [
     BrowserModule,
