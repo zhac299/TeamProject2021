@@ -1,12 +1,3 @@
-<!--<h1 mat-dialog-title>Add Order to Table {{data.number}}</h1>-->
-<!--<mat-dialog-content>-->
-<!--  <mat-grid-list>-->
-<!--    <mat-grid-tile>-->
-<!--      <h1>HELLO</h1>-->
-<!--    </mat-grid-tile>-->
-<!--  </mat-grid-list>-->
-<!--</mat-dialog-content>-->
-
 <h1 mat-dialog-title>Table {{data.number}}</h1>
 <mat-dialog-content class="mat-typography">
   <mat-grid-list cols="4" rowHeight="fit" style="height: 400px">
@@ -16,14 +7,14 @@
           <mat-card-title>Orders:</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <mat-list *ngFor="let order of orders">
-            <mat-list-item>
-              <h3 mat-subheader>{{order.price}}</h3>
-              <h4 mat-line>{{order.meal}}</h4>
-              <button mat-button><mat-icon>delete</mat-icon></button>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-          </mat-list>
+            <mat-list *ngFor="let order of orders">
+              <mat-list-item>
+                <h3 mat-subheader>{{order.price}}</h3>
+                <h4 mat-line>{{order.meal}}</h4>
+                <button mat-button><mat-icon>delete</mat-icon></button>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
         </mat-card-content>
         <mat-card-footer>
           <h3 mat-subheader>Total: 54.95</h3>
@@ -43,7 +34,6 @@
             <mat-grid-tile *ngFor="let drink of drinks" colspan="1">
               <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>
             </mat-grid-tile>
-
           </mat-grid-list>
         </mat-card-content>
       </mat-card>
