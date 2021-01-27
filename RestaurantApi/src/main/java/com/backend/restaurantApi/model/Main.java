@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table
 @Getter
 @Setter
-public class Starter {
+public class Main {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
@@ -19,16 +19,12 @@ public class Starter {
     @Column(name = "dishName")
     private String dishName;
 
-    @Column(name = "price")
-    private int price;
-
-
+    // used to serialize object to json
     @Override
     public String toString() {
-        return "Starter{" +
+        return "Main{" +
                 "id=" + id +
                 ", dishName='" + dishName + '\'' +
-                ", price='" + price + '\'' +
                 '}';
     }
 }
