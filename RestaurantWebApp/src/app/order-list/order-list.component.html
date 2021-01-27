@@ -1,3 +1,10 @@
-<div *ngFor="let order of orderList">
-    <p>{{order.id}}. {{order.meal}} ---{{order.price}}</p>
+<body>
+<div>
+    <div *ngFor="let order of orderList">
+        <p>
+            <button class="button">{{order.id}}. {{order.meal}} ---{{order.price}}</button>
+        </p>
+        <mat-divider></mat-divider>
+    </div>
 </div>
+</body>
