@@ -3,6 +3,7 @@ import {OrderService} from '../order.service';
 import {Order} from '../../models/Order';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';  
+import {MatIconModule} from '@angular/material/icon';
 
 interface Food {
   viewValue: string;
@@ -19,8 +20,10 @@ export class CustomerInterfaceComponent implements OnInit {
 
   orderList: Order[] = [];
   foods: Food[] = [
-    {viewValue: 'Main Course', mappedOrders:[this.orderList[0]], selected: false},
-    {viewValue: 'Steak', mappedOrders:[this.orderList[1]], selected: false}
+    {viewValue: 'Fajitas', mappedOrders:[this.orderList[0]], selected: false},
+    {viewValue: 'Nachos', mappedOrders:[this.orderList[1]], selected: false},
+    {viewValue: 'Dips', mappedOrders:[this.orderList[1]], selected: false},
+    {viewValue: 'Deserts', mappedOrders:[this.orderList[1]], selected: false}
   ];
   
   constructor(private orderService: OrderService) { }
@@ -32,10 +35,7 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   findCategory(food): void {
-    food.selected = false;
-  }
 
-  normalView(food): void {
     for(let f of this.foods) { 
       if (food == f) {
         f.selected = true;
@@ -45,3 +45,4 @@ export class CustomerInterfaceComponent implements OnInit {
     }
   }
 }
+

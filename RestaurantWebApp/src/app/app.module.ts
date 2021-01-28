@@ -13,9 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import { OrderComponent } from './waiter-menu/order/order.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,9 +32,15 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatFormFieldModule,
     FormsModule,
+    CommonModule,
+    MatDialogModule,
+    MatCardModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatListModule,
+    MatIconModule,
     MatSelectModule,
-    MatDialogModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

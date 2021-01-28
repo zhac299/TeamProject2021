@@ -15,15 +15,24 @@ li {
 }
 
 .hasOrder {
-  color: green;
+  
+  border-color: green;
+  width: 75%;
+  height: 75%;
 }
 
 .noOrder {
-  color: red;
+  border-color: red;
+  width: 75%;
+  height: 75%;
 }
 
 h1 {
   color: teal;
+}
+
+but {
+  text-align: center;
 }
 
 /*# sourceMappingURL=waiter-menu.component.css.map */

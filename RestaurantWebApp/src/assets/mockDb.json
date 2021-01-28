@@ -2,14 +2,141 @@
     "orders": [
       {
         "id": 1,
-        "meal": "Teriyaki Chicken",
-        "price": 12.95,
+        "meal": "Fajita Quesadilla",
+        "price": 7.5,
+        "nrSelections": 0,
         "selected": false
       },
       {
         "id": 2,
-        "meal": "Steak",
+        "meal": "Quesadilla Dinner",
+        "price": 10,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 3,
+        "meal": "Quesadilla Supreme",
+        "price": 12,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 4,
+        "meal": "Shrimp Quesadilla",
         "price": 14,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+ 
+      },
+      {
+        "id": 5,
+        "meal": "Simple Nachos",
+        "price": 6,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 6,
+        "meal": "Three Cheese Nachos",
+        "price": 8,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 7,
+        "meal": "Beef Nachos",
+        "price": 9.5,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 8,
+        "meal": "Nachos Supreme",
+        "price": 11.5,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 9,
+        "meal": "Fajita Nachos",
+        "price": 12,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 10,
+        "meal": "Meat Tornado Nachos",
+        "price": 13,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+
+      },
+      {
+        "id": 11,
+        "meal": "Blue Cheese Dip",
+        "price": 2,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 12,
+        "meal": "Salsa Dip",
+        "price": 2,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 13,
+        "meal": "Salsa Verde Dip",
+        "price": 3,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 14,
+        "meal": "Spicy Dip",
+        "price": 3,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+
+      },
+      {
+        "id": 15,
+        "meal": "Fried Ice-Cream",
+        "price": 5,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 16,
+        "meal": "Sopapila",
+        "price": 6,
+        "nrSelections": 0,
+        "selected": false
+      },
+      {
+        "id": 3,
+        "meal": "Burger meal",
+        "price": 7.65,
+        "selected": false
+      },
+      {
+        "id": 4,
+        "meal": "Chips",
+        "price": 9.99,
+        "selected": false
+      },
+      {
+        "id": 5,
+        "meal": "Mutton Chops",
+        "price": 10.15,
         "selected": false
       }
     ],
@@ -41,10 +168,10 @@
     }
   ],
   "Login": [
-      {
-        "username": "davidakinsanya",
-        "password": "cs2910",
-        "staff": "Boss"
-      }
+    {
+      "username": "davidakinsanya",
+      "password": "cs2910",
+      "staff": "Boss"
+    }
   ]
-}
+  }
