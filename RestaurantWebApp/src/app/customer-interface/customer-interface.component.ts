@@ -35,6 +35,7 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   findCategory(food): void {
+
     for(let f of this.foods) { 
       if (food == f) {
         f.selected = true;
@@ -43,5 +44,5 @@ export class CustomerInterfaceComponent implements OnInit {
       }
     }
   }
-
 }
+
