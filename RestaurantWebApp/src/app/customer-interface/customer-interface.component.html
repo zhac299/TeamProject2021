@@ -1,28 +1,20 @@
 <h1>Menu</h1>
-
+<a class= "home" href  = ''>Home</a>
 <form>
   <mat-form-field appearance="fill" class="centreDiv">
       <mat-label matNativeControl required name="formFood">Food Category</mat-label>
       <mat-select matNativeControl required name="food">
-        <mat-option *ngFor="let food of foods" [value]="food.value">
-
-          <p *ngIf="food.selected==true; else notSelectedBlock"
-          class="selectCategory" (click) = "findCategory(food)">
-              {{food.viewValue}} Selected!
-          </p>
-          <ng-template #notSelectedBlock>
-            <p class="normalView" (click) = "normalView(food)">
-                  {{food.viewValue}}
-            </p>
-          </ng-template>
-        </mat-option>
+        <mat-option value="Fajitas"><a class = "Fcajitas" href = "#Fajitas">Fajitas</a></mat-option>
+        <mat-option value="Nachos"><a class = "Nachos" href = "#Nachos">Nachos</a></mat-option>
+        <mat-option value="Dips"><a class = "Dips" href = "#Dips">Dips</a></mat-option>
+        <mat-option value="Deserts"><a class = "Deserts" href = "#Deserts">Deserts</a></mat-option>
       </mat-select>
   </mat-form-field>
 </form>
 <br>
-<h2>Fajitas</h2>
-<h3>Nachos</h3>
-<h4>Dips</h4>
-<h5>Desserts</h5>
+<h2 id = "Fajitas">Fajitas</h2>
+<h3 id = "Nachos">Nachos</h3>
+<h4 id = "Dips">Dips</h4>
+<h5 id = "Deserts">Deserts</h5>
 <app-order-list></app-order-list>
 
