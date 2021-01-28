@@ -35,6 +35,7 @@ public class Drink {
     public Drink(String dName, double price) {
         this.drinkName = dName;
         this.price = price;
+        this.dAllergies = null;
     }
 
     public Drink(String dName, double price, DishAllergies da) {

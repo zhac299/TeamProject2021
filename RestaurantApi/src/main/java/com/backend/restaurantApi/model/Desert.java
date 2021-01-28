@@ -1,7 +1,5 @@
 package com.backend.restaurantApi.model;
 
-import lombok.Getter;
-
 import javax.persistence.*;
 
 @Entity

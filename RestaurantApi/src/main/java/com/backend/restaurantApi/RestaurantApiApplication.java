@@ -19,7 +19,6 @@ public class RestaurantApiApplication {
 		SpringApplication.run(RestaurantApiApplication.class, args);
 	}
 
-	// example method of how to add items to database
 	@Bean
     public CommandLineRunner mappingDemo(DishAllergiesRepository daRepository,
 										 AllergyRepository allergyRepository,
@@ -29,9 +28,9 @@ public class RestaurantApiApplication {
             // create a new book
 			DishAllergies da1 = new DishAllergies();
 			
-			Drink milkDrink = new Drink("milk", 1.50, da1);
+			Drink milkDrink = new Drink("mango laasi", 1.50, da1);
 
-			Allergy dairyAllergy = new Allergy("Dairy", da1);
+			Allergy dairyAllergy = new Allergy("milk", da1);
 		
 
             // save the book
