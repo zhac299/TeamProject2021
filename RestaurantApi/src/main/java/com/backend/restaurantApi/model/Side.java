@@ -12,9 +12,13 @@ import javax.persistence.*;
 public class Side {
 
     @Id
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "sideId", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "dishAllergies_id", nullable = true)
+    private DishAllergies dAllergies;
 
     @Column(name = "dishName")
     private String dishName;

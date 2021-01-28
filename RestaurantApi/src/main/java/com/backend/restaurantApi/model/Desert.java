@@ -12,9 +12,13 @@ import javax.persistence.*;
 public class Desert {
 
     @Id
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "desertId", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "dishAllergies_id", nullable = true)
+    private DishAllergies dAllergies;
 
     @Column(name = "dishName")
     private String dishName;
@@ -22,7 +26,7 @@ public class Desert {
     // used to serialize object to json
     @Override
     public String toString() {
-        return "Main{" +
+        return "Desert{" +
                 "id=" + id +
                 ", dishName='" + dishName + '\'' +
                 '}';

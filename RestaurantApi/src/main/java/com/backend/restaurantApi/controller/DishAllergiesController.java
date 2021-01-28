@@ -1,6 +1,6 @@
 package com.backend.restaurantApi.controller;
 
-import com.backend.restaurantApi.model.Customer;
+import com.backend.restaurantApi.model.DishAllergies;
 import com.backend.restaurantApi.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +13,14 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(path = "/api/v1/customer")
-public class CustomerController {
+@RequestMapping(path = "/api/v1/dishallergy")
+public class DishAllergiesController {
 
     @Autowired
-    CustomerRepository customerRepo;
+    DishAllergiesRepository dishallergiesRepo;
 
     @GetMapping
-    public List<Customer> index() {
-      return customerRepo.findAll();
+    public List<DishAllergies> index() {
+      return dishallergiesRepo.findAll();
   }  
 }
