@@ -31,6 +31,8 @@ public class Desert {
                 '}';
     }
 
+    public Desert() {}
+
     public Desert(String dName, double price) {
         this.dishName = dName;
         this.price = price;

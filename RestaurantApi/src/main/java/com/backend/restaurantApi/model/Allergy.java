@@ -27,6 +27,8 @@ public class Allergy {
               '}';
   }
 
+  public Allergy() {}
+
   public Allergy(String allergy) {
     this.allergyName = allergy;
   }

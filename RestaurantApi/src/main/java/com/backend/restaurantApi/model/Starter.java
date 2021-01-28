@@ -31,6 +31,8 @@ public class Starter {
                 '}';
     }
 
+    public Starter() {}
+
     public Starter(String dName, double price) {
         this.dishName = dName;
         this.price = price;
