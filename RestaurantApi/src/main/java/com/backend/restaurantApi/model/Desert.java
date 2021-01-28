@@ -21,7 +21,7 @@ public class Desert {
     private String dishName;
 
     @Column(name = "price")
-    private float price;
+    private double price;
 
     // used to serialize object to json
     @Override
@@ -33,12 +33,12 @@ public class Desert {
                 '}';
     }
 
-    public Desert(String dName, float price) {
+    public Desert(String dName, double price) {
         this.dishName = dName;
         this.price = price;
     }
 
-    public Desert(String dName, float price, DishAllergies da) {
+    public Desert(String dName, double price, DishAllergies da) {
         this.dishName = dName;
         this.price = price;
         this.dAllergies = da;
@@ -52,7 +52,7 @@ public class Desert {
         return this.id;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return this.price;
     }
 }

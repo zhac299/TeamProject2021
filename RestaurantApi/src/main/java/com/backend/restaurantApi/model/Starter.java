@@ -19,7 +19,7 @@ public class Starter {
     private String dishName;
 
     @Column(name = "price")
-    private float price;
+    private double price;
 
     @Override
     public String toString() {
@@ -31,12 +31,12 @@ public class Starter {
                 '}';
     }
 
-    public Starter(String dName, float price) {
+    public Starter(String dName, double price) {
         this.dishName = dName;
         this.price = price;
     }
 
-    public Starter(String dName, float price, DishAllergies da) {
+    public Starter(String dName, double price, DishAllergies da) {
         this.dishName = dName;
         this.price = price;
         this.dAllergies = da;
@@ -50,7 +50,7 @@ public class Starter {
         return this.id;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return this.price;
     }
 }

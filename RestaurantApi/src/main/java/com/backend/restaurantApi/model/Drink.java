@@ -19,7 +19,7 @@ public class Drink {
     private String drinkName;
 
     @Column(name = "price")
-    private float price;
+    private double price;
 
     // used to serialize object to json
     @Override
@@ -32,12 +32,12 @@ public class Drink {
                 '}';
     }
 
-    public Drink(String dName, float price) {
+    public Drink(String dName, double price) {
         this.drinkName = dName;
         this.price = price;
     }
 
-    public Drink(String dName, float price, DishAllergies da) {
+    public Drink(String dName, double price, DishAllergies da) {
         this.drinkName = dName;
         this.price = price;
         this.dAllergies = da;
@@ -51,7 +51,7 @@ public class Drink {
         return this.id;
     }
 
-    public float getPrice() {
+    public double getPrice() {
           return this.price;
     }
 }
