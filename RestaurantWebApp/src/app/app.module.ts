@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderListComponent } from './order-list/order-list.component';
@@ -23,6 +22,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
+import { OrderComponent } from './order/order.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {MatIconModule} from "@angular/material/icon";
     InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
+    OrderComponent,
     LoginInputComponent,
     HomePageComponent,
     OrderComponent
@@ -50,6 +52,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatDividerModule,
     MatListModule,
     MatIconModule
+    MatSelectModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
