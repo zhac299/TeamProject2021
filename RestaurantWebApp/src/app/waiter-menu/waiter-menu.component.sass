@@ -1,16 +1,35 @@
-$color: red
+$noOrder: red
+$hasOrder: green
+$h1Col: teal
+$btnSize: 75%
+
+.tableList
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr))
+  gap: 1rem
+  width: border-box
 
 li
-  display: grid
-  width: 50px
-  height: 25px
+  display: flex
+  flex-direction: row
+  border: 5px
+  width: auto
+  height: 50px
+  list-style-type: none
 
-.but
-  color: $color
+.hasOrder
+  border-color: $hasOrder
+  width: $btnSize
+  height: $btnSize
+
+.noOrder
+  border-color: $noOrder
+  width: $btnSize
+  height: $btnSize
 
 h1
-  color: $color
+  color: $h1Col
 
-but 
+but
   text-align: center
 

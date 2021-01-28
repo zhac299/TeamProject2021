@@ -1,0 +1,15 @@
+.card {
+  width: 99%;
+  height: 100%;
+  border-color: white;
+}
+
+.tile {
+  border-color: white;
+}
+
+.foodBtn {
+  color: red;
+}
+
+/*# sourceMappingURL=order.component.css.map */

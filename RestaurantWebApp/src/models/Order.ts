@@ -4,5 +4,5 @@ export class Order {
     meal: string;
     price: number;
     nrSelections:number;
-    selected: Boolean
+    selected: boolean;
 }
