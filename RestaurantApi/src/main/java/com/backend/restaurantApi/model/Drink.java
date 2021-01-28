@@ -32,6 +32,8 @@ public class Drink {
                 '}';
     }
 
+    public Drink() {}
+
     public Drink(String dName, double price) {
         this.drinkName = dName;
         this.price = price;

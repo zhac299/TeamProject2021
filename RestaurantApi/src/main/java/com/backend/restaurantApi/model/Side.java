@@ -32,6 +32,8 @@ public class Side {
                 '}';
     }
 
+    public Side() {}
+
     public Side(String dName, double price) {
         this.dishName = dName;
         this.price = price;

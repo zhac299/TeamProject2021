@@ -35,6 +35,8 @@ public class Staff {
               '}';
   }
 
+  public Staff() {}
+
   public Staff(String userName, String password, String email, boolean isWaiter) {
     this.userName = userName;
     this.password = password;

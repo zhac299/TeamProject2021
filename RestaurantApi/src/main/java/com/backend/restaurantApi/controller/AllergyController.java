@@ -1,6 +1,7 @@
 package com.backend.restaurantApi.controller;
 
 import com.backend.restaurantApi.model.Allergy;
+
 import com.backend.restaurantApi.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;

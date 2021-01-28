@@ -23,6 +23,8 @@ public class Customer {
               '}';
   }
 
+  public Customer() {}
+
   public Customer(int tableNumber) {
     this.tableNumber = tableNumber;
   }
