@@ -1,15 +1,14 @@
-
 <h1>Menu</h1>
-
+<mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+<a class= "home" href  = ''>Home</a>
 <form>
   <mat-form-field appearance="fill" class="centreDiv">
       <mat-label matNativeControl required name="formFood">Food Category</mat-label>
       <mat-select matNativeControl required name="food">
-        <mat-option *ngFor="let food of foods" [value]="food.value">
-            <p class="normalView" (click) = "findCategory(food)">
-              <a href="#" and food.viewValue>{{food.viewValue}}</a>
-            </p>
-        </mat-option>
+        <mat-option href = "#Fajitas" value="Fajitas"><a class = "Fajitas" href = "#Fajitas">Fajitas</a></mat-option>
+        <mat-option value="Nachos"><a class = "Nachos" href = "#Nachos">Nachos</a></mat-option>
+        <mat-option value="Dips"><a class = "Dips" href = "#Dips">Dips</a></mat-option>
+        <mat-option value="Deserts"><a class = "Deserts" href = "#Deserts">Deserts</a></mat-option>
       </mat-select>
   </mat-form-field>
 </form>
@@ -17,7 +16,7 @@
 <h2 id = "Fajitas">Fajitas</h2>
 <h3 id = "Nachos">Nachos</h3>
 <h4 id = "Dips">Dips</h4>
-<h5 id = "Deserts">Desserts</h5>
+<h5 id = "Deserts">Deserts</h5>
 <app-order-list></app-order-list>
 
 

@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { OrderComponent } from './order/order.component';
 import { CommonModule } from '@angular/common';  
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     FormsModule,
     MatSelectModule,
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
