@@ -14,8 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormField } from '@angular/material/form-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import { OrderComponent } from './order/order.component';
-import { CommonModule } from '@angular/common';  
 import {OrderComponent} from "./waiter-menu/order/order.component";
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from "@angular/material/card";
@@ -33,7 +31,6 @@ import { CommonModule } from '@angular/common';
     InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
-    OrderComponent,
     LoginInputComponent,
     HomePageComponent,
     OrderComponent
@@ -54,7 +51,6 @@ import { CommonModule } from '@angular/common';
     MatListModule,
     MatIconModule,
     MatSelectModule,
-    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
