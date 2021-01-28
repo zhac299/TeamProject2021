@@ -1,14 +1,9 @@
 package com.backend.restaurantApi.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
 @Table
-@Getter
-@Setter
 public class Staff {
 
   @Id
@@ -38,5 +33,28 @@ public class Staff {
               ", email='" + email + '\'' +
               ", isWaiter='" + isWaiter + '\'' +
               '}';
+  }
+
+  public Staff(String userName, String password, String email, boolean isWaiter) {
+    this.userName = userName;
+    this.password = password;
+    this.email = email;
+    this.isWaiter = isWaiter;
+  }
+
+  public String getStaffUsername() {
+    return this.userName;
+  }
+
+  public String getStaffPassword() {
+    return this.password;
+  }
+
+  public String getStaffEmail() {
+    return this.email;
+  }
+
+  public boolean getIsWaiter() {
+    return this.isWaiter;
   }
 }

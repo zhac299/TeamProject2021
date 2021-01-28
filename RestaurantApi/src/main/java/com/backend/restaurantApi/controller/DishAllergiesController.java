@@ -22,5 +22,5 @@ public class DishAllergiesController {
     @GetMapping
     public List<DishAllergies> index() {
       return dishallergiesRepo.findAll();
-  }  
+  } 
 }

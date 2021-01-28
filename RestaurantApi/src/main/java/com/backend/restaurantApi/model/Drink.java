@@ -1,14 +1,9 @@
 package com.backend.restaurantApi.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
 @Table
-@Getter
-@Setter
 public class Drink {
 
     @Id
@@ -16,12 +11,15 @@ public class Drink {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dishAllergies_id", nullable = true)
     private DishAllergies dAllergies;
 
     @Column(name = "drinkName")
     private String drinkName;
+
+    @Column(name = "price")
+    private float price;
 
     // used to serialize object to json
     @Override
@@ -29,6 +27,31 @@ public class Drink {
         return "Drink{" +
                 "id=" + id +
                 ", drinkName='" + drinkName + '\'' +
+                ", price='" + price + '\'' +
+                ", dAllergies'" + dAllergies + '\'' +
                 '}';
+    }
+
+    public Drink(String dName, float price) {
+        this.drinkName = dName;
+        this.price = price;
+    }
+
+    public Drink(String dName, float price, DishAllergies da) {
+        this.drinkName = dName;
+        this.price = price;
+        this.dAllergies = da;
+    }
+
+    public String getDishName() {
+        return this.drinkName;
+      }
+    
+    public long getId() {
+        return this.id;
+    }
+
+    public float getPrice() {
+          return this.price;
     }
 }

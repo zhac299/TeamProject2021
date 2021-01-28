@@ -1,14 +1,9 @@
 package com.backend.restaurantApi.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
 @Table
-@Getter
-@Setter
 public class Starter {
 
     @Id
@@ -16,7 +11,7 @@ public class Starter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dishAllergies_id", nullable = false)
     private DishAllergies dAllergies;
 
@@ -24,8 +19,7 @@ public class Starter {
     private String dishName;
 
     @Column(name = "price")
-    private int price;
-
+    private float price;
 
     @Override
     public String toString() {
@@ -33,6 +27,30 @@ public class Starter {
                 "id=" + id +
                 ", dishName='" + dishName + '\'' +
                 ", price='" + price + '\'' +
+                ", dAllergies'" + dAllergies + '\'' +
                 '}';
+    }
+
+    public Starter(String dName, float price) {
+        this.dishName = dName;
+        this.price = price;
+    }
+
+    public Starter(String dName, float price, DishAllergies da) {
+        this.dishName = dName;
+        this.price = price;
+        this.dAllergies = da;
+    }
+
+    public String getDishName() {
+        return this.dishName;
+    }
+    
+    public long getId() {
+        return this.id;
+    }
+
+    public float getPrice() {
+        return this.price;
     }
 }

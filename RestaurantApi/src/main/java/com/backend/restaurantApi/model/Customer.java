@@ -1,14 +1,9 @@
 package com.backend.restaurantApi.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
 @Table
-@Getter
-@Setter
 public class Customer {
 
   @Id
@@ -26,5 +21,13 @@ public class Customer {
               "id=" + id +
               ", tableNumber='" + tableNumber + '\'' +
               '}';
+  }
+
+  public Customer(int tableNumber) {
+    this.tableNumber = tableNumber;
+  }
+
+  public int getTableNumber() {
+    return this.tableNumber;
   }
 }
