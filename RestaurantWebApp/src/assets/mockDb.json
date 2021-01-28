@@ -3,34 +3,41 @@
       {
         "id": 1,
         "meal": "Teriyaki Chicken",
-        "price": 12.95
+        "price": 12.95,
+        "selected": false
       },
       {
         "id": 2,
         "meal": "Steak",
-        "price": 14
+        "price": 14,
+        "selected": false
       }
     ],
   "tables": [
     {
       "id": 1,
-      "number": 5
+      "number": 5,
+      "hasOrder": true
     },
     {
       "id": 2,
-      "number": 6
+      "number": 6,
+      "hasOrder": false
     },
     {
       "id": 3,
-      "number": 7
+      "number": 7,
+      "hasOrder": false
     },
     {
       "id": 4,
-      "number": 8
+      "number": 8,
+      "hasOrder": false
     },
     {
       "id": 5,
-      "number": 12
+      "number": 12,
+      "hasOrder": true
     }
   ],
   "Login": [

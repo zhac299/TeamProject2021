@@ -1,15 +1,29 @@
-$color: red
+$noOrder: red
+$hasOrder: green
+$h1Col: teal
+
+.tableList
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr))
+  gap: 1rem
+  width: border-box
 
 li
-  display: grid
-  width: 50px
-  height: 25px
+  display: flex
+  flex-direction: row
+  border: 5px
+  width: auto
+  height: 50px
+  list-style-type: none
 
-.but
-  color: $color
+.hasOrder
+  color: $hasOrder
+
+.noOrder
+  color: $noOrder
 
 h1
-  color: $color
+  color: $h1Col
 
 but 
   text-align: center
