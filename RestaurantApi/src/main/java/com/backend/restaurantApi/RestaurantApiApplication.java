@@ -1,13 +1,7 @@
 package com.backend.restaurantApi;
 
-import com.backend.restaurantApi.model.Allergy;
-import com.backend.restaurantApi.model.DishAllergies;
-import com.backend.restaurantApi.model.Drink;
-import com.backend.restaurantApi.model.Main;
-import com.backend.restaurantApi.repository.AllergyRepository;
-import com.backend.restaurantApi.repository.DishAllergiesRepository;
-import com.backend.restaurantApi.repository.DrinkRepository;
-import com.backend.restaurantApi.repository.MainRepository;
+import com.backend.restaurantApi.model.*;
+import com.backend.restaurantApi.repository.*;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
