@@ -3,6 +3,7 @@ import {OrderService} from '../order.service';
 import {Order} from '../../models/Order';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';  
+import {MatIconModule} from '@angular/material/icon';
 
 interface Food {
   viewValue: string;
