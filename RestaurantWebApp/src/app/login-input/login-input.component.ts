@@ -40,7 +40,7 @@ export class LoginInputComponent implements OnInit {
                     this.router.navigateByUrl('waiter-menu');
                     return;
                 } else if (val.username == login2.username && val.password == login2.password && login2.kitchen == true) {
-                    this.router.navigateByUrl('');
+                    this.router.navigateByUrl('order-list');
                     return;
                 }
             }

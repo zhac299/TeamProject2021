@@ -8,7 +8,7 @@ import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import {OrderComponent} from './waiter-menu/order/order.component';
 
-const routes: Routes = {
+const routes: Routes = [
   {path: 'table/:id', component: OrderComponent},
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginInputComponent },
@@ -17,10 +17,9 @@ const routes: Routes = {
   { path: 'initial-menu', component: InitialMenuComponent },
   { path: 'home', component: CustomerInterfaceComponent }
 ];
-]
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-
 export class AppRoutingModule { }

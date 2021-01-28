@@ -43,5 +43,6 @@ export class WaiterMenuComponent implements OnInit {
       console.log(result);
     });
   }
+
 }
 
