@@ -22,7 +22,6 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
-import { OrderComponent } from './order/order.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -51,7 +50,7 @@ import { CommonModule } from '@angular/common';
     MatGridListModule,
     MatDividerModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
     MatSelectModule,
     CommonModule
   ],
