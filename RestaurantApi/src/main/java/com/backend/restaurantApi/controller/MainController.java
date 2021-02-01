@@ -4,27 +4,30 @@ import com.backend.restaurantApi.model.Main;
 import com.backend.restaurantApi.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(path = "/api/v1/main")
+@RequestMapping(path = "/api/v1/")
 public class MainController {
 
     @Autowired
     MainRepository mainRepo;
 
-    @GetMapping
-    public List<Main> index() {
-        return mainRepo.findAll();
-    }
+//    @GetMapping("/mains")
+//    public ResponseEntity<List<Main>> get() {
+//        List<Main> mains =  mainService.findAll();
+//        return new ResponseEntity<List<Main>>(mains, HttpStatus.OK);
+//    }
 
     //Adds mains
-    @PostMapping
-    public String addMain() {
-        return"HTTP POST request recieved";
+    @PostMapping(path = "/addMains", consumes = "application/json", produces = "application/json")
+    public void addMain(@RequestBody Main main) {
+        System.out.println(main);
     }
 
     //Deletes mains
