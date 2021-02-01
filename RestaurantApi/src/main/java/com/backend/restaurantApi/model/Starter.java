@@ -15,6 +15,10 @@ public class Starter {
     @JoinColumn(name = "dishAllergies_id", nullable = false)
     private DishAllergies dAllergies;
 
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = true)
+    private Order order;
+
     @Column(name = "dishName")
     private String dishName;
 
@@ -27,7 +31,8 @@ public class Starter {
                 "id=" + id +
                 ", dishName='" + dishName + '\'' +
                 ", price='" + price + '\'' +
-                ", dAllergies'" + dAllergies + '\'' +
+                ", dAllergies='" + dAllergies + '\'' +
+                ", order='" + order + '\'' +
                 '}';
     }
 
@@ -44,6 +49,19 @@ public class Starter {
         this.dAllergies = da;
     }
 
+    public Starter(String dName, double price, DishAllergies da, Order order) {
+        this.dishName = dName;
+        this.price = price;
+        this.dAllergies = da;
+        this.order = order;
+    }
+
+    public Starter(String dName, double price, Order order) {
+        this.dishName = dName;
+        this.price = price;
+        this.order = order;
+    }
+
     public String getDishName() {
         return this.dishName;
     }
@@ -54,5 +72,9 @@ public class Starter {
 
     public double getPrice() {
         return this.price;
+    }
+
+    public Order getOrder() {
+        return this.order;
     }
 }

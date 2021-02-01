@@ -23,6 +23,10 @@ public class Staff {
   @Column(name = "isWaiter")
   private boolean isWaiter;
 
+  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "order_id", nullable = true)
+  private Order order;
+
 // used to serialize object to json
   @Override
   public String toString() {
@@ -32,6 +36,7 @@ public class Staff {
               ", password='" + password + '\'' +
               ", email='" + email + '\'' +
               ", isWaiter='" + isWaiter + '\'' +
+              ", order='" + order + '\'' +
               '}';
   }
 
@@ -42,6 +47,15 @@ public class Staff {
     this.password = password;
     this.email = email;
     this.isWaiter = isWaiter;
+    this.order = null;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
+
+  public void setNull() {
+    this.order = null;
   }
 
   public String getStaffUsername() {
