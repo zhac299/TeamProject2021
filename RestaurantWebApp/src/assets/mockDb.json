@@ -30,8 +30,7 @@
       }
     ],
     
- 
-      },
+    "nachos": [
       {
         "id": 5,
         "meal": "Simple Nachos",
@@ -73,10 +72,10 @@
         "price": 13,
         "nrSelections": 0,
         "selected": false
-      },
-      {
+      }
+    ],
 
-      },
+    "dips": [
       {
         "id": 11,
         "meal": "Blue Cheese Dip",
@@ -104,13 +103,13 @@
         "price": 3,
         "nrSelections": 0,
         "selected": false
-      },
-      {
+      }
+    ],
 
-      },
+    "deserts":[
       {
         "id": 15,
-        "meal": "Fried Ice-Cream",
+        "meal": "Churos",
         "price": 5,
         "nrSelections": 0,
         "selected": false
@@ -121,26 +120,9 @@
         "price": 6,
         "nrSelections": 0,
         "selected": false
-      },
-      {
-        "id": 3,
-        "meal": "Burger meal",
-        "price": 7.65,
-        "selected": false
-      },
-      {
-        "id": 4,
-        "meal": "Chips",
-        "price": 9.99,
-        "selected": false
-      },
-      {
-        "id": 5,
-        "meal": "Mutton Chops",
-        "price": 10.15,
-        "selected": false
       }
     ],
+
   "tables": [
     {
       "id": 1,
