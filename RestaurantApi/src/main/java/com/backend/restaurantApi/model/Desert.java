@@ -21,6 +21,11 @@ public class Desert {
     private DishAllergies dAllergies;
 
     @Column(name = "dish_name")
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = true)
+    private Order order;
+
+    @Column(name = "dishName")
     private String dishName;
 
     @Column(name = "price")
@@ -32,32 +37,50 @@ public class Desert {
         return "Desert{" +
                 "id=" + id +
                 ", price='" + price + '\'' +
-                ", dAllergies'" + dAllergies + '\'' +
+                ", dAllergies='" + dAllergies + '\'' +
+                ", order='" + order + '\'' +
                 '}';
     }
 
     public Desert() {}
-//
-//    public Desert(String dName, double price) {
-//        this.dishName = dName;
-//        this.price = price;
-//    }
-//
-//    public Desert(String dName, double price, DishAllergies da) {
-//        this.dishName = dName;
-//        this.price = price;
-//        this.dAllergies = da;
-//    }
-//
-//    public String getDishName() {
-//        return this.dishName;
-//    }
-//
-//    public long getId() {
-//        return this.id;
-//    }
-//
-//    public double getPrice() {
-//        return this.price;
-//    }
+
+    public Desert(String dName, double price) {
+        this.dishName = dName;
+        this.price = price;
+    }
+
+    public Desert(String dName, double price, DishAllergies da) {
+        this.dishName = dName;
+        this.price = price;
+        this.dAllergies = da;
+    }
+
+    public Desert(String dName, double price, DishAllergies da, Order order) {
+        this.dishName = dName;
+        this.price = price;
+        this.dAllergies = da;
+        this.order = order;
+    }
+
+    public Desert(String dName, double price, Order order) {
+        this.dishName = dName;
+        this.price = price;
+        this.order = order;
+    }
+
+    public String getDishName() {
+        return this.dishName;
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public Order getOrder() {
+        return this.order;
+    }
 }
