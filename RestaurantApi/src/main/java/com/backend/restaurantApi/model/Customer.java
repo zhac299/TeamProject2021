@@ -1,7 +1,12 @@
 package com.backend.restaurantApi.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table
 public class Customer {
@@ -11,7 +16,7 @@ public class Customer {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   
-  @Column(name = "tableNumber")
+  @Column(name = "table_number")
   private int tableNumber;
   
 // used to serialize object to json
@@ -24,12 +29,12 @@ public class Customer {
   }
 
   public Customer() {}
-
-  public Customer(int tableNumber) {
-    this.tableNumber = tableNumber;
-  }
-
-  public int getTableNumber() {
-    return this.tableNumber;
-  }
+//
+//  public Customer(int tableNumber) {
+//    this.tableNumber = tableNumber;
+//  }
+//
+//  public int getTableNumber() {
+//    return this.tableNumber;
+//  }
 }

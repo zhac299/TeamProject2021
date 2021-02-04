@@ -1,21 +1,26 @@
 package com.backend.restaurantApi.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table
 public class Desert {
 
     @Id
-    @Column(name = "desertId", unique = true, nullable = false)
+    @Column(name = "desert_id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "dishAllergies_id", nullable = true)
+    @JoinColumn(name = "dish_allergies_id", nullable = true)
     private DishAllergies dAllergies;
 
-    @Column(name = "dishName")
+    @Column(name = "dish_name")
     private String dishName;
 
     @Column(name = "price")
@@ -32,27 +37,27 @@ public class Desert {
     }
 
     public Desert() {}
-
-    public Desert(String dName, double price) {
-        this.dishName = dName;
-        this.price = price;
-    }
-
-    public Desert(String dName, double price, DishAllergies da) {
-        this.dishName = dName;
-        this.price = price;
-        this.dAllergies = da;
-    }
-
-    public String getDishName() {
-        return this.dishName;
-    }
-    
-    public long getId() {
-        return this.id;
-    }
-
-    public double getPrice() {
-        return this.price;
-    }
+//
+//    public Desert(String dName, double price) {
+//        this.dishName = dName;
+//        this.price = price;
+//    }
+//
+//    public Desert(String dName, double price, DishAllergies da) {
+//        this.dishName = dName;
+//        this.price = price;
+//        this.dAllergies = da;
+//    }
+//
+//    public String getDishName() {
+//        return this.dishName;
+//    }
+//
+//    public long getId() {
+//        return this.id;
+//    }
+//
+//    public double getPrice() {
+//        return this.price;
+//    }
 }

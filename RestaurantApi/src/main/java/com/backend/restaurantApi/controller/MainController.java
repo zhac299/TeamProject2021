@@ -3,6 +3,7 @@ package com.backend.restaurantApi.controller;
 import com.backend.restaurantApi.model.Main;
 import com.backend.restaurantApi.repository.*;
 
+import com.backend.restaurantApi.services.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +17,13 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    MainRepository mainRepo;
+    MainService mainService;
 
-//    @GetMapping("/mains")
-//    public ResponseEntity<List<Main>> get() {
-//        List<Main> mains =  mainService.findAll();
-//        return new ResponseEntity<List<Main>>(mains, HttpStatus.OK);
-//    }
+    @GetMapping("/mains")
+    public ResponseEntity<List<Main>> get() {
+        List<Main> mains =  mainService.findAll();
+        return new ResponseEntity<>(mains, HttpStatus.OK);
+    }
 
     //Adds mains
     @PostMapping(path = "/addMains", consumes = "application/json", produces = "application/json")

@@ -1,5 +1,6 @@
 package com.backend.restaurantApi.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -51,65 +52,65 @@ public class DishAllergies {
               '}';
   }
 
-  public DishAllergies(Starter starter, Allergy allergy) {
-    this.starter.add(starter);
-    this.main = null;
-    this.side = null;
-    this.desert = null;
-    this.drink = null;
-    this.allergies.add(allergy);
-  }
+//  public DishAllergies(Starter starter, Allergy allergy) {
+//    this.starter.add(starter);
+//    this.main = null;
+//    this.side = null;
+//    this.desert = null;
+//    this.drink = null;
+//    this.allergies.add(allergy);
+//  }
+//
+//  public DishAllergies(Main main, Allergy allergy) {
+//    this.starter = null;
+//    this.main .add(main);
+//    this.side = null;
+//    this.desert = null;
+//    this.drink = null;
+//    this.allergies.add(allergy);
+//  }
+//
+//  public DishAllergies(Side side, Allergy allergy) {
+//    this.starter = null;
+//    this.main = null;
+//    this.side.add(side);
+//    this.desert = null;
+//    this.drink = null;
+//    this.allergies.add(allergy);
+//  }
 
-  public DishAllergies(Main main, Allergy allergy) {
-    this.starter = null;
-    this.main .add(main);
-    this.side = null;
-    this.desert = null;
-    this.drink = null;
-    this.allergies.add(allergy);
-  }
-
-  public DishAllergies(Side side, Allergy allergy) {
-    this.starter = null;
-    this.main = null;
-    this.side.add(side);
-    this.desert = null;
-    this.drink = null;
-    this.allergies.add(allergy);
-  }
-
-  public DishAllergies(Drink drink, Allergy allergy) {
-    this.starter = null;
-    this.main = null;
-    this.side = null;
-    this.desert = null;
-    this.drink.add(drink);
-    this.allergies.add(allergy);
-  }
+//  public DishAllergies(Drink drink, Allergy allergy) {
+//    this.starter = null;
+//    this.main = null;
+//    this.side = null;
+//    this.desert = null;
+//    this.drink.add(drink);
+//    this.allergies.add(allergy);
+//  }
 
   public DishAllergies() {}
 
-  public List<Starter> getStarter() {
-    return this.starter;
-  }
-
-  public List<Main> getMain() {
-    return this.main;
-  }
-
-  public List<Side> getSide() {
-    return this.side;
-  }
-
-  public List<Desert> getDesert() {
-    return this.desert;
-  }
-
-  public List<Drink> getDrink() {
-    return this.drink;
-  }
-
-  public List<Allergy> getAllergies() {
-    return this.allergies;
-  }
+//  public List<Starter> getStarter() {
+//    return this.starter;
+//  }
+//
+//  public List<Main> getMain() {
+//    return this.main;
+//  }
+//
+//  public List<Side> getSide() {
+//    return this.side;
+//  }
+//
+//  public List<Desert> getDesert() {
+//    return this.desert;
+//  }
+//
+//  public List<Drink> getDrink() {
+//    return this.drink;
+//  }
+//
+//  public List<Allergy> getAllergies() {
+//    return this.allergies;
+//  }
 }

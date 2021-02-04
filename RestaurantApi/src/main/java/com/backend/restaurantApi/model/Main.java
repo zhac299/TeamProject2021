@@ -1,7 +1,12 @@
 package com.backend.restaurantApi.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Setter
+@Getter
 @Entity
 @Table
 public class Main {
@@ -33,27 +38,27 @@ public class Main {
     }
 
     public Main() {}
-
-    public Main(String dName, double price) {
-        this.dishName = dName;
-        this.price = price;
-    }
-
-    public Main(String dName, double price, DishAllergies da) {
-        this.dishName = dName;
-        this.price = price;
-        this.dAllergies = da;
-    }
-
-    public String getDishName() {
-        return this.dishName;
-      }
-    
-    public long getId() {
-        return this.id;
-    }
-
-    public double getPrice() {
-        return this.price;
-    }
+//
+//    public Main(String dName, double price) {
+//        this.dishName = dName;
+//        this.price = price;
+//    }
+//
+//    public Main(String dName, double price, DishAllergies da) {
+//        this.dishName = dName;
+//        this.price = price;
+//        this.dAllergies = da;
+//    }
+//
+//    public String getDishName() {
+//        return this.dishName;
+//      }
+//
+//    public long getId() {
+//        return this.id;
+//    }
+//
+//    public double getPrice() {
+//        return this.price;
+//    }
 }
