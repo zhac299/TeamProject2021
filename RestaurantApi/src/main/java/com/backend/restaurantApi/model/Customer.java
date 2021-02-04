@@ -34,12 +34,12 @@ public class Customer {
   }
 
   public Customer() {}
-
-  public Customer(int tableNumber) {
-    this.tableNumber = tableNumber;
-  }
-
-  public int getTableNumber() {
-    return this.tableNumber;
-  }
+//
+//  public Customer(int tableNumber) {
+//    this.tableNumber = tableNumber;
+//  }
+//
+//  public int getTableNumber() {
+//    return this.tableNumber;
+//  }
 }

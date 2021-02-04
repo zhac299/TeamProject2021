@@ -20,7 +20,6 @@ public class Desert {
     @JoinColumn(name = "dish_allergies_id", nullable = true)
     private DishAllergies dAllergies;
 
-    @Column(name = "dish_name")
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = true)
     private Order order;
@@ -44,43 +43,43 @@ public class Desert {
 
     public Desert() {}
 
-    public Desert(String dName, double price) {
-        this.dishName = dName;
-        this.price = price;
-    }
-
-    public Desert(String dName, double price, DishAllergies da) {
-        this.dishName = dName;
-        this.price = price;
-        this.dAllergies = da;
-    }
-
-    public Desert(String dName, double price, DishAllergies da, Order order) {
-        this.dishName = dName;
-        this.price = price;
-        this.dAllergies = da;
-        this.order = order;
-    }
-
-    public Desert(String dName, double price, Order order) {
-        this.dishName = dName;
-        this.price = price;
-        this.order = order;
-    }
-
-    public String getDishName() {
-        return this.dishName;
-    }
-
-    public long getId() {
-        return this.id;
-    }
-
-    public double getPrice() {
-        return this.price;
-    }
-
-    public Order getOrder() {
-        return this.order;
-    }
+//    public Desert(String dName, double price) {
+//        this.dishName = dName;
+//        this.price = price;
+//    }
+//
+//    public Desert(String dName, double price, DishAllergies da) {
+//        this.dishName = dName;
+//        this.price = price;
+//        this.dAllergies = da;
+//    }
+//
+//    public Desert(String dName, double price, DishAllergies da, Order order) {
+//        this.dishName = dName;
+//        this.price = price;
+//        this.dAllergies = da;
+//        this.order = order;
+//    }
+//
+//    public Desert(String dName, double price, Order order) {
+//        this.dishName = dName;
+//        this.price = price;
+//        this.order = order;
+//    }
+//
+//    public String getDishName() {
+//        return this.dishName;
+//    }
+//
+//    public long getId() {
+//        return this.id;
+//    }
+//
+//    public double getPrice() {
+//        return this.price;
+//    }
+//
+//    public Order getOrder() {
+//        return this.order;
+//    }
 }

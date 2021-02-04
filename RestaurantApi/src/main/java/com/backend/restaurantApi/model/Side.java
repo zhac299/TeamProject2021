@@ -43,44 +43,44 @@ public class Side {
     }
 
     public Side() {}
-
-    public Side(String dName, double price) {
-        this.dishName = dName;
-        this.price = price;
-    }
-
-    public Side(String dName, double price, DishAllergies da) {
-        this.dishName = dName;
-        this.price = price;
-        this.dAllergies = da;
-    }
-
-    public Side(String dName, double price, DishAllergies da, Order order) {
-        this.dishName = dName;
-        this.price = price;
-        this.dAllergies = da;
-        this.order = order;
-    }
-
-    public Side(String dName, double price, Order order) {
-        this.dishName = dName;
-        this.price = price;
-        this.order = order;
-    }
-
-    public String getDishName() {
-        return this.dishName;
-      }
-
-    public long getId() {
-        return this.id;
-    }
-
-    public double getPrice() {
-        return this.price;
-    }
-
-    public Order getOrder() {
-        return this.order;
-    }
+//
+//    public Side(String dName, double price) {
+//        this.dishName = dName;
+//        this.price = price;
+//    }
+//
+//    public Side(String dName, double price, DishAllergies da) {
+//        this.dishName = dName;
+//        this.price = price;
+//        this.dAllergies = da;
+//    }
+//
+//    public Side(String dName, double price, DishAllergies da, Order order) {
+//        this.dishName = dName;
+//        this.price = price;
+//        this.dAllergies = da;
+//        this.order = order;
+//    }
+//
+//    public Side(String dName, double price, Order order) {
+//        this.dishName = dName;
+//        this.price = price;
+//        this.order = order;
+//    }
+//
+//    public String getDishName() {
+//        return this.dishName;
+//      }
+//
+//    public long getId() {
+//        return this.id;
+//    }
+//
+//    public double getPrice() {
+//        return this.price;
+//    }
+//
+//    public Order getOrder() {
+//        return this.order;
+//    }
 }

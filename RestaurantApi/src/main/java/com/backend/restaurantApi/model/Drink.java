@@ -44,44 +44,44 @@ public class Drink {
 
     public Drink() {}
 
-    public Drink(String dName, double price) {
-        this.drinkName = dName;
-        this.price = price;
-        this.dAllergies = null;
-    }
-
-    public Drink(String dName, double price, DishAllergies da) {
-        this.drinkName = dName;
-        this.price = price;
-        this.dAllergies = da;
-    }
-
-    public Drink(String dName, double price, DishAllergies da, Order order) {
-        this.drinkName = dName;
-        this.price = price;
-        this.dAllergies = da;
-        this.order = order;
-    }
-
-    public Drink(String dName, double price, Order order) {
-        this.drinkName = dName;
-        this.price = price;
-        this.order = order;
-    }
-
-    public String getDishName() {
-        return this.drinkName;
-      }
-
-    public long getId() {
-        return this.id;
-    }
-
-    public double getPrice() {
-          return this.price;
-    }
-
-    public Order getOrder() {
-        return this.order;
-  }
+//    public Drink(String dName, double price) {
+//        this.drinkName = dName;
+//        this.price = price;
+//        this.dAllergies = null;
+//    }
+//
+//    public Drink(String dName, double price, DishAllergies da) {
+//        this.drinkName = dName;
+//        this.price = price;
+//        this.dAllergies = da;
+//    }
+//
+//    public Drink(String dName, double price, DishAllergies da, Order order) {
+//        this.drinkName = dName;
+//        this.price = price;
+//        this.dAllergies = da;
+//        this.order = order;
+//    }
+//
+//    public Drink(String dName, double price, Order order) {
+//        this.drinkName = dName;
+//        this.price = price;
+//        this.order = order;
+//    }
+//
+//    public String getDishName() {
+//        return this.drinkName;
+//      }
+//
+//    public long getId() {
+//        return this.id;
+//    }
+//
+//    public double getPrice() {
+//          return this.price;
+//    }
+//
+//    public Order getOrder() {
+//        return this.order;
+//  }
 }

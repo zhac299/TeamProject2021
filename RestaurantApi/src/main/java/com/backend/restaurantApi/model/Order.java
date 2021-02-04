@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "RestaurantOrder")
 public class Order {
     @Id
     @Column(name = "order_id", unique = true, nullable = false)
@@ -55,83 +55,83 @@ public class Order {
             '}';
     }
 
-    public Order(Starter starter, Customer customer, Staff staff) {
-        this.starter.add(starter);
-        this.main = null;
-        this.side = null;
-        this.desert = null;
-        this.drink = null;
-        this.customer.add(customer);
-        this.staff.add(staff);
-    }
-
-    public Order(Main main, Customer customer, Staff staff) {
-        this.starter = null;
-        this.main.add(main);
-        this.side = null;
-        this.desert = null;
-        this.drink = null;
-        this.customer.add(customer);
-        this.staff.add(staff);
-    }
-
-    public Order(Side side, Customer customer, Staff staff) {
-        this.starter = null;
-        this.main = null;
-        this.side.add(side);
-        this.desert = null;
-        this.drink = null;
-        this.customer.add(customer);
-        this.staff.add(staff);
-    }
-
-    public Order(Desert desert, Customer customer, Staff staff) {
-        this.starter = null;
-        this.main = null;
-        this.side = null;
-        this.desert.add(desert);
-        this.drink = null;
-        this.customer.add(customer);
-        this.staff.add(staff);
-    }
-    
-    public Order(Drink drink, Customer customer, Staff staff) {
-        this.starter = null;
-        this.main = null;
-        this.side = null;
-        this.desert = null;
-        this.drink.add(drink);
-        this.customer.add(customer);
-        this.staff.add(staff);
-    }
-
+//    public Order(Starter starter, Customer customer, Staff staff) {
+//        this.starter.add(starter);
+//        this.main = null;
+//        this.side = null;
+//        this.desert = null;
+//        this.drink = null;
+//        this.customer.add(customer);
+//        this.staff.add(staff);
+//    }
+//
+//    public Order(Main main, Customer customer, Staff staff) {
+//        this.starter = null;
+//        this.main.add(main);
+//        this.side = null;
+//        this.desert = null;
+//        this.drink = null;
+//        this.customer.add(customer);
+//        this.staff.add(staff);
+//    }
+//
+//    public Order(Side side, Customer customer, Staff staff) {
+//        this.starter = null;
+//        this.main = null;
+//        this.side.add(side);
+//        this.desert = null;
+//        this.drink = null;
+//        this.customer.add(customer);
+//        this.staff.add(staff);
+//    }
+//
+//    public Order(Desert desert, Customer customer, Staff staff) {
+//        this.starter = null;
+//        this.main = null;
+//        this.side = null;
+//        this.desert.add(desert);
+//        this.drink = null;
+//        this.customer.add(customer);
+//        this.staff.add(staff);
+//    }
+//
+//    public Order(Drink drink, Customer customer, Staff staff) {
+//        this.starter = null;
+//        this.main = null;
+//        this.side = null;
+//        this.desert = null;
+//        this.drink.add(drink);
+//        this.customer.add(customer);
+//        this.staff.add(staff);
+//    }
+//
     public Order() {}
-
-    public List<Starter> getStarter() {
-        return this.starter;
-    }
-
-    public List<Main> getMain() {
-        return this.main;
-    }
-
-    public List<Side> getSide() {
-        return this.side;
-    }
-
-    public List<Desert> getDesert() {
-        return this.desert;
-    }
-
-    public List<Drink> getDrink() {
-        return this.drink;
-    }
-
-    public List<Customer> getCustomer() {
-        return this.customer;
-    }
-    
-    public List<Staff> getStaff() {
-        return this.staff;
-    }
+//
+//    public List<Starter> getStarter() {
+//        return this.starter;
+//    }
+//
+//    public List<Main> getMain() {
+//        return this.main;
+//    }
+//
+//    public List<Side> getSide() {
+//        return this.side;
+//    }
+//
+//    public List<Desert> getDesert() {
+//        return this.desert;
+//    }
+//
+//    public List<Drink> getDrink() {
+//        return this.drink;
+//    }
+//
+//    public List<Customer> getCustomer() {
+//        return this.customer;
+//    }
+//
+//    public List<Staff> getStaff() {
+//        return this.staff;
+//    }
 }
