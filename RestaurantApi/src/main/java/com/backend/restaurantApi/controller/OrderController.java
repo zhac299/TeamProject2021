@@ -1,6 +1,6 @@
 package com.backend.restaurantApi.controller;
 
-import com.backend.restaurantApi.model.DishAllergies;
+import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    DishAllergiesRepository dishallergiesRepo;
+    OrderRepository orderRepo;
 
     @GetMapping
-    public List<DishAllergies> index() {
-      return dishallergiesRepo.findAll();
+    public List<Order> index() {
+      return orderRepo.findAll();
   } 
 }

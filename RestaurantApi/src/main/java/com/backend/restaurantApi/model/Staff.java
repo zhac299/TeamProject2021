@@ -1,12 +1,7 @@
 package com.backend.restaurantApi.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
-@Getter
-@Setter
 @Entity
 @Table
 public class Staff {
@@ -46,36 +41,36 @@ public class Staff {
   }
 
   public Staff() {}
-//
-//  public Staff(String userName, String password, String email, boolean isWaiter) {
-//    this.userName = userName;
-//    this.password = password;
-//    this.email = email;
-//    this.isWaiter = isWaiter;
-//    this.order = null;
-//  }
-//
-//  public void setOrder(Order order) {
-//    this.order = order;
-//  }
-//
-//  public void setNull() {
-//    this.order = null;
-//  }
-//
-//  public String getStaffUsername() {
-//    return this.userName;
-//  }
-//
-//  public String getStaffPassword() {
-//    return this.password;
-//  }
-//
-//  public String getStaffEmail() {
-//    return this.email;
-//  }
-//
-//  public boolean getIsWaiter() {
-//    return this.isWaiter;
-//  }
+
+ public Staff(String userName, String password, String email, boolean isWaiter) {
+   this.userName = userName;
+   this.password = password;
+   this.email = email;
+   this.isWaiter = isWaiter;
+   this.order = null;
+ }
+
+ public void setOrder(Order order) {
+   this.order = order;
+ }
+
+ public void setNull() {
+   this.order = null;
+ }
+
+ public String getStaffUsername() {
+   return this.userName;
+ }
+
+ public String getStaffPassword() {
+   return this.password;
+ }
+
+ public String getStaffEmail() {
+   return this.email;
+ }
+
+ public boolean getIsWaiter() {
+   return this.isWaiter;
+ }
 }
