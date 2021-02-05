@@ -22,6 +22,10 @@ public class Meal {
     @Column(name = "price")
     Double price;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
     @Column(name = "peanuts")
     boolean peanuts = false;
 

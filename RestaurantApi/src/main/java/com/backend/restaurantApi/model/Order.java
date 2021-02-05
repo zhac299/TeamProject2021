@@ -1,9 +1,14 @@
 package com.backend.restaurantApi.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "RestaurantOrder")
 public class Order {
@@ -16,9 +21,9 @@ public class Order {
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Customer.class)
     private List<Customer> customer;
 
-//    @Column(name = "meal", nullable = false)
-//    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Meal.class)
-//    private List<Meal> meal;
+    @Column(name = "meal", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="order")
+    private List<Meal> meal;
 
     @Column(name = "staff", nullable = false)
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Staff.class)
@@ -30,16 +35,16 @@ public class Order {
         return "DishAllergies{" +
             "id=" + id +
             ", customer='" + customer + '\'' +
-//            ", meal='" + meal + '\'' +
+            ", meal='" + meal + '\'' +
             ", staff='" + staff + '\'' +
             '}';
     }
 
-   public Order(Meal meal, Customer customer, Staff staff) {
+//   public Order(Meal meal, Customer customer, Staff staff) {
 //       this.meal.add(meal);
-       this.customer.add(customer);
-       this.staff.add(staff);
-   }
+//       this.customer.add(customer);
+//       this.staff.add(staff);
+//   }
 
     public Order() {}
 
@@ -47,11 +52,11 @@ public class Order {
 //       return this.meal;
 //   }
 
-   public List<Customer> getCustomer() {
-       return this.customer;
-   }
-
-   public List<Staff> getStaff() {
-       return this.staff;
-   }
+//   public List<Customer> getCustomer() {
+//       return this.customer;
+//   }
+//
+//   public List<Staff> getStaff() {
+//       return this.staff;
+//   }
 }
