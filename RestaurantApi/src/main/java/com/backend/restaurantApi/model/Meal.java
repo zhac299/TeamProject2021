@@ -72,14 +72,28 @@ public class Meal {
 //    @JoinColumn(name = "order_id", nullable = true)
 //    Order order;
 
+
     @Override
     public String toString() {
         return "Meal{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
-//                ", allergens='" + allergens + '\'' +
-//                ", order='" + order + '\'' +
+                ", price=" + price +
+                ", order=" + order +
+                ", peanuts=" + peanuts +
+                ", celery=" + celery +
+                ", gluten=" + gluten +
+                ", crustaceans=" + crustaceans +
+                ", eggs=" + eggs +
+                ", fish=" + fish +
+                ", lupin=" + lupin +
+                ", milk=" + milk +
+                ", molluscs=" + molluscs +
+                ", mustard=" + mustard +
+                ", nuts=" + nuts +
+                ", soya=" + soya +
+                ", sesameSeeds=" + sesameSeeds +
+                ", sulphites=" + sulphites +
                 '}';
     }
 
