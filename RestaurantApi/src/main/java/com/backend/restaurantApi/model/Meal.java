@@ -81,33 +81,4 @@ public class Meal {
 
     public Meal() {}
 
-//    public Meal(String name, double price, Allergens allergens) {
-//       this.name = name;
-//       this.price = price;
-//       this.allergens = allergens;
-//    }
-
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
-//
-//    public String getDishName() {
-//        return this.name;
-//    }
-//
-//    public long getId() {
-//        return this.id;
-//    }
-//
-//    public double getPrice() {
-//        return this.price;
-//    }
-//
-//    public Allergens getAllergens() {
-//        return this.allergens;
-//    }
-
-//    public Order getOrder() {
-//        return this.order;
-//    }
 }
