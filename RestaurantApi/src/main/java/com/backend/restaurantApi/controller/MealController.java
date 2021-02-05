@@ -18,8 +18,8 @@ public class MealController {
 
     @GetMapping("/meals")
     public List<Meal> index() {
-        return mealRepo.findAll();
-    }
+      return mealRepo.findAll();
+  }
 
     @PostMapping("/meals")
     public Meal newMain(@RequestBody Meal main){
