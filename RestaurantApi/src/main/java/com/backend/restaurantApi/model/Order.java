@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "RestaurantOrder")
+@Table(name = "restaurant_order")
 public class Order {
     @Id
     @Column(name = "order_id", unique = true, nullable = false)
@@ -40,23 +40,6 @@ public class Order {
             '}';
     }
 
-//   public Order(Meal meal, Customer customer, Staff staff) {
-//       this.meal.add(meal);
-//       this.customer.add(customer);
-//       this.staff.add(staff);
-//   }
-
     public Order() {}
 
-//   public List<Meal> getMeal() {
-//       return this.meal;
-//   }
-
-//   public List<Customer> getCustomer() {
-//       return this.customer;
-//   }
-//
-//   public List<Staff> getStaff() {
-//       return this.staff;
-//   }
 }
