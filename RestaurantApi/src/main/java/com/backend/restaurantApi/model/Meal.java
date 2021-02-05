@@ -9,7 +9,7 @@ public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;;
+    Long id;
 
     @Column(name = "name")
     String name;
@@ -17,12 +17,12 @@ public class Meal {
     @Column(name = "price")
     Double price;
     
-    @OneToOne(mappedBy = "meal")
+    @OneToOne(mappedBy = "meal", cascade = CascadeType.ALL)
     Allergens allergens;
     
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "order_id", nullable = true)
-    Order order;
+//    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "order_id", nullable = true)
+//    Order order;
 
     @Override
     public String toString() {
@@ -31,7 +31,7 @@ public class Meal {
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
                 ", allergens='" + allergens + '\'' +
-                ", order='" + order + '\'' +
+//                ", order='" + order + '\'' +
                 '}';
     }
 
@@ -43,9 +43,9 @@ public class Meal {
        this.allergens = allergens;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     public String getDishName() {
         return this.name;
@@ -63,7 +63,7 @@ public class Meal {
         return this.allergens;
     }
 
-    public Order getOrder() {
-        return this.order;
-    }
+//    public Order getOrder() {
+//        return this.order;
+//    }
 }
