@@ -1,5 +1,7 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,26 +19,28 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "customer", nullable = false)
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Customer.class)
-    private List<Customer> customer;
+//    @Column(name = "customer", nullable = false)
+//    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Customer.class)
+//    private List<Customer> customer;
 
+
+    @JsonManagedReference
     @Column(name = "meal", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="order")
     private List<Meal> meal;
 
-    @Column(name = "staff", nullable = false)
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Staff.class)
-    private List<Staff> staff;
+//    @Column(name = "staff", nullable = false)
+//    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Staff.class)
+//    private List<Staff> staff;
 
     // used to serialize object to json
     @Override
     public String toString() {
         return "DishAllergies{" +
             "id=" + id +
-            ", customer='" + customer + '\'' +
+//            ", customer='" + customer + '\'' +
             ", meal='" + meal + '\'' +
-            ", staff='" + staff + '\'' +
+//            ", staff='" + staff + '\'' +
             '}';
     }
 

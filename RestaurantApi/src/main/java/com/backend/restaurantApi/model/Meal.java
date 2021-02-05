@@ -1,5 +1,7 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,64 +16,60 @@ public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @Column(name = "name")
-    String name;
+    private String name;
 
     @Column(name = "price")
-    Double price;
-
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    private Double price;
 
     @Column(name = "peanuts")
-    boolean peanuts = false;
+    private boolean peanuts = false;
 
     @Column(name = "celery")
-    boolean celery = false;
+    private boolean celery = false;
 
     @Column(name = "gluten")
-    boolean gluten = false;
+    private boolean gluten = false;
 
     @Column(name = "crustaceans")
-    boolean crustaceans = false;
+    private boolean crustaceans = false;
 
     @Column(name = "eggs")
-    boolean eggs = false;
+    private boolean eggs = false;
 
     @Column(name = "fish")
-    boolean fish = false;
+    private boolean fish = false;
 
     @Column(name = "lupin")
-    boolean lupin = false;
+    private boolean lupin = false;
 
     @Column(name = "milk")
-    boolean milk = false;
+    private boolean milk = false;
 
     @Column(name = "molluscs")
-    boolean molluscs = false;
+    private boolean molluscs = false;
 
     @Column(name = "mustard")
-    boolean mustard = false;
+    private boolean mustard = false;
 
     @Column(name = "nuts")
-    boolean nuts = false;
+    private boolean nuts = false;
 
     @Column(name = "soya")
-    boolean soya = false;
+    private boolean soya = false;
 
     @Column(name = "sesame_seeds")
-    boolean sesameSeeds = false;
+    private boolean sesameSeeds = false;
 
     @Column(name = "sulphites")
-    boolean sulphites = false;
-    
-//    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "order_id", nullable = true)
-//    Order order;
+    private boolean sulphites = false;
 
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
     @Override
     public String toString() {

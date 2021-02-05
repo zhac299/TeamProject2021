@@ -22,7 +22,8 @@ public class MealController {
   }
 
     @PostMapping("/meals")
-    public Meal newMain(@RequestBody Meal main){
-        return mealRepo.save(main);
+    public Meal newMain(@RequestBody Meal meal){
+        System.out.println(meal);
+        return mealRepo.save(meal);
     }
 }
