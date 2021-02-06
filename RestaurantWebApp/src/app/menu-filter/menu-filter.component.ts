@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/models/Order';
 
 @Component({
   selector: 'app-menu-filter',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuFilterComponent implements OnInit {
 
+    filter: string = "";
   constructor() { }
 
   ngOnInit(): void {
-  }
+    }
+    
+    filterMenu() { 
+        this.filter = this.filter;
+        console.log(this.filter);
+
+    }
 
 }

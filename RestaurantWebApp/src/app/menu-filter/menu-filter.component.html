@@ -1,1 +1,5 @@
-<p>menu-filter works!</p>
+<form class = "form" (ngSubmit) = "filterMenu()">
+    <input type = text name = "filter" [(ngModel)] = "filter" placeholder="Filter...">
+    <input type = "submit" value = "Submit" class = "btn">
+</form>
+<app-order-list> </app-order-list>
