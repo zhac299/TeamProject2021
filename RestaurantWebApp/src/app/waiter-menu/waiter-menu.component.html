@@ -1,15 +1,41 @@
-<h1>Waiter Menu</h1>
-<h2>Table Selection (Orders: {{this.freeTables}})</h2>
-<mat-grid-list cols="4" rowHeight="200px">
-  <mat-grid-tile *ngFor="let table of tableList" >
-      <button *ngIf="table.hasOrder==true; else noOrderBlock" colspan="1"
+<mat-drawer-container class="example-container" autosize>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon>reorder</mat-icon>
+      </button>
+      <h1>Waiter Menu</h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <ul class="buttonRow">
+      <li class="flex-item">
+        <button mat-button>Add Table</button>
+      </li>
+
+    </ul>
+    <ul class="botButtonRow">
+      <li class="flex-item">
+        <button mat-button color="warn">Log Out</button>
+      </li>
+    </ul>
+  </mat-drawer>
+  <h2>Table Selection (Orders: {{this.freeTables}})</h2>
+
+  <mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-tile *ngFor="let table of tableList" >
+      <button *ngIf="table.hasOrder==true; else noOrderBlock"
               mat-raised-button class="hasOrder"
               color="primary" (click)="openOrderDialog(table)">
         Table {{table.number}}: Ordered</button>
-    <ng-template #noOrderBlock colspan="1">
+      <ng-template #noOrderBlock>
         <button mat-raised-button class="noOrder"
                 color="warn" (click)="openOrderDialog(table)">
           Table {{table.number}}: No Order</button>
-    </ng-template>
-  </mat-grid-tile>
-</mat-grid-list>
+      </ng-template>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</mat-drawer-container>
+
