@@ -15,6 +15,10 @@ public class MealService {
     @Autowired
     private MealRepository mealRepository;
 
+    public Meal createNewMeal(Meal meal) {
+        return mealRepository.save(meal);
+    }
+
 	public Meal getMealById(Long mealId) {
 		Optional<Meal> optionalMeal = mealRepository.findById(mealId);
 

@@ -16,7 +16,7 @@ public class MealController {
 
     @Autowired
     MealRepository mealRepo;
-    
+
     @Autowired
     MealService mealService;
 
@@ -26,9 +26,8 @@ public class MealController {
   }
 
     @PostMapping("/meals")
-    public Meal newMain(@RequestBody Meal meal){
-        System.out.println(meal);
-        return mealRepo.save(meal);
+    public Meal createNewMeal(@RequestBody Meal meal){
+        return mealService.createNewMeal(meal);
     }
 
     @GetMapping("/meals/{id}")
