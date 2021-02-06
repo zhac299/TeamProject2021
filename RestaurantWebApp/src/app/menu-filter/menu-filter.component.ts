@@ -17,6 +17,7 @@ export class MenuFilterComponent implements OnInit {
     filterMenu() { 
         this.filter = this.filter;
         console.log(this.filter);
+        this.filter = "";
 
     }
 
