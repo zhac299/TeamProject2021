@@ -23,6 +23,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import { CommonModule } from '@angular/common';
+import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CommonModule } from '@angular/common';
     CustomerInterfaceComponent,
     LoginInputComponent,
     HomePageComponent,
-    OrderComponent
+    OrderComponent,
+    MenuFilterComponent
   ],
   imports: [
     BrowserModule,
