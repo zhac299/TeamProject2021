@@ -6,7 +6,7 @@
         "price": 7.5,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Olive oil, Chicken, Fajita seasoning, Bell peppers, onion, cheese, tortilla, sour cream, salsa, butter."
       },
       {
         "id": 2,
@@ -14,7 +14,7 @@
         "price": 10,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Butter, tortilla, cheese, pepper, onion, shrimp, olive oil, fajita seasoning, salsa."
       },
       {
         "id": 3,
@@ -22,7 +22,7 @@
         "price": 12,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "tortilla, cheese, pepper, mushroom, onion, lime, sour cream."
       },
       {
         "id": 4,
@@ -30,7 +30,7 @@
         "price": 14,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Ground beef, guacamole, olive, onion, sour cream, refried beans, pepper, tomato, taco seasoning, tortilla, cheese."
       },
       {
  
@@ -41,7 +41,7 @@
         "price": 6,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Tortilla chips, salsa, onions, cheese, chilli flakes, guacamole."
       },
       {
         "id": 6,
@@ -49,7 +49,7 @@
         "price": 8,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Cream cheese, green chili, onion, garlic, pepper, cumin."
       },
       {
         "id": 7,
@@ -57,7 +57,7 @@
         "price": 9.5,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Tortilla chips, ground beef, taco seasoning, green chiles, tomato, onion, cheese."
       },
       {
         "id": 8,
@@ -65,7 +65,7 @@
         "price": 11.5,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Olive oil, chicken, onion, pepper, taco seasoning, tortilla chips, cheese, salsa."
       },
       {
         "id": 9,
@@ -73,7 +73,7 @@
         "price": 12,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "olive oil, onion, beef, garlic cloves, taco seasoning kosher salt, beans, water, tortilla chips, cheddar, Monterey jack cheese, black beans, pickled jalapeños, tomato, avocado, green onion, cilantro leaves, Sour cream, hot sauce."
       },
       {
         "id": 10,
@@ -81,7 +81,7 @@
         "price": 13,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Vegetable oil, corn tortillas, japaleño, garlic, onion, eggs, salt, mild salsa, cilantro leaves, avocado, radishes, cotija cheese, hot sauce."
       },
       {
 
@@ -92,7 +92,7 @@
         "price": 2,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "blue cheese crumbles, sour cream, mayonnaise, buttermilk, lemon juice, salt, pepper."
       },
       {
         "id": 12,
@@ -100,7 +100,7 @@
         "price": 2,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Tomato, onion, garlic, vinegar, lime, coriander."
       },
       {
         "id": 13,
@@ -108,7 +108,7 @@
         "price": 3,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "tomatillos, jalapeño pepper, avocado, lime, cilantro, onion, garlic, salt, garlic powder, cumin."
       },
       {
         "id": 14,
@@ -116,7 +116,7 @@
         "price": 3,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Cream cheese, sour cream, onion, garlic, chili powder."
       },
       {
 
@@ -127,7 +127,7 @@
         "price": 5,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "vannila ice-cream, cornflakes cereal, cinnamon, egg whites, oil"
       },
       {
         "id": 16,
@@ -135,7 +135,15 @@
         "price": 6,
         "nrSelections": 0,
         "selected": false,
-        "ingredients": ""
+        "ingredients": "Flour, baking powder, salt, shortening, water, oil."
+      },
+      {
+        "id": 17,
+        "meal": "Churros",
+        "price": 5,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Flour, baking powder, oil, water, cinnamon, sugar."
       }
     ],
   "tables": [
