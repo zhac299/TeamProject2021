@@ -1,36 +1,36 @@
 {
-    "quessadillas": [
+    "orders": [
       {
         "id": 1,
-        "meal": "Fajita Quesadilla",
+        "meal": "Chicken Fajita Quesadilla",
         "price": 7.5,
         "nrSelections": 0,
         "selected": false
       },
       {
         "id": 2,
-        "meal": "Quesadilla Dinner",
+        "meal": "Shrimp Fajita Quesadillas",
         "price": 10,
         "nrSelections": 0,
         "selected": false
       },
       {
         "id": 3,
-        "meal": "Quesadilla Supreme",
+        "meal": "Veggie Fajita Quesadillas",
         "price": 12,
         "nrSelections": 0,
         "selected": false
       },
       {
         "id": 4,
-        "meal": "Shrimp Quesadilla",
+        "meal": "Quesadilla Supreme",
         "price": 14,
         "nrSelections": 0,
         "selected": false
-      }
-    ],
-    
-    "nachos": [
+      },
+      {
+ 
+      },
       {
         "id": 5,
         "meal": "Simple Nachos",
@@ -54,28 +54,28 @@
       },
       {
         "id": 8,
-        "meal": "Nachos Supreme",
+        "meal": "Chicken Fajita Nachos",
         "price": 11.5,
         "nrSelections": 0,
         "selected": false
       },
       {
         "id": 9,
-        "meal": "Fajita Nachos",
+        "meal": "Nachos Supreme",
         "price": 12,
         "nrSelections": 0,
         "selected": false
       },
       {
         "id": 10,
-        "meal": "Meat Tornado Nachos",
+        "meal": "Best Ever Migas",
         "price": 13,
         "nrSelections": 0,
         "selected": false
-      }
-    ],
+      },
+      {
 
-    "dips": [
+      },
       {
         "id": 11,
         "meal": "Blue Cheese Dip",
@@ -103,13 +103,13 @@
         "price": 3,
         "nrSelections": 0,
         "selected": false
-      }
-    ],
+      },
+      {
 
-    "deserts":[
+      },
       {
         "id": 15,
-        "meal": "Churos",
+        "meal": "Fried Ice-Cream",
         "price": 5,
         "nrSelections": 0,
         "selected": false
@@ -122,7 +122,6 @@
         "selected": false
       }
     ],
-
   "tables": [
     {
       "id": 1,
