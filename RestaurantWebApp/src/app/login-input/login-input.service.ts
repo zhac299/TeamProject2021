@@ -9,12 +9,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class InputService {
-    mockDbUrl = 'http://localhost:3000/Login';
+    private dbUrl;
     
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient) {
+        this.dbUrl = 'http://localhost:8080/api/v1/staff'
+     }
     
     public getLogin(): Observable<Login[]> {
-        return this.httpClient.get<Login[]>(this.mockDbUrl)
+        return this.httpClient.get<Login[]>(this.dbUrl)
           .pipe(
             map(response => response)
           );
