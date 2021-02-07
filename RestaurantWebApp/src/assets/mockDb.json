@@ -5,28 +5,32 @@
         "meal": "Chicken Fajita Quesadilla",
         "price": 7.5,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 2,
         "meal": "Shrimp Fajita Quesadillas",
         "price": 10,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 3,
         "meal": "Veggie Fajita Quesadillas",
         "price": 12,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 4,
         "meal": "Quesadilla Supreme",
         "price": 14,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
  
@@ -36,42 +40,48 @@
         "meal": "Simple Nachos",
         "price": 6,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 6,
         "meal": "Three Cheese Nachos",
         "price": 8,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 7,
         "meal": "Beef Nachos",
         "price": 9.5,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 8,
         "meal": "Chicken Fajita Nachos",
         "price": 11.5,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 9,
         "meal": "Nachos Supreme",
         "price": 12,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 10,
         "meal": "Best Ever Migas",
         "price": 13,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
 
@@ -81,28 +91,32 @@
         "meal": "Blue Cheese Dip",
         "price": 2,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 12,
         "meal": "Salsa Dip",
         "price": 2,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 13,
         "meal": "Salsa Verde Dip",
         "price": 3,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 14,
         "meal": "Spicy Dip",
         "price": 3,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
 
@@ -112,14 +126,16 @@
         "meal": "Fried Ice-Cream",
         "price": 5,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       },
       {
         "id": 16,
         "meal": "Sopapila",
         "price": 6,
         "nrSelections": 0,
-        "selected": false
+        "selected": false,
+        "ingredients": ""
       }
     ],
   "tables": [
