@@ -14,11 +14,8 @@ export class FilterService {
     constructor(private httpClient: HttpClient) { }
     
     getOrders(): Observable<Order[]> { 
-        
-        return this.httpClient.get<Order[]>(this.mockDbUrl)
-        
-        .pipe(
-          map(response => response)
+        return this.httpClient.get<Order[]>(this.mockDbUrl).pipe(
+            map(response => response)
         );
     }
 }
