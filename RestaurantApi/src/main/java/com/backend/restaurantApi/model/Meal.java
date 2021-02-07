@@ -1,13 +1,10 @@
 package com.backend.restaurantApi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name = "meal")
 public class Meal {
@@ -95,5 +92,9 @@ public class Meal {
     }
 
     public Meal() {}
+
+    public void setMealId(Long id) {
+        this.id = id;
+    }
 
 }

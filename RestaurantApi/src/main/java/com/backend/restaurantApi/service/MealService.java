@@ -27,5 +27,14 @@ public class MealService {
         }
         return optionalMeal.get();
 	}
+
+	public Meal updateMeal(Long id, Meal meal) {
+		meal.setMealId(id);
+        return mealRepository.save(meal);
+	}
+
+	public void deleteMeal(Long id) {
+        mealRepository.deleteById(id);
+	}
     
 }

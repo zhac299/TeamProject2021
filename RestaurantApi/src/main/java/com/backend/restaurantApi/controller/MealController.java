@@ -34,4 +34,14 @@ public class MealController {
     public Meal getMealById(@PathVariable("id") Long id) {
         return mealService.getMealById(id);
     }
+
+    @PutMapping("/meals/{id}")
+    public Meal updateMeal(@PathVariable("id") Long id, @RequestBody Meal meal) {
+        return mealService.updateMeal(id, meal);
+    }
+
+    @DeleteMapping("/meals/{id}")
+    public void deleteMeal(@PathVariable("id") Long id) {
+        mealService.deleteMeal(id);
+    }
 }
