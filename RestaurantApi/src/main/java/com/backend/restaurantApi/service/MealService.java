@@ -5,7 +5,6 @@ import java.util.Optional;
 import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.repository.MealRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

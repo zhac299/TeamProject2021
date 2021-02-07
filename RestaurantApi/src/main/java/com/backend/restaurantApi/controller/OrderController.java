@@ -21,7 +21,6 @@ public class OrderController {
       return orderRepo.findAll();
   }
 
-
     @PostMapping("/orders")
     public Order newOrder(@RequestBody Order order){
         return orderRepo.save(order);

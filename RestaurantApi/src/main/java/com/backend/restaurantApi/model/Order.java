@@ -1,15 +1,11 @@
 package com.backend.restaurantApi.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "restaurant_order")
 public class Order {
@@ -45,4 +41,19 @@ public class Order {
 
     public Order() {}
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Meal> getMeal() {
+        return meal;
+    }
+
+    public void setMeal(List<Meal> meal) {
+        this.meal = meal;
+    }
 }
