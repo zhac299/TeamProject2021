@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/models/Order';
+import { FilterService } from './filter.service';
 
 @Component({
   selector: 'app-menu-filter',
@@ -7,11 +8,15 @@ import { Order } from 'src/models/Order';
   styleUrls: ['./menu-filter.component.sass']
 })
 export class MenuFilterComponent implements OnInit {
+    orderList: Order[] = []
 
     filter: string = "";
-  constructor() { }
+  constructor(private filterService: FilterService) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
+        this.filterService.getOrders().subscribe( orders => {
+            this.orderList = orders;
+          });  
     }
     
     filterMenu() { 
