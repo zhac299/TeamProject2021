@@ -16,6 +16,7 @@ export class WaiterMenuComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
+  showFiller = false;
   tableList: Table[] = [];
   freeTables = 0;
   dialogTable: Table = new Table();

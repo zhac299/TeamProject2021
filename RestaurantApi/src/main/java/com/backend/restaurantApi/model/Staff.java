@@ -42,35 +42,35 @@ public class Staff {
 
   public Staff() {}
 
-  public Staff(String userName, String password, String email, boolean isWaiter) {
-    this.userName = userName;
-    this.password = password;
-    this.email = email;
-    this.isWaiter = isWaiter;
-    this.order = null;
-  }
+ public Staff(String userName, String password, String email, boolean isWaiter) {
+   this.userName = userName;
+   this.password = password;
+   this.email = email;
+   this.isWaiter = isWaiter;
+   this.order = null;
+ }
 
-  public void setOrder(Order order) {
-    this.order = order;
-  }
+ public void setOrder(Order order) {
+   this.order = order;
+ }
 
-  public void setNull() {
-    this.order = null;
-  }
+ public void setNull() {
+   this.order = null;
+ }
 
-  public String getStaffUsername() {
-    return this.userName;
-  }
+ public String getStaffUsername() {
+   return this.userName;
+ }
 
-  public String getStaffPassword() {
-    return this.password;
-  }
+ public String getStaffPassword() {
+   return this.password;
+ }
 
-  public String getStaffEmail() {
-    return this.email;
-  }
+ public String getStaffEmail() {
+   return this.email;
+ }
 
-  public boolean getIsWaiter() {
-    return this.isWaiter;
-  }
+ public boolean getIsWaiter() {
+   return this.isWaiter;
+ }
 }

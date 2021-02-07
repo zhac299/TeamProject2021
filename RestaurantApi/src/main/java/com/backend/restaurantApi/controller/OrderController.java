@@ -1,26 +1,29 @@
 package com.backend.restaurantApi.controller;
 
-import com.backend.restaurantApi.model.DishAllergies;
+import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(path = "/api/v1/order")
+@RequestMapping(path = "/api/v1/")
 public class OrderController {
 
     @Autowired
-    DishAllergiesRepository dishallergiesRepo;
+    OrderRepository orderRepo;
 
-    @GetMapping
-    public List<DishAllergies> index() {
-      return dishallergiesRepo.findAll();
-  } 
+    @GetMapping("/orders")
+    public List<Order> index() {
+      return orderRepo.findAll();
+  }
+
+
+    @PostMapping("/orders")
+    public Order newOrder(@RequestBody Order order){
+        return orderRepo.save(order);
+    }
 }
