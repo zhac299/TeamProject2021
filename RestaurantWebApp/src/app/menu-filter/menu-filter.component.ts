@@ -11,7 +11,8 @@ export class MenuFilterComponent implements OnInit {
     orderList: Order[] = []
 
     filter: string = "";
-  constructor(private filterService: FilterService) { }
+   
+    constructor(private filterService: FilterService) { }
 
     ngOnInit(): void {
         this.filterService.getOrders().subscribe( orders => {
@@ -25,5 +26,4 @@ export class MenuFilterComponent implements OnInit {
         this.filter = "";
 
     }
-
 }
