@@ -4,6 +4,8 @@ import {Order} from '../../models/Order';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';  
 import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 interface Food {
   viewValue: string;
