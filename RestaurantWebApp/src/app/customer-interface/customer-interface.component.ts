@@ -6,9 +6,11 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule} from '@angular/material/icon';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { MatChipsModule} from '@angular/material/chips';
+import { MatSliderModule} from '@angular/material/slider';
 
 import { ExpansionPannelComponent} from './expansion-pannel/expansion-pannel.component';
-import { AllergensChipsComponent} from './allergens-chips/allergens-chips.component'
+import { AllergensChipsComponent} from './allergens-chips/allergens-chips.component';
+import { CaloriesSliderComponent} from './calories-slider/calories-slider.component';
 
 interface Food {
   viewValue: string;
