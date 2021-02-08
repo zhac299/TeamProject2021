@@ -3,6 +3,7 @@ import { Order } from 'src/models/Order';
 import { OrderService } from "../order.service";
 import { OrderComponent } from '../order/order.component';
 import { CommonModule } from '@angular/common';  
+import { FilterService } from '../menu-filter/filter.service';
 
 @Component({
   selector: 'app-order-list',
@@ -13,12 +14,10 @@ export class OrderListComponent implements OnInit {
 
   orderList: Order[] = [];
 
-  constructor(
-    private orderService: OrderService,
-    ) { }
+  constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
-    this.orderService.getOrders().subscribe( orders => {
+    this.filterService.getOrders().subscribe( orders => {
       this.orderList = orders;
     });
 
