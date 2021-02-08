@@ -12,7 +12,6 @@ import { ExpansionPannelComponent} from './expansion-pannel/expansion-pannel.com
 import { AllergensChipsComponent} from './allergens-chips/allergens-chips.component';
 import { CaloriesSliderComponent} from './calories-slider/calories-slider.component';
 import { selectedCategory } from 'src/models/selectedCategory';
-import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 interface Food {
   viewValue: string;
@@ -33,30 +32,30 @@ export class CustomerInterfaceComponent implements OnInit {
     {viewValue: 'Nachos', mappedOrders:[this.orderList[1]], selected: false},
     {viewValue: 'Dips', mappedOrders:[this.orderList[1]], selected: false},
     {viewValue: 'Deserts', mappedOrders:[this.orderList[1]], selected: false}
-    ];
-    
+  ];
     cat: selectedCategory = new selectedCategory;
     sOrder: Order[] = [];
-  
+
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.orderService.getOrders().subscribe( orders => {
-      this.orderList = orders;
-    });
-      
-      for (let order of this.orderList) { 
-          if (order.category == "Fajita") { 
-              this.sOrder.push(order);
-          }
+        this.orderList = orders;
+        
+        for (let order of this.orderList) { 
+            if (order.category == "Fajita") { 
+                this.sOrder.push(order);
+            }
+        }
+  
+      this.cat = {
+          name: "Fajita",
+          meal: this.sOrder
       }
-    this.cat = {
-        name: "Fajita",
-        meal: this.sOrder
-    }
+    });
   }
-
-  /*findCategory(food): void {
+/* 
+  findCategory(food): void {
     for(let f of this.foods) { 
       if (food == f) {
         f.selected = true;
@@ -67,3 +66,7 @@ export class CustomerInterfaceComponent implements OnInit {
   }*/
 
 }
+
+
+/*
+*/

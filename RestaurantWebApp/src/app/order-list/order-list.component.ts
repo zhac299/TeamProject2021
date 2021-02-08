@@ -3,7 +3,7 @@ import { Order } from 'src/models/Order';
 import { OrderService } from "../order.service";
 import { OrderComponent } from '../order/order.component';
 import { CommonModule } from '@angular/common';  
-import { FilterService } from '../menu-filter/filter.service';
+import { selectedCategory } from 'src/models/selectedCategory';
 
 @Component({
   selector: 'app-order-list',
@@ -12,15 +12,32 @@ import { FilterService } from '../menu-filter/filter.service';
 })
 export class OrderListComponent implements OnInit {
 
-  orderList: Order[] = [];
+    orderList: Order[] = [];
+    cat: selectedCategory = new selectedCategory;
+    sOrder: Order[] = [];
 
-  constructor(private filterService: FilterService) { }
+  constructor(
+    private orderService: OrderService,
+    ) { }
 
   ngOnInit(): void {
-    this.filterService.getOrders().subscribe( orders => {
-      this.orderList = orders;
+    this.orderService.getOrders().subscribe( orders => {
+        this.orderList = orders;
+        
+        for (let order of this.orderList) { 
+            if (order.category == "Fajita") { 
+                this.sOrder.push(order);
+                console.log(order);
+            }
+        }
+    
+      this.cat = {
+          name: "Fajita",
+          meal: this.sOrder
+        }
     });
-
+      
+      
     for(let order of this.orderList) { 
       order.nrSelections = 0;
       console.log(order.nrSelections);

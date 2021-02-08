@@ -1,5 +1,5 @@
 
-    <div *ngFor="let order of orderList">
+    <div *ngFor="let order of cat.meal">
         <p *ngIf="order.selected==true; else notSelectedBlock">
             <button class="isSelected" (click)="removeItem(order)">
                  {{order.id}}. {{order.meal}} ---{{order.price}}$ <b>x{{order.nrSelections}}</b>
