@@ -18,27 +18,27 @@ export class AllergensChipsComponent implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
-  filteredFruits: Observable<string[]>;
-  fruits: string[] = ['Lemon'];
-  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  allergensCtrl = new FormControl();
+  filteredAllergens: Observable<string[]>;
+  allergens: string[] = ['Peanuts'];
+  allAllergens: string[] = ['Celery', 'Peanuts', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Suphites'];
 
-  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
    constructor() {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+    this.filteredAllergens = this.allergensCtrl.valueChanges.pipe(
         startWith(null),
-        map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
+        map((allergen: string | null) => allergen ? this._filter(allergen) : this.allAllergens.slice()));
   }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
+    // Add our allergens
     if ((value || '').trim()) {
-      this.fruits.push(value.trim());
+      this.allergens.push(value.trim());
     }
 
     // Reset the input value
@@ -46,27 +46,27 @@ export class AllergensChipsComponent implements OnInit {
       input.value = '';
     }
 
-    this.fruitCtrl.setValue(null);
+    this.allergensCtrl.setValue(null);
   }
 
   remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
+    const index = this.allergens.indexOf(fruit);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.allergens.splice(index, 1);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.allergens.push(event.option.viewValue);
+    this.allergenInput.nativeElement.value = '';
+    this.allergensCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.allAllergens.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
   }
   
   ngOnInit(): void {
