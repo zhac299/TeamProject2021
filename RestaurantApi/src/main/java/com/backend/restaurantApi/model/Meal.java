@@ -70,6 +70,11 @@ public class Meal {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "menu_id", nullable = false)
+    private Menu menu;
+
     @Override
     public String toString() {
         return "Meal{" +
