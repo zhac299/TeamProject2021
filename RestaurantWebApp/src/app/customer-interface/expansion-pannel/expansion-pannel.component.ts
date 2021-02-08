@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { AllergensChipsComponent} from '../allergens-chips/allergens-chips.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CaloriesSliderComponent} from '../calories-slider/calories-slider.component';
+import { FoodCategoriesComponent} from '../food-categories/food-categories.component';
 
 @Component({
   selector: 'expansion-pannel',
