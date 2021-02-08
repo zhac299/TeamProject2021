@@ -29,8 +29,8 @@ public class MenuController {
         return menuService.createNewMenu(menu);
     }
 
-    @PostMapping(path = "/menuadd")
-    public Menu addNewMeal(@RequestBody Meal meal){
-        return menuService.addMenuMeal(meal);
+    @PostMapping(path = "/menuadd/{id}")
+    public Menu addNewMeal(@RequestBody Meal meal, @PathVariable Long id){
+        return menuService.addMenuMeal(meal, id);
     }
 }

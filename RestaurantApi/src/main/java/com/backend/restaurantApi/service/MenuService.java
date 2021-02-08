@@ -22,12 +22,14 @@ public class MenuService {
         return menuRepository.save(menu);
     }
 
-    public Menu addMenuMeal(Meal meal) {
-        mealService.createNewMeal(meal);
-        Optional<Menu> menu = menuRepository.findById(meal.getId());
+    public Menu addMenuMeal(Meal meal, Long id) {
+        // Check if menu with 'id' exists
+        Optional<Menu> menu = menuRepository.findById(id);
         if(!menu.isPresent()){
             throw new MenuNotFoundException("Menu record is not available...");
         } else {
+            //create the meal and add it to menu
+            mealService.createNewMeal(meal);
             menu.get().getMeal().add(meal);
         }
         return menuRepository.save(menu.get());
