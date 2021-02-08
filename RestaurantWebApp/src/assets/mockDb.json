@@ -2,6 +2,7 @@
     "orders": [
       {
         "id": 1,
+        "category": "Fajita",
         "meal": "Chicken Fajita Quesadilla",
         "price": 7.5,
         "nrSelections": 0,
@@ -10,6 +11,7 @@
       },
       {
         "id": 2,
+        "category": "Fajita",
         "meal": "Shrimp Fajita Quesadillas",
         "price": 10,
         "nrSelections": 0,
@@ -18,6 +20,7 @@
       },
       {
         "id": 3,
+        "category": "Fajita",
         "meal": "Veggie Fajita Quesadillas",
         "price": 12,
         "nrSelections": 0,
@@ -27,6 +30,7 @@
       {
         "id": 4,
         "meal": "Quesadilla Supreme",
+        "category": "Fajita",
         "price": 14,
         "nrSelections": 0,
         "selected": false,
@@ -37,6 +41,7 @@
       },
       {
         "id": 5,
+        "category": "Nachos",
         "meal": "Simple Nachos",
         "price": 6,
         "nrSelections": 0,
@@ -46,6 +51,7 @@
       {
         "id": 6,
         "meal": "Three Cheese Nachos",
+        "category": "Nachos",
         "price": 8,
         "nrSelections": 0,
         "selected": false,
@@ -53,6 +59,7 @@
       },
       {
         "id": 7,
+        "category": "Nachos",
         "meal": "Beef Nachos",
         "price": 9.5,
         "nrSelections": 0,
@@ -62,6 +69,7 @@
       {
         "id": 8,
         "meal": "Chicken Fajita Nachos",
+        "category": "Nachos",
         "price": 11.5,
         "nrSelections": 0,
         "selected": false,
@@ -69,6 +77,7 @@
       },
       {
         "id": 9,
+        "category": "Nachos",
         "meal": "Nachos Supreme",
         "price": 12,
         "nrSelections": 0,
@@ -77,6 +86,7 @@
       },
       {
         "id": 10,
+        "category": "Dips",
         "meal": "Best Ever Migas",
         "price": 13,
         "nrSelections": 0,
@@ -88,6 +98,7 @@
       },
       {
         "id": 11,
+        "category": "Dips",
         "meal": "Blue Cheese Dip",
         "price": 2,
         "nrSelections": 0,
@@ -96,6 +107,7 @@
       },
       {
         "id": 12,
+        "category": "Dips",
         "meal": "Salsa Dip",
         "price": 2,
         "nrSelections": 0,
@@ -104,6 +116,7 @@
       },
       {
         "id": 13,
+        "category": "Dips",
         "meal": "Salsa Verde Dip",
         "price": 3,
         "nrSelections": 0,
@@ -112,6 +125,7 @@
       },
       {
         "id": 14,
+        "category": "Dips",
         "meal": "Spicy Dip",
         "price": 3,
         "nrSelections": 0,
@@ -123,6 +137,7 @@
       },
       {
         "id": 15,
+        "category": "Desserts",
         "meal": "Fried Ice-Cream",
         "price": 5,
         "nrSelections": 0,
@@ -131,6 +146,7 @@
       },
       {
         "id": 16,
+        "category": "Desserts",
         "meal": "Sopapila",
         "price": 6,
         "nrSelections": 0,
@@ -139,6 +155,7 @@
       },
       {
         "id": 17,
+        "category": "Desserts",
         "meal": "Churros",
         "price": 5,
         "nrSelections": 0,
