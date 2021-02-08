@@ -11,19 +11,28 @@ import { LoginInputComponent } from './login-input/login-input.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormField } from '@angular/material/form-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import {OrderComponent} from "./waiter-menu/order/order.component";
+import {OrderComponent} from './waiter-menu/order/order.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatDividerModule} from "@angular/material/divider";
-import {MatListModule} from "@angular/material/list";
-import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
+import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/expansion-pannel.component';
+import { AllergensChipsComponent } from './customer-interface/allergens-chips/allergens-chips.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { CaloriesSliderComponent } from './customer-interface/calories-slider/calories-slider.component';
+import {MatSliderModule} from '@angular/material/slider';
+import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +44,11 @@ import { MenuFilterComponent } from './menu-filter/menu-filter.component';
     LoginInputComponent,
     HomePageComponent,
     OrderComponent,
-    MenuFilterComponent
+    MenuFilterComponent,
+    ExpansionPannelComponent,
+    AllergensChipsComponent,
+    CaloriesSliderComponent,
+    FoodCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +66,12 @@ import { MenuFilterComponent } from './menu-filter/menu-filter.component';
     MatListModule,
     MatIconModule,
     MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatExpansionModule,
+    MatChipsModule, 
+    MatAutocompleteModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

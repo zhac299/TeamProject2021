@@ -23,6 +23,10 @@ public class Staff {
   @Column(name = "isWaiter")
   private boolean isWaiter;
 
+  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "order_id", nullable = true)
+  private Order order;
+
 // used to serialize object to json
   @Override
   public String toString() {
@@ -32,31 +36,41 @@ public class Staff {
               ", password='" + password + '\'' +
               ", email='" + email + '\'' +
               ", isWaiter='" + isWaiter + '\'' +
+              ", order='" + order + '\'' +
               '}';
   }
 
   public Staff() {}
 
-  public Staff(String userName, String password, String email, boolean isWaiter) {
-    this.userName = userName;
-    this.password = password;
-    this.email = email;
-    this.isWaiter = isWaiter;
-  }
+ public Staff(String userName, String password, String email, boolean isWaiter) {
+   this.userName = userName;
+   this.password = password;
+   this.email = email;
+   this.isWaiter = isWaiter;
+   this.order = null;
+ }
 
-  public String getStaffUsername() {
-    return this.userName;
-  }
+ public void setOrder(Order order) {
+   this.order = order;
+ }
 
-  public String getStaffPassword() {
-    return this.password;
-  }
+ public void setNull() {
+   this.order = null;
+ }
 
-  public String getStaffEmail() {
-    return this.email;
-  }
+ public String getStaffUsername() {
+   return this.userName;
+ }
 
-  public boolean getIsWaiter() {
-    return this.isWaiter;
-  }
+ public String getStaffPassword() {
+   return this.password;
+ }
+
+ public String getStaffEmail() {
+   return this.email;
+ }
+
+ public boolean getIsWaiter() {
+   return this.isWaiter;
+ }
 }

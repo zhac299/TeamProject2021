@@ -10,15 +10,14 @@ import { OrderComponent } from './waiter-menu/order/order.component';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 
 const routes: Routes = [
-  {path: 'table/:id', component: OrderComponent},
-  { path: '', component: HomePageComponent },
+  { path: 'table/:id', component: OrderComponent},
+  { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginInputComponent },
   { path: 'waiter-menu', component: WaiterMenuComponent },
   { path: 'order-list', component: OrderListComponent },
   { path: 'initial-menu', component: InitialMenuComponent },
-  { path: 'home', component: CustomerInterfaceComponent },
-  { path: 'filter', component: MenuFilterComponent }
-  
+  { path: 'filter', component: MenuFilterComponent },
+  { path: 'customer-menu', component: CustomerInterfaceComponent }
 ];
 
 @NgModule({
