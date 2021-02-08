@@ -1,15 +1,18 @@
 <mat-accordion>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
-        <mat-panel-title>
+        <mat-panel-title id = "title">
             Filter
         </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-description id = "description">
             Filter by Allergens, Calories or Dish Type
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <food-categories></food-categories>
-      <allergens-chips></allergens-chips>
-      <p>Calories (kCal) <calories-slider></calories-slider></p>
+      <div id = "food-categories">
+            <p> <b>Food Categories</b> <br><br> <food-categories></food-categories></p><hr></div>
+      <div id = "allergens">
+            <p> <b>Allergens</b> <allergens-chips></allergens-chips></p></div>
+      <div id = "calories">
+            <p> <b>Calories (kCal)</b> </p><calories-slider></calories-slider><hr></div>
     </mat-expansion-panel>
   </mat-accordion>
