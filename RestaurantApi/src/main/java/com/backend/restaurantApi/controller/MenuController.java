@@ -2,6 +2,7 @@ package com.backend.restaurantApi.controller;
 
 import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.repository.MenuRepository;
+import com.backend.restaurantApi.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
