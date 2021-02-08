@@ -27,6 +27,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatChipsModule} from '@angular/material/chips';
 import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/expansion-pannel.component';
+import { AllergensChipsComponent } from './customer-interface/allergens-chips/allergens-chips.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/
     LoginInputComponent,
     HomePageComponent,
     OrderComponent,
-    ExpansionPannelComponent
+    ExpansionPannelComponent,
+    AllergensChipsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/
     MatToolbarModule,
     MatSidenavModule,
     MatExpansionModule,
-    MatChipsModule
+    MatChipsModule, 
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

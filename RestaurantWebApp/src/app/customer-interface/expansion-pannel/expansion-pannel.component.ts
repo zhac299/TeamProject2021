@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatExpansionModule} from '@angular/material/expansion';
+import { AllergensChipsComponent} from '../allergens-chips/allergens-chips.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'expansion-pannel',

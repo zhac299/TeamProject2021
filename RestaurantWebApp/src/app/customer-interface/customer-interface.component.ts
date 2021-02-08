@@ -7,8 +7,8 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { MatChipsModule} from '@angular/material/chips';
 
-import { ExpansionPannelComponent} from './expansion-pannel/expansion-pannel.component'
-
+import { ExpansionPannelComponent} from './expansion-pannel/expansion-pannel.component';
+import { AllergensChipsComponent} from './allergens-chips/allergens-chips.component'
 
 interface Food {
   viewValue: string;
