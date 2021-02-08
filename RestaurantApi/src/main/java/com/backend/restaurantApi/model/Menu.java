@@ -18,7 +18,7 @@ public class Menu {
     @Column(name = "id")
     private Long id;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "menu")
     @Column(name = "meal", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "menu")
     private List<Meal> meal;

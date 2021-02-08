@@ -19,7 +19,7 @@ public class Order {
 //    private List<Customer> customer;
 
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "order")
     @Column(name = "meal", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="order")
     private List<Meal> meal;

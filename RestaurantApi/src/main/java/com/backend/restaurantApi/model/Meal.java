@@ -65,12 +65,12 @@ public class Meal {
     @Column(name = "sulphites")
     private boolean sulphites = false;
 
-    @JsonBackReference
+    @JsonBackReference(value = "order")
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "order_id", nullable = true)
     private Order order;
 
-    @JsonBackReference
+    @JsonBackReference(value = "menu")
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "menu_id", nullable = false)
     private Menu menu;
