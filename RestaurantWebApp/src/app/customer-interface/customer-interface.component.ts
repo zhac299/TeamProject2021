@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {OrderService} from '../order.service';
-import {Order} from '../../models/Order';
+import { OrderService} from '../order.service';
+import { Order} from '../../models/Order';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';  
-import {MatIconModule} from '@angular/material/icon';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatIconModule} from '@angular/material/icon';
+import { MatExpansionModule} from '@angular/material/expansion';
+import { MatChipsModule} from '@angular/material/chips';
+
+import { ExpansionPannelComponent} from './expansion-pannel/expansion-pannel.component'
 
 
 interface Food {

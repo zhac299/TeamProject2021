@@ -26,6 +26,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatChipsModule} from '@angular/material/chips';
+import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/expansion-pannel.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatChipsModule} from '@angular/material/chips';
     CustomerInterfaceComponent,
     LoginInputComponent,
     HomePageComponent,
-    OrderComponent
+    OrderComponent,
+    ExpansionPannelComponent
   ],
   imports: [
     BrowserModule,
