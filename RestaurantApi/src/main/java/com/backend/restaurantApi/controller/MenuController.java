@@ -1,13 +1,11 @@
 package com.backend.restaurantApi.controller;
 
+import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.repository.MenuRepository;
 import com.backend.restaurantApi.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,8 +25,12 @@ public class MenuController {
     }
 
     @PostMapping(path = "/menu")
-    public Menu  createNewMenu(Menu menu){
-
+    public Menu  createNewMenu(@RequestBody Menu menu){
         return menuService.createNewMenu(menu);
+    }
+
+    @PostMapping(path = "/menuadd")
+    public Menu addNewMeal(@RequestBody Meal meal){
+        return menuService.addMenuMeal(meal);
     }
 }
