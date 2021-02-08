@@ -31,6 +31,7 @@ import { AllergensChipsComponent } from './customer-interface/allergens-chips/al
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CaloriesSliderComponent } from './customer-interface/calories-slider/calories-slider.component';
 import {MatSliderModule} from '@angular/material/slider';
+import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatSliderModule} from '@angular/material/slider';
     OrderComponent,
     ExpansionPannelComponent,
     AllergensChipsComponent,
-    CaloriesSliderComponent
+    CaloriesSliderComponent,
+    FoodCategoriesComponent
   ],
   imports: [
     BrowserModule,
