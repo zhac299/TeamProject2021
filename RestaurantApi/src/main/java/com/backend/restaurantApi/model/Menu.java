@@ -76,22 +76,19 @@ public class Menu {
     public Long getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
     public double getPrice() {
         return price;
     }
-
     public boolean getPeanuts() {
         return peanuts;
     }
-
     public boolean getCelery() {
         return celery;
     }
-    public boolean gluten() {
+    public boolean getGluten() {
         return gluten;
     }
     public boolean getCrustaceans() {
@@ -130,19 +127,70 @@ public class Menu {
     public long getCalories() {
         return calories;
     }
-    public String getCateory() {
+    public String getCategory() {
         return category;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public List<Meal> getMeal() {
         return meal;
     }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
     public void setMeal(List<Meal> meal) {
         this.meal = meal;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public void setPeanuts(boolean peanuts) {
+        this.peanuts = peanuts;
+    }
+    public void setCelery(boolean celery) {
+        this.celery = celery;
+    }
+    public void setGluten(boolean gluten) {
+        this.gluten = gluten;
+    }
+    public void setCrustaceans(boolean crustaceans) {
+        this.crustaceans = crustaceans;
+    }
+    public void setEggs(boolean eggs) {
+        this.eggs = eggs;
+    }
+    public void setFish(boolean fish) {
+        this.fish = fish;
+    }
+    public void setLupin(boolean lupin) {
+        this.lupin = lupin;
+    }
+    public void setMilk(boolean milk) {
+        this.milk = milk;
+    }
+    public void setMolluscs(boolean molluscs) {
+        this.molluscs = molluscs;
+    }
+    public void setMustard(boolean mustard) {
+        this.mustard = mustard;
+    }
+    public void setNuts(boolean nuts) {
+        this.nuts = nuts;
+    }
+    public void setSoya(boolean soya) {
+        this.soya = soya;
+    }
+    public void setSesame(boolean sesameSeeds) {
+        this.sesameSeeds = sesameSeeds;
+    }
+    public void setSulphites(boolean sulphites) {
+        this.sulphites = sulphites;
+    }
+    public void getCalories(Long calories) {
+        this.calories = calories;
+    }
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
