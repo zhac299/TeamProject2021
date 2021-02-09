@@ -9,10 +9,15 @@ import { selectedCategory } from 'src/models/selectedCategory';
 })
 export class FoodCategoriesComponent implements OnInit {
     cat: selectedCategory = new selectedCategory;
+    name:String;
     constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
       this.cat = this.filterService.getCat();
+    }
+
+    onClick(name:string): void{
+      this.filterService.modifyCat(name);
     }
     /*
         TODO:
