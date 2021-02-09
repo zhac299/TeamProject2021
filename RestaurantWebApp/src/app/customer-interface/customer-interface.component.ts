@@ -37,7 +37,7 @@ export class CustomerInterfaceComponent implements OnInit {
     this.orderService.getOrders().subscribe( orders => {
         this.orderList = orders;
         
-        this.cat = this.filterService.createSelectedCat();
+        this.cat = this.filterService.getCat();
     });
   }
 }

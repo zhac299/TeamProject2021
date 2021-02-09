@@ -26,7 +26,7 @@ export class OrderListComponent implements OnInit {
     this.orderService.getOrders().subscribe( orders => {
         this.orderList = orders;
         
-        this.cat = this.filterService.createSelectedCat();
+        this.cat = this.filterService.getCat();
     });
       
       
@@ -44,5 +44,5 @@ export class OrderListComponent implements OnInit {
   removeItem(order: Order): void{
     order.selected = false;
     order.nrSelections --;
-  }
+    }
 }

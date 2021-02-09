@@ -38,4 +38,15 @@ export class FilterService {
         });
         return this.cat;
     }
+
+    getCat(): selectedCategory { 
+        if (this.cat == undefined) { 
+            this.createSelectedCat();
+        }
+        return this.cat;
+    }
+
+    modifyCat(cat: selectedCategory): selectedCategory { 
+        return cat;
+    }
 }
