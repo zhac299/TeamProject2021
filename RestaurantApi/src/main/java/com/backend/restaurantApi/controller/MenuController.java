@@ -33,9 +33,4 @@ public class MenuController {
     public Menu addNewMeal(@RequestBody Meal meal, @PathVariable Long id){
         return menuService.addMenuMeal(meal, id);
     }
-
-    @PostMapping(path = "/menuadd/{id}")
-    public Menu getAllMealsWithoutPeanuts(@RequestBody Meal meal, @PathVariable Long id){
-        return menuService.addMenuMeal(meal, id);
-    }
 }

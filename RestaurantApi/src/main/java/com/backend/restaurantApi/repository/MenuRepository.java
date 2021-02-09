@@ -12,44 +12,44 @@ import org.springframework.stereotype.Repository;
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 
     @Query(value = "SELECT name FROM Menu WHERE peanuts = false")
-    public Menu filterByPeanuts();
+    public List<Menu> filterByPeanuts();
 
     @Query(value = "SELECT name FROM Menu WHERE celery = false")
-    public Menu filterByCelery();
+    public List<Menu> filterByCelery();
 
     @Query(value = "SELECT name FROM Menu WHERE gluten = false")
-    public Menu filterByGluten();
+    public List<Menu> filterByGluten();
 
     @Query(value = "SELECT name FROM Menu WHERE crustaceans = false")
-    public Menu filterByCrustaceans();
+    public List<Menu>filterByCrustaceans();
 
     @Query(value = "SELECT name FROM Menu WHERE eggs = false")
-    public Menu filterByEggs();
+    public List<Menu> filterByEggs();
 
     @Query(value = "SELECT name FROM Menu WHERE fish = false")
-    public Menu filterByFish();
+    public List<Menu> filterByFish();
 
     @Query(value = "SELECT name FROM Menu WHERE lupin = false")
-    public Menu filterByLupin();
+    public List<Menu> filterByLupin();
 
     @Query(value = "SELECT name FROM Menu WHERE milk = false")
-    public Menu filterByMilk();
+    public List<Menu> filterByMilk();
 
     @Query(value = "SELECT name FROM Menu WHERE molluscs = false")
-    public Menu filterByMolluscs();
+    public List<Menu>filterByMolluscs();
 
     @Query(value = "SELECT name FROM Menu WHERE mustard = false")
-    public Menu filterByMustard();
+    public List<Menu> filterByMustard();
 
     @Query(value = "SELECT name FROM Menu WHERE nuts = false")
-    public Menu filterByNuts();
+    public List<Menu>filterByNuts();
 
     @Query(value = "SELECT name FROM Menu WHERE soya = false")
-    public Menu filterBySoya();
+    public List<Menu> filterBySoya();
 
     @Query(value = "SELECT name FROM Menu WHERE sesame_seeds = false")
-    public Menu filterBySesameSeeds();
+    public List<Menu> filterBySesameSeeds();
 
     @Query(value = "SELECT name FROM Menu WHERE sulphites = false")
-    public Menu filterBySulphites();
+    public List<Menu> filterBySulphites();
 }
