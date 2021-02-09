@@ -73,6 +73,8 @@ public class Menu {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "menu")
     private List<Meal> meal;
 
+    public Menu() {}
+
     public Long getId() {
         return id;
     }
@@ -133,6 +135,7 @@ public class Menu {
     public List<Meal> getMeal() {
         return meal;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -187,10 +190,36 @@ public class Menu {
     public void setSulphites(boolean sulphites) {
         this.sulphites = sulphites;
     }
-    public void getCalories(Long calories) {
+    public void setCalories(Long calories) {
         this.calories = calories;
     }
     public void setCategory(String category) {
         this.category = category;
+    }
+    
+    @Override
+    public String toString(){
+        return "Menu{" +
+                "id=" + id +
+                ", meal=" + meal + 
+                ", name=" + name +
+                ", price=" + price +
+                ", peanuts=" + peanuts +
+                ", celery=" + celery + 
+                ", gluten=" + gluten +
+                ", crustaceans=" + crustaceans +
+                ", eggs=" + eggs +
+                ", fish=" + fish +
+                ", lupin=" + lupin +
+                ", milk=" + milk +
+                ", molluscs=" + molluscs +
+                ", mustard=" + mustard + 
+                ", nuts=" + nuts +
+                ", soya=" + soya +
+                ", sesameSeeds=" + sesameSeeds +
+                ", sulphites=" + sulphites + 
+                ", calories=" + calories +
+                ", category=" + category +
+                "}";
     }
 }
