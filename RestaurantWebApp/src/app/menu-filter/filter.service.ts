@@ -46,8 +46,8 @@ export class FilterService {
         return this.cat;
     }
 
-    modifyCat(newCat: string): selectedCategory { 
-        this.cat.meal = [];
+    modifyCat(newCat: string): selectedCategory {
+        this.sOrder = [];
         this.cat.name = newCat;
         this.getOrders().subscribe( orders => {
             this.orderList = orders;

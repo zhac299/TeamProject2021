@@ -17,7 +17,7 @@ export class FoodCategoriesComponent implements OnInit {
     }
 
     onClick(name:string): void{
-      this.filterService.modifyCat(name);
+      this.cat = this.filterService.modifyCat(name);
     }
     /*
         TODO:
