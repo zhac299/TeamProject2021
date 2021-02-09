@@ -25,4 +25,10 @@ export class OrderService {
   // public createOrder(): Observable<ArrayBuffer> {
   //   return this.httpClient.post(this.mockDbUrl);
   // }
+  createNewOrder(): Observable<Order> {
+    return this.httpClient.get<Order>(`${this.restaurantWebApiUrl}/create`)
+      .pipe(
+        map(response => response)
+      );
+  }
 }
