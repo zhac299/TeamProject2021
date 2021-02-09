@@ -4,6 +4,7 @@ import { OrderService } from "../order.service";
 import { OrderComponent } from '../order/order.component';
 import { CommonModule } from '@angular/common';  
 import { selectedCategory } from 'src/models/selectedCategory';
+import { FilterService } from '../menu-filter/filter.service';
 
 @Component({
   selector: 'app-order-list',
@@ -18,23 +19,14 @@ export class OrderListComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
+    private filterService: FilterService
     ) { }
 
   ngOnInit(): void {
     this.orderService.getOrders().subscribe( orders => {
         this.orderList = orders;
         
-        for (let order of this.orderList) { 
-            if (order.category == "Fajita") { 
-                this.sOrder.push(order);
-                console.log(order);
-            }
-        }
-    
-      this.cat = {
-          name: "Fajita",
-          meal: this.sOrder
-        }
+        this.cat = this.filterService.createSelectedCat();
     });
       
       
