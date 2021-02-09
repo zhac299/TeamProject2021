@@ -24,6 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { TableComponent } from './waiter-menu/table/table.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     CustomerInterfaceComponent,
     LoginInputComponent,
     HomePageComponent,
-    OrderComponent
+    OrderComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
