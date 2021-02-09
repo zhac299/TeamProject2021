@@ -10,7 +10,7 @@
             <mat-list *ngFor="let order of orders">
               <mat-list-item>
                 <h3 mat-subheader>{{order.price}}</h3>
-                <h4 mat-line>{{order.meal}}</h4>
+                <h4 mat-line>{{order.name}}</h4>
                 <button mat-button><mat-icon>delete</mat-icon></button>
               </mat-list-item>
               <mat-divider></mat-divider>
@@ -29,11 +29,11 @@
         <mat-card-content>
           <mat-grid-list cols="4" rowHeight="50px">
             <mat-grid-tile *ngFor="let order of orders" colspan="1">
-              <button mat-raised-button style="width: 100%; color: green">{{order.meal}}</button>
+              <button mat-raised-button style="width: 100%; color: green">{{order.name}}</button>
             </mat-grid-tile>
-            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">
-              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>
-            </mat-grid-tile>
+<!--            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">-->
+<!--              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>-->
+<!--            </mat-grid-tile>-->
           </mat-grid-list>
         </mat-card-content>
       </mat-card>
