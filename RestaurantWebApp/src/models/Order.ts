@@ -1,8 +1,6 @@
+import {Meal} from './Meal';
+
 export class Order {
-    id: number;
-    category:string;
-    meal: string;
-    price: number;
-    nrSelections:number;
-    selected: boolean;
+  id: number;
+  meal: Meal[];
 }
