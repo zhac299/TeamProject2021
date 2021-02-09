@@ -1,10 +1,13 @@
 package com.backend.restaurantApi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "meal")
 public class Meal {
@@ -62,10 +65,15 @@ public class Meal {
     @Column(name = "sulphites")
     private boolean sulphites = false;
 
-    @JsonBackReference
+    @JsonBackReference(value = "order")
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "order_id", nullable = true)
     private Order order;
+
+    @JsonBackReference(value = "menu")
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "menu_id", nullable = false)
+    private Menu menu;
 
     @Override
     public String toString() {
@@ -97,4 +105,11 @@ public class Meal {
         this.id = id;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

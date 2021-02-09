@@ -1,15 +1,11 @@
 package com.backend.restaurantApi.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "restaurant_order")
 public class Order {
@@ -23,7 +19,7 @@ public class Order {
 //    private List<Customer> customer;
 
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "order")
     @Column(name = "meal", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="order")
     private List<Meal> meal;
@@ -45,4 +41,19 @@ public class Order {
 
     public Order() {}
 
+    public long getId() {
+        return id;
+    }
+
+    public void setOrderId(Long id) {
+        this.id = id;
+    }
+
+    public List<Meal> getMeal() {
+        return meal;
+    }
+
+    public void setMeal(List<Meal> meal) {
+        this.meal = meal;
+    }
 }
