@@ -1,6 +1,7 @@
 package com.backend.restaurantApi.controller;
 
 import com.backend.restaurantApi.model.Meal;
+import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.repository.*;
 import com.backend.restaurantApi.service.MealService;
 
@@ -31,7 +32,7 @@ public class MealController {
     }
 
     @GetMapping("/meals/{id}")
-    public Meal getMealById(@PathVariable("id") Long id) {
+    public Menu getMealById(@PathVariable("id") Long id) {
         return mealService.getMealById(id);
     }
 

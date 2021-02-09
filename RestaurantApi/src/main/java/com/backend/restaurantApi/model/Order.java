@@ -19,10 +19,10 @@ public class Order {
 //    private List<Customer> customer;
 
 
-    @JsonManagedReference(value = "order")
-    @Column(name = "meal", nullable = false)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="order")
-    private List<Meal> meal;
+//    @JsonManagedReference(value = "order")
+//    @Column(name = "meal", nullable = false)
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy="order")
+//    private List<Meal> meal;
 
 //    @Column(name = "staff", nullable = false)
 //    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Staff.class)
@@ -34,26 +34,26 @@ public class Order {
         return "DishAllergies{" +
             "id=" + id +
 //            ", customer='" + customer + '\'' +
-            ", meal='" + meal + '\'' +
+//            ", meal='" + meal + '\'' +
 //            ", staff='" + staff + '\'' +
             '}';
     }
 
     public Order() {}
 
-    public long getId() {
-        return id;
-    }
-
+//    public long getId() {
+//        return id;
+//    }
+//
     public void setOrderId(Long id) {
         this.id = id;
     }
 
-    public List<Meal> getMeal() {
-        return meal;
-    }
+//    public List<Meal> getMeal() {
+//        return meal;
+//    }
 
-    public void setMeal(List<Meal> meal) {
-        this.meal = meal;
-    }
+//    public void setMeal(List<Meal> meal) {
+//        this.meal = meal;
+//    }
 }
