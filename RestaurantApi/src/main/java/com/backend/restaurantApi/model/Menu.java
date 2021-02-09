@@ -77,6 +77,63 @@ public class Menu {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+    public double getPrice() {
+        return price;
+    }
+
+    public boolean getPeanuts() {
+        return peanuts;
+    }
+
+    public boolean getCelery() {
+        return celery;
+    }
+    public boolean gluten() {
+        return gluten;
+    }
+    public boolean getCrustaceans() {
+        return crustaceans;
+    }
+    public boolean getEggs() {
+        return eggs;
+    }
+    public boolean getFish() {
+        return fish;
+    }
+    public boolean getLupin() {
+        return lupin;
+    }
+    public boolean getMilk() {
+        return milk;
+    }
+    public boolean getMolluscs() {
+        return molluscs;
+    }
+    public boolean getMustard() {
+        return mustard;
+    }
+    public boolean getNuts() {
+        return nuts;
+    }
+    public boolean getSoya() {
+        return soya;
+    }
+    public boolean getSesame() {
+        return sesameSeeds;
+    }
+    public boolean getSulphites() {
+        return sulphites;
+    }
+    public long getCalories() {
+        return calories;
+    }
+    public String getCateory() {
+        return category;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
