@@ -15,8 +15,7 @@ export class OrderListComponent implements OnInit {
 
     orderList: Order[] = [];
     cat: selectedCategory = new selectedCategory;
-    sOrder: Order[] = [];
-
+    
   constructor(
     private orderService: OrderService,
     private filterService: FilterService

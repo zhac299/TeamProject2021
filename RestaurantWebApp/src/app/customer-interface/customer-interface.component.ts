@@ -27,9 +27,9 @@ interface Food {
 })
 export class CustomerInterfaceComponent implements OnInit {
 
-  orderList: Order[] = [];
+    orderList: Order[] = [];
     cat: selectedCategory = new selectedCategory;
-    sOrder: Order[] = [];
+  
 
   constructor(private orderService: OrderService, private filterService: FilterService) { }
 
