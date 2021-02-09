@@ -39,8 +39,8 @@ export class FilterService {
         return this.cat;
     }
 
-    getCat(): selectedCategory { 
-        if (this.cat == undefined) { 
+    getCat(): selectedCategory {     
+        if (Object.keys(this.cat).length === 0) {
             this.createSelectedCat();
         }
         return this.cat;
