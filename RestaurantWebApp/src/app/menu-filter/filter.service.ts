@@ -49,16 +49,14 @@ export class FilterService {
     modifyCat(newCat: string): selectedCategory {
         this.sOrder = [];
         this.cat.name = newCat;
-        this.getOrders().subscribe( orders => {
-            this.orderList = orders;
 
-            for (let order of this.orderList) { 
-                if (order.category == newCat) { 
-                    this.sOrder.push(order);
-                }
+        for (let order of this.orderList) { 
+            if (order.category == newCat) { 
+                this.sOrder.push(order);
             }
-            this.cat.meal = this.sOrder;
-        });
+        }
+        
+        this.cat.meal = this.sOrder;
         return this.cat;
     }
 }
