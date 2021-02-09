@@ -1,10 +1,12 @@
 package com.backend.restaurantApi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +21,11 @@ public class Meal {
 
     @Column(name = "menu_id")
     private Long menu_id;
+
+    @JsonBackReference(value = "order")
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = true)
+    private Order order;
 
     public Meal() {}
 
@@ -36,5 +43,13 @@ public class Meal {
 
     public void setMenu_id(Long menu_id) {
         this.menu_id = menu_id;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
