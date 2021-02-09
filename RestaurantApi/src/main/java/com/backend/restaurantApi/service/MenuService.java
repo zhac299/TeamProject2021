@@ -36,7 +36,7 @@ public class MenuService {
         return menuRepository.save(menu.get());
     }
 
-    public Menu filterByPeanuts() {
+    public List<Menu> filterByPeanuts() {
         return menuRepository.filterByPeanuts();
     }
 }
