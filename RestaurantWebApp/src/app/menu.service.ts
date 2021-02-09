@@ -9,8 +9,8 @@ import {map} from 'rxjs/operators';
 })
 export class MenuService {
 
-  mockDbUrl = 'http://localhost:3000/orders';
-  restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders/';
+  mockDbUrl = 'http://localhost:3000/menu';
+  restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu/';
 
   constructor(private httpClient: HttpClient) { }
 
