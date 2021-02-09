@@ -1,4 +1,4 @@
-
+<h2 id = "Fajitas">{{cat.name}}</h2>
     <div *ngFor="let order of cat.meal">
         <p *ngIf="order.selected==true; else notSelectedBlock">
             <button class="isSelected" (click)="removeItem(order)">
