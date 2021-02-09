@@ -46,7 +46,7 @@ export class FilterService {
         return this.cat;
     }
 
-    modifyCat(cat: selectedCategory): selectedCategory { 
-        return cat;
+    modifyCat(): selectedCategory { 
+        return this.cat;
     }
 }
