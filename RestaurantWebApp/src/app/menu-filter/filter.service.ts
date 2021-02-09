@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FilterService {
-    cat: selectedCategory = new selectedCategory;
+    cat: selectedCategory;
     orderList: Order[] = [];
     sOrder: Order[] = [];
     mockDbUrl = 'http://localhost:3000/Orders'
@@ -25,18 +25,21 @@ export class FilterService {
     createSelectedCat(): selectedCategory{
         this.getOrders().subscribe( orders => {
             this.orderList = orders;
-        });
-        for (let order of this.orderList) { 
-            if (order.category == "Fajita") { 
-                this.sOrder.push(order);
-                console.log(order);
+            this.cat = new selectedCategory;
+            for (let order of this.orderList) { 
+                if (order.category == "Fajita") { 
+                    this.sOrder.push(order);
+                }
             }
-        }
-    
-      this.cat = {
-          name: "Fajita",
-          meal: this.sOrder
-        }
+        
+            this.cat = {
+              name: "Fajita",
+              meal: this.sOrder
+            }
+        });
+        console.log(this.sOrder);
+        console.log(this.cat);
+        
         return this.cat;
     }
 }
