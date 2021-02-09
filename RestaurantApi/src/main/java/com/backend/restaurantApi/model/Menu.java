@@ -17,6 +17,9 @@ public class Menu {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "price")
     private Double price;
 
@@ -196,5 +199,13 @@ public class Menu {
 
     public void setSulphites(boolean sulphites) {
         this.sulphites = sulphites;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
