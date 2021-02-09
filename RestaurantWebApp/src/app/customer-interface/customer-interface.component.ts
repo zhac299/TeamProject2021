@@ -12,6 +12,7 @@ import { ExpansionPannelComponent} from './expansion-pannel/expansion-pannel.com
 import { AllergensChipsComponent} from './allergens-chips/allergens-chips.component';
 import { CaloriesSliderComponent} from './calories-slider/calories-slider.component';
 import { selectedCategory } from 'src/models/selectedCategory';
+import { FilterService } from '../menu-filter/filter.service';
 
 interface Food {
   viewValue: string;
@@ -27,34 +28,28 @@ interface Food {
 export class CustomerInterfaceComponent implements OnInit {
 
   orderList: Order[] = [];
-  foods: Food[] = [
-    {viewValue: 'Fajitas', mappedOrders:[this.orderList[0]], selected: false},
-    {viewValue: 'Nachos', mappedOrders:[this.orderList[1]], selected: false},
-    {viewValue: 'Dips', mappedOrders:[this.orderList[1]], selected: false},
-    {viewValue: 'Deserts', mappedOrders:[this.orderList[1]], selected: false}
-  ];
     cat: selectedCategory = new selectedCategory;
     sOrder: Order[] = [];
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private filterService: FilterService) { }
 
   ngOnInit(): void {
     this.orderService.getOrders().subscribe( orders => {
         this.orderList = orders;
         
-        for (let order of this.orderList) { 
-            if (order.category == "Fajita") { 
-                this.sOrder.push(order);
-            }
-        }
-  
-      this.cat = {
-          name: "Fajita",
-          meal: this.sOrder
-      }
+        this.cat = this.filterService.createSelectedCat();
     });
   }
+}
+
 /* 
+
+    foods: Food[] = [
+    {viewValue: 'Fajitas', mappedOrders:[this.orderList[0]], selected: false},
+    {viewValue: 'Nachos', mappedOrders:[this.orderList[1]], selected: false},
+    {viewValue: 'Dips', mappedOrders:[this.orderList[1]], selected: false},
+    {viewValue: 'Deserts', mappedOrders:[this.orderList[1]], selected: false}
+  ];
   findCategory(food): void {
     for(let f of this.foods) { 
       if (food == f) {
@@ -64,9 +59,3 @@ export class CustomerInterfaceComponent implements OnInit {
       }
     }
   }*/
-
-}
-
-
-/*
-*/
