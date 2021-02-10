@@ -23,7 +23,7 @@ public class MealController {
     @GetMapping("/meals")
     public List<Meal> index() {
       return mealRepo.findAll();
-  }
+    }
 
     @PostMapping("/meals")
     public Meal createNewMeal(@RequestBody Meal meal){

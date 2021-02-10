@@ -1,8 +1,5 @@
 package com.backend.restaurantApi.repository;
-
 import java.util.List;
-
-import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,10 +8,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 
-    @Query(value = "SELECT name FROM Menu WHERE peanuts = false")
-    public List<Menu> filterByPeanuts();
+    @Query(value = "SELECT name FROM restaurant_menu WHERE peanuts = false", nativeQuery = true)
+    public List<String> filterByPeanuts();
 
-    @Query(value = "SELECT name FROM Menu WHERE celery = false")
+    @Query(value = "se name from Menu WHERE celery = false", nativeQuery = true)
     public List<Menu> filterByCelery();
 
     @Query(value = "SELECT name FROM Menu WHERE gluten = false")

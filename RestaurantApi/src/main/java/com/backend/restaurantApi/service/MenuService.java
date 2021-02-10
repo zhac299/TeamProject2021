@@ -7,6 +7,7 @@ import com.backend.restaurantApi.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ public class MenuService {
         return menuRepository.save(menu.get());
     }
 
-    public List<Menu> filterByPeanuts() {
+    public List<String> filterByPeanuts() {
         return menuRepository.filterByPeanuts();
     }
 }
