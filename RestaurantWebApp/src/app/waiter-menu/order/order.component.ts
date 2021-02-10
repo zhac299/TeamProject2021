@@ -18,11 +18,9 @@ import {Meal} from "../../../models/Meal";
 export class OrderComponent implements OnInit {
 
   table: Table;
-  // orders: Order[] = [];
-  orderedMeals: Menu[];
+  orderedMeals: Menu[] = [];
   menu: Menu;
-  menuItems: Menu[];
-  orderedMenuItems: Menu;
+  menuList: Menu[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
@@ -33,16 +31,17 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     // this.orderService.getOrders().subscribe(orders => this.orders = orders);
     this.menuService.getMenuById(this.data.id).subscribe(menu => this.menu = menu);
-    this.menuService.getMenu().subscribe(menuItems => this.menuItems = menuItems);
-    // TODO NEED TO GRAB ALL MENU ITEMS BY THEIR IDS USING DATA MEAL ARRAY
-    // this.menuService.getMenuById(this.data.meal).subscribe(incomingMeal => orderedMenu = incomingMeal);
-    console.log(this.data);
+    this.menuService.getMenu().subscribe(menuItems => this.menuList = menuItems);
+    this.findMealFromMenu();
   }
 
-  getOrderMeals(): void {
-    for (const meal of this.data.meal) {
-      console.log(meal);
-      this.menuService.getMenuById(meal.id).subscribe(incomingMenu => this.orderedMeals.push(incomingMenu));
-    }
+  findMealFromMenu(): void {
+    this.data.meal.forEach(value => {
+      this.menuService.getMenuById(value.menu_id).subscribe(meal => {
+        this.orderedMeals.push(meal);
+      });
+    });
   }
+
+
 }

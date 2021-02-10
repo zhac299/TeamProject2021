@@ -7,10 +7,11 @@
 <!--          <mat-card-title>Orders:</mat-card-title>-->
 <!--        </mat-card-header>-->
         <mat-card-content>
-            <mat-list *ngFor="let meal of data.meal">
+            <mat-list *ngFor="let meal of orderedMeals">
 <!--              <mat-list-item *ngFor="let meal of order.meal">-->
               <mat-list-item>
                 <h3 mat-subheader>£{{meal.id}}</h3>
+                <p>meal_id:{{meal.name}}</p>
 
 <!--                <h3 *ngIf="menu != null; else nullMenuBlock">-->
 <!--                  Order #{{menu.id}}: Ordered</h3>-->
@@ -18,7 +19,7 @@
 <!--                  <h3>Add To Order</h3>-->
 <!--                </ng-template>-->
 
-                <p style="font-size:10px" mat-line>{{this.getMenuById(meal.meal_id).name}}</p>
+<!--                <p style="font-size:10px" mat-line>{{this.findMealFromMenu(meal.meal_id).name}}</p>-->
 <!--                <p>({{menu.price}})</p>-->
 <!--                <h4 mat-line>{{meal.description}}</h4>-->
                 <button mat-button><mat-icon>delete</mat-icon></button>
@@ -38,7 +39,7 @@
         </mat-card-header>
         <mat-card-content>
           <mat-grid-list cols="4" rowHeight="50px">
-            <mat-grid-tile *ngFor="let menu of menuItems" colspan="1">
+            <mat-grid-tile *ngFor="let menu of menuList" colspan="1">
               <button mat-raised-button style="width: 100%; color: green">{{menu.name}}</button>
             </mat-grid-tile>
 <!--            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">-->
