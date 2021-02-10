@@ -38,9 +38,36 @@ public class MenuService {
         return menuRepository.save(menu.get());
     }
 
-    public List<Menu> filterByAllergens() {
+    public List<Menu> filterByAllergens(
+        Boolean peanuts, 
+        Boolean celery,
+        Boolean gluten,
+        Boolean crustaceans,
+        Boolean eggs,
+        Boolean fish,
+        Boolean lupin,
+        Boolean milk,
+        Boolean molluscs,
+        Boolean mustard,
+        Boolean nuts,
+        Boolean soya,
+        Boolean sesame_seeds,
+        Boolean sulphites) {
         return menuRepository.filterByAllergens(
-            false, true, false, false, false, false, false, false, false, false, false, false, false, false);
+            peanuts,
+            celery,
+            gluten,
+            crustaceans,
+            eggs,
+            fish,
+            lupin,
+            milk,
+            molluscs,
+            mustard,
+            nuts,
+            soya,
+            sesame_seeds,
+            sulphites);
     }
 
 }

@@ -29,7 +29,7 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
     " :mustard = mustard AND " +
     " :nuts = nuts AND " +
     " :soya = soya AND " +
-    " :sesameSeeds = sesame_seeds AND " +
+    " :sesame_seeds = sesame_seeds AND " +
     " :sulphites = sulphites",
      nativeQuery = true)
     public List<Menu> filterByAllergens( 
@@ -45,6 +45,6 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
         @Param("mustard") Boolean mustard,
         @Param("nuts") Boolean nuts,
         @Param("soya") Boolean soya,
-        @Param("sesameSeeds") Boolean sesameSeeds,
+        @Param("sesame_seeds") Boolean sesame_seeds,
         @Param("sulphites") Boolean sulphites);
 }
