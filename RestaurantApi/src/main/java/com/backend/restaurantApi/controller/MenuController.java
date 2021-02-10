@@ -72,4 +72,9 @@ public class MenuController {
             sesame_seeds,
             sulphites);
     }
+
+    @GetMapping(path = "/menu/filterByCalories/{calories}")
+    public List<Menu> filterByCalories(@PathVariable("calories") long calories) {
+        return menuService.filterByCalories(calories);
+    }
 }
