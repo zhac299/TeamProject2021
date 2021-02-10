@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Menu} from '../models/Menu';
 import {map} from 'rxjs/operators';
@@ -11,6 +11,10 @@ export class MenuService {
 
   mockDbUrl = 'http://localhost:3000/menu';
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu';
+
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,6 +28,13 @@ export class MenuService {
     return this.httpClient.get<Menu>(`${this.restaurantWebApiUrl}/${id}`)
       .pipe(
         map(response => response)
+      );
+  }
+
+  updateMenu(menu: Menu) {
+    return this.httpClient.put<Menu>(this.restaurantWebApiUrl,menu,this.httpOptions)
+      .pipe(
+        map(response=> response)
       );
   }
 }

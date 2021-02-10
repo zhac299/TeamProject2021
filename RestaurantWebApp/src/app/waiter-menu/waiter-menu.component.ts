@@ -8,6 +8,7 @@ import {Order} from "../../models/Order";
 import {TableComponent} from "./table/table.component";
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
+import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -73,8 +74,18 @@ export class WaiterMenuComponent implements OnInit {
     });
   }
 
-  openAddDialog(): void {
-    const dialogRef = this.dialog.open()
+  openAddDialog(menu:Menu): void {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: menu,
+      width: '30%',
+      height: '50%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.menuService.updateMenu(result);
+      }
+    });
   }
 
   createNewOrder(): Order {
@@ -87,8 +98,8 @@ export class WaiterMenuComponent implements OnInit {
     return newOrder;
   }
 
-  addMenuItem(): void {
-    this.menuService.
-  }
+  // addMenuItem(): void {
+  //   this.menuService.
+  // }
 }
 

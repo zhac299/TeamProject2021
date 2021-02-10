@@ -27,6 +27,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { TableComponent } from './waiter-menu/table/table.component';
 import {MatTableModule} from "@angular/material/table";
 import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.compo
         HttpClientModule,
         BrowserAnimationsModule,
         MatFormFieldModule,
+        MatInputModule,
         FormsModule,
         CommonModule,
         MatDialogModule,

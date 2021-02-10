@@ -54,14 +54,14 @@
   <hr>
   <h2>Menu</h2>
 
-  <button mat-button (click)="addMenuItem()">Add</button>
+  <button mat-button>Add</button>
   <mat-grid-list cols="4" rowHeight="50px" *ngFor="let menu of menuList">
-    <mat-grid-tile class="p-2 bd-highlight">{{menu.name}}</mat-grid-tile>
-    <mat-grid-tile class="p-2 bd-highlight">{{menu.description}}</mat-grid-tile>
-    <mat-grid-tile class="p-2 bd-highlight">{{menu.price}}</mat-grid-tile>
+    <mat-grid-tile>{{menu.name}}</mat-grid-tile>
+    <mat-grid-tile>{{menu.description}}</mat-grid-tile>
+    <mat-grid-tile>{{menu.price}}</mat-grid-tile>
     <mat-grid-tile>
-      <button mat-button>Edit</button>
-      <button mat-button>Delete</button>
+      <button mat-button (click)="openAddDialog(menu)">Edit</button>
+      <button mat-button >Delete</button>
     </mat-grid-tile>
   </mat-grid-list>
 
