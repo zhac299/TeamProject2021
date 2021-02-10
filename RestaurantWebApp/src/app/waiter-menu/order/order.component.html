@@ -8,20 +8,9 @@
 <!--        </mat-card-header>-->
         <mat-card-content>
             <mat-list *ngFor="let meal of orderedMeals">
-<!--              <mat-list-item *ngFor="let meal of order.meal">-->
               <mat-list-item>
-                <h3 mat-subheader>£{{meal.id}}</h3>
-                <p>meal_id:{{meal.name}}</p>
-
-<!--                <h3 *ngIf="menu != null; else nullMenuBlock">-->
-<!--                  Order #{{menu.id}}: Ordered</h3>-->
-<!--                <ng-template #nullMenuBlock>-->
-<!--                  <h3>Add To Order</h3>-->
-<!--                </ng-template>-->
-
-<!--                <p style="font-size:10px" mat-line>{{this.findMealFromMenu(meal.meal_id).name}}</p>-->
-<!--                <p>({{menu.price}})</p>-->
-<!--                <h4 mat-line>{{meal.description}}</h4>-->
+                <p mat-card-subtitle style="font-size:14px" mat-line>{{meal.name}}</p>
+                <p mat-subheader>({{menu.price}})</p>
                 <button mat-button><mat-icon>delete</mat-icon></button>
               </mat-list-item>
               <mat-divider></mat-divider>
