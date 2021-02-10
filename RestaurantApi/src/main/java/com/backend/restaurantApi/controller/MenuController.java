@@ -42,4 +42,14 @@ public class MenuController {
     public Menu addNewMeal(@RequestBody Meal meal, @PathVariable Long id){
         return menuService.addMenuMeal(meal, id);
     }
+
+    @PutMapping("/menu/{id}")
+    public Menu updateMeal(@PathVariable("id") Long id, @RequestBody Menu menu) {
+        return menuService.updateMenuItem(id, menu);
+    }
+
+    @DeleteMapping("/menu/{id}")
+    public void deleteMeal(@PathVariable("id") Long id) {
+        menuService.deleteMenuItem(id);
+    }
 }

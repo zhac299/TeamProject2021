@@ -7,7 +7,9 @@ import com.backend.restaurantApi.model.Staff;
 import com.backend.restaurantApi.repository.StaffRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StaffService {
     
     @Autowired

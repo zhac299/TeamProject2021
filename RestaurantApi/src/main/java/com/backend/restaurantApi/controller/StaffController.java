@@ -20,7 +20,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(path = "/api/v1/staff")
+@RequestMapping(path = "/api/v1/")
 public class StaffController {
 
     @Autowired
@@ -29,14 +29,14 @@ public class StaffController {
     @Autowired
     StaffService staffService;
 
-    @GetMapping
+    @GetMapping("/staff")
     public List<Staff> index() {
       return staffRepo.findAll();
   }  
 
    @PostMapping("/staff")
     public Staff newstaff(@RequestBody Staff staff){
-        return staffRepo.save(staff);
+        return staffService.createNewStaff(staff);
     }
 
     @GetMapping("/staff/{id}")
