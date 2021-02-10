@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {OrderComponent} from './order/order.component';
 import {OrderService} from "../order.service";
 import {Order} from "../../models/Order";
+import {TableComponent} from "./table/table.component";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -36,18 +37,16 @@ export class WaiterMenuComponent implements OnInit {
     });
     this.orderService.getOrders().subscribe(orders => {
       this.orders = orders;
-      console.log(orders);
     });
   }
 
   openTableDialog(table: Table): void {
     // this.dialogTable = table;
-    const dialogRef = this.dialog.open(OrderComponent, {
+    const dialogRef = this.dialog.open(TableComponent, {
       data: this.tableList,
       width: '99%',
       height: '99%'
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
     });
@@ -56,7 +55,7 @@ export class WaiterMenuComponent implements OnInit {
   openOrderDialog(order: Order): void {
     // this.dialogTable = table;
     const dialogRef = this.dialog.open(OrderComponent, {
-      data: this.orders,
+      data: order,
       width: '99%',
       height: '99%'
     });
@@ -66,5 +65,14 @@ export class WaiterMenuComponent implements OnInit {
     });
   }
 
+  createNewOrder(): Order {
+    const newOrder: Order = new Order();
+    this.orderService.createNewOrder()
+      .subscribe(result => {
+        return result;
+      });
+    console.log(newOrder);
+    return newOrder;
+  }
 }
 

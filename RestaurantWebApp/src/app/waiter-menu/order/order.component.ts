@@ -6,6 +6,9 @@ import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
 import {DrinkService} from "../../drink.service";
 import {Drink} from "../../../models/Drink";
+import {MenuService} from "../../menu.service";
+import {Menu} from "../../../models/Menu";
+import {Meal} from "../../../models/Meal";
 
 @Component({
   selector: 'app-order',
@@ -14,32 +17,32 @@ import {Drink} from "../../../models/Drink";
 })
 export class OrderComponent implements OnInit {
 
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-
   table: Table;
-  orders: Order[] = [];
-  drinks: Drink[];
+  // orders: Order[] = [];
+  orderedMeals: Menu[];
+  menu: Menu;
+  menuItems: Menu[];
+  orderedMenuItems: Menu;
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Table,
-    private orderService: OrderService) {}
+    @Inject(MAT_DIALOG_DATA) public data: Order,
+    private orderService: OrderService,
+    public menuService: MenuService) {}
 
   ngOnInit(): void {
-    this.orderService.getOrders().subscribe(orders => this.orders = orders);
-    // this.drinkService.getOrders().subscribe(drinks => this.drinks = drinks);
+    // this.orderService.getOrders().subscribe(orders => this.orders = orders);
+    this.menuService.getMenuById(this.data.id).subscribe(menu => this.menu = menu);
+    this.menuService.getMenu().subscribe(menuItems => this.menuItems = menuItems);
+    // TODO NEED TO GRAB ALL MENU ITEMS BY THEIR IDS USING DATA MEAL ARRAY
+    // this.menuService.getMenuById(this.data.meal).subscribe(incomingMeal => orderedMenu = incomingMeal);
+    console.log(this.data);
   }
 
-}
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
+  getOrderMeals(): void {
+    for (const meal of this.data.meal) {
+      console.log(meal);
+      this.menuService.getMenuById(meal.id).subscribe(incomingMenu => this.orderedMeals.push(incomingMenu));
+    }
+  }
 }

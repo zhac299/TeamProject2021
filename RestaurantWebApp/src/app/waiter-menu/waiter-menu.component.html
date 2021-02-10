@@ -37,10 +37,14 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <h2>All Orders</h2>
+  <hr>
+  <h2>Orders</h2>
+  <button mat-button (click)="createNewOrder()">New Order</button>
+
   <mat-grid-list cols="4" rowHeight="200px">
     <mat-grid-tile *ngFor="let order of orders" >
       <button mat-raised-button class="hasOrder"
+              (click)="openOrderDialog(order)"
               color="primary">
         Order {{order.id}}</button>
 
