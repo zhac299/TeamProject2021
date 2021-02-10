@@ -36,8 +36,8 @@ public class MenuController {
         return menuService.addMenuMeal(meal, id);
     }
 
-    @GetMapping(path = "/menu/filterByPeanuts")
-    public List<Menu> filterByPeanuts() {
-        return menuService.filterByPeanuts();
+    @GetMapping(path = "/menu/filterByAllergens")
+    public List<Menu> filterByAllergens() {
+        return menuService.filterByAllergens();
     }
 }
