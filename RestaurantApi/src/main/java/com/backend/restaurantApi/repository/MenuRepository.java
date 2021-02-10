@@ -17,20 +17,20 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
     (value = 
     " SELECT * FROM restaurant_menu" +
     " WHERE " +
-    " :peanuts = peanuts AND " +
-    " :celery = celery AND " +
-    " :gluten = gluten AND " +
-    " :crustaceans = crustaceans AND " + 
-    " :eggs = eggs AND " +
-    " :fish = fish AND " +
-    " :lupin = lupin AND " +
-    " :milk = milk AND " +
-    " :molluscs = molluscs AND " +
-    " :mustard = mustard AND " +
-    " :nuts = nuts AND " +
-    " :soya = soya AND " +
-    " :sesame_seeds = sesame_seeds AND " +
-    " :sulphites = sulphites",
+    " :peanuts <> peanuts AND " +
+    " :celery <> celery AND " +
+    " :gluten <> gluten AND " +
+    " :crustaceans <> crustaceans AND " + 
+    " :eggs <> eggs AND " +
+    " :fish <> fish AND " +
+    " :lupin <> lupin AND " +
+    " :milk <> milk AND " +
+    " :molluscs <> molluscs AND " +
+    " :mustard <> mustard AND " +
+    " :nuts <> nuts AND " +
+    " :soya <> soya AND " +
+    " :sesame_seeds <> sesame_seeds AND " +
+    " :sulphites <> sulphites",
      nativeQuery = true)
     public List<Menu> filterByAllergens( 
         @Param("peanuts") Boolean peanuts,
