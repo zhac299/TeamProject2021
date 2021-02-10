@@ -38,7 +38,54 @@ public class MenuService {
         return menuRepository.save(menu.get());
     }
 
-    public List<Object> filterByPeanuts() {
+    public List<Menu> filterByPeanuts() {
         return menuRepository.filterByPeanuts();
     }
+
+    public List<Menu> filterByCelery() {
+        return menuRepository.filterByCelery();
+    }
+
+    public List<Menu> filterByCrustaceans() {
+        return menuRepository.filterByCrustaceans();
+    }
+
+    public List<Menu> filterByEggs() {
+        return menuRepository.filterByEggs();
+    }
+
+    public List<Menu> filterByFish() {
+        return menuRepository.filterByFish();
+    }
+
+    public List<Menu> filterByGluten() {
+        return menuRepository.filterByGluten();
+    }
+    public List<Menu> filterByLupin() {
+        return menuRepository.filterByLupin();
+    }
+    public List<Menu> filterByMilk() {
+        return menuRepository.filterByMilk();
+    }
+    public List<Menu> filterByMolluscs() {
+        return menuRepository.filterByMolluscs();
+    }
+    public List<Menu> filterByMustard() {
+        return menuRepository.filterByMustard();
+    }
+    public List<Menu> filterByNuts() {
+        return menuRepository.filterByNuts();
+    }
+    public List<Menu> filterBySesameSeeds() {
+        return menuRepository.filterBySesameSeeds();
+    }
+
+    public List<Menu> filterBySoya() {
+        return menuRepository.filterBySoya();
+    }
+
+    public List<Menu> filterBySuplhites() {
+        return menuRepository.filterBySulphites();
+    }
+
 }

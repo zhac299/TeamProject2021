@@ -37,7 +37,7 @@ public class MenuController {
     }
 
     @GetMapping(path = "/menu/filterByPeanuts")
-    public List<Object> filterByPeanuts() {
+    public List<Menu> filterByPeanuts() {
         return menuService.filterByPeanuts();
     }
 }
