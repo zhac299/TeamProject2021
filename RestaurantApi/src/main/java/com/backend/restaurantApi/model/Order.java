@@ -14,11 +14,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
     @Column(name = "customer", nullable = false)
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Customer.class)
-    private List<Customer> customer;
-
+    private int customerTableNum;
 
     @JsonManagedReference(value = "order")
     @Column(name = "meal", nullable = false)
@@ -34,9 +31,9 @@ public class Order {
     public String toString() {
         return "DishAllergies{" +
             "id=" + id +
-//            ", customer='" + customer + '\'' +
-//            ", meal='" + meal + '\'' +
-//            ", staff='" + staff + '\'' +
+            ", customerTableNum='" + customerTableNum + '\'' +
+            ", meal='" + meal + '\'' +
+            ", staff='" + staff + '\'' +
             '}';
     }
 
@@ -62,12 +59,12 @@ public class Order {
         this.id = id;
     }
 
-    public List<Customer> getCustomer() {
-        return customer;
+    public int getCustomerTableNum() {
+        return customerTableNum;
     }
 
-    public void setCustomer(List<Customer> customer) {
-        this.customer = customer;
+    public void setCustomerTableNum(int customerTableNum) {
+        this.customerTableNum = customerTableNum;
     }
 
     public List<Staff> getStaff() {
