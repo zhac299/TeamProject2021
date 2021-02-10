@@ -7,9 +7,9 @@ import { Order } from 'src/models/Order';
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerInterfaceService {
+export class OrderListService {
 
-  dataBase = 'http://localhost:8080/customer';
+  dataBase = 'http://localhost:8080/api/v1/menu';
   constructor(private httpClient: HttpClient) { }
 
   public getMenu(): Observable<Order[]> {

@@ -10,7 +10,7 @@ import {map} from 'rxjs/operators';
 export class OrderService {
 
   mockDbUrl = 'http://localhost:3000/orders';
-  restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders/';
+  restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,7 +21,6 @@ export class OrderService {
       map(response => response)
     );
   }
-
   // public createOrder(): Observable<ArrayBuffer> {
   //   return this.httpClient.post(this.mockDbUrl);
   // }

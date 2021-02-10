@@ -24,8 +24,8 @@ export class OrderListComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getOrders().subscribe( orders => {
         this.orderList = orders;
-        
-        this.cat = this.filterService.getCat();
+        console.log(this.orderList);
+      //  this.cat = this.filterService.getCat();
     });
     // NEEDS TO BE REFACTORED
   //

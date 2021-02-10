@@ -1,6 +1,10 @@
 package com.backend.restaurantApi.repository;
+
 import java.util.List;
+
 import com.backend.restaurantApi.model.Menu;
+import com.backend.restaurantApi.model.MenuItem;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,45 +12,45 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 
-    @Query(value = "SELECT name FROM restaurant_menu WHERE peanuts = false", nativeQuery = true)
-    public List<String> filterByPeanuts();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE peanuts = false", nativeQuery = true)
+    public List<Object> filterByPeanuts();
 
-    @Query(value = "se name from Menu WHERE celery = false", nativeQuery = true)
-    public List<Menu> filterByCelery();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE celery = false", nativeQuery = true)
+    public List<Object> filterByCelery();
 
-    @Query(value = "SELECT name FROM Menu WHERE gluten = false")
-    public List<Menu> filterByGluten();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE gluten = false", nativeQuery = true)
+    public List<Object> filterByGluten();
 
-    @Query(value = "SELECT name FROM Menu WHERE crustaceans = false")
-    public List<Menu>filterByCrustaceans();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE crustaceans = false", nativeQuery = true)
+    public List<Object>filterByCrustaceans();
 
-    @Query(value = "SELECT name FROM Menu WHERE eggs = false")
-    public List<Menu> filterByEggs();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE eggs = false", nativeQuery = true)
+    public List<Object> filterByEggs();
 
-    @Query(value = "SELECT name FROM Menu WHERE fish = false")
-    public List<Menu> filterByFish();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE fish = false", nativeQuery = true)
+    public List<Object> filterByFish();
 
-    @Query(value = "SELECT name FROM Menu WHERE lupin = false")
-    public List<Menu> filterByLupin();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE lupin = false", nativeQuery = true)
+    public List<Object> filterByLupin();
 
-    @Query(value = "SELECT name FROM Menu WHERE milk = false")
-    public List<Menu> filterByMilk();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE milk = false", nativeQuery = true)
+    public List<Object> filterByMilk();
 
-    @Query(value = "SELECT name FROM Menu WHERE molluscs = false")
-    public List<Menu>filterByMolluscs();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE molluscs = false", nativeQuery = true)
+    public List<Object>filterByMolluscs();
 
-    @Query(value = "SELECT name FROM Menu WHERE mustard = false")
-    public List<Menu> filterByMustard();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE mustard = false", nativeQuery = true)
+    public List<Object> filterByMustard();
 
-    @Query(value = "SELECT name FROM Menu WHERE nuts = false")
-    public List<Menu>filterByNuts();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE nuts = false", nativeQuery = true)
+    public List<Object>filterByNuts();
 
-    @Query(value = "SELECT name FROM Menu WHERE soya = false")
-    public List<Menu> filterBySoya();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE soya = false", nativeQuery = true)
+    public List<Object> filterBySoya();
 
-    @Query(value = "SELECT name FROM Menu WHERE sesame_seeds = false")
-    public List<Menu> filterBySesameSeeds();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE sesameSeeds = false", nativeQuery = true)
+    public List<Object> filterBySesameSeeds();
 
-    @Query(value = "SELECT name FROM Menu WHERE sulphites = false")
-    public List<Menu> filterBySulphites();
+    @Query(value = "select name, id, price FROM restaurant_menu WHERE sulphites = false", nativeQuery = true)
+    public List<Object> filterBySulphites();
 }

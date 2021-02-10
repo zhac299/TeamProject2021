@@ -3,6 +3,7 @@ package com.backend.restaurantApi.service;
 import com.backend.restaurantApi.exception.MenuNotFoundException;
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
+import com.backend.restaurantApi.model.MenuItem;
 import com.backend.restaurantApi.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class MenuService {
         return menuRepository.save(menu.get());
     }
 
-    public List<String> filterByPeanuts() {
+    public List<Object> filterByPeanuts() {
         return menuRepository.filterByPeanuts();
     }
 }

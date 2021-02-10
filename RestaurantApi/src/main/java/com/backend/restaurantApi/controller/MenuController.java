@@ -2,6 +2,7 @@ package com.backend.restaurantApi.controller;
 
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
+import com.backend.restaurantApi.model.MenuItem;
 import com.backend.restaurantApi.repository.MenuRepository;
 import com.backend.restaurantApi.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class MenuController {
     }
 
     @GetMapping(path = "/menu/filterByPeanuts")
-    public List<String> filterByPeanuts() {
+    public List<Object> filterByPeanuts() {
         return menuService.filterByPeanuts();
     }
 }
