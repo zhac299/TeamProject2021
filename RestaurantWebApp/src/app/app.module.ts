@@ -25,6 +25,8 @@ import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { TableComponent } from './waiter-menu/table/table.component';
+import {MatTableModule} from "@angular/material/table";
+import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,27 +38,29 @@ import { TableComponent } from './waiter-menu/table/table.component';
     LoginInputComponent,
     HomePageComponent,
     OrderComponent,
-    TableComponent
+    TableComponent,
+    EditDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    FormsModule,
-    CommonModule,
-    MatDialogModule,
-    MatCardModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatDividerModule,
-    MatListModule,
-    MatIconModule,
-    MatSelectModule,
-    MatToolbarModule,
-    MatSidenavModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        FormsModule,
+        CommonModule,
+        MatDialogModule,
+        MatCardModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatDividerModule,
+        MatListModule,
+        MatIconModule,
+        MatSelectModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatTableModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

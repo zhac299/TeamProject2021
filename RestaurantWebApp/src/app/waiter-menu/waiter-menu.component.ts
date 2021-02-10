@@ -6,6 +6,8 @@ import {OrderComponent} from './order/order.component';
 import {OrderService} from "../order.service";
 import {Order} from "../../models/Order";
 import {TableComponent} from "./table/table.component";
+import {MenuService} from "../menu.service";
+import {Menu} from "../../models/Menu";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -17,14 +19,17 @@ export class WaiterMenuComponent implements OnInit {
   constructor(
     private tableService: TableService,
     private orderService: OrderService,
+    private menuService: MenuService,
     public dialog: MatDialog
   ) { }
 
+  menuList: Menu[] = [];
   showFiller = false;
   tableList: Table[] = [];
   freeTables = 0;
   dialogTable: Table = new Table();
   orders: Order[];
+  displayedColumns: string[] = ['name', 'description', 'price'];
 
   ngOnInit(): void {
     this.tableService.getTables().subscribe( orders => {
@@ -38,6 +43,9 @@ export class WaiterMenuComponent implements OnInit {
     this.orderService.getOrders().subscribe(orders => {
       this.orders = orders;
     });
+    this.menuService.getMenu().subscribe(menu => {
+      this.menuList = menu;
+    })
   }
 
   openTableDialog(table: Table): void {
@@ -65,6 +73,10 @@ export class WaiterMenuComponent implements OnInit {
     });
   }
 
+  openAddDialog(): void {
+    const dialogRef = this.dialog.open()
+  }
+
   createNewOrder(): Order {
     const newOrder: Order = new Order();
     this.orderService.createNewOrder()
@@ -73,6 +85,10 @@ export class WaiterMenuComponent implements OnInit {
       });
     console.log(newOrder);
     return newOrder;
+  }
+
+  addMenuItem(): void {
+    this.menuService.
   }
 }
 

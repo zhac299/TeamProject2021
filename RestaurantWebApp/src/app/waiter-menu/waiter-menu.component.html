@@ -51,5 +51,19 @@
     </mat-grid-tile>
   </mat-grid-list>
 
+  <hr>
+  <h2>Menu</h2>
+
+  <button mat-button (click)="addMenuItem()">Add</button>
+  <mat-grid-list cols="4" rowHeight="50px" *ngFor="let menu of menuList">
+    <mat-grid-tile class="p-2 bd-highlight">{{menu.name}}</mat-grid-tile>
+    <mat-grid-tile class="p-2 bd-highlight">{{menu.description}}</mat-grid-tile>
+    <mat-grid-tile class="p-2 bd-highlight">{{menu.price}}</mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-button>Edit</button>
+      <button mat-button>Delete</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
 </mat-drawer-container>
 
