@@ -1,9 +1,6 @@
 package com.backend.restaurantApi.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "restaurant_menu_item")

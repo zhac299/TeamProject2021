@@ -59,7 +59,15 @@ public class Staff {
    this.order = order;
  }
 
- public void setNull() {
+  public long getId() {
+    return this.id;
+  }
+
+  public void setStaffId(long id) {
+    this.id = id;
+  }
+
+ public void setOrderNull() {
    this.order = null;
  }
 

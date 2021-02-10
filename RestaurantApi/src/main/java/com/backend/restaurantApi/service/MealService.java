@@ -2,7 +2,6 @@ package com.backend.restaurantApi.service;
 
 import java.util.Optional;
 
-import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.MenuNotFoundException;
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
