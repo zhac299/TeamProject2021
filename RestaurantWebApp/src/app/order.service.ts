@@ -11,8 +11,11 @@ import {Menu} from "../models/Menu";
 export class OrderService {
 
   mockDbUrl = 'http://localhost:3000/orders';
-  restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders/';
+  restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders';
   mealsURL = 'http://localhost:8080/api/v1/meals';
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private httpClient: HttpClient) { }
 
@@ -28,7 +31,7 @@ export class OrderService {
   //   return this.httpClient.post(this.mockDbUrl);
   // }
   createNewOrder(): Observable<Order> {
-    return this.httpClient.get<Order>(`${this.restaurantWebApiUrl}/create`)
+    return this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order(),this.httpOptions)
       .pipe(
         map(response => response)
       );
