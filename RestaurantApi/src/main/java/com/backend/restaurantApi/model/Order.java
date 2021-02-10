@@ -23,8 +23,7 @@ public class Order {
     private List<Meal> meal;
 
     @Column(name = "staff", nullable = false)
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="order", targetEntity=Staff.class)
-    private List<Staff> staff;
+    private long waiterId;
 
     // used to serialize object to json
     @Override
@@ -33,7 +32,7 @@ public class Order {
             "id=" + id +
             ", customerTableNum='" + customerTableNum + '\'' +
             ", meal='" + meal + '\'' +
-            ", staff='" + staff + '\'' +
+            ", waiterId='" + waiterId + '\'' +
             '}';
     }
 
@@ -67,11 +66,11 @@ public class Order {
         this.customerTableNum = customerTableNum;
     }
 
-    public List<Staff> getStaff() {
-        return staff;
+    public long getWaiterId() {
+        return waiterId;
     }
 
-    public void setStaff(List<Staff> staff) {
-        this.staff = staff;
+    public void setWaiterId(long waiterId) {
+        this.waiterId = waiterId;
     }
 }

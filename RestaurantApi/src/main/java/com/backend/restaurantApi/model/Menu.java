@@ -66,7 +66,7 @@ public class Menu {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setMenuId(Long id) {
         this.id = id;
     }
 
