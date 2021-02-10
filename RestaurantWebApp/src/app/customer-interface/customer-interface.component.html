@@ -14,6 +14,9 @@
 </form>
 <br>
 <h2 id = "Fajitas">Fajitas</h2>
+  <p *ngFor="let menu of menuList">
+    {{menu.id}}:{{menu.name}} - {{menu.description}}
+  </p>
 <h3 id = "Nachos">Nachos</h3>
 <h4 id = "Dips">Dips</h4>
 <h5 id = "Deserts">Deserts</h5>
