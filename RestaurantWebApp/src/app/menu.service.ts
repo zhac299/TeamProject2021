@@ -10,12 +10,18 @@ import {map} from 'rxjs/operators';
 export class MenuService {
 
   mockDbUrl = 'http://localhost:3000/menu';
-  restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu/';
+  restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu';
 
   constructor(private httpClient: HttpClient) { }
 
   public getMenu(): Observable<Menu[]> {
     return this.httpClient.get<Menu[]>(this.restaurantWebApiUrl)
+      .pipe(
+        map(response => response)
+      );
+  }
+  public getMenuById(id: number): Observable<Menu>{
+    return this.httpClient.get<Menu>(`${this.restaurantWebApiUrl}/${id}`)
       .pipe(
         map(response => response)
       );

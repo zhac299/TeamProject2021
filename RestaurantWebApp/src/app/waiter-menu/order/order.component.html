@@ -1,17 +1,25 @@
-<h1 mat-dialog-title>Table {{data.number}}</h1>
+<h1 mat-dialog-title>Order #{{data.id}}</h1>
 <mat-dialog-content class="mat-typography">
   <mat-grid-list cols="4" rowHeight="fit" style="height: 400px">
     <mat-grid-tile colspan="1" class="tile">
       <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title>Orders:</mat-card-title>
-        </mat-card-header>
+<!--        <mat-card-header>-->
+<!--          <mat-card-title>Orders:</mat-card-title>-->
+<!--        </mat-card-header>-->
         <mat-card-content>
-            <mat-list *ngFor="let order of orders">
-              <mat-list-item *ngFor="let meal of order.meal">
-                <h3 mat-subheader>{{order.id}}</h3>
-                <p style="font-size:10px" mat-line>{{meal.name}}</p>
-                <p>({{meal.price}})</p>
+            <mat-list *ngFor="let meal of data.meal">
+<!--              <mat-list-item *ngFor="let meal of order.meal">-->
+              <mat-list-item>
+                <h3 mat-subheader>£{{meal.id}}</h3>
+
+<!--                <h3 *ngIf="menu != null; else nullMenuBlock">-->
+<!--                  Order #{{menu.id}}: Ordered</h3>-->
+<!--                <ng-template #nullMenuBlock>-->
+<!--                  <h3>Add To Order</h3>-->
+<!--                </ng-template>-->
+
+                <p style="font-size:10px" mat-line>{{this.getMenuById(meal.meal_id).name}}</p>
+<!--                <p>({{menu.price}})</p>-->
 <!--                <h4 mat-line>{{meal.description}}</h4>-->
                 <button mat-button><mat-icon>delete</mat-icon></button>
               </mat-list-item>
@@ -30,8 +38,8 @@
         </mat-card-header>
         <mat-card-content>
           <mat-grid-list cols="4" rowHeight="50px">
-            <mat-grid-tile *ngFor="let order of orders" colspan="1">
-              <button mat-raised-button style="width: 100%; color: green">{{order.id}}</button>
+            <mat-grid-tile *ngFor="let menu of menuItems" colspan="1">
+              <button mat-raised-button style="width: 100%; color: green">{{menu.name}}</button>
             </mat-grid-tile>
 <!--            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">-->
 <!--              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>-->

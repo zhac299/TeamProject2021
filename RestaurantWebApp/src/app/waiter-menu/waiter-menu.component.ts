@@ -37,7 +37,6 @@ export class WaiterMenuComponent implements OnInit {
     });
     this.orderService.getOrders().subscribe(orders => {
       this.orders = orders;
-      console.log(orders);
     });
   }
 
@@ -56,7 +55,7 @@ export class WaiterMenuComponent implements OnInit {
   openOrderDialog(order: Order): void {
     // this.dialogTable = table;
     const dialogRef = this.dialog.open(OrderComponent, {
-      data: this.orders,
+      data: order,
       width: '99%',
       height: '99%'
     });
