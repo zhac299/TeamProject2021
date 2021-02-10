@@ -17,20 +17,20 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
     (value = 
     " SELECT * FROM restaurant_menu" +
     " WHERE " +
-    " :peanuts <> peanuts AND " +
-    " :celery <> celery AND " +
-    " :gluten <> gluten AND " +
-    " :crustaceans <> crustaceans AND " + 
-    " :eggs <> eggs AND " +
-    " :fish <> fish AND " +
-    " :lupin <> lupin AND " +
-    " :milk <> milk AND " +
-    " :molluscs <> molluscs AND " +
-    " :mustard <> mustard AND " +
-    " :nuts <> nuts AND " +
-    " :soya <> soya AND " +
-    " :sesame_seeds <> sesame_seeds AND " +
-    " :sulphites <> sulphites",
+    " 1 = CASE WHEN :peanuts = true THEN peanuts = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :celery = true THEN celery = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :gluten = true THEN gluten = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :crustaceans = true THEN crustaceans = false ELSE 1 END AND" + 
+    " 1 = CASE WHEN :eggs = true THEN eggs = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :fish = true THEN fish = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :lupin = true THEN lupin = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :milk = true THEN milk = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :molluscs = true THEN molluscs = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :mustard = true THEN mustard = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :nuts = true THEN nuts = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :soya = true THEN soya = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :sesame_seeds = true THEN sesame_seeds = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :sulphites = true THEN sulphites = false ELSE 1 END",
      nativeQuery = true)
     public List<Menu> filterByAllergens( 
         @Param("peanuts") Boolean peanuts,
