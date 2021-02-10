@@ -70,4 +70,8 @@ public class MenuService {
             sulphites);
     }
 
+    public List<Menu> filterByCalories(Long calories) {
+        return menuRepository.filterByCalories(calories);
+    }
+
 }
