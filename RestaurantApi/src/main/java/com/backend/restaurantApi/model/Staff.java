@@ -67,7 +67,7 @@ public class Staff {
     this.id = id;
   }
 
- public void setNull() {
+ public void setOrderNull() {
    this.order = null;
  }
 
