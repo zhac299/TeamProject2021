@@ -8,20 +8,13 @@ import { selectedCategory } from 'src/models/selectedCategory';
   styleUrls: ['./food-categories.component.sass']
 })
 export class FoodCategoriesComponent implements OnInit {
-    cat: selectedCategory = new selectedCategory;
     constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
-      this.cat = this.filterService.getCat();
     }
-    /*
-        TODO:
-        Create a onFilter(cat) method in filterSevice
-        Get the orderList from filterService and change cat so 'meal' contains new order objects.
-        in filterService we can do:
-        this.getOrders().subscribe( orders => {
-            this.orderList = orders;
-        }
-    */
+
+    onClick(name:string): void{
+      this.filterService.modifyCat(name);
+    }
 
 }

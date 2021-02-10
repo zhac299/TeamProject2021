@@ -27,18 +27,11 @@ interface Food {
 })
 export class CustomerInterfaceComponent implements OnInit {
 
-  orderList: Order[] = [];
-    cat: selectedCategory = new selectedCategory;
-    sOrder: Order[] = [];
-
-  constructor(private orderService: OrderService, private filterService: FilterService) { }
+    orderList: Order[] = [];
+  
+  constructor() { }
 
   ngOnInit(): void {
-    this.orderService.getOrders().subscribe( orders => {
-        this.orderList = orders;
-        
-        this.cat = this.filterService.getCat();
-    });
   }
 }
 

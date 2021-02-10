@@ -46,7 +46,17 @@ export class FilterService {
         return this.cat;
     }
 
-    modifyCat(newCat: string): selectedCategory { 
+    modifyCat(newCat: string): selectedCategory {
+        this.sOrder = [];
+        this.cat.name = newCat;
+
+        for (let order of this.orderList) { 
+            if (order.category == newCat) { 
+                this.sOrder.push(order);
+            }
+        }
+        
+        this.cat.meal = this.sOrder;
         return this.cat;
     }
 }
