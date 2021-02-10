@@ -3,7 +3,6 @@ package com.backend.restaurantApi.repository;
 import java.util.List;
 
 import com.backend.restaurantApi.model.Menu;
-import com.backend.restaurantApi.model.MenuItem;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
