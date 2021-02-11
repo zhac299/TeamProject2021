@@ -19,6 +19,7 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
+    console.log(this.data);
     this.dialogRef.close();
   }
 

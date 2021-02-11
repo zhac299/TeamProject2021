@@ -9,6 +9,8 @@ import {Drink} from "../../../models/Drink";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
 import {Meal} from "../../../models/Meal";
+import {tap} from "rxjs/operators";
+import {pipe} from "rxjs";
 
 @Component({
   selector: 'app-order',
