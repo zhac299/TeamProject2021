@@ -51,4 +51,8 @@ export class OrderService {
         map(response => response)
       );
   }
+
+  deleteOrderById(mealId: number): Observable<Menu> {
+    return this.httpClient.deleteOrderById<Menu>(`${this.mealsURL}/${mealId}`)
+  }
 }
