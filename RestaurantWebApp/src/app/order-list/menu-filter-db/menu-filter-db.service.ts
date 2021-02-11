@@ -13,6 +13,7 @@ export class MenuFilterDbService {
 
   filteredDB = 'http://localhost:8080/api/v1/menu/filter';
   s = '';
+  meals: Meal[];
   constructor(private httpClient: HttpClient, private allergensChipsComponent: AllergensChipsComponent) { }
 
   public filter(): Observable<Meal[]> {
@@ -24,5 +25,12 @@ export class MenuFilterDbService {
       .pipe(
         map(response => response)
       );
+  }
+
+  public setFilter(): Meal[] {
+    this.filter().subscribe( orders => {
+      this.meals = orders;
+    }); 
+    return this.meals;
   }
 }
