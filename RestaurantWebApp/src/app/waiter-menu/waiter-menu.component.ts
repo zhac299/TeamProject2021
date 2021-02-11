@@ -39,17 +39,27 @@ export class WaiterMenuComponent implements OnInit {
       this.getAllOrders();
     });
     this.getAllOrders();
-    this.tableService.getTables().subscribe( orders => {
-      // checks which incoming tables have orders
-      for (const table of orders){
-        // updates counter
-        if (table.hasOrder){this.freeTables++; }
-      }
-      this.tableList = orders;
-    });
+
+    this.menuService.refreshNeeded.subscribe(() => {
+      this.getAllMenus();
+    })
+    this.getAllMenus();
+
+    // this.tableService.getTables().subscribe( orders => {
+    //   // checks which incoming tables have orders
+    //   for (const table of orders){
+    //     // updates counter
+    //     if (table.hasOrder){this.freeTables++; }
+    //   }
+    //   this.tableList = orders;
+    // });
+
+  }
+
+  getAllMenus(): void {
     this.menuService.getMenu().subscribe(menu => {
       this.menuList = menu;
-    })
+    });
   }
 
   getAllOrders(): void {
