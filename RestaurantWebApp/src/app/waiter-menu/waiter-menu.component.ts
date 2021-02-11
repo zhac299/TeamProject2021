@@ -82,8 +82,9 @@ export class WaiterMenuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
       if (result){
-        this.menuService.updateMenu(result);
+        this.menuService.updateMenu(result).subscribe(data=> result = data)
       }
     });
   }
@@ -101,5 +102,11 @@ export class WaiterMenuComponent implements OnInit {
   // addMenuItem(): void {
   //   this.menuService.
   // }
+  deleteMenuItem(menu: Menu) {
+    this.menuService.deleteMenu(menu).subscribe();
+    this.menuService.getMenu().subscribe(menu => {
+      this.menuList = menu;
+    })
+  }
 }
 

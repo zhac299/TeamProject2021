@@ -32,9 +32,13 @@ export class MenuService {
   }
 
   updateMenu(menu: Menu) {
-    return this.httpClient.put<Menu>(this.restaurantWebApiUrl,menu,this.httpOptions)
+    return this.httpClient.put<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`,menu)
       .pipe(
         map(response=> response)
       );
+  }
+
+  deleteMenu(menu: Menu): Observable<Menu>{
+    return this.httpClient.delete<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`);
   }
 }
