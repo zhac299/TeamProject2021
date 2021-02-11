@@ -49,7 +49,7 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  deleteOrder(): Order {
-    return this.orderService.deleteOrderById(this.data.id);   
+  deleteOrder(): void {
+    this.orderService.deleteOrderById(this.data.id).subscribe();
   }
 }

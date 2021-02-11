@@ -52,7 +52,7 @@ export class OrderService {
       );
   }
 
-  deleteOrderById(mealId: number): Observable<Menu> {
-    return this.httpClient.deleteOrderById<Menu>(`${this.mealsURL}/${mealId}`)
+  deleteOrderById(orderId: number): Observable<Order> {
+    return this.httpClient.delete<Order>(`${this.restaurantWebApiUrl}/${orderId}`);
   }
 }

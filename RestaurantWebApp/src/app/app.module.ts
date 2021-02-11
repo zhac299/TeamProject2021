@@ -29,6 +29,7 @@ import {MatTableModule} from "@angular/material/table";
 import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
 import {MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -44,27 +45,28 @@ import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-d
     EditDialogComponent,
     AddMenuDialogComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        CommonModule,
-        MatDialogModule,
-        MatCardModule,
-        MatButtonModule,
-        MatGridListModule,
-        MatDividerModule,
-        MatListModule,
-        MatIconModule,
-        MatSelectModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatTableModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    CommonModule,
+    MatDialogModule,
+    MatCardModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatListModule,
+    MatIconModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatCheckboxModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
