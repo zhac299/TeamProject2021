@@ -88,9 +88,7 @@ export class WaiterMenuComponent implements OnInit {
       height: '99%'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+    dialogRef.afterClosed().subscribe();
   }
 
   openAddDialog(menu:Menu): void {

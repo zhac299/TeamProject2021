@@ -34,6 +34,7 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     // this.orderService.getOrders().subscribe(orders => this.orders = orders);
     // this.menuService.getMenuById(this.data.id).subscribe(menu => this.menu = menu);
+
     this.menuService.getMenu().subscribe(menuItems => this.menuList = menuItems);
     this.findMealFromMenu();
   }
@@ -52,7 +53,9 @@ export class OrderComponent implements OnInit {
   }
 
   deleteOrder(): void {
-    this.orderService.deleteOrderById(this.data.id).subscribe();
+    this.orderService.deleteOrderById(this.data.id).subscribe(
+
+    );
     this.dialogRef.close();
   }
 }
