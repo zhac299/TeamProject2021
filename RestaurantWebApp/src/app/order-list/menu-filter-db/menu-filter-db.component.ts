@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meal } from 'src/models/Meal';
 import { Order } from 'src/models/Order';
 import { MenuFilterDbService } from './menu-filter-db.service';
 
@@ -8,7 +9,7 @@ import { MenuFilterDbService } from './menu-filter-db.service';
   styleUrls: ['./menu-filter-db.component.sass']
 })
 export class MenuFilterDBComponent implements OnInit {
-  orderList: Order[] = [];
+  orderList: Meal[] = [];
   filter = "";
 
   constructor(private filterService: MenuFilterDbService) { }
@@ -19,7 +20,8 @@ export class MenuFilterDBComponent implements OnInit {
           });  
     }
 
-    filterMenu(): void {
-      this.filterService.filter();
+    getFilteredMenu(): Meal[] {
+      //console.log(this.orderList);
+      return this.orderList;
     }
 }

@@ -34,6 +34,7 @@ import { CaloriesSliderComponent } from './customer-interface/calories-slider/ca
 import {MatSliderModule} from '@angular/material/slider';
 import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
 import { MenuFilterDBComponent } from './order-list/menu-filter-db/menu-filter-db.component';
+import { MenuFilterDbService } from './order-list/menu-filter-db/menu-filter-db.service';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,7 @@ import { MenuFilterDBComponent } from './order-list/menu-filter-db/menu-filter-d
     MatAutocompleteModule,
     MatSliderModule
   ],
-  providers: [],
+  providers: [AllergensChipsComponent, MenuFilterDBComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

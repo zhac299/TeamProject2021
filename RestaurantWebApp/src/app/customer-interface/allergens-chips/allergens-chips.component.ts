@@ -20,10 +20,10 @@ export class AllergensChipsComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   allergensCtrl = new FormControl();
   filteredAllergens: Observable<string[]>;
-  allergens: string[] = ['Peanuts'];
+  allergens: string[] = [];
   allAllergens: string[] = ['Celery', 'Peanuts', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Sulphites'];
   allergyArray: Boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-  allergyString: String = '/';
+  allergyString: string = '/';
 
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -74,8 +74,8 @@ export class AllergensChipsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public getAllergens(): String {
-     for(let allergen of this.allergens) {
+  public getAllergens(): string {
+    for(let allergen of this.allergens) {
       if(allergen == 'Peanuts'){
         this.allergyArray[0] = true;
       }
@@ -121,12 +121,13 @@ export class AllergensChipsComponent implements OnInit {
     }
     for(let B of this.allergyArray){
       if(B == false){
-        this.allergyString.concat('0/');
+        this.allergyString = this.allergyString.concat('0/');
       }
       else{
-        this.allergyString.concat('1/');
+        this.allergyString = this.allergyString.concat('1/');
       }
     }
+    console.log(this.allergens);
     return this.allergyString;
   }
 }
