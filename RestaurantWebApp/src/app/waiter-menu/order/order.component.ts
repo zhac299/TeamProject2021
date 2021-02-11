@@ -18,6 +18,7 @@ import {Meal} from "../../../models/Meal";
 export class OrderComponent implements OnInit {
 
   table: Table;
+  total: number = 0;
   orderedMeals: Menu[] = [];
   menu: Menu;
   menuList: Menu[] = [];
@@ -35,13 +36,14 @@ export class OrderComponent implements OnInit {
     this.findMealFromMenu();
   }
 
+  // Gets all meals from the menu and initialises menuList with those meals
   findMealFromMenu(): void {
     this.data.meal.forEach(value => {
       this.menuService.getMenuById(value.menu_id).subscribe(meal => {
         this.orderedMeals.push(meal);
+        //update price total
+        this.total += meal.price;
       });
     });
   }
-
-
 }

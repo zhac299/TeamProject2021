@@ -9,6 +9,7 @@ import {TableComponent} from "./table/table.component";
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
+import {interval, timer} from "rxjs";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -33,6 +34,11 @@ export class WaiterMenuComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'price'];
 
   ngOnInit(): void {
+
+    this.orderService.refreshNeeded.subscribe(() => {
+      this.getAllOrders();
+    });
+    this.getAllOrders();
     this.tableService.getTables().subscribe( orders => {
       // checks which incoming tables have orders
       for (const table of orders){
@@ -41,14 +47,16 @@ export class WaiterMenuComponent implements OnInit {
       }
       this.tableList = orders;
     });
-    this.orderService.getOrders().subscribe(orders => {
-      this.orders = orders;
-    });
     this.menuService.getMenu().subscribe(menu => {
       this.menuList = menu;
     })
   }
 
+  getAllOrders(): void {
+    this.orderService.getOrders().subscribe(orders => {
+      this.orders = orders;
+    });
+  }
   openTableDialog(table: Table): void {
     // this.dialogTable = table;
     const dialogRef = this.dialog.open(TableComponent, {
@@ -94,8 +102,10 @@ export class WaiterMenuComponent implements OnInit {
     this.orderService.createNewOrder()
       .subscribe(result => {
         return result;
+        // console.log(result);
+        this.orders.push(result);
       });
-    console.log(newOrder);
+    // console.log(newOrder);
     return newOrder;
   }
 

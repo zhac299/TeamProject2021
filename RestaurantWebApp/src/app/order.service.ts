@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable, Subject, TimeInterval} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Order} from '../models/Order';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 
 @Injectable({
@@ -16,8 +16,13 @@ export class OrderService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  private _refreshNeeded = new Subject<void>();
 
   constructor(private httpClient: HttpClient) { }
+
+  get refreshNeeded() {
+    return this._refreshNeeded;
+  }
 
   // Making an Http request to the database
   public getOrders(): Observable<Order[]> {
@@ -33,7 +38,10 @@ export class OrderService {
   createNewOrder(): Observable<Order> {
     return this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order(),this.httpOptions)
       .pipe(
-        map(response => response)
+        tap(()=> {
+          this._refreshNeeded.next();
+        })
+        ,map(response => response)
       );
   }
 

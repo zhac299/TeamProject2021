@@ -39,15 +39,24 @@
 <!--  <hr>-->
 
   <h2>Orders</h2>
-  <button mat-button (click)="createNewOrder()">New Order</button>
-
   <mat-grid-list cols="4" rowHeight="200px">
     <mat-grid-tile *ngFor="let order of orders" >
-      <button mat-raised-button class="hasOrder"
+      <button *ngIf="order.meal.length > 0 || order.meal == undefined; else noOrderBlock" mat-raised-button class="hasOrder"
               (click)="openOrderDialog(order)"
               color="primary">
         Order {{order.id}}</button>
+      <ng-template #noOrderBlock>
+        <button mat-raised-button class="noOrder"
+                (click)="openOrderDialog(order)"
+                color="warn">
+          Order {{order.id}}</button>
+      </ng-template>
 
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-fab color="accent"class="addOrder" (click)="createNewOrder()">
+        <mat-icon>add</mat-icon>
+      </button>
     </mat-grid-tile>
   </mat-grid-list>
 
