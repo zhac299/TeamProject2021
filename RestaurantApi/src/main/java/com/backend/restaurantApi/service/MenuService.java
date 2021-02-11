@@ -51,7 +51,8 @@ public class MenuService {
         Boolean nuts,
         Boolean soya,
         Boolean sesame_seeds,
-        Boolean sulphites) {
+        Boolean sulphites,
+        long calories) {
         return menuRepository.filterByAllergens(
             peanuts,
             celery,
@@ -66,7 +67,8 @@ public class MenuService {
             nuts,
             soya,
             sesame_seeds,
-            sulphites);
+            sulphites,
+            calories);
     }
 
     public List<Menu> filterByCalories(Long calories) {
