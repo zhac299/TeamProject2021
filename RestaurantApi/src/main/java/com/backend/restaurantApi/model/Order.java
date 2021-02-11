@@ -25,6 +25,9 @@ public class Order {
     @Column(name = "staff", nullable = false)
     private long waiterId;
 
+    @Column(name = "is_delivered")
+    private boolean isDelivered = false;
+
     // used to serialize object to json
     @Override
     public String toString() {
@@ -33,6 +36,7 @@ public class Order {
             ", customerTableNum='" + customerTableNum + '\'' +
             ", meal='" + meal + '\'' +
             ", waiterId='" + waiterId + '\'' +
+            ", isDelivered='" + isDelivered+ '\'' +
             '}';
     }
 
@@ -72,5 +76,13 @@ public class Order {
 
     public void setWaiterId(long waiterId) {
         this.waiterId = waiterId;
+    }
+
+    public void setIsDelivered(boolean isDelivered) {
+        this.isDelivered = isDelivered;
+    }
+
+    public boolean getIsDelivered() {
+        return this.isDelivered;
     }
 }
