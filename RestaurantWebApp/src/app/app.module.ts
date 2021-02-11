@@ -28,7 +28,7 @@ import { TableComponent } from './waiter-menu/table/table.component';
 import {MatTableModule} from "@angular/material/table";
 import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
 import {MatInputModule} from "@angular/material/input";
-import { AddOrderDialogComponent } from './waiter-menu/add-order-dialog/add-order-dialog.component';
+import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { AddOrderDialogComponent } from './waiter-menu/add-order-dialog/add-orde
     OrderComponent,
     TableComponent,
     EditDialogComponent,
-    AddOrderDialogComponent
+    AddMenuDialogComponent
   ],
     imports: [
         BrowserModule,

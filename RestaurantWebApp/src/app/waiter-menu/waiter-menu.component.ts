@@ -10,7 +10,7 @@ import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {interval, timer} from "rxjs";
-import {AddOrderDialogComponent} from "./add-order-dialog/add-order-dialog.component";
+import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -130,18 +130,15 @@ export class WaiterMenuComponent implements OnInit {
     })
   }
 
-  addMenuItem(menu:Menu): void {
-    this.menuService.createMenuItem(menu)
-      .subscribe( result => {
-        return result;
-      });
-  }
-
-  openAddOrderDialog() {
-    const dialogRef = this.dialog.open(AddOrderDialogComponent, {
+  openAddMenuDialog() {
+    let newMenu: Menu = new Menu();
+    const dialogRef = this.dialog.open(AddMenuDialogComponent, {
+      data: newMenu,
       width:'30%',
       height:'50%'
-    })
+    });
+
+
   }
 }
 
