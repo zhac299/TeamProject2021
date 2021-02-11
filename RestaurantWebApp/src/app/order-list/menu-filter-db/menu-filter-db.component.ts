@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/models/Order';
+import { MenuFilterDbService } from './menu-filter-db.service';
 
 @Component({
   selector: 'app-menu-filter-db',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-filter-db.component.sass']
 })
 export class MenuFilterDBComponent implements OnInit {
+  orderList: Order[] = [];
 
-  constructor() { }
+  constructor(private filterService: MenuFilterDbService) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this.filterService.filter().subscribe( orders => {
+            this.orderList = orders;
+          });  
+    }
 
 }
