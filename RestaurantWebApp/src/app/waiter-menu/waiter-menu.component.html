@@ -54,7 +54,7 @@
 
     </mat-grid-tile>
     <mat-grid-tile>
-      <button mat-fab color="accent"class="addOrder" (click)="createNewOrder()">
+      <button mat-fab color="accent"class="addOrder" (click)="openAddOrderDialog()">
         <mat-icon>add</mat-icon>
       </button>
     </mat-grid-tile>
@@ -63,7 +63,7 @@
   <hr>
   <h2>Menu</h2>
 
-  <button mat-button>Add</button>
+  <button mat-button (click)="addMenuItem()">Add</button>
 
   <mat-grid-list cols="4" rowHeight="15px">
     <mat-grid-tile>Name</mat-grid-tile>

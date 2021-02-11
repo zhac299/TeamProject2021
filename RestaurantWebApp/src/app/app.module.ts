@@ -28,6 +28,7 @@ import { TableComponent } from './waiter-menu/table/table.component';
 import {MatTableModule} from "@angular/material/table";
 import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
 import {MatInputModule} from "@angular/material/input";
+import { AddOrderDialogComponent } from './waiter-menu/add-order-dialog/add-order-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatInputModule} from "@angular/material/input";
     HomePageComponent,
     OrderComponent,
     TableComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    AddOrderDialogComponent
   ],
     imports: [
         BrowserModule,

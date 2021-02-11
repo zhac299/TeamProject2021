@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 import {Menu} from '../models/Menu';
 import {map, tap} from 'rxjs/operators';
+import {MenuPositionY} from "@angular/material/menu";
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,15 @@ export class MenuService {
       .pipe(
         tap(()=> {
           this._refreshNeeded.next();
+        })
+      );
+  }
+
+  createMenuItem(menu: Menu): Observable<Menu> {
+    return this.httpClient.post<Menu>(this.restaurantWebApiUrl,menu)
+      .pipe(
+        tap(() => {
+          this.refreshNeeded.next();
         })
       );
   }

@@ -107,16 +107,16 @@ export class WaiterMenuComponent implements OnInit {
     });
   }
 
-  createNewOrder(): Order {
+  createNewOrder(): void {
     const newOrder: Order = new Order();
     this.orderService.createNewOrder()
       .subscribe(result => {
         return result;
         // console.log(result);
-        this.orders.push(result);
+        // this.orders.push(result);
       });
     // console.log(newOrder);
-    return newOrder;
+    // return newOrder;
   }
 
   // addMenuItem(): void {
@@ -127,6 +127,17 @@ export class WaiterMenuComponent implements OnInit {
     this.menuService.getMenu().subscribe(menu => {
       this.menuList = menu;
     })
+  }
+
+  addMenuItem(menu:Menu): void {
+    this.menuService.createMenuItem(menu)
+      .subscribe( result => {
+        return result;
+      });
+  }
+
+  openAddOrderDialog() {
+    const dialogRef = this.dialog.open()
   }
 }
 
