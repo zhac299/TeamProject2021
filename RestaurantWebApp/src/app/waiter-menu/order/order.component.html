@@ -11,7 +11,7 @@
               <mat-list-item>
                 <p mat-card-subtitle style="font-size:14px" mat-line>{{meal.name}}</p>
                 <p mat-subheader>({{menu.price}})</p>
-                <button mat-button><mat-icon>delete</mat-icon></button>
+                <button mat-button (click)="deleteOrder()"><mat-icon>delete</mat-icon></button>
               </mat-list-item>
               <mat-divider></mat-divider>
             </mat-list>
