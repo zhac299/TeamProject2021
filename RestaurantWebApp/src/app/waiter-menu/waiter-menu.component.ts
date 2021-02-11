@@ -10,6 +10,7 @@ import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {interval, timer} from "rxjs";
+import {AddOrderDialogComponent} from "./add-order-dialog/add-order-dialog.component";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -137,7 +138,10 @@ export class WaiterMenuComponent implements OnInit {
   }
 
   openAddOrderDialog() {
-    const dialogRef = this.dialog.open()
+    const dialogRef = this.dialog.open(AddOrderDialogComponent, {
+      width:'30%',
+      height:'50%'
+    })
   }
 }
 
