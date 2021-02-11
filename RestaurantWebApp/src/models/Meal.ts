@@ -17,4 +17,6 @@ export class Meal{
   soya: boolean;
   sesameSeeds: boolean;
   sulphites: boolean;
+  calories: number
+  nrSelections: number
 }

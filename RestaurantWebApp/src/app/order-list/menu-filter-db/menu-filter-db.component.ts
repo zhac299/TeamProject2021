@@ -9,6 +9,7 @@ import { MenuFilterDbService } from './menu-filter-db.service';
 })
 export class MenuFilterDBComponent implements OnInit {
   orderList: Order[] = [];
+  filter = "";
 
   constructor(private filterService: MenuFilterDbService) { }
 
@@ -18,4 +19,7 @@ export class MenuFilterDBComponent implements OnInit {
           });  
     }
 
+    filterMenu(): void {
+      this.filterService.filter();
+    }
 }

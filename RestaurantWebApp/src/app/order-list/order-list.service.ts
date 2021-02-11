@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Meal } from 'src/models/Meal';
 import { Order } from 'src/models/Order';
 
 @Injectable({
@@ -12,8 +13,8 @@ export class OrderListService {
   dataBase = 'http://localhost:8080/api/v1/menu';
   constructor(private httpClient: HttpClient) { }
 
-  public getMenu(): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(this.dataBase)
+  public getMenu(): Observable<Meal[]> {
+    return this.httpClient.get<Meal[]>(this.dataBase)
       .pipe(
         map(response => response)
       );
