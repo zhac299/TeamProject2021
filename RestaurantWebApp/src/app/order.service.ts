@@ -53,6 +53,7 @@ export class OrderService {
   }
 
   deleteOrderById(orderId: number): Observable<Order> {
-    return this.httpClient.delete<Order>(`${this.restaurantWebApiUrl}/${orderId}`);
+    return this.httpClient.delete<Order>(`${this.restaurantWebApiUrl}/${orderId}`).pipe(
+      tap(_ => console.log(`${orderId} has been cancelled`)));
   }
 }
