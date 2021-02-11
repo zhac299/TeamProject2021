@@ -99,7 +99,7 @@ export class WaiterMenuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      // console.log(result);
       if (result){
         this.menuService.updateMenu(result).subscribe(data=> result = data)
       }
@@ -136,6 +136,11 @@ export class WaiterMenuComponent implements OnInit {
       height:'50%'
     });
 
+    dialogRef.afterClosed().subscribe(menu => {
+      if(menu){
+        this.menuService.createMenuItem(menu).subscribe();
+      }
+    })
 
   }
 }

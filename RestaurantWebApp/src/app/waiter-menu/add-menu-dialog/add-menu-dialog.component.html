@@ -1,7 +1,5 @@
-<h1 mat-dialog-title>Edit Log</h1>
+<h1 mat-dialog-title>Add Log</h1>
 <div mat-dialog-content>
-
-
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput [(ngModel)]="data.name"/>
@@ -14,21 +12,23 @@
         <mat-label>Price</mat-label>
         <input matInput class="fixInput" [(ngModel)]="data.price"/>
       </mat-form-field>
+  <mat-list>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.peanuts">Peanuts</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.celery">Celery</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.crustaceans">Crustacenas</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.eggs">Eggs</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.fish">Fish</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.gluten">Gluten</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.lupin">Lupin</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.milk">Milk</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.molluscs">Molluscs</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.mustard">Mustard</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.nuts">Nuts</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.sesameSeeds">Sesame Seeds</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.soya">Soya</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="data.sulphites">Sulphites</mat-checkbox></mat-list-item>
+  </mat-list>
 
-  <mat-checkbox [(ngModel)]="data.peanuts">Peanuts</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.celery">Celery</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.crustaceans">Crustacenas</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.eggs">Eggs</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.fish">Fish</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.gluten">Gluten</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.lupin">Lupin</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.milk">Milk</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.molluscs">Molluscs</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.mustard">Mustard</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.nuts">Nuts</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.sesameSeeds">Sesame Seeds</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.soya">Soya</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.sulphites">Sulphites</mat-checkbox>
 
 </div>
 <div mat-dialog-actions>
