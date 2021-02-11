@@ -59,4 +59,13 @@ export class OrderService {
         this._refreshNeeded.next();
       }) );
   }
+
+  updateOrder(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`,order)
+      .pipe(
+        tap(()=> {
+          this._refreshNeeded.next();
+        })
+      )
+  }
 }

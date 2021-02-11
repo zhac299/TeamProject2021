@@ -58,4 +58,8 @@ export class OrderComponent implements OnInit {
     );
     this.dialogRef.close();
   }
+
+  updateOrder(order: Order): void {
+    this.orderService.updateOrder(order).subscribe();
+  }
 }
