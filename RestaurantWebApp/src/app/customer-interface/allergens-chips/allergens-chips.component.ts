@@ -21,7 +21,9 @@ export class AllergensChipsComponent implements OnInit {
   allergensCtrl = new FormControl();
   filteredAllergens: Observable<string[]>;
   allergens: string[] = ['Peanuts'];
-  allAllergens: string[] = ['Celery', 'Peanuts', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Suphites'];
+  allAllergens: string[] = ['Celery', 'Peanuts', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Sulphites'];
+  allergyArray: Boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+  allergyString: String = '/';
 
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -72,4 +74,59 @@ export class AllergensChipsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public getAllergens(): String {
+     for(let allergen of this.allergens) {
+      if(allergen == 'Peanuts'){
+        this.allergyArray[0] = true;
+      }
+      if(allergen == 'Celery'){
+        this.allergyArray[1] = true;
+      }
+      if(allergen == 'Gluten'){
+        this.allergyArray[2] = true;
+      }
+      if(allergen == 'Crustaceans'){
+        this.allergyArray[3] = true;
+      }
+      if(allergen == 'Eggs'){
+        this.allergyArray[4] = true;
+      }
+      if(allergen == 'Fish'){
+        this.allergyArray[5] = true;
+      }
+      if(allergen == 'Lupin'){
+        this.allergyArray[6] = true;
+      }
+      if(allergen == 'Milk'){
+        this.allergyArray[7] = true;
+      }
+      if(allergen == 'Molluscs'){
+        this.allergyArray[8] = true;
+      }
+      if(allergen == 'Mustard'){
+        this.allergyArray[9] = true;
+      }
+      if(allergen == 'Nuts'){
+        this.allergyArray[10] = true;
+      }
+      if(allergen == 'Soya'){
+        this.allergyArray[11] = true;
+      }
+      if(allergen == 'Sesame Seeds'){
+        this.allergyArray[12] = true;
+      }
+      if(allergen == 'Sulphites'){
+        this.allergyArray[13] = true;
+      }
+    }
+    for(let B of this.allergyArray){
+      if(B == false){
+        this.allergyString.concat('0/');
+      }
+      else{
+        this.allergyString.concat('1/');
+      }
+    }
+    return this.allergyString;
+  }
 }
