@@ -54,6 +54,5 @@ export class OrderComponent implements OnInit {
   deleteOrder(): void {
     this.orderService.deleteOrderById(this.data.id).subscribe();
     this.dialogRef.close();
-    console.log(`${this.data.id} has been deleted`);
   }
 }
