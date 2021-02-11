@@ -37,7 +37,7 @@ public class MenuService {
         return menuRepository.save(menu.get());
     }
 
-    public List<Menu> filterByAllergens(
+    public List<Menu> filter(
         Boolean peanuts, 
         Boolean celery,
         Boolean gluten,
@@ -52,8 +52,8 @@ public class MenuService {
         Boolean soya,
         Boolean sesame_seeds,
         Boolean sulphites,
-        long calories) {
-        return menuRepository.filterByAllergens(
+        int calories) {
+        return menuRepository.filter(
             peanuts,
             celery,
             gluten,
@@ -70,9 +70,4 @@ public class MenuService {
             sulphites,
             calories);
     }
-
-    public List<Menu> filterByCalories(Long calories) {
-        return menuRepository.filterByCalories(calories);
-    }
-
 }

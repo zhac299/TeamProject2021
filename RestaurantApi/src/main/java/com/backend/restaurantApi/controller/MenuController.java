@@ -37,8 +37,8 @@ public class MenuController {
     //Link model format to be tested in the browser http://localhost:8080/api/v1/menu/filterByAllergens/0/1/0/0/0/0/0/0/0/0/0/0/0/0
     //Boolean parameters are passed as either 1 or 0. 
     //When you make the get request, you also pass all the allergens in the link.
-    @GetMapping(path = "/menu/filterByAllergens/{peanuts}/{celery}/{gluten}/{crustaceans}/{eggs}/{fish}/{lupin}/{milk}/{molluscs}/{mustard}/{nuts}/{soya}/{sesame_seeds}/{sulphites}/{calories}")
-    public List<Menu> filterByAllergens(
+    @GetMapping(path = "/menu/filter/{peanuts}/{celery}/{gluten}/{crustaceans}/{eggs}/{fish}/{lupin}/{milk}/{molluscs}/{mustard}/{nuts}/{soya}/{sesame_seeds}/{sulphites}/{calories}")
+    public List<Menu> filter(
         @PathVariable("peanuts") Boolean peanuts,
         @PathVariable("celery") Boolean celery,
         @PathVariable("gluten") Boolean gluten,
@@ -53,7 +53,7 @@ public class MenuController {
         @PathVariable("soya") Boolean soya,
         @PathVariable("sesame_seeds") Boolean sesame_seeds,
         @PathVariable("sulphites") Boolean sulphites,
-        @PathVariable("sulphites") long calories
+        @PathVariable("calories") int calories
     ) {
         return menuService.filterByAllergens(
             peanuts,
@@ -71,10 +71,5 @@ public class MenuController {
             sesame_seeds,
             sulphites,
             calories);
-    }
-
-    @GetMapping(path = "/menu/filterByCalories/{calories}")
-    public List<Menu> filterByCalories(@PathVariable("calories") long calories) {
-        return menuService.filterByCalories(calories);
     }
 }

@@ -16,7 +16,7 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
     (value = 
     " SELECT * FROM restaurant_menu" +
     " WHERE " + 
-    " (1 = CASE WHEN :peanuts = true THEN peanuts = false ELSE 1 END AND" +
+    " 1 = CASE WHEN :peanuts = true THEN peanuts = false ELSE 1 END AND" +
     " 1 = CASE WHEN :celery = true THEN celery = false ELSE 1 END AND" +
     " 1 = CASE WHEN :gluten = true THEN gluten = false ELSE 1 END AND" +
     " 1 = CASE WHEN :crustaceans = true THEN crustaceans = false ELSE 1 END AND" + 
@@ -29,10 +29,10 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
     " 1 = CASE WHEN :nuts = true THEN nuts = false ELSE 1 END AND" +
     " 1 = CASE WHEN :soya = true THEN soya = false ELSE 1 END AND" +
     " 1 = CASE WHEN :sesame_seeds = true THEN sesame_seeds = false ELSE 1 END AND" +
-    " 1 = CASE WHEN :sulphites = true THEN sulphites = false ELSE 1 END ) AND"+
-    "( calories < :calories ) ",
+    " 1 = CASE WHEN :sulphites = true THEN sulphites = false ELSE 1 END AND"+
+    " 1 = CASE WHEN :calories > -1 THEN :calories > calories ELSE 1 END",
      nativeQuery = true)
-    public List<Menu> filterByAllergens( 
+    public List<Menu> filter( 
         @Param("peanuts") Boolean peanuts,
         @Param("celery") Boolean celery,
         @Param("gluten") Boolean gluten,
@@ -47,13 +47,5 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
         @Param("soya") Boolean soya,
         @Param("sesame_seeds") Boolean sesame_seeds,
         @Param("sulphites") Boolean sulphites,
-        @Param("calories") long calories);
-
-    @Query(
-        value = "SELECT * FROM restaurant_menu WHERE calories < :calories",
-        nativeQuery = true
-    )
-    public List<Menu> filterByCalories(
-        @Param("calories") long calories
-    );
+        @Param("calories") int calories);
 }
