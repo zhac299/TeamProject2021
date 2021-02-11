@@ -33,6 +33,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CaloriesSliderComponent } from './customer-interface/calories-slider/calories-slider.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
+import { MenuFilterDBComponent } from './order-list/menu-filter-db/menu-filter-db.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FoodCategoriesComponent } from './customer-interface/food-categories/fo
     ExpansionPannelComponent,
     AllergensChipsComponent,
     CaloriesSliderComponent,
-    FoodCategoriesComponent
+    FoodCategoriesComponent,
+    MenuFilterDBComponent
   ],
   imports: [
     BrowserModule,
