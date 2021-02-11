@@ -55,7 +55,7 @@ public class MenuController {
         @PathVariable("sulphites") Boolean sulphites,
         @PathVariable("calories") int calories
     ) {
-        return menuService.filterByAllergens(
+        return menuService.filter(
             peanuts,
             celery,
             gluten,
