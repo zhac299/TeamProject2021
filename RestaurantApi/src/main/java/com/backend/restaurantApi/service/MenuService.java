@@ -32,7 +32,7 @@ public class MenuService {
         } else {
             // create the meal and add it to menu
             mealService.createNewMeal(meal);
-            menu.get().getMeal().add(meal);
+//            menu.get().getMeal().add(meal);
         }
         return menuRepository.save(menu.get());
     }
@@ -70,4 +70,11 @@ public class MenuService {
             sulphites,
             calories);
     }
+    public Menu updateMenuItem(Long id, Menu menu) {
+		menu.setMenuId(id);
+        return menuRepository.save(menu);
+	}
+    public void deleteMenuItem(Long id) {
+        menuRepository.deleteById(id);
+	}
 }

@@ -33,6 +33,12 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CaloriesSliderComponent } from './customer-interface/calories-slider/calories-slider.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
+import { TableComponent } from './waiter-menu/table/table.component';
+import {MatTableModule} from "@angular/material/table";
+import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
+import {MatInputModule} from "@angular/material/input";
+import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -48,7 +54,10 @@ import { FoodCategoriesComponent } from './customer-interface/food-categories/fo
     ExpansionPannelComponent,
     AllergensChipsComponent,
     CaloriesSliderComponent,
-    FoodCategoriesComponent
+    FoodCategoriesComponent,
+    TableComponent,
+    EditDialogComponent,
+    AddMenuDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +65,7 @@ import { FoodCategoriesComponent } from './customer-interface/food-categories/fo
     HttpClientModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    MatInputModule,
     FormsModule,
     CommonModule,
     MatDialogModule,
@@ -71,7 +81,9 @@ import { FoodCategoriesComponent } from './customer-interface/food-categories/fo
     MatExpansionModule,
     MatChipsModule, 
     MatAutocompleteModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTableModule,
+    MatCheckboxModule,
   ],
   providers: [AllergensChipsComponent, OrderListComponent],
   bootstrap: [AppComponent]

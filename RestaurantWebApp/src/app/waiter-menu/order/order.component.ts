@@ -6,6 +6,11 @@ import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
 import {DrinkService} from "../../drink.service";
 import {Drink} from "../../../models/Drink";
+import {MenuService} from "../../menu.service";
+import {Menu} from "../../../models/Menu";
+import {Meal} from "../../../models/Meal";
+import {tap} from "rxjs/operators";
+import {pipe} from "rxjs";
 
 @Component({
   selector: 'app-order',
@@ -14,32 +19,47 @@ import {Drink} from "../../../models/Drink";
 })
 export class OrderComponent implements OnInit {
 
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-
   table: Table;
-  orders: Order[] = [];
-  drinks: Drink[];
+  total: number = 0;
+  orderedMeals: Menu[] = [];
+  // menu: Menu;
+  menuList: Menu[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Table,
-    private orderService: OrderService) {}
+    @Inject(MAT_DIALOG_DATA) public data: Order,
+    private orderService: OrderService,
+    public menuService: MenuService) {}
 
   ngOnInit(): void {
-    this.orderService.getOrders().subscribe(orders => this.orders = orders);
-    // this.drinkService.getOrders().subscribe(drinks => this.drinks = drinks);
+    // this.orderService.getOrders().subscribe(orders => this.orders = orders);
+    // this.menuService.getMenuById(this.data.id).subscribe(menu => this.menu = menu);
+
+    this.menuService.getMenu().subscribe(menuItems => this.menuList = menuItems);
+    this.findMealFromMenu();
   }
 
-}
+  // Gets all meals from the menu and initialises menuList with those meals
+  findMealFromMenu(): void {
+    if (this.data.meal.length > 0 || this.data.meal != undefined) {
+      this.data.meal.forEach(value => {
+        this.menuService.getMenuById(value.menu_id).subscribe(meal => {
+          this.orderedMeals.push(meal);
+          //update price total
+          this.total += meal.price;
+        });
+      });
+    }
+  }
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
+  deleteOrder(): void {
+    this.orderService.deleteOrderById(this.data.id).subscribe(
+
+    );
+    this.dialogRef.close();
+  }
+
+  updateOrder(order: Order): void {
+    this.orderService.updateOrder(order).subscribe();
+  }
 }

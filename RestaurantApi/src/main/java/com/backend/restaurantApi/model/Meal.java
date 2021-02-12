@@ -17,29 +17,15 @@ public class Meal {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "menu_id")
+    private Long menu_id;
+
     @JsonBackReference(value = "order")
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = true)
     private Order order;
 
-    @JsonBackReference(value = "menu")
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "menu_id", nullable = false)
-    private Menu menu;
-
-    @Override
-    public String toString() {
-        return "Meal{" +
-                "id=" + id +
-                ", order=" + order +
-                '}';
-    }
-
     public Meal() {}
-
-    public void setMealId(Long id) {
-        this.id = id;
-    }
 
     public Long getId() {
         return id;
@@ -47,5 +33,21 @@ public class Meal {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getMenu_id() {
+        return menu_id;
+    }
+
+    public void setMenu_id(Long menu_id) {
+        this.menu_id = menu_id;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
