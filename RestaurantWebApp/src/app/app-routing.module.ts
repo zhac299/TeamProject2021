@@ -10,7 +10,7 @@ import {OrderComponent} from './waiter-menu/order/order.component';
 
 const routes: Routes = [
   {path: 'table/:id', component: OrderComponent},
-  { path: '', component: HomePageComponent },
+  { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginInputComponent },
   { path: 'waiter-menu', component: WaiterMenuComponent },
   { path: 'order-list', component: OrderListComponent },
