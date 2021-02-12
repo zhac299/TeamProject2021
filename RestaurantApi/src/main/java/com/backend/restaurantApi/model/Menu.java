@@ -1,21 +1,27 @@
 package com.backend.restaurantApi.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "restaurant_menu")
+@Table(name = "restaurant_menu_item")
 public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
+
+    @Column(name = "calories")
+    private int calories = 0;
+
+    @Column(name = "category")
+    private String category = null;
+
     @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "price")
     private Double price;
@@ -62,16 +68,8 @@ public class Menu {
     @Column(name = "sulphites")
     private boolean sulphites = false;
 
-    @Column(name = "calories")
-    private int calories = 0;
-
-    @Column(name = "category")
-    private String category = null;
-
-    @JsonManagedReference(value = "menu")
-    @Column(name = "meal", nullable = false)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "menu")
-    private List<Meal> meal;
+    @Column(name = "sulphites")
+    private String meal = "";
 
     public Menu() {}
 
@@ -131,16 +129,6 @@ public class Menu {
     }
     public String getCategory() {
         return category;
-    }
-    public List<Meal> getMeal() {
-        return meal;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public void setMeal(List<Meal> meal) {
-        this.meal = meal;
     }
     public void setName(String name) {
         this.name = name;

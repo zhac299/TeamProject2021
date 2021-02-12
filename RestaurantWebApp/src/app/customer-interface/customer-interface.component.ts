@@ -44,7 +44,7 @@ export class CustomerInterfaceComponent implements OnInit {
     {viewValue: 'Deserts', mappedOrders:[this.orderList[1]], selected: false}
   ];
   findCategory(food): void {
-    for(let f of this.foods) { 
+    for(let f of this.foods) {
       if (food == f) {
         f.selected = true;
       } else {

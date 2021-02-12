@@ -1,6 +1,4 @@
-import {Order} from "./Order";
-
-export class Meal{
+export class Menu{
   id: number;
   name: string;
   description: string;
@@ -19,9 +17,4 @@ export class Meal{
   soya: boolean;
   sesameSeeds: boolean;
   sulphites: boolean;
-  calories: number
-  nrSelections: number
-  // tslint:disable-next-line:variable-name
-  menu_id: number;
-  order: Order[];
 }
