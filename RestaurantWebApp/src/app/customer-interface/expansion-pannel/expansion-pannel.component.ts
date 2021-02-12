@@ -19,10 +19,4 @@ export class ExpansionPannelComponent implements OnInit {
   ngOnInit(): void {
  
   }
-
-  public passFiltersArgs(): void {
-    //let filterArgs = this.chips.getAllergens();
-    //console.log(filterArgs);
-    //this.orderListComponent.filter(filterArgs);
-  }
 }
