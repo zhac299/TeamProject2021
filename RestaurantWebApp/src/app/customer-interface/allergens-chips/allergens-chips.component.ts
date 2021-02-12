@@ -6,7 +6,6 @@ import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/a
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-
 @Component({
   selector: 'allergens-chips',
   templateUrl: './allergens-chips.component.html',
@@ -28,7 +27,8 @@ export class AllergensChipsComponent implements OnInit {
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-   constructor() {
+   constructor(
+   ) {
     this.filteredAllergens = this.allergensCtrl.valueChanges.pipe(
         startWith(null),
         map((allergen: string | null) => allergen ? this._filter(allergen) : this.allAllergens.slice()));
@@ -42,7 +42,6 @@ export class AllergensChipsComponent implements OnInit {
     if ((value || '').trim()) {
       this.allergens.push(value.trim());
     }
-
     // Reset the input value
     if (input) {
       input.value = '';
@@ -63,6 +62,7 @@ export class AllergensChipsComponent implements OnInit {
     this.allergens.push(event.option.viewValue);
     this.allergenInput.nativeElement.value = '';
     this.allergensCtrl.setValue(null);
+    //console.log(this.allergens);
   }
 
   private _filter(value: string): string[] {
@@ -75,6 +75,10 @@ export class AllergensChipsComponent implements OnInit {
   }
 
   public getAllergens(): string {
+    if(localStorage.getItem('allergens') == null){}
+    else{
+      this.allergens = JSON.parse(localStorage.getItem('allergens'));
+    }
     for(let allergen of this.allergens) {
       if(allergen == 'Peanuts'){
         this.allergyArray[0] = true;
@@ -128,6 +132,9 @@ export class AllergensChipsComponent implements OnInit {
       }
     }
     console.log(this.allergens);
-    return this.allergyString;
+
+    let temp:string = this.allergyString;
+    this.allergyString = '/';
+    return temp;
   }
 }

@@ -33,8 +33,6 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CaloriesSliderComponent } from './customer-interface/calories-slider/calories-slider.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
-import { MenuFilterDBComponent } from './order-list/menu-filter-db/menu-filter-db.component';
-import { MenuFilterDbService } from './order-list/menu-filter-db/menu-filter-db.service';
 
 @NgModule({
   declarations: [
@@ -50,8 +48,7 @@ import { MenuFilterDbService } from './order-list/menu-filter-db/menu-filter-db.
     ExpansionPannelComponent,
     AllergensChipsComponent,
     CaloriesSliderComponent,
-    FoodCategoriesComponent,
-    MenuFilterDBComponent
+    FoodCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +73,7 @@ import { MenuFilterDbService } from './order-list/menu-filter-db/menu-filter-db.
     MatAutocompleteModule,
     MatSliderModule
   ],
-  providers: [AllergensChipsComponent, MenuFilterDBComponent],
+  providers: [AllergensChipsComponent, OrderListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

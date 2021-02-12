@@ -3,8 +3,9 @@ import { Order } from 'src/models/Order';
 import { OrderComponent } from '../order/order.component';
 import { CommonModule } from '@angular/common';  
 import { selectedCategory } from 'src/models/selectedCategory';
-import { MenuFilterDbService } from './menu-filter-db/menu-filter-db.service';
 import { Meal } from 'src/models/Meal';
+import { Observable } from 'rxjs';
+import { OrderListService} from './order-list.service';
 
 @Component({
   selector: 'app-order-list',
@@ -13,25 +14,26 @@ import { Meal } from 'src/models/Meal';
 })
 export class OrderListComponent implements OnInit {
 
-    mealList: Meal[] = [];
-    cat: selectedCategory = new selectedCategory;
+  mealList: Meal[] = [];
     
   constructor(
-    private filterService: MenuFilterDbService
+    private orderListService: OrderListService
     ) { }
 
-    ngOnInit(): void {
-      this.filterService.filter().subscribe( orders => {
-          this.mealList = orders;
-        });  
-  }
-    
+  ngOnInit(): void {
+      this.orderListService.setUp().subscribe( orders => {
+        this.mealList = orders;
+      });
+    }
+
+  filter(filterArgs: string): void {
+      this.orderListService.filter(filterArgs).subscribe( orders => {
+        //console.log(orders);
+        this.mealList = orders;
+      });
+    }
+}
   
-    
-
-
-
-
     // NEEDS TO BE REFACTORED
   //
   //   for(let order of this.orderList) {
@@ -47,4 +49,3 @@ export class OrderListComponent implements OnInit {
   // removeItem(order: Order): void{
   //   order.selected = false;
   //   order.nrSelections --;
-}
