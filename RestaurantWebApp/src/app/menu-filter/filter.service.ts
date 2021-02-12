@@ -12,7 +12,7 @@ export class FilterService {
     cat: selectedCategory = new selectedCategory;
     orderList: Order[] = [];
     sOrder: Order[] = [];
-    mockDbUrl = 'http://localhost:3000/Orders'
+    mockDbUrl = 'http://localhost:8080/api/v1/menu/'
    
     constructor(private httpClient: HttpClient) { }
     

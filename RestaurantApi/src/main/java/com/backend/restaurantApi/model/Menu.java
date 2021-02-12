@@ -63,7 +63,7 @@ public class Menu {
     private boolean sulphites = false;
 
     @Column(name = "calories")
-    private long calories = 0;
+    private int calories = 0;
 
     @Column(name = "category")
     private String category = null;
@@ -126,7 +126,7 @@ public class Menu {
     public boolean getSulphites() {
         return sulphites;
     }
-    public long getCalories() {
+    public int getCalories() {
         return calories;
     }
     public String getCategory() {
@@ -190,7 +190,7 @@ public class Menu {
     public void setSulphites(boolean sulphites) {
         this.sulphites = sulphites;
     }
-    public void setCalories(Long calories) {
+    public void setCalories(int calories) {
         this.calories = calories;
     }
     public void setCategory(String category) {

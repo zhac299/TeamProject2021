@@ -28,12 +28,11 @@ export class OrderComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Table,
-    private orderService: OrderService,
-    private drinkService: DrinkService) {}
+    private orderService: OrderService) {}
 
   ngOnInit(): void {
     this.orderService.getOrders().subscribe(orders => this.orders = orders);
-    this.drinkService.getOrders().subscribe(drinks => this.drinks = drinks);
+    // this.drinkService.getOrders().subscribe(drinks => this.drinks = drinks);
   }
 
 }

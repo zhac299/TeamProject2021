@@ -73,7 +73,7 @@ import { FoodCategoriesComponent } from './customer-interface/food-categories/fo
     MatAutocompleteModule,
     MatSliderModule
   ],
-  providers: [],
+  providers: [AllergensChipsComponent, OrderListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

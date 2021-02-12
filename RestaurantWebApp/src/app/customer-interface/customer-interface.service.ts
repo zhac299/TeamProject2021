@@ -9,7 +9,7 @@ import { Order } from 'src/models/Order';
 })
 export class CustomerInterfaceService {
 
-  dataBase = 'http://localhost:3000/Customer';
+  dataBase = 'http://localhost:8080/customer';
   constructor(private httpClient: HttpClient) { }
 
   public getMenu(): Observable<Order[]> {
