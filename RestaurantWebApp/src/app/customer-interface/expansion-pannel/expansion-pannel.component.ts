@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { OrderListComponent } from 'src/app/order-list/order-list.component';
 import { OrderListService } from 'src/app/order-list/order-list.service';
 import { AllergensChipsComponent} from '../allergens-chips/allergens-chips.component';
@@ -20,8 +21,8 @@ export class ExpansionPannelComponent implements OnInit {
   }
 
   public passFiltersArgs(): void {
-    let filterArgs = this.chips.getAllergens();
+    //let filterArgs = this.chips.getAllergens();
     //console.log(filterArgs);
-    this.orderListComponent.filter(filterArgs);
+    //this.orderListComponent.filter(filterArgs);
   }
 }

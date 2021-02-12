@@ -27,10 +27,12 @@ export class OrderListComponent implements OnInit {
     }
 
   filter(filterArgs: string): void {
+      //console.log(filterArgs);
       this.orderListService.filter(filterArgs).subscribe( orders => {
-        //console.log(orders);
         this.mealList = orders;
+        console.log(orders);
       });
+      console.log(this.mealList);
     }
 }
   

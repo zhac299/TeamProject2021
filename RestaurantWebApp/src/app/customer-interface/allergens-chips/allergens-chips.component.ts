@@ -6,6 +6,7 @@ import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/a
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { OrderListComponent } from 'src/app/order-list/order-list.component';
 @Component({
   selector: 'allergens-chips',
   templateUrl: './allergens-chips.component.html',
@@ -28,6 +29,7 @@ export class AllergensChipsComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
    constructor(
+     private orderListComponent: OrderListComponent
    ) {
     this.filteredAllergens = this.allergensCtrl.valueChanges.pipe(
         startWith(null),
@@ -46,7 +48,6 @@ export class AllergensChipsComponent implements OnInit {
     if (input) {
       input.value = '';
     }
-
     this.allergensCtrl.setValue(null);
   }
 
@@ -56,13 +57,19 @@ export class AllergensChipsComponent implements OnInit {
     if (index >= 0) {
       this.allergens.splice(index, 1);
     }
+    let filterArgs = this.getAllergens();
+    //console.log(this.allergens);
+    this.orderListComponent.filter(filterArgs);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.allergens.push(event.option.viewValue);
     this.allergenInput.nativeElement.value = '';
     this.allergensCtrl.setValue(null);
-    //console.log(this.allergens);
+    
+    let filterArgs = this.getAllergens();
+    //console.log(filterArgs);
+    this.orderListComponent.filter(filterArgs);
   }
 
   private _filter(value: string): string[] {
@@ -75,10 +82,6 @@ export class AllergensChipsComponent implements OnInit {
   }
 
   public getAllergens(): string {
-    if(localStorage.getItem('allergens') == null){}
-    else{
-      this.allergens = JSON.parse(localStorage.getItem('allergens'));
-    }
     for(let allergen of this.allergens) {
       if(allergen == 'Peanuts'){
         this.allergyArray[0] = true;
@@ -131,7 +134,7 @@ export class AllergensChipsComponent implements OnInit {
         this.allergyString = this.allergyString.concat('1/');
       }
     }
-    console.log(this.allergens);
+    //console.log(this.allergens);
 
     let temp:string = this.allergyString;
     this.allergyString = '/';
