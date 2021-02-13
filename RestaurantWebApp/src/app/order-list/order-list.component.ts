@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/models/Order';
 import { OrderComponent } from '../order/order.component';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { selectedCategory } from 'src/models/selectedCategory';
 import { Meal } from 'src/models/Meal';
 import { Observable } from 'rxjs';
@@ -15,12 +15,19 @@ import { OrderListService} from './order-list.service';
 export class OrderListComponent implements OnInit {
 
   mealList: Meal[] = [];
-    
+
   constructor(
     private orderListService: OrderListService
     ) { }
 
   ngOnInit(): void {
+      this.orderListService.refreshNeeded.subscribe(()=> {
+        this.getAllFilteredOrders();
+      });
+      this.getAllFilteredOrders();
+    }
+
+    getAllFilteredOrders(): void {
       this.orderListService.setUp().subscribe( orders => {
         this.mealList = orders;
       });
@@ -35,7 +42,7 @@ export class OrderListComponent implements OnInit {
       console.log(this.mealList);
     }
 }
-  
+
     // NEEDS TO BE REFACTORED
   //
   //   for(let order of this.orderList) {
