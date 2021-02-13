@@ -32,7 +32,7 @@ export class OrderListComponent implements OnInit {
         this.mealList = orders;
         console.log(orders);
       });
-      console.log(this.mealList);
+      //console.log(this.mealList);
     }
 }
   

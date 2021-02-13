@@ -22,8 +22,6 @@ export class AllergensChipsComponent implements OnInit {
   filteredAllergens: Observable<string[]>;
   allergens: string[] = [];
   allAllergens: string[] = ['Celery', 'Peanuts', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Sulphites'];
-  allergyArray: Boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-  allergyString: string = '/';
 
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -57,19 +55,12 @@ export class AllergensChipsComponent implements OnInit {
     if (index >= 0) {
       this.allergens.splice(index, 1);
     }
-    let filterArgs = this.getAllergens();
-    //console.log(this.allergens);
-    this.orderListComponent.filter(filterArgs);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.allergens.push(event.option.viewValue);
     this.allergenInput.nativeElement.value = '';
     this.allergensCtrl.setValue(null);
-    
-    let filterArgs = this.getAllergens();
-    //console.log(filterArgs);
-    this.orderListComponent.filter(filterArgs);
   }
 
   private _filter(value: string): string[] {
@@ -82,62 +73,22 @@ export class AllergensChipsComponent implements OnInit {
   }
 
   public getAllergens(): string {
-    for(let allergen of this.allergens) {
-      if(allergen == 'Peanuts'){
-        this.allergyArray[0] = true;
-      }
-      if(allergen == 'Celery'){
-        this.allergyArray[1] = true;
-      }
-      if(allergen == 'Gluten'){
-        this.allergyArray[2] = true;
-      }
-      if(allergen == 'Crustaceans'){
-        this.allergyArray[3] = true;
-      }
-      if(allergen == 'Eggs'){
-        this.allergyArray[4] = true;
-      }
-      if(allergen == 'Fish'){
-        this.allergyArray[5] = true;
-      }
-      if(allergen == 'Lupin'){
-        this.allergyArray[6] = true;
-      }
-      if(allergen == 'Milk'){
-        this.allergyArray[7] = true;
-      }
-      if(allergen == 'Molluscs'){
-        this.allergyArray[8] = true;
-      }
-      if(allergen == 'Mustard'){
-        this.allergyArray[9] = true;
-      }
-      if(allergen == 'Nuts'){
-        this.allergyArray[10] = true;
-      }
-      if(allergen == 'Soya'){
-        this.allergyArray[11] = true;
-      }
-      if(allergen == 'Sesame Seeds'){
-        this.allergyArray[12] = true;
-      }
-      if(allergen == 'Sulphites'){
-        this.allergyArray[13] = true;
+    console.log(this.allergens);
+    let result: string = "/";
+    for (let allergen of this.allAllergens) {
+      if (this.allergens.includes(allergen)) {
+        result = result.concat("1/");
+      } else {
+        result = result.concat("0/");
       }
     }
-    for(let B of this.allergyArray){
-      if(B == false){
-        this.allergyString = this.allergyString.concat('0/');
-      }
-      else{
-        this.allergyString = this.allergyString.concat('1/');
-      }
-    }
-    //console.log(this.allergens);
-
-    let temp:string = this.allergyString;
-    this.allergyString = '/';
-    return temp;
+    return result;
   }
+
+  filter(): void {
+    let filterArgs = this.getAllergens();
+    console.log(filterArgs);
+    this.orderListComponent.filter(filterArgs)
+  }
+  
 }
