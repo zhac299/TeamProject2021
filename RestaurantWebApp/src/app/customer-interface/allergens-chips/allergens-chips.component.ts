@@ -68,7 +68,7 @@ export class AllergensChipsComponent implements OnInit {
 
     return this.allAllergens.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
   }
-  
+
   ngOnInit(): void {
   }
 
@@ -89,6 +89,7 @@ export class AllergensChipsComponent implements OnInit {
     let filterArgs = this.getAllergens();
     console.log(filterArgs);
     this.orderListComponent.filter(filterArgs)
+    this.orderListComponent.filterArgs = filterArgs;
   }
-  
+
 }

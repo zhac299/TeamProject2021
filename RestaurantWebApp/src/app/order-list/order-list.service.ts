@@ -14,6 +14,7 @@ export class OrderListService {
 
   initialMeals: Meal[];
   filteredMeals: Meal[];
+
   private _refreshNeeded = new Subject<void>();
 
   get refreshNeeded() {
@@ -31,10 +32,9 @@ export class OrderListService {
   }
 
   public filter(val: string): Observable<Meal[]> {
-    this.filteredDB = this.filteredDB.concat(val,"200");
+    this.filteredDB = this.filteredDB.concat(val);
     let temp: string = this.filteredDB;
     this.filteredDB = 'http://localhost:8080/api/v1/menu/filter';
-    console.log(temp);
 
     return this.httpClient.get<Meal[]>(temp)
     .pipe(

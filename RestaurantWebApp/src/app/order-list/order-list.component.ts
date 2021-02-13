@@ -15,25 +15,33 @@ import { OrderListService} from './order-list.service';
 export class OrderListComponent implements OnInit {
 
   mealList: Meal[] = [];
+  filtered = false;
+  filterArgs: string;
 
   constructor(
     private orderListService: OrderListService
     ) { }
 
   ngOnInit(): void {
+    if (!this.filtered){
       this.orderListService.refreshNeeded.subscribe(()=> {
-        this.getAllFilteredOrders();
+        this.getAllOrders();
       });
-      this.getAllFilteredOrders();
+      this.getAllOrders();
+    } else {
+      this.filter(this.filterArgs);
     }
 
-    getAllFilteredOrders(): void {
+    }
+
+    getAllOrders(): void {
       this.orderListService.setUp().subscribe( orders => {
         this.mealList = orders;
       });
     }
 
   filter(filterArgs: string): void {
+    this.filtered = true;
       //console.log(filterArgs);
       this.orderListService.filter(filterArgs).subscribe( orders => {
         this.mealList = orders;
