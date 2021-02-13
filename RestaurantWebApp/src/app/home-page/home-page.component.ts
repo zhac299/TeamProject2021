@@ -13,7 +13,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
   }
   forCustomer() { 
-    this.router.navigateByUrl('home');   
+    this.router.navigateByUrl('customer-menu');   
 }
     forEmployee() { 
         this.router.navigateByUrl('login'); 

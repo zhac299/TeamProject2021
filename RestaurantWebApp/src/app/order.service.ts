@@ -31,7 +31,6 @@ export class OrderService {
       map(response => response)
     );
   }
-
   // public createOrder(): Observable<ArrayBuffer> {
   //   return this.httpClient.post(this.mockDbUrl);
   // }

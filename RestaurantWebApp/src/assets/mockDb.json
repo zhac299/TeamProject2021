@@ -1,5 +1,167 @@
 {
     "orders": [
+      {
+        "id": 1,
+        "category": "Fajita",
+        "meal": "Chicken Fajita Quesadilla",
+        "price": 7.5,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Olive oil, Chicken, Fajita seasoning, Bell peppers, onion, cheese, tortilla, sour cream, salsa, butter."
+      },
+      {
+        "id": 2,
+        "category": "Fajita",
+        "meal": "Shrimp Fajita Quesadillas",
+        "price": 10,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Butter, tortilla, cheese, pepper, onion, shrimp, olive oil, fajita seasoning, salsa."
+      },
+      {
+        "id": 3,
+        "category": "Fajita",
+        "meal": "Veggie Fajita Quesadillas",
+        "price": 12,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "tortilla, cheese, pepper, mushroom, onion, lime, sour cream."
+      },
+      {
+        "id": 4,
+        "meal": "Quesadilla Supreme",
+        "category": "Fajita",
+        "price": 14,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Ground beef, guacamole, olive, onion, sour cream, refried beans, pepper, tomato, taco seasoning, tortilla, cheese."
+      },
+      {
+ 
+      },
+      {
+        "id": 5,
+        "category": "Nachos",
+        "meal": "Simple Nachos",
+        "price": 6,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Tortilla chips, salsa, onions, cheese, chilli flakes, guacamole."
+      },
+      {
+        "id": 6,
+        "meal": "Three Cheese Nachos",
+        "category": "Nachos",
+        "price": 8,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Cream cheese, green chili, onion, garlic, pepper, cumin."
+      },
+      {
+        "id": 7,
+        "category": "Nachos",
+        "meal": "Beef Nachos",
+        "price": 9.5,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Tortilla chips, ground beef, taco seasoning, green chiles, tomato, onion, cheese."
+      },
+      {
+        "id": 8,
+        "meal": "Chicken Fajita Nachos",
+        "category": "Nachos",
+        "price": 11.5,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Olive oil, chicken, onion, pepper, taco seasoning, tortilla chips, cheese, salsa."
+      },
+      {
+        "id": 9,
+        "category": "Nachos",
+        "meal": "Nachos Supreme",
+        "price": 12,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "olive oil, onion, beef, garlic cloves, taco seasoning kosher salt, beans, water, tortilla chips, cheddar, Monterey jack cheese, black beans, pickled jalapeños, tomato, avocado, green onion, cilantro leaves, Sour cream, hot sauce."
+      },
+      {
+        "id": 10,
+        "category": "Dips",
+        "meal": "Best Ever Migas",
+        "price": 13,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Vegetable oil, corn tortillas, japaleño, garlic, onion, eggs, salt, mild salsa, cilantro leaves, avocado, radishes, cotija cheese, hot sauce."
+      },
+      {
+
+      },
+      {
+        "id": 11,
+        "category": "Dips",
+        "meal": "Blue Cheese Dip",
+        "price": 2,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "blue cheese crumbles, sour cream, mayonnaise, buttermilk, lemon juice, salt, pepper."
+      },
+      {
+        "id": 12,
+        "category": "Dips",
+        "meal": "Salsa Dip",
+        "price": 2,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Tomato, onion, garlic, vinegar, lime, coriander."
+      },
+      {
+        "id": 13,
+        "category": "Dips",
+        "meal": "Salsa Verde Dip",
+        "price": 3,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "tomatillos, jalapeño pepper, avocado, lime, cilantro, onion, garlic, salt, garlic powder, cumin."
+      },
+      {
+        "id": 14,
+        "category": "Dips",
+        "meal": "Spicy Dip",
+        "price": 3,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Cream cheese, sour cream, onion, garlic, chili powder."
+      },
+      {
+
+      },
+      {
+        "id": 15,
+        "category": "Desserts",
+        "meal": "Fried Ice-Cream",
+        "price": 5,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "vannila ice-cream, cornflakes cereal, cinnamon, egg whites, oil"
+      },
+      {
+        "id": 16,
+        "category": "Desserts",
+        "meal": "Sopapila",
+        "price": 6,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Flour, baking powder, salt, shortening, water, oil."
+      },
+      {
+        "id": 17,
+        "category": "Desserts",
+        "meal": "Churros",
+        "price": 5,
+        "nrSelections": 0,
+        "selected": false,
+        "ingredients": "Flour, baking powder, oil, water, cinnamon, sugar."
+      },
    {
     "id": 1,
     "name": "Chicken Fajita Quesadillas",

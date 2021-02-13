@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OrderListComponent } from './order-list/order-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InitialMenuComponent } from './initial-menu/initial-menu.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
@@ -22,8 +21,17 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
+import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/expansion-pannel.component';
+import { AllergensChipsComponent } from './customer-interface/allergens-chips/allergens-chips.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { CaloriesSliderComponent } from './customer-interface/calories-slider/calories-slider.component';
+import {MatSliderModule} from '@angular/material/slider';
+import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
 import { TableComponent } from './waiter-menu/table/table.component';
 import {MatTableModule} from "@angular/material/table";
 import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
@@ -34,13 +42,17 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 @NgModule({
   declarations: [
     AppComponent,
-    OrderListComponent,
     InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
     LoginInputComponent,
     HomePageComponent,
     OrderComponent,
+    MenuFilterComponent,
+    ExpansionPannelComponent,
+    AllergensChipsComponent,
+    CaloriesSliderComponent,
+    FoodCategoriesComponent,
     TableComponent,
     EditDialogComponent,
     AddMenuDialogComponent
@@ -64,10 +76,14 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatExpansionModule,
+    MatChipsModule, 
+    MatAutocompleteModule,
+    MatSliderModule,
     MatTableModule,
     MatCheckboxModule,
   ],
-  providers: [],
+  providers: [AllergensChipsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

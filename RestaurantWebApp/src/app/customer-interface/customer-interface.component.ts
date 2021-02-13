@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {OrderService} from '../order.service';
-import {Order} from '../../models/Order';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { CommonModule } from '@angular/common';
-import {MatIconModule} from '@angular/material/icon';
+import { Order} from '../../models/Order';
+
 import {MenuService} from "../menu.service";
+import {MenuFilterService} from "../menu-filter.service";
 import {Menu} from "../../models/Menu";
 
 interface Food {
@@ -19,34 +17,27 @@ interface Food {
   styleUrls: ['./customer-interface.component.sass']
 })
 export class CustomerInterfaceComponent implements OnInit {
+  menu: Menu[];
 
-  orderList: Order[] = [];
-  foods: Food[] = [
-    {viewValue: 'Fajitas', mappedOrders:[this.orderList[0]], selected: false},
-    {viewValue: 'Nachos', mappedOrders:[this.orderList[1]], selected: false},
-    {viewValue: 'Dips', mappedOrders:[this.orderList[1]], selected: false},
-    {viewValue: 'Deserts', mappedOrders:[this.orderList[1]], selected: false}
-  ];
-  menuList: Menu[];
-
-  constructor(private orderService: OrderService,
-              private menuService: MenuService) { }
+  constructor(private menuService: MenuService,
+              private menuFilterService: MenuFilterService) { }
 
   ngOnInit(): void {
-    this.orderService.getOrders().subscribe( orders => {
-      this.orderList = orders;
+    this.menuService.refreshNeeded.subscribe(()=> {
+      this.getAllOrders();
     });
-    this.menuService.getMenu().subscribe(menuItems => this.menuList = menuItems);
+    this.getAllOrders();
   }
 
-  findCategory(food): void {
-    for(let f of this.foods) {
-      if (food == f) {
-        f.selected = true;
-      } else {
-        f.selected = false;
-      }
-    }
+  getAllOrders(): void {
+    this.menuService.getMenu().subscribe( orders => {
+      this.menu= orders;
+    });
   }
 
+  filter(filterArgs: string): void {
+    this.menuFilterService.filter(filterArgs).subscribe( orders => {
+      this.menu = orders;
+    });
+  }
 }

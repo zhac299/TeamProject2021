@@ -62,6 +62,9 @@ public class Menu {
     @Column(name = "sulphites")
     private boolean sulphites = false;
 
+    //@Column(name = "calories")
+    //private int calories = 0;
+
     public Long getId() {
         return id;
     }

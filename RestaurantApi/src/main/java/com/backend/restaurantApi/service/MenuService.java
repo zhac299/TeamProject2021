@@ -7,6 +7,8 @@ import com.backend.restaurantApi.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,16 +27,47 @@ public class MenuService {
     public Menu addMenuMeal(Meal meal, Long id) {
         // Check if menu with 'id' exists
         Optional<Menu> menu = menuRepository.findById(id);
-        if(!menu.isPresent()){
+        if (!menu.isPresent()) {
             throw new MenuNotFoundException("Menu record is not available...");
         } else {
-            //create the meal and add it to menu
+            // create the meal and add it to menu
             mealService.createNewMeal(meal);
 //            menu.get().getMeal().add(meal);
         }
         return menuRepository.save(menu.get());
     }
 
+    public List<Menu> filter(
+        Boolean peanuts, 
+        Boolean celery,
+        Boolean gluten,
+        Boolean crustaceans,
+        Boolean eggs,
+        Boolean fish,
+        Boolean lupin,
+        Boolean milk,
+        Boolean molluscs,
+        Boolean mustard,
+        Boolean nuts,
+        Boolean soya,
+        Boolean sesame_seeds,
+        Boolean sulphites) {
+        return menuRepository.filter(
+            peanuts,
+            celery,
+            gluten,
+            crustaceans,
+            eggs,
+            fish,
+            lupin,
+            milk,
+            molluscs,
+            mustard,
+            nuts,
+            soya,
+            sesame_seeds,
+            sulphites);
+    }
     public Menu updateMenuItem(Long id, Menu menu) {
 		menu.setMenuId(id);
         return menuRepository.save(menu);
