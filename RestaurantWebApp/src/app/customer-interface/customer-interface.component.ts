@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Order} from '../../models/Order';
+import { Order } from '../../models/Order';
+
 
 import {MenuService} from "../menu.service";
 import {MenuFilterService} from "../menu-filter.service";
-import {Menu} from "../../models/Menu";
+import { Menu } from "../../models/Menu";
+import { selectedCategory } from "../../models/selectedCategory";
 
 interface Food {
   viewValue: string;
@@ -17,7 +19,8 @@ interface Food {
   styleUrls: ['./customer-interface.component.sass']
 })
 export class CustomerInterfaceComponent implements OnInit {
-  menu: Menu[];
+    menu: Menu[];
+    cat: selectedCategory = new selectedCategory;
 
   constructor(private menuService: MenuService,
               private menuFilterService: MenuFilterService) { }
