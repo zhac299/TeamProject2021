@@ -1,6 +1,7 @@
 export class Menu{
   id: number;
   name: string;
+  category: string;  
   description: string;
   price: number;
   peanuts: boolean;

@@ -3,7 +3,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 import {Menu} from '../models/Menu';
 import {map, tap} from 'rxjs/operators';
-import {MenuPositionY} from "@angular/material/menu";
+import { MenuPositionY } from "@angular/material/menu";
+import { selectedCategory } from 'src/models/selectedCategory';
+import { Meal } from 'src/models/Meal';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,9 @@ export class MenuService {
 
   mockDbUrl = 'http://localhost:3000/menu';
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu';
+  orderList: Menu[] = [];  
+  sOrder: Menu[] = [];
+  cat: selectedCategory = new selectedCategory; 
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -63,5 +68,44 @@ export class MenuService {
           this.refreshNeeded.next();
         })
       );
-  }
+    }
+    
+    // Filter methods for filtering by dish.
+    getCat(): selectedCategory {     
+        if (Object.keys(this.cat).length === 0) {
+            this.createSelectedCat();
+        }
+        return this.cat;
+    }
+
+    createSelectedCat(): selectedCategory {
+        this.getMenu().subscribe( orders => {
+            this.orderList = orders;
+    
+            for (let order of this.orderList) { 
+                if (order.category == "Fajita") { 
+                    this.sOrder.push(order);
+                }
+            }
+        
+            this.cat.name = "Fajita";
+            this.cat.meal = this.sOrder;
+            
+        });
+        return this.cat;
+    }
+
+    modifyCat(newCat: string): selectedCategory {
+        this.sOrder = [];
+        this.cat.name = newCat;
+
+        for (let order of this.orderList) { 
+            if (order.category == newCat) { 
+                this.sOrder.push(order);
+            }
+        }
+        
+        this.cat.meal = this.sOrder;
+        return this.cat;
+    }
 }

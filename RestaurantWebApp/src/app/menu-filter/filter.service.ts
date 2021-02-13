@@ -9,54 +9,5 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FilterService {
-    cat: selectedCategory = new selectedCategory;
-    orderList: Order[] = [];
-    sOrder: Order[] = [];
-    mockDbUrl = 'http://localhost:8080/api/v1/menu/'
-   
-    constructor(private httpClient: HttpClient) { }
-    
-    getOrders(): Observable<Order[]> { 
-        return this.httpClient.get<Order[]>(this.mockDbUrl).pipe(
-            map(response => response)
-        );
-    }
-
-    createSelectedCat(): selectedCategory{
-        this.getOrders().subscribe( orders => {
-            this.orderList = orders;
-    
-            for (let order of this.orderList) { 
-                if (order.category == "Fajita") { 
-                    this.sOrder.push(order);
-                }
-            }
-        
-            this.cat.name = "Fajita";
-            this.cat.meal = this.sOrder;
-            
-        });
-        return this.cat;
-    }
-
-    getCat(): selectedCategory {     
-        if (Object.keys(this.cat).length === 0) {
-            this.createSelectedCat();
-        }
-        return this.cat;
-    }
-
-    modifyCat(newCat: string): selectedCategory {
-        this.sOrder = [];
-        this.cat.name = newCat;
-
-        for (let order of this.orderList) { 
-            if (order.category == newCat) { 
-                this.sOrder.push(order);
-            }
-        }
-        
-        this.cat.meal = this.sOrder;
-        return this.cat;
-    }
+    constructor() { }
 }

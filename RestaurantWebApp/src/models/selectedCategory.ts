@@ -1,6 +1,6 @@
-import {Order} from '../models/Order'
+import { Menu } from './Menu';
 
 export class selectedCategory {
     name: String;
-    meal: Order[];
+    meal: Menu[];
 }

@@ -30,5 +30,5 @@ export class MenuFilterService {
       })
       ,map(response => response)
     )
-  }
+    }
 }

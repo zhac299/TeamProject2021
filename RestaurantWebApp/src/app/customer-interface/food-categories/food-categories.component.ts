@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterService } from 'src/app/menu-filter/filter.service';
 import { selectedCategory } from 'src/models/selectedCategory';
+import {MenuService} from "../../menu.service";
 
 @Component({
   selector: 'food-categories',
@@ -8,13 +9,13 @@ import { selectedCategory } from 'src/models/selectedCategory';
   styleUrls: ['./food-categories.component.sass']
 })
 export class FoodCategoriesComponent implements OnInit {
-    constructor(private filterService: FilterService) { }
+    constructor(private menuService: MenuService) { }
 
   ngOnInit(): void {
     }
 
     onClick(name:string): void{
-      this.filterService.modifyCat(name);
+      this.menuService.modifyCat(name);
     }
 
 }
