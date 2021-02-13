@@ -5,7 +5,10 @@ import { CommonModule } from '@angular/common';
 import { selectedCategory } from 'src/models/selectedCategory';
 import { Meal } from 'src/models/Meal';
 import { Observable } from 'rxjs';
-import { OrderListService} from './order-list.service';
+import { OrderService } from '../order.service';
+import { MenuService } from '../menu.service';
+import { MenuFilterService} from './menu-filter.service';
+import { Menu } from 'src/models/Menu';
 
 @Component({
   selector: 'app-order-list',
@@ -14,40 +17,38 @@ import { OrderListService} from './order-list.service';
 })
 export class OrderListComponent implements OnInit {
 
-  mealList: Meal[] = [];
+  menu: Menu[] = [];
   filtered = false;
   filterArgs: string;
 
   constructor(
-    private orderListService: OrderListService
+    private menuService: MenuService,
+    private menuFilterService: MenuFilterService
     ) { }
 
   ngOnInit(): void {
-    if (!this.filtered){
-      this.orderListService.refreshNeeded.subscribe(()=> {
+      if (!this.filtered){
+        this.menuService.refreshNeeded.subscribe(()=> {
+          this.getAllOrders();
+        });
         this.getAllOrders();
-      });
-      this.getAllOrders();
-    } else {
-      this.filter(this.filterArgs);
+      } else {
+        this.filter(this.filterArgs);
+      }
     }
 
-    }
-
-    getAllOrders(): void {
-      this.orderListService.setUp().subscribe( orders => {
-        this.mealList = orders;
+  getAllOrders(): void {
+      this.menuService.getMenu().subscribe( orders => {
+        this.menu= orders;
       });
     }
 
   filter(filterArgs: string): void {
-    this.filtered = true;
-      //console.log(filterArgs);
-      this.orderListService.filter(filterArgs).subscribe( orders => {
-        this.mealList = orders;
-        console.log(orders);
+      this.filtered = true;
+      this.menuFilterService.filter(filterArgs).subscribe( orders => {
+        this.menu = orders;
+        console.log(this.menu);
       });
-      //console.log(this.mealList);
     }
 }
 

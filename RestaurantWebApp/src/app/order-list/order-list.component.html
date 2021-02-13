@@ -1,17 +1,17 @@
-<div *ngFor="let meal of mealList">
-    <p *ngIf="meal.selected==true; else notSelectedBlock">
+<div *ngFor="let menuItem of menu">
+    <!-- <p *ngIf="menuItem.selected==true; else notSelectedBlock">
         <button class="isSelected" >
              {{meal.id}}. {{meal.name}} ---{{meal.price}}$ <b>x{{meal.nrSelections}}</b>
         </button>
-    </p>
+    </p> -->
   
-    <ng-template #notSelectedBlock>
-        <p>
+    <!-- <ng-template #notSelectedBlock>
+        <p> -->
             <button>
-                {{meal.id}}. {{meal.name}} ---{{meal.price}}$ <b>x{{meal.nrSelections}}</b>
+                {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$ 
             </button>
-        </p>
+        <!-- </p>
     </ng-template>
-    <mat-divider></mat-divider>
+    <mat-divider></mat-divider> -->
 </div>
 

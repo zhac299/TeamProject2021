@@ -73,7 +73,7 @@ export class AllergensChipsComponent implements OnInit {
   }
 
   public getAllergens(): string {
-    console.log(this.allergens);
+    //console.log(this.allergens);
     let result: string = "/";
     for (let allergen of this.allAllergens) {
       if (this.allergens.includes(allergen)) {
@@ -87,7 +87,7 @@ export class AllergensChipsComponent implements OnInit {
 
   filter(): void {
     let filterArgs = this.getAllergens();
-    console.log(filterArgs);
+    //console.log(filterArgs);
     this.orderListComponent.filter(filterArgs)
     this.orderListComponent.filterArgs = filterArgs;
   }
