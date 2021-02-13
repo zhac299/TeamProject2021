@@ -15,7 +15,7 @@ export class FoodCategoriesComponent implements OnInit {
     }
 
     onClick(name:string): void{
-      this.menuService.modifyCat(name);
+      //this.menuService.modifyCat(name);
     }
 
 }
