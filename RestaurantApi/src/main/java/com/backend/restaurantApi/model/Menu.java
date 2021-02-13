@@ -14,8 +14,8 @@ public class Menu {
     @Column(name = "name")
     private String name;
 
-    //@Column(name = "description")
-    //private String description;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "price")
     private Double price;
@@ -61,6 +61,9 @@ public class Menu {
 
     @Column(name = "sulphites")
     private boolean sulphites = false;
+
+    //@Column(name = "calories")
+    //private int calories = 0;
 
     public Long getId() {
         return id;
@@ -198,11 +201,11 @@ public class Menu {
         this.sulphites = sulphites;
     }
 
-    //public String getDescription() {
-      //  return description;
-    //}
+    public String getDescription() {
+        return description;
+    }
 
-    //public void setDescription(String description) {
-      //  this.description = description;
-    //}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

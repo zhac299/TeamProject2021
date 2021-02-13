@@ -14,7 +14,7 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
 
     @Query
     (value = 
-    " SELECT * FROM restaurant_menu" +
+    " SELECT * FROM restaurant_menu_item" +
     " WHERE " + 
     " 1 = CASE WHEN :peanuts = true THEN peanuts = false ELSE 1 END AND" +
     " 1 = CASE WHEN :celery = true THEN celery = false ELSE 1 END AND" +
@@ -29,8 +29,7 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
     " 1 = CASE WHEN :nuts = true THEN nuts = false ELSE 1 END AND" +
     " 1 = CASE WHEN :soya = true THEN soya = false ELSE 1 END AND" +
     " 1 = CASE WHEN :sesame_seeds = true THEN sesame_seeds = false ELSE 1 END AND" +
-    " 1 = CASE WHEN :sulphites = true THEN sulphites = false ELSE 1 END AND"+
-    " 1 = CASE WHEN :calories > -1 THEN :calories > calories ELSE 1 END",
+    " 1 = CASE WHEN :sulphites = true THEN sulphites = false ELSE 1 END",
      nativeQuery = true)
     public List<Menu> filter( 
         @Param("peanuts") Boolean peanuts,
@@ -46,6 +45,5 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
         @Param("nuts") Boolean nuts,
         @Param("soya") Boolean soya,
         @Param("sesame_seeds") Boolean sesame_seeds,
-        @Param("sulphites") Boolean sulphites,
-        @Param("calories") int calories);
+        @Param("sulphites") Boolean sulphites);
 }
