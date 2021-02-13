@@ -6,7 +6,7 @@ import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/a
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { OrderListComponent } from 'src/app/order-list/order-list.component';
+
 import {CustomerInterfaceComponent} from "../customer-interface.component";
 @Component({
   selector: 'allergens-chips',
@@ -21,14 +21,14 @@ export class AllergensChipsComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   allergensCtrl = new FormControl();
   filteredAllergens: Observable<string[]>;
-  allergens: string[] = [];
+  allergens: string[] = ['Celery'];
   allAllergens: string[] = ['Celery', 'Peanuts', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Sulphites'];
 
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
    constructor(
-     private orderListComponent: CustomerInterfaceComponent
+     private customerInterfaceComponent: CustomerInterfaceComponent
    ) {
     this.filteredAllergens = this.allergensCtrl.valueChanges.pipe(
         startWith(null),
@@ -39,11 +39,9 @@ export class AllergensChipsComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    // Add our allergens
     if ((value || '').trim()) {
       this.allergens.push(value.trim());
     }
-    // Reset the input value
     if (input) {
       input.value = '';
     }
@@ -74,7 +72,6 @@ export class AllergensChipsComponent implements OnInit {
   }
 
   public getAllergens(): string {
-    //console.log(this.allergens);
     let result: string = "/";
     for (let allergen of this.allAllergens) {
       if (this.allergens.includes(allergen)) {
@@ -87,10 +84,6 @@ export class AllergensChipsComponent implements OnInit {
   }
 
   filter(): void {
-    let filterArgs = this.getAllergens();
-    //console.log(filterArgs);
-    this.orderListComponent.filter(filterArgs);
-    // this.orderListComponent.filterArgs = filterArgs;
+     this.customerInterfaceComponent.filter(this.getAllergens());
   }
-
 }

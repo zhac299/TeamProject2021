@@ -4,10 +4,12 @@
 <br><br>
 <expansion-pannel></expansion-pannel>
 <br>
-<!--<app-order-list></app-order-list>-->
-  <button *ngFor="let menuItem of menu">
-    {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
-  </button>
+<div *ngFor="let menuItem of menu">
+    <p><button id = "menuItemButton" >
+      {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
+    </button></p>
+</div>  
+
 
 
 
