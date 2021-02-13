@@ -69,7 +69,7 @@ export class MenuService {
         })
       );
     }
-    /*
+    
     // Filter methods for filtering by dish.
     getCat(): selectedCategory {     
         if (Object.keys(this.cat).length === 0) {
@@ -108,5 +108,5 @@ export class MenuService {
         this.cat.meal = this.sOrder;
         return this.cat;
     }
-    */
+    
 }
