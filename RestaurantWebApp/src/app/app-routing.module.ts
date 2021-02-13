@@ -9,11 +9,7 @@ import { OrderComponent } from './waiter-menu/order/order.component';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 
 const routes: Routes = [
-<<<<<<< HEAD
   { path: 'table/:id', component: OrderComponent},
-=======
-  {path: 'table/:id', component: OrderComponent},
->>>>>>> origin/main
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginInputComponent },
   { path: 'waiter-menu', component: WaiterMenuComponent },
