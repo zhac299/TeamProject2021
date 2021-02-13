@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService} from '../order.service';
 import { Order} from '../../models/Order';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { MatIconModule} from '@angular/material/icon';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { MatChipsModule} from '@angular/material/chips';
@@ -13,6 +13,9 @@ import { AllergensChipsComponent} from './allergens-chips/allergens-chips.compon
 import { CaloriesSliderComponent} from './calories-slider/calories-slider.component';
 import { selectedCategory } from 'src/models/selectedCategory';
 import { FilterService } from '../menu-filter/filter.service';
+import {MenuService} from "../menu.service";
+import {MenuFilterService} from "../order-list/menu-filter.service";
+import {Menu} from "../../models/Menu";
 
 interface Food {
   viewValue: string;
@@ -26,16 +29,35 @@ interface Food {
   styleUrls: ['./customer-interface.component.sass']
 })
 export class CustomerInterfaceComponent implements OnInit {
+  menu: Menu[];
+  // private filtered: boolean = false;
 
-    orderList: Order[] = [];
-  
-  constructor() { }
+  constructor(private menuService: MenuService,
+              private menuFilterService: MenuFilterService) { }
 
   ngOnInit(): void {
+    this.menuService.refreshNeeded.subscribe(()=> {
+      this.getAllOrders();
+    });
+    this.getAllOrders();
+  }
+
+  getAllOrders(): void {
+    this.menuService.getMenu().subscribe( orders => {
+      this.menu= orders;
+    });
+  }
+
+  filter(filterArgs: string): void {
+    // this.filtered = true;
+    this.menuFilterService.filter(filterArgs).subscribe( orders => {
+      this.menu = orders;
+      console.log(this.menu);
+    });
   }
 }
 
-/* 
+/*
 
     foods: Food[] = [
     {viewValue: 'Fajitas', mappedOrders:[this.orderList[0]], selected: false},

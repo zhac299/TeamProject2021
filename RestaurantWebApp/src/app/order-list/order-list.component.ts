@@ -16,10 +16,10 @@ import { Menu } from 'src/models/Menu';
   styleUrls: ['./order-list.component.sass']
 })
 export class OrderListComponent implements OnInit {
-
-  menu: Menu[] = [];
-  filtered = false;
-  filterArgs: string;
+  //
+  // menu: Menu[] = [];
+  // filtered = false;
+  // filterArgs: string;
 
   constructor(
     private menuService: MenuService,
@@ -27,29 +27,24 @@ export class OrderListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-      if (!this.filtered){
-        this.menuService.refreshNeeded.subscribe(()=> {
-          this.getAllOrders();
-        });
-        this.getAllOrders();
-      } else {
-        this.filter(this.filterArgs);
-      }
+    // this.filter(this.filterArgs);
+    // console.log(this.filterArgs);
+    // console.log(this.filtered);
+    // console.log(this.menu);
+      // if (!this.filtered){
+      //   this.menuService.refreshNeeded.subscribe(()=> {
+      //     this.getAllOrders();
+      //   });
+      //   this.getAllOrders();
+      // } else {
+      //   this.filter(this.filterArgs);
+        // console.log(this.filterArgs);
+        // console.log(this.filtered);
+        // console.log(this.menu);
+      // }
     }
 
-  getAllOrders(): void {
-      this.menuService.getMenu().subscribe( orders => {
-        this.menu= orders;
-      });
-    }
 
-  filter(filterArgs: string): void {
-      this.filtered = true;
-      this.menuFilterService.filter(filterArgs).subscribe( orders => {
-        this.menu = orders;
-        console.log(this.menu);
-      });
-    }
 }
 
     // NEEDS TO BE REFACTORED

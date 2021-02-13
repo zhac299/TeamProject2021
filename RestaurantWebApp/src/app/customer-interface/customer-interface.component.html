@@ -4,6 +4,10 @@
 <br><br>
 <expansion-pannel></expansion-pannel>
 <br>
-<app-order-list></app-order-list>
+<!--<app-order-list></app-order-list>-->
+  <button *ngFor="let menuItem of menu">
+    {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
+  </button>
+
 
 

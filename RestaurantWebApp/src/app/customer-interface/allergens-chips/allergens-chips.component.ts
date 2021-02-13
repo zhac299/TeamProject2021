@@ -7,6 +7,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { OrderListComponent } from 'src/app/order-list/order-list.component';
+import {CustomerInterfaceComponent} from "../customer-interface.component";
 @Component({
   selector: 'allergens-chips',
   templateUrl: './allergens-chips.component.html',
@@ -27,7 +28,7 @@ export class AllergensChipsComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
    constructor(
-     private orderListComponent: OrderListComponent
+     private orderListComponent: CustomerInterfaceComponent
    ) {
     this.filteredAllergens = this.allergensCtrl.valueChanges.pipe(
         startWith(null),
@@ -88,8 +89,8 @@ export class AllergensChipsComponent implements OnInit {
   filter(): void {
     let filterArgs = this.getAllergens();
     //console.log(filterArgs);
-    this.orderListComponent.filter(filterArgs)
-    this.orderListComponent.filterArgs = filterArgs;
+    this.orderListComponent.filter(filterArgs);
+    // this.orderListComponent.filterArgs = filterArgs;
   }
 
 }
