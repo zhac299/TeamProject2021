@@ -83,7 +83,7 @@ export class AllergensChipsComponent implements OnInit {
     return result;
   }
 
-  filter(): void {
+  filterByAllergens(): void {
      this.customerInterfaceComponent.filter(this.getAllergens());
   }
 }

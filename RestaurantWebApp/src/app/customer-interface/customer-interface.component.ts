@@ -38,7 +38,6 @@ export class CustomerInterfaceComponent implements OnInit {
   filter(filterArgs: string): void {
     this.menuFilterService.filter(filterArgs).subscribe( orders => {
       this.menu = orders;
-      //console.log(this.menu);
     });
   }
 }
