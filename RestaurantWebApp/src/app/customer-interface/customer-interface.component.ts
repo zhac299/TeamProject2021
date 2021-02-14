@@ -34,9 +34,7 @@ export class CustomerInterfaceComponent implements OnInit {
 
   filter(filterArgs: string): void {
       this.menuFilterService.filter(filterArgs).subscribe(orders => {
-          this.cat.meal = [];
-          console.log(this.cat.meal);
-          this.cat.meal = orders;
+          this.menuService.setCat(orders);
           console.log(this.cat.meal);
     });
   }

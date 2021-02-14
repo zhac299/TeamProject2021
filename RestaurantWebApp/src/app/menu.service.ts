@@ -109,5 +109,15 @@ export class MenuService {
         this.cat.meal = this.sOrder;
         return this.cat;
     }
+
+    setCat(menu: Menu[]) { 
+        this.sOrder = [];
+        for (let order of menu) { 
+            if (order.category == this.cat.name) { 
+                this.sOrder.push(order);
+            }
+        }
+        this.cat.meal = this.sOrder;
+    }
     
 }
