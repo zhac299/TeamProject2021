@@ -94,6 +94,10 @@ public class Menu {
         return category;
     }
 
+    public void setCategory(String cat){
+        this.category = cat;
+    }
+
     public boolean isPeanuts() {
         return peanuts;
     }
