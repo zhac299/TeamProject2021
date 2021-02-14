@@ -90,6 +90,10 @@ public class Menu {
         this.price = price;
     }
 
+    public String getCategory(){
+        return category;
+    }
+
     public boolean isPeanuts() {
         return peanuts;
     }
