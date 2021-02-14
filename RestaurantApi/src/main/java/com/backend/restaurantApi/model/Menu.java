@@ -20,6 +20,9 @@ public class Menu {
     @Column(name = "price")
     private Double price;
 
+    @Column(name = "category")
+    private String category;
+
     @Column(name = "peanuts")
     private boolean peanuts = false;
 
@@ -62,9 +65,7 @@ public class Menu {
     @Column(name = "sulphites")
     private boolean sulphites = false;
 
-    //@Column(name = "calories")
-    //private int calories = 0;
-
+    
     public Long getId() {
         return id;
     }
