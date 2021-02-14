@@ -10,7 +10,7 @@ import {Menu} from "../../../models/Menu";
   styleUrls: ['./add-menu-dialog.component.sass']
 })
 export class AddMenuDialogComponent implements OnInit {
-
+  selected = -1;
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
               private menuService: MenuService,
               @Inject(MAT_DIALOG_DATA) public data: Menu) { }
@@ -34,5 +34,8 @@ export class AddMenuDialogComponent implements OnInit {
 
   setData(menu:Menu) {
     this.data = menu;
-  }
+    }
+    onClick(type: string) { 
+        this.data.category = type;
+    }  
 }
