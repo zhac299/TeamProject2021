@@ -4,7 +4,8 @@
 <br><br>
 <expansion-pannel></expansion-pannel>
 <br>
-<div *ngFor="let menuItem of menu">
+<h2>{{cat.name}}</h2>
+<div *ngFor="let menuItem of cat.meal">
     <p><button id = "menuItemButton" >
       {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
     </button></p>

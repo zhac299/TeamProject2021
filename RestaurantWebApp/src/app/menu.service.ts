@@ -87,6 +87,7 @@ export class MenuService {
                     this.sOrder.push(order);
                 }
             }
+        
             this.cat.name = "Fajita";
             this.cat.meal = this.sOrder;
             
@@ -99,14 +100,14 @@ export class MenuService {
         this.cat.name = newCat;
         this.getMenu().subscribe(orders => {
             this.orderList = orders;
-
             for (let order of this.orderList) {
                 if (order.category == newCat) {
                     this.sOrder.push(order);
                 }
             }
-        })
+        });
         this.cat.meal = this.sOrder;
         return this.cat;
     }
+    
 }

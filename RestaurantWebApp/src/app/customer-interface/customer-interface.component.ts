@@ -27,20 +27,17 @@ export class CustomerInterfaceComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuService.refreshNeeded.subscribe(()=> {
-      this.getAllOrders();
+        this.cat = this.menuService.getCat();
     });
-    this.getAllOrders();
-  }
-
-  getAllOrders(): void {
-    this.menuService.getMenu().subscribe( orders => {
-      this.menu= orders;
-    });
+    this.cat = this.menuService.getCat();
   }
 
   filter(filterArgs: string): void {
-    this.menuFilterService.filter(filterArgs).subscribe( orders => {
-      this.menu = orders;
+      this.menuFilterService.filter(filterArgs).subscribe(orders => {
+          this.cat.meal = [];
+          console.log(this.cat.meal);
+          this.cat.meal = orders;
+          console.log(this.cat.meal);
     });
   }
 }
