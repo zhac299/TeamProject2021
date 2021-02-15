@@ -12,7 +12,7 @@ export class InputService {
     private dbUrl;
     
     constructor(private httpClient: HttpClient) {
-        this.dbUrl = 'http://localhost:8080/api/v1/staff'
+        this.dbUrl = 'http://localhost:8080/staff';
      }
     
     public getLogin(): Observable<Login[]> {
