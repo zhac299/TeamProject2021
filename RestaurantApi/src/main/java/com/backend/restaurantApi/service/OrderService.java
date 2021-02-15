@@ -1,6 +1,10 @@
 package com.backend.restaurantApi.service;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.PriorityQueue;
 
 import com.backend.restaurantApi.exception.OrderNotFoundException;
 import com.backend.restaurantApi.model.Order;
@@ -36,5 +40,16 @@ public class OrderService {
 	public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
 	}
+
+    public PriorityQueue<Date> convertIntoQueue() {
+        List<Order> listOfOrders = new ArrayList<>();
+        listOfOrders = orderRepository.findAll();
+        List<Date> listOfDates = new ArrayList<>();
+        for (Order order : listOfOrders) {
+            listOfDates.add(order.getOrderPlacedTime());
+        }
+        PriorityQueue<Date> datePriorityQueue = new PriorityQueue<Date>(listOfDates);
+        return datePriorityQueue;
+    }
     
 }

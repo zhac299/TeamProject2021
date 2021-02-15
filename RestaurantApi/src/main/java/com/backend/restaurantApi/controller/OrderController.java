@@ -25,11 +25,11 @@ public class OrderController {
 
     @GetMapping("/orders")
     public List<Order> index() {
-      return orderRepo.findAll();
-  }
+        return orderRepo.findAll();
+    }
 
     @PostMapping("/orders")
-    public Order newOrder(@RequestBody Order order){
+    public Order newOrder(@RequestBody Order order) {
         return orderRepo.save(order);
     }
 
@@ -48,13 +48,8 @@ public class OrderController {
         orderService.deleteOrder(id);
     }
 
-    public PriorityQueue<Date> getQueue() {        
-        List<Order> listOfOrders = index();
-        List<Date> listOfDates = new ArrayList<>();
-        for (Order order : listOfOrders) {
-            listOfDates.add(order.getOrderPlacedTime());
-        }
-        PriorityQueue<Date> datePriorityQueue = new PriorityQueue<Date>(listOfDates);
-        return datePriorityQueue;
+    @GetMapping("/orders/pq")
+    public PriorityQueue<Date> getQueue() {
+        return orderService.convertIntoQueue();
     }
 }
