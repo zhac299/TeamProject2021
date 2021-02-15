@@ -53,7 +53,7 @@
         <mat-card-content>
           <mat-grid-list cols="4" rowHeight="50px">
             <mat-grid-tile *ngFor="let menu of menuList" colspan="1">
-              <button mat-raised-button style="width: 100%; color: green">{{menu.name}}</button>
+              <button mat-raised-button style="width: 100%; color: green" (click)="addMealToOrder(menu,data)">{{menu.name}}</button>
             </mat-grid-tile>
 <!--            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">-->
 <!--              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>-->
