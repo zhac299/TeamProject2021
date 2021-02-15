@@ -8,7 +8,7 @@ import {Menu} from "../../../models/Menu";
   styleUrls: ['./edit-dialog.component.sass']
 })
 export class EditDialogComponent implements OnInit {
-
+   selected = -1;
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Menu) {}
 
@@ -16,6 +16,10 @@ export class EditDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-  }
+    }
+    
+    onClick(type: string) { 
+        this.data.category = type;
+    }  
 
 }

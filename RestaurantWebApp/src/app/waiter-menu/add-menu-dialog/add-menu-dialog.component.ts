@@ -35,7 +35,4 @@ export class AddMenuDialogComponent implements OnInit {
   setData(menu:Menu) {
     this.data = menu;
     }
-    onClick(type: string) { 
-        this.data.category = type;
-    }  
 }

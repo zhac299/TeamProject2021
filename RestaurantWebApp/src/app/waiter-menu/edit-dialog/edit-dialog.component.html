@@ -13,6 +13,11 @@
     <input matInput [(ngModel)]="data.price" class="fixInput"/>
   </mat-form-field>
   <mat-list>
+    <mat-label>Category</mat-label>
+    <div *ngFor = "let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
+    <mat-list-item><mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i" >{{item}}</mat-checkbox></mat-list-item>
+    </div>
+    <mat-label>Allergen</mat-label>
     <mat-list-item><mat-checkbox [(ngModel)]="data.peanuts">Peanuts</mat-checkbox></mat-list-item>
     <mat-list-item><mat-checkbox [(ngModel)]="data.celery">Celery</mat-checkbox></mat-list-item>
     <mat-list-item><mat-checkbox [(ngModel)]="data.crustaceans">Crustacenas</mat-checkbox></mat-list-item>
