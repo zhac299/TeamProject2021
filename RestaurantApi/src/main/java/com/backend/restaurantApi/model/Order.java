@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "restaurant_order")
-public class Order {
+public class Order implements Comparable<Order> {
     @Id
     @Column(name = "order_id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -100,6 +100,11 @@ public class Order {
 
     public void setOrderPlacedTime(Date orderPlacedTime) {
         this.orderPlacedTime = orderPlacedTime;
+    }
+
+    @Override
+    public int compareTo(Order order) {
+        return getOrderPlacedTime().compareTo(order.getOrderPlacedTime());
     }
 
 }
