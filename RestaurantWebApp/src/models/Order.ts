@@ -7,4 +7,5 @@ export class Order {
   isDelivered: boolean;
   customerTableNum: number;
   waiterId: number;
+  date: Date;
 }
