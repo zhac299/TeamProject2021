@@ -66,7 +66,7 @@ public class Menu {
     private boolean sulphites = false;
 
     @Column(name = "time_to_cook")
-    private double timeToTime = 0;
+    private double timeToCook = 20;
 
     
     public Long getId() {
