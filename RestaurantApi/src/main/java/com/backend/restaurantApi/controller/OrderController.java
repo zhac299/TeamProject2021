@@ -7,8 +7,6 @@ import com.backend.restaurantApi.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -49,7 +47,7 @@ public class OrderController {
     }
 
     @GetMapping("/orders/pq")
-    public PriorityQueue<Date> getQueue() {
+    public PriorityQueue<Order> getQueue() {
         return orderService.convertIntoQueue();
     }
 }
