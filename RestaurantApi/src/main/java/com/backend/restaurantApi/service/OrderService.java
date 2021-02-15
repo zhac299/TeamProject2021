@@ -1,7 +1,7 @@
 package com.backend.restaurantApi.service;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.PriorityQueue;
@@ -41,15 +41,14 @@ public class OrderService {
         orderRepository.deleteById(id);
 	}
 
-    public PriorityQueue<Date> convertIntoQueue() {
+    public PriorityQueue<Order> convertIntoQueue() {
         List<Order> listOfOrders = new ArrayList<>();
         listOfOrders = orderRepository.findAll();
-        List<Date> listOfDates = new ArrayList<>();
-        for (Order order : listOfOrders) {
-            listOfDates.add(order.getOrderPlacedTime());
-        }
-        PriorityQueue<Date> datePriorityQueue = new PriorityQueue<Date>(listOfDates);
-        return datePriorityQueue;
+        Collections.sort(listOfOrders);
+
+        PriorityQueue<Order> priorityQueueByDate = new PriorityQueue<>(listOfOrders);
+
+        return priorityQueueByDate;
     }
     
 }
