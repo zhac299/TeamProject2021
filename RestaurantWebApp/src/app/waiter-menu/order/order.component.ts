@@ -7,6 +7,8 @@ import {Order} from '../../../models/Order';
 import {MenuService} from '../../menu.service';
 import {Menu} from '../../../models/Menu';
 import {MealService} from '../../meal.service';
+import {pipe} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-order',
@@ -65,6 +67,6 @@ export class OrderComponent implements OnInit {
       id: null,
       menu_id: menu.id,
       order: data
-    });
+    }).subscribe(pipe(() => this.findMealFromMenu()));
   }
 }
