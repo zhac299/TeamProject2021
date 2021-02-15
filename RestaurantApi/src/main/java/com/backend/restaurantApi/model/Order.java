@@ -33,7 +33,7 @@ public class Order {
 
     @Column(name = "order_placed_time")
     @CreationTimestamp
-    private Date orderPlacedTime;
+    private Date orderPlacedTime = new Date();
 
     // used to serialize object to json
     @Override
