@@ -223,11 +223,7 @@ public class Menu {
 
 
     public double getTimeToTime() {
-        return this.timeToTime;
-    }
-
-    public void setTimeToTime(double timeToTime) {
-        this.timeToTime = timeToTime;
+        return this.timeToCook;
     }
 
 }
