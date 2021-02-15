@@ -7,7 +7,10 @@ import com.backend.restaurantApi.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.PriorityQueue;
 
 @CrossOrigin("*")
 @RestController
@@ -43,5 +46,15 @@ public class OrderController {
     @DeleteMapping("/orders/{id}")
     public void deleteOrder(@PathVariable("id") Long id) {
         orderService.deleteOrder(id);
+    }
+
+    public PriorityQueue<Date> getQueue() {        
+        List<Order> listOfOrders = index();
+        List<Date> listOfDates = new ArrayList<>();
+        for (Order order : listOfOrders) {
+            listOfDates.add(order.getOrderPlacedTime());
+        }
+        PriorityQueue<Date> datePriorityQueue = new PriorityQueue<Date>(listOfDates);
+        return datePriorityQueue;
     }
 }
