@@ -15,8 +15,19 @@
   <mat-list>
     <mat-label>Category</mat-label>
     <div *ngFor = "let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
-    <mat-list-item><mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i" >{{item}}</mat-checkbox></mat-list-item>
+      <mat-list-item><mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i" >{{item}}</mat-checkbox></mat-list-item>
     </div>
+
+    <mat-label>Calories</mat-label>
+    <div>Calories<mat-slider
+      thumbLabel
+      [displayWith]="setCalories"
+      tickInterval="100"
+      min="1"
+      max="2000"
+      (input)="onInputChange($event)">
+    </mat-slider></div>
+
     <mat-label>Allergen</mat-label>
     <mat-list-item><mat-checkbox [(ngModel)]="data.peanuts">Peanuts</mat-checkbox></mat-list-item>
     <mat-list-item><mat-checkbox [(ngModel)]="data.celery">Celery</mat-checkbox></mat-list-item>
@@ -33,8 +44,6 @@
     <mat-list-item><mat-checkbox [(ngModel)]="data.soya">Soya</mat-checkbox></mat-list-item>
     <mat-list-item><mat-checkbox [(ngModel)]="data.sulphites">Sulphites</mat-checkbox></mat-list-item>
   </mat-list>
-
-
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>

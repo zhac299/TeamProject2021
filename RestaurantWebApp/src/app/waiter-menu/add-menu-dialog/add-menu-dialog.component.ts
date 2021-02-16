@@ -3,6 +3,7 @@ import {MenuService} from "../../menu.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {EditDialogComponent} from "../edit-dialog/edit-dialog.component";
 import {Menu} from "../../../models/Menu";
+import { MatSliderChange } from '@angular/material/slider';
 
 @Component({
   selector: 'app-add-order-dialog',
@@ -15,7 +16,10 @@ export class AddMenuDialogComponent implements OnInit {
               private menuService: MenuService,
               @Inject(MAT_DIALOG_DATA) public data: Menu) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  setCalories(value: number) {
+    return value;
   }
 
   onNoClick(): void {
@@ -23,9 +27,7 @@ export class AddMenuDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  addMenuItem(
-
-  ): void {
+  addMenuItem(): void {
     // this.menuService.createMenuItem(this.data)
     //   .subscribe( result => {
     //     return result;
