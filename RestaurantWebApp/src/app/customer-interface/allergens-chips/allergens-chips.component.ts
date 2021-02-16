@@ -93,7 +93,7 @@ export class AllergensChipsComponent implements OnInit {
     this.calories = event.value;
   }
 
-  getAllergensAndCalories(): string {
+  private getAllergensAndCalories(): string {
     let result: string = '';
     result = result.concat(this.getAllergens());
     result = result.concat(String(this.calories));
@@ -103,5 +103,10 @@ export class AllergensChipsComponent implements OnInit {
   filterByAllergensAndCalories(): void {
     console.log(this.getAllergensAndCalories());
     this.customerInterfaceComponent.filter(this.getAllergensAndCalories());
+  }
+
+  reset(): void {
+    this.calories = 0;
+    this.allergens = [];
   }
 }
