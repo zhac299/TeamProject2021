@@ -16,10 +16,14 @@ export class EditDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-    }
+  }
+
+  setCalories(value: number) {
+    return value;
+  }
     
-    onClick(type: string) { 
+  onClick(type: string) { 
         this.data.category = type;
-    }  
+  }  
 
 }
