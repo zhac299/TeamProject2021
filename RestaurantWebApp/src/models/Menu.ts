@@ -18,4 +18,5 @@ export class Menu{
   soya: boolean;
   sesameSeeds: boolean;
   sulphites: boolean;
+  calories: number;
 }
