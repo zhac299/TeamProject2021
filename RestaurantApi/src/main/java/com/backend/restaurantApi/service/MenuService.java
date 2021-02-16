@@ -51,7 +51,8 @@ public class MenuService {
         Boolean nuts,
         Boolean soya,
         Boolean sesame_seeds,
-        Boolean sulphites) {
+        Boolean sulphites,
+        Double calories) {
         return menuRepository.filter(
             peanuts,
             celery,
@@ -66,7 +67,8 @@ public class MenuService {
             nuts,
             soya,
             sesame_seeds,
-            sulphites);
+            sulphites,
+            calories);
     }
     public Menu updateMenuItem(Long id, Menu menu) {
 		menu.setMenuId(id);

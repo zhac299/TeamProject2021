@@ -18,10 +18,13 @@ public class Menu {
     private String description;
 
     @Column(name = "price")
-    private Double price;
+    private Double price = 0.0;
 
     @Column(name = "category")
     private String category;
+
+    @Column(name = "calories")
+    private Double calories;
 
     @Column(name = "peanuts")
     private boolean peanuts = false;
@@ -65,9 +68,16 @@ public class Menu {
     @Column(name = "sulphites")
     private boolean sulphites = false;
 
-    
     public Long getId() {
         return id;
+    }
+
+    public Double getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Double calories) {
+        this.calories = calories;
     }
 
     public void setMenuId(Long id) {
