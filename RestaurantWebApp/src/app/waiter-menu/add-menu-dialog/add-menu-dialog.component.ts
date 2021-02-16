@@ -39,7 +39,7 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   onCaloriesChange(event: MatSliderChange) {
-    //console.log(this.data.calories);
+    console.log(this.data.calories);
     this.data.calories = event.value;
   }
 

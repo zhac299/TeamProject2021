@@ -15,7 +15,7 @@
   <mat-list>
     <mat-label>Category</mat-label>
     <div *ngFor = "let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
-    <mat-list-item><mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i" >{{item}}</mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox  (change)="onClick(item); selected = i" [checked]="selected === i" >{{item}}</mat-checkbox></mat-list-item>
     </div>
 
     <mat-label>Calories</mat-label>
