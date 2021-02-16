@@ -24,4 +24,11 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
+  <mat-slider
+  thumbLabel
+  [displayWith]="formatLabel"
+  tickInterval="100"
+  min="1"
+  max="1000">
+  </mat-slider>
   <button mat-button (click) = "filterByAllergens()" id="coolbutton">filter</button>

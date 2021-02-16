@@ -29,7 +29,6 @@ import {MatChipsModule} from '@angular/material/chips';
 import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/expansion-pannel.component';
 import { AllergensChipsComponent } from './customer-interface/allergens-chips/allergens-chips.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { CaloriesSliderComponent } from './customer-interface/calories-slider/calories-slider.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
 import { TableComponent } from './waiter-menu/table/table.component';
@@ -51,7 +50,6 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MenuFilterComponent,
     ExpansionPannelComponent,
     AllergensChipsComponent,
-    CaloriesSliderComponent,
     FoodCategoriesComponent,
     TableComponent,
     EditDialogComponent,

@@ -83,6 +83,10 @@ export class AllergensChipsComponent implements OnInit {
     return result;
   }
 
+  formatLabel(value: number) {
+    return value;
+  }
+
   filterByAllergens(): void {
      this.customerInterfaceComponent.filter(this.getAllergens());
   }
