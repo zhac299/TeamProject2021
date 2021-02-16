@@ -24,11 +24,14 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <mat-slider
-  thumbLabel
-  [displayWith]="formatLabel"
-  tickInterval="100"
-  min="1"
-  max="1000">
-  </mat-slider>
-  <button mat-button (click) = "filterByAllergens()" id="coolbutton">filter</button>
+  <p>Calories
+    <mat-slider
+    thumbLabel
+    [displayWith]="setCalories"
+    tickInterval="100"
+    min="1"
+    max="2000"
+    (input)="onInputChange($event)">
+    </mat-slider></p>
+  
+  <p><button mat-button (click) = "filterByAllergensAndCalories()" id="coolbutton">filter</button></p>

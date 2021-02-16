@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 import {CustomerInterfaceComponent} from "../customer-interface.component";
+import { MatSliderChange } from '@angular/material/slider';
 @Component({
   selector: 'allergens-chips',
   templateUrl: './allergens-chips.component.html',
@@ -23,6 +24,7 @@ export class AllergensChipsComponent implements OnInit {
   filteredAllergens: Observable<string[]>;
   allergens: string[] = ['Celery'];
   allAllergens: string[] = ['Peanuts', 'Celery', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Sulphites'];
+  calories: number = 0;
 
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -71,7 +73,7 @@ export class AllergensChipsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public getAllergens(): string {
+  getAllergens(): string {
     let result: string = "/";
     for (let allergen of this.allAllergens) {
       if (this.allergens.includes(allergen)) {
@@ -83,11 +85,23 @@ export class AllergensChipsComponent implements OnInit {
     return result;
   }
 
-  formatLabel(value: number) {
+  setCalories(value: number) {
     return value;
   }
 
-  filterByAllergens(): void {
-     this.customerInterfaceComponent.filter(this.getAllergens());
+  onInputChange(event: MatSliderChange) {
+    this.calories = event.value;
+  }
+
+  getAllergensAndCalories(): string {
+    let result: string = '';
+    result = result.concat(this.getAllergens());
+    result = result.concat(String(this.calories));
+    return result;
+  }
+
+  filterByAllergensAndCalories(): void {
+    console.log(this.getAllergensAndCalories());
+    this.customerInterfaceComponent.filter(this.getAllergensAndCalories());
   }
 }
