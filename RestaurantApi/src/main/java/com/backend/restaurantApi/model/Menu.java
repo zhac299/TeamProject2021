@@ -18,7 +18,7 @@ public class Menu {
     private String description;
 
     @Column(name = "price")
-    private Double price;
+    private Double price = 0.0;
 
     @Column(name = "category")
     private String category;
@@ -70,6 +70,14 @@ public class Menu {
 
     public Long getId() {
         return id;
+    }
+
+    public Double getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Double calories) {
+        this.calories = calories;
     }
 
     public void setMenuId(Long id) {
