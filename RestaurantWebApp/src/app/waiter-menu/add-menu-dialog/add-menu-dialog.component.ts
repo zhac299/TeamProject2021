@@ -38,6 +38,11 @@ export class AddMenuDialogComponent implements OnInit {
     this.data = menu;
   }
 
+  onCaloriesChange(event: MatSliderChange) {
+    //console.log(this.data.calories);
+    this.data.calories = event.value;
+  }
+
   onClick(type: string) { 
     this.data.category = type;
 }  

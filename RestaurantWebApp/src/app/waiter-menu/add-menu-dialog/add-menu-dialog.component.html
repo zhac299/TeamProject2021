@@ -24,7 +24,8 @@
       [displayWith]="setCalories"
       tickInterval="100"
       min="1"
-      max="2000">
+      max="2000"
+      (input)="onCaloriesChange($event)">
     </mat-slider></div>
 
     <mat-label>Allergen</mat-label>

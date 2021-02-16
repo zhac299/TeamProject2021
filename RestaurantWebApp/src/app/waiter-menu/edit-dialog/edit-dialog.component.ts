@@ -23,7 +23,8 @@ export class EditDialogComponent implements OnInit {
     return value;
   }
 
-  onInputChange(event: MatSliderChange) {
+  onCaloriesChange(event: MatSliderChange) {
+    //console.log(this.data.calories);
     this.data.calories = event.value;
   }
     
