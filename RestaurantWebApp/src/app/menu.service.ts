@@ -14,19 +14,24 @@ export class MenuService {
 
   mockDbUrl = 'http://localhost:3000/menu';
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu';
-  orderList: Menu[] = [];  
+  orderList: Menu[] = [];
   sOrder: Menu[] = [];
-  cat: selectedCategory = new selectedCategory; 
+  cat: selectedCategory = new selectedCategory;
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private _refreshNeeded = new Subject<void>();
+
+  menus$: any;
 
   constructor(private httpClient: HttpClient) { }
 
   get refreshNeeded() {
     return this._refreshNeeded;
+  }
+
+  getUpdatedMenu() {
+
   }
 
   public getMenu(): Observable<Menu[]> {
@@ -69,9 +74,9 @@ export class MenuService {
         })
       );
     }
-    
+
     // Filter methods for filtering by dish.
-    getCat(): selectedCategory {     
+    getCat(): selectedCategory {
         if (Object.keys(this.cat).length === 0) {
             this.createSelectedCat();
         }
@@ -81,16 +86,16 @@ export class MenuService {
     createSelectedCat(): selectedCategory {
         this.getMenu().subscribe( orders => {
             this.orderList = orders;
-    
-            for (let order of this.orderList) { 
-                if (order.category == "Fajita") { 
+
+            for (let order of this.orderList) {
+                if (order.category == "Fajita") {
                     this.sOrder.push(order);
                 }
             }
-        
+
             this.cat.name = "Fajita";
             this.cat.meal = this.sOrder;
-            
+
         });
         return this.cat;
     }
@@ -110,14 +115,13 @@ export class MenuService {
         return this.cat;
     }
 
-    setCat(menu: Menu[]) { 
+    setCat(menu: Menu[]) {
         this.sOrder = [];
-        for (let order of menu) { 
-            if (order.category == this.cat.name) { 
+        for (let order of menu) {
+            if (order.category == this.cat.name) {
                 this.sOrder.push(order);
             }
         }
         this.cat.meal = this.sOrder;
     }
-    
 }

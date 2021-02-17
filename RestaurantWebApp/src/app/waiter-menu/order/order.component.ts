@@ -5,6 +5,7 @@ import {WaiterMenuComponent} from "../waiter-menu.component";
 import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
 import {DrinkService} from "../../drink.service";
+import {MealService} from "../../../../../../order_filter/RestaurantWebApp/src/app/meal.service";
 import {Drink} from "../../../models/Drink";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
@@ -29,7 +30,8 @@ export class OrderComponent implements OnInit {
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Order,
     private orderService: OrderService,
-    public menuService: MenuService) {}
+    public menuService: MenuService,
+    public mealService: MealService) {}
 
   ngOnInit(): void {
     // this.orderService.getOrders().subscribe(orders => this.orders = orders);
@@ -61,5 +63,13 @@ export class OrderComponent implements OnInit {
 
   updateOrder(order: Order): void {
     this.orderService.updateOrder(order).subscribe();
+  }
+
+  addMenuToOrder(menu: Menu, order:Order) {
+    // link menuId to meal via its id
+    // link it to order id
+    // this.mealService
+    // order.meal.push(new Meal(menu));
+    // this.orderService.updateOrder(order)
   }
 }

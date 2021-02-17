@@ -11,6 +11,7 @@ import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {interval, timer} from "rxjs";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -35,41 +36,24 @@ export class WaiterMenuComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'price'];
 
   ngOnInit(): void {
-
-    this.orderService.refreshNeeded.subscribe(() => {
-      this.getAllOrders();
-    });
     this.getAllOrders();
-
-    this.menuService.refreshNeeded.subscribe(() => {
-      this.getAllMenus();
-    })
     this.getAllMenus();
-
-    // this.tableService.getTables().subscribe( orders => {
-    //   // checks which incoming tables have orders
-    //   for (const table of orders){
-    //     // updates counter
-    //     if (table.hasOrder){this.freeTables++; }
-    //   }
-    //   this.tableList = orders;
-    // });
-
   }
 
   getAllMenus(): void {
-    this.menuService.getMenu().subscribe(menu => {
+    this.menuService.getUpdatedMenu();
+    this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
   }
 
   getAllOrders(): void {
-    this.orderService.getOrders().subscribe(orders => {
+    this.orderService.getUpdatedOrders();
+    this.orderService.list().subscribe((orders) => {
       this.orders = orders;
     });
   }
   openTableDialog(table: Table): void {
-    // this.dialogTable = table;
     const dialogRef = this.dialog.open(TableComponent, {
       data: this.tableList,
       width: '99%',
@@ -107,20 +91,11 @@ export class WaiterMenuComponent implements OnInit {
   }
 
   createNewOrder(): void {
-    const newOrder: Order = new Order();
     this.orderService.createNewOrder()
-      .subscribe(result => {
-        return result;
-        // console.log(result);
-        // this.orders.push(result);
-      });
-    // console.log(newOrder);
-    // return newOrder;
+      .subscribe();
+    // this.getAllOrders();
   }
 
-  // addMenuItem(): void {
-  //   this.menuService.
-  // }
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu).subscribe();
     this.menuService.getMenu().subscribe(menu => {

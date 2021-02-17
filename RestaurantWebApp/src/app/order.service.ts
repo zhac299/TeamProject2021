@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject, TimeInterval} from 'rxjs';
+import {BehaviorSubject, Observable, Subject, TimeInterval} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Order} from '../models/Order';
 import {map, tap} from 'rxjs/operators';
@@ -16,31 +16,30 @@ export class OrderService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private _refreshNeeded = new Subject<void>();
+  private orderSubject$ = new BehaviorSubject<Order[]>(new Array<Order>());
+  // orders$ = this.orderSubject$.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 
-  get refreshNeeded() {
-    return this._refreshNeeded;
+  list(): Observable<Order[]> {
+    return this.orderSubject$.asObservable();
   }
 
-  // Making an Http request to the database
-  public getOrders(): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(this.restaurantWebApiUrl)
-    .pipe(
-      map(response => response)
-    );
+  public getUpdatedOrders(): void {
+    this.httpClient.get<Order[]>(this.restaurantWebApiUrl)
+      .subscribe((orders) => {
+        this.orderSubject$.next(orders);
+      });
   }
-  // public createOrder(): Observable<ArrayBuffer> {
-  //   return this.httpClient.post(this.mockDbUrl);
-  // }
+
+  public getOrders(): Observable<Order[]> {
+    return this.list();
+  }
+
   createNewOrder(): Observable<Order> {
     return this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order(),this.httpOptions)
       .pipe(
-        tap(()=> {
-          this._refreshNeeded.next();
-        })
-        ,map(response => response)
+        tap(this.orderSubject$.next())
       );
   }
 
