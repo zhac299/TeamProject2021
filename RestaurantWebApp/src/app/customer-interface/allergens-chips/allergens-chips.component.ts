@@ -106,7 +106,9 @@ export class AllergensChipsComponent implements OnInit {
   }
 
   reset(): void {
-    this.calories = 0;
+    this.calories = 2000;
     this.allergens = [];
+    console.log(this.getAllergensAndCalories())
+    this.customerInterfaceComponent.filter(this.getAllergensAndCalories());
   }
 }
