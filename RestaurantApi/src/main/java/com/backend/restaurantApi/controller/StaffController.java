@@ -56,12 +56,12 @@ public class StaffController {
     }
 
     @GetMapping("/staff/{user_name}/{password}")
-    public String findStaffByUserName(Model model, @RequestParam String username, @RequestParam String password) {
+    public List<Staff> findStaffByUserName(Model model, @RequestParam String username, @RequestParam String password) {
 
         List<Staff> staff = staffRepo.getStaffMember(username, password);
 
         model.addAttribute("staff", staff);
 
-        return "showStaff";
+        return staff;
     }
 }
