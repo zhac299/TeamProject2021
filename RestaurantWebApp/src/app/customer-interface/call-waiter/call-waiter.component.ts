@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog} from '@angular/material/dialog';
 
 import { CallWaiterDialogComponent } from './call-waiter-dialog/call-waiter-dialog.component';
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { NotificationsDialogComponent } from './notifications-dialog/notifications-dialog.component';
 
 @Component({
   selector: 'notifications',
@@ -9,9 +12,16 @@ export class NotificationsComponent implements OnInit {
 
   numberOfSelections: number;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(NotificationsDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
