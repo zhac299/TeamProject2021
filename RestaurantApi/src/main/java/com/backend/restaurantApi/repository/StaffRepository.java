@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StaffRepository extends JpaRepository<Staff, Long> {
     @Query
-    (value = "SELECT id FROM staff  WHERE :user_name = 'bob' AND :password = 'zzzzz' ", nativeQuery = true)
+    (value = "SELECT id FROM staff  WHERE :user_name = username AND :password = password ", nativeQuery = true)
 
-    List<Staff> getStaffMember(@Param("user_name") String userName, @Param("password")String password);
+    List<Staff> getStaffMember(@Param("username") String userName, @Param("password")String password);
 
 }
