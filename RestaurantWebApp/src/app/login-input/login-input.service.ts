@@ -9,14 +9,13 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class InputService {
-    private dbUrl;
+    private dbUrl ='http://localhost:8080/api/v1/staff'
     
-    constructor(private httpClient: HttpClient) {
-        this.dbUrl = 'http://localhost:8080/api/v1/staff'
-     }
+    constructor(private httpClient: HttpClient) {}
     
-    public getLogin(): Observable<Login[]> {
-        return this.httpClient.get<Login[]>(this.dbUrl)
+    public getLogin(username: string, password: string): Observable<Login[]> {
+        const queryURL  = this.dbUrl.concat(`/${username}/${password}`);
+         return this.httpClient.get<Login[]>(queryURL)
           .pipe(
             map(response => response)
           );

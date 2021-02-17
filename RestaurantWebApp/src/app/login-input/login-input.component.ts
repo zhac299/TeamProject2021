@@ -25,40 +25,9 @@ export class LoginInputComponent implements OnInit {
     }
     
     onSubmit() {
-        const login2 = {
-            username: this.username,
-            password: this.password,
-            waiter: this.waiter,
-            kitchen: this.kitchen
-        }
 
-        this.input.getLogin().subscribe(login => {
-            
-            this.loginTwo = login;        
-            for (var val of this.loginTwo) { 
-                if (val.username == login2.username && val.password == login2.password && login2.waiter == true) {
-                    this.router.navigateByUrl('waiter-menu');
-                    return;
-                } else if (val.username == login2.username && val.password == login2.password && login2.kitchen == true) {
-                    this.router.navigateByUrl('order-list');
-                    return;
-                }
-            }
-           this.html = "<p>Enter the <u>correct</u> login details / <a href = \"https://google.co.uk\" >Reset Password?</a></p>"
+        this.input.getLogin(this.username, this.password).subscribe(login => {
+            console.log(login);
+            //this.loginTwo = login;
         });
-        this.username = "";
-        this.password = "";
-        this.staff = "";
-        this.waiter = false;
-        this.kitchen = false;
-    }
-
-    isKitchen() {
-        this.kitchen = true
-        this.waiter = false;
-    }
-    isWaiter() {
-        this.waiter = true;
-        this.kitchen = false; 
-    }
 }
