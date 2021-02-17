@@ -12,4 +12,6 @@ export class NotificationsDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  tables: string[] = ['Table1', 'Table2', 'Table3', 'Table4', 'Table5'];
+
 }
