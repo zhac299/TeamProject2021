@@ -1,8 +1,13 @@
-<p>Select Table</p>
+<div>
+    <p>Select Table</p>
+    <mat-form-field appearance="fill" >
+    <mat-label>Table Select</mat-label>
+        <mat-select>
+            <mat-option value="one" *ngFor="let table of tables">{{table}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
 
-<mat-form-field appearance="fill" >
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="one" *ngFor="let table of tables">{{table}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+<div>
+    <button mat-raised-button (click) = callWaiter()>Call Waiter</button>
+</div>
