@@ -7,15 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationsComponent implements OnInit {
 
+  numberOfSelections: number;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  hidden = false;
-
-  // toggleBadgeVisibility() {
-  //   this.hidden = !this.hidden;
-  // }
 
 }
