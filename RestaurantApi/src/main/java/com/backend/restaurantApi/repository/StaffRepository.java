@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StaffRepository extends JpaRepository<Staff, Long> {
     @Query
-    ("SELECT * from staff  WHERE user_name = ?1 AND password = ?2")
+    ("SELECT * from staff  WHERE :user_name = ?1 AND :password = ?2")
     List<Staff> getStaffMember(@Param("user_name") String userName, @Param("password")String password);
 
 }
