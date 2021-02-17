@@ -12,7 +12,6 @@ export class LoginInputComponent implements OnInit {
 
     username: string = "";
     password: string = "";
-    staff: string = "";
     waiter: boolean = false;
     kitchen: boolean = false;
     
@@ -20,26 +19,17 @@ export class LoginInputComponent implements OnInit {
     link: string = "google.co.uk";
 
     constructor(private input: InputService, private router:Router) { }
-    loginTwo: Login[] = [];
     ngOnInit(): void {
     }
     
     onSubmit() {
-        const login2 = {
-            username: this.username,
-            password: this.password,
-            waiter: this.waiter,
-            kitchen: this.kitchen
-        }
 
         this.input.getLogin(this.username, this.password).subscribe(login => {
-            this.loginTwo = login; 
             console.log(login);
         });
-        
+
         this.username = "";
         this.password = "";
-        this.staff = "";
         this.waiter = false;
         this.kitchen = false;
     }
