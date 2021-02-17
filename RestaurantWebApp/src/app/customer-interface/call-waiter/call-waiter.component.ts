@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'call-waiter',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CallWaiterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
+@Component({
+  selector: 'call-waiter-dialog',
+  templateUrl: 'call-waiter-dialog.html',
+})
+export class CallWaiterDialog{}
