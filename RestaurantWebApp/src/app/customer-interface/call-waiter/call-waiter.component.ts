@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-call-waiter',
+  selector: 'call-waiter',
   templateUrl: './call-waiter.component.html',
   styleUrls: ['./call-waiter.component.sass']
 })
