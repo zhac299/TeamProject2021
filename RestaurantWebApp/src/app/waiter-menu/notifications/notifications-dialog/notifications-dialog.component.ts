@@ -14,4 +14,12 @@ export class NotificationsDialogComponent implements OnInit {
 
   tables: string[] = ['Table1', 'Table2', 'Table3', 'Table4', 'Table5'];
 
+  removeTable(removedTable: string): void {
+    const index = this.tables.indexOf(removedTable);
+
+    if (index >= 0) {
+      this.tables.splice(index, 1);
+    }
+  }
+
 }
