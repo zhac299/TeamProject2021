@@ -11,6 +11,4 @@ export class CallWaiterDialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  value = 'Clear me';
 }
