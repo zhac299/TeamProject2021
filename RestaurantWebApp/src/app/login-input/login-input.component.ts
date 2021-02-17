@@ -25,9 +25,31 @@ export class LoginInputComponent implements OnInit {
     }
     
     onSubmit() {
+        const login2 = {
+            username: this.username,
+            password: this.password,
+            waiter: this.waiter,
+            kitchen: this.kitchen
+        }
 
         this.input.getLogin(this.username, this.password).subscribe(login => {
+            this.loginTwo = login; 
             console.log(login);
-            //this.loginTwo = login;
         });
+        
+        this.username = "";
+        this.password = "";
+        this.staff = "";
+        this.waiter = false;
+        this.kitchen = false;
+    }
+
+    isKitchen() {
+        this.kitchen = true
+        this.waiter = false;
+    }
+    isWaiter() {
+        this.waiter = true;
+        this.kitchen = false; 
+    }
 }
