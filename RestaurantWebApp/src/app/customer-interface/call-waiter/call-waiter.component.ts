@@ -10,6 +10,14 @@ export class CallWaiterComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(CallWaiterDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   ngOnInit(): void {}
 }
 @Component({
