@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class CallWaiterDialogComponent implements OnInit {
 
   tables: string[] = ["Table1", "Table2", "Table3", "Table4", "Table 5", "Table 6", "Table 7"];
+  selectedTable: string;
+  
   constructor() { }
   ngOnInit(): void {}
 
   callWaiter(): void {
-    
+
   }
 }
