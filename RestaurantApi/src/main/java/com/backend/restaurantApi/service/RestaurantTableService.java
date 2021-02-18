@@ -33,14 +33,26 @@ public class RestaurantTableService {
     }
 
     /**
-     * Changes the name of a restaurant table number with a new one.
+     * Changes the number of a restaurant table number with a new one.
      * 
      * @param restaurantTable the restaurant table that needs to be changed
      * @param newTableNumber the new table number
      * @return the updated repository
      */
-    public RestaurantTable updaterRestaurantTable(RestaurantTable restaurantTable, int newTableNumber) {
+    public RestaurantTable updateRestaurantTableNumber(RestaurantTable restaurantTable, int newTableNumber) {
 		restaurantTable.setTableNumber(newTableNumber);
+        return restaurantTableRepository.save(restaurantTable);
+	}
+
+    /**
+     * Changes the needsHelp field of a restaurant table with a new one.
+     * 
+     * @param restaurantTable the restaurant table that needs to be changed
+     * @param newNeedsHelp the new needsHelp field
+     * @return the updated repository
+     */
+    public RestaurantTable updateRestaurantTableNeedsHelp(RestaurantTable restaurantTable, boolean newNeedsHelp) {
+		restaurantTable.setNeedsHelp(newNeedsHelp);
         return restaurantTableRepository.save(restaurantTable);
 	}
 }
