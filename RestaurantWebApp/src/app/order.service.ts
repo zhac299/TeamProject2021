@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Order} from '../models/Order';
 import {map} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
@@ -35,9 +35,13 @@ export class OrderService {
   // }
 
   createNewOrder(): void {
-    this.httpClient.post<Order[]>(this.restaurantWebApiUrl,new Order())
-      .subscribe((orders) => {
-        this.orderSubject$.next(orders);
+    this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order())
+      .subscribe((order) => {
+        const _orders = this.orderSubject$.getValue()
+        _orders.push(order)
+        this.orderSubject$.next(
+          _orders
+        );
         this.getUpdatedOrders();
       });
   }
