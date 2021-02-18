@@ -3,12 +3,11 @@
     <div class = "sign">
         <h1 class = "welcome">Two-Factor Authentication</h1>
         <br/>
-        <p class = "info">Enter your six-digit code.</p>
+        <p class = "info">Enter your four-digit code.</p>
         <form class = "form1">
-            <input class="pass" inputmode="numeric"  pattern="[0-9]*"  name = "auth"  placeholder = "Code.."/>
+            <input class="pass" inputmode="numeric"  pattern="[0-9]*"  name = "auth"  maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  onKeyPress="if(this.value.length==4) return false;"/>
             <input  (click) = "onSubmit()" type="submit" value="Login" class = "submit">
-            <br/><br/><br/><br/><br/>      
-            <br/>    
+            <br/><br/><br/><br/><br/><br/>  
         </form>
     </div>
 </div>
