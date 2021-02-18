@@ -15,5 +15,29 @@ public class RestaurantTable {
     private boolean needsHelp;
 
     @Column(name = "isOccupied", nullable = false)
-    private int customerTableNum;
+    private boolean isOccupied;
+
+    public int getID() {
+        return this.id;
+    }
+
+    public boolean getNeedsHelp() {
+        return this.needsHelp;
+    }
+
+    public boolean getIsOccupied() {
+        return this.isOccupied;
+    }
+
+    public void setID(int newID) {
+        this.id = newID;
+    }
+
+    public void setNeedsHelp(boolean needsHelp) {
+        this.needsHelp = needsHelp;
+    }
+
+    public void setIsOccupied(boolean isOccupied) {
+        this.isOccupied = isOccupied;
+    }
 }
