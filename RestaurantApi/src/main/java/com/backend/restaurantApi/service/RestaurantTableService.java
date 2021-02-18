@@ -3,6 +3,7 @@ package com.backend.restaurantApi.service;
 import com.backend.restaurantApi.exception.RestaurantTableNotFoundException;
 import com.backend.restaurantApi.model.RestaurantTable;
 import com.backend.restaurantApi.repository.RestaurantTableRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class RestaurantTableService {
      * @param newTableNumber the new table number
      * @return the updated repository
      */
-    public RestaurantTable updateRestaurantTableNumber(RestaurantTable restaurantTable, int newTableNumber) {
+    public RestaurantTable updateRestaurantTableNumber(RestaurantTable restaurantTable, long newTableNumber) {
 		restaurantTable.setTableNumber(newTableNumber);
         return restaurantTableRepository.save(restaurantTable);
 	}
@@ -67,4 +68,17 @@ public class RestaurantTableService {
 		restaurantTable.setIsOccupied(newIsOccupied);
         return restaurantTableRepository.save(restaurantTable);
 	}
+
+    // public RestaurantTable getTableByNumber(long tableNumber) {
+	// 	Optional<RestaurantTable> table = RestaurantTableRepository.findById(tableNumber);
+
+    //     if (!table.isPresent()) {
+    //         throw new RestaurantTableNotFoundException("Restaurant Table Record is not available...");
+    //     }
+    //     return table.get();
+	// }
+
+    // public void deleterstaurantTable(Long tableNumber) {
+    //     RestaurantTableRepository.deleteById(tableNumber);
+	// }
 }

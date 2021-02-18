@@ -16,7 +16,7 @@ public class RestaurantTable {
     @Id
     @Column(name = "tableNumber", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int tableNumber;
+    private long tableNumber;
 
     /**
      * A column of the table that tells if a table needs help or not.
@@ -35,7 +35,7 @@ public class RestaurantTable {
      * 
      * @return the table number
      */
-    public int getTableNumber() {
+    public long getTableNumber() {
         return this.tableNumber;
     }
 
@@ -62,7 +62,7 @@ public class RestaurantTable {
      * 
      * @param newTableNumber the new table number
      */
-    public void setTableNumber(int newTableNumber) {
+    public void setTableNumber(long newTableNumber) {
         this.tableNumber = newTableNumber;
     }
 
@@ -82,5 +82,17 @@ public class RestaurantTable {
      */
     public void setIsOccupied(boolean isOccupied) {
         this.isOccupied = isOccupied;
+    }
+
+    /**
+     * Returns A Jason object containing all the tables details.
+     */
+    @Override
+    public String toString() {
+        return "RestaurantTables{" +
+            "tableNumber='" + this.tableNumber +
+            ", needsHelp='" + this.tableNumber + '\'' +
+            ", IsOccupied='" + this.isOccupied + '\'' +
+            '}';
     }
 }
