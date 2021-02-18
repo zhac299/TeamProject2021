@@ -4,14 +4,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {WaiterMenuComponent} from "../waiter-menu.component";
 import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
-import {DrinkService} from "../../drink.service";
-import {MealService} from "../../../../../../order_filter/RestaurantWebApp/src/app/meal.service";
-import {Drink} from "../../../models/Drink";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
-import {Meal} from "../../../models/Meal";
-import {tap} from "rxjs/operators";
-import {pipe} from "rxjs";
 
 @Component({
   selector: 'app-order',
@@ -30,14 +24,13 @@ export class OrderComponent implements OnInit {
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Order,
     private orderService: OrderService,
-    public menuService: MenuService,
-    public mealService: MealService) {}
+    public menuService: MenuService) {}
 
   ngOnInit(): void {
     // this.orderService.getOrders().subscribe(orders => this.orders = orders);
     // this.menuService.getMenuById(this.data.id).subscribe(menu => this.menu = menu);
 
-    this.menuService.getMenu().subscribe(menuItems => this.menuList = menuItems);
+    this.menuService.menus$.subscribe(menuItems => this.menuList = menuItems);
     this.findMealFromMenu();
   }
 
@@ -55,14 +48,12 @@ export class OrderComponent implements OnInit {
   }
 
   deleteOrder(): void {
-    this.orderService.deleteOrderById(this.data.id).subscribe(
-
-    );
+    this.orderService.deleteOrderById(this.data.id);
     this.dialogRef.close();
   }
 
   updateOrder(order: Order): void {
-    this.orderService.updateOrder(order).subscribe();
+    this.orderService.updateOrder(order);
   }
 
   addMenuToOrder(menu: Menu, order:Order) {

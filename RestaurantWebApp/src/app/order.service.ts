@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, Subject, TimeInterval} from 'rxjs';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Order} from '../models/Order';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 
 @Injectable({
@@ -10,20 +10,13 @@ import {Menu} from "../models/Menu";
 })
 export class OrderService {
 
-  mockDbUrl = 'http://localhost:3000/orders';
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders';
   mealsURL = 'http://localhost:8080/api/v1/meals';
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  private orderSubject$ = new BehaviorSubject<Order[]>(new Array<Order>());
-  // orders$ = this.orderSubject$.asObservable();
+
+  private orderSubject$ = new BehaviorSubject<Order[]>([]);
+  orders$ = this.orderSubject$.asObservable();
 
   constructor(private httpClient: HttpClient) { }
-
-  list(): Observable<Order[]> {
-    return this.orderSubject$.asObservable();
-  }
 
   public getUpdatedOrders(): void {
     this.httpClient.get<Order[]>(this.restaurantWebApiUrl)
@@ -32,15 +25,21 @@ export class OrderService {
       });
   }
 
-  public getOrders(): Observable<Order[]> {
-    return this.list();
-  }
+  // fetchOrders(): Order[] {
+  //   let orderList: Order[] = [];
+  //   this.httpClient.post<Order[]>(this.restaurantWebApiUrl,new Order())
+  //     .subscribe((orders) => {
+  //       orderList = orders;
+  //     });
+  //   return orderList;
+  // }
 
-  createNewOrder(): Observable<Order> {
-    return this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order(),this.httpOptions)
-      .pipe(
-        tap(this.orderSubject$.next())
-      );
+  createNewOrder(): void {
+    this.httpClient.post<Order[]>(this.restaurantWebApiUrl,new Order())
+      .subscribe((orders) => {
+        this.orderSubject$.next(orders);
+        this.getUpdatedOrders();
+      });
   }
 
   getOrderById(mealId: number): Observable<Menu> {
@@ -50,20 +49,24 @@ export class OrderService {
       );
   }
 
-  deleteOrderById(orderId: number): Observable<Order> {
-    return this.httpClient.delete<Order>(`${this.restaurantWebApiUrl}/${orderId}`).pipe(
-      tap(()=>{
-        console.log(`${orderId} has been cancelled`);
-        this._refreshNeeded.next();
-      }) );
+  deleteOrderById(orderId: number): void {
+    this.httpClient.delete<Order>(`${this.restaurantWebApiUrl}/${orderId}`)
+      .subscribe(() => {
+        this.orderSubject$.next(
+          this.orderSubject$.getValue()
+            .filter(
+              (ignoreOrder) =>
+                ignoreOrder.id !== orderId
+
+            )
+        );
+      });
   }
 
-  updateOrder(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`,order)
-      .pipe(
-        tap(()=> {
-          this._refreshNeeded.next();
-        })
-      )
+  updateOrder(order: Order): void {
+    this.httpClient.put<Order[]>(`${this.restaurantWebApiUrl}/${order.id}`,order)
+      .subscribe((orders) => {
+        this.orderSubject$.next(orders);
+      });
   }
 }

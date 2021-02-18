@@ -9,9 +9,7 @@ import {TableComponent} from "./table/table.component";
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
-import {interval, timer} from "rxjs";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
-import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -31,28 +29,21 @@ export class WaiterMenuComponent implements OnInit {
   showFiller = false;
   tableList: Table[] = [];
   freeTables = 0;
-  dialogTable: Table = new Table();
   orders: Order[];
   displayedColumns: string[] = ['name', 'description', 'price'];
 
   ngOnInit(): void {
-    this.getAllOrders();
-    this.getAllMenus();
-  }
+    this.orderService.getUpdatedOrders();
+    this.menuService.getAllUpdatedMenus();
 
-  getAllMenus(): void {
-    this.menuService.getUpdatedMenu();
+    this.orderService.orders$.subscribe((orders) => {
+      this.orders = orders;
+    });
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
   }
 
-  getAllOrders(): void {
-    this.orderService.getUpdatedOrders();
-    this.orderService.list().subscribe((orders) => {
-      this.orders = orders;
-    });
-  }
   openTableDialog(table: Table): void {
     const dialogRef = this.dialog.open(TableComponent, {
       data: this.tableList,
@@ -85,22 +76,17 @@ export class WaiterMenuComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // console.log(result);
       if (result){
-        this.menuService.updateMenu(result).subscribe(data=> result = data)
+        this.menuService.updateMenu(result)
       }
     });
   }
 
   createNewOrder(): void {
-    this.orderService.createNewOrder()
-      .subscribe();
-    // this.getAllOrders();
+    this.orderService.createNewOrder();
   }
 
   deleteMenuItem(menu: Menu) {
-    this.menuService.deleteMenu(menu).subscribe();
-    this.menuService.getMenu().subscribe(menu => {
-      this.menuList = menu;
-    })
+    this.menuService.deleteMenu(menu);
   }
 
   openAddMenuDialog() {
@@ -113,7 +99,7 @@ export class WaiterMenuComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(menu => {
       if(menu){
-        this.menuService.createMenuItem(menu).subscribe();
+        this.menuService.createMenuItem(menu);
       }
     })
 

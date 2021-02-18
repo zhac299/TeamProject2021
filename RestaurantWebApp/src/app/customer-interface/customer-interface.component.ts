@@ -26,7 +26,7 @@ export class CustomerInterfaceComponent implements OnInit {
               private menuFilterService: MenuFilterService) { }
 
   ngOnInit(): void {
-    this.menuService.refreshNeeded.subscribe(()=> {
+    this.menuService.menus$.subscribe(()=> {
         this.cat = this.menuService.getCat();
     });
     this.cat = this.menuService.getCat();

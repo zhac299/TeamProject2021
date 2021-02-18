@@ -75,11 +75,11 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatToolbarModule,
     MatSidenavModule,
     MatExpansionModule,
-    MatChipsModule, 
+    MatChipsModule,
     MatAutocompleteModule,
     MatSliderModule,
     MatTableModule,
-    MatCheckboxModule,
+    MatCheckboxModule
   ],
   providers: [AllergensChipsComponent],
   bootstrap: [AppComponent]
