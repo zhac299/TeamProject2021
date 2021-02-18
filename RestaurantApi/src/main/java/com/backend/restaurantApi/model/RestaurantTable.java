@@ -10,4 +10,10 @@ public class RestaurantTable {
     @Column(name = "tableNumber", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "needsHelp", nullable = false)
+    private boolean needsHelp;
+
+    @Column(name = "isOccupied", nullable = false)
+    private int customerTableNum;
 }
