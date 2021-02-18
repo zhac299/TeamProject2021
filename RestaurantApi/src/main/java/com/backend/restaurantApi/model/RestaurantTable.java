@@ -16,7 +16,7 @@ public class RestaurantTable {
     @Id
     @Column(name = "tableNumber", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int tableNumber;
 
     /**
      * A column of the table that tells if a table needs help or not.
@@ -31,12 +31,12 @@ public class RestaurantTable {
     private boolean isOccupied;
 
     /**
-     * A getter for the private class field id.
+     * A getter for the private class field tableNumber.
      * 
-     * @return the table id
+     * @return the table number
      */
-    public int getID() {
-        return this.id;
+    public int getTableNumber() {
+        return this.tableNumber;
     }
 
     /**
@@ -49,7 +49,7 @@ public class RestaurantTable {
     }
 
     /**
-     * A getter for the private class field isOccupied
+     * A getter for the private class field isOccupied.
      * 
      * @return the table isOccupied field
      */
@@ -58,12 +58,12 @@ public class RestaurantTable {
     }
 
     /**
-     * Setter that updates the id with a new one
+     * Setter that updates the tableNumber with a new one.
      * 
-     * @param newID the new id
+     * @param newTableNumber the new table number
      */
-    public void setID(int newID) {
-        this.id = newID;
+    public void setTableNumber(int newTableNumber) {
+        this.tableNumber = newTableNumber;
     }
 
     /**

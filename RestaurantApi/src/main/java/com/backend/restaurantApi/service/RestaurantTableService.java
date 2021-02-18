@@ -31,4 +31,16 @@ public class RestaurantTableService {
     public RestaurantTable createNewRestaurantTable(RestaurantTable restaurantTable) {
         return restaurantTableRepository.save(restaurantTable);
     }
+
+    /**
+     * Changes the name of a restaurant table number with a new one.
+     * 
+     * @param restaurantTable the restaurant table that needs to be changed
+     * @param newTableNumber the new table number
+     * @return the updated repository
+     */
+    public RestaurantTable updaterRestaurantTable(RestaurantTable restaurantTable, int newTableNumber) {
+		restaurantTable.setTableNumber(newTableNumber);
+        return restaurantTableRepository.save(restaurantTable);
+	}
 }
