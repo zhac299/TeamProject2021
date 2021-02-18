@@ -49,4 +49,10 @@ public class RestaurantTableController {
     public RestaurantTable createNewMeal(@RequestBody RestaurantTable table){
         return restaurantTableService.createNewRestaurantTable(table);
     }
+
+    @PutMapping("/tables/{tableNumber}")
+    public RestaurantTable updateRestaurantTableNumber
+    (@PathVariable("tableNumber") long tableNumber, @RequestBody RestaurantTable table) {
+        return restaurantTableService.updateRestaurantTableNumber(table, tableNumber);
+    }
 }
