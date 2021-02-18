@@ -16,6 +16,19 @@ import java.util.Optional;
 @Service
 public class RestaurantTableService {
     
+    /**
+     * Autowires to the the custom repository.
+     */
     @Autowired
     RestaurantTableRepository restaurantTableRepository;
+
+    /**
+     * Creates a new Restaurant Table and upates the repository.
+     * 
+     * @param restaurantTable the new restaurant table
+     * @return the updated repository
+     */
+    public RestaurantTable createNewRestaurantTable(RestaurantTable restaurantTable) {
+        return restaurantTableRepository.save(restaurantTable);
+    }
 }
