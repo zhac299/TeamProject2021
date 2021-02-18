@@ -50,9 +50,29 @@ public class RestaurantTableController {
         return restaurantTableService.createNewRestaurantTable(table);
     }
 
+    /**
+     * Updates the tables number and calls the service to update the repo.
+     * 
+     * @param tableNumber the new table number
+     * @param table the intial table 
+     * @return the updated RestaurantTable
+     */
     @PutMapping("/tables/{tableNumber}")
     public RestaurantTable updateRestaurantTableNumber
     (@PathVariable("tableNumber") long tableNumber, @RequestBody RestaurantTable table) {
         return restaurantTableService.updateRestaurantTableNumber(table, tableNumber);
+    }
+
+    /**
+     * Updates the needsHelp field and calls the service to update the repo.
+     * 
+     * @param needsHelp the new needsHelp field
+     * @param table the intial table 
+     * @return the updated RestaurantTable
+     */
+    @PutMapping("/tables/{needsHelp}")
+    public RestaurantTable updateRestaurantNeedsHelp
+    (@PathVariable("needsHelp") boolean needsHelp, @RequestBody RestaurantTable table) {
+        return restaurantTableService.updateRestaurantTableNeedsHelp(table, needsHelp);
     }
 }
