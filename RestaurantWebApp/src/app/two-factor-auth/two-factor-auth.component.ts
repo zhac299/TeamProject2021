@@ -9,7 +9,13 @@ export class TwoFactorAuthComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+      
+    
+    }
+    
+    onSubmit() { 
+        
+    }
 
 }
