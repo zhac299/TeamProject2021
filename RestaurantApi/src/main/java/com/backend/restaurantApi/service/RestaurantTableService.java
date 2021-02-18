@@ -55,4 +55,16 @@ public class RestaurantTableService {
 		restaurantTable.setNeedsHelp(newNeedsHelp);
         return restaurantTableRepository.save(restaurantTable);
 	}
+
+    /**
+     * Changes the isOccupied field of a restaurant table with a new one.
+     * 
+     * @param restaurantTable the restaurant table that needs to be changed
+     * @param newIsOccupied the new isOccupied field
+     * @return the updated repository
+     */
+    public RestaurantTable updateRestaurantTableIsOccupied(RestaurantTable restaurantTable, boolean newIsOccupied) {
+		restaurantTable.setIsOccupied(newIsOccupied);
+        return restaurantTableRepository.save(restaurantTable);
+	}
 }
