@@ -39,6 +39,27 @@
 <!--  </mat-grid-list>-->
 <!--  <hr>-->
 
+  <h2>Tables</h2>
+  <mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-tile>
+      <button mat-raised-button class="tableBut" color="primary">Table Number: 1</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button class="tableBut" color="primary">Table Number: 2</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button class="tableBut" color="primary">Table Number: 3</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button class="tableBut" color="primary">Table Number: 4</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button class="tableBut" color="primary">Table Number: 5</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <hr>
+
   <h2>Orders</h2>
   <mat-grid-list cols="4" rowHeight="200px">
     <mat-grid-tile *ngFor="let order of orders" >
