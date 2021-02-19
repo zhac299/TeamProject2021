@@ -58,8 +58,8 @@ export class WaiterMenuComponent implements OnInit {
   openAddDialog(menu:Menu): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       data: menu,
-      width: '30%',
-      height: '50%'
+      width: '40%',
+      height: '75%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -83,8 +83,8 @@ export class WaiterMenuComponent implements OnInit {
     let newMenu: Menu = new Menu();
     const dialogRef = this.dialog.open(AddMenuDialogComponent, {
       data: newMenu,
-      width:'30%',
-      height:'50%'
+      width:'40%',
+      height:'75%'
     });
 
     dialogRef.afterClosed().subscribe(menu => {
