@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./two-factor-auth.component.sass']
 })
 export class TwoFactorAuthComponent implements OnInit {
-    otp: string;
+    otp: number;
   constructor() { }
 
     ngOnInit(): void {
@@ -19,7 +19,7 @@ export class TwoFactorAuthComponent implements OnInit {
       }
     
     onSubmit() { 
-        
+        console.log(this.otp);
     }
 
 }
