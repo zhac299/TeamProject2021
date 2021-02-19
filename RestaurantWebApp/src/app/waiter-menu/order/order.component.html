@@ -29,7 +29,7 @@
 
         </mat-card-header>
         <mat-card-content>
-            <mat-list *ngFor="let meal of orderedMeals">
+            <mat-list *ngFor="let meal of orderedMenuItems$ | async">
               <mat-list-item>
                 <p mat-card-subtitle style="font-size:14px" mat-line>{{meal.name}}</p>
                 <p mat-subheader>({{meal.price}})</p>
@@ -74,6 +74,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button mat-dialog-close (click)="updateOrder(order)">Save</button>
+  <button mat-button mat-dialog-close (click)="save(order)">Save</button>
   <button mat-button (click)="deleteOrder()"><mat-icon>delete</mat-icon></button>
 </mat-dialog-actions>

@@ -6,9 +6,7 @@ import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
-import {Meal} from "../../../models/Meal";
-import {Observable, pipe} from "rxjs";
-import {filter, map} from "rxjs/operators";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-order',
@@ -19,9 +17,13 @@ export class OrderComponent implements OnInit {
 
   table: Table;
   total: number = 0;
-  orderedMeals: Menu[] = [];
-  // menu: Menu;
   menuList: Menu[] = [];
+
+  private orderedMenuItemsSubject$ = new BehaviorSubject<Menu[]>([]);
+  orderedMenuItems$ = this.orderedMenuItemsSubject$.asObservable();
+
+  private orderSubject$ = new BehaviorSubject<Order>(this.order);
+  order$ = this.orderSubject$.asObservable();
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
@@ -30,36 +32,36 @@ export class OrderComponent implements OnInit {
     public menuService: MenuService) {}
 
   ngOnInit(): void {
-    // this.orderService.getOrders().subscribe(orders => this.orders = orders);
-    // this.menuService.getMenuById(this.data.id).subscribe(menu => this.menu = menu);
-
-    this.menuService.getAllUpdatedMenus();
-    this.menuService.menus$.subscribe(menuItems => this.menuList = menuItems);
-      this.menuService.findMealFromMenu(this.order)
-        .subscribe((menus) => {
-          menus.forEach((menu) => {
-            this.total += menu.price;
-          });
-          this.orderedMeals = menus;
-          this.menuList = menus;
-        });
-    //   .subscribe(meal => {
-    //   this.orderedMeals.push(meal);
-    //   //update price total
-    //   this.total += meal.price;
-    // });
+    this.updateAllOrder();
   }
 
-  // Gets all meals from the menu and initialises menuList with those meals
+  getId(): number {
+    let id = undefined;
+    this.order$.subscribe((o) => id = o.id);
+    return id;
+  }
 
+  updateOrderedMenuItems() {
+    if(this.order.meal.length > 0){
+      this.order$.subscribe((order) => {
+        this.orderService.getOrderedMenuItems(order)
+          .subscribe((menuItems) => {
+            this.orderedMenuItemsSubject$.next(menuItems);
+          });
+      });
+    }
+  }
+
+  updateAllOrder(): void {
+    this.updateOrderedMenuItems();
+    this.menuService.menus$.subscribe((menu) => {
+      this.menuList = menu;
+    });
+  }
 
   deleteOrder(): void {
     this.orderService.deleteOrderById(this.order.id);
     this.dialogRef.close();
-  }
-
-  updateOrder(order: Order): void {
-    this.orderService.updateOrder(order);
   }
 
   addMenuToOrder(menu: Menu, order:Order) {
@@ -70,6 +72,21 @@ export class OrderComponent implements OnInit {
       order: undefined,
       menu_id: menu.id
     });
-    this.orderService.updateOrder(order)
+    // this.updateOrder(order);
+
+    const _orderedMenuItems = this.orderedMenuItemsSubject$.getValue();
+    _orderedMenuItems.push(menu);
+    this.orderedMenuItemsSubject$.next(
+      _orderedMenuItems
+    );
+  }
+
+  save(order: Order) {
+    console.log(this.orderSubject$.getValue());
+    // this.orderService.updateOrder(order);
+    this.order = this.orderSubject$.getValue();
+    this.orderedMenuItemsSubject$.complete();
+    this.orderedMenuItemsSubject$.complete();
+    this.dialogRef.close(order);
   }
 }

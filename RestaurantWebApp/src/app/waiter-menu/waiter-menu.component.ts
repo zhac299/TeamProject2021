@@ -5,12 +5,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {OrderComponent} from './order/order.component';
 import {OrderService} from "../order.service";
 import {Order} from "../../models/Order";
-import {TableComponent} from "./table/table.component";
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
-import {of} from "rxjs";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -45,17 +43,6 @@ export class WaiterMenuComponent implements OnInit {
     });
   }
 
-  openTableDialog(table: Table): void {
-    const dialogRef = this.dialog.open(TableComponent, {
-      data: this.tableList,
-      width: '99%',
-      height: '99%'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
-  }
-
   openOrderDialog(order: Order): void {
     // this.dialogTable = table;
     const dialogRef = this.dialog.open(OrderComponent, {
@@ -64,7 +51,11 @@ export class WaiterMenuComponent implements OnInit {
       height: '99%'
     });
 
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.orderService.updateOrder(result);
+      }
+    });
   }
 
   openAddDialog(menu:Menu): void {

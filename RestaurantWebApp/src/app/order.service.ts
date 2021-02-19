@@ -25,15 +25,6 @@ export class OrderService {
       });
   }
 
-  // fetchOrders(): Order[] {
-  //   let orderList: Order[] = [];
-  //   this.httpClient.post<Order[]>(this.restaurantWebApiUrl,new Order())
-  //     .subscribe((orders) => {
-  //       orderList = orders;
-  //     });
-  //   return orderList;
-  // }
-
   createNewOrder(): void {
     this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order())
       .subscribe((order) => {
@@ -78,5 +69,9 @@ export class OrderService {
         });
         this.orderSubject$.next(_orders);
       });
+  }
+
+  getOrderedMenuItems(order: Order): Observable<Menu[]> {
+    return this.httpClient.get<Menu[]>(`${this.restaurantWebApiUrl}/${order.id}/orderedMenuItems`);
   }
 }
