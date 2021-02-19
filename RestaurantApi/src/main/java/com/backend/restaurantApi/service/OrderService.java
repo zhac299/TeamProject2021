@@ -1,8 +1,11 @@
 package com.backend.restaurantApi.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
+import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.repository.OrderRepository;
 
@@ -36,5 +39,16 @@ public class OrderService {
 	public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
 	}
-    
+
+    public List<Meal> getOrderedMeals(Long id) {
+        Optional<Order>  order = orderRepository.findById(id);
+        if (!order.isPresent()) {
+            throw new OrderNotFoundException("Order Record is not available...");
+        } else {
+            if(order.get().getMeal().isEmpty()) {
+                throw new MealNotFoundException("No meals in this order...");
+            }
+        }
+        return order.get().getMeal();
+    }
 }

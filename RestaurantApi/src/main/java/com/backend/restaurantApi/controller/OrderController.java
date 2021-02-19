@@ -1,5 +1,7 @@
 package com.backend.restaurantApi.controller;
 
+import com.backend.restaurantApi.model.Meal;
+import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.repository.*;
 import com.backend.restaurantApi.service.OrderService;
@@ -43,5 +45,10 @@ public class OrderController {
     @DeleteMapping("/orders/{id}")
     public void deleteOrder(@PathVariable("id") Long id) {
         orderService.deleteOrder(id);
+    }
+
+    @GetMapping("orders/{id}/meals")
+    public List<Meal> getOrderedMeals(@PathVariable("id") Long id) {
+        return orderService.getOrderedMeals(id);
     }
 }
