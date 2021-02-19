@@ -37,8 +37,8 @@ export class OrderService {
   createNewOrder(): void {
     this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order())
       .subscribe((order) => {
-        const _orders = this.orderSubject$.getValue()
-        _orders.push(order)
+        const _orders = this.orderSubject$.getValue();
+        _orders.push(order);
         this.orderSubject$.next(
           _orders
         );
@@ -68,9 +68,15 @@ export class OrderService {
   }
 
   updateOrder(order: Order): void {
-    this.httpClient.put<Order[]>(`${this.restaurantWebApiUrl}/${order.id}`,order)
-      .subscribe((orders) => {
-        this.orderSubject$.next(orders);
+    this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`,order)
+      .subscribe((order) => {
+        let _orders = this.orderSubject$.getValue();
+        _orders.forEach((whichOrder) => {
+          if(whichOrder.id == order.id) {
+            whichOrder = order;
+          }
+        });
+        this.orderSubject$.next(_orders);
       });
   }
 }
