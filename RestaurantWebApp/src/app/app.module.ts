@@ -39,6 +39,7 @@ import {MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
+import { NgOtpInputModule } from  'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.compon
     MatSliderModule,
     MatTableModule,
     MatCheckboxModule,
+    NgOtpInputModule,
   ],
   providers: [AllergensChipsComponent],
   bootstrap: [AppComponent]
