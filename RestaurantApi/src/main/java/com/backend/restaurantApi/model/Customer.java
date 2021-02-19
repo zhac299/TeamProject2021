@@ -31,7 +31,7 @@ public class Customer {
   /**
    * The foreign key of the table that references the RestaurantTable
    * table. It uses a many to one annotation to realise it and JsonManagedReference
-   * to avoid to avoid the infinte JSON serialization problem such that only this item 
+   * to avoid to avoid the infinte JSON serialization problem such that only this item
    * is serialised.
    */
   @JsonManagedReference
@@ -41,7 +41,7 @@ public class Customer {
 
   /**
    * Sets the customer id to a new one.
-   * 
+   *
    * @param id the new id
    */
   public void setCustomerId(long id) {
@@ -50,7 +50,7 @@ public class Customer {
 
   /**
    * Getter for the private class field id.
-   * 
+   *
    * @return the customer id
    */
   public long getCustomerId() {
@@ -59,7 +59,7 @@ public class Customer {
 
   /**
    * Getter for the private class field table.
-   * 
+   *
    * @return the foreign key table
    */
   public RestaurantTable getTable() {
@@ -68,7 +68,7 @@ public class Customer {
 
   /**
    * Sets the foreign key to another.
-   * 
+   *
    * @param newTable new foreign key
    */
   public void setTable(RestaurantTable newTable) {
@@ -77,14 +77,48 @@ public class Customer {
 
   /**
    * Serializes Customer to Json format.
-   * 
+   *
    * @return a string of Json format
    */
+  @Column(name = "is_ready")
+  private boolean isReady = false;
+
+// used to serialize object to json
   @Override
   public String toString() {
       return "Customer{" +
               "id=" + id +
+              ", tableNumber='" + tableNumber + '\'' +
+              ", isReady='" + isReady + '\'' +
               ", tableNumber='" + table + '\'' +
               '}';
   }
+
+  public Customer() {}
+
+  public Customer(int tableNumber) {
+     this.tableNumber = tableNumber;
+  }
+
+  public void setCustomerId(long id) {
+    this.id = id;
+  }
+
+  public int getTableNumber() {
+     return this.tableNumber;
+  }
+
+
+  public boolean isIsReady() {
+    return this.isReady;
+  }
+
+  public boolean getIsReady() {
+    return this.isReady;
+  }
+
+  public void setIsReady(boolean isReady) {
+    this.isReady = isReady;
+  }
+
 }
