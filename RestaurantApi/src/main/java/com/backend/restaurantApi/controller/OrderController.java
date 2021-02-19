@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.PriorityQueue;
 
 @CrossOrigin("*")
 @RestController
@@ -22,11 +23,11 @@ public class OrderController {
 
     @GetMapping("/orders")
     public List<Order> index() {
-      return orderRepo.findAll();
-  }
+        return orderRepo.findAll();
+    }
 
     @PostMapping("/orders")
-    public Order newOrder(@RequestBody Order order){
+    public Order newOrder(@RequestBody Order order) {
         return orderRepo.save(order);
     }
 
@@ -43,5 +44,10 @@ public class OrderController {
     @DeleteMapping("/orders/{id}")
     public void deleteOrder(@PathVariable("id") Long id) {
         orderService.deleteOrder(id);
+    }
+
+    @GetMapping("/orders/pq")
+    public PriorityQueue<Order> getQueue() {
+        return orderService.convertIntoQueue();
     }
 }

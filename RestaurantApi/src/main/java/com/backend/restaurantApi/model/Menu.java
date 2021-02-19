@@ -68,6 +68,9 @@ public class Menu {
     @Column(name = "sulphites")
     private boolean sulphites = false;
 
+    @Column(name = "time_to_cook")
+    private double timeToCook = 20;
+    
     public Long getId() {
         return id;
     }
@@ -227,4 +230,10 @@ public class Menu {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
+    public double getTimeToTime() {
+        return this.timeToCook;
+    }
+
 }
