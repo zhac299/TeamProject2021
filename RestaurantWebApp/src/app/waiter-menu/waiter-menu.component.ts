@@ -10,6 +10,7 @@ import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-waiter-menu',

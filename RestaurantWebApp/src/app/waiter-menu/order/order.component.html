@@ -1,17 +1,17 @@
  <mat-grid-list cols="5" rowHeight="60px">
       <mat-grid-tile>
-        <h1 mat-dialog-title>Order #{{data.id}}</h1>
+        <h1 mat-dialog-title>Order #{{order.id}}</h1>
       </mat-grid-tile>
       <mat-grid-tile>
       </mat-grid-tile>
       <mat-grid-tile></mat-grid-tile>
       <mat-grid-tile>
-        <mat-checkbox [(ngModel)]="data.isDelivered">Delivered</mat-checkbox>
+        <mat-checkbox [(ngModel)]="order.isDelivered">Delivered</mat-checkbox>
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field class="tableNumberInput">
           <mat-label>Table #</mat-label>
-          <input matInput  [(ngModel)]="data.customerTableNum"/>
+          <input matInput  [(ngModel)]="order.customerTableNum"/>
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
@@ -51,7 +51,7 @@
         <mat-card-content>
           <mat-grid-list cols="4" rowHeight="50px">
             <mat-grid-tile *ngFor="let menu of menuList" colspan="1">
-              <button mat-raised-button style="width: 100%; color: green" (click)="addMenuToOrder(menu, data)">{{menu.name}}</button>
+              <button mat-raised-button style="width: 100%; color: green" (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
             </mat-grid-tile>
 <!--            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">-->
 <!--              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>-->
@@ -74,6 +74,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button mat-dialog-close (click)="updateOrder(data)">Save</button>
+  <button mat-button mat-dialog-close (click)="updateOrder(order)">Save</button>
   <button mat-button (click)="deleteOrder()"><mat-icon>delete</mat-icon></button>
 </mat-dialog-actions>

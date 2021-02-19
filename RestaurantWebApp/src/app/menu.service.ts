@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Menu} from '../models/Menu';
 import { selectedCategory } from 'src/models/selectedCategory';
+import {Order} from "../models/Order";
 
 @Injectable({
   providedIn: 'root'
@@ -128,4 +129,17 @@ export class MenuService {
         }
         this.cat.meal = this.sOrder;
     }
+
+  findMealFromMenu(data: Order): Observable<Menu[]> {
+    let menus: Menu[] = [];
+    if (data.meal.length > 0 || data.meal != undefined) {
+      data.meal.forEach(value => {
+        this.getMenuById(value.menu_id)
+          .subscribe((menu) => {
+            menus.push(menu)
+          })
+      });
+    }
+    return of(menus);
+  }
 }

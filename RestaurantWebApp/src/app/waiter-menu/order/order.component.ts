@@ -6,6 +6,9 @@ import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
+import {Meal} from "../../../models/Meal";
+import {Observable, pipe} from "rxjs";
+import {filter, map} from "rxjs/operators";
 
 @Component({
   selector: 'app-order',
@@ -22,7 +25,7 @@ export class OrderComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Order,
+    @Inject(MAT_DIALOG_DATA) public order: Order,
     private orderService: OrderService,
     public menuService: MenuService) {}
 
@@ -30,25 +33,28 @@ export class OrderComponent implements OnInit {
     // this.orderService.getOrders().subscribe(orders => this.orders = orders);
     // this.menuService.getMenuById(this.data.id).subscribe(menu => this.menu = menu);
 
+    this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe(menuItems => this.menuList = menuItems);
-    this.findMealFromMenu();
+      this.menuService.findMealFromMenu(this.order)
+        .subscribe((menus) => {
+          menus.forEach((menu) => {
+            this.total += menu.price;
+          });
+          this.orderedMeals = menus;
+          this.menuList = menus;
+        });
+    //   .subscribe(meal => {
+    //   this.orderedMeals.push(meal);
+    //   //update price total
+    //   this.total += meal.price;
+    // });
   }
 
   // Gets all meals from the menu and initialises menuList with those meals
-  findMealFromMenu(): void {
-    if (this.data.meal.length > 0 || this.data.meal != undefined) {
-      this.data.meal.forEach(value => {
-        this.menuService.getMenuById(value.menu_id).subscribe(meal => {
-          this.orderedMeals.push(meal);
-          //update price total
-          this.total += meal.price;
-        });
-      });
-    }
-  }
+
 
   deleteOrder(): void {
-    this.orderService.deleteOrderById(this.data.id);
+    this.orderService.deleteOrderById(this.order.id);
     this.dialogRef.close();
   }
 
@@ -59,8 +65,11 @@ export class OrderComponent implements OnInit {
   addMenuToOrder(menu: Menu, order:Order) {
     // link menuId to meal via its id
     // link it to order id
-    // this.mealService
-    // order.meal.push(new Meal(menu));
-    // this.orderService.updateOrder(order)
+    order.meal.push({
+      id: undefined,
+      order: undefined,
+      menu_id: menu.id
+    });
+    this.orderService.updateOrder(order)
   }
 }
