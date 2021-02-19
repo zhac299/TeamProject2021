@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {TableService} from '../table.service';
+import {Component, OnInit} from '@angular/core';
 import {Table} from '../../models/Table';
 import {MatDialog} from '@angular/material/dialog';
 import {OrderComponent} from './order/order.component';
@@ -13,12 +12,11 @@ import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.componen
 @Component({
   selector: 'app-waiter-menu',
   templateUrl: './waiter-menu.component.html',
-  styleUrls: ['./waiter-menu.component.sass']
+  styleUrls: ['./waiter-menu.component.sass'],
 })
 export class WaiterMenuComponent implements OnInit {
 
   constructor(
-    private tableService: TableService,
     private orderService: OrderService,
     private menuService: MenuService,
     public dialog: MatDialog
@@ -50,7 +48,6 @@ export class WaiterMenuComponent implements OnInit {
       width: '99%',
       height: '99%'
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.orderService.updateOrder(result);
@@ -68,9 +65,10 @@ export class WaiterMenuComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // console.log(result);
       if (result){
-        this.menuService.updateMenu(result)
+        this.menuService.updateMenu(result);
       }
     });
+    this.menuService.getAllUpdatedMenus();
   }
 
   createNewOrder(): void {

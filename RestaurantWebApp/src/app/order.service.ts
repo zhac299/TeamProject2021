@@ -14,9 +14,14 @@ export class OrderService {
   mealsURL = 'http://localhost:8080/api/v1/meals';
 
   private orderSubject$ = new BehaviorSubject<Order[]>([]);
-  orders$ = this.orderSubject$.asObservable();
 
-  constructor(private httpClient: HttpClient) { }
+  get orders$() {
+    return this.orderSubject$.asObservable();
+  }
+
+  constructor(private httpClient: HttpClient) {
+    console.log('Instance created');
+  }
 
   public getUpdatedOrders(): void {
     this.httpClient.get<Order[]>(this.restaurantWebApiUrl)
@@ -71,7 +76,8 @@ export class OrderService {
       });
   }
 
-  getOrderedMenuItems(order: Order): Observable<Menu[]> {
+  public getOrderedMenuItems(order: Order): Observable<Menu[]> {
     return this.httpClient.get<Menu[]>(`${this.restaurantWebApiUrl}/${order.id}/orderedMenuItems`);
   }
+
 }

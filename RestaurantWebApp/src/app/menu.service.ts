@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Menu} from '../models/Menu';
 import { selectedCategory } from 'src/models/selectedCategory';
 import {Order} from "../models/Order";
+import {map, repeat} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,20 @@ export class MenuService {
   sOrder: Menu[] = [];
   cat: selectedCategory = new selectedCategory;
 
-  private menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
-  menus$ = this.menuSubject.asObservable();
+  private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
+  readonly menus$ = this.menuSubject.asObservable();
 
-  constructor(private httpClient: HttpClient) { }
+  private getMenus(): Menu[] {
+    return this.menuSubject.getValue();
+  }
+
+  private setMenus(menus: Menu[]) {
+    this.menuSubject.next(menus);
+  }
+
+  constructor(private httpClient: HttpClient) {
+    console.log('Instance created');
+  }
 
   getAllUpdatedMenus(): void {
     this.httpClient.get<Menu[]>(this.restaurantWebApiUrl)
@@ -33,9 +44,11 @@ export class MenuService {
   }
 
   createMenuItem(menu: Menu): void {
-    this.httpClient.post<Menu[]>(this.restaurantWebApiUrl, menu)
-      .subscribe((menuList) => {
-        this.menuSubject.next(menuList);
+    this.httpClient.post<Menu>(this.restaurantWebApiUrl, menu)
+      .subscribe((menu) => {
+        const currentList = this.menuSubject.getValue()
+        currentList.push(menu)
+        this.menuSubject.next(currentList);
         this.getAllUpdatedMenus();
       });
   }
@@ -62,24 +75,6 @@ export class MenuService {
       });
   }
 
-  // deleteMenu(menu: Menu): Observable<Menu>{
-  //   return this.httpClient.delete<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`)
-  //     .pipe(
-  //       tap(()=> {
-  //         this._refreshNeeded.next();
-  //       })
-  //     );
-  // }
-  //
-  // createMenuItem(menu: Menu): Observable<Menu> {
-  //   return this.httpClient.post<Menu>(this.restaurantWebApiUrl,menu)
-  //     .pipe(
-  //       tap(() => {
-  //         this.refreshNeeded.next();
-  //       })
-  //     );
-  //   }
-
     // Filter methods for filtering by dish.
     getCat(): selectedCategory {
         if (Object.keys(this.cat).length === 0) {
@@ -89,9 +84,8 @@ export class MenuService {
     }
 
     createSelectedCat(): selectedCategory {
-        this.menus$.subscribe( orders => {
+        this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe( orders => {
             this.orderList = orders;
-
             for (let order of this.orderList) {
                 if (order.category == "Fajita") {
                     this.sOrder.push(order);

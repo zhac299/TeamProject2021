@@ -9,7 +9,12 @@
     <p><button id = "menuItemButton" >
       {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
     </button></p>
-</div>  
+</div>
+<ul *ngFor="let menus of menu">
+  <li>
+    {{menus.name}}
+  </li>
+</ul>
 
 
 

@@ -11,7 +11,8 @@ import {BehaviorSubject} from "rxjs";
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.sass']
+  styleUrls: ['./order.component.sass'],
+  // providers: [OrderService,MenuService]
 })
 export class OrderComponent implements OnInit {
 
