@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InitialMenuComponent } from './initial-menu/initial-menu.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { CustomerInterfaceComponent } from './customer-interface/customer-interface.component';
 import { LoginInputComponent } from './login-input/login-input.component';
@@ -42,10 +43,12 @@ import { NotificationsComponent } from './waiter-menu/notifications/notification
 import { MatBadgeModule} from '@angular/material/badge';
 import { NotificationsDialogComponent } from './waiter-menu/notifications/notifications-dialog/notifications-dialog.component';
 import { SelectTableDialogComponent } from './home-page/select-table-dialog/select-table-dialog.component';
+import { CustomerTablesComponent } from './waiter-menu/customer-tables/customer-tables.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
     LoginInputComponent,
@@ -57,6 +60,8 @@ import { SelectTableDialogComponent } from './home-page/select-table-dialog/sele
     FoodCategoriesComponent,
     TableComponent,
     EditDialogComponent,
+    AddMenuDialogComponent,
+    CustomerTablesComponent,
     AddMenuDialogComponent,
     CallWaiterComponent,
     CallWaiterDialogComponent,
