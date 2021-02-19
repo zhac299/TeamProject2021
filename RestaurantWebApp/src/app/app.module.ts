@@ -37,6 +37,7 @@ import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.compo
 import {MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { CustomerTablesComponent } from './waiter-menu/customer-tables/customer-tables.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     FoodCategoriesComponent,
     TableComponent,
     EditDialogComponent,
-    AddMenuDialogComponent
+    AddMenuDialogComponent,
+    CustomerTablesComponent
   ],
   imports: [
     BrowserModule,
