@@ -129,17 +129,4 @@ export class MenuService {
         }
         this.cat.meal = this.sOrder;
     }
-
-  findMealFromMenu(data: Order): Observable<Menu[]> {
-    let menus: Menu[] = [];
-    if (data.meal.length > 0 || data.meal != undefined) {
-      data.meal.forEach(value => {
-        this.getMenuById(value.menu_id)
-          .subscribe((menu) => {
-            menus.push(menu)
-          })
-      });
-    }
-    return of(menus);
-  }
 }
