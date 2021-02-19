@@ -47,8 +47,8 @@ public class OrderController {
         orderService.deleteOrder(id);
     }
 
-    @GetMapping("orders/{id}/meals")
-    public List<Meal> getOrderedMeals(@PathVariable("id") Long id) {
+    @GetMapping("orders/{id}/orderedMenuItems")
+    public List<Menu> getOrderedMeals(@PathVariable("id") Long id) {
         return orderService.getOrderedMeals(id);
     }
 }
