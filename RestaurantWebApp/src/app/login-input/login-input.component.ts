@@ -27,7 +27,7 @@ export class LoginInputComponent implements OnInit {
 
         this.input.getLogin(this.username, this.password).subscribe(login => {
             this.loginTwo = login[0];
-            console.log(login[0]);
+            this.router.navigateByUrl("/waiter-menu");
         });
 
         this.username = "";
