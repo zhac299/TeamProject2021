@@ -69,14 +69,14 @@ public class RestaurantTableService {
         return restaurantTableRepository.save(restaurantTable);
 	}
 
-    // public RestaurantTable getTableByNumber(long tableNumber) {
-	// 	Optional<RestaurantTable> table = RestaurantTableRepository.findById(tableNumber);
+    public RestaurantTable getTableByNumber(long tableNumber) {
+		Optional<RestaurantTable> table = RestaurantTableRepository.findById(tableNumber);
 
-    //     if (!table.isPresent()) {
-    //         throw new RestaurantTableNotFoundException("Restaurant Table Record is not available...");
-    //     }
-    //     return table.get();
-	// }
+        if (!table.isPresent()) {
+            throw new RestaurantTableNotFoundException("Restaurant Table Record is not available...");
+        }
+        return table.get();
+	}
 
     // public void deleterstaurantTable(Long tableNumber) {
     //     RestaurantTableRepository.deleteById(tableNumber);

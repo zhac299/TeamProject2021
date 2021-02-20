@@ -46,7 +46,7 @@ public class RestaurantTableController {
      * @return the updated Restaurant Table
      */
     @PostMapping("/tables")
-    public RestaurantTable createNewMeal(@RequestBody RestaurantTable table){
+    public RestaurantTable createNewRestaurantTable(@RequestBody RestaurantTable table){
         return restaurantTableService.createNewRestaurantTable(table);
     }
 
@@ -57,7 +57,7 @@ public class RestaurantTableController {
      * @param table the intial table 
      * @return the updated RestaurantTable
      */
-    @PutMapping("/tables/{tableNumber}")
+    @PutMapping("/tables/tableNumber/{tableNumber}")
     public RestaurantTable updateRestaurantTableNumber
     (@PathVariable("tableNumber") long tableNumber, @RequestBody RestaurantTable table) {
         return restaurantTableService.updateRestaurantTableNumber(table, tableNumber);
@@ -70,9 +70,28 @@ public class RestaurantTableController {
      * @param table the intial table 
      * @return the updated RestaurantTable
      */
-    @PutMapping("/tables/{needsHelp}")
+    @PutMapping("/tables/needsHelp/{needsHelp}")
     public RestaurantTable updateRestaurantNeedsHelp
     (@PathVariable("needsHelp") boolean needsHelp, @RequestBody RestaurantTable table) {
         return restaurantTableService.updateRestaurantTableNeedsHelp(table, needsHelp);
+    }
+
+    
+    /**
+     * Updates the isOccupied field and calls the service to update the repo.
+     * 
+     * @param isOccupied the new isOccupied field
+     * @param table the table to be updated
+     * @return the updated table
+     */
+    @PutMapping("/tables/isOccupied/{isOccupied}")
+    public RestaurantTable updateRestaurantIsOccupied
+    (@PathVariable("isOccupied") boolean isOccupied, @RequestBody RestaurantTable table) {
+        return restaurantTableService.updateRestaurantTableIsOccupied(table, isOccupied);
+    }
+
+    @PutMapping("/tables/{tableNumber}")
+    public RestaurantTable updateOrder(@PathVariable("tableNumber") Long id, @RequestBody RestaurantTable table) {
+        return restaurantTableService.getTableByNumber(id);
     }
 }
