@@ -10,12 +10,12 @@ import { Router } from '@angular/router'
 })
 export class LoginInputComponent implements OnInit {
 
-    username: string = "";
+    username: string;
     password: string = "";
     waiter: boolean = false;
     kitchen: boolean = false;
     
-    loginTwo: Login = new Login;
+    loginTwo: Login = undefined;
     html: string = "";
     link: string = "google.co.uk";
 
@@ -24,16 +24,18 @@ export class LoginInputComponent implements OnInit {
     }
     
     onSubmit() {
+            this.input.getLogin(this.username, this.password).subscribe(login => {
+                try{
+                    this.loginTwo = login[0];
+                    if(this.username == this.loginTwo.userName && this.password == this.loginTwo.password && this.waiter == true){
+                        this.router.navigateByUrl("/waiter-menu");
+                    }
+                } catch {
+                    console.log("Wrong login!");
+                }
+            });
+            
 
-        this.input.getLogin(this.username, this.password).subscribe(login => {
-            this.loginTwo = login[0];
-            this.router.navigateByUrl("/waiter-menu");
-        });
-
-        this.username = "";
-        this.password = "";
-        this.waiter = false;
-        this.kitchen = false;
     }
 
     isKitchen() {
