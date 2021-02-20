@@ -15,6 +15,7 @@ export class LoginInputComponent implements OnInit {
     waiter: boolean = false;
     kitchen: boolean = false;
     
+    loginTwo: Login = new Login;
     html: string = "";
     link: string = "google.co.uk";
 
@@ -25,7 +26,8 @@ export class LoginInputComponent implements OnInit {
     onSubmit() {
 
         this.input.getLogin(this.username, this.password).subscribe(login => {
-            console.log(login);
+            this.loginTwo = login[0];
+            console.log(login[0]);
         });
 
         this.username = "";

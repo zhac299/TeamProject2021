@@ -13,9 +13,9 @@ export class InputService {
     
     constructor(private httpClient: HttpClient) {}
     
-    public getLogin(username: string, password: string): Observable<Login[]> {
+    public getLogin(username: string, password: string): Observable<Login> {
         const queryURL  = this.dbUrl.concat(`/${username}/${password}`);
-         return this.httpClient.get<Login[]>(queryURL)
+         return this.httpClient.get<Login>(queryURL)
           .pipe(
             map(response => response)
           );
