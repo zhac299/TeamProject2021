@@ -69,6 +69,12 @@ public class RestaurantTableService {
         return restaurantTableRepository.save(restaurantTable);
 	}
 
+    /**
+     * Gets a table by its table number.
+     * 
+     * @param tableNumber the number of the table to be returned
+     * @return the table
+     */
     public RestaurantTable getTableByNumber(long tableNumber) {
 		Optional<RestaurantTable> table = RestaurantTableRepository.findById(tableNumber);
 
@@ -78,7 +84,12 @@ public class RestaurantTableService {
         return table.get();
 	}
 
-    public void deleterstaurantTable(Long tableNumber) {
+    /**
+     * Deletes a table by its number.
+     * 
+     * @param tableNumber the table number of the table
+     */
+    public void deleteRestaurantTable(Long tableNumber) {
         RestaurantTableRepository.deleteById(tableNumber);
 	}
 }

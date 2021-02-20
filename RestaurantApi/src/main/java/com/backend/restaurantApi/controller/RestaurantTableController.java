@@ -90,8 +90,25 @@ public class RestaurantTableController {
         return restaurantTableService.updateRestaurantTableIsOccupied(table, isOccupied);
     }
 
+    /**
+     * Fetches a table by its number by calling the service.
+     * 
+     * @param tableNumber the table number of the table
+     * @param table the tables table 
+     * @return the table 
+     */
     @PutMapping("/tables/{tableNumber}")
-    public RestaurantTable updateOrder(@PathVariable("tableNumber") Long id, @RequestBody RestaurantTable table) {
-        return restaurantTableService.getTableByNumber(id);
+    public RestaurantTable getTableByNumber(@PathVariable("tableNumber") Long tableNumber, @RequestBody RestaurantTable table) {
+        return restaurantTableService.getTableByNumber(tableNumber);
+    }
+
+    /**
+     * Deletes a table by its table number by calling the service method to update the repo.
+     * 
+     * @param tableNumber the table number to be deleted
+     */
+    @DeleteMapping("/tables/{tableNumber}")
+    public void deleteOrder(@PathVariable("tableNumber") Long tableNumber) {
+        restaurantTableService.deleteRestaurantTable(tableNumber);
     }
 }
