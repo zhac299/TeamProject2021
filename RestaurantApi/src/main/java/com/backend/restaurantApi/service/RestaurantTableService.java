@@ -78,7 +78,7 @@ public class RestaurantTableService {
         return table.get();
 	}
 
-    // public void deleterstaurantTable(Long tableNumber) {
-    //     RestaurantTableRepository.deleteById(tableNumber);
-	// }
+    public void deleterstaurantTable(Long tableNumber) {
+        RestaurantTableRepository.deleteById(tableNumber);
+	}
 }
