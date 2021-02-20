@@ -6,7 +6,8 @@ import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, pipe} from "rxjs";
+import {map, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-order',
@@ -48,9 +49,14 @@ export class OrderComponent implements OnInit {
         this.orderService.getOrderedMenuItems(order)
           .subscribe((menuItems) => {
             this.orderedMenuItemsSubject$.next(menuItems);
+            menuItems.forEach((item) => {this.total = this.total + item.price});
           });
       });
     }
+  }
+
+  setTotal(menuItems: Menu[]): void {
+    menuItems.forEach((item) => {this.total = this.total + item.price});
   }
 
   updateAllOrder(): void {

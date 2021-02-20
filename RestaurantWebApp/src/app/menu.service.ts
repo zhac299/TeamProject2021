@@ -20,7 +20,7 @@ export class MenuService {
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
   readonly menus$ = this.menuSubject.asObservable();
 
-  private getMenus(): Menu[] {
+  private getMllenus(): Menu[] {
     return this.menuSubject.getValue();
   }
 

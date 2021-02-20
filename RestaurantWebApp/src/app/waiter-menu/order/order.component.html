@@ -1,79 +1,85 @@
- <mat-grid-list cols="5" rowHeight="60px">
-      <mat-grid-tile>
-        <h1 mat-dialog-title>Order #{{order.id}}</h1>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      </mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile>
-        <mat-checkbox [(ngModel)]="order.isDelivered">Delivered</mat-checkbox>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="tableNumberInput">
-          <mat-label>Table #</mat-label>
-          <input matInput  [(ngModel)]="order.customerTableNum"/>
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
+<div>
+  <mat-grid-list cols="5" rowHeight="60px">
+    <mat-grid-tile>
+      <h1 mat-dialog-title>Order #{{order.id}}</h1>
+    </mat-grid-tile>
+    <mat-grid-tile>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+      <mat-checkbox [(ngModel)]="order.isDelivered">Delivered</mat-checkbox>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="tableNumberInput">
+        <mat-label>Table #</mat-label>
+        <input matInput [(ngModel)]="order.customerTableNum"/>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
 
-<hr>
+  <hr>
 
-<mat-dialog-content class="mat-typography">
-  <mat-grid-list cols="4" rowHeight="fit" style="height: 400px">
-    <mat-grid-tile colspan="1" class="tile">
-      <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title>Meals:</mat-card-title>
+  <mat-dialog-content class="mat-dialog">
+    <mat-grid-list cols="4" rowHeight="700px" style="height: 400px">
+      <mat-grid-tile colspan="1" class="tile">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>Meals:</mat-card-title>
 
 
-
-        </mat-card-header>
-        <mat-card-content>
+          </mat-card-header>
+          <mat-card-content>
             <mat-list *ngFor="let meal of orderedMenuItems$ | async">
               <mat-list-item>
                 <p mat-card-subtitle style="font-size:14px" mat-line>{{meal.name}}</p>
                 <p mat-subheader>({{meal.price}})</p>
-                <button mat-button><mat-icon>delete</mat-icon></button>
+                <button mat-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
               </mat-list-item>
               <mat-divider></mat-divider>
             </mat-list>
-        </mat-card-content>
-        <mat-card-footer>
-          <h3 mat-subheader>Total: {{total}}</h3>
-        </mat-card-footer>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="2">
-      <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title>ITEMS</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-grid-list cols="4" rowHeight="50px">
-            <mat-grid-tile *ngFor="let menu of menuList" colspan="1">
-              <button mat-raised-button style="width: 100%; color: green" (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
-            </mat-grid-tile>
-<!--            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">-->
-<!--              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>-->
-<!--            </mat-grid-tile>-->
-          </mat-grid-list>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="1">
-      <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title style="color: green">FOOD</mat-card-title>
-          <mat-card-title style="color: lightblue">DRAUGHT</mat-card-title>
-          <mat-card-title style="color: coral">MINERALS</mat-card-title>
-          <mat-card-title style="color: pink">COCKTAILS</mat-card-title>
-        </mat-card-header>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button mat-dialog-close (click)="save(order)">Save</button>
-  <button mat-button (click)="deleteOrder()"><mat-icon>delete</mat-icon></button>
-</mat-dialog-actions>
+          </mat-card-content>
+          <mat-card-footer>
+            <h3 mat-subheader>Total: {{total}}</h3>
+          </mat-card-footer>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>ITEMS</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-grid-list cols="4" rowHeight="50px">
+              <mat-grid-tile *ngFor="let menu of menuList" colspan="1">
+                <button mat-raised-button style="width: 100%; color: green"
+                        (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
+              </mat-grid-tile>
+              <!--            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">-->
+              <!--              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>-->
+              <!--            </mat-grid-tile>-->
+            </mat-grid-list>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title style="color: green">FOOD</mat-card-title>
+            <mat-card-title style="color: lightblue">DRAUGHT</mat-card-title>
+            <mat-card-title style="color: coral">MINERALS</mat-card-title>
+            <mat-card-title style="color: pink">COCKTAILS</mat-card-title>
+          </mat-card-header>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close (click)="save(order)">Save</button>
+    <button mat-button (click)="deleteOrder()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-dialog-actions>
+</div>
