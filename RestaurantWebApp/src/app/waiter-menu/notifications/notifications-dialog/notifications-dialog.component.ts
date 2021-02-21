@@ -13,20 +13,34 @@ export class NotificationsDialogComponent implements OnInit {
     private tableService: TableService
   ) {}
 
+  tables: Table[] = [];
+
   ngOnInit(): void {
+    this.tableService.getRefreshNeeded().subscribe(() => {
+      this.getNeedHelpTables();
+    });
+    this.getNeedHelpTables();
+  }
+
+  getNeedHelpTables(): void {
     this.tableService.getNeedHelpTables().subscribe(tables => {
       this.tables = tables;
     });
   }
 
-  tables: Table[] = [];
+  // removeTable(removedTable: Table): void {
+  //   const index = this.tables.indexOf(removedTable);
 
-  removeTable(removedTable: Table): void {
-    const index = this.tables.indexOf(removedTable);
+  //   if (index >= 0) {
+  //     this.tables.splice(index, 1);
+  //   }
+  // }
 
-    if (index >= 0) {
-      this.tables.splice(index, 1);
-    }
+  deleteTable(table: Table) {
+    this.tableService.deleteTable(table).subscribe();
+    this.tableService.getNeedHelpTables().subscribe(tables => {
+      this.tables = tables;
+    })
   }
 
 }

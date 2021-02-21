@@ -10,11 +10,12 @@ import { Table} from '../models/Table';
 })
 export class TableService {
 
-  restaurantTablesURL = 'http://localhost:8080/api/v1/tables';
-  restaurantTablesNeedHelpURL = 'http://localhost:8080/api/v1/tables/needHelp';
-  restaurantTablesUnoccupiedURL = 'http://localhost:8080/api/v1/tables/unoccupied';
-
+  private restaurantTablesURL = 'http://localhost:8080/api/v1/tables';
   private _refreshNeeded = new Subject<void>();
+
+  public getRefreshNeeded () {
+    return this._refreshNeeded;
+  }
 
   constructor(private httpClient: HttpClient) { }
 
@@ -33,17 +34,29 @@ export class TableService {
   }
 
   public getUnoccupiedTables(): Observable<Table[]> {
-    return this.httpClient.get<Table[]>(this.restaurantTablesUnoccupiedURL)
+    let restaurantTablesUnoccupiedURL: string = this.restaurantTablesURL + '/unoccupied'
+    return this.httpClient.get<Table[]>(restaurantTablesUnoccupiedURL)
       .pipe(
         map(response => response)
       );
   }
 
   public getNeedHelpTables(): Observable<Table[]> {
-    return this.httpClient.get<Table[]>(this.restaurantTablesNeedHelpURL)
+    let restaurantTablesNeedHelpURL: string = this.restaurantTablesURL + '/needHelp'
+    return this.httpClient.get<Table[]>(restaurantTablesNeedHelpURL)
       .pipe(
         map(response => response)
       );
+  }
+
+  public updateRestaurantNeedsHelp(table: Table): Observable<Table> {
+    let restaurantTablesNeedHelpURL: string = this.restaurantTablesURL + '/needHelp'
+    return this.httpClient.put<Table>(`${restaurantTablesNeedHelpURL}/${table.tableNumber}`,table)
+      .pipe(
+        tap(()=> {
+          this._refreshNeeded.next();
+        })
+      )
   }
 
   public deleteTable(table: Table): Observable<Table>{
