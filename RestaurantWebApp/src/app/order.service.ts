@@ -13,6 +13,7 @@ export class OrderService {
   mockDbUrl = 'http://localhost:3000/orders';
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders';
   mealsURL = 'http://localhost:8080/api/v1/meals';
+  
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

@@ -3,7 +3,7 @@
     <mat-form-field appearance="fill" >
         <mat-label>Table Select</mat-label>
         <mat-select [(ngModel)]="selectedTable" name="table">
-            <mat-option [value]="table" *ngFor="let table of tables">{{table}}</mat-option>
+            <mat-option [value]="table" *ngFor="let table of tables">Table {{table.tableNumber}}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>

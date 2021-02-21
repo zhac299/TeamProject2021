@@ -9,20 +9,19 @@ import {Table} from '../models/Table';
 })
 export class TableService {
 
-  mockDbUrl = 'http://localhost:3000/tables';
+  restaurantTablesURL = 'http://localhost:8080/api/v1/tables';
 
   constructor(private httpClient: HttpClient) { }
 
-  // Making an Http request to the database
   public getTables(): Observable<Table[]> {
-    return this.httpClient.get<Table[]>(this.mockDbUrl)
+    return this.httpClient.get<Table[]>(this.restaurantTablesURL)
       .pipe(
         map(response => response)
       );
   }
 
   public getTable(id: number): Observable<Table> {
-    return this.httpClient.get<Table>(`${this.mockDbUrl}/${id}`)
+    return this.httpClient.get<Table>(`${this.restaurantTablesURL}/${id}`)
       .pipe(
         map(response => response)
       );

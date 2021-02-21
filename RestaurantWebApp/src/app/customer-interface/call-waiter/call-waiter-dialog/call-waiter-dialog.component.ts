@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TableService } from 'src/app/table.service';
+import { Table } from 'src/models/Table';
+
 @Component({
   selector: 'call-waiter-dialog',
   templateUrl: './call-waiter-dialog.component.html',
@@ -7,11 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CallWaiterDialogComponent implements OnInit {
 
-  tables: string[] = ["Table1", "Table2", "Table3", "Table4", "Table 5", "Table 6", "Table 7"];
+  tables: Table[] = [];
   selectedTable: string;
 
-  constructor() { }
-  ngOnInit(): void {}
+  constructor(
+    private tableService: TableService 
+  ) { }
+  ngOnInit(): void {
+    this.tableService.getTables().subscribe(tables => {
+      this.tables = tables;
+    });
+  }
 
   callWaiter(): void {
     console.log(this.selectedTable); 
