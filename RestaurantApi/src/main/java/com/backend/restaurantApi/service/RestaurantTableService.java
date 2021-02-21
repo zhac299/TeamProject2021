@@ -94,11 +94,20 @@ public class RestaurantTableService {
 	}
 
     /**
-     * Gets all the unoccupied tables from the native sql querry in the repo.
+     * Gets all the unoccupied tables from the native sql query in the repo.
      * 
      * @return a list of all unoccupied tables
      */
     public List<RestaurantTable> getUnoccupiedTables() {
         return restaurantTableRepository.getUnoccupiedTables();
+    }
+
+    /**
+     * Gets all the tables that need help from the native sql query in the repo.
+     * 
+     * @return a list of all the tables that need help
+     */
+    public List<RestaurantTable> getNeedHelpTables() {
+        return restaurantTableRepository.getNeedHelpTables();
     }
 }
