@@ -1,7 +1,7 @@
 <div>
     <p>Select Table</p>
     <mat-form-field appearance="fill" >
-        <mat-label>Table Select</mat-label>
+        <mat-label>Available Tables</mat-label>
         <mat-select [(ngModel)]="selectedTable" name="table">
             <mat-option [value]="table" *ngFor="let table of tables">Table {{table.tableNumber}}</mat-option>
         </mat-select>

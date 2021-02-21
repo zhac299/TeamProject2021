@@ -17,7 +17,7 @@ export class CallWaiterDialogComponent implements OnInit {
     private tableService: TableService 
   ) { }
   ngOnInit(): void {
-    this.tableService.getTables().subscribe(tables => {
+    this.tableService.getUnoccupiedTables().subscribe(tables => {
       this.tables = tables;
     });
   }
