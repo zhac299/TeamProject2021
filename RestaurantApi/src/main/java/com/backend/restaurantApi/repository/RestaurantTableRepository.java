@@ -20,4 +20,11 @@ public interface RestaurantTableRepository extends JpaRepository<RestaurantTable
     " WHERE is_occupied = false",
      nativeQuery = true)
     public List<RestaurantTable> getUnoccupiedTables();
+
+    @Query
+    (value = 
+    "SELECT * FROM restaurant_table" +
+    " WHERE needs_help = true",
+     nativeQuery = true)
+    public List<RestaurantTable> getNeedHelpTables();
 }
