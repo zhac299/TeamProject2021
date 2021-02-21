@@ -1,6 +1,6 @@
 <p>Tables that need help</p>
 <mat-selection-list [multiple]="false">
-    <mat-list-option *ngFor="let table of tables" [value]="table" (click)="deleteTable(table)">
+    <mat-list-option *ngFor="let table of tables" [value]="table" (click)="setTableHelped(table)">
       Table {{table.tableNumber}}
     </mat-list-option>
 </mat-selection-list>

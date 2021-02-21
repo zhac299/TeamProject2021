@@ -28,16 +28,8 @@ export class NotificationsDialogComponent implements OnInit {
     });
   }
 
-  // removeTable(removedTable: Table): void {
-  //   const index = this.tables.indexOf(removedTable);
-
-  //   if (index >= 0) {
-  //     this.tables.splice(index, 1);
-  //   }
-  // }
-
-  deleteTable(table: Table) {
-    this.tableService.deleteTable(table).subscribe();
+  setTableHelped(table: Table) {
+    this.tableService.updateRestaurantNeedsHelp(table, false).subscribe();
     this.tableService.getNeedHelpTables().subscribe(tables => {
       this.tables = tables;
     })

@@ -71,7 +71,7 @@ public class RestaurantTableController {
      * @return the updated RestaurantTable
      */
     @PutMapping("/tables/updateNeedsHelp/{needsHelp}")
-    public RestaurantTable updateRestaurantNeedsHelp
+    public RestaurantTable updateRestaurantTableNeedsHelp
     (@PathVariable("needsHelp") boolean needsHelp, @RequestBody RestaurantTable table) {
         return restaurantTableService.updateRestaurantTableNeedsHelp(table, needsHelp);
     }
@@ -85,7 +85,7 @@ public class RestaurantTableController {
      * @return the updated table
      */
     @PutMapping("/tables/updateIsOccupied/{isOccupied}")
-    public RestaurantTable updateRestaurantIsOccupied
+    public RestaurantTable updateRestaurantTableIsOccupied
     (@PathVariable("isOccupied") boolean isOccupied, @RequestBody RestaurantTable table) {
         return restaurantTableService.updateRestaurantTableIsOccupied(table, isOccupied);
     }
@@ -108,7 +108,7 @@ public class RestaurantTableController {
      * @param tableNumber the table number to be deleted
      */
     @DeleteMapping("/tables/{tableNumber}")
-    public void deleteOrder(@PathVariable("tableNumber") Long tableNumber) {
+    public void deleteTable(@PathVariable("tableNumber") Long tableNumber) {
         restaurantTableService.deleteRestaurantTable(tableNumber);
     }
 

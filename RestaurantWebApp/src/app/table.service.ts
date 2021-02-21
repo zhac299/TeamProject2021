@@ -49,9 +49,9 @@ export class TableService {
       );
   }
 
-  public updateRestaurantNeedsHelp(table: Table): Observable<Table> {
-    let restaurantTablesNeedHelpURL: string = this.restaurantTablesURL + '/needHelp'
-    return this.httpClient.put<Table>(`${restaurantTablesNeedHelpURL}/${table.tableNumber}`,table)
+  public updateRestaurantNeedsHelp(table: Table, newNeedsHelp: boolean): Observable<Table> {
+    let restaurantTablesNeedHelpURL: string = this.restaurantTablesURL + '/updateNeedsHelp'
+    return this.httpClient.put<Table>(`${restaurantTablesNeedHelpURL}/${newNeedsHelp}`,table)
       .pipe(
         tap(()=> {
           this._refreshNeeded.next();
