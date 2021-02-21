@@ -76,7 +76,7 @@ public class RestaurantTableService {
      * @return the table
      */
     public RestaurantTable getTableByNumber(long tableNumber) {
-		Optional<RestaurantTable> table = RestaurantTableRepository.findById(tableNumber);
+		Optional<RestaurantTable> table = restaurantTableRepository.findById(tableNumber);
 
         if (!table.isPresent()) {
             throw new RestaurantTableNotFoundException("Restaurant Table Record is not available...");
@@ -90,6 +90,15 @@ public class RestaurantTableService {
      * @param tableNumber the table number of the table
      */
     public void deleteRestaurantTable(Long tableNumber) {
-        RestaurantTableRepository.deleteById(tableNumber);
+        restaurantTableRepository.deleteById(tableNumber);
 	}
+
+    /**
+     * Gets all the unoccupied tables from the native sql querry in the repo.
+     * 
+     * @return a list of all unoccupied tables
+     */
+    public List<RestaurantTable> getUnoccupiedTables() {
+        return restaurantTableRepository.getUnoccupiedTables();
+    }
 }

@@ -57,7 +57,7 @@ public class RestaurantTableController {
      * @param table the intial table 
      * @return the updated RestaurantTable
      */
-    @PutMapping("/tables/tableNumber/{tableNumber}")
+    @PutMapping("/tables/updateTableNumber/{tableNumber}")
     public RestaurantTable updateRestaurantTableNumber
     (@PathVariable("tableNumber") long tableNumber, @RequestBody RestaurantTable table) {
         return restaurantTableService.updateRestaurantTableNumber(table, tableNumber);
@@ -70,7 +70,7 @@ public class RestaurantTableController {
      * @param table the intial table 
      * @return the updated RestaurantTable
      */
-    @PutMapping("/tables/needsHelp/{needsHelp}")
+    @PutMapping("/tables/updateNeedsHelp/{needsHelp}")
     public RestaurantTable updateRestaurantNeedsHelp
     (@PathVariable("needsHelp") boolean needsHelp, @RequestBody RestaurantTable table) {
         return restaurantTableService.updateRestaurantTableNeedsHelp(table, needsHelp);
@@ -84,7 +84,7 @@ public class RestaurantTableController {
      * @param table the table to be updated
      * @return the updated table
      */
-    @PutMapping("/tables/isOccupied/{isOccupied}")
+    @PutMapping("/tables/updateIsOccupied/{isOccupied}")
     public RestaurantTable updateRestaurantIsOccupied
     (@PathVariable("isOccupied") boolean isOccupied, @RequestBody RestaurantTable table) {
         return restaurantTableService.updateRestaurantTableIsOccupied(table, isOccupied);
@@ -97,8 +97,8 @@ public class RestaurantTableController {
      * @param table the tables table 
      * @return the table 
      */
-    @PutMapping("/tables/{tableNumber}")
-    public RestaurantTable getTableByNumber(@PathVariable("tableNumber") Long tableNumber, @RequestBody RestaurantTable table) {
+    @GetMapping("/tables/{tableNumber}")
+    public RestaurantTable getTableByNumber(@PathVariable("tableNumber") Long tableNumber) {
         return restaurantTableService.getTableByNumber(tableNumber);
     }
 
@@ -110,5 +110,15 @@ public class RestaurantTableController {
     @DeleteMapping("/tables/{tableNumber}")
     public void deleteOrder(@PathVariable("tableNumber") Long tableNumber) {
         restaurantTableService.deleteRestaurantTable(tableNumber);
+    }
+
+    /**
+     * Gets all the unoccupied tables in the table.
+     * 
+     * @return a list of unoccupied tables
+     */
+    @GetMapping("/tables/unoccupied")
+    public List<RestaurantTable> getUnoccupiedTables() {
+        return restaurantTableService.getUnoccupiedTables();
     }
 }
