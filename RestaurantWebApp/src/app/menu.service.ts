@@ -21,6 +21,7 @@ export class MenuService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  
   private _refreshNeeded = new Subject<void>();
 
   constructor(private httpClient: HttpClient) { }

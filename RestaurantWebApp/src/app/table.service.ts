@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {Table} from '../models/Table';
+import { HttpClient} from '@angular/common/http';
+import { Observable, Subject} from 'rxjs';
+import { map, tap} from 'rxjs/operators';
+
+import { Table} from '../models/Table';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class TableService {
   restaurantTablesURL = 'http://localhost:8080/api/v1/tables';
   restaurantTablesNeedHelpURL = 'http://localhost:8080/api/v1/tables/needHelp';
   restaurantTablesUnoccupiedURL = 'http://localhost:8080/api/v1/tables/unoccupied';
+
+  private _refreshNeeded = new Subject<void>();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -42,4 +45,14 @@ export class TableService {
         map(response => response)
       );
   }
+
+  public deleteTable(table: Table): Observable<Table>{
+    return this.httpClient.delete<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`)
+      .pipe(
+        tap(()=> {
+          this._refreshNeeded.next();
+        })
+      );
+  }
+
 }

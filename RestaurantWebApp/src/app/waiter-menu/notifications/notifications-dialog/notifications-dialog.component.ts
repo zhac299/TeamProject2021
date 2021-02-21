@@ -21,12 +21,12 @@ export class NotificationsDialogComponent implements OnInit {
 
   tables: Table[] = [];
 
-  // removeTable(removedTable: string): void {
-  //   const index = this.tables.indexOf(removedTable);
+  removeTable(removedTable: Table): void {
+    const index = this.tables.indexOf(removedTable);
 
-  //   if (index >= 0) {
-  //     this.tables.splice(index, 1);
-  //   }
-  // }
+    if (index >= 0) {
+      this.tables.splice(index, 1);
+    }
+  }
 
 }
