@@ -29,7 +29,7 @@ export class NotificationsDialogComponent implements OnInit {
   }
 
   setTableHelped(table: Table) {
-    this.tableService.updateRestaurantNeedsHelp(table, false).subscribe();
+    this.tableService.updateRestaurantTableNeedsHelp(table, false).subscribe();
     this.tableService.getNeedHelpTables().subscribe(tables => {
       this.tables = tables;
     })

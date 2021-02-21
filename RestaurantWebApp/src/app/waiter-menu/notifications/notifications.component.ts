@@ -10,15 +10,13 @@ import { NotificationsDialogComponent } from './notifications-dialog/notificatio
 })
 export class NotificationsComponent implements OnInit {
 
-  private numberOfNotifications: number = 0;
+  numberOfNotifications: number;
 
-  constructor(public dialog: MatDialog) { }
-
-  ngOnInit(): void {
+  constructor(public dialog: MatDialog) { 
+    this.numberOfNotifications = 0;
   }
 
-  public getNumberOfSelections() {
-    return this.numberOfNotifications;
+  ngOnInit(): void {
   }
 
   public setNumberOfNotifications(newNumberOfNotifications: number) {

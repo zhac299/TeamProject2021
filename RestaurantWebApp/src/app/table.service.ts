@@ -49,9 +49,19 @@ export class TableService {
       );
   }
 
-  public updateRestaurantNeedsHelp(table: Table, newNeedsHelp: boolean): Observable<Table> {
+  public updateRestaurantTableNeedsHelp(table: Table, newNeedsHelp: boolean): Observable<Table> {
     let restaurantTablesNeedHelpURL: string = this.restaurantTablesURL + '/updateNeedsHelp'
     return this.httpClient.put<Table>(`${restaurantTablesNeedHelpURL}/${newNeedsHelp}`,table)
+      .pipe(
+        tap(()=> {
+          this._refreshNeeded.next();
+        })
+      )
+  }
+
+  public updateRestaurantTableIsOccupied(table: Table, newIsOccupied: boolean): Observable<Table> {
+    let restaurantTableIsOccupiedURL: string = this.restaurantTablesURL + '/updateIsOccupied'
+    return this.httpClient.put<Table>(`${restaurantTableIsOccupiedURL}/${newIsOccupied}`,table)
       .pipe(
         tap(()=> {
           this._refreshNeeded.next();
