@@ -25,16 +25,17 @@ export class LoginInputComponent implements OnInit {
     
     onSubmit() {
             this.input.getLogin(this.username, this.password).subscribe(login => {
-                try{
+                try {
                     this.loginTwo = login[0];
-                    if(this.username == this.loginTwo.userName && this.password == this.loginTwo.password && this.waiter == true){
+                    if(Object.keys(this.loginTwo).length > 0 && this.waiter == true){
                         this.router.navigateByUrl("/waiter-menu");
                     }
                 } catch {
                     console.log("Wrong login!");
                 }
             });
-            
+        this.username = "";
+        this.password = "";
 
     }
 
