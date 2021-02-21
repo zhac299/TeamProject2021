@@ -43,6 +43,7 @@ export class TableService {
 
   public getNeedHelpTables(): Observable<Table[]> {
     let restaurantTablesNeedHelpURL: string = this.restaurantTablesURL + '/needHelp'
+    console.log(restaurantTablesNeedHelpURL);
     return this.httpClient.get<Table[]>(restaurantTablesNeedHelpURL)
       .pipe(
         map(response => response)

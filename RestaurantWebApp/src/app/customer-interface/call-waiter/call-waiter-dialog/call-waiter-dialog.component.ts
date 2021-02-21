@@ -11,7 +11,7 @@ import { Table } from 'src/models/Table';
 export class CallWaiterDialogComponent implements OnInit {
 
   tables: Table[] = [];
-  selectedTable: string;
+  selectedTable: Table;
 
   constructor(
     private tableService: TableService 
@@ -23,6 +23,11 @@ export class CallWaiterDialogComponent implements OnInit {
   }
 
   callWaiter(): void {
-    console.log(this.selectedTable); 
+    this.tableService.updateRestaurantTableNeedsHelp(this.selectedTable, true).subscribe();
+    this.tableService.updateRestaurantTableIsOccupied(this.selectedTable, true).subscribe();
+  }
+
+  cancelCallWaiter(): void {
+    this.tableService.updateRestaurantTableNeedsHelp(this.selectedTable, false).subscribe();
   }
 }
