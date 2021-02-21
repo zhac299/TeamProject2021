@@ -35,4 +35,11 @@ export class TableService {
         map(response => response)
       );
   }
+
+  public getNeedHelpTables(): Observable<Table[]> {
+    return this.httpClient.get<Table[]>(this.restaurantTablesNeedHelpURL)
+      .pipe(
+        map(response => response)
+      );
+  }
 }

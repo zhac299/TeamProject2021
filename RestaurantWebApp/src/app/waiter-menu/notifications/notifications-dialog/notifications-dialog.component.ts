@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TableService } from 'src/app/table.service';
+import { Table } from 'src/models/Table';
 
 @Component({
   selector: 'notifications-dialog',
@@ -7,21 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationsDialogComponent implements OnInit {
 
-  constructor() {
-    console.log(1);
-   }
+  constructor(
+    private tableService: TableService
+  ) {}
 
   ngOnInit(): void {
+    this.tableService.getNeedHelpTables().subscribe(tables => {
+      this.tables = tables;
+    });
   }
 
-  tables: string[] = ['Table1', 'Table2', 'Table3', 'Table4', 'Table5'];
+  tables: Table[] = [];
 
-  removeTable(removedTable: string): void {
-    const index = this.tables.indexOf(removedTable);
+  // removeTable(removedTable: string): void {
+  //   const index = this.tables.indexOf(removedTable);
 
-    if (index >= 0) {
-      this.tables.splice(index, 1);
-    }
-  }
+  //   if (index >= 0) {
+  //     this.tables.splice(index, 1);
+  //   }
+  // }
 
 }
