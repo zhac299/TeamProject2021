@@ -121,4 +121,14 @@ public class RestaurantTableController {
     public List<RestaurantTable> getUnoccupiedTables() {
         return restaurantTableService.getUnoccupiedTables();
     }
+
+    /**
+     * Gets all the tables that need help.
+     * 
+     * @return a list of all the tables that need help
+     */
+    @GetMapping("/tables/needHelp")
+    public List<RestaurantTable> getNeedHelpTables() {
+        return restaurantTableService.getNeedHelpTables();
+    }
 }
