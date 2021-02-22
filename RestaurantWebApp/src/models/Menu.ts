@@ -1,7 +1,7 @@
 export class Menu{
   id: number;
   name: string;
-  category: string;  
+  category: string;
   description: string;
   price: number;
   peanuts: boolean;
@@ -19,4 +19,5 @@ export class Menu{
   sesameSeeds: boolean;
   sulphites: boolean;
   calories: number;
+  timeToCook: number;
 }

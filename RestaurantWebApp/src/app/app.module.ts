@@ -84,7 +84,7 @@ import { NotificationsDialogComponent } from './waiter-menu/notifications/notifi
     MatToolbarModule,
     MatSidenavModule,
     MatExpansionModule,
-    MatChipsModule, 
+    MatChipsModule,
     MatAutocompleteModule,
     MatSliderModule,
     MatTableModule,
