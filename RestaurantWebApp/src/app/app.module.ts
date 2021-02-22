@@ -37,7 +37,7 @@ import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.compo
 import {MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
 import { MatCheckboxModule} from "@angular/material/checkbox";
-import { ShoppingBasketComponent } from './customer-interface/shopping-basket/shopping-basket.component';
+import { UtilityBarComponent } from './customer-interface/utility-bar/utility-bar.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { ShoppingBasketComponent } from './customer-interface/shopping-basket/sh
     TableComponent,
     EditDialogComponent,
     AddMenuDialogComponent,
-    ShoppingBasketComponent
+    UtilityBarComponent
   ],
   imports: [
     BrowserModule,
