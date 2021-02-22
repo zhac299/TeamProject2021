@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../../models/Order';
 
 
-import {MenuService} from "../menu.service";
-import {MenuFilterService} from "../menu-filter.service";
+import { MenuService} from "../menu.service";
+import { MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
 import { selectedCategory } from "../../models/selectedCategory";
 import {OrderService} from "../order.service";
