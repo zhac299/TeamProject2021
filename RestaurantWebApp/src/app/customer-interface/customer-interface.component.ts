@@ -45,11 +45,31 @@ export class CustomerInterfaceComponent implements OnInit {
 
   addMeal(menuItem: Menu): void {
     if (!this.selectedMeals.includes(menuItem)) {
-      menuItem.selections = 0;
+      menuItem.selections = 1;
       this.selectedMeals.push(menuItem);
     } else {
       let index: number = this.selectedMeals.indexOf(menuItem);
       this.selectedMeals[index].selections += 1;
     }
+    console.log(this.selectedMeals);
+  }
+  
+  removeMeal(menuItem: Menu): void {
+    if (this.selectedMeals.includes(menuItem)) {
+      let index: number = this.selectedMeals.indexOf(menuItem);
+      this.selectedMeals[index].selections -= 1;
+      if(this.selectedMeals[index].selections == 0){
+        this.selectedMeals.splice(index);
+      }
+    }
+    console.log(this.selectedMeals);
+  }
+  
+  clearMeal(menuItem:Menu): void {
+    if (this.selectedMeals.includes(menuItem)) {
+      let index: number = this.selectedMeals.indexOf(menuItem);
+      this.selectedMeals.splice(index);
+    }
+    console.log(this.selectedMeals);
   }
 }
