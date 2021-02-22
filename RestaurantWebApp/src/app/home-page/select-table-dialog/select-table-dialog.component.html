@@ -8,6 +8,8 @@
         </mat-select>
     </mat-form-field>
 </div>
-<div>
+<div *ngIf = "selectedTable != null; else tableNotSelected">
     <button mat-raised-button (click) = forCustomer()>Submit</button>
 </div>
+<ng-template #tableNotSelected>Select a Table!</ng-template>
+

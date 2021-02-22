@@ -12,7 +12,7 @@ import { Table } from 'src/models/Table';
 export class SelectTableDialogComponent implements OnInit {
 
   tables: Table[] = [];
-  selectedTable: Table;
+  selectedTable: Table = null;
   
   constructor(private router:Router, private tableService: TableService) { }
 
@@ -23,7 +23,9 @@ export class SelectTableDialogComponent implements OnInit {
   }
 
   forCustomer(): void { 
-    this.router.navigateByUrl('customer-menu');   
+    if (this.selectedTable != null) {
+      this.router.navigateByUrl('customer-menu');  
+    } 
   }
 
 }
