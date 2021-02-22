@@ -23,9 +23,9 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  forCustomer() { 
-    this.router.navigateByUrl('customer-menu');   
-  }
+  // forCustomer() { 
+  //   this.router.navigateByUrl('customer-menu');   
+  // }
 
   forEmployee() { 
     this.router.navigateByUrl('login'); 
