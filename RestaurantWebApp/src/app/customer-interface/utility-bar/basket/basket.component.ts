@@ -9,7 +9,7 @@ import { UtilityBarComponent } from '../utility-bar.component';
 })
 export class BasketComponent implements OnInit {
 
-  constructor(private utilityBarComponent: UtilityBarComponent, @Inject(MAT_DIALOG_DATA) public data: selectedMeal) {}
+  constructor() {}
 
   ngOnInit(): void {
   }
