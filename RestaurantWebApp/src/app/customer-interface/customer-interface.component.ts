@@ -44,7 +44,12 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   addMeal(menuItem: Menu): void {
-    this.selectedMeals.push(menuItem);
-    console.log(this.selectedMeals);
+    if (!this.selectedMeals.includes(menuItem)) {
+      menuItem.selections = 0;
+      this.selectedMeals.push(menuItem);
+    } else {
+      let index: number = this.selectedMeals.indexOf(menuItem);
+      this.selectedMeals[index].selections += 1;
+    }
   }
 }
