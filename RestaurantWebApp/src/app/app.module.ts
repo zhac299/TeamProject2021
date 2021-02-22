@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { InitialMenuComponent } from './initial-menu/initial-menu.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { CustomerInterfaceComponent } from './customer-interface/customer-interface.component';
 import { LoginInputComponent } from './login-input/login-input.component';
@@ -46,7 +45,6 @@ import { NotificationsDialogComponent } from './waiter-menu/notifications/notifi
 @NgModule({
   declarations: [
     AppComponent,
-    InitialMenuComponent,
     WaiterMenuComponent,
     CustomerInterfaceComponent,
     LoginInputComponent,
