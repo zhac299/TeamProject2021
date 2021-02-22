@@ -2,5 +2,14 @@
 <mat-list>
     <mat-list-item *ngFor="let meal of mealList">
         {{meal}}
+        <button mat-button color="accent">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-button color="accent">
+            <mat-icon>remove</mat-icon>
+        </button>
+        <button mat-button color="accent">
+            <mat-icon>clear</mat-icon>
+        </button>
     </mat-list-item>
 </mat-list>
