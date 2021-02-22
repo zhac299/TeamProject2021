@@ -38,6 +38,7 @@ import {MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
 import { MatCheckboxModule} from "@angular/material/checkbox";
 import { UtilityBarComponent } from './customer-interface/utility-bar/utility-bar.component';
+import { BasketComponent } from './customer-interface/utility-bar/basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { UtilityBarComponent } from './customer-interface/utility-bar/utility-ba
     TableComponent,
     EditDialogComponent,
     AddMenuDialogComponent,
-    UtilityBarComponent
+    UtilityBarComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
