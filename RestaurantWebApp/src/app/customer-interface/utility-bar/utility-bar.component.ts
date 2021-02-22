@@ -1,9 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-export interface MealList {
-  meal: 'fajita' | 'burito';
-}
+import { BasketComponent } from './basket/basket.component';
+
 @Component({
   selector: 'utility-bar',
   templateUrl: './utility-bar.component.html',
@@ -13,20 +12,20 @@ export class UtilityBarComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
+  mealList: string[] = ['fajita', 'burito'];
+
   ngOnInit(): void {}
 
   openDialog() {
-    this.dialog.open(DialogDataExampleDialog, {
-      data: {
-        mealList: 'fajita'
-      }
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = this.mealList;
+
+    const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
-}
-@Component({
-  selector: 'dialog-data-example-dialog',
-  templateUrl: 'dialog-data-example-dialog.html',
-})
-export class DialogDataExampleDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: MealList) {}
 }
