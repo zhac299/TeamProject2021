@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,15 +9,24 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, public dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
+
   forCustomer() { 
     this.router.navigateByUrl('customer-menu');   
-}
-    forEmployee() { 
-        this.router.navigateByUrl('login'); 
-    }
+  }
+
+  forEmployee() { 
+    this.router.navigateByUrl('login'); 
+  }
 
 }
