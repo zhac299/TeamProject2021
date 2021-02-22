@@ -7,7 +7,7 @@
 <br>
 <h2>{{cat.name}}</h2>
 <div *ngFor="let menuItem of cat.meal">
-    <p><button id = "menuItemButton" >
+    <p><button id = "menuItemButton" (click)="addMeal(menuItem)">
       {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
     </button></p>
 </div>

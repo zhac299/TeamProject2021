@@ -7,6 +7,7 @@ import {MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
 import { selectedCategory } from "../../models/selectedCategory";
 import {OrderService} from "../order.service";
+import { Meal } from 'src/models/Meal';
 
 interface Food {
   viewValue: string;
@@ -21,6 +22,7 @@ interface Food {
 })
 export class CustomerInterfaceComponent implements OnInit {
     menu: Menu[];
+    selectedMeals: Menu[] = [];
     cat: selectedCategory = new selectedCategory;
 
   constructor(private menuService: MenuService,
@@ -39,5 +41,10 @@ export class CustomerInterfaceComponent implements OnInit {
       this.menuFilterService.filter(filterArgs).subscribe(orders => {
           this.menuService.setCat(orders);
     });
+  }
+
+  addMeal(menuItem: Menu): void {
+    this.selectedMeals.push(menuItem);
+    console.log(this.selectedMeals);
   }
 }
