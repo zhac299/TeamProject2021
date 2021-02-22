@@ -1,17 +1,20 @@
-<div>
-    <p>Select Table</p>
-    <mat-form-field appearance="fill" >
-        <mat-label>Available Tables</mat-label>
+<div class = "tableSelection" >
+    <div id = "dialogTitle"><br>Select your Table<br><br></div>
+    <br>
+    <mat-form-field appearance="fill" id = "tableSelection">
+        <mat-label>Available tables</mat-label>
         <mat-select [(ngModel)]="selectedTable" name="table">
             <mat-option [value]="table" *ngFor="let table of tables">Table {{table.tableNumber}}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>
 
-<div>
-    <button mat-raised-button (click) = callWaiter()>Call Waiter</button>
+<div class = "callWaiterButton">
+    <button mat-raised-button (click) = callWaiter() 
+    *ngIf = "waiterCalled == false else waiterCalledBlock" >Call Waiter</button>
+    <ng-template #waiterCalledBlock><p id = "waiterCalled">Waiter called!</p></ng-template>
 </div>
-
+<br>
 <div>
     <button mat-raised-button (click) = cancelCallWaiter()>Cancel</button>
 </div>

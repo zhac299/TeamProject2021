@@ -12,9 +12,10 @@ export class CallWaiterDialogComponent implements OnInit {
 
   tables: Table[] = [];
   selectedTable: Table;
+  waiterCalled: boolean = false;
 
   constructor(
-    private tableService: TableService 
+    private tableService: TableService
   ) { }
   ngOnInit(): void {
     this.tableService.getUnoccupiedTables().subscribe(tables => {
@@ -25,9 +26,11 @@ export class CallWaiterDialogComponent implements OnInit {
   callWaiter(): void {
     this.tableService.updateRestaurantTableNeedsHelp(this.selectedTable, true).subscribe();
     this.tableService.updateRestaurantTableIsOccupied(this.selectedTable, true).subscribe();
+    this.waiterCalled = true;
   }
 
   cancelCallWaiter(): void {
     this.tableService.updateRestaurantTableNeedsHelp(this.selectedTable, false).subscribe();
+    this.waiterCalled = false;
   }
 }
