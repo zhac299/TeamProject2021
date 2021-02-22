@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TableService } from 'src/app/table.service';
+import { Table } from 'src/models/Table';
+
 @Component({
   selector: 'select-table-dialog',
   templateUrl: './select-table-dialog.component.html',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectTableDialogComponent implements OnInit {
 
-  constructor() { }
+  tables: Table[] = [];
+  selectedTable: Table;
+  waiterCalled: boolean = false;
+  
+  constructor(private tableService: TableService) { }
 
   ngOnInit(): void {
+    this.tableService.getUnoccupiedTables().subscribe(tables => {
+      this.tables = tables;
+    });
   }
 
 }
