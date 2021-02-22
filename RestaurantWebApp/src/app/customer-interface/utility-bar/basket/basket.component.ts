@@ -20,4 +20,11 @@ export class BasketComponent implements OnInit {
     console.log(this.mealList);
   }
 
+  remove(meal: string): void {
+    const index = this.mealList.indexOf(meal, 0);
+    if (index > -1) {
+      this.mealList.splice(index, 1);
+    }
+  }
+
 }
