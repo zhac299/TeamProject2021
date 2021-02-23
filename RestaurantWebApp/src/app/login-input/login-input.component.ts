@@ -36,6 +36,8 @@ export class LoginInputComponent implements OnInit {
             });
         this.username = "";
         this.password = "";
+        this.input.setOTP(this.loginTwo);
+        console.log(this.loginTwo)
     }
 
     isKitchen() {
