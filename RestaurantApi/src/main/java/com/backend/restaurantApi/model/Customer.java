@@ -2,6 +2,8 @@ package com.backend.restaurantApi.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table
 public class Customer {
@@ -10,30 +12,32 @@ public class Customer {
   @Column(name = "id", unique = true, nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  
-  @Column(name = "table_number")
-  private int tableNumber;
+
+  @JsonBackReference(value = "table")
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "table_number", nullable = true)
+    private RestaurantTable table;
 
 // used to serialize object to json
   @Override
   public String toString() {
       return "Customer{" +
               "id=" + id +
-              ", tableNumber='" + tableNumber + '\'' +
+              ", tableNumber='" + table + '\'' +
               '}';
   }
 
   public Customer() {}
 
-  public Customer(int tableNumber) {
-     this.tableNumber = tableNumber;
+  public void setCustomerTable(RestaurantTable newTable) {
+     this.table = newTable;
   }
 
   public void setCustomerId(long id) {
     this.id = id;
   }
 
-  public int getTableNumber() {
-     return this.tableNumber;
+  public RestaurantTable getTableNumber() {
+     return this.table;
   }
 }
