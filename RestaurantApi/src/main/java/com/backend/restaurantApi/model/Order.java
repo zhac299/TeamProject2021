@@ -17,7 +17,7 @@ public class Order implements Comparable<Order> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "customer", nullable = false)
+    @Column(name = "customerTable", nullable = false)
     private int customerTableNum;
 
     @JsonManagedReference(value = "order")
