@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class InputService {
     private dbUrl ='http://localhost:8080/api/v1/staff'
-    
+    login: Login = new Login;
     constructor(private httpClient: HttpClient) {}
     
     public getLogin(username: string, password: string): Observable<Login> {
@@ -23,6 +23,14 @@ export class InputService {
 
     public setOTP(login: Login) { 
         login.otp = Math.floor(100000 + Math.random() * 900000);
+    }
+
+    public setLogin(login: Login) { 
+        this.login = login;
+    }
+
+    public retrieveLogin(): Login { 
+        return this.login;
     }
     
 }
