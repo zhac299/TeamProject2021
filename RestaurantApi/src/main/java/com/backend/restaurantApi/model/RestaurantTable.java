@@ -37,9 +37,9 @@ public class RestaurantTable {
     /**
      * A column that stores all the customers seated a table.
      */
-    // @JsonManagedReference(value = "table")
-    // @Column(name = "customer")
-    @OneToMany(mappedBy="table")
+    @JsonManagedReference(value = "table")
+    @Column(name = "customer", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="table")
     private List<Customer> customer;
 
     /**
@@ -49,6 +49,14 @@ public class RestaurantTable {
      */
     public List<Customer> getCustomer() {
         return this.customer;
+    }
+   
+    /**
+     * 
+     * @param newCustomer
+     */
+    public void setCustomer(List<Customer> newCustomer) {
+        this.customer = newCustomer;
     }
 
     /**
