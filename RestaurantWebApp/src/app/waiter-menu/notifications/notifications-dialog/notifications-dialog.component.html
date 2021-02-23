@@ -1,0 +1,11 @@
+<div id = "titleAndInfo">
+  <br>
+  <p id = "dialogTitle">Tables that need help</p>
+  <p id = "info">(Click to mark as helped)</p> 
+</div>
+
+<mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let table of tables" [value]="table" (click)="setTableHelped(table)" id = "option">
+      Table {{table.tableNumber}}
+    </mat-list-option>
+</mat-selection-list>

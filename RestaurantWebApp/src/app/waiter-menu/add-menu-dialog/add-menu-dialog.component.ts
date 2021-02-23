@@ -13,7 +13,6 @@ import { MatSliderChange } from '@angular/material/slider';
 export class AddMenuDialogComponent implements OnInit {
   selected = -1;
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
-              private menuService: MenuService,
               @Inject(MAT_DIALOG_DATA) public data: Menu) { }
 
   ngOnInit(): void {}
@@ -43,7 +42,7 @@ export class AddMenuDialogComponent implements OnInit {
     this.data.calories = event.value;
   }
 
-  onClick(type: string) { 
+  onClick(type: string) {
     this.data.category = type;
-}  
+}
 }
