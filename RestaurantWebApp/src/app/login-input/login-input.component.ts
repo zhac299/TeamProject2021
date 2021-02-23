@@ -27,7 +27,10 @@ export class LoginInputComponent implements OnInit {
             this.input.getLogin(this.username, this.password).subscribe(login => {
                 try {
                     this.loginTwo = login[0];
-                    if(Object.keys(this.loginTwo).length > 0 && this.waiter == true){
+                    if (Object.keys(this.loginTwo).length > 0 && this.waiter == true) {
+                        this.input.setOTP(this.loginTwo);
+                        this.input.setLogin(this.loginTwo);
+
                         this.router.navigateByUrl("/waiter-menu");
                     }
                 } catch {
@@ -36,8 +39,6 @@ export class LoginInputComponent implements OnInit {
             });
         this.username = "";
         this.password = "";
-        this.input.setOTP(this.loginTwo);
-        console.log(this.loginTwo)
     }
 
     isKitchen() {

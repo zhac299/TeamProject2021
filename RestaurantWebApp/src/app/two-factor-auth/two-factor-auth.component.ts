@@ -19,6 +19,7 @@ export class TwoFactorAuthComponent implements OnInit {
       }
     
     onSubmit() { 
+        
         console.log(this.otp);
     }
 
