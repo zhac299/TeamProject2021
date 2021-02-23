@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InputService } from './login-input.service';
+import { Login } from 'src/models/Login';
 
 @Component({
   selector: 'app-two-factor-auth',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TwoFactorAuthComponent implements OnInit {
     otp: number;
+    login: Login = new Login;
   constructor() { }
 
-    ngOnInit(): void {
+    ngOnInit(private input: InputService): void {
       
     
     }
@@ -19,6 +22,7 @@ export class TwoFactorAuthComponent implements OnInit {
       }
     
     onSubmit() { 
+        this.login = this.input.retrieveLogin();
         console.log(this.otp);
     }
 
