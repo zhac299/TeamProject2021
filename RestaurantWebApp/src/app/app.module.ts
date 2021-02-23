@@ -59,7 +59,7 @@ import { SelectTableDialogComponent } from './home-page/select-table-dialog/sele
     TableComponent,
     EditDialogComponent,
     AddMenuDialogComponent,
-    CustomerTablesComponent
+    CustomerTablesComponent,
     CallWaiterComponent,
     CallWaiterDialogComponent,
     NotificationsComponent,
