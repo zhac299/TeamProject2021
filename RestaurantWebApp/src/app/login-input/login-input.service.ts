@@ -20,5 +20,9 @@ export class InputService {
             map(response => response)
           );
     }
+
+    public setOTP(login: Login) { 
+        login.otp = Math.floor(100000 + Math.random() * 900000);
+    }
     
 }

@@ -36,7 +36,6 @@ export class LoginInputComponent implements OnInit {
             });
         this.username = "";
         this.password = "";
-
     }
 
     isKitchen() {
