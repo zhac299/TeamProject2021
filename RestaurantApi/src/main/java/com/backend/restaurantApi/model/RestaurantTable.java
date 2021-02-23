@@ -1,5 +1,6 @@
 package com.backend.restaurantApi.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -39,10 +40,10 @@ public class RestaurantTable {
     /**
      * A column that stores all the customers seated a table.
      */
-    @JsonBackReference
+    @JsonBackReference(value = "restaurant_table")
     @Column(name = "customer", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="table")
-    private List<Customer> customer;
+    private List<Customer> customer = new ArrayList<>();
 
     /**
      * A getter for the private class field customer.
