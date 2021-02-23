@@ -8,6 +8,8 @@ import { Menu } from "../../models/Menu";
 import { selectedCategory } from "../../models/selectedCategory";
 import {OrderService} from "../order.service";
 import { Meal } from 'src/models/Meal';
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {BasketComponent} from "./utility-bar/basket/basket.component";
 
 interface Food {
   viewValue: string;
@@ -26,7 +28,8 @@ export class CustomerInterfaceComponent implements OnInit {
     cat: selectedCategory = new selectedCategory;
 
   constructor(private menuService: MenuService,
-              private menuFilterService: MenuFilterService) { }
+              private menuFilterService: MenuFilterService,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -53,7 +56,7 @@ export class CustomerInterfaceComponent implements OnInit {
     }
     console.log(this.selectedMeals);
   }
-  
+
   removeMeal(menuItem: Menu): void {
     if (this.selectedMeals.includes(menuItem)) {
       let index: number = this.selectedMeals.indexOf(menuItem);
@@ -64,12 +67,25 @@ export class CustomerInterfaceComponent implements OnInit {
     }
     console.log(this.selectedMeals);
   }
-  
+
   clearMeal(menuItem:Menu): void {
     if (this.selectedMeals.includes(menuItem)) {
       let index: number = this.selectedMeals.indexOf(menuItem);
       this.selectedMeals.splice(index);
     }
     console.log(this.selectedMeals);
+  }
+  mealList: string[] = ['fajita', 'burito'];
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = this.mealList;
+
+    const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
