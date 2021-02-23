@@ -62,6 +62,7 @@ import { CustomerTablesComponent } from './waiter-menu/customer-tables/customer-
     EditDialogComponent,
     AddMenuDialogComponent,
     CustomerTablesComponent,
+    CustomerTablesComponent,
     AddMenuDialogComponent,
     CallWaiterComponent,
     CallWaiterDialogComponent,
