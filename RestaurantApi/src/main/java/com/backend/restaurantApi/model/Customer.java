@@ -1,5 +1,8 @@
 package com.backend.restaurantApi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -37,11 +40,17 @@ public class Customer {
    * to avoid to avoid the infinte JSON serialization problem such that only this item 
    * is serialised.
    */
-  @JsonManagedReference
+
+  @JsonManagedReference(value="restauarant_table")
   @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
   @JoinColumn(name = "table_number", nullable = true)
   private RestaurantTable table;
 
+
+  @JsonBackReference(value="customer_order")
+  @Column(name = "orders", nullable = false)
+  @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
+  private List<Order> orders = new ArrayList<>();
   /**
    * Sets the customer id to a new one.
    * 
