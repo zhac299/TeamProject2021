@@ -35,6 +35,11 @@ public class Order implements Comparable<Order> {
     @CreationTimestamp
     private Date orderPlacedTime = new Date();
 
+    @JsonManagedReference(value = "customer_order")
+    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
+    @JoinColumn(name = "customer", nullable = true)
+    private Customer customer;
+
     // used to serialize object to json
     @Override
     public String toString() {
