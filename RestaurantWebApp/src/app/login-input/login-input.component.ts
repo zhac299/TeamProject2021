@@ -29,7 +29,9 @@ export class LoginInputComponent implements OnInit {
                     this.loginTwo = login[0];
                     if (Object.keys(this.loginTwo).length > 0 && this.waiter == true) {
                         this.input.setOTP(this.loginTwo);
+                        console.log(this.loginTwo.otp);
                         this.input.setLogin(this.loginTwo);
+                        
                         this.router.navigateByUrl("/waiter-menu");
                     }
                 } catch {
