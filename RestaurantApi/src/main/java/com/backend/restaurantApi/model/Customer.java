@@ -40,12 +40,7 @@ public class Customer {
   public int getTableNumber() {
      return this.tableNumber;
   }
-
-
-  public boolean isIsReady() {
-    return this.isReady;
-  }
-
+  
   public boolean getIsReady() {
     return this.isReady;
   }
