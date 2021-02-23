@@ -3,36 +3,26 @@ package com.backend.restaurantApi.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table
 public class Customer {
+
+  public Customer() {}
 
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @JsonBackReference(value = "table")
-  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+  @JsonManagedReference
+  @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
   @JoinColumn(name = "table_number", nullable = true)
   private RestaurantTable table;
-
-// used to serialize object to json
-  @Override
-  public String toString() {
-      return "Customer{" +
-              "id=" + id +
-              ", tableNumber='" + table + '\'' +
-              '}';
-  }
-
-  public Customer() {}
 
   public void setCustomerId(long id) {
     this.id = id;
@@ -42,11 +32,20 @@ public class Customer {
     return this.id;
   }
 
-  public RestaurantTable getCustomerTable() {
+  public RestaurantTable getTable() {
      return this.table;
   }
 
-  public void setCustomerTable(RestaurantTable newTable) {
+  public void setTable(RestaurantTable newTable) {
     this.table = newTable;
- }
+  }
+
+  // used to serialize object to json
+  @Override
+  public String toString() {
+      return "Customer{" +
+              "id=" + id +
+              ", tableNumber='" + table + '\'' +
+              '}';
+  }
 }

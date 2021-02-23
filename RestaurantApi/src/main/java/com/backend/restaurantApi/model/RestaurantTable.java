@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -37,7 +39,7 @@ public class RestaurantTable {
     /**
      * A column that stores all the customers seated a table.
      */
-    @JsonManagedReference(value = "table")
+    @JsonBackReference
     @Column(name = "customer", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="table")
     private List<Customer> customer;
