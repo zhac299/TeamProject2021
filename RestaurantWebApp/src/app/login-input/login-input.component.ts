@@ -31,7 +31,7 @@ export class LoginInputComponent implements OnInit {
                         this.input.setOTP(this.loginTwo);
                         this.input.setLogin(this.loginTwo);
                         
-                        this.router.navigateByUrl("/waiter-menu");
+                        this.router.navigateByUrl("/2FA");
                     }
                 } catch {
                     console.log("Wrong login!");
