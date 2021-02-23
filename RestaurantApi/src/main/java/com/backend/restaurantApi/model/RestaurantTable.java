@@ -54,8 +54,9 @@ public class RestaurantTable {
     }
    
     /**
+     * Sets the customer list to a new one.
      * 
-     * @param newCustomer
+     * @param newCustomer the new customer list
      */
     public void setCustomer(List<Customer> newCustomer) {
         this.customer = newCustomer;
