@@ -41,13 +41,13 @@ public class Customer {
    * is serialised.
    */
 
-  @JsonManagedReference(value="restauarant_table")
+  @JsonBackReference(value="restaurant_table")
   @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
   @JoinColumn(name = "table_number", nullable = true)
   private RestaurantTable table;
 
 
-  @JsonBackReference(value="customer_order")
+  @JsonManagedReference(value="customer_order")
   @Column(name = "orders", nullable = false)
   @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
   private List<Order> orders = new ArrayList<>();

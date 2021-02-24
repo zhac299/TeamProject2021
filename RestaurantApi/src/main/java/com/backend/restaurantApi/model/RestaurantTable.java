@@ -39,7 +39,7 @@ public class RestaurantTable {
     /**
      * A column that stores all the customers seated a table.
      */
-    @JsonBackReference
+    @JsonManagedReference(value = "restaurant_table")
     @Column(name = "customer", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="table")
     private List<Customer> customer;
