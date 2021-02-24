@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectTableDialogComponent } from './select-table-dialog.component';
+import { InitialMenuComponent } from './initial-menu.component';
 
-describe('SelectTableDialogComponent', () => {
-  let component: SelectTableDialogComponent;
-  let fixture: ComponentFixture<SelectTableDialogComponent>;
+describe('InitialMenuComponent', () => {
+  let component: InitialMenuComponent;
+  let fixture: ComponentFixture<InitialMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectTableDialogComponent ]
+      declarations: [ InitialMenuComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectTableDialogComponent);
+    fixture = TestBed.createComponent(InitialMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

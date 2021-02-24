@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * The Service class of the ResturantTable model  that handles
+ * The Service clas of the ResturantTable model  that handles
  * creating the the table, updating it and getting information from it.
  */
 @Service
