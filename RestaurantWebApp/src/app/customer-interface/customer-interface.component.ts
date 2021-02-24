@@ -75,12 +75,11 @@ export class CustomerInterfaceComponent implements OnInit {
     }
     console.log(this.selectedMeals);
   }
-  mealList: string[] = ['fajita', 'burito'];
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.data = this.mealList;
+    dialogConfig.data = this.selectedMeals;
 
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 

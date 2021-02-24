@@ -1,15 +1,16 @@
 <h2>Shopping Cart</h2>
 <mat-list>
     <mat-list-item *ngFor="let meal of mealList">
-        {{meal}}
-        <button mat-button color="accent">
+        {{meal.name}}
+        <button mat-button color="accent" (click) = "add(meal)">
             <mat-icon>add</mat-icon>
         </button>
-        <button mat-button color="accent">
+        <button mat-button color="accent" (click) = "remove(meal)">
             <mat-icon>remove</mat-icon>
         </button>
-        <button mat-button color="accent" (click) = "remove(meal)">
+        <button mat-button color="accent" (click) = "clear(meal)">
             <mat-icon>clear</mat-icon>
         </button>
+        x{{meal.selections}}
     </mat-list-item>
 </mat-list>
