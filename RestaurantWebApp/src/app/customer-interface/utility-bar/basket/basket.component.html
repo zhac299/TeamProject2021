@@ -15,6 +15,19 @@
         </button>
     </mat-list-item>
     <mat-list-item>
-        Total: {{priceTotal(mealList)}}$
+        <div class="center">
+            Total: {{priceTotal(mealList)}}$
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="center">
+            <button mat-flat-button color="accent">
+                Place Order
+            </button>
+            &nbsp;&nbsp;
+            <button mat-flat-button color="warn">
+                Cancel Order
+            </button>
+        </div>
     </mat-list-item>
 </mat-list>
