@@ -2,6 +2,8 @@
 <mat-list>
     <mat-list-item *ngFor="let meal of mealList">
         {{meal.name}}
+        &nbsp;&nbsp;&nbsp;&nbsp;x{{meal.selections}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: {{meal.price * meal.selections}}$
         <button mat-button color="accent" (click) = "add(meal)">
             <mat-icon>add</mat-icon>
         </button>
@@ -11,6 +13,8 @@
         <button mat-button color="accent" (click) = "clear(meal)">
             <mat-icon>clear</mat-icon>
         </button>
-        x{{meal.selections}}
+    </mat-list-item>
+    <mat-list-item>
+        Total: {{priceTotal(mealList)}}$
     </mat-list-item>
 </mat-list>

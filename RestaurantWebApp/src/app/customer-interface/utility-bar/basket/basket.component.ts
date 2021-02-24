@@ -42,4 +42,11 @@ export class BasketComponent implements OnInit {
     }
   }
 
+  priceTotal(mealList: Menu[]): number {
+    let total: number = 0;
+    for(let i = 0; i < this.mealList.length; i++) {
+      total += this.mealList[i].price * this.mealList[i].selections
+    }
+    return total;
+  }
 }
