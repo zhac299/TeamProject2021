@@ -43,7 +43,6 @@ import { CallWaiterDialogComponent } from './customer-interface/call-waiter/call
 import { NotificationsComponent } from './waiter-menu/notifications/notifications.component';
 import { MatBadgeModule} from '@angular/material/badge';
 import { NotificationsDialogComponent } from './waiter-menu/notifications/notifications-dialog/notifications-dialog.component';
-import { SelectTableDialogComponent } from './home-page/select-table-dialog/select-table-dialog.component';
 
 @NgModule({
   declarations: [
@@ -65,8 +64,7 @@ import { SelectTableDialogComponent } from './home-page/select-table-dialog/sele
     CallWaiterComponent,
     CallWaiterDialogComponent,
     NotificationsComponent,
-    NotificationsDialogComponent,
-    SelectTableDialogComponent,
+    NotificationsDialogComponent
   ],
   imports: [
     BrowserModule,
