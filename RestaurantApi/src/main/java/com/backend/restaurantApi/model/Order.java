@@ -18,9 +18,6 @@ public class Order implements Comparable<Order> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "customerTable", nullable = false)
-    private int customerTableNum;
-
     @JsonManagedReference(value = "order")
     @Column(name = "meal", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="order")
@@ -44,14 +41,14 @@ public class Order implements Comparable<Order> {
     // used to serialize object to json
     @Override
     public String toString() {
-        return "DishAllergies{" +
-            "id=" + id +
-            ", customerTableNum='" + customerTableNum + '\'' +
-            ", meal='" + meal + '\'' +
-            ", waiterId='" + waiterId + '\'' +
-            ", isDelivered='" + isDelivered+ '\'' +
-            ", orderPlacedTime='" + orderPlacedTime+ '\'' +
-            '}';
+        return "Order{" +
+                "id=" + id +
+                ", meal=" + meal +
+                ", waiterId=" + waiterId +
+                ", isDelivered=" + isDelivered +
+                ", orderPlacedTime=" + orderPlacedTime +
+                ", customer=" + customer +
+                '}';
     }
 
     public Order() {}
@@ -76,12 +73,20 @@ public class Order implements Comparable<Order> {
         this.id = id;
     }
 
-    public int getCustomerTableNum() {
-        return customerTableNum;
+    public boolean isDelivered() {
+        return isDelivered;
     }
 
-    public void setCustomerTableNum(int customerTableNum) {
-        this.customerTableNum = customerTableNum;
+    public void setDelivered(boolean delivered) {
+        isDelivered = delivered;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public long getWaiterId() {

@@ -8,6 +8,9 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Creates an SQL table that handles the customer information.
  */
@@ -28,35 +31,26 @@ public class Customer {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @Column(name = "is_ready")
-  private boolean isReady = false;
-
   /**
    * The foreign key of the table that references the RestaurantTable
    * table. It uses a many to one annotation to realise it and JsonManagedReference
-   * to avoid to avoid the infinte JSON serialization problem such that only this item 
+   * to avoid to avoid the infinte JSON serialization problem such that only this item
    * is serialised.
    */
+
   @JsonBackReference(value="restaurant_table")
   @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
   @JoinColumn(name = "table_number", nullable = true)
   private RestaurantTable table;
 
+
   @JsonManagedReference(value="customer_order")
   @Column(name = "orders", nullable = false)
   @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
   private List<Order> orders = new ArrayList<>();
-
-  public List<Order> getOrders() {
-    return this.orders;
-  }
-
-  public void setOrders(List<Order> orders) {
-    this.orders = orders;
-  }
   /**
    * Sets the customer id to a new one.
-   * 
+   *
    * @param id the new id
    */
   public void setCustomerId(long id) {
@@ -95,20 +89,45 @@ public class Customer {
    * 
    * @return a string of Json format
    */
+  @Column(name = "is_ready")
+  private boolean isReady = false;
+
+  /**
+   * Serializes Customer to Json format.
+   *
+   * @return a string of Json format
+   */
   @Override
   public String toString() {
       return "Customer{" +
               "id=" + id +
+              ", isReady='" + isReady + '\'' +
               ", tableNumber='" + table + '\'' +
               '}';
   }
-  
-  public boolean getIsReady() {
-    return this.isReady;
+
+  public long getId() {
+    return id;
   }
 
-  public void setIsReady(boolean isReady) {
-    this.isReady = isReady;
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
+  }
+
+  public boolean isReady() {
+    return isReady;
+  }
+
+  public void setReady(boolean ready) {
+    isReady = ready;
   }
 
 }

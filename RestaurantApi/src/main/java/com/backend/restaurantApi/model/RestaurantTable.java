@@ -1,11 +1,11 @@
 package com.backend.restaurantApi.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -20,7 +20,7 @@ public class RestaurantTable {
      * It represents the table number.
      */
     @Id
-    @Column(name = "table_number", unique = true, nullable = false)
+    @Column(name = "tableNumber", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long tableNumber;
 
@@ -39,10 +39,10 @@ public class RestaurantTable {
     /**
      * A column that stores all the customers seated a table.
      */
-    @JsonManagedReference(value="restaurant_table")
+    @JsonManagedReference(value = "restaurant_table")
     @Column(name = "customer", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="table")
-    private List<Customer> customer = new ArrayList<>();
+    private List<Customer> customer;
 
     /**
      * A getter for the private class field customer.
@@ -126,5 +126,17 @@ public class RestaurantTable {
             ", needsHelp='" + this.needsHelp + '\'' +
             ", IsOccupied='" + this.isOccupied + '\'' +
             '}';
+    }
+
+    public boolean isNeedsHelp() {
+        return needsHelp;
+    }
+
+    public boolean isOccupied() {
+        return isOccupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        isOccupied = occupied;
     }
 }
