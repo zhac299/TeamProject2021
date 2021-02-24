@@ -20,7 +20,7 @@ public class RestaurantTable {
      * It represents the table number.
      */
     @Id
-    @Column(name = "table_number", unique = true, nullable = false)
+    @Column(name = "tableNumber", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long tableNumber;
 

@@ -5,9 +5,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-/**
- * Creates an SQL table that handles the customer information.
- */
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
