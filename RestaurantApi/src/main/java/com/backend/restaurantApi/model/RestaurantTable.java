@@ -127,16 +127,4 @@ public class RestaurantTable {
             ", IsOccupied='" + this.isOccupied + '\'' +
             '}';
     }
-
-    public boolean isNeedsHelp() {
-        return needsHelp;
-    }
-
-    public boolean isOccupied() {
-        return isOccupied;
-    }
-
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
-    }
 }

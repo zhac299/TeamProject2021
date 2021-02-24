@@ -19,7 +19,7 @@ export class NotificationsDialogComponent implements OnInit {
     this.tableService.getRefreshNeeded().subscribe(() => {
       this.getNeedHelpTables();
     });
-    this.getNeedHelpTables();
+    this.getNeedHelpTables();  
   }
 
   getNeedHelpTables(): void {
