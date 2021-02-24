@@ -50,6 +50,11 @@ public class RestaurantTableController {
         return restaurantTableService.createNewRestaurantTable(table);
     }
 
+    @PutMapping("/tables/{id}")
+    public RestaurantTable updateRestaurantTable(@RequestBody RestaurantTable table, @PathVariable Long id) {
+        System.out.println(table);
+        return restaurantTableService.updateRestaurantTable(table, id);
+    }
     /**
      * Updates the tables number and calls the service to update the repo.
      * 

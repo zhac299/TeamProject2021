@@ -110,4 +110,9 @@ public class RestaurantTableService {
     public List<RestaurantTable> getNeedHelpTables() {
         return restaurantTableRepository.getNeedHelpTables();
     }
+
+    public RestaurantTable updateRestaurantTable(RestaurantTable table, Long id) {
+        table.setTableNumber(id);
+        return restaurantTableRepository.save(table);
+    }
 }

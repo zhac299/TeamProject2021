@@ -8,6 +8,8 @@ import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
+import {CustomerService} from "../customer.service";
+import {Customer} from "../../models/Customer";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -19,6 +21,7 @@ export class WaiterMenuComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private menuService: MenuService,
+    private customerService: CustomerService,
     public dialog: MatDialog
   ) { }
 
@@ -71,8 +74,9 @@ export class WaiterMenuComponent implements OnInit {
     this.menuService.getAllUpdatedMenus();
   }
 
-  createNewOrder(): void {
-    this.orderService.createNewOrder();
+  createNewOrder(table: Table): void {
+    this.customerService.createCustomerWithTable(table);
+    // this.orderService.
   }
 
   deleteMenuItem(menu: Menu) {

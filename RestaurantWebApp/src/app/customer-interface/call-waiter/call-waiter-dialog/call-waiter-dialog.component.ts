@@ -13,6 +13,8 @@ export class CallWaiterDialogComponent implements OnInit {
   tables: Table[] = [];
   selectedTable: Table;
   waiterCalled: boolean = false;
+  //USE THIS FOR INJECTION
+  storedTable: Table;
 
   constructor(
     private tableService: TableService
@@ -24,8 +26,16 @@ export class CallWaiterDialogComponent implements OnInit {
   }
 
   callWaiter(): void {
-    this.tableService.updateRestaurantTableNeedsHelp(this.selectedTable, true).subscribe();
-    this.tableService.updateRestaurantTableIsOccupied(this.selectedTable, true).subscribe();
+    // this.tableService.updateRestaurantTableNeedsHelp(this.selectedTable, true).subscribe();
+    // this.tableService.updateRestaurantTableIsOccupied(this.selectedTable, true).subscribe();
+    // this.waiterCalled = true;
+    const table = this.selectedTable;
+    table.needsHelp = true;
+    table.isOccupied = true;
+    console.log(table);
+    this.tableService.updateTable(table).subscribe((calledWaiterTable) => {
+      this.storedTable = calledWaiterTable;
+    });
     this.waiterCalled = true;
   }
 

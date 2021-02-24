@@ -33,6 +33,15 @@ export class TableService {
       );
   }
 
+  public updateTable(table: Table): Observable<Table> {
+    return this.httpClient.put<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`, table)
+      .pipe(
+        tap(() => {
+          this._refreshNeeded.next();
+        })
+      );
+  }
+
   public getUnoccupiedTables(): Observable<Table[]> {
     let restaurantTablesUnoccupiedURL: string = this.restaurantTablesURL + '/unoccupied'
     return this.httpClient.get<Table[]>(restaurantTablesUnoccupiedURL)
