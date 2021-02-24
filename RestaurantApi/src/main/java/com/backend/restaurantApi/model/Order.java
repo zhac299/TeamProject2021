@@ -1,5 +1,6 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,7 +36,7 @@ public class Order implements Comparable<Order> {
     @CreationTimestamp
     private Date orderPlacedTime = new Date();
 
-    @JsonManagedReference(value = "customer_order")
+    @JsonBackReference(value = "customer_order")
     @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
     @JoinColumn(name = "customer", nullable = true)
     private Customer customer;

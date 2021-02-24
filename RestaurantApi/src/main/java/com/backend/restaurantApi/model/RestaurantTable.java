@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Creates an SQL table that will handle the tables information.
@@ -38,7 +39,7 @@ public class RestaurantTable {
     /**
      * A column that stores all the customers seated a table.
      */
-    @JsonBackReference(value = "restaurant_table")
+    @JsonManagedReference(value="restaurant_table")
     @Column(name = "customer", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="table")
     private List<Customer> customer = new ArrayList<>();
