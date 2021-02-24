@@ -17,7 +17,6 @@ export class LoginInputComponent implements OnInit {
     
     loginTwo: Login = undefined;
     html: string = "";
-    link: string = "google.co.uk";
 
     constructor(private input: InputService, private router:Router) { }
     ngOnInit(): void {
