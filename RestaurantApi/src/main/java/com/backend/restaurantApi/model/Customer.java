@@ -90,6 +90,10 @@ public class Customer {
   private boolean isReady = false;
 
 // used to serialize object to json
+  @Column(name = "is_ready")
+  private boolean isReady = false;
+
+// used to serialize object to json
   @Override
   public String toString() {
       return "Customer{" +
@@ -113,7 +117,7 @@ public class Customer {
   public int getTableNumber() {
      return this.tableNumber;
   }
-  
+
   public boolean getIsReady() {
     return this.isReady;
   }

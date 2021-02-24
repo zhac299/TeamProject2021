@@ -17,7 +17,7 @@ public class Order implements Comparable<Order> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "customerTable", nullable = false)
+    @Column(name = "customer", nullable = false)
     private int customerTableNum;
 
     @JsonManagedReference(value = "order")
@@ -34,11 +34,6 @@ public class Order implements Comparable<Order> {
     @Column(name = "order_placed_time")
     @CreationTimestamp
     private Date orderPlacedTime = new Date();
-
-    @JsonManagedReference(value = "customer_order")
-    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
-    @JoinColumn(name = "customer", nullable = true)
-    private Customer customer;
 
     // used to serialize object to json
     @Override

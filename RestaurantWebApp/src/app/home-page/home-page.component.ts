@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
-import { SelectTableDialogComponent } from './select-table-dialog/select-table-dialog.component';
 
 @Component({
   selector: 'app-home-page',
@@ -11,24 +8,15 @@ import { SelectTableDialogComponent } from './select-table-dialog/select-table-d
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private router:Router, public dialog: MatDialog) { }
+  constructor(private router:Router) { }
 
-  ngOnInit(): void {}
-
-  openSelectTableDialog() {
-    const dialogRef = this.dialog.open(SelectTableDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  ngOnInit(): void {
   }
-
-  // forCustomer() { 
-  //   this.router.navigateByUrl('customer-menu');   
-  // }
-
-  forEmployee() { 
-    this.router.navigateByUrl('login'); 
-  }
+  forCustomer() { 
+    this.router.navigateByUrl('customer-menu');   
+}
+    forEmployee() { 
+        this.router.navigateByUrl('login'); 
+    }
 
 }
