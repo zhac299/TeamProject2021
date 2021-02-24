@@ -1,6 +1,12 @@
 package com.backend.restaurantApi.model;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Creates an SQL table that will handle the tables information.
@@ -14,7 +20,7 @@ public class RestaurantTable {
      * It represents the table number.
      */
     @Id
-    @Column(name = "tableNumber", unique = true, nullable = false)
+    @Column(name = "table_number", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long tableNumber;
 
@@ -29,6 +35,32 @@ public class RestaurantTable {
      */
     @Column(name = "isOccupied", nullable = false)
     private boolean isOccupied;
+
+    /**
+     * A column that stores all the customers seated a table.
+     */
+    @JsonBackReference
+    @Column(name = "customer", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="table")
+    private List<Customer> customer;
+
+    /**
+     * A getter for the private class field customer.
+     *
+     * @return a list of customers seated at a table
+     */
+    public List<Customer> getCustomer() {
+        return this.customer;
+    }
+
+    /**
+     * Sets the customer list to a new one.
+     *
+     * @param newCustomer the new customer list
+     */
+    public void setCustomer(List<Customer> newCustomer) {
+        this.customer = newCustomer;
+    }
 
     /**
      * A getter for the private class field tableNumber.
@@ -91,7 +123,7 @@ public class RestaurantTable {
     public String toString() {
         return "RestaurantTables{" +
             "tableNumber='" + this.tableNumber +
-            ", needsHelp='" + this.tableNumber + '\'' +
+            ", needsHelp='" + this.needsHelp + '\'' +
             ", IsOccupied='" + this.isOccupied + '\'' +
             '}';
     }

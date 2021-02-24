@@ -5,8 +5,14 @@ import java.util.List;
 
 import javax.persistence.*;
 
+/**
+ * Creates an SQL table that handles the customer information.
+ */
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Creates an SQL table that handles the customer information.
@@ -89,41 +95,42 @@ public class Customer {
   @Column(name = "is_ready")
   private boolean isReady = false;
 
-// used to serialize object to json
-  @Column(name = "is_ready")
-  private boolean isReady = false;
-
-// used to serialize object to json
+  /**
+   * Serializes Customer to Json format.
+   *
+   * @return a string of Json format
+   */
   @Override
   public String toString() {
       return "Customer{" +
               "id=" + id +
-              ", tableNumber='" + tableNumber + '\'' +
               ", isReady='" + isReady + '\'' +
               ", tableNumber='" + table + '\'' +
               '}';
   }
 
-  public Customer() {}
-
-  public Customer(int tableNumber) {
-     this.tableNumber = tableNumber;
+  public long getId() {
+    return id;
   }
 
-  public void setCustomerId(long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
-  public int getTableNumber() {
-     return this.tableNumber;
+  public List<Order> getOrders() {
+    return orders;
   }
 
-  public boolean getIsReady() {
-    return this.isReady;
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
   }
 
-  public void setIsReady(boolean isReady) {
-    this.isReady = isReady;
+  public boolean isReady() {
+    return isReady;
+  }
+
+  public void setReady(boolean ready) {
+    isReady = ready;
   }
 
 }
