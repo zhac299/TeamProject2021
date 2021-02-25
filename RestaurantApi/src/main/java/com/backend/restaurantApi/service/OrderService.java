@@ -3,15 +3,11 @@ package com.backend.restaurantApi.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.PriorityQueue;
 
 import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
-import com.backend.restaurantApi.model.Customer;
-import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.repository.OrderRepository;
@@ -79,7 +75,7 @@ public class OrderService {
             if(order.get().getMeal().isEmpty()) {
                 throw new MealNotFoundException("No meals in this order...");
             } else {
-                order.get().getMeal().forEach((meal -> menus.add(this.menuService.getMenuById(meal.getMenu_id()))));
+                order.get().getMeal().forEach((meal -> menus.add(meal.getMenu())));
             }
         }
         return menus;
