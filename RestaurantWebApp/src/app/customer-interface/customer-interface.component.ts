@@ -14,6 +14,10 @@ import { BasketComponent} from './basket/basket.component';
 import { Table } from 'src/models/Table';
 import { TableService } from '../table.service';
 
+interface DialogData {
+  customer: Observable<Customer>;
+  selectedMeals: Menu[];
+}
 @Component({
   selector: 'app-customer-interface',
   templateUrl: './customer-interface.component.html',
@@ -64,7 +68,6 @@ export class CustomerInterfaceComponent implements OnInit {
       let index: number = this.selectedMeals.indexOf(menuItem);
       this.selectedMeals[index].selections += 1;
     }
-    console.log(this.selectedMeals);
   }
 
   removeMeal(menuItem: Menu): void {
@@ -75,7 +78,6 @@ export class CustomerInterfaceComponent implements OnInit {
         this.selectedMeals.splice(index);
       }
     }
-    console.log(this.selectedMeals);
   }
 
   clearMeal(menuItem:Menu): void {
@@ -83,18 +85,17 @@ export class CustomerInterfaceComponent implements OnInit {
       let index: number = this.selectedMeals.indexOf(menuItem);
       this.selectedMeals.splice(index);
     }
-    console.log(this.selectedMeals);
   }
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.data = this.selectedMeals;
+    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
 
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 
