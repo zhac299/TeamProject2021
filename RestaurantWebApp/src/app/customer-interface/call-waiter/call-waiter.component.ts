@@ -15,7 +15,6 @@ import { CallWaiterDialogComponent } from './call-waiter-dialog/call-waiter-dial
 export class CallWaiterComponent implements OnInit {
 
   tables: Table[] = [];
-  selectedTable: Table;
   waiterCalled: boolean = false;
 
   constructor(
@@ -25,9 +24,10 @@ export class CallWaiterComponent implements OnInit {
   ngOnInit(): void {}
 
   callWaiter(): void {
-    this.customerInterface.customer.subscribe((newCustomer) => {
-      console.log(newCustomer.table);
-      this.tableService.updateTable(newCustomer.table).subscribe();
+    this.customerInterface.table.subscribe((table) => {
+      table.needsHelp = true;
+      table.isOccupied = true;
+      this.tableService.updateTable(table).subscribe();
       this.waiterCalled = true;
     });
   }
