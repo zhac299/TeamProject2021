@@ -56,7 +56,7 @@ public class CustomerService {
      * @return the updated repo
      */
 	public Customer updateCustomer(Long id, Customer Customer) {
-		Customer.setCustomerId(id);
+		Customer.setId(id);
         return custRepository.save(Customer);
 	}
 
