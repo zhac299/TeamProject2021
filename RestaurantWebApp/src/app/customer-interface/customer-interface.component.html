@@ -38,6 +38,9 @@
         <button mat-button (click)="clearMeal(menuItem)">
           <mat-icon>clear</mat-icon>
         </button>
+
+        &nbsp;&nbsp;&nbsp; <span *ngIf="menuItem.selections != null else noSelections">x{{menuItem.selections}}</span>
+        <ng-template #noSelections>x0</ng-template>
   </mat-grid-tile>
 </mat-grid-list>
 
