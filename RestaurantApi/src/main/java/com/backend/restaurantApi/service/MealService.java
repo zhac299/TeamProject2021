@@ -26,20 +26,17 @@ public class MealService {
     @Autowired
     private MenuService menuService;
 
-    public Meal createNewMeal(Meal meal, Long menu_id) {
-        if(meal.getOrder() == null){
-            Order order = new Order();
-            orderService.createNewOrder(order);
-            meal.setOrder(order);
-        }
-        if(meal.getMenu() != null){
-            throw new MenuNotFoundException("Menu Item already set!");
-        }
-        Optional<Menu> orderedMenuItem = menuRepository.findById(menu_id);
-        if(!orderedMenuItem.isPresent()){
-            throw new MenuNotFoundException("Menu item not found...");
-        } else {
-            meal.setMenu(orderedMenuItem.get());
+    public Meal createNewMeal(Meal meal) {
+//        if(meal.getOrder() == null){
+//            Order order = new Order();
+//            orderService.createNewOrder(order);
+//            meal.setOrder(order);
+//        }
+        if(meal.getMenu()!=null){
+            Optional<Menu> menu = menuRepository.findById(meal.getMenu().getId());
+            if(menu.isPresent()) {
+                meal.setMenu(menu.get());
+            } else throw new MenuNotFoundException("Menu item not found...");
         }
         return mealRepository.save(meal);
     }
@@ -59,6 +56,13 @@ public class MealService {
 	}
 
 	public void deleteMeal(Long id) {
+        Optional<Meal> meal = mealRepository.findById(id);
+        if (!meal.isPresent()) {
+            throw new MenuNotFoundException("Meal Record is not available...");
+        } else{
+            Order order = orderService.getOrderById(meal.get().getOrder().getId());
+            orderService.removeOrderedMeal(order, meal.get());
+        }
         mealRepository.deleteById(id);
 	}
     

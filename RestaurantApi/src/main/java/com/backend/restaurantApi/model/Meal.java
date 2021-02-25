@@ -22,7 +22,7 @@ public class Meal {
     private Long id;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "menu")
     private Menu menu;
 

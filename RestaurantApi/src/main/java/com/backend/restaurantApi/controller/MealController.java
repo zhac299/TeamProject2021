@@ -26,9 +26,9 @@ public class MealController {
       return mealRepo.findAll();
     }
 
-    @PostMapping("/meals/{menu_id}")
-    public Meal createNewMeal(@RequestBody Meal meal, @PathVariable Long menu_id){
-        return mealService.createNewMeal(meal, menu_id);
+    @PostMapping("/meals")
+    public Meal createNewMeal(@RequestBody Meal meal){
+        return mealService.createNewMeal(meal);
     }
 
     @GetMapping("/meals/{id}")

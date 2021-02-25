@@ -8,6 +8,7 @@ import java.util.PriorityQueue;
 
 import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
+import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.repository.OrderRepository;
@@ -79,5 +80,10 @@ public class OrderService {
             }
         }
         return menus;
+    }
+
+    public void removeOrderedMeal(Order order, Meal meal) {
+        order.getMeal().remove(meal);
+        this.updateOrder(order.getId(),order);
     }
 }
