@@ -59,14 +59,9 @@ export class BasketComponent implements OnInit {
   }
 
   placeOrder(): void {
-    console.log(1);
     this.customer.subscribe((customer) => {
       console.log(customer);
       this.orderService.createNewOrderWithCustomer(customer);
     });
-  }
-  
-  cancelOrder(): void {
-
   }
 }

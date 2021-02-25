@@ -95,7 +95,7 @@ import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-t
     MatCheckboxModule,
     MatBadgeModule
   ],
-  providers: [AllergensChipsComponent],
+  providers: [AllergensChipsComponent, CustomerInterfaceComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
