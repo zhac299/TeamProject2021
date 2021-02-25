@@ -8,6 +8,12 @@ import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
+import {CustomerService} from "../customer.service";
+import {Customer} from "../../models/Customer";
+import {SelectTableDialogComponent} from "../home-page/select-table-dialog/select-table-dialog.component";
+import {Observable} from "rxjs";
+import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.component";
+import {map, mergeMap, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-waiter-menu',
@@ -19,6 +25,7 @@ export class WaiterMenuComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private menuService: MenuService,
+    private customerService: CustomerService,
     public dialog: MatDialog
   ) { }
 
@@ -71,8 +78,19 @@ export class WaiterMenuComponent implements OnInit {
     this.menuService.getAllUpdatedMenus();
   }
 
+  openSelectTableDialog(): Observable<Table> {
+    const dialogRef = this.dialog.open(PickTableDialogComponent);
+    return dialogRef.afterClosed();
+  }
+
   createNewOrder(): void {
-    this.orderService.createNewOrder();
+    this.openSelectTableDialog()
+      .pipe(
+        switchMap((dialogResult) =>
+          this.customerService.createCustomerWithTable(dialogResult))
+      ).subscribe((a) =>
+      this.orderService.createNewOrderWithCustomer(a)
+    );
   }
 
   deleteMenuItem(menu: Menu) {

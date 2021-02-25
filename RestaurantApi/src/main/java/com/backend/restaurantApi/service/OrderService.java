@@ -10,6 +10,7 @@ import java.util.PriorityQueue;
 
 import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
+import com.backend.restaurantApi.model.Customer;
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.model.Order;
@@ -27,8 +28,17 @@ public class OrderService {
     @Autowired
     MenuService menuService;
 
-    public Order createNewOrder(Order Order) {
-        return orderRepository.save(Order);
+    @Autowired
+    CustomerService customerService;
+
+    public Order createNewOrder(Order order) {
+//        if(order.getCustomer() == null) {
+//            Customer customer = new Customer();
+//            customer.setTable();
+//
+//            this.customerService.createNewCustomer()
+//        }
+        return orderRepository.save(order);
     }
 
 	public Order getOrderById(Long OrderId) {

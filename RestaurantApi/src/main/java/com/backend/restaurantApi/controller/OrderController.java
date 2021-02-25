@@ -30,7 +30,7 @@ public class OrderController {
 
     @PostMapping("/orders")
     public Order newOrder(@RequestBody Order order) {
-        return orderRepo.save(order);
+        return orderService.createNewOrder(order);
     }
 
     @GetMapping("/orders/{id}")

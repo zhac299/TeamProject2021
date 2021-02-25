@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../../models/Order';
+import { ActivatedRoute, Router } from '@angular/router';
 
-
-import {MenuService} from "../menu.service";
-import {MenuFilterService} from "../menu-filter.service";
+import { MenuService} from "../menu.service";
+import { MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
 import { selectedCategory } from "../../models/selectedCategory";
-import {OrderService} from "../order.service";
-import { Meal } from 'src/models/Meal';
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {BasketComponent} from "./utility-bar/basket/basket.component";
-
-interface Food {
-  viewValue: string;
-  mappedOrders: Order[];
-  selected: boolean;
-}
+import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import { BasketComponent} from "./utility-bar/basket/basket.component";
+import { Customer } from 'src/models/Customer';
+import { CustomerService } from '../customer.service';
+import { Observable } from 'rxjs';
+import { Table } from 'src/models/Table';
+import { TableService } from '../table.service';
 
 @Component({
   selector: 'app-customer-interface',
@@ -23,15 +20,31 @@ interface Food {
   styleUrls: ['./customer-interface.component.sass'],
 })
 export class CustomerInterfaceComponent implements OnInit {
-    menu: Menu[];
-    selectedMeals: Menu[] = [];
-    cat: selectedCategory = new selectedCategory;
+  
+  selectedMeals: Menu[] = [];
+  menu: Menu[];
+  cat: selectedCategory = new selectedCategory;
+  paramsObject: any;
+  customer: Observable<Customer>;
+  table:Observable<Table>;
 
   constructor(private menuService: MenuService,
+              private customerService: CustomerService,
+              private tableService: TableService,
               private menuFilterService: MenuFilterService,
-              public dialog: MatDialog) { }
+              private route: ActivatedRoute,
+              public dialog: MatDialog,
+              private router:Router) { }
 
   ngOnInit(): void {
+    this.route.queryParamMap.subscribe((params) => {
+      this.paramsObject = { ...params.keys, ...params };
+      this.customer = this.customerService.getCustomerByID(this.paramsObject.params.customerID)
+      this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
+    });
+
+    //this.customer.subscribe((newCustomer) => {console.log(newCustomer)});
+    //this.table.subscribe((table) => {console.log(table)});
 
     this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe((menu)=> {
@@ -86,5 +99,9 @@ export class CustomerInterfaceComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  goHome(): void {
+    this.router.navigateByUrl('/home'); 
   }
 }

@@ -1,0 +1,16 @@
+<div class = "tableSelection" >
+  <div id = "dialogTitle"><br>Select your Table<br><br></div>
+  <br>
+  <mat-form-field appearance="fill" id = "tableSelection">
+    <mat-label>Available tables</mat-label>
+    <mat-select [(ngModel)]="selectedTable" name="table">
+      <mat-option [value]="table" *ngFor="let table of tables">Table {{table.tableNumber}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div *ngIf = "selectedTable != null; else tableNotSelected">
+  <button mat-raised-button (click) = onSelect()>Submit</button>
+</div>
+<ng-template #tableNotSelected>Select a Table!</ng-template>
+
+
