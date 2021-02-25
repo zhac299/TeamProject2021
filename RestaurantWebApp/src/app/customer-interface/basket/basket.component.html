@@ -1,4 +1,6 @@
-<h2>Shopping Cart</h2>
+
+<div class = "closeDialogButton" >Shopping Cart
+    <button mat-icon-button (click) = close()><mat-icon>cancel</mat-icon></button></div>
 <mat-list>
     <mat-list-item *ngFor="let meal of mealList">
         {{meal.name}}

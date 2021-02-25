@@ -24,10 +24,7 @@ export class BasketComponent implements OnInit {
       this.customer = data.customer;
     }
 
-  ngOnInit(): void {
-    // console.log(this.mealList);
-    // console.log(this.customer);
-  }
+  ngOnInit(): void {}
 
   clear(meal: Menu): void {
     const index = this.mealList.indexOf(meal, 0);
@@ -63,5 +60,9 @@ export class BasketComponent implements OnInit {
       console.log(customer);
       this.orderService.createNewOrderWithCustomer(customer);
     });
+  }
+
+  close(): void {
+    this.dialogRef.close(this.mealList);
   }
 }
