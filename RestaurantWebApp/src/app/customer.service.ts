@@ -17,13 +17,12 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(this.restaurantWebApiUrl);
   }
 
-  public createCustomer(): Observable<Customer> {
-    return this.httpClient.post<Customer>(this.restaurantWebApiUrl, new Customer());
+  public createCustomer(customer: Customer): Observable<Customer> {
+    return this.httpClient.post<Customer>(this.restaurantWebApiUrl, customer);
   }
 
   public createCustomerWithTable(table: Table): Observable<Customer> {
-    let newCustomer = new Customer();
-    this.createCustomer().subscribe((newCust) => newCustomer = newCust);
+    const newCustomer = new Customer();
     newCustomer.table = table;
     return this.httpClient.post<Customer>(this.restaurantWebApiUrl, newCustomer);
   }
