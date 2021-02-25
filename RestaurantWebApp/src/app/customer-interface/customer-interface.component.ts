@@ -14,10 +14,6 @@ import { BasketComponent} from './basket/basket.component';
 import { Table } from 'src/models/Table';
 import { TableService } from '../table.service';
 
-interface DialogData {
-  customer: Observable<Customer>;
-  selectedMeals: Menu[];
-}
 @Component({
   selector: 'app-customer-interface',
   templateUrl: './customer-interface.component.html',
