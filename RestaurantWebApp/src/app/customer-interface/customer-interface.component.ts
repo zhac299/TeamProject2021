@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../../models/Order';
-
+import { ActivatedRoute } from '@angular/router';
 
 import { MenuService} from "../menu.service";
 import { MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
 import { selectedCategory } from "../../models/selectedCategory";
-import {OrderService} from "../order.service";
+
 
 interface Food {
   viewValue: string;
@@ -20,13 +20,23 @@ interface Food {
   styleUrls: ['./customer-interface.component.sass'],
 })
 export class CustomerInterfaceComponent implements OnInit {
-    menu: Menu[];
-    cat: selectedCategory = new selectedCategory;
+
+  menu: Menu[];
+  cat: selectedCategory = new selectedCategory;
+  paramsObject: any;
+  customerID: number;
 
   constructor(private menuService: MenuService,
-              private menuFilterService: MenuFilterService) { }
+              private menuFilterService: MenuFilterService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParamMap.subscribe((params) => {
+      this.paramsObject = { ...params.keys, ...params };
+      this.customerID = this.paramsObject.params.customerID;
+    });
+
+    console.log(this.customerID)
 
     this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe((menu)=> {

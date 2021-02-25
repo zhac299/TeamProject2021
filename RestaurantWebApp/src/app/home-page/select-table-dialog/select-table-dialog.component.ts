@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/customer.service';
 
 import { TableService } from 'src/app/table.service';
@@ -17,10 +17,11 @@ export class SelectTableDialogComponent implements OnInit {
   tables: Table[] = [];
   selectedTable: Table = null;
   customer: Customer;
-  orders: Order[];
+  orders: Order[] = [];
   
   constructor(
-    private router:Router,
+    private route: ActivatedRoute,
+    private router: Router,
     private tableService: TableService,
     private customerService: CustomerService) { }
 
@@ -33,10 +34,8 @@ export class SelectTableDialogComponent implements OnInit {
   createNewCustomer(): void {
     this.customer = new Customer();
     this.customer.table = this.selectedTable;
-    this.customer.id = 1222;
+    this.customer.id = Math.floor(Math.random() * (1000000 - 0 + 1));;
     this.customer.isReady = false;
-    this.orders = [];
-    console.log(this.orders);
     this.customer.orders = this.orders;
   }
 
@@ -44,9 +43,10 @@ export class SelectTableDialogComponent implements OnInit {
     if (this.selectedTable != null) {
       //console.log(this.selectedTable);
       this.createNewCustomer();
-      console.log(this.customer);
+      //console.log(this.customer);
       this.customerService.createCustomer(this.customer);
-      this.router.navigateByUrl('customer-menu');
+
+      this.router.navigate(['/customer-menu'], { queryParams: {  customerID: this.customer.id } });
     } 
   }
 
