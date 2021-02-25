@@ -1,1 +1,7 @@
-<button mat-button (click)="callWaiter()">Call Waiter</button>
+<div class = "callWaiterButton">
+    <button mat-raised-button (click) = callWaiter() 
+    *ngIf = "waiterCalled == false else waiterCalledBlock" >Call Waiter</button>
+    <ng-template #waiterCalledBlock>
+        <button mat-raised-button (click) = cancel()>Cancel Waiter Call</button>
+    </ng-template>
+</div>

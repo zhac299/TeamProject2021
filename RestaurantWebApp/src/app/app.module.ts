@@ -38,7 +38,6 @@ import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-d
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { CustomerTablesComponent } from './waiter-menu/customer-tables/customer-tables.component';
 import { CallWaiterComponent } from './customer-interface/call-waiter/call-waiter.component';
-import { CallWaiterDialogComponent } from './customer-interface/call-waiter/call-waiter-dialog/call-waiter-dialog.component';
 import { NotificationsComponent } from './waiter-menu/notifications/notifications.component';
 import { MatBadgeModule} from '@angular/material/badge';
 import { NotificationsDialogComponent } from './waiter-menu/notifications/notifications-dialog/notifications-dialog.component';
@@ -61,7 +60,6 @@ import { SelectTableDialogComponent } from './home-page/select-table-dialog/sele
     AddMenuDialogComponent,
     CustomerTablesComponent,
     CallWaiterComponent,
-    CallWaiterDialogComponent,
     NotificationsComponent,
     NotificationsDialogComponent,
     SelectTableDialogComponent
