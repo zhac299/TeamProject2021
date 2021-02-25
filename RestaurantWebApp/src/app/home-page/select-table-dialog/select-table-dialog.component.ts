@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/customer.service';
 
 import { TableService } from 'src/app/table.service';
+import { Customer } from 'src/models/Customer';
+import { Order } from 'src/models/Order';
 import { Table } from 'src/models/Table';
 
 @Component({
@@ -13,8 +16,13 @@ export class SelectTableDialogComponent implements OnInit {
 
   tables: Table[] = [];
   selectedTable: Table = null;
+  customer: Customer;
+  orders: Order[];
   
-  constructor(private router:Router, private tableService: TableService) { }
+  constructor(
+    private router:Router,
+    private tableService: TableService,
+    private customerService: CustomerService) { }
 
   ngOnInit(): void {
     this.tableService.getUnoccupiedTables().subscribe(tables => {
@@ -22,9 +30,23 @@ export class SelectTableDialogComponent implements OnInit {
     });
   }
 
+  createNewCustomer(): void {
+    this.customer = new Customer();
+    this.customer.table = this.selectedTable;
+    this.customer.id = 1222;
+    this.customer.isReady = false;
+    this.orders = [];
+    console.log(this.orders);
+    this.customer.orders = this.orders;
+  }
+
   forCustomer(): void { 
     if (this.selectedTable != null) {
-      this.router.navigateByUrl('customer-menu');  
+      //console.log(this.selectedTable);
+      this.createNewCustomer();
+      console.log(this.customer);
+      this.customerService.createCustomer(this.customer);
+      this.router.navigateByUrl('customer-menu');
     } 
   }
 

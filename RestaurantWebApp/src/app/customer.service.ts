@@ -17,7 +17,7 @@ export class CustomerService {
   }
 
   public createCustomer(customer: Customer): Observable<Customer> {
-    return this.httpClient.put<Customer>(this.restaurantWebApiUrl, customer);
+    return this.httpClient.post<Customer>(this.restaurantWebApiUrl, customer);
   }
 
   public updateCustomer(customer: Customer): Observable<Customer> {
