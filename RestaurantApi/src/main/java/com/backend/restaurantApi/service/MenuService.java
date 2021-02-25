@@ -30,7 +30,7 @@ public class MenuService {
             throw new MenuNotFoundException("Menu record is not available...");
         } else {
             // create the meal and add it to menu
-            mealService.createNewMeal(meal);
+            mealService.createNewMeal(meal, id);
 //            menu.get().getMeal().add(meal);
         }
         return menuRepository.save(menu.get());
@@ -84,4 +84,5 @@ public class MenuService {
         }
         return menu.get();
     }
+
 }

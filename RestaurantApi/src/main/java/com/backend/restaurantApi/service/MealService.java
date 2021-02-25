@@ -23,17 +23,29 @@ public class MealService {
     @Autowired
     private OrderService orderService;
 
-    public Meal createNewMeal(Meal meal) {
+    @Autowired
+    private MenuService menuService;
+
+    public Meal createNewMeal(Meal meal, Long menu_id) {
         if(meal.getOrder() == null){
             Order order = new Order();
             orderService.createNewOrder(order);
             meal.setOrder(order);
         }
+        if(meal.getMenu() != null){
+            throw new MenuNotFoundException("Menu Item already set!");
+        }
+        Optional<Menu> orderedMenuItem = menuRepository.findById(menu_id);
+        if(!orderedMenuItem.isPresent()){
+            throw new MenuNotFoundException("Menu item not found...");
+        } else {
+            meal.setMenu(orderedMenuItem.get());
+        }
         return mealRepository.save(meal);
     }
 
-	public Menu getMealById(Long mealId) {
-		Optional<Menu> optionalMenu = menuRepository.findById(mealId);
+	public Meal getMealById(Long mealId) {
+		Optional<Meal> optionalMenu = mealRepository.findById(mealId);
 
         if (!optionalMenu.isPresent()) {
             throw new MenuNotFoundException("Meal Record is not available...");

@@ -26,13 +26,13 @@ public class MealController {
       return mealRepo.findAll();
     }
 
-    @PostMapping("/meals")
-    public Meal createNewMeal(@RequestBody Meal meal){
-        return mealService.createNewMeal(meal);
+    @PostMapping("/meals/{menu_id}")
+    public Meal createNewMeal(@RequestBody Meal meal, @PathVariable Long menu_id){
+        return mealService.createNewMeal(meal, menu_id);
     }
 
     @GetMapping("/meals/{id}")
-    public Menu getMealById(@PathVariable("id") Long id) {
+    public Meal getMealById(@PathVariable("id") Long id) {
         return mealService.getMealById(id);
     }
 
