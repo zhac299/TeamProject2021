@@ -42,6 +42,7 @@ import { NotificationsComponent } from './waiter-menu/notifications/notification
 import { MatBadgeModule} from '@angular/material/badge';
 import { NotificationsDialogComponent } from './waiter-menu/notifications/notifications-dialog/notifications-dialog.component';
 import { SelectTableDialogComponent } from './home-page/select-table-dialog/select-table-dialog.component';
+import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-table-dialog.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { SelectTableDialogComponent } from './home-page/select-table-dialog/sele
     CallWaiterComponent,
     NotificationsComponent,
     NotificationsDialogComponent,
-    SelectTableDialogComponent
+    SelectTableDialogComponent,
+    PickTableDialogComponent
   ],
   imports: [
     BrowserModule,
