@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Menu } from 'src/models/Menu';
-import { UtilityBarComponent } from '../utility-bar.component';
+import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 @Component({
   selector: 'app-basket',
@@ -12,7 +12,7 @@ export class BasketComponent implements OnInit {
 
   mealList: Menu[];
   
-  constructor(private dialogRef: MatDialogRef<UtilityBarComponent>,
+  constructor(private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
       this.mealList = data;
     }

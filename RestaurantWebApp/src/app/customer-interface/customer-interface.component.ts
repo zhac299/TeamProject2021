@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../../models/Order';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 import { MenuService} from "../menu.service";
 import { MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
 import { selectedCategory } from "../../models/selectedCategory";
-import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import { BasketComponent} from "./utility-bar/basket/basket.component";
 import { Customer } from 'src/models/Customer';
 import { CustomerService } from '../customer.service';
-import { Observable } from 'rxjs';
+import { BasketComponent} from './basket/basket.component';
 import { Table } from 'src/models/Table';
 import { TableService } from '../table.service';
 
@@ -42,9 +42,6 @@ export class CustomerInterfaceComponent implements OnInit {
       this.customer = this.customerService.getCustomerByID(this.paramsObject.params.customerID)
       this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
     });
-
-    //this.customer.subscribe((newCustomer) => {console.log(newCustomer)});
-    //this.table.subscribe((table) => {console.log(table)});
 
     this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe((menu)=> {
