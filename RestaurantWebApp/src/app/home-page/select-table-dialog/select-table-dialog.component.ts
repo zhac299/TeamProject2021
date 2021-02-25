@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/customer.service';
 
@@ -20,10 +21,10 @@ export class SelectTableDialogComponent implements OnInit {
   orders: Order[] = [];
   
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private tableService: TableService,
-    private customerService: CustomerService) { }
+    private customerService: CustomerService,
+    public dialogRef: MatDialogRef<SelectTableDialogComponent>) { }
 
   ngOnInit(): void {
     this.tableService.getUnoccupiedTables().subscribe(tables => {
@@ -34,20 +35,20 @@ export class SelectTableDialogComponent implements OnInit {
   createNewCustomer(): void {
     this.customer = new Customer();
     this.customer.table = this.selectedTable;
-    this.customer.id = Math.floor(Math.random() * (1000000 - 0 + 1));;
     this.customer.isReady = false;
     this.customer.orders = this.orders;
   }
 
   forCustomer(): void { 
     if (this.selectedTable != null) {
-      //console.log(this.selectedTable);
       this.createNewCustomer();
-      //console.log(this.customer);
-      this.customerService.createCustomer(this.customer);
 
-      this.router.navigate(['/customer-menu'], { queryParams: {  customerID: this.customer.id } });
+      this.customerService.createCustomer(this.customer).subscribe((newCustomer) =>
+      {      
+        this.router.navigate(['/customer-menu'], { queryParams: {  customerID: newCustomer.id } });
+      });
     } 
+    this.dialogRef.close();
   }
 
 }

@@ -7,7 +7,6 @@ import { MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
 import { selectedCategory } from "../../models/selectedCategory";
 
-
 interface Food {
   viewValue: string;
   mappedOrders: Order[];
