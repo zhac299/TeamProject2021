@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Order} from '../models/Order';
 import {map} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
+import {Customer} from "../models/Customer";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,20 @@ export class OrderService {
     this.httpClient.get<Order[]>(this.restaurantWebApiUrl)
       .subscribe((orders) => {
         this.orderSubject$.next(orders);
+      });
+  }
+
+  createNewOrderWithCustomer(customer: Customer): void {
+    const orderWithCustomer = new Order();
+    orderWithCustomer.customer = customer;
+    this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer)
+      .subscribe((order) => {
+        const _orders = this.orderSubject$.getValue();
+        _orders.push(order);
+        this.orderSubject$.next(
+          _orders
+        );
+        this.getUpdatedOrders();
       });
   }
 
