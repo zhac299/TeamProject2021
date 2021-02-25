@@ -38,7 +38,7 @@
           <mat-icon>clear</mat-icon>
         </button>
 
-        &nbsp;&nbsp;&nbsp; <span *ngIf="menuItem.selections != null else noSelections">x{{menuItem.selections}}</span>
+        &nbsp;&nbsp;&nbsp; <span *ngIf="this.selectedMeals.includes(menuItem) else noSelections">x{{menuItem.selections}}</span>
         <ng-template #noSelections>x0</ng-template>
   </mat-grid-tile>
 </mat-grid-list>
