@@ -6,6 +6,11 @@ import { MenuService} from "../menu.service";
 import { MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
 import { selectedCategory } from "../../models/selectedCategory";
+import { Customer } from 'src/models/Customer';
+import { CustomerService } from '../customer.service';
+import { Observable } from 'rxjs';
+import { Table } from 'src/models/Table';
+import { TableService } from '../table.service';
 
 interface Food {
   viewValue: string;
@@ -23,19 +28,24 @@ export class CustomerInterfaceComponent implements OnInit {
   menu: Menu[];
   cat: selectedCategory = new selectedCategory;
   paramsObject: any;
-  customerID: number;
+  customer: Observable<Customer>;
+  table:Observable<Table>;
 
   constructor(private menuService: MenuService,
+              private customerService: CustomerService,
+              private tableService: TableService,
               private menuFilterService: MenuFilterService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
-      this.customerID = this.paramsObject.params.customerID;
+      this.customer = this.customerService.getCustomerByID(this.paramsObject.params.customerID)
+      this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
     });
 
-    console.log(this.customerID)
+    //this.customer.subscribe((newCustomer) => {console.log(newCustomer)});
+    //this.table.subscribe((table) => {console.log(table)});
 
     this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe((menu)=> {

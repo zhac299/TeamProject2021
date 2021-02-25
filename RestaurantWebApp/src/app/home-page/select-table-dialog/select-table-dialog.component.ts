@@ -45,7 +45,8 @@ export class SelectTableDialogComponent implements OnInit {
 
       this.customerService.createCustomer(this.customer).subscribe((newCustomer) =>
       {      
-        this.router.navigate(['/customer-menu'], { queryParams: {  customerID: newCustomer.id } });
+        this.router.navigate(['/customer-menu'], 
+        { queryParams: {  customerID: newCustomer.id, selectedTable: this.selectedTable.tableNumber } });
       });
     } 
     this.dialogRef.close();

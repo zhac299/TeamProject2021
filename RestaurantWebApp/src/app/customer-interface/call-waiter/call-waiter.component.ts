@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
+import { CustomerService } from 'src/app/customer.service';
+import { TableService } from 'src/app/table.service';
+import { Table } from 'src/models/Table';
+import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 import { CallWaiterDialogComponent } from './call-waiter-dialog/call-waiter-dialog.component';
 
@@ -10,15 +14,22 @@ import { CallWaiterDialogComponent } from './call-waiter-dialog/call-waiter-dial
 })
 export class CallWaiterComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  tables: Table[] = [];
+  waiterCalled: boolean = false;
 
-  openDialog() {
-    const dialogRef = this.dialog.open(CallWaiterDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  constructor(
+    private customerInterface: CustomerInterfaceComponent,
+    private tableService: TableService) { }
 
   ngOnInit(): void {}
+
+  callWaiter(): void {
+    this.customerInterface.table.subscribe((table) => {
+      table.needsHelp = true;
+      table.isOccupied = true;
+      this.tableService.updateTable(table).subscribe();
+      this.waiterCalled = true;
+    });
+  }
+  
 }
