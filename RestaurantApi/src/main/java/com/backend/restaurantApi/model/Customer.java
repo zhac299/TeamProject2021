@@ -32,6 +32,14 @@ public class Customer {
   private long id;
 
   /**
+   * Serializes Customer to Json format.
+   * 
+   * @return a string of Json format
+   */
+  @Column(name = "is_ready")
+  private boolean isReady = false;
+
+  /**
    * The foreign key of the table that references the RestaurantTable
    * table. It uses a many to one annotation to realise it and JsonManagedReference
    * to avoid to avoid the infinte JSON serialization problem such that only this item
@@ -48,12 +56,13 @@ public class Customer {
   @Column(name = "orders", nullable = false)
   @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
   private List<Order> orders = new ArrayList<>();
+
   /**
    * Sets the customer id to a new one.
    *
    * @param id the new id
    */
-  public void setCustomerId(long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
@@ -62,7 +71,7 @@ public class Customer {
    * 
    * @return the customer id
    */
-  public long getCustomerId() {
+  public long getId() {
     return this.id;
   }
 
@@ -84,36 +93,6 @@ public class Customer {
     this.table = newTable;
   }
 
-  /**
-   * Serializes Customer to Json format.
-   * 
-   * @return a string of Json format
-   */
-  @Column(name = "is_ready")
-  private boolean isReady = false;
-
-  /**
-   * Serializes Customer to Json format.
-   *
-   * @return a string of Json format
-   */
-  @Override
-  public String toString() {
-      return "Customer{" +
-              "id=" + id +
-              ", isReady='" + isReady + '\'' +
-              ", tableNumber='" + table + '\'' +
-              '}';
-  }
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
   public List<Order> getOrders() {
     return orders;
   }
@@ -128,6 +107,20 @@ public class Customer {
 
   public void setReady(boolean ready) {
     isReady = ready;
+  }
+
+    /**
+   * Serializes Customer to Json format.
+   *
+   * @return a string of Json format
+   */
+  @Override
+  public String toString() {
+      return "Customer{" +
+              "id=" + id +
+              ", isReady='" + isReady + '\'' +
+              ", tableNumber='" + table + '\'' +
+              '}';
   }
 
 }

@@ -75,7 +75,7 @@ export class WaiterMenuComponent implements OnInit {
   }
 
   createNewOrder(table: Table): void {
-    this.customerService.createCustomerWithTable(table);
+    //this.customerService.createCustomerWithTable(table);
     // this.orderService.
   }
 

@@ -36,4 +36,8 @@ export class CustomerService {
     this.httpClient.delete(`${this.restaurantWebApiUrl}/${customer.id}`);
   }
 
+  public getCustomerByID(id: number): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${this.restaurantWebApiUrl}/${id}`)
+  }
+
 }
