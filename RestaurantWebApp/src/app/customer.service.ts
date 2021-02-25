@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Customer} from "../models/Customer";
+import {Table} from "../models/Table";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,15 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(this.restaurantWebApiUrl);
   }
 
-  public createCustomer(customer: Customer): Observable<Customer> {
-    return this.httpClient.put<Customer>(this.restaurantWebApiUrl, customer);
+  public createCustomer(): Observable<Customer> {
+    return this.httpClient.post<Customer>(this.restaurantWebApiUrl, new Customer());
+  }
+
+  public createCustomerWithTable(table: Table): Observable<Customer> {
+    let newCustomer = new Customer();
+    this.createCustomer().subscribe((newCust) => newCustomer = newCust);
+    newCustomer.table = table;
+    return this.httpClient.post<Customer>(this.restaurantWebApiUrl, newCustomer);
   }
 
   public updateCustomer(customer: Customer): Observable<Customer> {
