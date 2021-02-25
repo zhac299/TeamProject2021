@@ -1,7 +1,8 @@
 import {Order} from "./Order";
+import {Menu} from "./Menu";
 
 export class Meal{
   id: number;
-  menu_id: number;
+  menu: Menu;
   order: Order;
 }

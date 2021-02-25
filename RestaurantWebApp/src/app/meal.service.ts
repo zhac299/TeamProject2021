@@ -15,4 +15,8 @@ export class MealService {
   createNewMeal(meal: Meal): Observable<Meal> {
     return this.httpClient.post<Meal>(this.mealsURL, meal);
   }
+
+  deleteMeal(meal: Meal): Observable<Meal> {
+    return this.httpClient.delete<Meal>(`${this.mealsURL}/${meal.id}`);
+  }
 }

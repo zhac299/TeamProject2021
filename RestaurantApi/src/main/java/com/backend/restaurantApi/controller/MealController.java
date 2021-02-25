@@ -32,7 +32,7 @@ public class MealController {
     }
 
     @GetMapping("/meals/{id}")
-    public Menu getMealById(@PathVariable("id") Long id) {
+    public Meal getMealById(@PathVariable("id") Long id) {
         return mealService.getMealById(id);
     }
 

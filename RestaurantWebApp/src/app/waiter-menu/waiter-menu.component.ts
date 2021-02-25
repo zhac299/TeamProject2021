@@ -57,7 +57,8 @@ export class WaiterMenuComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.orderService.updateOrder(result);
+        this.orderService.getUpdatedOrders();
+        // this.orderService.updateOrder(result);
       }
     });
   }
