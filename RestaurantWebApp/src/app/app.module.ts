@@ -35,11 +35,8 @@ import { MatTableModule} from "@angular/material/table";
 import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
 import { MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
-<<<<<<< HEAD
-import {MatCheckboxModule} from "@angular/material/checkbox";
 import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
 import { NgOtpInputModule } from  'ng-otp-input';
-=======
 import { MatCheckboxModule} from "@angular/material/checkbox";
 import { BasketComponent } from './customer-interface/basket/basket.component';
 import { CustomerTablesComponent } from './waiter-menu/customer-tables/customer-tables.component';
@@ -49,7 +46,6 @@ import { MatBadgeModule} from '@angular/material/badge';
 import { NotificationsDialogComponent } from './waiter-menu/notifications/notifications-dialog/notifications-dialog.component';
 import { SelectTableDialogComponent } from './home-page/select-table-dialog/select-table-dialog.component';
 import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-table-dialog.component';
->>>>>>> a509aec81f1585cc41a8949b2310e67c1627ce07
 
 @NgModule({
   declarations: [
@@ -66,9 +62,7 @@ import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-t
     TableComponent,
     EditDialogComponent,
     AddMenuDialogComponent,
-<<<<<<< HEAD
-    TwoFactorAuthComponent
-=======
+    TwoFactorAuthComponent,
     BasketComponent,
     CustomerTablesComponent,
     CallWaiterComponent,
@@ -76,7 +70,6 @@ import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-t
     NotificationsDialogComponent,
     SelectTableDialogComponent,
     PickTableDialogComponent
->>>>>>> a509aec81f1585cc41a8949b2310e67c1627ce07
   ],
   imports: [
     BrowserModule,
@@ -103,11 +96,8 @@ import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-t
     MatSliderModule,
     MatTableModule,
     MatCheckboxModule,
-<<<<<<< HEAD
     NgOtpInputModule,
-=======
     MatBadgeModule
->>>>>>> a509aec81f1585cc41a8949b2310e67c1627ce07
   ],
   providers: [AllergensChipsComponent, CustomerInterfaceComponent],
   bootstrap: [AppComponent]
