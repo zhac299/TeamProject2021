@@ -1,6 +1,11 @@
 export class Login {
-    username!: string;
+    id: number;
+    userName!: string;
     password!: string;
-    waiter!: boolean | undefined;
-    kitchen!: boolean | undefined;
+    email!: string;
+    isWaiter!: boolean;
+    staffUsername!: string;
+    staffPassword!: string;
+    staffEmail!: string;
+    otp!: number;
   }
