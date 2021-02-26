@@ -1,5 +1,8 @@
+import {Customer} from './Customer';
+
 export class Table {
-  id: number;
-  number: number;
-  hasOrder: boolean;
+  tableNumber: number;
+  isOccupied: boolean;
+  needsHelp: boolean;
+  customer: Customer[];
 }

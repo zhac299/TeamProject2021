@@ -36,7 +36,7 @@ public class MenuController {
 
     @GetMapping("/menu/{id}")
     public Menu getMealById(@PathVariable("id") Long id) {
-        return mealService.getMealById(id);
+        return menuService.getMenuById(id);
     }
 
     @PostMapping(path = "/menuadd/{id}")

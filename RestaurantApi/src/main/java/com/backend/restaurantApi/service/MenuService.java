@@ -7,7 +7,6 @@ import com.backend.restaurantApi.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,4 +76,13 @@ public class MenuService {
     public void deleteMenuItem(Long id) {
         menuRepository.deleteById(id);
 	}
+
+    public Menu getMenuById(Long id) {
+        Optional<Menu> menu = menuRepository.findById(id);
+        if(!menu.isPresent()) {
+            throw new MenuNotFoundException("Menu record is not available...");
+        }
+        return menu.get();
+    }
+
 }

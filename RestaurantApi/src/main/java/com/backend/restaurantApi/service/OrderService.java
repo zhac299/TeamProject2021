@@ -1,8 +1,15 @@
 package com.backend.restaurantApi.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.PriorityQueue;
 
+import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
+import com.backend.restaurantApi.model.Meal;
+import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.repository.OrderRepository;
 
@@ -15,8 +22,20 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
-    public Order createNewOrder(Order Order) {
-        return orderRepository.save(Order);
+    @Autowired
+    MenuService menuService;
+
+    @Autowired
+    CustomerService customerService;
+
+    public Order createNewOrder(Order order) {
+//        if(order.getCustomer() == null) {
+//            Customer customer = new Customer();
+//            customer.setTable();
+//
+//            this.customerService.createNewCustomer()
+//        }
+        return orderRepository.save(order);
     }
 
 	public Order getOrderById(Long OrderId) {
@@ -36,5 +55,35 @@ public class OrderService {
 	public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
 	}
+
+    public PriorityQueue<Order> convertIntoQueue() {
+        List<Order> listOfOrders = new ArrayList<>();
+        listOfOrders = orderRepository.findAll();
+        Collections.sort(listOfOrders);
+
+        PriorityQueue<Order> priorityQueueByDate = new PriorityQueue<>(listOfOrders);
+
+        return priorityQueueByDate;
+    }
     
+
+    public List<Menu> getOrderedMeals(Long id) {
+        Optional<Order>  order = orderRepository.findById(id);
+        List<Menu> menus = new ArrayList<>();
+        if (!order.isPresent()) {
+            throw new OrderNotFoundException("Order Record is not available...");
+        } else {
+            if(order.get().getMeal().isEmpty()) {
+                throw new MealNotFoundException("No meals in this order...");
+            } else {
+                order.get().getMeal().forEach((meal -> menus.add(meal.getMenu())));
+            }
+        }
+        return menus;
+    }
+
+    public void removeOrderedMeal(Order order, Meal meal) {
+        order.getMeal().remove(meal);
+        this.updateOrder(order.getId(),order);
+    }
 }

@@ -4,62 +4,104 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {WaiterMenuComponent} from "../waiter-menu.component";
 import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
-import {DrinkService} from "../../drink.service";
-import {Drink} from "../../../models/Drink";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
+import {BehaviorSubject, pipe} from "rxjs";
+import {map, tap} from "rxjs/operators";
 import {Meal} from "../../../models/Meal";
-import {tap} from "rxjs/operators";
-import {pipe} from "rxjs";
+import {MealService} from "../../meal.service";
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.sass']
+  styleUrls: ['./order.component.sass'],
+  // providers: [OrderService,MenuService]
 })
 export class OrderComponent implements OnInit {
 
   table: Table;
   total: number = 0;
-  orderedMeals: Menu[] = [];
-  // menu: Menu;
   menuList: Menu[] = [];
+
+  private orderedMealItemsSubject$ = new BehaviorSubject<Meal[]>([]);
+  orderedMealItems$ = this.orderedMealItemsSubject$.asObservable();
+
+  private orderSubject$ = new BehaviorSubject<Order>(this.order);
+  order$ = this.orderSubject$.asObservable();
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Order,
+    @Inject(MAT_DIALOG_DATA) public order: Order,
     private orderService: OrderService,
-    public menuService: MenuService) {}
+    public menuService: MenuService,
+    private mealService: MealService) {}
 
   ngOnInit(): void {
-    // this.orderService.getOrders().subscribe(orders => this.orders = orders);
-    // this.menuService.getMenuById(this.data.id).subscribe(menu => this.menu = menu);
-
-    this.menuService.getMenu().subscribe(menuItems => this.menuList = menuItems);
-    this.findMealFromMenu();
+    this.updateAllOrder();
   }
 
-  // Gets all meals from the menu and initialises menuList with those meals
-  findMealFromMenu(): void {
-    if (this.data.meal.length > 0 || this.data.meal != undefined) {
-      this.data.meal.forEach(value => {
-        this.menuService.getMenuById(value.menu_id).subscribe(meal => {
-          this.orderedMeals.push(meal);
-          //update price total
-          this.total += meal.price;
-        });
-      });
+  getId(): number {
+    let id = undefined;
+    this.order$.subscribe((o) => id = o.id);
+    return id;
+  }
+
+  updateOrderedMealItems() {
+    if(this.order.meal.length > 0){
+      this.order$.subscribe((order) => {
+        this.orderedMealItemsSubject$.next(order.meal);
+        order.meal.forEach((meal) => {this.total = this.total + meal.menu.price})
+      })
+      // this.order$.subscribe((order) => {
+      //   this.orderService.getOrderedMenuItems(order)
+      //     .subscribe((menuItems) => {
+      //       this.orderedMenuItemsSubject$.next(menuItems);
+      //       menuItems.forEach((item) => {this.total = this.total + item.price});
+      //     });
+      // });
     }
   }
 
-  deleteOrder(): void {
-    this.orderService.deleteOrderById(this.data.id).subscribe(
+  setTotal(menuItems: Menu[]): void {
+    menuItems.forEach((item) => {this.total = this.total + item.price});
+  }
 
-    );
+  updateAllOrder(): void {
+    this.updateOrderedMealItems();
+    this.menuService.menus$.subscribe((menu) => {
+      this.menuList = menu;
+    });
+  }
+
+  deleteOrder(): void {
+    this.orderService.deleteOrderById(this.order.id);
     this.dialogRef.close();
   }
 
-  updateOrder(order: Order): void {
-    this.orderService.updateOrder(order).subscribe();
+  addMenuToOrder(menu: Menu, order:Order) {
+    // link menuId to meal via its id
+    // link it to order id
+    const newMeal = new Meal();
+    newMeal.menu = menu;
+    newMeal.order = order;
+    const _orderedMealItems = this.orderedMealItemsSubject$.getValue();
+    this.mealService.createNewMeal(newMeal)
+      .subscribe((meal) =>{
+        _orderedMealItems.push(meal);
+        this.orderedMealItemsSubject$.next(_orderedMealItems);
+      });
+  }
+
+  save(order: Order) {
+    console.log(this.orderSubject$.getValue());
+    // this.orderService.updateOrder(order);
+    this.order = this.orderSubject$.getValue();
+    this.orderedMealItemsSubject$.complete();
+    this.orderedMealItemsSubject$.complete();
+    this.dialogRef.close(order);
+  }
+
+  deleteOrderedMenuItem(meal: Meal) {
+    this.mealService.deleteMeal(meal).subscribe((deletedMeal) => console.log(deletedMeal));
   }
 }

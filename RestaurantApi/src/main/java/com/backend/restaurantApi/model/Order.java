@@ -1,25 +1,26 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "restaurant_order")
-public class Order {
+public class Order implements Comparable<Order> {
     @Id
     @Column(name = "order_id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "customer", nullable = false)
-    private int customerTableNum;
-
     @JsonManagedReference(value = "order")
     @Column(name = "meal", nullable = false)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="order")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="order", orphanRemoval = true)
     private List<Meal> meal;
 
     @Column(name = "staff", nullable = false)
@@ -28,16 +29,26 @@ public class Order {
     @Column(name = "is_delivered")
     private boolean isDelivered = false;
 
+    @Column(name = "order_placed_time")
+    @CreationTimestamp
+    private Date orderPlacedTime = new Date();
+
+    @JsonBackReference(value = "customer_order")
+    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
+    @JoinColumn(name = "customer", nullable = true)
+    private Customer customer;
+
     // used to serialize object to json
     @Override
     public String toString() {
-        return "DishAllergies{" +
-            "id=" + id +
-            ", customerTableNum='" + customerTableNum + '\'' +
-            ", meal='" + meal + '\'' +
-            ", waiterId='" + waiterId + '\'' +
-            ", isDelivered='" + isDelivered+ '\'' +
-            '}';
+        return "Order{" +
+                "id=" + id +
+                ", meal=" + meal +
+                ", waiterId=" + waiterId +
+                ", isDelivered=" + isDelivered +
+                ", orderPlacedTime=" + orderPlacedTime +
+                ", customer=" + customer +
+                '}';
     }
 
     public Order() {}
@@ -62,12 +73,20 @@ public class Order {
         this.id = id;
     }
 
-    public int getCustomerTableNum() {
-        return customerTableNum;
+    public boolean isDelivered() {
+        return isDelivered;
     }
 
-    public void setCustomerTableNum(int customerTableNum) {
-        this.customerTableNum = customerTableNum;
+    public void setDelivered(boolean delivered) {
+        isDelivered = delivered;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public long getWaiterId() {
@@ -85,4 +104,18 @@ public class Order {
     public boolean getIsDelivered() {
         return this.isDelivered;
     }
+
+    public Date getOrderPlacedTime() {
+        return this.orderPlacedTime;
+    }
+
+    public void setOrderPlacedTime(Date orderPlacedTime) {
+        this.orderPlacedTime = orderPlacedTime;
+    }
+
+    @Override
+    public int compareTo(Order order) {
+        return getOrderPlacedTime().compareTo(order.getOrderPlacedTime());
+    }
+
 }

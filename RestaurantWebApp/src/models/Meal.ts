@@ -1,8 +1,8 @@
 import {Order} from "./Order";
+import {Menu} from "./Menu";
 
 export class Meal{
   id: number;
-  // tslint:disable-next-line:variable-name
-  menu_id: number;
-  order: Order[];
+  menu: Menu;
+  order: Order;
 }

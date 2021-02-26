@@ -1,15 +1,49 @@
-<h1>Menu</h1>
-<mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-<a class= "home" href  = '/home'>Home</a>
-<br><br>
+<mat-grid-list cols="1" rowHeight="200px" class="title">
+  <mat-grid-tile colspan="1">Comida Deliciosa</mat-grid-tile>
+</mat-grid-list>
+<p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click) = goHome()>
+      <mat-icon>home</mat-icon>
+    </button>
+    <span>Menu</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <call-waiter></call-waiter>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="openDialog()">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
 <expansion-pannel></expansion-pannel>
-<br>
-<h2>{{cat.name}}</h2>
-<div *ngFor="let menuItem of cat.meal">
-    <p><button id = "menuItemButton" >
-      {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
-    </button></p>
-</div>  
+<br> 
+
+<mat-grid-list cols="1" rowHeight="100px">
+  <mat-grid-tile colspan="1">
+    <h2>{{cat.name}}</h2>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="1" rowHeight="50px">
+  <mat-grid-tile class="menuUI" *ngFor="let menuItem of cat.meal" colspan="1">
+        {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
+        <button mat-button (click)="addMeal(menuItem)">
+          <mat-icon>add</mat-icon>
+        </button>
+
+        <button mat-button (click)="removeMeal(menuItem)">
+          <mat-icon>remove</mat-icon>
+        </button>
+
+        <button mat-button (click)="clearMeal(menuItem)">
+          <mat-icon>clear</mat-icon>
+        </button>
+
+        &nbsp;&nbsp;&nbsp; <span *ngIf="this.selectedMeals.includes(menuItem) else noSelections">x{{menuItem.selections}}</span>
+        <ng-template #noSelections>x0</ng-template>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
 
 
 

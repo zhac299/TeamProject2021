@@ -1,28 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import {TableService} from '../table.service';
+import {Component, OnInit} from '@angular/core';
 import {Table} from '../../models/Table';
 import {MatDialog} from '@angular/material/dialog';
 import {OrderComponent} from './order/order.component';
 import {OrderService} from "../order.service";
 import {Order} from "../../models/Order";
-import {TableComponent} from "./table/table.component";
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
-import {interval, timer} from "rxjs";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
+import {CustomerService} from "../customer.service";
+import {Customer} from "../../models/Customer";
+import {SelectTableDialogComponent} from "../home-page/select-table-dialog/select-table-dialog.component";
+import {Observable} from "rxjs";
+import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.component";
+import {map, mergeMap, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-waiter-menu',
   templateUrl: './waiter-menu.component.html',
-  styleUrls: ['./waiter-menu.component.sass']
+  styleUrls: ['./waiter-menu.component.sass'],
 })
 export class WaiterMenuComponent implements OnInit {
 
   constructor(
-    private tableService: TableService,
     private orderService: OrderService,
     private menuService: MenuService,
+    private customerService: CustomerService,
     public dialog: MatDialog
   ) { }
 
@@ -30,53 +33,18 @@ export class WaiterMenuComponent implements OnInit {
   showFiller = false;
   tableList: Table[] = [];
   freeTables = 0;
-  dialogTable: Table = new Table();
   orders: Order[];
   displayedColumns: string[] = ['name', 'description', 'price'];
 
   ngOnInit(): void {
+    this.orderService.getUpdatedOrders();
+    this.menuService.getAllUpdatedMenus();
 
-    this.orderService.refreshNeeded.subscribe(() => {
-      this.getAllOrders();
-    });
-    this.getAllOrders();
-
-    this.menuService.refreshNeeded.subscribe(() => {
-      this.getAllMenus();
-    })
-    this.getAllMenus();
-
-    // this.tableService.getTables().subscribe( orders => {
-    //   // checks which incoming tables have orders
-    //   for (const table of orders){
-    //     // updates counter
-    //     if (table.hasOrder){this.freeTables++; }
-    //   }
-    //   this.tableList = orders;
-    // });
-
-  }
-
-  getAllMenus(): void {
-    this.menuService.getMenu().subscribe(menu => {
-      this.menuList = menu;
-    });
-  }
-
-  getAllOrders(): void {
-    this.orderService.getOrders().subscribe(orders => {
+    this.orderService.orders$.subscribe((orders) => {
       this.orders = orders;
     });
-  }
-  openTableDialog(table: Table): void {
-    // this.dialogTable = table;
-    const dialogRef = this.dialog.open(TableComponent, {
-      data: this.tableList,
-      width: '99%',
-      height: '99%'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    this.menuService.menus$.subscribe((menu) => {
+      this.menuList = menu;
     });
   }
 
@@ -87,58 +55,60 @@ export class WaiterMenuComponent implements OnInit {
       width: '99%',
       height: '99%'
     });
-
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.orderService.getUpdatedOrders();
+        // this.orderService.updateOrder(result);
+      }
+    });
   }
 
   openAddDialog(menu:Menu): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       data: menu,
-      width: '30%',
-      height: '50%'
+      width: '40%',
+      height: '75%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log(result);
       if (result){
-        this.menuService.updateMenu(result).subscribe(data=> result = data)
+        this.menuService.updateMenu(result);
       }
     });
+    this.menuService.getAllUpdatedMenus();
+  }
+
+  openSelectTableDialog(): Observable<Table> {
+    const dialogRef = this.dialog.open(PickTableDialogComponent);
+    return dialogRef.afterClosed();
   }
 
   createNewOrder(): void {
-    const newOrder: Order = new Order();
-    this.orderService.createNewOrder()
-      .subscribe(result => {
-        return result;
-        // console.log(result);
-        // this.orders.push(result);
-      });
-    // console.log(newOrder);
-    // return newOrder;
+    this.openSelectTableDialog()
+      .pipe(
+        switchMap((dialogResult) =>
+          this.customerService.createCustomerWithTable(dialogResult))
+      ).subscribe((a) =>
+      this.orderService.createNewOrderWithCustomer(a)
+    );
   }
 
-  // addMenuItem(): void {
-  //   this.menuService.
-  // }
   deleteMenuItem(menu: Menu) {
-    this.menuService.deleteMenu(menu).subscribe();
-    this.menuService.getMenu().subscribe(menu => {
-      this.menuList = menu;
-    })
+    this.menuService.deleteMenu(menu);
   }
 
   openAddMenuDialog() {
     let newMenu: Menu = new Menu();
     const dialogRef = this.dialog.open(AddMenuDialogComponent, {
       data: newMenu,
-      width:'30%',
-      height:'50%'
+      width:'40%',
+      height:'75%'
     });
 
     dialogRef.afterClosed().subscribe(menu => {
       if(menu){
-        this.menuService.createMenuItem(menu).subscribe();
+        this.menuService.createMenuItem(menu);
       }
     })
 
