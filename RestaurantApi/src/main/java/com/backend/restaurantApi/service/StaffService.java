@@ -1,5 +1,6 @@
 package com.backend.restaurantApi.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.backend.restaurantApi.exception.StaffNotFoundException;
@@ -36,5 +37,10 @@ public class StaffService {
 	public void deleteStaff(Long id) {
         staffRepository.deleteById(id);
 	}
+
+    public List<Staff> getStaffMember(String userName, String password){
+        List staff = staffRepository.getStaffMember(userName, password);
+        return staff;
+    }
     
 }

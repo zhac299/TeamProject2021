@@ -1,0 +1,31 @@
+
+<div class = "closeDialogButton" >Shopping Cart
+    <button mat-icon-button (click) = close()><mat-icon>cancel</mat-icon></button></div>
+<mat-list>
+    <mat-list-item *ngFor="let meal of mealList">
+        {{meal.name}}
+        &nbsp;&nbsp;&nbsp;&nbsp;x{{meal.selections}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: {{meal.price * meal.selections}}$
+        <button mat-button color="accent" (click) = "add(meal)">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-button color="accent" (click) = "remove(meal)">
+            <mat-icon>remove</mat-icon>
+        </button>
+        <button mat-button color="accent" (click) = "clear(meal)">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="center">
+            Total: {{priceTotal(mealList)}}$
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="center">
+            <button mat-flat-button color="accent" (click) = "placeOrder()">
+                Place Order
+            </button>
+        </div>
+    </mat-list-item>
+</mat-list>

@@ -5,6 +5,7 @@ import {Order} from '../models/Order';
 import {map} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 import {Customer} from "../models/Customer";
+import { Meal } from 'src/models/Meal';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,21 @@ export class OrderService {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
     this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer)
+      .subscribe((order) => {
+        const _orders = this.orderSubject$.getValue();
+        _orders.push(order);
+        this.orderSubject$.next(
+          _orders
+        );
+        this.getUpdatedOrders();
+      });
+  }
+
+  createNewOrderWithCustomerAndMealList(customer: Customer, selectedMeals: Meal[]): void {
+    const order = new Order();
+    order.customer = customer;
+    order.meal = selectedMeals;
+    this.httpClient.post<Order>(this.restaurantWebApiUrl, order)
       .subscribe((order) => {
         const _orders = this.orderSubject$.getValue();
         _orders.push(order);

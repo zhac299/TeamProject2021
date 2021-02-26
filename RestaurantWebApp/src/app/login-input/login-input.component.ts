@@ -10,47 +10,34 @@ import { Router } from '@angular/router'
 })
 export class LoginInputComponent implements OnInit {
 
-    username: string = "";
+    username: string;
     password: string = "";
-    staff: string = "";
     waiter: boolean = false;
     kitchen: boolean = false;
     
+    loginTwo: Login = undefined;
     html: string = "";
-    link: string = "google.co.uk";
 
     constructor(private input: InputService, private router:Router) { }
-    loginTwo: Login[] = [];
     ngOnInit(): void {
     }
     
     onSubmit() {
-        const login2 = {
-            username: this.username,
-            password: this.password,
-            waiter: this.waiter,
-            kitchen: this.kitchen
-        }
-
-        this.input.getLogin().subscribe(login => {
-            
-            this.loginTwo = login;        
-            for (var val of this.loginTwo) { 
-                if (val.username == login2.username && val.password == login2.password && login2.waiter == true) {
-                    this.router.navigateByUrl('waiter-menu');
-                    return;
-                } else if (val.username == login2.username && val.password == login2.password && login2.kitchen == true) {
-                    this.router.navigateByUrl('order-list');
-                    return;
+            this.input.getLogin(this.username, this.password).subscribe(login => {
+                try {
+                    this.loginTwo = login[0];
+                    if (Object.keys(this.loginTwo).length > 0 && this.waiter == true) {
+                        this.input.setOTP(this.loginTwo);
+                        this.input.setLogin(this.loginTwo);
+                        
+                        this.router.navigateByUrl("/2FA");
+                    }
+                } catch {
+                    console.log("Wrong login!");
                 }
-            }
-           this.html = "<p>Enter the <u>correct</u> login details / <a href = \"https://google.co.uk\" >Reset Password?</a></p>"
-        });
+            });
         this.username = "";
         this.password = "";
-        this.staff = "";
-        this.waiter = false;
-        this.kitchen = false;
     }
 
     isKitchen() {

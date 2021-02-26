@@ -35,7 +35,10 @@ import { MatTableModule} from "@angular/material/table";
 import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
 import { MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
+import { NgOtpInputModule } from  'ng-otp-input';
+import { MatCheckboxModule} from "@angular/material/checkbox";
+import { BasketComponent } from './customer-interface/basket/basket.component';
 import { CustomerTablesComponent } from './waiter-menu/customer-tables/customer-tables.component';
 import { CallWaiterComponent } from './customer-interface/call-waiter/call-waiter.component';
 import { NotificationsComponent } from './waiter-menu/notifications/notifications.component';
@@ -60,6 +63,8 @@ import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready
     TableComponent,
     EditDialogComponent,
     AddMenuDialogComponent,
+    TwoFactorAuthComponent,
+    BasketComponent,
     CustomerTablesComponent,
     CallWaiterComponent,
     NotificationsComponent,
@@ -93,9 +98,10 @@ import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready
     MatSliderModule,
     MatTableModule,
     MatCheckboxModule,
+    NgOtpInputModule,
     MatBadgeModule
   ],
-  providers: [AllergensChipsComponent],
+  providers: [AllergensChipsComponent, CustomerInterfaceComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
