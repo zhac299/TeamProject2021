@@ -1,32 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from 'src/app/customer.service';
+import { TableService } from 'src/app/table.service';
+import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 @Component({
-  selector: 'app-ready-to-order',
+  selector: 'ready-to-order',
   templateUrl: './ready-to-order.component.html',
   styleUrls: ['./ready-to-order.component.sass']
 })
 export class ReadyToOrderComponent implements OnInit {
 
   ready: boolean = false;
+  tables: Table[] = [];
 
-  constructor(private customerInterface: CustomerInterfaceComponent, private customerService: CustomerService) { }
+  constructor(private customerInterface: CustomerInterfaceComponent, 
+    private tableService: TableService) { }
 
   ngOnInit(): void {}
 
   readyToOrder(): void {
-    this.customerInterface.customer.subscribe((customer) => {
-      customer.isReady = true;
-      this.customerService.updateCustomer(customer).subscribe();
+    this.customerInterface.table.subscribe((table) => {
+      table.isReady = true;
+      this.tableService.updateTable(table).subscribe();
     });
     this.ready = true;
   }
 
   cancel(): void {
-    this.customerInterface.customer.subscribe((customer) => {
-      customer.isReady = false;
-      this.customerService.updateCustomer(customer).subscribe();
+    this.customerInterface.table.subscribe((table) => {
+      table.isReady = false;
+      this.tableService.updateTable(table).subscribe();
     });
     this.ready = false;
   }
