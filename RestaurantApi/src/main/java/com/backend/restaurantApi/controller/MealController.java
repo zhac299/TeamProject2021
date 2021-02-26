@@ -1,7 +1,6 @@
 package com.backend.restaurantApi.controller;
 
 import com.backend.restaurantApi.model.Meal;
-import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.repository.*;
 import com.backend.restaurantApi.service.MealService;
 

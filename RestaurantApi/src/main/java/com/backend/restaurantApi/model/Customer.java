@@ -29,14 +29,6 @@ public class Customer {
   private long id;
 
   /**
-   * Serializes Customer to Json format.
-   * 
-   * @return a string of Json format
-   */
-  @Column(name = "is_ready")
-  private boolean isReady = false;
-
-  /**
    * The foreign key of the table that references the RestaurantTable
    * table. It uses a many to one annotation to realise it and JsonManagedReference
    * to avoid to avoid the infinte JSON serialization problem such that only this item
@@ -98,14 +90,6 @@ public class Customer {
     this.orders = orders;
   }
 
-  public boolean isReady() {
-    return isReady;
-  }
-
-  public void setReady(boolean ready) {
-    isReady = ready;
-  }
-
     /**
    * Serializes Customer to Json format.
    *
@@ -115,7 +99,6 @@ public class Customer {
   public String toString() {
       return "Customer{" +
               "id=" + id +
-              ", isReady='" + isReady + '\'' +
               ", tableNumber='" + table + '\'' +
               '}';
   }

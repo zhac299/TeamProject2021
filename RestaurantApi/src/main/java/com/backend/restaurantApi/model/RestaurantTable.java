@@ -34,6 +34,9 @@ public class RestaurantTable {
     @Column(name = "isOccupied", nullable = false)
     private boolean isOccupied;
 
+    @Column(name = "is_ready", nullable = false)
+    private boolean isReady = false;
+
     /**
      * A column that stores all the customers seated a table.
      */
@@ -114,6 +117,14 @@ public class RestaurantTable {
         this.isOccupied = isOccupied;
     }
 
+    public boolean isReady() {
+        return isReady;
+      }
+    
+    public void setReady(boolean ready) {
+        isReady = ready;
+    }
+
     /**
      * Returns A Jason object containing all the tables details.
      */
@@ -123,6 +134,7 @@ public class RestaurantTable {
             "tableNumber='" + this.tableNumber +
             ", needsHelp='" + this.needsHelp + '\'' +
             ", IsOccupied='" + this.isOccupied + '\'' +
+            ", IsReady='" + this.isReady + '\'' +
             '}';
     }
 }
