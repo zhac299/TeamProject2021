@@ -23,9 +23,6 @@ public class MealService {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private MenuService menuService;
-
     public Meal createNewMeal(Meal meal) {
 //        if(meal.getOrder() == null){
 //            Order order = new Order();
