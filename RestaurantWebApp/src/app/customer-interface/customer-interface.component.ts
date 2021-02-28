@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import { Order } from '../../models/Order';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -19,8 +19,8 @@ import { TableService } from '../table.service';
   templateUrl: './customer-interface.component.html',
   styleUrls: ['./customer-interface.component.sass'],
 })
-export class CustomerInterfaceComponent implements OnInit {
-  
+export class CustomerInterfaceComponent implements OnInit, AfterViewInit {
+
   selectedMeals: Menu[] = [];
   menu: Menu[];
   cat: selectedCategory = new selectedCategory;
@@ -33,8 +33,13 @@ export class CustomerInterfaceComponent implements OnInit {
               private tableService: TableService,
               private menuFilterService: MenuFilterService,
               private route: ActivatedRoute,
+              private elementRef: ElementRef,
               public dialog: MatDialog,
               private router:Router) { }
+
+  ngAfterViewInit(): void {
+        this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#831111';
+    }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
@@ -97,6 +102,6 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   goHome(): void {
-    this.router.navigateByUrl('/home'); 
+    this.router.navigateByUrl('/home');
   }
 }
