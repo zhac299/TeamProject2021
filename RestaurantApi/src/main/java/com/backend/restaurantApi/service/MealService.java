@@ -2,6 +2,7 @@ package com.backend.restaurantApi.service;
 
 import java.util.Optional;
 
+import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.MenuNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
 import com.backend.restaurantApi.model.Meal;
@@ -38,7 +39,7 @@ public class MealService {
             Optional<Menu> menu = menuRepository.findById(meal.getMenu().getId());
             if(menu.isPresent()) {
                 meal.setMenu(menu.get());
-            } else throw new MenuNotFoundException("Menu item not found...");
+            } else throw new MealNotFoundException("Menu item not found...");
         }
         return mealRepository.save(meal);
     }
@@ -47,7 +48,7 @@ public class MealService {
 		Optional<Meal> optionalMenu = mealRepository.findById(mealId);
 
         if (!optionalMenu.isPresent()) {
-            throw new MenuNotFoundException("Meal Record is not available...");
+            throw new MealNotFoundException("Meal Record is not available...");
         }
         return optionalMenu.get();
 	}
@@ -60,7 +61,7 @@ public class MealService {
 	public void deleteMeal(Long id) {
         Optional<Meal> meal = mealRepository.findById(id);
         if (!meal.isPresent()) {
-            throw new MenuNotFoundException("Meal Record is not available...");
+            throw new MealNotFoundException("Meal Record is not available...");
         }
         mealRepository.deleteById(id);
 	}
