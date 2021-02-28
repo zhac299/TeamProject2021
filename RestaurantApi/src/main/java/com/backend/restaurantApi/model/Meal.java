@@ -18,8 +18,9 @@ public class Meal {
     @Column(name = "id")
     private Long id;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, orphanRemoval = true)
+//    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+//    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, orphanRemoval = true)
+    @ManyToOne  // TEST THIS RELATIONSHIP OUT
     @JoinColumn(name = "menu")
     private Menu menu;
 
