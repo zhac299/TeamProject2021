@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialo
 import { Observable } from 'rxjs';
 import { OrderService } from 'src/app/order.service';
 import { Customer } from 'src/models/Customer';
+import { Meal } from 'src/models/Meal';
 import { Menu } from 'src/models/Menu';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
@@ -56,9 +57,17 @@ export class BasketComponent implements OnInit {
   }
 
   placeOrder(): void {
+    let orderItemsList: Meal[] = [];
+    for(let i = 0; i < this.mealList.length; i++) {
+      let meal: Meal= new Meal();
+      meal.id = this.mealList[i].id;
+      meal.menu = this.mealList[i];
+      
+      orderItemsList.push(meal);
+    }
     this.customer.subscribe((customer) => {
-      console.log(customer);
-      this.orderService.createNewOrderWithCustomer(customer);
+      //console.log(orderItemsList);
+      this.orderService.createNewOrderWithCustomerAndMealList(customer,orderItemsList);
     });
   }
 

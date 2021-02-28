@@ -50,6 +50,7 @@ export class OrderService {
     const order = new Order();
     order.customer = customer;
     order.meal = selectedMeals;
+    console.log(order);
     this.httpClient.post<Order>(this.restaurantWebApiUrl, order)
       .subscribe((order) => {
         const _orders = this.orderSubject$.getValue();
