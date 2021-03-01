@@ -46,33 +46,23 @@ export class OrderService {
       });
   }
 
-  createNewOrderWithCustomerAndMealList(customer: Customer, selectedMeals: Meal[]): void {
-    const order = new Order();
-    order.customer = customer;
-    order.meal = selectedMeals;
-    console.log(order);
-    this.httpClient.post<Order>(this.restaurantWebApiUrl, order)
-      .subscribe((order) => {
-        const _orders = this.orderSubject$.getValue();
-        _orders.push(order);
-        this.orderSubject$.next(
-          _orders
-        );
-        this.getUpdatedOrders();
-      });
+  createNewOrder(customer: Customer): Observable<Order> {
+    const orderWithCustomer = new Order();
+    orderWithCustomer.customer = customer;
+    return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 
-  createNewOrder(): void {
-    this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order())
-      .subscribe((order) => {
-        const _orders = this.orderSubject$.getValue();
-        _orders.push(order);
-        this.orderSubject$.next(
-          _orders
-        );
-        this.getUpdatedOrders();
-      });
-  }
+  // createEmptyOrder(): void {
+  //   this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order())
+  //     .subscribe((order) => {
+  //       const _orders = this.orderSubject$.getValue();
+  //       _orders.push(order);
+  //       this.orderSubject$.next(
+  //         _orders
+  //       );
+  //       this.getUpdatedOrders();
+  //     });
+  // }
 
   getOrderById(mealId: number): Observable<Menu> {
     return this.httpClient.get<Menu>(`${this.mealsURL}/${mealId}`)

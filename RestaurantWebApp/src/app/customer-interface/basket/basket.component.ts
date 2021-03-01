@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
 import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
-import { Menu } from 'src/models/Menu';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 @Component({
@@ -14,64 +14,64 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
 })
 export class BasketComponent implements OnInit {
 
-  menuList: Menu[];
+  mealList: Meal[];
   customer: Observable<Customer>;
   
   constructor(
+    private mealService: MealService,
     private orderService: OrderService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
-      this.menuList = data.selectedMeals;
+      this.mealList = data.selectedMeals;
       this.customer = data.customer;
     }
 
   ngOnInit(): void {}
 
-  clear(menuItem: Menu): void {
-    const index = this.menuList.indexOf(menuItem, 0);
+  clear(meal: Meal): void {
+    const index = this.mealList.indexOf(meal, 0);
     if (index > -1) {
-      this.menuList.splice(index, 1);
+      this.mealList.splice(index, 1);
     }
   }
 
-  add(menuItem: Menu): void {
-    const index = this.menuList.indexOf(menuItem, 0);
-    this.menuList[index].selections++;
+  add(meal: Meal): void {
+    const index = this.mealList.indexOf(meal, 0);
+    this.mealList[index].selections++;
   }
 
-  remove(menuItem: Menu): void {
-    const index = this.menuList.indexOf(menuItem, 0);
-    if(this.menuList[index].selections > 1){
-      this.menuList[index].selections--;
+  remove(meal: Meal): void {
+    const index = this.mealList.indexOf(meal, 0);
+    if(this.mealList[index].selections > 1){
+      this.mealList[index].selections--;
     } else {
-      this.menuList.splice(index, 1);
+      this.mealList.splice(index, 1);
     }
   }
 
-  priceTotal(menuList: Menu[]): number {
+  priceTotal(): number {
     let total: number = 0;
-    for(let i = 0; i < this.menuList.length; i++) {
-      total += this.menuList[i].price * this.menuList[i].selections
+    for(let i = 0; i < this.mealList.length; i++) {
+      total += this.mealList[i].menu.price * this.mealList[i].selections;
     }
     return total;
   }
 
   placeOrder(): void {
-    let orderItemsList: Meal[] = [];
-    for(let i = 0; i < this.menuList.length; i++) {
-      let meal: Meal= new Meal();
-      meal.id = this.menuList[i].id;
-      meal.menu = this.menuList[i];
-      
-      orderItemsList.push(meal);
-    }
     this.customer.subscribe((customer) => {
-      //console.log(orderItemsList);
-      this.orderService.createNewOrderWithCustomerAndMealList(customer,orderItemsList);
+      this.orderService.createNewOrder(customer).subscribe((order) => {
+        for(var i = 0 ; i < this.mealList.length; i++) {
+          this.mealList[i].order = order;
+          this.mealService.createNewMeal(this.mealList[i]).subscribe();
+        }
+        order.meal = this.mealList;
+        console.log(order);
+        //this.orderService.updateOrder(order);
+      });
     });
   }
 
   close(): void {
-    this.dialogRef.close(this.menuList);
+    this.dialogRef.close(this.mealList);
   }
 }

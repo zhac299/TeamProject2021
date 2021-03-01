@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from '../../models/Order';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
@@ -73,7 +72,6 @@ export class CustomerInterfaceComponent implements OnInit {
       newMeal.selections = 1;
       this.selectedMeals.push(newMeal);
     } 
-    console.log(this.selectedMeals);
   }
 
   removeMeal(menuItem: Menu): void {
@@ -85,16 +83,22 @@ export class CustomerInterfaceComponent implements OnInit {
         }
       }
     }
-    console.log(this.selectedMeals);
   }
 
-  clearMeal(menuItem:Menu): void {
+  clearMeal(menuItem: Menu): void {
     for(var i = 0; i < this.selectedMeals.length; i++) {
       if (this.selectedMeals[i].menu == menuItem) {
         this.selectedMeals.splice(i);
       }
     }
-    console.log(this.selectedMeals);
+  }
+
+  getNumberOfSelections(menuItem: Menu): number {
+    for(let meal of this.selectedMeals) {
+      if(meal.menu == menuItem) {
+        return meal.selections;
+      }
+    }
   }
 
   openDialog() {
