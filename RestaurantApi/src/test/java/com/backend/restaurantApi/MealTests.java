@@ -4,12 +4,17 @@ import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.MenuNotFoundException;
 import com.backend.restaurantApi.model.*;
 import com.backend.restaurantApi.service.*;
+import org.hibernate.Session;
+import org.hibernate.SessionBuilder;
+import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.transaction.Transactional;
 
 @SpringBootTest
 public class MealTests {
@@ -34,6 +39,7 @@ public class MealTests {
     static Menu menu;
     static RestaurantTable table;
     static Customer customer;
+    static String MEAL_NAME = "MVP MEAL";
 
     @BeforeEach
     void setUp(){
@@ -54,7 +60,7 @@ public class MealTests {
         // Check if order has been created
         Assertions.assertNotNull(orderService.getOrderById(order.getId()));
 
-        menu.setName("Prawn Cocktail");
+        menu.setName(MEAL_NAME);
         menu = menuService.createNewMenu(menu);
         // Meal needs order to be created
         meal.setOrder(this.order);
@@ -65,16 +71,21 @@ public class MealTests {
     }
 
     @Test
+    @Transactional
     void testCreateMeal(){
         Assertions.assertNotNull(mealService.getMealById(meal.getId()));
-        Assertions.assertEquals(mealService.getMealById(meal.getId()).getMenu().getName()
-                ,"Prawn Cocktail");
+        Assertions.assertTrue(mealService.getMealById(meal.getId()).getMenu().getName().equals(MEAL_NAME));
     }
 
     @Test
+    @Transactional
     void testDelete(){
+        Assertions.assertNotNull(orderService.getOrderById(this.order.getId()));
+        Assertions.assertNotNull(menuService.getMenuById(menu.getId()));
+
         mealService.deleteMeal(meal.getId());
-        Assertions.assertThrows(MenuNotFoundException.class,() -> mealService.getMealById(meal.getId()));
+
+        Assertions.assertThrows(MealNotFoundException.class,() -> mealService.getMealById(meal.getId()));
         Assertions.assertNotNull(orderService.getOrderById(this.order.getId()));
         Assertions.assertNotNull(menuService.getMenuById(menu.getId()));
     }

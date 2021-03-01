@@ -18,14 +18,14 @@ public class Meal {
     @Column(name = "id")
     private Long id;
 
-//    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-//    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, orphanRemoval = true)
-    @ManyToOne  // TEST THIS RELATIONSHIP OUT
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @ManyToOne  // TEST THIS RELATIONSHIP OUT
     @JoinColumn(name = "menu")
     private Menu menu;
 
     @JsonBackReference(value = "order")
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = true)
     private Order order;
 

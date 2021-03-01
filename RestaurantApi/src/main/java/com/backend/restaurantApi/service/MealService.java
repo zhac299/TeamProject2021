@@ -63,7 +63,7 @@ public class MealService {
         if (!meal.isPresent()) {
             throw new MealNotFoundException("Meal Record is not available...");
         }
+
         mealRepository.deleteById(id);
 	}
-    
 }
