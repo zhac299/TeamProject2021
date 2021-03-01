@@ -14,54 +14,54 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
 })
 export class BasketComponent implements OnInit {
 
-  mealList: Menu[];
+  menuList: Menu[];
   customer: Observable<Customer>;
   
   constructor(
     private orderService: OrderService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
-      this.mealList = data.selectedMeals;
+      this.menuList = data.selectedMeals;
       this.customer = data.customer;
     }
 
   ngOnInit(): void {}
 
-  clear(meal: Menu): void {
-    const index = this.mealList.indexOf(meal, 0);
+  clear(menuItem: Menu): void {
+    const index = this.menuList.indexOf(menuItem, 0);
     if (index > -1) {
-      this.mealList.splice(index, 1);
+      this.menuList.splice(index, 1);
     }
   }
 
-  add(meal: Menu): void {
-    const index = this.mealList.indexOf(meal, 0);
-    this.mealList[index].selections++;
+  add(menuItem: Menu): void {
+    const index = this.menuList.indexOf(menuItem, 0);
+    this.menuList[index].selections++;
   }
 
-  remove(meal: Menu): void {
-    const index = this.mealList.indexOf(meal, 0);
-    if(this.mealList[index].selections > 1){
-      this.mealList[index].selections--;
+  remove(menuItem: Menu): void {
+    const index = this.menuList.indexOf(menuItem, 0);
+    if(this.menuList[index].selections > 1){
+      this.menuList[index].selections--;
     } else {
-      this.mealList.splice(index, 1);
+      this.menuList.splice(index, 1);
     }
   }
 
-  priceTotal(mealList: Menu[]): number {
+  priceTotal(menuList: Menu[]): number {
     let total: number = 0;
-    for(let i = 0; i < this.mealList.length; i++) {
-      total += this.mealList[i].price * this.mealList[i].selections
+    for(let i = 0; i < this.menuList.length; i++) {
+      total += this.menuList[i].price * this.menuList[i].selections
     }
     return total;
   }
 
   placeOrder(): void {
     let orderItemsList: Meal[] = [];
-    for(let i = 0; i < this.mealList.length; i++) {
+    for(let i = 0; i < this.menuList.length; i++) {
       let meal: Meal= new Meal();
-      meal.id = this.mealList[i].id;
-      meal.menu = this.mealList[i];
+      meal.id = this.menuList[i].id;
+      meal.menu = this.menuList[i];
       
       orderItemsList.push(meal);
     }
@@ -72,6 +72,6 @@ export class BasketComponent implements OnInit {
   }
 
   close(): void {
-    this.dialogRef.close(this.mealList);
+    this.dialogRef.close(this.menuList);
   }
 }

@@ -70,20 +70,9 @@ public class Menu {
 
     @Column(name = "time_to_cook")
     private double timeToCook = 20;
-
-    @Column(name = "number_selections")
-    private int numberSelections = 0;
     
     public Long getId() {
         return id;
-    }
-
-    public int getNumberSelections() {
-        return this.numberSelections;
-    }
-
-    public void setNumberSelections(int newNumberSelections) {
-        this.numberSelections = newNumberSelections;
     }
 
     public Double getCalories() {

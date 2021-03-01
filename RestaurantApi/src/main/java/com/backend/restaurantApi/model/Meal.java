@@ -31,6 +31,9 @@ public class Meal {
     @JoinColumn(name = "order_id", nullable = true)
     private Order order;
 
+    @Column(name = "number_selections")
+    private int numberSelections = 0;
+
     public Meal() {}
 
     public Long getId() {
@@ -39,6 +42,14 @@ public class Meal {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getNumberSelections() {
+        return this.numberSelections;
+    }
+
+    public void setNumberSelections(int newNumberSelections) {
+        this.numberSelections = newNumberSelections;
     }
 
     public Menu getMenu() {
