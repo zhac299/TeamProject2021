@@ -3,14 +3,10 @@ package com.backend.restaurantApi.service;
 import java.util.Optional;
 
 import com.backend.restaurantApi.exception.MealNotFoundException;
-import com.backend.restaurantApi.exception.MenuNotFoundException;
-import com.backend.restaurantApi.exception.OrderNotFoundException;
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
-import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.repository.MealRepository;
 import com.backend.restaurantApi.repository.MenuRepository;
-import com.backend.restaurantApi.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +18,6 @@ public class MealService {
 
     @Autowired
     private MenuRepository menuRepository;
-
-    @Autowired
-    private OrderService orderService;
-
-    @Autowired
-    private OrderRepository orderRepository;
 
     public Meal createNewMeal(Meal meal) {
 //        if(meal.getOrder() == null){

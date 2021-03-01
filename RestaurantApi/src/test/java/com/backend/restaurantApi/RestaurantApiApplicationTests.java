@@ -6,7 +6,6 @@ import com.backend.restaurantApi.model.RestaurantTable;
 import com.backend.restaurantApi.service.CustomerService;
 import com.backend.restaurantApi.service.OrderService;
 import com.backend.restaurantApi.service.RestaurantTableService;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
