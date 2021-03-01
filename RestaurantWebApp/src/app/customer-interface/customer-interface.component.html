@@ -1,20 +1,25 @@
 <mat-grid-list cols="1" rowHeight="200px" class="title">
   <mat-grid-tile colspan="1"><h1>Las Chinampas</h1></mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list cols="1" rowHeight="50px" class="title">
+<mat-grid-list cols="1" rowHeight="70px">
+  <mat-grid-tile colspan="1">
+    <p class="menuTitle">Menu</p>
+  </mat-grid-tile>
   <mat-grid-tile colspan="1">
     <img src="https://cdn.scotts-restaurant.com/full-screen-assets/img/themes/scotts/menuWidgetGraphic1.png">
   </mat-grid-tile>
+
 </mat-grid-list>
 <p>
   <mat-toolbar class="toolbar">
     <button mat-icon-button (click) = goHome()>
       <mat-icon>home</mat-icon>
     </button>
-    <span>Menu</span>
+    <span></span>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <call-waiter></call-waiter>
+
     <span class="spacer"></span>
+    <call-waiter></call-waiter>
     <button mat-icon-button (click)="openDialog()">
       <mat-icon>shopping_cart</mat-icon>
     </button>
@@ -30,8 +35,8 @@
 <!--    <h2>{{cat.name}}</h2>-->
 <!--  </mat-grid-tile>-->
 <!--</mat-grid-list>-->
-<mat-grid-list cols="3" rowHeight="600px" class="category">
-  <mat-grid-tile class="menuUI" *ngFor="let menuItem of cat.meal" colspan="1">
+<mat-grid-list cols="3" rowHeight="600px" class="category" [@listAnimation]="cat.meal.length">
+  <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of cat.meal" colspan="1">
     <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
