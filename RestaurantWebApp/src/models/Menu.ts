@@ -21,5 +21,4 @@ export class Menu{
   calories: number;
   timeToCook: number;
   selections: number;
-  
 }

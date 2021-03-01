@@ -24,7 +24,6 @@ export class CallWaiterComponent implements OnInit {
   callWaiter(): void {
     this.customerInterface.table.subscribe((table) => {
       table.needsHelp = true;
-      table.isOccupied = true;
       this.tableService.updateTable(table).subscribe();
     });
     this.waiterCalled = true;

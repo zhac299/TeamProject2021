@@ -32,7 +32,7 @@ public class Meal {
     private Order order;
 
     @Column(name = "number_selections")
-    private int numberSelections = 0;
+    private int numberSelections;
 
     public Meal() {}
 
