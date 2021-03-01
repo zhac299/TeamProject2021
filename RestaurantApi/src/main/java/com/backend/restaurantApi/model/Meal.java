@@ -2,13 +2,10 @@ package com.backend.restaurantApi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -22,12 +19,13 @@ public class Meal {
     private Long id;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, orphanRemoval = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @ManyToOne  // TEST THIS RELATIONSHIP OUT
     @JoinColumn(name = "menu")
     private Menu menu;
 
     @JsonBackReference(value = "order")
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = true)
     private Order order;
 
