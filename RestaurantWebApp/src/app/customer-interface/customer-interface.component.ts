@@ -130,7 +130,7 @@ export class CustomerInterfaceComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.height= '50%';
-    dialogConfig.width= '85%';
+    dialogConfig.width= '40%';
     dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
 
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
