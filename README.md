@@ -8,7 +8,7 @@ This is the third Candidate Release branch. After testing and some bug fixes, th
 
 1.Customer Order doesn't correctly pass the list of selected items to the DB<br>
 2.The customer Order Button doesn't dinamically change after placing an order.<br>
-3.The Home page confirm button should mark the selected table as occupied rather than this being done in the Call Waiter or Place Order <br>
+3.The number of selections of each item menu is not shown.
 
 **Waiter Menu**
 
@@ -18,3 +18,5 @@ This is the third Candidate Release branch. After testing and some bug fixes, th
 **Fixed Bugs**
 
 1.Customer Menu order fixed, now the customer can place an order and all the selected meals attached to it.
+2.The number of selections buf in the customer intreface fixed, now the customer can see the number of selections for each item inside the menu as well.
+
