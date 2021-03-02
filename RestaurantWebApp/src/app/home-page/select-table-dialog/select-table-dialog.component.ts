@@ -35,7 +35,6 @@ export class SelectTableDialogComponent implements OnInit {
   createNewCustomer(): void {
     this.customer = new Customer();
     this.customer.table = this.selectedTable;
-    this.customer.isReady = false;
     this.customer.orders = this.orders;
   }
 
