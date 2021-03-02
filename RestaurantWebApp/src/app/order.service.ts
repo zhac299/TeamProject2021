@@ -52,18 +52,6 @@ export class OrderService {
     return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 
-  // createEmptyOrder(): void {
-  //   this.httpClient.post<Order>(this.restaurantWebApiUrl,new Order())
-  //     .subscribe((order) => {
-  //       const _orders = this.orderSubject$.getValue();
-  //       _orders.push(order);
-  //       this.orderSubject$.next(
-  //         _orders
-  //       );
-  //       this.getUpdatedOrders();
-  //     });
-  // }
-
   getOrderById(mealId: number): Observable<Menu> {
     return this.httpClient.get<Menu>(`${this.mealsURL}/${mealId}`)
       .pipe(

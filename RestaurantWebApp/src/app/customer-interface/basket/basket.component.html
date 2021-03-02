@@ -22,10 +22,20 @@
         </div>
     </mat-list-item>
     <mat-list-item>
-        <div class="center">
-            <button mat-flat-button color="accent" (click) = "placeOrder()">
+        <div class="center" *ngIf = "orderPlaced == false; else orderPlacedBlock">
+            <button mat-flat-button color="accent" *ngIf = " this.mealList.length !=0; else emptyShoppingCartBlock" (click) = "placeOrder()">
                 Place Order
             </button>
+            <ng-template #emptyShoppingCartBlock>
+                <div class = "emptyShoppingCartBlock">
+                    Empty Shopping Cart!
+                </div>
+            </ng-template>
         </div>
+        <ng-template #orderPlacedBlock>
+            <div class = "orderPlacedMessage">
+                Order Placed!
+            </div>
+        </ng-template>
     </mat-list-item>
 </mat-list>
