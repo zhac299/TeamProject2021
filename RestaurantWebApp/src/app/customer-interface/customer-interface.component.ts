@@ -40,7 +40,7 @@ import { MealService } from '../meal.service';
   ]
 })
 export class CustomerInterfaceComponent implements OnInit {
-  
+
   selectedMeals: Meal[] = [];
   menu: Menu[];
   cat: selectedCategory = new selectedCategory;
@@ -59,7 +59,7 @@ export class CustomerInterfaceComponent implements OnInit {
               private router:Router) { }
 
   ngAfterViewInit(): void {
-        this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#831111';
+        this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
     }
 
   ngOnInit(): void {
@@ -95,7 +95,7 @@ export class CustomerInterfaceComponent implements OnInit {
       newMeal.menu = menuItem;
       newMeal.selections = 1;
       this.selectedMeals.push(newMeal);
-    } 
+    }
   }
 
   removeMeal(menuItem: Menu): void {
@@ -141,4 +141,5 @@ export class CustomerInterfaceComponent implements OnInit {
   goHome(): void {
     this.router.navigateByUrl('/home');
   }
+
 }

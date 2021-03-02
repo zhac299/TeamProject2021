@@ -18,15 +18,15 @@ export class FoodCategoriesComponent implements OnInit {
 
   foodCategories: String[];
 
-  onClick(name:string): void{      
-    this.menuService.modifyCat(name);  
+  onClick(name:string): void{
+    this.menuService.modifyCat(name);
   }
 
   tiles: Tile[] = [
-    {text: 'Fajita', cols: 1, rows: 1, color: '#202020'},
-    {text: 'Nachos', cols: 1, rows: 1, color: '#202020'},
-    {text: 'Dips', cols: 1, rows: 1, color: '#202020'},
-    {text: 'Desserts', cols: 1, rows: 1, color: '#202020'},
+    {text: 'Fajita', cols: 1, rows: 1, color: '#3b0d0d'},
+    {text: 'Nachos', cols: 1, rows: 1, color: '#3d0a0a'},
+    {text: 'Dips', cols: 1, rows: 1, color: '#3d0a0a'},
+    {text: 'Desserts', cols: 1, rows: 1, color: '#3d0a0a'},
   ];
 
 }

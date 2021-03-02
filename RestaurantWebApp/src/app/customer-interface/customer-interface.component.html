@@ -1,14 +1,14 @@
-<mat-grid-list cols="1" rowHeight="200px" class="title">
+<mat-grid-list cols="1" rowHeight="140px" class="title">
+  <mat-grid-tile colspan="1"></mat-grid-tile>
   <mat-grid-tile colspan="1"><h1>Las Chinampas</h1></mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list cols="1" rowHeight="70px">
-  <mat-grid-tile colspan="1">
-    <p class="menuTitle">Menu</p>
-  </mat-grid-tile>
+<mat-grid-list cols="1" rowHeight="100px">
   <mat-grid-tile colspan="1">
     <img src="https://cdn.scotts-restaurant.com/full-screen-assets/img/themes/scotts/menuWidgetGraphic1.png">
   </mat-grid-tile>
-
+  <mat-grid-tile colspan="1">
+    <p class="menuTitle">Menu</p>
+  </mat-grid-tile>
 </mat-grid-list>
 <p>
   <mat-toolbar class="toolbar">
@@ -30,50 +30,42 @@
 <br>
 
 <food-categories></food-categories>
-
-<!--<mat-grid-list cols="1" rowHeight="100px">-->
-<!--  <mat-grid-tile colspan="1">-->
-<!--    <h2>{{cat.name}}</h2>-->
-<!--  </mat-grid-tile>-->
-<!--</mat-grid-list>-->
 <mat-grid-list cols="3" rowHeight="600px" class="category" [@listAnimation]="cat.meal.length">
   <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of cat.meal" colspan="1">
     <mat-card class="example-card">
-      <mat-card-header>
+      <mat-card-header class="mat-card-header">
         <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
         <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
       </mat-card-header>
+      <hr class="break-line">
       <img mat-card-image src="./assets/images/taco.png" alt="Photo of a Taco">
       <mat-card-content class="menu-item-description">
         <p>
           {{menuItem.description}}
         </p>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button
-                *ngIf="this.selectedMeals.includes(menuItem) else no"
+      <mat-card-actions class="card-actions">
+        <button mat-raised-button class="action-button"
+                *ngIf="getNumberOfSelections(menuItem) > 0 else no"
                 (click)="addMeal(menuItem)">
           <mat-icon>add</mat-icon>
         </button>
         <ng-template #no>
-          <button mat-raised-button (click)="addMeal(menuItem)">Add to Cart</button>
+          <button mat-raised-button class="action-button" (click)="addMeal(menuItem)">Add to Cart</button>
         </ng-template>
         <button mat-raised-button
+                class="action-button"
                 (click)="removeMeal(menuItem)"
-        *ngIf="this.selectedMeals.includes(menuItem)">
+        *ngIf="getNumberOfSelections(menuItem) > 0">
           <mat-icon>remove</mat-icon>
         </button>
-        <button mat-mini-fab *ngIf="this.selectedMeals.includes(menuItem)">
-          x{{menuItem.selections}}
+        <button mat-mini-fab
+                class="selection-fab"
+                *ngIf="getNumberOfSelections(menuItem) > 0">
+          x{{getNumberOfSelections(menuItem)}}
         </button>
       </mat-card-actions>
-
     </mat-card>
-
-        &nbsp;&nbsp;&nbsp; 
-        <span *ngFor = "let meal of this.selectedMeals">
-          <span *ngIf = "meal.menu == menuItem">x {{meal.selections}}</span>
-        </span>
   </mat-grid-tile>
 </mat-grid-list>
 
