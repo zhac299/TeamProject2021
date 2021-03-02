@@ -16,6 +16,7 @@ export class BasketComponent implements OnInit {
 
   mealList: Meal[];
   customer: Observable<Customer>;
+  orderPlaced: Boolean = false;
   
   constructor(
     private mealService: MealService,
@@ -66,7 +67,6 @@ export class BasketComponent implements OnInit {
         }
         order.meal = this.mealList;
         console.log(order);
-        //this.orderService.updateOrder(order);
       });
     });
   }

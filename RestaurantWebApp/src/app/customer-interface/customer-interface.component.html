@@ -39,8 +39,9 @@
         </button>
 
         &nbsp;&nbsp;&nbsp; 
-        <span *ngIf="this.selectedMeals.includes(menuItem) else noSelections">x</span>
-        <ng-template #noSelections>x0</ng-template>
+        <span *ngFor = "let meal of this.selectedMeals">
+          <span *ngIf = "meal.menu == menuItem">x {{meal.selections}}</span>
+        </span>
   </mat-grid-tile>
 </mat-grid-list>
 
