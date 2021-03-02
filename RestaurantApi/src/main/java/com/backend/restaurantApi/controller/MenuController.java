@@ -29,7 +29,7 @@ public class MenuController {
         return menuRepository.findAll();
     }
 
-    @PostMapping(path = "/menu")
+    @PostMapping(path = "/menu") 
     public Menu createNewMenu(@RequestBody Menu menu) {
         return menuService.createNewMenu(menu);
     }
