@@ -14,6 +14,7 @@ import {SelectTableDialogComponent} from "../home-page/select-table-dialog/selec
 import {Observable} from "rxjs";
 import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.component";
 import {map, mergeMap, switchMap} from "rxjs/operators";
+import { TableService } from '../table.service';
 
 @Component({
   selector: 'app-waiter-menu',
@@ -26,7 +27,8 @@ export class WaiterMenuComponent implements OnInit {
     private orderService: OrderService,
     private menuService: MenuService,
     private customerService: CustomerService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public tableService: TableService
   ) { }
 
   menuList: Menu[] = [];
@@ -39,6 +41,7 @@ export class WaiterMenuComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getUpdatedOrders();
     this.menuService.getAllUpdatedMenus();
+    this.tableService.getTables();
 
     this.orderService.orders$.subscribe((orders) => {
       this.orders = orders;
@@ -46,6 +49,9 @@ export class WaiterMenuComponent implements OnInit {
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
+    this.tableService.tables$.subscribe((tables) => {
+      this.tableList = tables;
+    })
   }
 
   openOrderDialog(order: Order): void {
