@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { MealService } from 'src/app/meal.service';
@@ -19,6 +19,7 @@ export class BasketComponent implements OnInit {
   orderPlaced: Boolean = false;
   
   constructor(
+    private elementRef: ElementRef,
     private mealService: MealService,
     private orderService: OrderService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
@@ -28,6 +29,10 @@ export class BasketComponent implements OnInit {
     }
 
   ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
+  }
 
   clear(meal: Meal): void {
     const index = this.mealList.indexOf(meal, 0);
