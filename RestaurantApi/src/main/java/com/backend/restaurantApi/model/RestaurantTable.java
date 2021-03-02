@@ -34,7 +34,7 @@ public class RestaurantTable {
     @Column(name = "isOccupied", nullable = false)
     private boolean isOccupied;
 
-    @Column(name = "is_ready", nullable = false)
+    @Column(name = "isReady", nullable = false)
     private boolean isReady = false;
 
     /**
@@ -116,13 +116,13 @@ public class RestaurantTable {
     public void setIsOccupied(boolean isOccupied) {
         this.isOccupied = isOccupied;
     }
-
-    public boolean isReady() {
-        return isReady;
-      }
     
     public void setReady(boolean ready) {
         isReady = ready;
+    }
+
+    public boolean getIsReady() {
+        return this.isReady;
     }
 
     /**
