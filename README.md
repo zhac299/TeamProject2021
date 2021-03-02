@@ -12,11 +12,19 @@ This is the third Candidate Release branch. After testing and some bug fixes, th
 
 **Waiter Menu**
 
-1.The number of incoming notifications displayed is wrong, needs to be dinamically change to the number of elements in the list.
+1.The number of incoming notifications displayed is wrong, needs to be dinamically change to the number of elements in the list.<br>
+2.Delete Order was broken.
 
 
 **Fixed Bugs**
 
-1.Customer Menu order fixed, now the customer can place an order and all the selected meals attached to it.
-2.The number of selections buf in the customer intreface fixed, now the customer can see the number of selections for each item inside the menu as well.
+##Customer Menu##
+
+1.Customer Menu order fixed, now the customer can place an order and all the selected meals attached to it.<br>
+2.The number of selections buf in the customer intreface fixed, now the customer can see the number of selections for each item inside the menu as well.<br>
+3.The customer place order button dynamically changes if an order was placed or if the shopping cart is empty to inform the user accordingly.<br>
+
+##Waiter Menu##
+
+1.The Delete Order button was fixed.
 
