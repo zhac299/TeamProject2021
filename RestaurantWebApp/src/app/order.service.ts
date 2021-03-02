@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Order} from '../models/Order';
-import {map} from 'rxjs/operators';
+import {exhaustMap, map, share} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 import {Customer} from "../models/Customer";
 import { Meal } from 'src/models/Meal';
@@ -15,17 +15,31 @@ export class OrderService {
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders';
   mealsURL = 'http://localhost:8080/api/v1/meals';
 
-  private orderSubject$ = new BehaviorSubject<Order[]>([]);
+  orderSubject$ = new BehaviorSubject<Order[]>([]);
+  refresh$ = new BehaviorSubject(null);
 
-  get orders$() {
-    return this.orderSubject$.asObservable();
-  }
+  orders$ = this.refresh$.pipe(
+    exhaustMap( () => this.getOrders()),
+    share()
+  );
+
 
   constructor(private httpClient: HttpClient) {
     console.log('Instance created');
   }
 
+  public getOrders(): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(this.restaurantWebApiUrl);
+  }
+
   public getUpdatedOrders(): void {
+    this.httpClient.get<Order[]>(this.restaurantWebApiUrl)
+      .subscribe((orders) => {
+        this.orderSubject$.next(orders);
+      });
+  }
+
+  public _getUpdatedOrders(): void {
     this.httpClient.get<Order[]>(this.restaurantWebApiUrl)
       .subscribe((orders) => {
         this.orderSubject$.next(orders);

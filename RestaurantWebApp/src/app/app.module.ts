@@ -48,6 +48,7 @@ import { SelectTableDialogComponent } from './home-page/select-table-dialog/sele
 import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-table-dialog.component';
 import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready-to-order.component';
 import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
     MatTableModule,
     MatCheckboxModule,
     NgOtpInputModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSlideToggleModule
   ],
   providers: [AllergensChipsComponent, CustomerInterfaceComponent],
   bootstrap: [AppComponent]
