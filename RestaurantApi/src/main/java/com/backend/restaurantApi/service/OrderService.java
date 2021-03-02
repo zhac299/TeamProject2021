@@ -29,12 +29,6 @@ public class OrderService {
     CustomerService customerService;
 
     public Order createNewOrder(Order order) {
-//        if(order.getCustomer() == null) {
-//            Customer customer = new Customer();
-//            customer.setTable();
-//
-//            this.customerService.createNewCustomer()
-//        }
         return orderRepository.save(order);
     }
 

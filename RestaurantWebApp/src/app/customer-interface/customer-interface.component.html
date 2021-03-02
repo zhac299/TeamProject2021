@@ -1,12 +1,21 @@
-<mat-grid-list cols="1" rowHeight="200px" class="title">
-  <mat-grid-tile colspan="1">Comida Deliciosa</mat-grid-tile>
+<mat-grid-list cols="1" rowHeight="140px" class="title">
+  <mat-grid-tile colspan="1"></mat-grid-tile>
+  <mat-grid-tile colspan="1"><h1>Las Chinampas</h1></mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="1" rowHeight="100px">
+  <mat-grid-tile colspan="1">
+    <img src="https://cdn.scotts-restaurant.com/full-screen-assets/img/themes/scotts/menuWidgetGraphic1.png">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <p class="menuTitle">Menu</p>
+  </mat-grid-tile>
 </mat-grid-list>
 <p>
-  <mat-toolbar color="primary">
+  <mat-toolbar class="toolbar">
     <button mat-icon-button (click) = goHome()>
       <mat-icon>home</mat-icon>
     </button>
-    <span>Menu</span>
+    <span></span>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <call-waiter></call-waiter>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -20,33 +29,43 @@
 <expansion-pannel></expansion-pannel>
 <br>
 
-<mat-grid-list cols="1" rowHeight="100px">
-  <mat-grid-tile colspan="1">
-    <h2>{{cat.name}}</h2>
-  </mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols="1" rowHeight="50px">
-  <mat-grid-tile class="menuUI" *ngFor="let menuItem of cat.meal" colspan="1">
-        {{menuItem.id}}. {{menuItem.name}} ---{{menuItem.price}}$
-        <button mat-button (click)="addMeal(menuItem)">
+<food-categories></food-categories>
+<mat-grid-list cols="3"
+               gutterSize="50px" rowHeight="600px" class="category" [@listAnimation]="cat.meal.length">
+  <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of cat.meal" colspan="1">
+    <mat-card class="mat-card">
+      <mat-card-header class="mat-card-header">
+        <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
+        <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
+      </mat-card-header>
+      <hr class="break-line">
+      <img mat-card-image src="./assets/images/taco.png" alt="Photo of a Taco">
+      <mat-card-content class="menu-item-description">
+        <p>
+          {{menuItem.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button mat-raised-button class="action-button"
+                *ngIf="getNumberOfSelections(menuItem) > 0 else no"
+                (click)="addMeal(menuItem)">
           <mat-icon>add</mat-icon>
         </button>
-
-        <button mat-button (click)="removeMeal(menuItem)">
+        <ng-template #no>
+          <button mat-raised-button class="action-button" (click)="addMeal(menuItem)">Add to Cart</button>
+        </ng-template>
+        <button mat-raised-button
+                class="action-button"
+                (click)="removeMeal(menuItem)"
+        *ngIf="getNumberOfSelections(menuItem) > 0">
           <mat-icon>remove</mat-icon>
         </button>
-
-        <button mat-button (click)="clearMeal(menuItem)">
-          <mat-icon>clear</mat-icon>
+        <button mat-mini-fab
+                class="selection-fab"
+                *ngIf="getNumberOfSelections(menuItem) > 0">
+          x{{getNumberOfSelections(menuItem)}}
         </button>
-
-        &nbsp;&nbsp;&nbsp; <span *ngIf="this.selectedMeals.includes(menuItem) else noSelections">x{{menuItem.selections}}</span>
-        <ng-template #noSelections>x0</ng-template>
+      </mat-card-actions>
+    </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
-
-
-
-
-
-

@@ -1,31 +1,47 @@
-
-<div class = "closeDialogButton" >Shopping Cart
-    <button mat-icon-button (click) = close()><mat-icon>cancel</mat-icon></button></div>
+<mat-grid-list cols="1" rowHeight="50px">
+  <mat-grid-tile colspan="1">
+    <div class = "title" >Shopping Cart
+      <button mat-icon-button (click) = close()><mat-icon>cancel</mat-icon></button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+<table class="table">
+    <tbody>
+      <tr *ngFor="let meal of mealList">
+        <th scope="row">
+            <button mat-button (click) = "remove(meal)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.selections}}$)</span>
+        </th>
+        <td class = "numberOfSelections">
+            <button mat-button (click) = "add(meal)">
+              <mat-icon>add</mat-icon>
+            </button>
+            {{meal.selections}}
+            <button mat-button (click) = "remove(meal)">
+              <mat-icon>remove</mat-icon>
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 <mat-list>
-    <mat-list-item *ngFor="let meal of mealList">
-        {{meal.name}}
-        &nbsp;&nbsp;&nbsp;&nbsp;x{{meal.selections}}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: {{meal.price * meal.selections}}$
-        <button mat-button color="accent" (click) = "add(meal)">
-            <mat-icon>add</mat-icon>
-        </button>
-        <button mat-button color="accent" (click) = "remove(meal)">
-            <mat-icon>remove</mat-icon>
-        </button>
-        <button mat-button color="accent" (click) = "clear(meal)">
-            <mat-icon>clear</mat-icon>
-        </button>
-    </mat-list-item>
     <mat-list-item>
-        <div class="center">
-            Total: {{priceTotal(mealList)}}$
-        </div>
-    </mat-list-item>
-    <mat-list-item>
-        <div class="center">
-            <button mat-flat-button color="accent" (click) = "placeOrder()">
+        <div class="center" *ngIf = "orderPlaced == false; else orderPlacedBlock">
+            <button mat-raised-button *ngIf = " this.mealList.length !=0; else emptyShoppingCartBlock" (click) = "placeOrder()" class = "placeOrder">
                 Place Order
             </button>
+            <ng-template #emptyShoppingCartBlock>
+                <div class = "emptyShoppingCartBlock">
+                    Empty Shopping Cart!
+                </div>
+            </ng-template>
         </div>
+        <ng-template #orderPlacedBlock>
+            <div class = "orderPlacedMessage">
+                Order Placed!
+            </div>
+        </ng-template>
     </mat-list-item>
 </mat-list>

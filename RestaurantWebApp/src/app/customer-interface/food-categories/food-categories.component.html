@@ -1,6 +1,13 @@
-<mat-chip-list aria-label="Dish Selection">
-    <mat-chip (click)="onClick('Fajita')">Fajitas</mat-chip>
-    <mat-chip (click)="onClick('Nachos')">Nachos</mat-chip>
-    <mat-chip (click)="onClick('Dips')">Dips</mat-chip>
-    <mat-chip (click)="onClick('Desserts')">Deserts</mat-chip>
-  </mat-chip-list>
+
+<mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
+  <mat-grid-tile class = "category"
+        *ngFor="let tile of tiles"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color"
+        (click) = onClick(tile.text)>
+      <div>
+        <u>{{tile.text}}</u>
+      </div>
+  </mat-grid-tile>
+</mat-grid-list>
