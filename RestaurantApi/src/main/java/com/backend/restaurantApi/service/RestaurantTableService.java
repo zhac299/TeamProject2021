@@ -57,6 +57,11 @@ public class RestaurantTableService {
         return restaurantTableRepository.save(restaurantTable);
 	}
 
+    public RestaurantTable updateRestaurantTableIsReady(RestaurantTable restaurantTable, boolean newIsReady) {
+		restaurantTable.setReady(newIsReady);
+        return restaurantTableRepository.save(restaurantTable);
+	}
+
     /**
      * Changes the isOccupied field of a restaurant table with a new one.
      * 
