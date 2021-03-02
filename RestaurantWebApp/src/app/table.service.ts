@@ -4,6 +4,7 @@ import { Observable, Subject} from 'rxjs';
 import { map, tap} from 'rxjs/operators';
 
 import { Table} from '../models/Table';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,9 @@ export class TableService {
 
   private restaurantTablesURL = 'http://localhost:8080/api/v1/tables';
   private _refreshNeeded = new Subject<void>();
+
+  private readonly tableSubject = new BehaviorSubject<Table[]>(new Array<Table>());
+  readonly tables$ = this.tableSubject.asObservable();
 
   public getRefreshNeeded () {
     return this._refreshNeeded;
