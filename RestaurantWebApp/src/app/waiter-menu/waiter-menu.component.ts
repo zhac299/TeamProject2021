@@ -41,7 +41,7 @@ export class WaiterMenuComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getUpdatedOrders();
     this.menuService.getAllUpdatedMenus();
-    this.tableService.getTables();
+    this.tableService.getUpdatedTables()
 
     this.orderService.orders$.subscribe((orders) => {
       this.orders = orders;
