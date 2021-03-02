@@ -21,12 +21,13 @@ export class FoodCategoriesComponent implements OnInit {
   onClick(name:string): void{
     this.menuService.modifyCat(name);
   }
+  color = '#388572';
 
   tiles: Tile[] = [
-    {text: 'Fajita', cols: 1, rows: 1, color: '#3b0d0d'},
-    {text: 'Nachos', cols: 1, rows: 1, color: '#3d0a0a'},
-    {text: 'Dips', cols: 1, rows: 1, color: '#3d0a0a'},
-    {text: 'Desserts', cols: 1, rows: 1, color: '#3d0a0a'},
+    {text: 'Fajita', cols: 1, rows: 1, color: this.color},
+    {text: 'Nachos', cols: 1, rows: 1, color: this.color},
+    {text: 'Dips', cols: 1, rows: 1, color: this.color},
+    {text: 'Desserts', cols: 1, rows: 1, color: this.color},
   ];
 
 }

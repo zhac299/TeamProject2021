@@ -129,6 +129,8 @@ export class CustomerInterfaceComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
+    dialogConfig.height= '50%';
+    dialogConfig.width= '85%';
     dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
 
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);

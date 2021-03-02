@@ -30,9 +30,10 @@
 <br>
 
 <food-categories></food-categories>
-<mat-grid-list cols="3" rowHeight="600px" class="category" [@listAnimation]="cat.meal.length">
+<mat-grid-list cols="3"
+               gutterSize="50px" rowHeight="600px" class="category" [@listAnimation]="cat.meal.length">
   <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of cat.meal" colspan="1">
-    <mat-card class="example-card">
+    <mat-card class="mat-card">
       <mat-card-header class="mat-card-header">
         <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
         <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
@@ -68,11 +69,3 @@
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
-
-
-
-
-
-
-
-

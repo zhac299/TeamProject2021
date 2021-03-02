@@ -1,29 +1,57 @@
+<mat-grid-list cols="1" rowHeight="50px">
+  <mat-grid-tile colspan="1">
+    <div class = "closeDialogButton" >Shopping Cart
+      <button mat-icon-button (click) = close()><mat-icon>cancel</mat-icon></button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
 
-<div class = "closeDialogButton" >Shopping Cart
-    <button mat-icon-button (click) = close()><mat-icon>cancel</mat-icon></button></div>
-<mat-list>
-    <mat-list-item *ngFor="let meal of mealList">
+  <table class="table">
+    <tbody>
+    <tr *ngFor="let meal of mealList">
+      <th scope="row">
+        <button mat-button (click) = "remove(meal)">
+          <mat-icon>delete</mat-icon>
+        </button>
         {{meal.menu.name}}
-        &nbsp;&nbsp;&nbsp;&nbsp;x{{meal.selections}}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: {{meal.menu.price * meal.selections}}$
-        <button mat-button color="accent" (click) = "add(meal)">
-            <mat-icon>add</mat-icon>
+      </th>
+      <td>
+        <p>{{meal.menu.price * meal.selections}}$</p>
+      </td>
+      <td>
+        <button mat-button (click) = "add(meal)">
+          <mat-icon>add</mat-icon>
         </button>
-        <button mat-button color="accent" (click) = "remove(meal)">
-            <mat-icon>remove</mat-icon>
+        {{meal.selections}}
+        <button mat-button (click) = "remove(meal)">
+          <mat-icon>remove</mat-icon>
         </button>
-        <button mat-button color="accent" (click) = "clear(meal)">
-            <mat-icon>clear</mat-icon>
-        </button>
-    </mat-list-item>
-    <mat-list-item>
-        <div class="center">
-            Total: {{priceTotal()}}$
-        </div>
-    </mat-list-item>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+<mat-list>
+<!--    <mat-list-item *ngFor="let meal of mealList">-->
+
+<!--        {{meal.menu.name}}-->
+<!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{meal.menu.price * meal.selections}}$-->
+<!--        <button mat-button (click) = "add(meal)">-->
+<!--            <mat-icon>add</mat-icon>-->
+<!--        </button>-->
+<!--      <button mat-mini-fab class="selection-fab">x{{meal.selections}}</button>-->
+
+<!--      <hr>-->
+<!--    </mat-list-item>-->
+<!--    <mat-list-item>-->
+<!--        <div class="center">-->
+<!--            Total: {{priceTotal()}}$-->
+<!--        </div>-->
+<!--    </mat-list-item>-->
     <mat-list-item>
         <div class="center" *ngIf = "orderPlaced == false; else orderPlacedBlock">
-            <button mat-flat-button color="accent" *ngIf = " this.mealList.length !=0; else emptyShoppingCartBlock" (click) = "placeOrder()">
+            <button mat-flat-button *ngIf = " this.mealList.length !=0; else emptyShoppingCartBlock" (click) = "placeOrder()">
                 Place Order
             </button>
             <ng-template #emptyShoppingCartBlock>
