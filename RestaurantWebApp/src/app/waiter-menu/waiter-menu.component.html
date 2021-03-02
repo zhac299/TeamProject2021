@@ -41,20 +41,15 @@
 
   <h2>Tables</h2>
   <mat-grid-list cols="4" rowHeight="200px">
-    <mat-grid-tile>
-      <button mat-raised-button class="tableBut" color="primary">Table Number: 1</button>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <button mat-raised-button class="tableBut" color="primary">Table Number: 2</button>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <button mat-raised-button class="tableBut" color="primary">Table Number: 3</button>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <button mat-raised-button class="tableBut" color="primary">Table Number: 4</button>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <button mat-raised-button class="tableBut" color="primary">Table Number: 5</button>
+    <mat-grid-tile *ngFor="let table of tableList" >
+      <button *ngIf="table.isReady else noIsReadyBlock" mat-raised-button class="readyToOrder" color="warn">
+        Table {{table.tableNumber}} is Ready to Order!
+      </button>
+      <ng-template #noIsReadyBlock>
+        <button mat-raised-button class="noIsReadyToOrder" color="primary">
+          Table {{table.tableNumber}}
+        </button>
+      </ng-template>
     </mat-grid-tile>
   </mat-grid-list>
 

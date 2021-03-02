@@ -4,6 +4,7 @@ import { Observable, Subject} from 'rxjs';
 import { map, tap} from 'rxjs/operators';
 
 import { Table} from '../models/Table';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,11 @@ export class TableService {
 
   private restaurantTablesURL = 'http://localhost:8080/api/v1/tables';
   private _refreshNeeded = new Subject<void>();
+
+  private readonly tableSubject$ = new BehaviorSubject<Table[]>(new Array<Table>());
+  get tables$() {
+    return this.tableSubject$.asObservable();
+  }
 
   public getRefreshNeeded () {
     return this._refreshNeeded;
@@ -24,6 +30,13 @@ export class TableService {
       .pipe(
         map(response => response)
       );
+  }
+
+  public getUpdatedTables(): void {
+    this.httpClient.get<Table[]>(this.restaurantTablesURL)
+      .subscribe((tables) => {
+        this.tableSubject$.next(tables);
+      });
   }
 
   public getTableByNumber(id: number): Observable<Table> {
@@ -62,6 +75,17 @@ export class TableService {
     let restaurantTablesNeedHelpURL: string = this.restaurantTablesURL + '/updateNeedsHelp';
     table.needsHelp = true;
     return this.httpClient.put<Table>(`${restaurantTablesNeedHelpURL}/${newNeedsHelp.valueOf()}`, table)
+      .pipe(
+        tap(()=> {
+          this._refreshNeeded.next();
+        })
+      )
+  }
+
+  public updateRestaurantTableReadyToOrder(table: Table, newisReady: boolean): Observable<Table> {
+    let restaurantTablesIsReadyURL: string = this.restaurantTablesURL + '/updateNeedsHelp';
+    table.needsHelp = true;
+    return this.httpClient.put<Table>(`${restaurantTablesIsReadyURL}/${newisReady.valueOf()}`, table)
       .pipe(
         tap(()=> {
           this._refreshNeeded.next();

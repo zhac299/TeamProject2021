@@ -4,35 +4,34 @@ import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 @Component({
-  selector: 'call-waiter',
-  templateUrl: './call-waiter.component.html',
-  styleUrls: ['./call-waiter.component.sass']
+  selector: 'ready-to-order',
+  templateUrl: './ready-to-order.component.html',
+  styleUrls: ['./ready-to-order.component.sass']
 })
-export class CallWaiterComponent implements OnInit {
+export class ReadyToOrderComponent implements OnInit {
 
+  ready: boolean = false;
   tables: Table[] = [];
-  waiterCalled: boolean = false;
 
-  constructor(
-    private customerInterface: CustomerInterfaceComponent,
+  constructor(private customerInterface: CustomerInterfaceComponent, 
     private tableService: TableService) { }
 
   ngOnInit(): void {}
 
-  callWaiter(): void {
+  readyToOrder(): void {
     this.customerInterface.table.subscribe((table) => {
-      table.needsHelp = true;
+      table.isReady = true;
       this.tableService.updateTable(table).subscribe();
     });
-    this.waiterCalled = true;
+    this.ready = true;
   }
 
   cancel(): void {
     this.customerInterface.table.subscribe((table) => {
-      table.needsHelp = false;
+      table.isReady = false;
       this.tableService.updateTable(table).subscribe();
     });
-    this.waiterCalled = false;
+    this.ready = false;
   }
-  
+
 }

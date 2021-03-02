@@ -20,7 +20,7 @@ public class Order implements Comparable<Order> {
 
     @JsonManagedReference(value = "order")
     @Column(name = "meal", nullable = false)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="order", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="order", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Meal> meal;
 
     @Column(name = "staff", nullable = false)

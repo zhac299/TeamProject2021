@@ -8,9 +8,6 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Creates an SQL table that handles the customer information.
  */
@@ -30,14 +27,6 @@ public class Customer {
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-
-  /**
-   * Serializes Customer to Json format.
-   * 
-   * @return a string of Json format
-   */
-  @Column(name = "is_ready")
-  private boolean isReady = false;
 
   /**
    * The foreign key of the table that references the RestaurantTable
@@ -101,14 +90,6 @@ public class Customer {
     this.orders = orders;
   }
 
-  public boolean isReady() {
-    return isReady;
-  }
-
-  public void setReady(boolean ready) {
-    isReady = ready;
-  }
-
     /**
    * Serializes Customer to Json format.
    *
@@ -118,7 +99,6 @@ public class Customer {
   public String toString() {
       return "Customer{" +
               "id=" + id +
-              ", isReady='" + isReady + '\'' +
               ", tableNumber='" + table + '\'' +
               '}';
   }

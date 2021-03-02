@@ -9,6 +9,7 @@ import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'table/:id', component: OrderComponent},
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginInputComponent },

@@ -17,9 +17,10 @@
     </button>
     <span></span>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-    <span class="spacer"></span>
     <call-waiter></call-waiter>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <ready-to-order></ready-to-order>
+    <span class="spacer"></span>
     <button mat-icon-button (click)="openDialog()">
       <mat-icon>shopping_cart</mat-icon>
     </button>
@@ -69,6 +70,10 @@
 
     </mat-card>
 
+        &nbsp;&nbsp;&nbsp; 
+        <span *ngFor = "let meal of this.selectedMeals">
+          <span *ngIf = "meal.menu == menuItem">x {{meal.selections}}</span>
+        </span>
   </mat-grid-tile>
 </mat-grid-list>
 

@@ -14,6 +14,8 @@ import { BasketComponent} from './basket/basket.component';
 import { Table } from 'src/models/Table';
 import { TableService } from '../table.service';
 import {animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
+import { Meal } from 'src/models/Meal';
+import { MealService } from '../meal.service';
 
 @Component({
   selector: 'app-customer-interface',
@@ -37,9 +39,9 @@ import {animate, keyframes, query, stagger, style, transition, trigger} from "@a
     ])
   ]
 })
-export class CustomerInterfaceComponent implements OnInit, AfterViewInit {
-
-  selectedMeals: Menu[] = [];
+export class CustomerInterfaceComponent implements OnInit {
+  
+  selectedMeals: Meal[] = [];
   menu: Menu[];
   cat: selectedCategory = new selectedCategory;
   paramsObject: any;
@@ -47,6 +49,7 @@ export class CustomerInterfaceComponent implements OnInit, AfterViewInit {
   table:Observable<Table>;
 
   constructor(private menuService: MenuService,
+              private mealService: MealService,
               private customerService: CustomerService,
               private tableService: TableService,
               private menuFilterService: MenuFilterService,
@@ -80,29 +83,45 @@ export class CustomerInterfaceComponent implements OnInit, AfterViewInit {
   }
 
   addMeal(menuItem: Menu): void {
-    if (!this.selectedMeals.includes(menuItem)) {
-      menuItem.selections = 1;
-      this.selectedMeals.push(menuItem);
-    } else {
-      let index: number = this.selectedMeals.indexOf(menuItem);
-      this.selectedMeals[index].selections += 1;
+    var mealNotPresent: Boolean = true;
+    for(var i = 0 ; i < this.selectedMeals.length; i++) {
+      if (this.selectedMeals[i].menu == menuItem) {
+        this.selectedMeals[i].selections += 1;
+        mealNotPresent = false;
+      }
     }
+    if (mealNotPresent) {
+      const newMeal = new Meal();
+      newMeal.menu = menuItem;
+      newMeal.selections = 1;
+      this.selectedMeals.push(newMeal);
+    } 
   }
 
   removeMeal(menuItem: Menu): void {
-    if (this.selectedMeals.includes(menuItem)) {
-      let index: number = this.selectedMeals.indexOf(menuItem);
-      this.selectedMeals[index].selections -= 1;
-      if(this.selectedMeals[index].selections == 0){
-        this.selectedMeals.splice(index);
+    for(var i = 0; i < this.selectedMeals.length; i++) {
+      if(this.selectedMeals[i].menu == menuItem) {
+        this.selectedMeals[i].selections -= 1;
+        if(this.selectedMeals[i].selections == 0) {
+          this.selectedMeals.splice(i);
+        }
       }
     }
   }
 
-  clearMeal(menuItem:Menu): void {
-    if (this.selectedMeals.includes(menuItem)) {
-      let index: number = this.selectedMeals.indexOf(menuItem);
-      this.selectedMeals.splice(index);
+  clearMeal(menuItem: Menu): void {
+    for(var i = 0; i < this.selectedMeals.length; i++) {
+      if (this.selectedMeals[i].menu == menuItem) {
+        this.selectedMeals.splice(i);
+      }
+    }
+  }
+
+  getNumberOfSelections(menuItem: Menu): number {
+    for(let meal of this.selectedMeals) {
+      if(meal.menu == menuItem) {
+        return meal.selections;
+      }
     }
   }
 
