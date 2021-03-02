@@ -47,6 +47,7 @@ import { NotificationsDialogComponent } from './waiter-menu/notifications/notifi
 import { SelectTableDialogComponent } from './home-page/select-table-dialog/select-table-dialog.component';
 import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-table-dialog.component';
 import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready-to-order.component';
+import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready
     NotificationsDialogComponent,
     SelectTableDialogComponent,
     PickTableDialogComponent,
-    ReadyToOrderComponent
+    ReadyToOrderComponent,
+    KitchenMenuComponent
   ],
   imports: [
     BrowserModule,
