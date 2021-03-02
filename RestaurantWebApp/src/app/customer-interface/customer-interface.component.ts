@@ -60,7 +60,7 @@ export class CustomerInterfaceComponent implements OnInit {
 
   ngAfterViewInit(): void {
         this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
-    }
+  }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
@@ -129,8 +129,6 @@ export class CustomerInterfaceComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.height= '50%';
-    dialogConfig.width= '40%';
     dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
 
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
