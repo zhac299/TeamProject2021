@@ -81,6 +81,11 @@ public class RestaurantTableController {
         return restaurantTableService.updateRestaurantTableNeedsHelp(table, needsHelp);
     }
 
+    @PutMapping("/tables/updateIsReady/{isReady}")
+    public RestaurantTable updateRestaurantTableIsReady
+    (@PathVariable("isReady") boolean isReady, @RequestBody RestaurantTable table) {
+        return restaurantTableService.updateRestaurantTableIsReady(table, isReady);
+    }
     
     /**
      * Updates the isOccupied field and calls the service to update the repo.
