@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {OrderService} from "../order.service";
 import {MenuService} from "../menu.service";
 import {CustomerService} from "../customer.service";
@@ -19,7 +19,7 @@ import {AddMenuDialogComponent} from "../waiter-menu/add-menu-dialog/add-menu-di
   templateUrl: './kitchen-menu.component.html',
   styleUrls: ['./kitchen-menu.component.sass']
 })
-export class KitchenMenuComponent implements OnInit {
+export class KitchenMenuComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
   menuList: Menu[] = [];
@@ -120,6 +120,10 @@ export class KitchenMenuComponent implements OnInit {
         this.menuService.createMenuItem(menu);
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }
