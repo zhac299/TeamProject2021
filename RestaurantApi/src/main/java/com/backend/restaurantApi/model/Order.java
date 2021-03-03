@@ -29,6 +29,9 @@ public class Order implements Comparable<Order> {
     @Column(name = "is_delivered")
     private boolean isDelivered = false;
 
+    @Column(name = "is_confirmed")
+    private boolean isConfirmed = false;
+
     @Column(name = "order_placed_time")
     @CreationTimestamp
     private Date orderPlacedTime = new Date();
@@ -46,6 +49,7 @@ public class Order implements Comparable<Order> {
                 ", meal=" + meal +
                 ", waiterId=" + waiterId +
                 ", isDelivered=" + isDelivered +
+                ", isConfirmed=" + isConfirmed +
                 ", orderPlacedTime=" + orderPlacedTime +
                 ", customer=" + customer +
                 '}';
@@ -99,6 +103,14 @@ public class Order implements Comparable<Order> {
 
     public void setIsDelivered(boolean isDelivered) {
         this.isDelivered = isDelivered;
+    }
+
+    public boolean getIsConfirmed() {
+        return this.isConfirmed;
+    }
+
+    public void setIsConfirmed(boolean isConfirmed) {
+        this.isConfirmed = isConfirmed;
     }
 
     public boolean getIsDelivered() {

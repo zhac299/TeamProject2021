@@ -7,6 +7,7 @@ export class Order {
   meal: Meal[];
   category: string;
   isDelivered: boolean;
+  isConfirmed: boolean;
   table: Table;
   waiterId: number;
   date: Date;
