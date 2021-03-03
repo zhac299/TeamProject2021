@@ -63,4 +63,11 @@ public class OrderController {
         order.setIsConfirmed(isDelivered);
         return order;
     }
+
+    @PutMapping("/orders/{id}/isconfirmed/{isConfirmed}")
+    public Order updateIsconfirmed(@PathVariable("id") Long id, @PathVariable("isConfirmed") boolean isConfirmed) {
+        Order order = orderService.getOrderById(id);
+        order.setIsConfirmed(isConfirmed);
+        return order;
+    }
 }
