@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'payment-stepper',

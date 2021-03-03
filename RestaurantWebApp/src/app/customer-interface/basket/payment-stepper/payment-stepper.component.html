@@ -1,9 +1,24 @@
-<mat-horizontal-stepper #stepper>
+
+<hr>
+<p class = "paymentTitle">Payment</p>
+<mat-horizontal-stepper #stepper class = "paymentStepper">
     <mat-step [stepControl]="reviewOrderGroup" errorMessage="Order Confirmation Required!">
       <form [formGroup]="reviewOrderGroup">
         <ng-template matStepLabel>Review your Order</ng-template>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Order Items
+                </mat-panel-title>
+                <mat-panel-description>
+                  Click to review contents of your order.
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel>
+        </mat-accordion>
         <mat-form-field>
-          <mat-label>Name</mat-label>
           <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
         </mat-form-field>
         <div>
@@ -11,7 +26,7 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="paymentGroup" errorMessage="Address is required.">
+    <mat-step [stepControl]="paymentGroup" errorMessage="Payment is required">
       <form [formGroup]="paymentGroup">
         <ng-template matStepLabel>Please Insert Your Card Details</ng-template>
         <mat-form-field>

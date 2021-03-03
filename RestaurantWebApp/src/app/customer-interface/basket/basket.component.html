@@ -5,7 +5,8 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
-<table class="table">
+<p class = "selectedItemsTitle">Selected Items</p>
+<table class="table" class = "selecedItems">
     <tbody>
       <tr *ngFor="let meal of mealList">
         <th scope="row">
@@ -45,5 +46,4 @@
         </ng-template>
     </mat-list-item>
 </mat-list>
-<hr>
 <payment-stepper></payment-stepper>
