@@ -15,11 +15,15 @@
                   Click to review contents of your order.
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <ul *ngFor="let meal of mealList">
-                  <li>
-                    {{meal.menu.name}} ({{meal.menu.price * meal.selections}}$) x {{meal.selections}}
-                  </li>
-              </ul>
+              <table class="table" class = "selecedItems">
+                <tbody>
+                  <tr *ngFor="let meal of mealList">
+                    <th scope="row">{{meal.menu.name}}</th>
+                    <td>{{meal.menu.price * meal.selections}}$</td>
+                    <td>x {{meal.selections}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </mat-expansion-panel>
         </mat-accordion>
         <mat-form-field>
