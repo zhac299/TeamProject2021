@@ -9,11 +9,9 @@ import {Menu} from "../../models/Menu";
 import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
 import {CustomerService} from "../customer.service";
-import {Customer} from "../../models/Customer";
-import {SelectTableDialogComponent} from "../home-page/select-table-dialog/select-table-dialog.component";
 import {Observable} from "rxjs";
 import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.component";
-import {map, mergeMap, switchMap} from "rxjs/operators";
+import {switchMap} from "rxjs/operators";
 import { TableService } from '../table.service';
 
 @Component({
