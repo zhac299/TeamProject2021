@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Order} from '../models/Order';
-import {exhaustMap, map, share} from 'rxjs/operators';
+import {exhaustMap, map, share, tap} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 import {Customer} from "../models/Customer";
 import { Meal } from 'src/models/Meal';
@@ -14,6 +14,8 @@ export class OrderService {
 
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders';
   mealsURL = 'http://localhost:8080/api/v1/meals';
+
+  private _refreshNeeded = new Subject<void>();
 
   orderSubject$ = new BehaviorSubject<Order[]>([]);
   refresh$ = new BehaviorSubject(null);
@@ -104,4 +106,25 @@ export class OrderService {
     return this.httpClient.get<Menu[]>(`${this.restaurantWebApiUrl}/${order.id}/orderedMenuItems`);
   }
 
+  public updateOrderIsDelivered(order: Order, newIsDelivered: boolean): Observable<Order> {
+    let restaurantOrderIsDeliveredURL: string = this.restaurantWebApiUrl + '/' + order.id + '/isdelivered';
+    order.isDelivered = newIsDelivered;
+    return this.httpClient.put<Order>(`${restaurantOrderIsDeliveredURL}/${newIsDelivered.valueOf()}`, order)
+      .pipe(
+        tap(()=> {
+          this._refreshNeeded.next();
+        })
+      )
+  }
+
+  public updateOrderIsConfirmed(order: Order, newIsConfirmed: boolean): Observable<Order> {
+    let restaurantOrderIsConfirmedURL: string = this.restaurantWebApiUrl + '/' + order.id + '/isconfirmed';
+    order.isConfirmed = newIsConfirmed;
+    return this.httpClient.put<Order>(`${restaurantOrderIsConfirmedURL}/${newIsConfirmed.valueOf()}`, order)
+      .pipe(
+        tap(()=> {
+          this._refreshNeeded.next();
+        })
+      )
+  }
 }
