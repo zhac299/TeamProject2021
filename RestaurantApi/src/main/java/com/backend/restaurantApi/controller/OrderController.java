@@ -70,4 +70,9 @@ public class OrderController {
         order.setIsConfirmed(isConfirmed);
         return order;
     }
+
+    @GetMapping("/orders/isconfirmed")
+    public List<Order> getConfrimedOrders() {
+        return orderService.getConfirmedOrders();
+    }
 }

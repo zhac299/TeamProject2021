@@ -81,7 +81,7 @@ public class OrderService {
         this.updateOrder(order.getId(),order);
     }
 
-    public List<Order> getConfirmedOrders(Long id) {
+    public List<Order> getConfirmedOrders() {
         List<Order> confirmedOrders = new ArrayList<>();
         List<Order> allOrders = orderRepository.findAll();
 
