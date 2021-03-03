@@ -79,6 +79,10 @@ export class BasketComponent implements OnInit {
     } 
   }
 
+  getMealList(): Meal[] {
+    return this.mealList;
+  }
+
   close(): void {
     this.dialogRef.close(this.mealList);
   }

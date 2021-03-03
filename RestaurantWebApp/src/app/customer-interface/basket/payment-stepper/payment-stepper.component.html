@@ -15,7 +15,11 @@
                   Click to review contents of your order.
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <p>This is the primary content of the panel.</p>
+              <ul *ngFor="let meal of mealList">
+                  <li>
+                    {{meal.menu.name}} ({{meal.menu.price * meal.selections}}$) x {{meal.selections}}
+                  </li>
+              </ul>
             </mat-expansion-panel>
         </mat-accordion>
         <mat-form-field>

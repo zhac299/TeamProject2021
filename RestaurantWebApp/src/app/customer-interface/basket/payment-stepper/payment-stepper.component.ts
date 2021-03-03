@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule} from '@angular/material/expansion';
+import { Meal } from 'src/models/Meal';
+import { BasketComponent } from '../basket.component';
 
 @Component({
   selector: 'payment-stepper',
@@ -16,8 +18,11 @@ export class PaymentStepperComponent implements OnInit {
 
   reviewOrderGroup: FormGroup;
   paymentGroup: FormGroup;
+  mealList: Meal[];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private basketComponent: BasketComponent) {}
 
   ngOnInit() {
     this.reviewOrderGroup = this._formBuilder.group({
@@ -26,6 +31,7 @@ export class PaymentStepperComponent implements OnInit {
     this.paymentGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.mealList = this.basketComponent.getMealList();
   }
 
 }
