@@ -13,16 +13,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class PaymentStepperComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  reviewOrderGroup: FormGroup;
+  paymentGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.reviewOrderGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
-    this.secondFormGroup = this._formBuilder.group({
+    this.paymentGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
   }

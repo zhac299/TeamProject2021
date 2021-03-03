@@ -47,10 +47,7 @@ import { NotificationsDialogComponent } from './waiter-menu/notifications/notifi
 import { SelectTableDialogComponent } from './home-page/select-table-dialog/select-table-dialog.component';
 import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-table-dialog.component';
 import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready-to-order.component';
-import { OrderStepperComponent } from './customer-interface/basket/order-stepper/order-stepper.component';
 import { MatStepperModule} from '@angular/material/stepper';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentStepperComponent } from './customer-interface/basket/payment-stepper/payment-stepper.component';
 
@@ -78,7 +75,6 @@ import { PaymentStepperComponent } from './customer-interface/basket/payment-ste
     SelectTableDialogComponent,
     PickTableDialogComponent,
     ReadyToOrderComponent,
-    OrderStepperComponent,
     PaymentStepperComponent
   ],
   imports: [
