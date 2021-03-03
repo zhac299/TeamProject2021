@@ -27,7 +27,7 @@
             </mat-expansion-panel>
         </mat-accordion>
         <mat-form-field>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+          <input matInput placeholder="Your Answer(Yes or No)" formControlName="firstCtrl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Next</button>
@@ -36,14 +36,14 @@
     </mat-step>
     <mat-step [stepControl]="paymentGroup" errorMessage="Payment is required">
       <form [formGroup]="paymentGroup">
-        <ng-template matStepLabel>Please Insert Your Card Details</ng-template>
+        <ng-template matStepLabel>Insert Your Card Details</ng-template>
         <mat-form-field>
-          <mat-label>Address</mat-label>
+          <mat-label>Payment</mat-label>
           <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
                  required>
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>

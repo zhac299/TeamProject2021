@@ -1,3 +1,4 @@
+<mat-dialog-content>
 <mat-grid-list cols="1" rowHeight="50px">
   <mat-grid-tile colspan="1">
     <div class = "title" >Shopping Cart
@@ -11,7 +12,7 @@
     <tbody>
       <tr *ngFor="let meal of mealList">
         <th scope="row">
-            <button mat-button (click) = "remove(meal)">
+            <button mat-button (click) = "clear(meal)">
               <mat-icon>delete</mat-icon>
             </button>
             <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.selections}}$)</span>
@@ -48,3 +49,4 @@
     </mat-list-item>
 </mat-list>
 <payment-stepper></payment-stepper>
+</mat-dialog-content>

@@ -127,7 +127,6 @@ export class CustomerInterfaceComponent implements OnInit {
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
 
