@@ -15,7 +15,7 @@
                   Click to review contents of your order.
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <table class="table" class = "selecedItems">
+              <table class="table" class = "selectedItems">
                 <tbody>
                   <tr *ngFor="let meal of mealList">
                     <th scope="row">{{meal.menu.name}}</th>
@@ -38,8 +38,18 @@
       <form [formGroup]="paymentGroup">
         <ng-template matStepLabel>Insert Your Card Details</ng-template>
         <mat-form-field>
-          <mat-label>Payment</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
+          <mat-label>Card Number</mat-label>
+          <input matInput placeholder="XXXX-XXXX-XXXX-XXXX" formControlName="secondCtrl"
+                 required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Expiration Date</mat-label>
+          <input matInput placeholder="XX/XX" formControlName="thirdCtrl"
+                 required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>CVV Code</mat-label>
+          <input matInput placeholder="XXX" formControlName="fourthCtrl"
                  required>
         </mat-form-field>
         <div>
