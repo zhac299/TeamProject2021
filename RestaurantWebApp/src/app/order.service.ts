@@ -36,7 +36,7 @@ export class OrderService {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
     orderWithCustomer.isPaid=false;
-    orderWithCustomer.total=10;
+    orderWithCustomer.total=0;
     this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer)
       .subscribe((order) => {
         const _orders = this.orderSubject$.getValue();

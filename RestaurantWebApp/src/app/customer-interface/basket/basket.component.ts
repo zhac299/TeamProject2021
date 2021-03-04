@@ -67,11 +67,15 @@ export class BasketComponent implements OnInit {
     if(this.orderPlaced == false) {
       this.customer.subscribe((customer) => {
         this.orderService.createNewOrder(customer).subscribe((order) => {
+          var total: number = 0;
           for(var i = 0 ; i < this.mealList.length; i++) {
             this.mealList[i].order = order;
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
+            total += this.mealList[i].menu.price * this.mealList[i].selections;
           }
           order.meal = this.mealList;
+          order.total = total;
+          order.isPaid = false;
           console.log(order);
         });
       });
