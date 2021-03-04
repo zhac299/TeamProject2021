@@ -25,7 +25,6 @@ export class OrderService {
     share()
   );
 
-
   constructor(private httpClient: HttpClient) {
     console.log('Instance created');
   }
@@ -68,11 +67,12 @@ export class OrderService {
     return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 
-  getOrderById(mealId: number): Observable<Menu> {
-    return this.httpClient.get<Menu>(`${this.mealsURL}/${mealId}`)
-      .pipe(
-        map(response => response)
-      );
+  getOrderById(orderId: number): Observable<Order> {
+    return this.refresh$.pipe(
+      exhaustMap( () =>
+        this.httpClient.get<Order>(`${this.restaurantWebApiUrl}/${orderId}`)
+          )
+    );
   }
 
   deleteOrderById(orderId: number): void {
