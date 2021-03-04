@@ -42,23 +42,24 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="paymentGroup" errorMessage="Payment is required">
+    <mat-step [stepControl]="paymentGroup" #step errorMessage="Payment is required" [hasError]
+    ="this.correctInputs">
       <form [formGroup]="paymentGroup">
         <ng-template matStepLabel>Insert Your Card Details</ng-template>
         <mat-form-field>
           <mat-label>Card Number</mat-label>
-          <input matInput placeholder="XXXX-XXXX-XXXX-XXXX" formControlName="secondCtrl"
-                 required>
+          <input matInput placeholder="XXXX-XXXX-XXXX-XXXX" (input) = "checkCardInput()" 
+          formControlName="cardNumberControl" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Expiration Date</mat-label>
-          <input matInput placeholder="XX/XX" formControlName="thirdCtrl"
-                 required>
+          <input matInput placeholder="XX/XX" (input) = "checkCardInput()" 
+          formControlName="expDateControl" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>CVV Code</mat-label>
-          <input matInput placeholder="XXX" formControlName="fourthCtrl"
-                 required>
+          <input matInput placeholder="XXX" (input) = "checkCardInput()" 
+          formControlName="cvvCodeControl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
