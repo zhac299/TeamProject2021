@@ -2,7 +2,8 @@
 <hr>
 <p class = "paymentTitle">Payment</p>
 <mat-horizontal-stepper #stepper class = "paymentStepper">
-    <mat-step [stepControl]="reviewOrderGroup" errorMessage="Order Confirmation Required!">
+    <mat-step [stepControl]="reviewOrderGroup" #step errorMessage="Order Confirmation Required!" [hasError]
+    ="this.interacted">
       <form [formGroup]="reviewOrderGroup">
         <ng-template matStepLabel>Review your Order</ng-template>
         <mat-accordion>
@@ -26,9 +27,16 @@
               </table>
             </mat-expansion-panel>
         </mat-accordion>
-        <mat-form-field>
-          <input matInput placeholder="Your Answer(Yes or No)" formControlName="firstCtrl" required>
-        </mat-form-field>
+        <br>
+        <div id="yesOption">
+          <div class = "inner">
+            <mat-label class = "orderReview">Order Reviewed?</mat-label> 
+          </div>
+          <div class = "inner">
+            <button mat-button (click) = "orderReviewed()">Yes</button>
+          </div>
+        </div>
+        <br>
         <div>
           <button mat-button matStepperNext>Next</button>
         </div>

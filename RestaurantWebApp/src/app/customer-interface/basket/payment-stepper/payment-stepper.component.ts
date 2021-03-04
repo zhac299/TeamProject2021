@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { Meal } from 'src/models/Meal';
@@ -19,6 +19,7 @@ export class PaymentStepperComponent implements OnInit {
   reviewOrderGroup: FormGroup;
   paymentGroup: FormGroup;
   mealList: Meal[];
+  interacted: Boolean = true;
 
   constructor(
     private _formBuilder: FormBuilder, 
@@ -34,4 +35,7 @@ export class PaymentStepperComponent implements OnInit {
     this.mealList = this.basketComponent.getMealList();
   }
 
+  orderReviewed() {
+    this.interacted = false;
+  }
 }
