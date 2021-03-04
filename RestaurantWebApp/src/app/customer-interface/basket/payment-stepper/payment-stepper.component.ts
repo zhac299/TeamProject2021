@@ -49,8 +49,14 @@ export class PaymentStepperComponent implements OnInit {
       if(this.paymentGroup.get('expDateControl').value.length == 5){
         if(this.paymentGroup.get('cvvCodeControl').value.length == 3){
           this.correctInputs = false;
+        } else {
+          this.correctInputs = true;
         }
+      } else {
+        this.correctInputs = true;
       }
+    } else {
+      this.correctInputs = true;
     }
     console.log(this.correctInputs);
   }
