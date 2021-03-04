@@ -28,8 +28,8 @@ export class KitchenMenuComponent implements OnInit, OnDestroy {
   freeTables = 0;
   orders: Order[];
   displayedColumns: string[] = ['name', 'description', 'price'];
-  refreshTimer$ = timer(0, 5000).pipe(tap(() => console.log('Fetching...')));
-  orders$ = this.orderService.orders$;
+  // refreshTimer$ = timer(0, 5000).pipe(tap(() => console.log('Fetching...')));
+  // orders$ = this.orderService.orders$;
   getOrders = true;
 
   constructor(
@@ -41,14 +41,14 @@ export class KitchenMenuComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
+    // this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
     // this.orderService.getUpdatedOrders();
     this.menuService.getAllUpdatedMenus();
     this.tableService.getUpdatedTables()
 
-    this.orderService.orders$.subscribe((orders) => {
-      this.orders = orders;
-    });
+    // this.orderService.orders$.subscribe((orders) => {
+    //   this.orders = orders;
+    // });
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
@@ -57,20 +57,20 @@ export class KitchenMenuComponent implements OnInit, OnDestroy {
     })
   }
 
-  openOrderDialog(order: Order): void {
-    // this.dialogTable = table;
-    const dialogRef = this.dialog.open(OrderComponent, {
-      data: order,
-      width: '99%',
-      height: '99%'
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.orderService.getUpdatedOrders();
-        // this.orderService.updateOrder(result);
-      }
-    });
-  }
+  // openOrderDialog(order: Order): void {
+  //   // this.dialogTable = table;
+  //   const dialogRef = this.dialog.open(OrderComponent, {
+  //     data: order,
+  //     width: '99%',
+  //     height: '99%'
+  //   });
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     if (result) {
+  //       this.orderService.getUpdatedOrders();
+  //       // this.orderService.updateOrder(result);
+  //     }
+  //   });
+  // }
 
   openAddDialog(menu:Menu): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
@@ -123,7 +123,7 @@ export class KitchenMenuComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

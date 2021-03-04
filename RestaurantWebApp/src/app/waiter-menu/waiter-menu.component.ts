@@ -121,7 +121,6 @@ export class WaiterMenuComponent implements OnInit {
   }
 
   getDate(orderPlacedTime: string): Date {
-
     const date = new Date(Date.parse(orderPlacedTime));
     console.log(date.getUTCHours())
     return date;

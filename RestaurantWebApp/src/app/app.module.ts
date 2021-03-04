@@ -49,6 +49,7 @@ import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-t
 import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready-to-order.component';
 import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     SelectTableDialogComponent,
     PickTableDialogComponent,
     ReadyToOrderComponent,
-    KitchenMenuComponent
+    KitchenMenuComponent,
+    OrdersListDisplayComponent
   ],
   imports: [
     BrowserModule,
