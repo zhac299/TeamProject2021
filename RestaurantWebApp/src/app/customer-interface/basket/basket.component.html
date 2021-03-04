@@ -21,7 +21,7 @@
             <button mat-button (click) = "add(meal)">
               <mat-icon>add</mat-icon>
             </button>
-            {{meal.selections}}
+            <button mat-mini-fab class="selection-fab">x{{meal.selections}}</button>
             <button mat-button (click) = "remove(meal)">
               <mat-icon>remove</mat-icon>
             </button>
