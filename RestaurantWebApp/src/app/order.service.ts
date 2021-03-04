@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Order} from '../models/Order';
-import {exhaustMap, map, share, tap} from 'rxjs/operators';
+import {exhaustMap, share, tap} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 import {Customer} from "../models/Customer";
-import { Meal } from 'src/models/Meal';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +86,9 @@ export class OrderService {
             )
         );
       });
+  }
+  updateOrderBooleans(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`,order);
   }
 
   updateOrder(order: Order): void {

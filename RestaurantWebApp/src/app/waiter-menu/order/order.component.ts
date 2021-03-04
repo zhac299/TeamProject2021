@@ -6,8 +6,8 @@ import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
-import {BehaviorSubject, pipe, Subscription, timer} from "rxjs";
-import {map, tap} from "rxjs/operators";
+import {BehaviorSubject, Subscription, timer} from "rxjs";
+import {tap} from "rxjs/operators";
 import {Meal} from "../../../models/Meal";
 import {MealService} from "../../meal.service";
 
@@ -15,7 +15,6 @@ import {MealService} from "../../meal.service";
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.sass'],
-  // providers: [OrderService,MenuService]
 })
 export class OrderComponent implements OnInit {
 
@@ -49,7 +48,11 @@ export class OrderComponent implements OnInit {
     });
   }
 
-
+  updateOrder(order: Order): void {
+    this.orderService.updateOrderBooleans(order)
+      .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
+    console.log(order);
+  }
 
   getId(): number {
     let id = undefined;
