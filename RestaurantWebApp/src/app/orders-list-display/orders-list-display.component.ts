@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {OrderService} from "../order.service";
 import {Observable, Subscription, timer} from "rxjs";
 import {switchMap, tap} from "rxjs/operators";
@@ -14,7 +14,7 @@ import {CustomerService} from "../customer.service";
   templateUrl: './orders-list-display.component.html',
   styleUrls: ['./orders-list-display.component.sass']
 })
-export class OrdersListDisplayComponent implements OnInit {
+export class OrdersListDisplayComponent implements OnInit, OnDestroy {
 
   constructor(private orderService: OrderService,
               private customerService: CustomerService,
@@ -66,6 +66,9 @@ export class OrdersListDisplayComponent implements OnInit {
       ).subscribe((a) =>
       this.orderService.createNewOrderWithCustomer(a)
     );
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

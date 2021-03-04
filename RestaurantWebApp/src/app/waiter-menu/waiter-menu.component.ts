@@ -22,9 +22,7 @@ import { TableService } from '../table.service';
 export class WaiterMenuComponent implements OnInit {
 
   constructor(
-    private orderService: OrderService,
     private menuService: MenuService,
-    private customerService: CustomerService,
     public dialog: MatDialog,
     public tableService: TableService
   ) { }
@@ -37,34 +35,15 @@ export class WaiterMenuComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'price'];
 
   ngOnInit(): void {
-    this.orderService.getUpdatedOrders();
     this.menuService.getAllUpdatedMenus();
     this.tableService.getUpdatedTables()
 
-    this.orderService.orders$.subscribe((orders) => {
-      this.orders = orders;
-    });
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
     this.tableService.tables$.subscribe((tables) => {
       this.tableList = tables;
     })
-  }
-
-  openOrderDialog(order: Order): void {
-    // this.dialogTable = table;
-    const dialogRef = this.dialog.open(OrderComponent, {
-      data: order,
-      width: '99%',
-      height: '99%'
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.orderService.getUpdatedOrders();
-        // this.orderService.updateOrder(result);
-      }
-    });
   }
 
   openAddDialog(menu:Menu): void {
@@ -90,15 +69,6 @@ export class WaiterMenuComponent implements OnInit {
     return dialogRef.afterClosed();
   }
 
-  createNewOrder(): void {
-    this.openSelectTableDialog()
-      .pipe(
-        switchMap((dialogResult) =>
-          this.customerService.createCustomerWithTable(dialogResult))
-      ).subscribe((a) =>
-      this.orderService.createNewOrderWithCustomer(a)
-    );
-  }
 
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu);
@@ -118,12 +88,6 @@ export class WaiterMenuComponent implements OnInit {
       }
     })
 
-  }
-
-  getDate(orderPlacedTime: string): Date {
-    const date = new Date(Date.parse(orderPlacedTime));
-    console.log(date.getUTCHours())
-    return date;
   }
 }
 
