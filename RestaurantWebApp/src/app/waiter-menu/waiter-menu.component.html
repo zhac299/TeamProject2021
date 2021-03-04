@@ -35,30 +35,34 @@
       </ng-template>
     </mat-grid-tile>
   </mat-grid-list>
-
   <hr>
-
   <h2>Orders</h2>
-  <mat-grid-list cols="4" rowHeight="200px">
-    <mat-grid-tile *ngFor="let order of orders" >
-
+  <mat-grid-list cols="4" rowHeight="250px">
+    <mat-grid-tile *ngFor="let order of orders">
       <ng-template *ngIf="order.isConfirmed && order.isDelivered else confirmedNoDeliverBlock" #confirmedBlock>
         <button mat-raised-button class="confirmDeliverButton"
                 (click)="openOrderDialog(order)"
                 color="primary">
-          Order {{order.id}} confirmed and delivered</button>
+          #{{order.id}} confirmed | delivered
+          ({{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}})
+        </button>
       </ng-template>
 
       <ng-template *ngIf="order.isConfirmed && !order.isDelivered else noConfirmedBlock" #confirmedNoDeliverBlock>
         <button mat-raised-button class="confirmDeliverButton"
                 (click)="openOrderDialog(order)"
                 color="warn">
-          Order {{order.id}} confirmed but not delivered</button>
+          #{{order.id}} confirmed | not-delivered
+          ({{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}})
+        </button>
       </ng-template>
 
       <ng-template #noConfirmedBlock>
-        <button mat-raised-button class="confirmDeliverButton" (click)="openOrderDialog(order)" color="warn">
-          Order {{order.id}} is not confirmed</button>
+        <button mat-raised-button class="confirmDeliverButton"
+                (click)="openOrderDialog(order)"
+                color="warn">
+           #{{order.id}} not-confirmed ({{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}})
+        </button>
       </ng-template>
     </mat-grid-tile>
 
