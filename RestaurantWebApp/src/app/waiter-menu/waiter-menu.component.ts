@@ -11,7 +11,7 @@ import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.componen
 import {CustomerService} from "../customer.service";
 import {Observable} from "rxjs";
 import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.component";
-import {switchMap} from "rxjs/operators";
+import {switchMap, tap} from "rxjs/operators";
 import { TableService } from '../table.service';
 
 @Component({
@@ -74,13 +74,15 @@ export class WaiterMenuComponent implements OnInit {
       height: '75%'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().pipe(
+      tap(() => this.menuService.getAllUpdatedMenus())
+    ).subscribe(result => {
       // console.log(result);
       if (result){
         this.menuService.updateMenu(result);
       }
     });
-    this.menuService.getAllUpdatedMenus();
+    // this.menuService.getAllUpdatedMenus();
   }
 
   openSelectTableDialog(): Observable<Table> {
@@ -116,6 +118,13 @@ export class WaiterMenuComponent implements OnInit {
       }
     })
 
+  }
+
+  getDate(orderPlacedTime: string): Date {
+
+    const date = new Date(Date.parse(orderPlacedTime));
+    console.log(date.getUTCHours())
+    return date;
   }
 }
 
