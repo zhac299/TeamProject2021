@@ -80,4 +80,17 @@ public class OrderService {
         order.getMeal().remove(meal);
         this.updateOrder(order.getId(),order);
     }
+
+    public List<Order> getConfirmedOrders() {
+        List<Order> confirmedOrders = new ArrayList<>();
+        List<Order> allOrders = orderRepository.findAll();
+
+        for (Order order : allOrders) {
+            if (order.getIsConfirmed() == true) {
+                confirmedOrders.add(order);
+            }
+        }
+
+        return confirmedOrders;
+    }
 }

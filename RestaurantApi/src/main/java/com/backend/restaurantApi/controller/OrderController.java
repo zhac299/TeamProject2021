@@ -56,4 +56,23 @@ public class OrderController {
     public PriorityQueue<Order> getQueue() {
         return orderService.convertIntoQueue();
     }
+
+    @PutMapping("/orders/{id}/isdelivered/{isDelivered}")
+    public Order updateIsDelivered(@PathVariable("id") Long id, @PathVariable("isDelivered") boolean isDelivered) {
+        Order order = orderService.getOrderById(id);
+        order.setIsConfirmed(isDelivered);
+        return order;
+    }
+
+    @PutMapping("/orders/{id}/isconfirmed/{isConfirmed}")
+    public Order updateIsconfirmed(@PathVariable("id") Long id, @PathVariable("isConfirmed") boolean isConfirmed) {
+        Order order = orderService.getOrderById(id);
+        order.setIsConfirmed(isConfirmed);
+        return order;
+    }
+
+    @GetMapping("/orders/isconfirmed")
+    public List<Order> getConfrimedOrders() {
+        return orderService.getConfirmedOrders();
+    }
 }

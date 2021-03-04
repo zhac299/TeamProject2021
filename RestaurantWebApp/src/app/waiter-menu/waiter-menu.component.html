@@ -22,23 +22,6 @@
       </li>
     </ul>
   </mat-drawer>
-<!--  <h2>Table Selection (Orders: {{this.freeTables}})</h2>-->
-
-<!--  <mat-grid-list cols="4" rowHeight="200px">-->
-<!--    <mat-grid-tile *ngFor="let table of tableList" >-->
-<!--      <button *ngIf="table.hasOrder==true; else noOrderBlock"-->
-<!--              mat-raised-button class="hasOrder"-->
-<!--              color="primary" (click)="openTableDialog(table)">-->
-<!--        Table {{table.number}}: Ordered</button>-->
-<!--      <ng-template #noOrderBlock>-->
-<!--        <button mat-raised-button class="noOrder"-->
-<!--                color="warn" (click)="openTableDialog(table)">-->
-<!--          Table {{table.number}}: No Order</button>-->
-<!--      </ng-template>-->
-<!--    </mat-grid-tile>-->
-<!--  </mat-grid-list>-->
-<!--  <hr>-->
-
   <h2>Tables</h2>
   <mat-grid-list cols="4" rowHeight="200px">
     <mat-grid-tile *ngFor="let table of tableList" >
@@ -52,31 +35,11 @@
       </ng-template>
     </mat-grid-tile>
   </mat-grid-list>
-
   <hr>
-
   <h2>Orders</h2>
-  <mat-grid-list cols="4" rowHeight="200px">
-    <mat-grid-tile *ngFor="let order of orders" >
-<!--      <button *ngIf="order.meal.length > 0 || order.meal == undefined; else noOrderBlock" mat-raised-button class="hasOrder"-->
-      <button *ngIf="order.isDelivered else noOrderBlock" mat-raised-button class="hasOrder"
-              (click)="openOrderDialog(order)"
-              color="primary">
-        Order {{order.id}}</button>
-      <ng-template #noOrderBlock>
-        <button mat-raised-button class="noOrder"
-                (click)="openOrderDialog(order)"
-                color="warn">
-          Order {{order.id}}</button>
-      </ng-template>
-
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <button mat-fab color="accent"class="addOrder" (click)="createNewOrder()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <app-orders-list-display
+    [createPermission] = "true"
+  ></app-orders-list-display>
 
   <hr>
   <h2>Menu</h2>
