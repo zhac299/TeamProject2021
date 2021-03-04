@@ -38,6 +38,12 @@ public class Order implements Comparable<Order> {
     @JoinColumn(name = "customer", nullable = true)
     private Customer customer;
 
+    @Column(name="is_paid")
+    private boolean isPaid = false;
+
+    @Column(name = "total")
+    private int total;
+
     // used to serialize object to json
     @Override
     public String toString() {
@@ -52,6 +58,22 @@ public class Order implements Comparable<Order> {
     }
 
     public Order() {}
+
+    public boolean getIsPaid() {
+        return this.isPaid;
+    }
+
+    public void setIsPaid(boolean isPaid) {
+        this.isPaid = isPaid;    
+    }
+
+    public int getTotal() {
+        return this.total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;    
+    }
 
     public long getId() {
         return id;

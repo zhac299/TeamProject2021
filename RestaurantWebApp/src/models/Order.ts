@@ -10,5 +10,7 @@ export class Order {
   table: Table;
   waiterId: number;
   date: Date;
+  isPaid:boolean;
+  total:number;
   customer: Customer;
 }
