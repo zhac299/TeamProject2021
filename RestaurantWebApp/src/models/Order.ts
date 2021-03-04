@@ -10,6 +10,6 @@ export class Order {
   isConfirmed: boolean;
   table: Table;
   waiterId: number;
-  date: Date;
+  orderPlacedTime: string;
   customer: Customer;
 }
