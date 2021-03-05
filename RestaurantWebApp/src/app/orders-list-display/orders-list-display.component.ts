@@ -31,7 +31,6 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
     this.orderService.orders$.subscribe((orders) => {
       this.orders = orders;
     });
-    console.log(this.createPermission);
   }
 
   openOrderDialog(order: Order): void {

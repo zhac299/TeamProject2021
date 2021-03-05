@@ -48,8 +48,13 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  updateOrder(order: Order): void {
-    this.orderService.updateOrderBooleans(order)
+  updateOrderConfirmed(order: Order): void {
+    this.orderService.updateOrderConfirmed(order)
+      .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
+    console.log(order);
+  }
+  updateOrderDelivered(order: Order): void {
+    this.orderService.updateOrderDelivered(order)
       .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
     console.log(order);
   }
