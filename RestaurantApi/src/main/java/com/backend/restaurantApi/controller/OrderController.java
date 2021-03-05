@@ -64,4 +64,12 @@ public class OrderController {
         orderRepo.save(order);
         return order;
     }
+
+    @PutMapping("/orders/isPaid/{id}/{isPaid}")
+    public Order updateIsPaid(@PathVariable("id") Long id, @PathVariable("isPaid") boolean isPaid) {
+        Order order = orderService.getOrderById(id);
+        order.setIsPaid(isPaid);
+        orderRepo.save(order);
+        return order;
+    }
 }
