@@ -4,6 +4,8 @@ import {Menu} from "../../models/Menu";
 import {MatDialog} from "@angular/material/dialog";
 import {EditDialogComponent} from "../waiter-menu/edit-dialog/edit-dialog.component";
 import {AddMenuDialogComponent} from "../waiter-menu/add-menu-dialog/add-menu-dialog.component";
+import {Subscription, timer} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-menus-list-display',
@@ -16,8 +18,12 @@ export class MenusListDisplayComponent implements OnInit {
               public dialog: MatDialog) { }
 
   menuList: Menu[] = [];
+  subscription: Subscription;
+  refreshTimer$ = timer(0, 5000)
+    .pipe(tap(() => console.log('Fetching Menus...')));
 
   ngOnInit(): void {
+    this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
@@ -34,9 +40,10 @@ export class MenusListDisplayComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         this.menuService.updateMenu(result);
+        this.refreshTimer$.subscribe();
       }
     });
-    this.menuService.getAllUpdatedMenus();
+
   }
 
   deleteMenuItem(menu: Menu) {
