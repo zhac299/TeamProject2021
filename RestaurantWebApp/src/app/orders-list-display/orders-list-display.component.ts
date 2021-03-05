@@ -26,7 +26,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   orders: Order[];
   subscription: Subscription;
   refreshTimer$ = timer(0, 5000)
-    .pipe(tap(() => console.log('Fetching...')));
+    .pipe(tap(() => console.log('Fetching Orders...')));
 
   ngOnInit(): void {
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
