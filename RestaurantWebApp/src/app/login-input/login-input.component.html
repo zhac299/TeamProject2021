@@ -12,6 +12,11 @@
                     <label for = "waiter">Waiter</label>
                     <input type = "radio" (change) = "isKitchen()"  name = "staff"> 
                     <label for = "kitchen">Kitchen Staff</label>
+                    <p *ngIf="correct == false"
+                        style="color: darkred;font-size: x-small;">
+                        <fa [name]="'exclamation-circle'"></fa>
+                        Wrong details!
+                    </p>
                 </div>
         
             <input  (click) = "onSubmit()" type="submit" value="Login" class = "submit">
