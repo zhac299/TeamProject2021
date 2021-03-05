@@ -80,7 +80,7 @@ export class OrderComponent implements OnInit {
 
   addMenuToOrder(menu: Menu, order:Order) {
     const newMeal = new Meal();
-    newMeal.selections = 1;
+    newMeal.numberSelections = 1;
     newMeal.menu = menu;
     newMeal.order = order;
     const _orderedMealItems = this.orderedMealItemsSubject$.getValue();

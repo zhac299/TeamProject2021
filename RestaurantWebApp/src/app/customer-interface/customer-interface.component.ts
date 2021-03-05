@@ -86,14 +86,14 @@ export class CustomerInterfaceComponent implements OnInit {
     var mealNotPresent: Boolean = true;
     for(var i = 0 ; i < this.selectedMeals.length; i++) {
       if (this.selectedMeals[i].menu == menuItem) {
-        this.selectedMeals[i].selections += 1;
+        this.selectedMeals[i].numberSelections += 1;
         mealNotPresent = false;
       }
     }
     if (mealNotPresent) {
       const newMeal = new Meal();
       newMeal.menu = menuItem;
-      newMeal.selections = 1;
+      newMeal.numberSelections = 1;
       this.selectedMeals.push(newMeal);
     }
   }
@@ -101,8 +101,8 @@ export class CustomerInterfaceComponent implements OnInit {
   removeMeal(menuItem: Menu): void {
     for(var i = 0; i < this.selectedMeals.length; i++) {
       if(this.selectedMeals[i].menu == menuItem) {
-        this.selectedMeals[i].selections -= 1;
-        if(this.selectedMeals[i].selections == 0) {
+        this.selectedMeals[i].numberSelections -= 1;
+        if(this.selectedMeals[i].numberSelections == 0) {
           this.selectedMeals.splice(i);
         }
       }
@@ -120,7 +120,7 @@ export class CustomerInterfaceComponent implements OnInit {
   getNumberOfSelections(menuItem: Menu): number {
     for(let meal of this.selectedMeals) {
       if(meal.menu == menuItem) {
-        return meal.selections;
+        return meal.numberSelections;
       }
     }
   }

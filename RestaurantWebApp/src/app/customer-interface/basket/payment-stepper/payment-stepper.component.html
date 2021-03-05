@@ -20,8 +20,8 @@
                 <tbody>
                   <tr *ngFor="let meal of mealList">
                     <th scope="row">{{meal.menu.name}}</th>
-                    <td>{{meal.menu.price * meal.selections}}$</td>
-                    <td>x {{meal.selections}}</td>
+                    <td>{{meal.menu.price * meal.numberSelections}}$</td>
+                    <td>x {{meal.numberSelections}}</td>
                   </tr>
                 </tbody>
               </table>

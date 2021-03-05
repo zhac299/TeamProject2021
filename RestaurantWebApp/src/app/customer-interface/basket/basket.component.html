@@ -15,13 +15,13 @@
             <button mat-button (click) = "clear(meal)">
               <mat-icon>delete</mat-icon>
             </button>
-            <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.selections}}$)</span>
+            <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.numberSelections}}$)</span>
         </th>
         <td class = "numberOfSelections">
             <button mat-button (click) = "add(meal)">
               <mat-icon>add</mat-icon>
             </button>
-            <button mat-mini-fab class="selection-fab">x{{meal.selections}}</button>
+            <button mat-mini-fab class="selection-fab">x{{meal.numberSelections}}</button>
             <button mat-button (click) = "remove(meal)">
               <mat-icon>remove</mat-icon>
             </button>

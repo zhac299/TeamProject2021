@@ -43,13 +43,13 @@ export class BasketComponent implements OnInit {
 
   add(meal: Meal): void {
     const index = this.mealList.indexOf(meal, 0);
-    this.mealList[index].selections++;
+    this.mealList[index].numberSelections++;
   }
 
   remove(meal: Meal): void {
     const index = this.mealList.indexOf(meal, 0);
-    if(this.mealList[index].selections > 1){
-      this.mealList[index].selections--;
+    if(this.mealList[index].numberSelections > 1){
+      this.mealList[index].numberSelections--;
     } else {
       this.mealList.splice(index, 1);
     }
@@ -58,7 +58,7 @@ export class BasketComponent implements OnInit {
   priceTotal(): number {
     let total: number = 0;
     for(let i = 0; i < this.mealList.length; i++) {
-      total += this.mealList[i].menu.price * this.mealList[i].selections;
+      total += this.mealList[i].menu.price * this.mealList[i].numberSelections;
     }
     return total;
   }
@@ -71,12 +71,12 @@ export class BasketComponent implements OnInit {
           for(var i = 0 ; i < this.mealList.length; i++) {
             this.mealList[i].order = order;
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
-            total += this.mealList[i].menu.price * this.mealList[i].selections;
+            total += this.mealList[i].menu.price * this.mealList[i].numberSelections;
           }
-          order.meal = this.mealList;
           order.total = total;
           order.isPaid = false;
           console.log(order);
+          this.orderService.updateOrder(order);
         });
       });
       this.orderPlaced = true;

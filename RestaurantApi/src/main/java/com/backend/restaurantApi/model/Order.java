@@ -42,7 +42,7 @@ public class Order implements Comparable<Order> {
     private boolean isPaid = false;
 
     @Column(name = "total")
-    private int total;
+    private int total = 0;
 
     // used to serialize object to json
     @Override
