@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {MatDialog} from "@angular/material/dialog";
@@ -12,7 +12,7 @@ import {tap} from "rxjs/operators";
   templateUrl: './menus-list-display.component.html',
   styleUrls: ['./menus-list-display.component.sass']
 })
-export class MenusListDisplayComponent implements OnInit {
+export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
   constructor(private menuService: MenuService,
               public dialog: MatDialog) { }
@@ -28,6 +28,10 @@ export class MenusListDisplayComponent implements OnInit {
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   openAddDialog(menu:Menu): void {
@@ -64,5 +68,7 @@ export class MenusListDisplayComponent implements OnInit {
       }
     })
   }
+
+
 
 }
