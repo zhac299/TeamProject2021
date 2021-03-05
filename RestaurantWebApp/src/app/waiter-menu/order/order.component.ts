@@ -55,10 +55,6 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  // setTotal(menuItems: Menu[]): void {
-  //   menuItems.forEach((item) => {this.total = this.total + item.price});
-  // }
-
   updateAllOrder(): void {
     this.updateOrderedMealItems();
     this.menuService.menus$.subscribe((menu) => {
@@ -77,6 +73,7 @@ export class OrderComponent implements OnInit {
     _orderedMealItems.forEach((meal) => {
       if (meal.menu.name == menu.name){
         meal.numberSelections += 1;
+        this.total += meal.menu.price;
         this.mealService.updateMeal(meal);
         alreadyOrdered = true;
       }
@@ -86,11 +83,11 @@ export class OrderComponent implements OnInit {
       newMeal.numberSelections = 1;
       newMeal.menu = menu;
       newMeal.order = order;
+      this.total += newMeal.menu.price;
       this.mealService.createNewMeal(newMeal).subscribe((meal) =>{
         _orderedMealItems.push(meal);
       });
     }
-    console.log(_orderedMealItems);
     this.orderedMealItemsSubject$.next(_orderedMealItems);
   }
 

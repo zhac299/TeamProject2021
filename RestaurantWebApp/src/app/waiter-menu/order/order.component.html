@@ -28,8 +28,8 @@
             <mat-list *ngFor="let meal of orderedMealItems$ | async">
               <mat-list-item>
                 <p mat-card-subtitle style="font-size:14px" mat-line>{{meal.menu.name}}</p>
+                <p mat-subheader>({{meal.menu.price}}$)</p>
                 <p mat-subheader>x{{meal.numberSelections}}</p>
-                <p mat-subheader>({{meal.menu.price}})</p>
               </mat-list-item>
               <mat-divider></mat-divider>
             </mat-list>
