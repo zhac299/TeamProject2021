@@ -35,7 +35,7 @@ export class LoginInputComponent implements OnInit {
                         this.router.navigateByUrl("/2FA");
                     }
                 } catch {
-                    console.log("Wrong login!");
+                    this.correct = false;
                 }
             });
         this.username = "";
