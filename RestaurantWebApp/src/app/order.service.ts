@@ -48,9 +48,11 @@ export class OrderService {
       });
   }
 
-  createNewOrder(customer: Customer): Observable<Order> {
+  createNewOrder(customer: Customer, total: number): Observable<Order> {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
+    orderWithCustomer.total = total;
+    orderWithCustomer.isPaid = false;
     return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 

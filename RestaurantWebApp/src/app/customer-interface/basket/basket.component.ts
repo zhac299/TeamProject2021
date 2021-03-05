@@ -66,17 +66,13 @@ export class BasketComponent implements OnInit {
   placeOrder(): void {
     if(this.orderPlaced == false) {
       this.customer.subscribe((customer) => {
-        this.orderService.createNewOrder(customer).subscribe((order) => {
+        this.orderService.createNewOrder(customer, this.priceTotal()).subscribe((order) => {
           var total: number = 0;
           for(var i = 0 ; i < this.mealList.length; i++) {
             this.mealList[i].order = order;
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
             total += this.mealList[i].menu.price * this.mealList[i].numberSelections;
           }
-          order.total = total;
-          order.isPaid = false;
-          console.log(order);
-          this.orderService.updateOrder(order);
         });
       });
       this.orderPlaced = true;
