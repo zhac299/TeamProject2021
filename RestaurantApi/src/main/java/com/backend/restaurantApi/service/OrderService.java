@@ -86,7 +86,7 @@ public class OrderService {
         List<Order> allOrders = orderRepository.findAll();
 
         for (Order order : allOrders) {
-            if (order.getIsConfirmed() == true) {
+            if (order.getIsConfirmed() == true && order.getIsDelivered() == false) {
                 confirmedOrders.add(order);
             }
         }
