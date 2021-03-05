@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginInputComponent },
   { path: 'waiter-menu', component: WaiterMenuComponent },
   { path: 'kitchen-menu', component: KitchenMenuComponent },
-  { path: 'Manager-menu', component: ManagerMenuComponent },
+  { path: 'manager-menu', component: ManagerMenuComponent },
   { path: 'filter', component: MenuFilterComponent },
   { path: 'customer-menu', component: CustomerInterfaceComponent },
   { path: '2FA', component: TwoFactorAuthComponent }
