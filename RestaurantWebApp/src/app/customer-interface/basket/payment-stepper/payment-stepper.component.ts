@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { Meal } from 'src/models/Meal';
 import { BasketComponent } from '../basket.component';
+import { OrderService } from 'src/app/order.service';
+import { Order } from 'src/models/Order';
 
 @Component({
   selector: 'payment-stepper',
@@ -19,12 +21,14 @@ export class PaymentStepperComponent implements OnInit {
   reviewOrderGroup: FormGroup;
   paymentGroup: FormGroup;
   mealList: Meal[];
+  order: Order;
   interacted: Boolean = true;
   correctInputs: Boolean = true;
 
   constructor(
     private _formBuilder: FormBuilder, 
-    private basketComponent: BasketComponent) {}
+    private basketComponent: BasketComponent,
+    private orderService: OrderService) {}
 
   ngOnInit() {
     this.reviewOrderGroup = this._formBuilder.group({
@@ -36,6 +40,7 @@ export class PaymentStepperComponent implements OnInit {
       cvvCodeControl: ['', Validators.required]
     });
     this.mealList = this.basketComponent.getMealList();
+    this.order = this.basketComponent.getOrder();
   }
 
   orderReviewed(): void{
@@ -66,5 +71,10 @@ export class PaymentStepperComponent implements OnInit {
       this.correctInputs = true;
     }
     console.log(this.correctInputs);
+  }
+
+  pay(): void {
+    this.order.isPaid = true;
+    this.orderService.updateIsPaid(this.order);
   }
 }

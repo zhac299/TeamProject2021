@@ -86,6 +86,10 @@ export class BasketComponent implements OnInit {
     return this.mealList;
   }
 
+  getOrder(): Order {
+    return this.order;
+  }
+
   close(): void {
     this.dialogRef.close(this.mealList);
   }
