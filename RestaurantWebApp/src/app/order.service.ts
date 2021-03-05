@@ -97,6 +97,13 @@ export class OrderService {
     })
   }
 
+  updateIsPaid(order: Order): void {
+    let updateIsPaidUrl = this.restaurantWebApiUrl + "/isPaid";
+    this.httpClient.put<Order>(`${updateIsPaidUrl}/${order.id}/${order.isPaid}`,order).subscribe((order) =>{
+      console.log(order);
+    })
+  }
+
   public getOrderedMenuItems(order: Order): Observable<Menu[]> {
     return this.httpClient.get<Menu[]>(`${this.restaurantWebApiUrl}/${order.id}/orderedMenuItems`);
   }
