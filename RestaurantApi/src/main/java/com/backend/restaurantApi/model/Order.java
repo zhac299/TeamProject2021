@@ -77,7 +77,7 @@ public class Order implements Comparable<Order> {
         this.id = id;
     }
 
-    public boolean isDelivered() {
+    public boolean isIsDelivered() {
         return isDelivered;
     }
 
