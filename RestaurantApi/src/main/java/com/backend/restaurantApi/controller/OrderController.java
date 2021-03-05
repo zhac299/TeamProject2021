@@ -60,7 +60,7 @@ public class OrderController {
     @PutMapping("/orders/{id}/isdelivered/{isDelivered}")
     public Order updateIsDelivered(@PathVariable("id") Long id, @PathVariable("isDelivered") boolean isDelivered) {
         Order order = orderService.getOrderById(id);
-        order.setIsConfirmed(isDelivered);
+        order.setIsDelivered(isDelivered);
         orderRepo.save(order);
         return order;
     }
