@@ -56,11 +56,8 @@ export class OrderService {
     return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 
-  getOrderById(mealId: number): Observable<Menu> {
-    return this.httpClient.get<Menu>(`${this.mealsURL}/${mealId}`)
-      .pipe(
-        map(response => response)
-      );
+  getOrderById(orderID: number): Observable<Order> {
+    return this.httpClient.get<Order>(`${this.restaurantWebApiUrl}/${orderID}`);
   }
 
   deleteOrderById(orderId: number): void {

@@ -18,7 +18,6 @@ export class BasketComponent implements OnInit {
   mealList: Meal[];
   customer: Observable<Customer>;
   orderPlaced: Boolean = false;
-  order: Order;
   
   constructor(
     private elementRef: ElementRef,
@@ -75,7 +74,6 @@ export class BasketComponent implements OnInit {
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
             total += this.mealList[i].menu.price * this.mealList[i].numberSelections;
           }
-          this.order = order;
         });
       });
       this.orderPlaced = true;
@@ -84,10 +82,6 @@ export class BasketComponent implements OnInit {
 
   getMealList(): Meal[] {
     return this.mealList;
-  }
-
-  getOrder(): Order {
-    return this.order;
   }
 
   close(): void {

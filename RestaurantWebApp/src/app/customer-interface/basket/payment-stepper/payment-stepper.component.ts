@@ -21,7 +21,7 @@ export class PaymentStepperComponent implements OnInit {
   reviewOrderGroup: FormGroup;
   paymentGroup: FormGroup;
   mealList: Meal[];
-  order: Order;
+  orders: Order[];
   interacted: Boolean = true;
   correctInputs: Boolean = true;
 
@@ -40,7 +40,6 @@ export class PaymentStepperComponent implements OnInit {
       cvvCodeControl: ['', Validators.required]
     });
     this.mealList = this.basketComponent.getMealList();
-    this.order = this.basketComponent.getOrder();
   }
 
   orderReviewed(): void{
@@ -74,7 +73,12 @@ export class PaymentStepperComponent implements OnInit {
   }
 
   pay(): void {
-    this.order.isPaid = true;
-    this.orderService.updateIsPaid(this.order);
+    this.basketComponent.customer.subscribe((customer) => {
+      this.orders = customer.orders;
+      for (let order of customer.orders) {
+        order.isPaid = true;
+        this.orderService.updateIsPaid(order);
+      }
+    })
   }
 }
