@@ -20,7 +20,6 @@ public class Meal {
 
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @ManyToOne  // TEST THIS RELATIONSHIP OUT
     @JoinColumn(name = "menu")
     private Menu menu;
 

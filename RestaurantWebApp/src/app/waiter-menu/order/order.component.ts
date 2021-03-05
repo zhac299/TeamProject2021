@@ -74,7 +74,7 @@ export class OrderComponent implements OnInit {
       if (meal.menu.name == menu.name){
         meal.numberSelections += 1;
         this.total += meal.menu.price;
-        this.mealService.updateMeal(meal);
+        this.mealService.updateNumberSelections(meal);
         alreadyOrdered = true;
       }
     });
