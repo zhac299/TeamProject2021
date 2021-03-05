@@ -51,6 +51,7 @@ import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
 import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
+import { MenusListDisplayComponent } from './menus-list-display/menus-list-display.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
     ReadyToOrderComponent,
     KitchenMenuComponent,
     OrdersListDisplayComponent,
-    ManagerMenuComponent
+    ManagerMenuComponent,
+    MenusListDisplayComponent
   ],
   imports: [
     BrowserModule,
