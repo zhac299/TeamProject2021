@@ -77,4 +77,9 @@ public class OrderController {
     public List<Order> getConfrimedOrders() {
         return orderService.getConfirmedOrders();
     }
+
+    @GetMapping("/orders/noisconfirmed")
+    public List<Order> getNoConfrimedOrders() {
+        return orderService.getNoConfirmedOrders();
+    }
 }

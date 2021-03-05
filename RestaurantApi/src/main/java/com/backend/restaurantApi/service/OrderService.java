@@ -93,4 +93,17 @@ public class OrderService {
 
         return confirmedOrders;
     }
+
+    public List<Order> getNoConfirmedOrders() {
+        List<Order> noConfirmedOrders = new ArrayList<>();
+        List<Order> allOrders = orderRepository.findAll();
+
+        for (Order order : allOrders) {
+            if (order.getIsConfirmed() == false) {
+                noConfirmedOrders.add(order);
+            }
+        }
+
+        return noConfirmedOrders;
+    }
 }

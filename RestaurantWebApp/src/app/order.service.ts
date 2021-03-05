@@ -139,4 +139,8 @@ export class OrderService {
     return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/isconfirmed`);
   }
 
+  public getNoConfirmedOrders(): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/noisconfirmed`);
+  }
+
 }
