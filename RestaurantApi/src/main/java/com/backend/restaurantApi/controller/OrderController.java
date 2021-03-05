@@ -61,6 +61,7 @@ public class OrderController {
     public Order updateIsDelivered(@PathVariable("id") Long id, @PathVariable("isDelivered") boolean isDelivered) {
         Order order = orderService.getOrderById(id);
         order.setIsConfirmed(isDelivered);
+        orderRepo.save(order);
         return order;
     }
 
@@ -68,6 +69,7 @@ public class OrderController {
     public Order updateIsconfirmed(@PathVariable("id") Long id, @PathVariable("isConfirmed") boolean isConfirmed) {
         Order order = orderService.getOrderById(id);
         order.setIsConfirmed(isConfirmed);
+        orderRepo.save(order);
         return order;
     }
 
