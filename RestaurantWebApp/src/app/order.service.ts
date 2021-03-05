@@ -90,6 +90,13 @@ export class OrderService {
       });
   }
 
+  updateTotal(order: Order): void {
+    let updateTotalUrl = this.restaurantWebApiUrl + "/total";
+    this.httpClient.put<Order>(`${updateTotalUrl}/${order.id}/${order.total}`,order).subscribe((order) =>{
+      console.log(order);
+    })
+  }
+
   public getOrderedMenuItems(order: Order): Observable<Menu[]> {
     return this.httpClient.get<Menu[]>(`${this.restaurantWebApiUrl}/${order.id}/orderedMenuItems`);
   }
