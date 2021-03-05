@@ -56,4 +56,12 @@ public class OrderController {
     public PriorityQueue<Order> getQueue() {
         return orderService.convertIntoQueue();
     }
+
+    @PutMapping("/orders/total/{id}/{total}")
+    public Order updateTotal(@PathVariable("id") Long id, @PathVariable("total") int total) {
+        Order order = orderService.getOrderById(id);
+        order.setTotal(total);
+        orderRepo.save(order);
+        return order;
+    }
 }
