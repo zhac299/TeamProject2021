@@ -87,8 +87,13 @@ export class OrderService {
         );
       });
   }
-  updateOrderBooleans(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`,order);
+
+  updateOrderDelivered(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isdelivered/${order.isDelivered}`,order);
+  }
+
+  updateOrderConfirmed(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isconfirmed/${order.isConfirmed}`,order);
   }
 
   updateOrder(order: Order): void {

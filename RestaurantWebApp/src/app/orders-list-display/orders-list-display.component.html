@@ -9,7 +9,6 @@
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
     </ng-template>
-
     <ng-template *ngIf="order.isConfirmed && !order.isDelivered else noConfirmedBlock" #confirmedNoDeliverBlock>
       <button mat-raised-button class="confirmDeliverButton"
               (click)="openOrderDialog(order)"
@@ -19,7 +18,6 @@
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
     </ng-template>
-
     <ng-template #noConfirmedBlock>
       <button mat-raised-button class="confirmDeliverButton"
               (click)="openOrderDialog(order)"
