@@ -88,6 +88,8 @@ export class OrderComponent implements OnInit {
         _orderedMealItems.push(meal);
       });
     }
+    this.order.total += menu.price;
+    this.orderService.updateTotal(order);
     this.orderedMealItemsSubject$.next(_orderedMealItems);
   }
 
