@@ -13,11 +13,14 @@ export class MealService {
   constructor(private httpClient: HttpClient) { }
 
   createNewMeal(meal: Meal): Observable<Meal> {
-    console.log(meal);
     return this.httpClient.post<Meal>(this.mealsURL, meal);
   }
 
   deleteMeal(meal: Meal): Observable<Meal> {
     return this.httpClient.delete<Meal>(`${this.mealsURL}/${meal.id}`);
+  }
+
+  updateMeal(meal: Meal): void {
+    this.httpClient.put<Meal>(`${this.mealsURL}/${meal.id}`,meal);
   }
 }

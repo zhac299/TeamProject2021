@@ -10,10 +10,6 @@
       <mat-checkbox [(ngModel)]="order.isDelivered">Delivered</mat-checkbox>
     </mat-grid-tile>
     <mat-grid-tile>
-<!--      <mat-form-field class="tableNumberInput">-->
-<!--        <mat-label>Table #</mat-label>-->
-<!--        <input matInput [(ngModel)]="order.table.isOccupied"/>-->
-<!--      </mat-form-field>-->
     </mat-grid-tile>
   </mat-grid-list>
 
@@ -32,10 +28,8 @@
             <mat-list *ngFor="let meal of orderedMealItems$ | async">
               <mat-list-item>
                 <p mat-card-subtitle style="font-size:14px" mat-line>{{meal.menu.name}}</p>
+                <p mat-subheader>x{{meal.numberSelections}}</p>
                 <p mat-subheader>({{meal.menu.price}})</p>
-                <button mat-button>
-                  <mat-icon (click)="deleteOrderedMenuItem(meal)">delete</mat-icon>
-                </button>
               </mat-list-item>
               <mat-divider></mat-divider>
             </mat-list>
@@ -56,9 +50,6 @@
                 <button mat-raised-button style="width: 100%; color: green"
                         (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
               </mat-grid-tile>
-              <!--            <mat-grid-tile *ngFor="let drink of drinks" colspan="1">-->
-              <!--              <button mat-raised-button style="width: 100%; color: green">{{drink.Draught.name}}</button>-->
-              <!--            </mat-grid-tile>-->
             </mat-grid-list>
           </mat-card-content>
         </mat-card>
