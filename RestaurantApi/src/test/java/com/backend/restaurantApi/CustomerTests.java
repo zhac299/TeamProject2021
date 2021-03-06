@@ -1,24 +1,17 @@
 package com.backend.restaurantApi;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.List;
-
 import com.backend.restaurantApi.exception.CustomerNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
 import com.backend.restaurantApi.model.Customer;
-import com.backend.restaurantApi.model.Meal;
-import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.model.RestaurantTable;
 import com.backend.restaurantApi.service.CustomerService;
-import com.backend.restaurantApi.service.MealService;
-import com.backend.restaurantApi.service.MenuService;
 import com.backend.restaurantApi.service.OrderService;
 import com.backend.restaurantApi.service.RestaurantTableService;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -77,7 +70,11 @@ public class CustomerTests {
     }
 
     /**
+     * Test1.
      * Check if deleting an order, also deletes its customer.
+     * 
+     * @throws OrderNotFoundException if the order is not found in the DB
+     * @throws CustomerNotFoundException if the customer is not found in the DB
      */
     @Test
     void deleteOrderCheckCustomer() {
@@ -87,14 +84,21 @@ public class CustomerTests {
             orderService.getOrderById(order.getId());
         },"Check if the order was deleted.");
 
-        Assertions.assertThrows(CustomerNotFoundException.class, () -> {
+        Assertions.assertDoesNotThrow(() -> {
             customerService.getCustomerById(customer.getId());
-        },"Check if also the customer was deleted.");
+        },"Should not throw any exception, deleting an order should not delete the customer.");
     }
 
+    /**
+     * Test2.
+     * Check if deleting a customer, also deletes its order.
+     * 
+     * @throws OrderNotFoundException if the order is not found in the DB
+     * @throws CustomerNotFoundException if the customer is not found in the DB
+     */
     @Test
     void deleteCustomerCheckOrder() {
-        customerService.deleteCustomer(customer.getId());
+        customerService.deleteCustomer((customer.getId()));
 
         Assertions.assertThrows(CustomerNotFoundException.class, () -> {
             customerService.getCustomerById(customer.getId());

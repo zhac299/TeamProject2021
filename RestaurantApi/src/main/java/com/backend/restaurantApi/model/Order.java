@@ -37,7 +37,7 @@ public class Order implements Comparable<Order> {
     private Date orderPlacedTime = new Date();
 
     @JsonBackReference(value = "customer_order")
-    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "customer", nullable = true)
     private Customer customer;
 
