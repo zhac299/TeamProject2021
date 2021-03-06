@@ -60,7 +60,7 @@ public class TableTests {
      */
     @Test
     void dropTableCheckCustomer() {
-        tableService.deleteRestaurantTable((long) 1);
+        tableService.deleteRestaurantTable(table.getTableNumber());
         Assertions.assertThrows(CustomerNotFoundException.class, () -> {
             customerService.getCustomerById(customer.getId());
         }, "Should throw an exception since the customer is no longer in the DB.");
@@ -70,16 +70,18 @@ public class TableTests {
      * Test 2.
      * Test if droping the customer will not drop the table.
      * 
+     * @throws CustomerNotFoundException if the customer is not found in the DB
+     * @throws RestauranttableNotFoundEception if the table is not found in the DB
      */
     @Test
     void dropCustomerCheckTable() {
-        customerService.deleteCustomer((long) 2);
+        customerService.deleteCustomer(customer.getId());
 
         Assertions.assertThrows(CustomerNotFoundException.class, () -> {
             customerService.getCustomerById(customer.getId());
         }, "Should throw an exception since the customer is no longer in the DB.");
 
-        Assertions.assertThrows(RestaurantTableNotFoundException.class, () -> {
+        Assertions.assertDoesNotThrow(()->{
             tableService.getTableByNumber(table.getTableNumber());
         },"Should not throw an exception, deleting the customer should not delete the table.");
     }
