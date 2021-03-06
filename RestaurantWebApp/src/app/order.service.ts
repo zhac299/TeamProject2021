@@ -49,8 +49,8 @@ export class OrderService {
   createNewOrderWithCustomer(customer: Customer): void {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
-    //orderWithCustomer.isPaid=false;
-    //orderWithCustomer.total=0;
+    orderWithCustomer.isPaid=false;
+    orderWithCustomer.total=0;
     this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer)
       .subscribe((order) => {
         const _orders = this.orderSubject$.getValue();
@@ -65,8 +65,8 @@ export class OrderService {
   createNewOrder(customer: Customer, total: number): Observable<Order> {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
-    //orderWithCustomer.total = total;
-    //orderWithCustomer.isPaid = false;
+    orderWithCustomer.total = total;
+    orderWithCustomer.isPaid = false;
     return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 

@@ -40,6 +40,12 @@ public class Order implements Comparable<Order> {
     @ManyToOne(optional = false)
     @JoinColumn(name = "customer", nullable = true)
     private Customer customer;
+    
+    @Column(name="is_paid")
+    private boolean isPaid = false;
+
+    @Column(name = "total")
+    private int total = 0;
 
     // used to serialize object to json
     @Override
@@ -128,6 +134,22 @@ public class Order implements Comparable<Order> {
     @Override
     public int compareTo(Order order) {
         return getOrderPlacedTime().compareTo(order.getOrderPlacedTime());
+    }
+
+    public boolean getIsPaid() {
+        return this.isPaid;
+    }
+
+    public void setIsPaid(boolean isPaid) {
+        this.isPaid = isPaid;    
+    }
+
+    public int getTotal() {
+        return this.total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;    
     }
 
 }
