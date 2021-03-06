@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import com.backend.restaurantApi.exception.CustomerNotFoundException;
+import com.backend.restaurantApi.exception.OrderNotFoundException;
 import com.backend.restaurantApi.model.Customer;
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
@@ -57,9 +59,36 @@ public class CustomerTests {
     @Autowired
     private OrderService orderService;
 
+    /**
+     * Set up test that is run before each test.
+     */
     @BeforeEach
     void setUp() {
+        table = new RestaurantTable();
+        table = tableService.createNewRestaurantTable(table);
 
+        customer = new Customer();
+        customer.setTable(table);
+        customer = customerService.createNewCustomer(customer);
+
+        order = new Order();
+        order.setCustomer(customer);
+        order = orderService.createNewOrder(order);
     }
 
+    /**
+     * Check if deleting an order, also deletes its customer.
+     */
+    @Test
+    void deleteOrderCheckCustomer() {
+        orderService.deleteOrder(order.getId());
+
+        Assertions.assertThrows(OrderNotFoundException.class, () -> {
+            orderService.getOrderById(order.getId());
+        },"Check if the order was deleted.");
+
+        Assertions.assertThrows(CustomerNotFoundException.class, () -> {
+            customerService.getCustomerById(customer.getId());
+        },"Check if also the customer was deleted.");
+    }
 }
