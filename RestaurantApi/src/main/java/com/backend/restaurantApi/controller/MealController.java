@@ -44,13 +44,4 @@ public class MealController {
     public void deleteMeal(@PathVariable("id") Long id) {
         mealService.deleteMeal(id);
     }
-
-    @PutMapping("/meals/numberSelections/{id}/{numberSelections}")
-    public Meal updateNumberSelections(@PathVariable("id") Long id, @PathVariable("numberSelections") int numberSelections) {
-        Meal meal = mealService.getMealById(id);
-        meal.setNumberSelections(numberSelections);
-        mealRepo.save(meal);
-        return meal;
-    }
-
 }

@@ -7,6 +7,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { OrderComponent } from './waiter-menu/order/order.component';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
+import {KitchenMenuComponent} from "./kitchen-menu/kitchen-menu.component";
+import {ManagerMenuComponent} from "./manager-menu/manager-menu.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginInputComponent },
   { path: 'waiter-menu', component: WaiterMenuComponent },
+  { path: 'kitchen-menu', component: KitchenMenuComponent },
+  { path: 'Manager-menu', component: ManagerMenuComponent },
   { path: 'filter', component: MenuFilterComponent },
   { path: 'customer-menu', component: CustomerInterfaceComponent },
   { path: '2FA', component: TwoFactorAuthComponent }

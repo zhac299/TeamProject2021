@@ -2,6 +2,8 @@ package com.backend.restaurantApi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import com.backend.restaurantApi.model.Customer;
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
@@ -49,6 +51,7 @@ public class OrderTests {
         menu = new Menu();
         order = new Order();
         customer = new Customer();
+
         table = tableService.createNewRestaurantTable(new RestaurantTable());
         // Check if table is created
         Assertions.assertNotNull(tableService.getTableByNumber(table.getTableNumber()));
@@ -64,12 +67,27 @@ public class OrderTests {
         Assertions.assertNotNull(orderService.getOrderById(order.getId()));
     }
 
+    // @Test
+    // void testUpdateOrder() {
+    //     order.setIsPaid(true);
+    //     order.setTotal(1000);
+    //     orderService.updateOrder(order.getId(), order);
+    //     Assertions.assertEquals(orderService.getOrderById(order.getId()).getTotal(), 1000);
+    //     Assertions.assertEquals(orderService.getOrderById(order.getId()).getIsPaid(), true);
+    // }
+
     @Test
-    void testUpdateOrder() {
-        order.setIsPaid(true);
-        order.setTotal(1000);
-        orderService.updateOrder(order.getId(), order);
-        Assertions.assertEquals(orderService.getOrderById(order.getId()).getTotal(), 1000);
-        Assertions.assertEquals(orderService.getOrderById(order.getId()).getIsPaid(), true);
+    void testDeleteOrder() {
+        List<Order> list1 = orderService.getNoConfirmedOrders();
+        // for (Order order : list1) {
+        //     System.out.println(order);
+        // }
+        orderService.deleteOrder(order.getId());
+
+        List<Order> list2 = orderService.getNoConfirmedOrders();
+        // for (Order order : list2) {
+        //     System.out.println(order);
+        // }
+        Assertions.assertEquals(orderService.getNoConfirmedOrders(),null);
     }
 }

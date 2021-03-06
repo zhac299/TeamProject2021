@@ -6,8 +6,8 @@ import {OrderService} from "../../order.service";
 import {Order} from "../../../models/Order";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
-import {BehaviorSubject, pipe} from "rxjs";
-import {map, tap} from "rxjs/operators";
+import {BehaviorSubject, Subscription, timer} from "rxjs";
+import {tap} from "rxjs/operators";
 import {Meal} from "../../../models/Meal";
 import {MealService} from "../../meal.service";
 
@@ -15,7 +15,6 @@ import {MealService} from "../../meal.service";
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.sass'],
-  // providers: [OrderService,MenuService]
 })
 export class OrderComponent implements OnInit {
 
@@ -28,6 +27,10 @@ export class OrderComponent implements OnInit {
 
   private orderSubject$ = new BehaviorSubject<Order>(this.order);
   order$ = this.orderSubject$.asObservable();
+  subscription: Subscription;
+  refreshTimer$ = timer(0, 5000)
+    .pipe(tap(() => console.log('Fetching...')));
+
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
@@ -38,6 +41,22 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateAllOrder();
+    this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
+    this.orderService.getOrderById(this.order.id).subscribe((orders) => {
+      this.orderSubject$.next(orders);
+      this.order = orders;
+    });
+  }
+
+  updateOrderConfirmed(order: Order): void {
+    this.orderService.updateOrderConfirmed(order)
+      .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
+    console.log(order);
+  }
+  updateOrderDelivered(order: Order): void {
+    this.orderService.updateOrderDelivered(order)
+      .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
+    console.log(order);
   }
 
   getId(): number {
@@ -63,6 +82,7 @@ export class OrderComponent implements OnInit {
   }
 
   deleteOrder(): void {
+    console.log(this.order.id);
     this.orderService.deleteOrderById(this.order.id);
     this.dialogRef.close();
   }

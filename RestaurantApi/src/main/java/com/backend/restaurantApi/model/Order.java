@@ -29,6 +29,9 @@ public class Order implements Comparable<Order> {
     @Column(name = "is_delivered")
     private boolean isDelivered = false;
 
+    @Column(name = "is_confirmed")
+    private boolean isConfirmed = false;
+
     @Column(name = "order_placed_time")
     @CreationTimestamp
     private Date orderPlacedTime = new Date();
@@ -38,12 +41,6 @@ public class Order implements Comparable<Order> {
     @JoinColumn(name = "customer", nullable = true)
     private Customer customer;
 
-    @Column(name="is_paid")
-    private boolean isPaid = false;
-
-    @Column(name = "total")
-    private int total = 0;
-
     // used to serialize object to json
     @Override
     public String toString() {
@@ -52,28 +49,13 @@ public class Order implements Comparable<Order> {
                 ", meal=" + meal +
                 ", waiterId=" + waiterId +
                 ", isDelivered=" + isDelivered +
+                ", isConfirmed=" + isConfirmed +
                 ", orderPlacedTime=" + orderPlacedTime +
                 ", customer=" + customer +
                 '}';
     }
 
     public Order() {}
-
-    public boolean getIsPaid() {
-        return this.isPaid;
-    }
-
-    public void setIsPaid(boolean isPaid) {
-        this.isPaid = isPaid;    
-    }
-
-    public int getTotal() {
-        return this.total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;    
-    }
 
     public long getId() {
         return id;
@@ -95,7 +77,7 @@ public class Order implements Comparable<Order> {
         this.id = id;
     }
 
-    public boolean isDelivered() {
+    public boolean isIsDelivered() {
         return isDelivered;
     }
 
@@ -121,6 +103,14 @@ public class Order implements Comparable<Order> {
 
     public void setIsDelivered(boolean isDelivered) {
         this.isDelivered = isDelivered;
+    }
+
+    public boolean getIsConfirmed() {
+        return this.isConfirmed;
+    }
+
+    public void setIsConfirmed(boolean isConfirmed) {
+        this.isConfirmed = isConfirmed;
     }
 
     public boolean getIsDelivered() {

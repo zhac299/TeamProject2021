@@ -50,6 +50,10 @@ import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready
 import { MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentStepperComponent } from './customer-interface/basket/payment-stepper/payment-stepper.component';
+import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
+import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +79,9 @@ import { PaymentStepperComponent } from './customer-interface/basket/payment-ste
     SelectTableDialogComponent,
     PickTableDialogComponent,
     ReadyToOrderComponent,
+    KitchenMenuComponent,
+    OrdersListDisplayComponent,
+    ManagerMenuComponent,
     PaymentStepperComponent
   ],
   imports: [
@@ -103,6 +110,8 @@ import { PaymentStepperComponent } from './customer-interface/basket/payment-ste
     MatTableModule,
     MatCheckboxModule,
     NgOtpInputModule,
+    MatBadgeModule,
+    MatSlideToggleModule,
     MatBadgeModule,
     MatStepperModule,
     ReactiveFormsModule

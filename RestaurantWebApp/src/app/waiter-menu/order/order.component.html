@@ -7,7 +7,14 @@
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
-      <mat-checkbox [(ngModel)]="order.isDelivered">Delivered</mat-checkbox>
+      
+      <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isDelivered" (change)="updateOrderDelivered(order)">Delivered</mat-checkbox>
+      
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+      <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
+
     </mat-grid-tile>
     <mat-grid-tile>
     </mat-grid-tile>
