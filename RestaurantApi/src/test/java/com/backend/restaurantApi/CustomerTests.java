@@ -108,4 +108,25 @@ public class CustomerTests {
             orderService.getOrderById(order.getId());
         },"Check if also the order was deleted.");
     }
+
+    /**
+     * Test3.
+     * Checks if deleting an order, also deletes its assigned table.
+     * 
+     * @throws OrderNotFoundException if the order is not found in the DB
+     * @throws CustomerNotFoundException if the customer is not found in the DB
+     * @throws TableNotFoundException if the table is not found in the DB
+     */
+    @Test
+    void deleteOrderCheckTable() {
+        orderService.deleteOrder(order.getId());
+
+        Assertions.assertThrows(OrderNotFoundException.class, () -> {
+            orderService.getOrderById(order.getId());
+        },"Check if the order was deleted.");
+
+        Assertions.assertDoesNotThrow(() -> {
+            tableService.getTableByNumber(table.getTableNumber());
+        }, "Nothing should get thrown, deleting an order should not delete the table.");
+    }
 }
