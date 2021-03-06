@@ -91,4 +91,17 @@ public class CustomerTests {
             customerService.getCustomerById(customer.getId());
         },"Check if also the customer was deleted.");
     }
+
+    @Test
+    void deleteCustomerCheckOrder() {
+        customerService.deleteCustomer(customer.getId());
+
+        Assertions.assertThrows(CustomerNotFoundException.class, () -> {
+            customerService.getCustomerById(customer.getId());
+        },"Check if the customer was deleted.");
+
+        Assertions.assertThrows(OrderNotFoundException.class, () -> {
+            orderService.getOrderById(order.getId());
+        },"Check if also the order was deleted.");
+    }
 }
