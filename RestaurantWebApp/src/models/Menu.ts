@@ -2,7 +2,7 @@ export class Menu{
   id: number;
   name: string;
  category: string;
- isSuggested: boolean;
+ isSuggested: boolean = false;
   description: string;
   price: number;
   peanuts: boolean;
