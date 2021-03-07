@@ -24,6 +24,8 @@ export class PaymentStepperComponent implements OnInit {
   orders: Order[];
   interacted: Boolean = true;
   correctInputs: Boolean = true;
+  needToReview: Boolean = false;
+  wrongDetails: Boolean = false;
 
   constructor(
     private _formBuilder: FormBuilder, 
@@ -75,9 +77,19 @@ export class PaymentStepperComponent implements OnInit {
   pay(): void {
     this.basketComponent.customer.subscribe((customer) => {
       this.orders = customer.orders;
-      for (let order of customer.orders) {
-        order.isPaid = true;
-        this.orderService.updateIsPaid(order);
+      if(!this.interacted){
+        this.needToReview = false;
+        if(!this.correctInputs){
+          this.wrongDetails = false;
+          for (let order of customer.orders) {
+            order.isPaid = true;
+            this.orderService.updateIsPaid(order);
+          }
+        } else {
+          this.wrongDetails = true;
+        }
+      } else {
+        this.needToReview = true;
       }
     })
   }

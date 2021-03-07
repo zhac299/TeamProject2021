@@ -61,9 +61,19 @@
           <input matInput placeholder="XXX" (input) = "checkCardInput()" 
           formControlName="cvvCodeControl" required>
         </mat-form-field>
-        <div>
-          <button mat-button (click) = "pay()">Pay</button>
+        <div *ngIf = "this.interacted == false && this.correctInputs == false; else orderReviewBlock">
+         <button mat-button (click) = "pay()">Pay</button>
         </div>
+        <ng-template #orderReviewBlock>
+          <div class = "orderReviewBlock" *ngIf = "this.interacted == true && this.correctInputs == true; else wrongDetailsBlock">
+            Review your Order!
+          </div>
+        </ng-template>
+        <ng-template #wrongDetailsBlock>
+          <div class = "wrongDetailsBlock" *ngIf = "this.interacted == false && this.correctInputs == true">
+            The Card Details are Wrong!
+          </div>
+        </ng-template>
         <br>
         <div>
           <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
