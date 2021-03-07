@@ -34,7 +34,7 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  openAddDialog(menu:Menu): void {
+  openEditMenuDialog(menu:Menu): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       data: menu,
       width: '40%',
@@ -58,8 +58,8 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
     let newMenu: Menu = new Menu();
     const dialogRef = this.dialog.open(AddMenuDialogComponent, {
       data: newMenu,
-      width:'40%',
-      height:'75%'
+      width: '50%',
+      autoFocus: false
     });
 
     dialogRef.afterClosed().subscribe(menu => {
