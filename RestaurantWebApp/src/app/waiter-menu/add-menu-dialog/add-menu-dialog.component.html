@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add Log</h2>
+<h2 mat-dialog-title>Add Dish</h2>
 <mat-dialog-content class="container">
   <div class="row">
     <mat-form-field class="col">
@@ -26,65 +26,56 @@
     <hr>
   </div>
   <div class="row">
-    <div class="col-3"></div>
-    <mat-slider class="col-6"
-                thumbLabel
-                [displayWith]="setCalories"
-                tickInterval="100"
-                min="1"
-                max="2000"
-                (input)="onCaloriesChange($event)">
-      <h3>Calories</h3>
-    </mat-slider>
-    <div class="col-3"></div>
+    <h3>Allergens</h3>
   </div>
 
+  <div class="row">
+    <div class="col">
+      <mat-list-item >
+        <mat-checkbox [(ngModel)]="data.fish">Fish</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-checkbox [(ngModel)]="data.gluten">Gluten</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-checkbox [(ngModel)]="data.lupin">Lupin</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-checkbox [(ngModel)]="data.milk">Milk</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.sulphites">Sulphites</mat-checkbox>
+      </mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.molluscs">Molluscs</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.mustard">Mustard</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.nuts">Nuts</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.sesameSeeds">Sesame Seeds</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.soya">Soya</mat-checkbox>
+      </mat-list-item>
+    </div>
+    <div class="col">
+      <h3>Calories</h3>
+      <mat-slider thumbLabel
+                  [displayWith]="setCalories"
+                  tickInterval="100"
+                  min="1"
+                  max="2000"
+                  (input)="onCaloriesChange($event)">
+      </mat-slider>
+    </div>
 
-  <mat-list>
-    <mat-label>Allergen</mat-label>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.peanuts">Peanuts</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.celery">Celery</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.crustaceans">Crustacenas</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.eggs">Eggs</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.fish">Fish</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.gluten">Gluten</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.lupin">Lupin</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.milk">Milk</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.molluscs">Molluscs</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.mustard">Mustard</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.nuts">Nuts</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.sesameSeeds">Sesame Seeds</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.soya">Soya</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox [(ngModel)]="data.sulphites">Sulphites</mat-checkbox>
-    </mat-list-item>
-  </mat-list>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancel</button>
