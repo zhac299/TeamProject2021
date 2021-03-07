@@ -1,11 +1,21 @@
 <mat-grid-list  cols="4" rowHeight="250px">
   <mat-grid-tile *ngFor="let order of orders">
 
+    <button *ngIf="order.isConfirmed && order.isPaid && order.isDelivered" mat-raised-button class="confirmDeliverButton"
+            (click)="openOrderDialog(order)"
+            color="green ">
+      <h1>Order #{{order.id}}</h1>
+      <h2> order-confirmed | delivered</h2>
+      <h2> (paid)</h2>
+      <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
+    </button>
+
     <button *ngIf="order.isConfirmed && order.isDelivered else confirmedNoDeliverBlock" mat-raised-button class="confirmDeliverButton"
             (click)="openOrderDialog(order)"
             color="primary">
       <h1>Order #{{order.id}}</h1>
       <h2> order-confirmed | delivered</h2>
+      <h2 *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</h2>
       <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
     </button>
 
@@ -15,20 +25,24 @@
               color="accent">
         <h1>Order #{{order.id}}</h1>
         <h2> order-confirmed | not-delivered</h2>
+        <h2 *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</h2>
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
     </ng-template>
 
     <ng-template #noConfirmedBlock>
-      <button *ngIf="!order.isConfirmed" mat-raised-button class="confirmDeliverButton"
+      <button *ngIf="!order.isConfirmed && !order.isPaid" mat-raised-button class="confirmDeliverButton"
               (click)="openOrderDialog(order)"
               color="warn">
         <h1>Order #{{order.id}}</h1>
         <h2>not-confirmed | not-delivered</h2>
+        <h2 *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</h2>
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
     </ng-template>
   </mat-grid-tile>
+
+  <ng-template #PaidBlock><h2>(paid)</h2></ng-template>
 
   <mat-grid-tile *ngIf="createPermission">
     <button mat-fab color="accent"class="addOrder" (click)="createNewOrder()">
