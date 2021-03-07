@@ -1,33 +1,46 @@
-<h1 mat-dialog-title>Add Log</h1>
-<div mat-dialog-content>
-      <mat-form-field>
+<h2 mat-dialog-title>Add Log</h2>
+<mat-dialog-content class="container">
+    <div class="row">
+      <mat-form-field class="col">
         <mat-label>Name</mat-label>
         <input matInput [(ngModel)]="data.name"/>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <textarea matInput class="fixInput" [(ngModel)]="data.description"></textarea>
-      </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="col">
         <mat-label>Price</mat-label>
         <input matInput class="fixInput" [(ngModel)]="data.price"/>
       </mat-form-field>
-  <mat-list>
-    <mat-label>Category</mat-label>
-    <div *ngFor = "let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
-      <mat-list-item><mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i" >{{item}}</mat-checkbox></mat-list-item>
+    </div>
+    <div class="row">
+      <mat-form-field class="col">
+        <mat-label>Description</mat-label>
+        <textarea matInput class="fixInput" [(ngModel)]="data.description"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col" *ngFor = "let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
+          <mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i" >{{item}}</mat-checkbox>
+      </div>
+    </div>
+    <!--  Adds whitespace  -->
+    <div class="row"><hr></div>
+    <div class="row">
+      <div class="col-3"><h3>Calories</h3></div>
+        <mat-slider class="col-6"
+        thumbLabel
+        [displayWith]="setCalories"
+        tickInterval="100"
+        min="1"
+        max="2000"
+        (input)="onCaloriesChange($event)">
+      </mat-slider>
+      <div class="col-3"></div>
     </div>
 
-    <mat-label>Calories</mat-label>
-    <div><mat-slider
-      thumbLabel
-      [displayWith]="setCalories"
-      tickInterval="100"
-      min="1"
-      max="2000"
-      (input)="onCaloriesChange($event)">
-    </mat-slider></div>
 
+
+
+
+  <mat-list>
     <mat-label>Allergen</mat-label>
     <mat-list-item><mat-checkbox [(ngModel)]="data.peanuts">Peanuts</mat-checkbox></mat-list-item>
     <mat-list-item><mat-checkbox [(ngModel)]="data.celery">Celery</mat-checkbox></mat-list-item>
@@ -44,11 +57,11 @@
     <mat-list-item><mat-checkbox [(ngModel)]="data.soya">Soya</mat-checkbox></mat-list-item>
     <mat-list-item><mat-checkbox [(ngModel)]="data.sulphites">Sulphites</mat-checkbox></mat-list-item>
   </mat-list>
-</div>
-<div mat-dialog-actions>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="this.data" cdkFocusInitial>Ok</button>
-</div>
+  <button mat-button [mat-dialog-close]="this.data">Ok</button>
+</mat-dialog-actions>
 
 <!--export class Menu{-->
 <!--id: number;-->
