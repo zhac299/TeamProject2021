@@ -45,7 +45,10 @@ export class AddMenuDialogComponent implements OnInit {
   onClick(type: string) {
     this.data.category = type;
     }
-    isSuggested() {
-        console.log("suggested");
+    isSuggested(event) {
+        if (event.checked) {
+            this.data.isSuggested = true;
+        }
+        this.data.isSuggested = false;
     }
 }
