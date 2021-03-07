@@ -1,16 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Table} from '../../models/Table';
 import {MatDialog} from '@angular/material/dialog';
-import {OrderComponent} from './order/order.component';
-import {OrderService} from "../order.service";
 import {Order} from "../../models/Order";
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
-import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
-import {CustomerService} from "../customer.service";
 import {Observable} from "rxjs";
 import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.component";
-import {switchMap, tap} from "rxjs/operators";
 import { TableService } from '../table.service';
 
 @Component({
@@ -29,7 +24,6 @@ export class WaiterMenuComponent implements OnInit {
   menuList: Menu[] = [];
   showFiller = false;
   tableList: Table[] = [];
-  freeTables = 0;
   orders: Order[];
   displayedColumns: string[] = ['name', 'description', 'price'];
 

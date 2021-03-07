@@ -1,5 +1,4 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MenuService} from "../../menu.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Menu} from "../../../models/Menu";
 import { MatSliderChange } from '@angular/material/slider';
@@ -23,13 +22,6 @@ export class AddMenuDialogComponent implements OnInit {
   onNoClick(): void {
     console.log(this.data.menu);
     this.dialogRef.close();
-  }
-
-  addMenuItem(): void {
-    // this.menuService.createMenuItem(this.data)
-    //   .subscribe( result => {
-    //     return result;
-    //   });
   }
 
   setData(menu:Menu) {
