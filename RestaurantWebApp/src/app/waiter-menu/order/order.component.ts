@@ -53,10 +53,15 @@ export class OrderComponent implements OnInit {
       .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
     console.log(order);
   }
+
   updateOrderDelivered(order: Order): void {
     this.orderService.updateOrderDelivered(order)
       .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
     console.log(order);
+  }
+
+  updateOrderIsPaid(order: Order): void {
+    this.orderService.updateIsPaid(order);
   }
 
   getId(): number {

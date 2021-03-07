@@ -5,7 +5,11 @@
     </mat-grid-tile>
     <mat-grid-tile>
     </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+
+      <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isPaid" (change)="updateOrderIsPaid(order)">Paid</mat-checkbox>
+
+    </mat-grid-tile>
     <mat-grid-tile>
       
       <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isDelivered" (change)="updateOrderDelivered(order)">Delivered</mat-checkbox>
@@ -16,8 +20,7 @@
       <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
 
     </mat-grid-tile>
-    <mat-grid-tile>
-    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
   </mat-grid-list>
 
   <hr>
@@ -26,11 +29,7 @@
     <mat-grid-list cols="4" rowHeight="700px" style="height: 400px">
       <mat-grid-tile colspan="1" class="tile">
         <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title>Meals:</mat-card-title>
-
-
-          </mat-card-header>
+          <mat-card-title>Meals</mat-card-title>
           <mat-card-content>
             <mat-list *ngFor="let meal of orderedMealItems$ | async">
               <mat-list-item>
@@ -41,9 +40,7 @@
               <mat-divider></mat-divider>
             </mat-list>
           </mat-card-content>
-          <mat-card-footer>
-            <h3 mat-subheader>Total: {{total}}</h3>
-          </mat-card-footer>
+          <mat-card-title>Total: {{total}}$</mat-card-title>
         </mat-card>
       </mat-grid-tile>
       <mat-grid-tile colspan="2">
