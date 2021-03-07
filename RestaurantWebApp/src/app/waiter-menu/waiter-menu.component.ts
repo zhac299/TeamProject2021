@@ -6,7 +6,6 @@ import {OrderService} from "../order.service";
 import {Order} from "../../models/Order";
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
-import {EditDialogComponent} from "./edit-dialog/edit-dialog.component";
 import {AddMenuDialogComponent} from "./add-menu-dialog/add-menu-dialog.component";
 import {CustomerService} from "../customer.service";
 import {Observable} from "rxjs";
@@ -46,24 +45,6 @@ export class WaiterMenuComponent implements OnInit {
     })
   }
 
-  openAddDialog(menu:Menu): void {
-    const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: menu,
-      width: '40%',
-      height: '75%'
-    });
-
-    dialogRef.afterClosed().pipe(
-      tap(() => this.menuService.getAllUpdatedMenus())
-    ).subscribe(result => {
-      // console.log(result);
-      if (result){
-        this.menuService.updateMenu(result);
-      }
-    });
-    // this.menuService.getAllUpdatedMenus();
-  }
-
   openSelectTableDialog(): Observable<Table> {
     const dialogRef = this.dialog.open(PickTableDialogComponent);
     return dialogRef.afterClosed();
@@ -74,20 +55,5 @@ export class WaiterMenuComponent implements OnInit {
     this.menuService.deleteMenu(menu);
   }
 
-  openAddMenuDialog() {
-    let newMenu: Menu = new Menu();
-    const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-      data: newMenu,
-      width:'40%',
-      height:'75%'
-    });
-
-    dialogRef.afterClosed().subscribe(menu => {
-      if(menu){
-        this.menuService.createMenuItem(menu);
-      }
-    })
-
-  }
 }
 

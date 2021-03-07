@@ -1,19 +1,19 @@
-<h2 mat-dialog-title>Add Dish</h2>
+<h2 mat-dialog-title>{{data.title}}</h2>
 <mat-dialog-content class="container">
   <div class="row">
     <mat-form-field class="col">
       <mat-label>Name</mat-label>
-      <input matInput [(ngModel)]="data.name"/>
+      <input matInput [(ngModel)]="data.menu.name"/>
     </mat-form-field>
     <mat-form-field class="col">
       <mat-label>Price</mat-label>
-      <input matInput class="fixInput" [(ngModel)]="data.price"/>
+      <input matInput class="fixInput" [(ngModel)]="data.menu.price"/>
     </mat-form-field>
   </div>
   <div class="row">
     <mat-form-field class="col">
       <mat-label>Description</mat-label>
-      <textarea matInput class="fixInput" [(ngModel)]="data.description"></textarea>
+      <textarea matInput class="fixInput" [(ngModel)]="data.menu.description"></textarea>
     </mat-form-field>
   </div>
   <div class="row">
@@ -32,36 +32,36 @@
   <div class="row">
     <div class="col">
       <mat-list-item >
-        <mat-checkbox [(ngModel)]="data.fish">Fish</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.fish">Fish</mat-checkbox>
       </mat-list-item>
       <mat-list-item >
-        <mat-checkbox [(ngModel)]="data.gluten">Gluten</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.gluten">Gluten</mat-checkbox>
       </mat-list-item>
       <mat-list-item >
-        <mat-checkbox [(ngModel)]="data.lupin">Lupin</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.lupin">Lupin</mat-checkbox>
       </mat-list-item>
       <mat-list-item >
-        <mat-checkbox [(ngModel)]="data.milk">Milk</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.milk">Milk</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox [(ngModel)]="data.sulphites">Sulphites</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.sulphites">Sulphites</mat-checkbox>
       </mat-list-item>
     </div>
     <div class="col">
       <mat-list-item>
-        <mat-checkbox [(ngModel)]="data.molluscs">Molluscs</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.molluscs">Molluscs</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox [(ngModel)]="data.mustard">Mustard</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.mustard">Mustard</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox [(ngModel)]="data.nuts">Nuts</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.nuts">Nuts</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox [(ngModel)]="data.sesameSeeds">Sesame Seeds</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.sesameSeeds">Sesame Seeds</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox [(ngModel)]="data.soya">Soya</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.menu.soya">Soya</mat-checkbox>
       </mat-list-item>
     </div>
     <div class="col">
@@ -74,12 +74,11 @@
                   (input)="onCaloriesChange($event)">
       </mat-slider>
     </div>
-
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="this.data">Ok</button>
+  <button mat-button [mat-dialog-close]="this.data.menu">Ok</button>
 </mat-dialog-actions>
 
 <!--export class Menu{-->

@@ -8,7 +8,6 @@ import {Menu} from "../../models/Menu";
 import {Table} from "../../models/Table";
 import {Order} from "../../models/Order";
 import {OrderComponent} from "../waiter-menu/order/order.component";
-import {EditDialogComponent} from "../waiter-menu/edit-dialog/edit-dialog.component";
 import {Observable, Subscription, timer} from "rxjs";
 import {PickTableDialogComponent} from "../waiter-menu/pick-table-dialog/pick-table-dialog.component";
 import {switchMap, tap} from "rxjs/operators";

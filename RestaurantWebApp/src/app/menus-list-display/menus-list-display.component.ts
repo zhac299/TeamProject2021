@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MenuService} from "../menu.service";
 import {Menu} from "../../models/Menu";
 import {MatDialog} from "@angular/material/dialog";
-import {EditDialogComponent} from "../waiter-menu/edit-dialog/edit-dialog.component";
 import {AddMenuDialogComponent} from "../waiter-menu/add-menu-dialog/add-menu-dialog.component";
 import {Subscription, timer} from "rxjs";
 import {tap} from "rxjs/operators";
@@ -35,10 +34,10 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   }
 
   openEditMenuDialog(menu:Menu): void {
-    const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: menu,
-      width: '40%',
-      height: '75%'
+    const title = "Edit Dish";
+    const dialogRef = this.dialog.open(AddMenuDialogComponent, {
+      data: {menu,title},
+      width: '50%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -55,9 +54,10 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   }
 
   openAddMenuDialog() {
-    let newMenu: Menu = new Menu();
+    const title = "Add New Dish";
+    let menu: Menu = new Menu();
     const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-      data: newMenu,
+      data: {menu,title},
       width: '50%',
       autoFocus: false
     });

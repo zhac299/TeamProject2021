@@ -32,7 +32,6 @@ import { MatSliderModule} from '@angular/material/slider';
 import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
 import { TableComponent } from './waiter-menu/table/table.component';
 import { MatTableModule} from "@angular/material/table";
-import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
 import { MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
 import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
@@ -66,7 +65,6 @@ import { MenusListDisplayComponent } from './menus-list-display/menus-list-displ
     AllergensChipsComponent,
     FoodCategoriesComponent,
     TableComponent,
-    EditDialogComponent,
     AddMenuDialogComponent,
     TwoFactorAuthComponent,
     BasketComponent,
