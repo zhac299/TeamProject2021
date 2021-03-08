@@ -28,6 +28,7 @@ export class PaymentStepperComponent implements OnInit {
   correctInputs: Boolean = true;
   needToReview: Boolean = false;
   wrongDetails: Boolean = false;
+  isPaid: Boolean = false;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -92,6 +93,7 @@ export class PaymentStepperComponent implements OnInit {
           this.wrongDetails = false;
           for (let order of customer.orders) {
             order.isPaid = true;
+            this.isPaid = true;
             this.orderService.updateIsPaid(order);
           }
         } else {
