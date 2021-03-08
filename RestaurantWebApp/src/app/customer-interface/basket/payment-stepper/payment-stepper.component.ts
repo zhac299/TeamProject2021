@@ -7,6 +7,7 @@ import { Meal } from 'src/models/Meal';
 import { BasketComponent } from '../basket.component';
 import { OrderService } from 'src/app/order.service';
 import { Order } from 'src/models/Order';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'payment-stepper',
@@ -28,6 +29,7 @@ export class PaymentStepperComponent implements OnInit {
   wrongDetails: Boolean = false;
 
   constructor(
+    private snackBar: MatSnackBar,
     private _formBuilder: FormBuilder, 
     private basketComponent: BasketComponent,
     private orderService: OrderService) {}
@@ -91,6 +93,14 @@ export class PaymentStepperComponent implements OnInit {
       } else {
         this.needToReview = true;
       }
-    })
+    });
+
+    this.openSnackBar("Your payment is confirmed","Muchas Gracias!")
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 }
