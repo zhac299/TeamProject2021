@@ -62,14 +62,6 @@ export class PaymentStepperComponent implements OnInit {
         let century = temp[0] + temp[1]
         if(date[1].length == 2){
           date[1] = century + date[1];
-          // let year = date[1].split("", 4);
-          // if(((year[0] * 10) + year[1]) < 20){
-          //   this.correctInputs = true;
-          //   return;
-          // } else {
-          //   date[1] = year[2] + year[3];
-          //   console.log(date[1]);
-          // }
         }
         if((parseInt(date[0]) < 13 && parseInt(date[1]) > parseInt(trueDateString[0])) 
         || (parseInt(date[0]) < 13 && parseInt(date[0]) > parseInt(trueDateString[1])-1 && parseInt(date[1]) == parseInt(trueDateString[0]))){

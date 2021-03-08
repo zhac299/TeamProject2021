@@ -53,7 +53,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Expiration Date</mat-label>
-          <input matInput placeholder="XX/XX" (input) = "checkCardInput()" 
+          <input matInput onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2')" placeholder="XX/XXXX" (input) = "checkCardInput()" 
           formControlName="expDateControl" [maxLength] = "7" required>
         </mat-form-field>
         <mat-form-field>
