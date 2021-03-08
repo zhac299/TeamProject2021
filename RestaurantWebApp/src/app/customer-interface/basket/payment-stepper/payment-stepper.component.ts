@@ -52,7 +52,8 @@ export class PaymentStepperComponent implements OnInit {
     console.log(this.paymentGroup.get('cardNumberControl').value);
     if(this.paymentGroup.get('cardNumberControl').value.length == 19 
     || this.paymentGroup.get('cardNumberControl').value.length == 16){
-      if(this.paymentGroup.get('expDateControl').value.length == 5){
+      if(this.paymentGroup.get('expDateControl').value.length == 5 
+      || this.paymentGroup.get('expDateControl').value.length == 7){
         let date = this.paymentGroup.get('expDateControl').value.split("/", 2);
         console.log(date);
         console.log(parseInt(date[0]));
