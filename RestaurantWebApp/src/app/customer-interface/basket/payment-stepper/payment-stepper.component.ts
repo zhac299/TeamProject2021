@@ -8,6 +8,7 @@ import { BasketComponent } from '../basket.component';
 import { OrderService } from 'src/app/order.service';
 import { Order } from 'src/models/Order';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'payment-stepper',
@@ -54,11 +55,18 @@ export class PaymentStepperComponent implements OnInit {
     console.log(this.paymentGroup.get('cardNumberControl').value);
     if(this.paymentGroup.get('cardNumberControl').value.length == 19 
     || this.paymentGroup.get('cardNumberControl').value.length == 16){
-      if(this.paymentGroup.get('expDateControl').value.length == 5){
+      if(this.paymentGroup.get('expDateControl').value.length == 5 
+      || this.paymentGroup.get('expDateControl').value.length == 7){
+        let trueDate = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+        let trueDateString = trueDate.split("/", 2);
         let date = this.paymentGroup.get('expDateControl').value.split("/", 2);
-        console.log(date);
-        console.log(parseInt(date[0]));
-        if((parseInt(date[0]) < 13 && parseInt(date[1]) > 21) || (parseInt(date[0]) < 13 && parseInt(date[0]) > 3 && parseInt(date[1]) == 21)){
+        let temp = trueDate.split("");
+        let century = temp[0] + temp[1]
+        if(date[1].length == 2){
+          date[1] = century + date[1];
+        }
+        if((parseInt(date[0]) < 13 && parseInt(date[1]) > parseInt(trueDateString[0])) 
+        || (parseInt(date[0]) < 13 && parseInt(date[0]) > parseInt(trueDateString[1])-1 && parseInt(date[1]) == parseInt(trueDateString[0]))){
           if(this.paymentGroup.get('cvvCodeControl').value.length == 3){
            this.correctInputs = false;
           } else {
