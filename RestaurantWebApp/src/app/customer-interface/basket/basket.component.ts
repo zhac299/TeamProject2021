@@ -1,5 +1,6 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
@@ -20,6 +21,7 @@ export class BasketComponent implements OnInit {
   orderPlaced: Boolean = false;
   
   constructor(
+    private snackBar: MatSnackBar,
     private elementRef: ElementRef,
     private mealService: MealService,
     private orderService: OrderService,
@@ -77,11 +79,18 @@ export class BasketComponent implements OnInit {
         });
       });
       this.orderPlaced = true;
+      this.openSnackBar("You placed your order","Enjoy!")
     } 
   }
 
   getMealList(): Meal[] {
     return this.mealList;
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
   close(): void {
