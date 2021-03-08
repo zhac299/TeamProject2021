@@ -7,6 +7,7 @@ import { Meal } from 'src/models/Meal';
 import { BasketComponent } from '../basket.component';
 import { OrderService } from 'src/app/order.service';
 import { Order } from 'src/models/Order';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'payment-stepper',
@@ -54,20 +55,24 @@ export class PaymentStepperComponent implements OnInit {
     || this.paymentGroup.get('cardNumberControl').value.length == 16){
       if(this.paymentGroup.get('expDateControl').value.length == 5 
       || this.paymentGroup.get('expDateControl').value.length == 7){
+        let trueDate = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+        let trueDateString = trueDate.split("/", 2);
         let date = this.paymentGroup.get('expDateControl').value.split("/", 2);
-        console.log(date);
-        console.log(parseInt(date[0]));
-        if(date[1].length == 4){
-          let year = date[1].split("", 4);
-          if(((year[0] * 10) + year[1]) < 20){
-            this.correctInputs = true;
-            return;
-          } else {
-            date[1] = year[2] + year[3];
-            console.log(date[1]);
-          }
+        let temp = trueDate.split("");
+        let century = temp[0] + temp[1]
+        if(date[1].length == 2){
+          date[1] = century + date[1];
+          // let year = date[1].split("", 4);
+          // if(((year[0] * 10) + year[1]) < 20){
+          //   this.correctInputs = true;
+          //   return;
+          // } else {
+          //   date[1] = year[2] + year[3];
+          //   console.log(date[1]);
+          // }
         }
-        if((parseInt(date[0]) < 13 && parseInt(date[1]) > 21) || (parseInt(date[0]) < 13 && parseInt(date[0]) > 3 && parseInt(date[1]) == 21)){
+        if((parseInt(date[0]) < 13 && parseInt(date[1]) > parseInt(trueDateString[0])) 
+        || (parseInt(date[0]) < 13 && parseInt(date[0]) > parseInt(trueDateString[1])-1 && parseInt(date[1]) == parseInt(trueDateString[0]))){
           if(this.paymentGroup.get('cvvCodeControl').value.length == 3){
            this.correctInputs = false;
           } else {
