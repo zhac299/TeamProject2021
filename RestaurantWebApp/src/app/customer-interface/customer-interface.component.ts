@@ -47,6 +47,7 @@ export class CustomerInterfaceComponent implements OnInit {
   paramsObject: any;
   customer: Observable<Customer>;
   table:Observable<Table>;
+  orderPlaced: Boolean = false;
 
   constructor(private menuService: MenuService,
               private mealService: MealService,
@@ -129,12 +130,12 @@ export class CustomerInterfaceComponent implements OnInit {
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
+    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals, orderPlaced: this.orderPlaced};
     dialogConfig.width = "60%";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(result => {
-      //this.selectedMeals = result;
+    dialogRef.afterClosed().subscribe(orderPlaced => {
+      this.orderPlaced = orderPlaced;
     });
   }
 

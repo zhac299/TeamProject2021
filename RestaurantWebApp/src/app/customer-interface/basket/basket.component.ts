@@ -29,6 +29,7 @@ export class BasketComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data) {
       this.mealList = data.selectedMeals;
       this.customer = data.customer;
+      this.orderPlaced = data.orderPlaced;
     }
 
   ngOnInit(): void {}
@@ -94,6 +95,6 @@ export class BasketComponent implements OnInit {
   }
 
   close(): void {
-    this.dialogRef.close(this.mealList);
+    this.dialogRef.close(this.orderPlaced);
   }
 }
