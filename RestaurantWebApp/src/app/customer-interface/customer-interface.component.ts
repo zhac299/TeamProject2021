@@ -84,8 +84,9 @@ export class CustomerInterfaceComponent implements OnInit {
 
   addMeal(menuItem: Menu): void {
     var mealNotPresent: Boolean = true;
+    console.log(this.selectedMeals);
     for(var i = 0 ; i < this.selectedMeals.length; i++) {
-      if (this.selectedMeals[i].menu == menuItem) {
+      if (this.selectedMeals[i].menu.name == menuItem.name) {
         this.selectedMeals[i].numberSelections += 1;
         mealNotPresent = false;
       }
@@ -133,7 +134,7 @@ export class CustomerInterfaceComponent implements OnInit {
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      //this.selectedMeals = result;
     });
   }
 
