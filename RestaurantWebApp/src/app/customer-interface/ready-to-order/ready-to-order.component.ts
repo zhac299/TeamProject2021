@@ -37,6 +37,7 @@ export class ReadyToOrderComponent implements OnInit {
       this.tableService.updateTable(table).subscribe();
     });
     this.ready = false;
+    this.openSnackBar("You canceled the waiter call","Still need help?");
   }
 
   private openSnackBar(message: string, action: string) {

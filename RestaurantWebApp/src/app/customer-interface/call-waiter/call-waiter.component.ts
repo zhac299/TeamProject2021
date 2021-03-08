@@ -42,6 +42,7 @@ export class CallWaiterComponent implements OnInit {
       this.tableService.updateTable(table).subscribe();
     });
     this.waiterCalled = false;
+    this.openSnackBar("You canceled the waiter call","Still need help?");
   }
   
 }
