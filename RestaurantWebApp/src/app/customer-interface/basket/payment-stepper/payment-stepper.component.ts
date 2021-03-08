@@ -51,8 +51,7 @@ export class PaymentStepperComponent implements OnInit {
 
   checkCardInput(): void{
     console.log(this.paymentGroup.get('cardNumberControl').value);
-    if(this.paymentGroup.get('cardNumberControl').value.length == 19 
-    || this.paymentGroup.get('cardNumberControl').value.length == 16){
+    if(this.paymentGroup.get('cardNumberControl').value.length == 19){
       if(this.paymentGroup.get('expDateControl').value.length == 5 
       || this.paymentGroup.get('expDateControl').value.length == 7){
         let trueDate = formatDate(new Date(), 'yyyy/MM/dd', 'en');
