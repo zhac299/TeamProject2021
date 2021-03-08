@@ -91,6 +91,7 @@ export class BasketComponent implements OnInit {
   private openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,
+      panelClass: ['orderSnackBar']
     });
   }
 
