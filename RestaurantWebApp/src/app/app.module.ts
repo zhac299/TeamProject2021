@@ -51,9 +51,10 @@ import { MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentStepperComponent } from './customer-interface/basket/payment-stepper/payment-stepper.component';
 import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
 import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,8 @@ import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
     MatSlideToggleModule,
     MatBadgeModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [AllergensChipsComponent, CustomerInterfaceComponent],
   bootstrap: [AppComponent]
