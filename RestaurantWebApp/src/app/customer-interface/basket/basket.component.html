@@ -6,6 +6,7 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+<div *ngIf = "orderPlaced == false">
 <hr>
 <p class = "selectedItemsTitle">Selected Items</p>
 <table class="table" class = "selecedItems">
@@ -31,7 +32,7 @@
   </table>
 <mat-list>
     <mat-list-item>
-        <div class="center" *ngIf = "orderPlaced == false; else orderPlacedBlock">
+        <div class="center" *ngIf = "orderPlaced == false">
             <button mat-raised-button *ngIf = " this.mealList.length !=0; else emptyShoppingCartBlock" (click) = "placeOrder()" class = "placeOrder">
                 Place Order
             </button>
@@ -41,12 +42,8 @@
                 </div>
             </ng-template>
         </div>
-        <ng-template #orderPlacedBlock>
-            <div class = "orderPlacedMessage">
-                Order Placed!
-            </div>
-        </ng-template>
     </mat-list-item>
 </mat-list>
-<payment-stepper></payment-stepper>
+</div>
+<payment-stepper *ngIf = "orderPlaced == true"></payment-stepper>
 </mat-dialog-content>
