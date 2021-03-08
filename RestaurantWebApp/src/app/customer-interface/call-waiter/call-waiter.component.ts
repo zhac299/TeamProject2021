@@ -27,10 +27,10 @@ export class CallWaiterComponent implements OnInit {
       this.tableService.updateTable(table).subscribe();
     });
     this.waiterCalled = true;
-    this.openSnackBar("A waiter will come to you in a minute","Please Wait");
+    this.openSnackBar("A waiter will come to you","Please Wait");
   }
 
-  openSnackBar(message: string, action: string) {
+  private openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,
     });

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TableService } from 'src/app/table.service';
 import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
@@ -13,8 +14,10 @@ export class ReadyToOrderComponent implements OnInit {
   ready: boolean = false;
   tables: Table[] = [];
 
-  constructor(private customerInterface: CustomerInterfaceComponent, 
-    private tableService: TableService) { }
+  constructor(
+    private customerInterface: CustomerInterfaceComponent, 
+    private tableService: TableService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {}
 
@@ -24,6 +27,8 @@ export class ReadyToOrderComponent implements OnInit {
       this.tableService.updateTable(table).subscribe();
     });
     this.ready = true;
+
+    this.openSnackBar("A waiter will come to take your order", "Please Wait")
   }
 
   cancel(): void {
@@ -32,6 +37,12 @@ export class ReadyToOrderComponent implements OnInit {
       this.tableService.updateTable(table).subscribe();
     });
     this.ready = false;
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
 }
