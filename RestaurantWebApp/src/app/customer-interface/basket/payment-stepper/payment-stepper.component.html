@@ -48,8 +48,8 @@
         <ng-template matStepLabel>Insert Your Card Details</ng-template>
         <mat-form-field>
           <mat-label>Card Number</mat-label>
-          <input matInput placeholder="XXXX-XXXX-XXXX-XXXX" (input) = "checkCardInput()" 
-          formControlName="cardNumberControl" [maxLength] = "19" required>
+          <input matInput onkeyup="this.value=this.value.replace(/(\d\d\d\d)(\d)/g,'$1-$2')"
+          placeholder="XXXX-XXXX-XXXX-XXXX" (input) = "checkCardInput()" formControlName="cardNumberControl" [maxLength] = "19" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Expiration Date</mat-label>
