@@ -57,6 +57,16 @@ export class PaymentStepperComponent implements OnInit {
         let date = this.paymentGroup.get('expDateControl').value.split("/", 2);
         console.log(date);
         console.log(parseInt(date[0]));
+        if(date[1].length == 4){
+          let year = date[1].split("", 4);
+          if(((year[0] * 10) + year[1]) < 20){
+            this.correctInputs = true;
+            return;
+          } else {
+            date[1] = year[2] + year[3];
+            console.log(date[1]);
+          }
+        }
         if((parseInt(date[0]) < 13 && parseInt(date[1]) > 21) || (parseInt(date[0]) < 13 && parseInt(date[0]) > 3 && parseInt(date[1]) == 21)){
           if(this.paymentGroup.get('cvvCodeControl').value.length == 3){
            this.correctInputs = false;
