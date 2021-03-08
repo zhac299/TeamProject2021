@@ -26,6 +26,7 @@ export class MealService {
   }
 
   updateNumberSelections(meal: Meal): void {
+    console.log(meal.numberSelections);
     let updateNumberSelectionsUrl = this.mealsURL + "/numberSelections";
     this.httpClient.put<Meal>(`${updateNumberSelectionsUrl}/${meal.id}/${meal.numberSelections}`,meal).subscribe((meal)=>{
       console.log(meal);
