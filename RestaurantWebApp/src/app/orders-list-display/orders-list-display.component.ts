@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {OrderService} from "../order.service";
-import {Observable, Subscription, timer} from "rxjs";
-import {filter, switchMap, tap} from "rxjs/operators";
+import {fromEvent, Observable, of, Subscription, timer} from "rxjs";
+import {debounceTime, filter, switchMap, tap} from "rxjs/operators";
 import {Order} from "../../models/Order";
 import {OrderComponent} from "../waiter-menu/order/order.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -27,6 +27,8 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   refreshTimer$ = timer(0, 5000)
     .pipe(tap(() => console.log('Fetching Orders...')));
+  resize$ = fromEvent(window, 'resize');
+  windowWidth: number = Math.floor(window.innerWidth/300);
 
   ngOnInit(): void {
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
@@ -38,7 +40,14 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
         this.orders = orders;
       });
     }
+    this.resize$
+      .pipe(debounceTime(250),
+      tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
+        )
+      .subscribe((w) => this.windowWidth = Math.floor(window.innerWidth/250));
+    console.log(this.windowWidth);
   }
+
 
   openOrderDialog(order: Order): void {
     // this.dialogTable = table;
