@@ -52,6 +52,7 @@ import { OrdersListDisplayComponent } from './orders-list-display/orders-list-di
 import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
 import { MenusListDisplayComponent } from './menus-list-display/menus-list-display.component';
 import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
+import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-staff-dialog.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component'
     OrdersListDisplayComponent,
     ManagerMenuComponent,
     MenusListDisplayComponent,
-    AddStaffComponent
+    AddStaffComponent,
+    AddStaffDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 export class Staff{
   id: number;
-  staffEmail: string;
-  staffUsername: string;
-  isWaiter: boolean;
+  email: string;
+  userName: string;
+  password: string;
+  waiter: boolean;
 }
