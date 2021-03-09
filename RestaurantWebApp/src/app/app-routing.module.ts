@@ -9,6 +9,7 @@ import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
 import {KitchenMenuComponent} from "./kitchen-menu/kitchen-menu.component";
 import {ManagerMenuComponent} from "./manager-menu/manager-menu.component";
+import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,13 +19,14 @@ const routes: Routes = [
   { path: 'waiter-menu', component: WaiterMenuComponent },
   { path: 'kitchen-menu', component: KitchenMenuComponent },
   { path: 'manager-menu', component: ManagerMenuComponent },
+  { path: 'manager-menu/add-staff', component: AddStaffComponent },
   { path: 'filter', component: MenuFilterComponent },
   { path: 'customer-menu', component: CustomerInterfaceComponent },
   { path: '2FA', component: TwoFactorAuthComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
