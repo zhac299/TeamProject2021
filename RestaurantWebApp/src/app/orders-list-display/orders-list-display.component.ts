@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {OrderService} from "../order.service";
-import {fromEvent, Observable, of, Subscription, timer} from "rxjs";
-import {debounceTime, filter, switchMap, tap} from "rxjs/operators";
+import {fromEvent, Observable, Subscription, timer} from "rxjs";
+import {debounceTime, switchMap, tap} from "rxjs/operators";
 import {Order} from "../../models/Order";
 import {OrderComponent} from "../waiter-menu/order/order.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -45,12 +45,13 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
       .pipe(debounceTime(250),
       tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
         )
-      .subscribe((w) => this.windowWidth = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH));
+      .subscribe((w) => {
+        this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
+        )});
   }
 
 
   openOrderDialog(order: Order): void {
-    // this.dialogTable = table;
     const dialogRef = this.dialog.open(OrderComponent, {
       data: order,
       width: '99%',
