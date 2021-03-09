@@ -26,7 +26,6 @@ export class OrderTrackerComponent implements OnInit {
       this.mealList = data.selectedMeals;
       this.customer = data.customer;
     }
-  ) {}
 
   ngOnInit(): void {
   }
