@@ -23,12 +23,13 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   @Input() createPermission: boolean;
   @Input() isKitchenStaff: boolean;
 
+  ORDER_BUTTON_WIDTH = 300;
   orders: Order[];
   subscription: Subscription;
   refreshTimer$ = timer(0, 5000)
     .pipe(tap(() => console.log('Fetching Orders...')));
   resize$ = fromEvent(window, 'resize');
-  windowWidth: number = Math.floor(window.innerWidth/300);
+  windowWidth: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
 
   ngOnInit(): void {
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
@@ -44,8 +45,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
       .pipe(debounceTime(250),
       tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
         )
-      .subscribe((w) => this.windowWidth = Math.floor(window.innerWidth/250));
-    console.log(this.windowWidth);
+      .subscribe((w) => this.windowWidth = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH));
   }
 
 
