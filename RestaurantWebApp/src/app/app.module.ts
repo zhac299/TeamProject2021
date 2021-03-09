@@ -55,6 +55,7 @@ import { MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
 import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { OrderTrackerComponent } from './customer-interface/order-tracker/order-tracker.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { MatSnackBarModule} from '@angular/material/snack-bar';
     KitchenMenuComponent,
     OrdersListDisplayComponent,
     ManagerMenuComponent,
-    PaymentStepperComponent
+    PaymentStepperComponent,
+    OrderTrackerComponent
   ],
   imports: [
     BrowserModule,
