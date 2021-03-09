@@ -85,7 +85,6 @@ export class CustomerInterfaceComponent implements OnInit {
 
   addMeal(menuItem: Menu): void {
     var mealNotPresent: Boolean = true;
-    console.log(this.selectedMeals);
     for(var i = 0 ; i < this.selectedMeals.length; i++) {
       if (this.selectedMeals[i].menu.name == menuItem.name) {
         this.selectedMeals[i].numberSelections += 1;
@@ -130,7 +129,7 @@ export class CustomerInterfaceComponent implements OnInit {
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals, orderPlaced: this.orderPlaced};
+    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
     dialogConfig.width = "60%";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 

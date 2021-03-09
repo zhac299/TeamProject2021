@@ -2,6 +2,7 @@ import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
 import { Customer } from 'src/models/Customer';
@@ -18,7 +19,7 @@ export class BasketComponent implements OnInit {
 
   mealList: Meal[];
   customer: Observable<Customer>;
-  orderPlaced: Boolean = false;
+  orderPlaced: Boolean;
   
   constructor(
     private snackBar: MatSnackBar,
@@ -29,10 +30,16 @@ export class BasketComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data) {
       this.mealList = data.selectedMeals;
       this.customer = data.customer;
-      this.orderPlaced = data.orderPlaced;
     }
 
-  ngOnInit(): void {}
+  async ngOnInit(): Promise<void> {
+    const customer = await this.customer.pipe(take(1)).toPromise();
+    if (customer.orders != undefined) {
+      this.orderPlaced = true;
+    } else {
+      this.orderPlaced = false;
+    }
+  }
 
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
