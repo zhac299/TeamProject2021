@@ -28,7 +28,7 @@ export class OrderTrackerComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.customer = await this.customerObservable.pipe(take(1)).toPromise();
-
+    this.displayStatus();
     if (this.customer.orders.length == 0) {
       this.orderPlaced = false;
     } else {
@@ -41,14 +41,21 @@ export class OrderTrackerComponent implements OnInit {
 
   displayStatus(): void {
     for (let order of this.customer.orders) {
-      if (order.isConfirmed == true) {
-        this.orderStatus = "Order was confimred by a waiter... Paciencia por favor!";
-      } else if (order.isDelivered == true) {
+      if (order.isDelivered == true) {
         this.orderStatus = "Order was delivered... Buen apetito!";
-      } else if (order.isPaid == true) {
-        this.orderStatus = "Order was paid... Muchas Gracias!";
+        if (order.isPaid == true) {
+          this.orderStatus = this.orderStatus + " And order was paid... Muchas Gracias!";
+        }
+      } else if (order.isConfirmed == true) {
+        this.orderStatus = "Order was confirmed by a waiter... Paciencia por favor!";
+        if (order.isPaid == true) {
+          this.orderStatus = this.orderStatus + " And order was paid... Muchas Gracias!";
+        }
+      } else {
+        this.orderStatus = "Order has not been confirmed yet...";
       }
     }
+    console.log(this.orderStatus);
   }
 
   close(): void {
