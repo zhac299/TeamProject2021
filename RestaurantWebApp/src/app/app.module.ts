@@ -57,6 +57,7 @@ import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { MenusListDisplayComponent } from './menus-list-display/menus-list-display.component';
 import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
 import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-staff-dialog.component';
+import { TablesListDisplayComponent } from './tables-list-display/tables-list-display.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-sta
     PaymentStepperComponent,
     MenusListDisplayComponent,
     AddStaffComponent,
-    AddStaffDialogComponent
+    AddStaffDialogComponent,
+    TablesListDisplayComponent
   ],
   imports: [
     BrowserModule,
