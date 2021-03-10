@@ -1,27 +1,21 @@
 <div>
-  <mat-grid-list cols="5" rowHeight="60px">
-    <mat-grid-tile>
-      <h1 mat-dialog-title>Order #{{order.id}}</h1>
-    </mat-grid-tile>
-    <mat-grid-tile>
-    </mat-grid-tile>
-    <mat-grid-tile>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 mat-dialog-title>Order #{{order.id}}</h1>
+      </div>
+      <div class="col">
+        <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isPaid" (change)="updateOrderIsPaid(order)">Paid</mat-checkbox>
+      </div>
+      <div class="col">
+        <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isDelivered" (change)="updateOrderDelivered(order)">Delivered</mat-checkbox>
+      </div>
+      <div class="col">
+        <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
+      </div>
+    </div>
 
-      <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isPaid" (change)="updateOrderIsPaid(order)">Paid</mat-checkbox>
-
-    </mat-grid-tile>
-    <mat-grid-tile>
-      
-      <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isDelivered" (change)="updateOrderDelivered(order)">Delivered</mat-checkbox>
-      
-    </mat-grid-tile>
-    <mat-grid-tile>
-
-      <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
-
-    </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
+  </div>
 
   <hr>
 
@@ -43,31 +37,31 @@
           <mat-card-title>Total: {{total}}$</mat-card-title>
         </mat-card>
       </mat-grid-tile>
-      <mat-grid-tile colspan="2">
+      <mat-grid-tile colspan="3">
         <mat-card class="card">
           <mat-card-header>
             <mat-card-title>ITEMS</mat-card-title>
           </mat-card-header>
-          <mat-card-content>
-            <mat-grid-list cols="4" rowHeight="50px">
-              <mat-grid-tile *ngFor="let menu of menuList" colspan="1">
-                <button mat-raised-button style="width: 100%; color: green"
+          <mat-card-content class="container">
+            <div class="row">
+              <div *ngFor="let menu of menuList" class="col">
+                <button mat-raised-button style="width: 100%; color: green; font-stretch: condensed"
                         (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
-              </mat-grid-tile>
-            </mat-grid-list>
+              </div>
+            </div>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
-      <mat-grid-tile colspan="1">
-        <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title style="color: green">FOOD</mat-card-title>
-            <mat-card-title style="color: lightblue">DRAUGHT</mat-card-title>
-            <mat-card-title style="color: coral">MINERALS</mat-card-title>
-            <mat-card-title style="color: pink">COCKTAILS</mat-card-title>
-          </mat-card-header>
-        </mat-card>
-      </mat-grid-tile>
+<!--      <mat-grid-tile colspan="1">-->
+<!--        <mat-card class="card">-->
+<!--          <mat-card-header>-->
+<!--            <mat-card-title style="color: green">FOOD</mat-card-title>-->
+<!--            <mat-card-title style="color: lightblue">DRAUGHT</mat-card-title>-->
+<!--            <mat-card-title style="color: coral">MINERALS</mat-card-title>-->
+<!--            <mat-card-title style="color: pink">COCKTAILS</mat-card-title>-->
+<!--          </mat-card-header>-->
+<!--        </mat-card>-->
+<!--      </mat-grid-tile>-->
     </mat-grid-list>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
