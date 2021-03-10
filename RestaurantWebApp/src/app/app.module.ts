@@ -53,6 +53,7 @@ import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
 import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { MenusListDisplayComponent } from './menus-list-display/menus-list-display.component';
 import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
 import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-staff-dialog.component';
@@ -118,7 +119,8 @@ import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-sta
     MatSlideToggleModule,
     MatBadgeModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [AllergensChipsComponent, CustomerInterfaceComponent],
   bootstrap: [AppComponent]

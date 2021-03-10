@@ -1,3 +1,4 @@
+<mat-dialog-content>
 <mat-grid-list cols="1" rowHeight="50px">
   <mat-grid-tile colspan="1">
     <div class = "title" >Shopping Cart
@@ -5,20 +6,23 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
-<table class="table">
+<div *ngIf = "orderPlaced == false">
+<hr>
+<p class = "selectedItemsTitle">Selected Items</p>
+<table class="table" class = "selecedItems">
     <tbody>
       <tr *ngFor="let meal of mealList">
         <th scope="row">
-            <button mat-button (click) = "remove(meal)">
+            <button mat-button (click) = "clear(meal)">
               <mat-icon>delete</mat-icon>
             </button>
-            <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.selections}}$)</span>
+            <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.numberSelections}}$)</span>
         </th>
         <td class = "numberOfSelections">
             <button mat-button (click) = "add(meal)">
               <mat-icon>add</mat-icon>
             </button>
-            {{meal.selections}}
+            <button mat-mini-fab class="selection-fab">x{{meal.numberSelections}}</button>
             <button mat-button (click) = "remove(meal)">
               <mat-icon>remove</mat-icon>
             </button>
@@ -28,7 +32,7 @@
   </table>
 <mat-list>
     <mat-list-item>
-        <div class="center" *ngIf = "orderPlaced == false; else orderPlacedBlock">
+        <div class="center" *ngIf = "orderPlaced == false">
             <button mat-raised-button *ngIf = " this.mealList.length !=0; else emptyShoppingCartBlock" (click) = "placeOrder()" class = "placeOrder">
                 Place Order
             </button>
@@ -38,12 +42,8 @@
                 </div>
             </ng-template>
         </div>
-        <ng-template #orderPlacedBlock>
-            <div class = "orderPlacedMessage">
-                Order Placed!
-            </div>
-        </ng-template>
     </mat-list-item>
 </mat-list>
-<hr>
-<payment-stepper></payment-stepper>
+</div>
+<payment-stepper *ngIf = "orderPlaced == true"></payment-stepper>
+</mat-dialog-content>

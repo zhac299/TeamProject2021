@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TableService } from 'src/app/table.service';
 import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
+import { MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'call-waiter',
@@ -15,7 +16,8 @@ export class CallWaiterComponent implements OnInit {
 
   constructor(
     private customerInterface: CustomerInterfaceComponent,
-    private tableService: TableService) { }
+    private tableService: TableService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {}
 
@@ -25,6 +27,13 @@ export class CallWaiterComponent implements OnInit {
       this.tableService.updateTable(table).subscribe();
     });
     this.waiterCalled = true;
+    this.openSnackBar("A waiter will come to you","Please Wait");
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
   cancel(): void {
@@ -33,6 +42,7 @@ export class CallWaiterComponent implements OnInit {
       this.tableService.updateTable(table).subscribe();
     });
     this.waiterCalled = false;
+    this.openSnackBar("You canceled the waiter call","Still need help?");
   }
   
 }

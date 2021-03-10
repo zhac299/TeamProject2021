@@ -47,6 +47,7 @@ export class CustomerInterfaceComponent implements OnInit {
   paramsObject: any;
   customer: Observable<Customer>;
   table:Observable<Table>;
+  orderPlaced: Boolean = false;
 
   constructor(private menuService: MenuService,
               private mealService: MealService,
@@ -84,16 +85,17 @@ export class CustomerInterfaceComponent implements OnInit {
 
   addMeal(menuItem: Menu): void {
     var mealNotPresent: Boolean = true;
+    console.log(this.selectedMeals);
     for(var i = 0 ; i < this.selectedMeals.length; i++) {
-      if (this.selectedMeals[i].menu == menuItem) {
-        this.selectedMeals[i].selections += 1;
+      if (this.selectedMeals[i].menu.name == menuItem.name) {
+        this.selectedMeals[i].numberSelections += 1;
         mealNotPresent = false;
       }
     }
     if (mealNotPresent) {
       const newMeal = new Meal();
       newMeal.menu = menuItem;
-      newMeal.selections = 1;
+      newMeal.numberSelections = 1;
       this.selectedMeals.push(newMeal);
     }
   }
@@ -101,8 +103,8 @@ export class CustomerInterfaceComponent implements OnInit {
   removeMeal(menuItem: Menu): void {
     for(var i = 0; i < this.selectedMeals.length; i++) {
       if(this.selectedMeals[i].menu == menuItem) {
-        this.selectedMeals[i].selections -= 1;
-        if(this.selectedMeals[i].selections == 0) {
+        this.selectedMeals[i].numberSelections -= 1;
+        if(this.selectedMeals[i].numberSelections == 0) {
           this.selectedMeals.splice(i);
         }
       }
@@ -120,21 +122,20 @@ export class CustomerInterfaceComponent implements OnInit {
   getNumberOfSelections(menuItem: Menu): number {
     for(let meal of this.selectedMeals) {
       if(meal.menu == menuItem) {
-        return meal.selections;
+        return meal.numberSelections;
       }
     }
   }
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
-
+    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals, orderPlaced: this.orderPlaced};
+    dialogConfig.width = "60%";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe(orderPlaced => {
+      this.orderPlaced = orderPlaced;
     });
   }
 

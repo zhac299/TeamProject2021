@@ -82,4 +82,21 @@ public class OrderController {
     public List<Order> getNoConfrimedOrders() {
         return orderService.getNoConfirmedOrders();
     }
+
+    @PutMapping("/orders/isPaid/{id}/{isPaid}")
+    public Order updateIsPaid(@PathVariable("id") Long id, @PathVariable("isPaid") boolean isPaid) {
+        Order order = orderService.getOrderById(id);
+        order.setIsPaid(isPaid);
+        orderRepo.save(order);
+        return order;
+    }
+
+    
+    @PutMapping("/orders/total/{id}/{total}")
+    public Order updateTotal(@PathVariable("id") Long id, @PathVariable("total") int total) {
+        Order order = orderService.getOrderById(id);
+        order.setTotal(total);
+        orderRepo.save(order);
+        return order;
+    }
 }
