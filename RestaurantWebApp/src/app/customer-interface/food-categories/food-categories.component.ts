@@ -20,7 +20,12 @@ export class FoodCategoriesComponent implements OnInit {
 
   onClick(name:string): void{
     this.menuService.modifyCat(name);
-  }
+    }
+    
+    showSuggestions() {
+        this.menuService.showSuggestions();
+    }
+
   color = '#388572';
 
   tiles: Tile[] = [

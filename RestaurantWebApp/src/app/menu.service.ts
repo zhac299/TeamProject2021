@@ -113,7 +113,17 @@ export class MenuService {
         this.cat.meal = this.sOrder;
         return this.cat;
     }
-
+    showSuggestions() {
+        this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe( orders => {
+            this.orderList = orders;
+            for (let order of this.orderList) {
+                if (order.category == this.cat.name && order.isSuggested == true) {
+                    this.sOrder.push(order);
+                }
+            }
+        });
+    }
+    
     setCat(menu: Menu[]) {
         this.sOrder = [];
         for (let order of menu) {
