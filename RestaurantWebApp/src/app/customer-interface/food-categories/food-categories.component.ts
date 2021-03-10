@@ -29,5 +29,7 @@ export class FoodCategoriesComponent implements OnInit {
     {text: 'Dips', cols: 1, rows: 1, color: this.color},
     {text: 'Desserts', cols: 1, rows: 1, color: this.color},
   ];
-
+  tiles2: Tile[] = [
+      { text: 'Suggestions', cols: 1, rows: 1, color: this.color }
+  ]
 }
