@@ -6,6 +6,7 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+<div *ngIf = "orderPlaced == true; else noOrderBlock">
 <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -25,4 +26,10 @@
       </tbody>
     </table>
   </mat-expansion-panel>
+</div>
+<ng-template #noOrderBlock>
+  <div class = "noOrderBlock">
+    You have not placed an order yet!
+  </div> 
+</ng-template>
 </mat-dialog-content>

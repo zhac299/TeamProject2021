@@ -143,9 +143,13 @@ export class CustomerInterfaceComponent implements OnInit {
   openTracker(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.data = {customer: this.customer, selectedMeals: this.selectedMeals};
+    dialogConfig.data = {customer: this.customer, selectedMeals: this.selectedMeals, orderPlaced: this.orderPlaced};
     dialogConfig.width = "60%";
     const dialogRef = this.dialog.open(OrderTrackerComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(orderPlaced => {
+      this.orderPlaced = orderPlaced;
+    });
   }
 
   goHome(): void {

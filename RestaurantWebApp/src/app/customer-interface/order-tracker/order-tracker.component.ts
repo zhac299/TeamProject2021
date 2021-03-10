@@ -16,6 +16,7 @@ export class OrderTrackerComponent implements OnInit {
 
   mealList: Meal[];
   customer: Observable<Customer>;
+  orderPlaced: Boolean;
 
   constructor(
     private elementRef: ElementRef,
@@ -25,13 +26,14 @@ export class OrderTrackerComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data) {
       this.mealList = data.selectedMeals;
       this.customer = data.customer;
+      this.orderPlaced = data.orderPlaced;
     }
 
   ngOnInit(): void {
   }
 
   close(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.orderPlaced);
   }
 
 }
