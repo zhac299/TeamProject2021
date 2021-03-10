@@ -27,26 +27,7 @@
     [isKitchenStaff]="true">
   </app-orders-list-display>
   <hr>
-  <h2>Menu</h2>
-
-  <button mat-button (click)="openAddMenuDialog()">Add</button>
-
-  <mat-grid-list cols="4" rowHeight="15px">
-    <mat-grid-tile>Name</mat-grid-tile>
-    <mat-grid-tile>Description</mat-grid-tile>
-    <mat-grid-tile>Price</mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
-  <mat-grid-list class="menuItem" cols="4" rowHeight="75px" *ngFor="let menu of menuList">
-    <mat-grid-tile>{{menu.name}}</mat-grid-tile>
-    <mat-grid-tile>{{menu.description}}</mat-grid-tile>
-    <mat-grid-tile>{{menu.price}}</mat-grid-tile>
-    <mat-grid-tile>
-      <button mat-button (click)="openAddDialog(menu)">Edit</button>
-      <button mat-button (click)="deleteMenuItem(menu)">Delete</button>
-    </mat-grid-tile>
-  </mat-grid-list>
-
+<app-menus-list-display></app-menus-list-display>
 
 </mat-drawer-container>
 

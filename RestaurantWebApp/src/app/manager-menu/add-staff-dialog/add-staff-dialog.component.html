@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content class="container">
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>User Name</mat-label>
+      <input matInput [(ngModel)]="data.staff.userName"/>
+    </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Email</mat-label>
+      <input matInput class="fixInput" [(ngModel)]="data.staff.email"/>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Password</mat-label>
+      <input matInput class="fixInput" [(ngModel)]="data.staff.password"/>
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="data.staff.waiter" labelPosition="before">Is Waiter
+    </mat-checkbox>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="this.data.staff">Ok</button>
+</mat-dialog-actions>
