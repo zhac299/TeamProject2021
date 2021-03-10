@@ -47,14 +47,16 @@ export class PaymentStepperComponent implements OnInit {
       cvvCodeControl: ['', Validators.required]
     });
     var customer = await this.basketComponent.customerObservable.pipe(take(1)).toPromise();
+    console.log(customer);
     this.orders = customer.orders;
+    console.log(this.orders);
     for (let order of this.orders) {
       if (order.isPaid == true) {
         this.isPaid = true;
-        this.mealList = order.meal;
       }
+      this.mealList = order.meal;
     }
-    console.log(this.mealList);
+    console.log(this.isPaid);
   }
 
   orderReviewed(): void{
@@ -106,7 +108,7 @@ export class PaymentStepperComponent implements OnInit {
       } else {
         this.needToReview = true;
       }
-
+    this.isPaid = true;
     this.openSnackBar("Your payment is confirmed","Muchas Gracias!")
   }
 

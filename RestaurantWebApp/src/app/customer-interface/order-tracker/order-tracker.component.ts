@@ -1,6 +1,7 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
 import { Customer } from 'src/models/Customer';
@@ -16,22 +17,28 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
 export class OrderTrackerComponent implements OnInit {
 
   mealList: Meal[];
+  customerObservable: Observable<Customer>;
   customer: Customer;
   orderPlaced: Boolean;
 
   constructor(
-    private basketComponent: BasketComponent,
     private orderService: OrderService,
-    private dialogRef: MatDialogRef<CustomerInterfaceComponent>) {};
+    private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
+    @Inject(MAT_DIALOG_DATA) data) {
+      this.customerObservable = data.customer;
+    }
 
-  ngOnInit(): void {
-    this.customer = this.basketComponent.customer;
-    for (let order of this.customer.orders) {
-      if (order.isPaid == true) {
+  async ngOnInit(): Promise<void> {
+    this.customer = await this.customerObservable.pipe(take(1)).toPromise();
+
+    if (this.customer.orders.length == 0) {
+      this.orderPlaced = false;
+    } else {
+      this.orderPlaced = true;
+      for (let order of this.customer.orders) {
         this.mealList = order.meal;
       }
     }
-    this.orderPlaced = this.basketComponent.orderPlaced;
   }
 
   close(): void {
