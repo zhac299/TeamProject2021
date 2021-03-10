@@ -1,4 +1,3 @@
-
 <mat-drawer-container class="example-container" autosize>
   <mat-toolbar>
     <button type="button" mat-button (click)="drawer.toggle()">
@@ -15,7 +14,9 @@
         <button mat-button>Add Table</button>
       </li>
       <li class="flex-item">
-        <a routerLink="/manager-menu/add-staff"><button mat-button>Add Staff</button></a>
+        <a routerLink="/manager-menu/add-staff">
+          <button mat-button>Add Staff</button>
+        </a>
       </li>
 
     </ul>
@@ -27,11 +28,12 @@
   </mat-drawer>
   <app-tables-list-display></app-tables-list-display>
 
-<app-orders-list-display
-[createPermission]="true"
-[isKitchenStaff]="false"
->
-</app-orders-list-display>
+  <app-orders-list-display
+    [createPermission]="true"
+    [isKitchenStaff]="false"
+  >
+  </app-orders-list-display>
 
-<hr>
-<app-menus-list-display></app-menus-list-display>
+  <hr>
+  <app-menus-list-display></app-menus-list-display>
+</mat-drawer-container>
