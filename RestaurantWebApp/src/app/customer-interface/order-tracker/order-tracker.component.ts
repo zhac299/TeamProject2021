@@ -30,4 +30,8 @@ export class OrderTrackerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  close(): void {
+    this.dialogRef.close();
+  }
+
 }

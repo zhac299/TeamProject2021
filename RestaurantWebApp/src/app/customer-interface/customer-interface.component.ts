@@ -16,6 +16,7 @@ import { TableService } from '../table.service';
 import {animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
 import { Meal } from 'src/models/Meal';
 import { MealService } from '../meal.service';
+import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
 
 @Component({
   selector: 'app-customer-interface',
@@ -137,6 +138,14 @@ export class CustomerInterfaceComponent implements OnInit {
     dialogRef.afterClosed().subscribe(orderPlaced => {
       this.orderPlaced = orderPlaced;
     });
+  }
+
+  openTracker(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.data = {customer: this.customer, selectedMeals: this.selectedMeals};
+    dialogConfig.width = "60%";
+    const dialogRef = this.dialog.open(OrderTrackerComponent, dialogConfig);
   }
 
   goHome(): void {
