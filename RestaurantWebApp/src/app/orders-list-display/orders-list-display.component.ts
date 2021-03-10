@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {OrderService} from "../order.service";
 import {Observable, Subscription, timer} from "rxjs";
-import {switchMap, tap} from "rxjs/operators";
+import {filter, switchMap, tap} from "rxjs/operators";
 import {Order} from "../../models/Order";
 import {OrderComponent} from "../waiter-menu/order/order.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -21,6 +21,8 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
               public dialog: MatDialog) { }
 
   @Input() createPermission: boolean;
+  @Input() isKitchenStaff: boolean;
+
   orders: Order[];
   subscription: Subscription;
   refreshTimer$ = timer(0, 5000)
@@ -28,10 +30,14 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
-    this.orderService.orders$.subscribe((orders) => {
-      this.orders = orders;
-    });
-    console.log(this.createPermission);
+    if (this.isKitchenStaff) {
+      this.orderService.getConfirmedOrders()
+        .subscribe((orders) =>this.orders = orders);
+    } else {
+      this.orderService.orders$.subscribe((orders) => {
+        this.orders = orders;
+      });
+    }
   }
 
   openOrderDialog(order: Order): void {

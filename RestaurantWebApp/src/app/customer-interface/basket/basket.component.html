@@ -1,3 +1,4 @@
+<mat-dialog-content>
 <mat-grid-list cols="1" rowHeight="50px">
   <mat-grid-tile colspan="1">
     <div class = "title" >Shopping Cart
@@ -5,20 +6,22 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
-<table class="table">
+<hr>
+<p class = "selectedItemsTitle">Selected Items</p>
+<table class="table" class = "selecedItems">
     <tbody>
       <tr *ngFor="let meal of mealList">
         <th scope="row">
-            <button mat-button (click) = "remove(meal)">
+            <button mat-button (click) = "clear(meal)">
               <mat-icon>delete</mat-icon>
             </button>
-            <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.selections}}$)</span>
+            <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.numberSelections}}$)</span>
         </th>
         <td class = "numberOfSelections">
             <button mat-button (click) = "add(meal)">
               <mat-icon>add</mat-icon>
             </button>
-            {{meal.selections}}
+            <button mat-mini-fab class="selection-fab">x{{meal.numberSelections}}</button>
             <button mat-button (click) = "remove(meal)">
               <mat-icon>remove</mat-icon>
             </button>
@@ -45,5 +48,5 @@
         </ng-template>
     </mat-list-item>
 </mat-list>
-<hr>
 <payment-stepper></payment-stepper>
+</mat-dialog-content>

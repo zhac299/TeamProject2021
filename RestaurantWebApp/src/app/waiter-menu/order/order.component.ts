@@ -18,8 +18,8 @@ import {MealService} from "../../meal.service";
 })
 export class OrderComponent implements OnInit {
 
+  total: number;
   table: Table;
-  total: number = 0;
   menuList: Menu[] = [];
 
   private orderedMealItemsSubject$ = new BehaviorSubject<Meal[]>([]);
@@ -48,8 +48,13 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  updateOrder(order: Order): void {
-    this.orderService.updateOrderBooleans(order)
+  updateOrderConfirmed(order: Order): void {
+    this.orderService.updateOrderConfirmed(order)
+      .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
+    console.log(order);
+  }
+  updateOrderDelivered(order: Order): void {
+    this.orderService.updateOrderDelivered(order)
       .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
     console.log(order);
   }
@@ -64,13 +69,9 @@ export class OrderComponent implements OnInit {
     if(this.order.meal.length > 0){
       this.order$.subscribe((order) => {
         this.orderedMealItemsSubject$.next(order.meal);
-        order.meal.forEach((meal) => {this.total = this.total + meal.menu.price})
+        this.total = order.total;
       })
     }
-  }
-
-  setTotal(menuItems: Menu[]): void {
-    menuItems.forEach((item) => {this.total = this.total + item.price});
   }
 
   updateAllOrder(): void {
@@ -81,26 +82,39 @@ export class OrderComponent implements OnInit {
   }
 
   deleteOrder(): void {
+    console.log(this.order.id);
     this.orderService.deleteOrderById(this.order.id);
     this.dialogRef.close();
   }
 
   addMenuToOrder(menu: Menu, order:Order) {
-    const newMeal = new Meal();
-    newMeal.selections = 1;
-    newMeal.menu = menu;
-    newMeal.order = order;
     const _orderedMealItems = this.orderedMealItemsSubject$.getValue();
-    this.mealService.createNewMeal(newMeal)
-      .subscribe((meal) =>{
+    let alreadyOrdered = false;
+    _orderedMealItems.forEach((meal) => {
+      if (meal.menu.name == menu.name){
+        meal.numberSelections += 1;
+        this.total += meal.menu.price;
+        this.mealService.updateNumberSelections(meal);
+        alreadyOrdered = true;
+      }
+    });
+    if(alreadyOrdered == false) {
+      const newMeal = new Meal();
+      newMeal.numberSelections = 1;
+      newMeal.menu = menu;
+      newMeal.order = order;
+      this.total += newMeal.menu.price;
+      this.mealService.createNewMeal(newMeal).subscribe((meal) =>{
         _orderedMealItems.push(meal);
-        this.orderedMealItemsSubject$.next(_orderedMealItems);
       });
+    }
+    this.order.total += menu.price;
+    this.orderService.updateTotal(order);
+    this.orderedMealItemsSubject$.next(_orderedMealItems);
   }
 
   save(order: Order) {
     console.log(this.orderSubject$.getValue());
-    // this.orderService.updateOrder(order);
     this.order = this.orderSubject$.getValue();
     this.orderedMealItemsSubject$.complete();
     this.orderedMealItemsSubject$.complete();

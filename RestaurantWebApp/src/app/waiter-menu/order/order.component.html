@@ -7,10 +7,14 @@
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
-      <mat-checkbox [(ngModel)]="order.isDelivered" (change)="updateOrder(order)">Delivered</mat-checkbox>
+      
+      <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isDelivered" (change)="updateOrderDelivered(order)">Delivered</mat-checkbox>
+      
     </mat-grid-tile>
     <mat-grid-tile>
-      <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrder(order)">Confirmed</mat-checkbox>
+
+      <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
+
     </mat-grid-tile>
     <mat-grid-tile>
     </mat-grid-tile>
@@ -31,10 +35,8 @@
             <mat-list *ngFor="let meal of orderedMealItems$ | async">
               <mat-list-item>
                 <p mat-card-subtitle style="font-size:14px" mat-line>{{meal.menu.name}}</p>
-                <p mat-subheader>({{meal.menu.price}})</p>
-                <button mat-button>
-                  <mat-icon (click)="deleteOrderedMenuItem(meal)">delete</mat-icon>
-                </button>
+                <p mat-subheader>({{meal.menu.price}}$)</p>
+                <p mat-subheader>x{{meal.numberSelections}}</p>
               </mat-list-item>
               <mat-divider></mat-divider>
             </mat-list>

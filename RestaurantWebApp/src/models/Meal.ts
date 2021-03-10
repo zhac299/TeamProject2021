@@ -5,5 +5,5 @@ export class Meal{
   id: number;
   menu: Menu;
   order: Order;
-  selections: number;
+  numberSelections: number;
 }

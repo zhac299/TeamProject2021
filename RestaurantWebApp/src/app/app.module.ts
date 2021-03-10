@@ -53,6 +53,7 @@ import { PaymentStepperComponent } from './customer-interface/basket/payment-ste
 import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
+import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,7 @@ import { OrdersListDisplayComponent } from './orders-list-display/orders-list-di
     ReadyToOrderComponent,
     KitchenMenuComponent,
     OrdersListDisplayComponent,
-    ReadyToOrderComponent,
+    ManagerMenuComponent,
     PaymentStepperComponent
   ],
   imports: [

@@ -49,6 +49,8 @@ export class OrderService {
   createNewOrderWithCustomer(customer: Customer): void {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
+    orderWithCustomer.isPaid=false;
+    orderWithCustomer.total=0;
     this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer)
       .subscribe((order) => {
         const _orders = this.orderSubject$.getValue();
@@ -60,9 +62,11 @@ export class OrderService {
       });
   }
 
-  createNewOrder(customer: Customer): Observable<Order> {
+  createNewOrder(customer: Customer, total: number): Observable<Order> {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
+    orderWithCustomer.total = total;
+    orderWithCustomer.isPaid = false;
     return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 
@@ -81,14 +85,17 @@ export class OrderService {
           this.orderSubject$.getValue()
             .filter(
               (ignoreOrder) =>
-                ignoreOrder.id !== orderId
-
-            )
+                ignoreOrder.id !== orderId)
         );
       });
   }
-  updateOrderBooleans(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`,order);
+
+  updateOrderDelivered(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isdelivered/${order.isDelivered}`,order);
+  }
+
+  updateOrderConfirmed(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isconfirmed/${order.isConfirmed}`,order);
   }
 
   updateOrder(order: Order): void {
@@ -102,6 +109,20 @@ export class OrderService {
         });
         this.orderSubject$.next(_orders);
       });
+  }
+
+  updateTotal(order: Order): void {
+    let updateTotalUrl = this.restaurantWebApiUrl + "/total";
+    this.httpClient.put<Order>(`${updateTotalUrl}/${order.id}/${order.total}`,order).subscribe((order) =>{
+      console.log(order);
+    })
+  }
+
+  updateIsPaid(order: Order): void {
+    let updateIsPaidUrl = this.restaurantWebApiUrl + "/isPaid";
+    this.httpClient.put<Order>(`${updateIsPaidUrl}/${order.id}/${order.isPaid}`,order).subscribe((order) =>{
+      console.log(order);
+    })
   }
 
   public getOrderedMenuItems(order: Order): Observable<Menu[]> {
@@ -132,6 +153,10 @@ export class OrderService {
 
   public getConfirmedOrders(): Observable<Order[]> {
     return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/isconfirmed`);
+  }
+
+  public getNoConfirmedOrders(): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/noisconfirmed`);
   }
 
 }

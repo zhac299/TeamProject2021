@@ -86,11 +86,24 @@ public class OrderService {
         List<Order> allOrders = orderRepository.findAll();
 
         for (Order order : allOrders) {
-            if (order.getIsConfirmed() == true) {
+            if (order.getIsConfirmed() == true && order.getIsDelivered() == false) {
                 confirmedOrders.add(order);
             }
         }
 
         return confirmedOrders;
+    }
+
+    public List<Order> getNoConfirmedOrders() {
+        List<Order> noConfirmedOrders = new ArrayList<>();
+        List<Order> allOrders = orderRepository.findAll();
+
+        for (Order order : allOrders) {
+            if (order.getIsConfirmed() == false) {
+                noConfirmedOrders.add(order);
+            }
+        }
+
+        return noConfirmedOrders;
     }
 }

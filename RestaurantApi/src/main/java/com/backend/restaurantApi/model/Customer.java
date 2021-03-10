@@ -36,7 +36,7 @@ public class Customer {
    */
 
   @JsonBackReference(value="restaurant_table")
-  @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "table_number", nullable = true)
   private RestaurantTable table;
 

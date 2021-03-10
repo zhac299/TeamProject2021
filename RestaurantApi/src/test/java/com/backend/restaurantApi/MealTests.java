@@ -67,6 +67,15 @@ public class MealTests {
 
     @Test
     @Transactional
+    void testMealSelections(){
+        meal.setNumberSelections(10);
+        mealService.updateMeal(meal.getId(), meal);
+        Assertions.assertEquals(10, mealService.getMealById(meal.getId()).getNumberSelections(),
+        "Returns true if the number of selections is correctly added.");
+    }
+
+    @Test
+    @Transactional
     void testCreateMeal(){
         Assertions.assertNotNull(mealService.getMealById(meal.getId()));
         Assertions.assertTrue(mealService.getMealById(meal.getId()).getMenu().getName().equals(MEAL_NAME));

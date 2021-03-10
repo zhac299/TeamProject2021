@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderComponent } from './order.component';
+import { ManagerMenuComponent } from './manager-menu.component';
 
-describe('OrderComponent', () => {
-  let component: OrderComponent;
-  let fixture: ComponentFixture<OrderComponent>;
+describe('ManagerMenuComponent', () => {
+  let component: ManagerMenuComponent;
+  let fixture: ComponentFixture<ManagerMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrderComponent ]
+      declarations: [ ManagerMenuComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrderComponent);
+    fixture = TestBed.createComponent(ManagerMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

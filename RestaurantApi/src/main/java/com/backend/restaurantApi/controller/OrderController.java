@@ -60,7 +60,8 @@ public class OrderController {
     @PutMapping("/orders/{id}/isdelivered/{isDelivered}")
     public Order updateIsDelivered(@PathVariable("id") Long id, @PathVariable("isDelivered") boolean isDelivered) {
         Order order = orderService.getOrderById(id);
-        order.setIsConfirmed(isDelivered);
+        order.setIsDelivered(isDelivered);
+        orderRepo.save(order);
         return order;
     }
 
@@ -68,11 +69,34 @@ public class OrderController {
     public Order updateIsconfirmed(@PathVariable("id") Long id, @PathVariable("isConfirmed") boolean isConfirmed) {
         Order order = orderService.getOrderById(id);
         order.setIsConfirmed(isConfirmed);
+        orderRepo.save(order);
         return order;
     }
 
     @GetMapping("/orders/isconfirmed")
     public List<Order> getConfrimedOrders() {
         return orderService.getConfirmedOrders();
+    }
+
+    @GetMapping("/orders/noisconfirmed")
+    public List<Order> getNoConfrimedOrders() {
+        return orderService.getNoConfirmedOrders();
+    }
+
+    @PutMapping("/orders/isPaid/{id}/{isPaid}")
+    public Order updateIsPaid(@PathVariable("id") Long id, @PathVariable("isPaid") boolean isPaid) {
+        Order order = orderService.getOrderById(id);
+        order.setIsPaid(isPaid);
+        orderRepo.save(order);
+        return order;
+    }
+
+    
+    @PutMapping("/orders/total/{id}/{total}")
+    public Order updateTotal(@PathVariable("id") Long id, @PathVariable("total") int total) {
+        Order order = orderService.getOrderById(id);
+        order.setTotal(total);
+        orderRepo.save(order);
+        return order;
     }
 }
