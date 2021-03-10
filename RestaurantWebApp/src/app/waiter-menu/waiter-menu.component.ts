@@ -18,26 +18,19 @@ export class WaiterMenuComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
-    public dialog: MatDialog,
-    public tableService: TableService
+    public dialog: MatDialog
   ) { }
 
   menuList: Menu[] = [];
   showFiller = false;
-  tableList: Table[] = [];
   orders: Order[];
   displayedColumns: string[] = ['name', 'description', 'price'];
 
   ngOnInit(): void {
     this.menuService.getAllUpdatedMenus();
-    this.tableService.getUpdatedTables()
-
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
-    this.tableService.tables$.subscribe((tables) => {
-      this.tableList = tables;
-    })
   }
 
   openSelectTableDialog(): Observable<Table> {
@@ -48,10 +41,6 @@ export class WaiterMenuComponent implements OnInit {
 
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu);
-  }
-
-  createNewTable(): void {
-    this.tableService.createTable().subscribe();
   }
 
 }
