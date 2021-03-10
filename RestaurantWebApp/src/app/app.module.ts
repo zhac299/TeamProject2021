@@ -120,7 +120,7 @@ import { OrderTrackerComponent } from './customer-interface/order-tracker/order-
     ReactiveFormsModule,
     MatSnackBarModule
   ],
-  providers: [AllergensChipsComponent, CustomerInterfaceComponent],
+  providers: [AllergensChipsComponent, CustomerInterfaceComponent, BasketComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
