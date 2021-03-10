@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable, Subject} from 'rxjs';
-import { map, tap} from 'rxjs/operators';
+import {exhaustMap, map, share, tap} from 'rxjs/operators';
 
 import { Table} from '../models/Table';
 import { BehaviorSubject } from 'rxjs';
@@ -15,13 +15,20 @@ export class TableService {
   private _refreshNeeded = new Subject<void>();
 
   private readonly tableSubject$ = new BehaviorSubject<Table[]>(new Array<Table>());
-  get tables$() {
-    return this.tableSubject$.asObservable();
-  }
+  // get tables$() {
+  //   return this.tableSubject$.asObservable();
+  // }
 
   public getRefreshNeeded () {
     return this._refreshNeeded;
   }
+
+  refresh$ = new BehaviorSubject(null);
+
+  tables$ = this.refresh$.pipe(
+    exhaustMap( () => this.getTables()),
+    share()
+  );
 
   constructor(private httpClient: HttpClient) { }
 
