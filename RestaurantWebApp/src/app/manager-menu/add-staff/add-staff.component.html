@@ -1,0 +1,46 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-toolbar>
+      <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon>reorder</mat-icon>
+      </button>
+      <span>Kitchen Menu</span>
+      <span class="spacer"></span>
+      <notifications class="notifications"></notifications>
+    </mat-toolbar>
+  
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <ul class="buttonRow">
+        <li class="flex-item">
+          <button mat-button>Add Table</button>
+        </li>
+        <li class="flex-item">
+          <button mat-button>Add Staff</button>
+        </li>
+  
+      </ul>
+      <ul class="botButtonRow">
+        <li class="flex-item">
+          <button mat-button color="warn">Log Out</button>
+        </li>
+      </ul>
+    </mat-drawer>
+
+    <h2>Staff</h2>
+
+    <button mat-button (click)="openAddMenuDialog()">Add</button>
+
+    <mat-grid-list cols="4" rowHeight="15px">
+    <mat-grid-tile>Email</mat-grid-tile>
+    <mat-grid-tile>User Name</mat-grid-tile>
+    <mat-grid-tile>Is Waiter?</mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list class="menuItem" cols="4" rowHeight="75px" *ngFor="let staff of staffs">
+    <mat-grid-tile>{{staff.email}}</mat-grid-tile>
+    <mat-grid-tile>{{staff.userName}}</mat-grid-tile>
+    <mat-grid-tile>{{staff.waiter}}</mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-button (click)="openEditMenuDialog(staff)">Edit</button>
+    </mat-grid-tile>
+    </mat-grid-list>
+</mat-drawer-container>    

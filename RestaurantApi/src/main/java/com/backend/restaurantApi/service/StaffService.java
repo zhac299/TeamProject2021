@@ -30,7 +30,7 @@ public class StaffService {
 	}
 
 	public Staff updateStaff(Long id, Staff Staff) {
-		Staff.setStaffId(id);
+		Staff.setId(id);
         return staffRepository.save(Staff);
 	}
 
