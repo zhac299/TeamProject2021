@@ -1,12 +1,10 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
+import { MatDialogModule} from '@angular/material/dialog';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { MealService } from 'src/app/meal.service';
-import { OrderService } from 'src/app/order.service';
 import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
-import { BasketComponent } from '../basket/basket.component';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 @Component({
@@ -20,9 +18,9 @@ export class OrderTrackerComponent implements OnInit {
   customerObservable: Observable<Customer>;
   customer: Customer;
   orderPlaced: Boolean;
+  orderStatus: String;
 
   constructor(
-    private orderService: OrderService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
       this.customerObservable = data.customer;
@@ -37,6 +35,18 @@ export class OrderTrackerComponent implements OnInit {
       this.orderPlaced = true;
       for (let order of this.customer.orders) {
         this.mealList = order.meal;
+      }
+    }
+  }
+
+  displayStatus(): void {
+    for (let order of this.customer.orders) {
+      if (order.isConfirmed == true) {
+        this.orderStatus = "Order was confimred by a waiter... Paciencia por favor!";
+      } else if (order.isDelivered == true) {
+        this.orderStatus = "Order was delivered... Buen apetito!";
+      } else if (order.isPaid == true) {
+        this.orderStatus = "Order was paid... Muchas Gracias!";
       }
     }
   }

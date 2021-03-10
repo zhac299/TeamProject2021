@@ -6,7 +6,11 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
-<div *ngIf = "orderPlaced == true; else noOrderBlock">
+<div *ngIf = "orderPlaced == true" class = "orderedItemsTitle">
+  <hr>
+  Ordered Items
+</div>
+<div *ngIf = "orderPlaced == true">
 <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -32,4 +36,11 @@
     You have not placed an order yet!
   </div> 
 </ng-template>
+<hr>
+<div class = "orderStatusTitle">
+  Order Status
+</div>
+<div>
+  {{orderStatus}}
+</div>
 </mat-dialog-content>
