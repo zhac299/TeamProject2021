@@ -87,7 +87,7 @@ export class MenuService {
         this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe( orders => {
             this.orderList = orders;
             for (let order of this.orderList) {
-                if (order.category == "Fajita") {
+                if (order.category == "Fajita"&& order.isSuggested == false) {
                     this.sOrder.push(order);
                 }
             }
@@ -105,7 +105,7 @@ export class MenuService {
         this.menus$.subscribe(orders => {
             this.orderList = orders;
             for (let order of this.orderList) {
-                if (order.category == newCat) {
+                if (order.category == newCat && order.isSuggested == false) {
                     this.sOrder.push(order);
                 }
             }
@@ -123,11 +123,11 @@ export class MenuService {
             }
         });
     }
-    
+
     setCat(menu: Menu[]) {
         this.sOrder = [];
         for (let order of menu) {
-            if (order.category == this.cat.name) {
+            if (order.category == this.cat.name && order.isSuggested == false) {
                 this.sOrder.push(order);
             }
         }
