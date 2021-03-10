@@ -53,9 +53,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
 
   openOrderDialog(order: Order): void {
     const dialogRef = this.dialog.open(OrderComponent, {
-      data: order,
-      width: '90%',
-      height: '90%'
+      data: order
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {

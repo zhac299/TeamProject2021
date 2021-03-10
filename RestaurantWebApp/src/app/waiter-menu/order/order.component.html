@@ -1,5 +1,4 @@
-<div mat-dialog-title>
-  <div class="container">
+  <div mat-dialog-title class="container dialogHeader">
     <div class="row">
       <div class="col">
         <h1 mat-dialog-title>Order #{{order.id}}</h1>
@@ -37,7 +36,7 @@
                 <td>{{meal.menu.name}}</td>
                 <td>£{{meal.menu.price}}</td>
                 <td>x{{meal.numberSelections}}</td>
-                <td><button (click)="deleteOrderedMenuItem(meal)"><mat-icon>delete</mat-icon></button></td>
+                <td><button mat-button (click)="deleteOrderedMenuItem(meal)"><mat-icon>delete</mat-icon></button></td>
               </tr>
               </tbody>
             </table>
@@ -45,6 +44,7 @@
             <h3>Total: £{{total}}</h3>
         </div>
         <div class="col-7">
+          <h2>Add to Order</h2>
           <div class="row">
             <div *ngFor="let menu of menuList" class="col">
               <button mat-raised-button class="foodBtn"
@@ -62,4 +62,3 @@
       <mat-icon>delete</mat-icon>
     </button>
   </mat-dialog-actions>
-</div>
