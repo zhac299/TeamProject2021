@@ -54,8 +54,8 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   openOrderDialog(order: Order): void {
     const dialogRef = this.dialog.open(OrderComponent, {
       data: order,
-      width: '99%',
-      height: '99%'
+      width: '90%',
+      height: '90%'
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -84,7 +84,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
       this.orderService.createNewOrderWithCustomer(a)
     );
   }
-  
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

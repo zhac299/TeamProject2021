@@ -9,7 +9,7 @@
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
     <ng-template #deliveredNotPaid>
-      <button *ngIf="order.isConfirmed && order.isDelivered else confirmedNoDeliverBlock" mat-raised-button class="confirmDeliverButton"
+      <button *ngIf="order.isConfirmed && order.isDelivered && !order.isPaid else confirmedNoDeliverBlock" mat-raised-button class="confirmDeliverButton"
               (click)="openOrderDialog(order)"
               color="primary">
         <h1>Order #{{order.id}}</h1>
@@ -45,7 +45,7 @@
     </ng-template>
   </mat-grid-tile>
 
-  <ng-template #PaidBlock><h2>(paid)</h2></ng-template>
+  <ng-template #PaidBlock><button>(paid)</button></ng-template>
 
   <mat-grid-tile *ngIf="createPermission">
     <button mat-fab color="accent"class="addOrder" (click)="createNewOrder()">
