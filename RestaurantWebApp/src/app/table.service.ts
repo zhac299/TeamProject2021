@@ -112,4 +112,12 @@ export class TableService {
       );
   }
 
+  public createTable():Observable<Table> {
+    const newTable = new Table;
+    newTable.isOccupied = false;
+    newTable.isReady = false;
+    newTable.needsHelp = false;
+    return this.httpClient.post<Table>(this.restaurantTablesURL, newTable);
+  }
+
 }
