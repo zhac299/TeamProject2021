@@ -61,22 +61,30 @@
           <input matInput placeholder="XXX" (input) = "checkCardInput()" 
           formControlName="cvvCodeControl" [maxLength] = "3" required>
         </mat-form-field>
-        <div *ngIf = "this.interacted == false && this.correctInputs == false && this.isPaid == false; else orderReviewBlock">
+        <div *ngIf = "this.interacted == false && this.correctInputs == false && this.isPaid == false 
+        && this.isConfirmed == true; else orderReviewBlock">
           <button mat-button matStepperNext (click) = "pay()">Pay</button>
         </div>
         <ng-template #orderReviewBlock>
-          <div class = "orderReviewBlock" *ngIf = "this.interacted == true && this.correctInputs == true && this.isPaid == false; else isPaidBlock">
+          <div class = "orderReviewBlock" *ngIf = "this.interacted == true && this.correctInputs == true 
+          && this.isPaid == false && this.isConfirmed == true; else isPaidBlock">
             Review your Order!
           </div>
         </ng-template>
         <ng-template #isPaidBlock>
-          <div class = "isPaidBlock" *ngIf = "this.isPaid == true; else wrongDetailsBlock">
+          <div class = "isPaidBlock" *ngIf = "this.isPaid == true && this.isConfirmed == true; else wrongDetailsBlock">
             You have already paid!
           </div>
         </ng-template>
         <ng-template #wrongDetailsBlock>
-          <div class = "wrongDetailsBlock" *ngIf = "this.interacted == false && this.correctInputs == true && this.isPaid == false">
+          <div class = "wrongDetailsBlock" *ngIf = "this.interacted == false && this.correctInputs == true 
+          && this.isPaid == false && this.isConfirmed == true; else notConfirmedBlock">
             The Card Details are Wrong!
+          </div>
+        </ng-template>
+        <ng-template #notConfirmedBlock>
+          <div class = "notConfirmedBlock" *ngIf = "this.isConfirmed == false">
+            Your Order has not been confirmed yet!
           </div>
         </ng-template>
         <br>

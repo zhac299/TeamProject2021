@@ -30,6 +30,7 @@ export class PaymentStepperComponent implements OnInit {
   needToReview: Boolean = false;
   wrongDetails: Boolean = false;
   isPaid: Boolean = false;
+  isConfirmed: Boolean = false;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -53,6 +54,9 @@ export class PaymentStepperComponent implements OnInit {
     for (let order of this.orders) {
       if (order.isPaid == true) {
         this.isPaid = true;
+      }
+      if (order.isConfirmed == true) {
+        this.isConfirmed = true;
       }
       this.mealList = order.meal;
     }
