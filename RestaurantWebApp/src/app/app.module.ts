@@ -46,6 +46,9 @@ import { NotificationsDialogComponent } from './waiter-menu/notifications/notifi
 import { SelectTableDialogComponent } from './home-page/select-table-dialog/select-table-dialog.component';
 import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-table-dialog.component';
 import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready-to-order.component';
+import { MatStepperModule} from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PaymentStepperComponent } from './customer-interface/basket/payment-stepper/payment-stepper.component';
 import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
@@ -80,6 +83,7 @@ import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-sta
     KitchenMenuComponent,
     OrdersListDisplayComponent,
     ManagerMenuComponent,
+    PaymentStepperComponent,
     MenusListDisplayComponent,
     AddStaffComponent,
     AddStaffDialogComponent
@@ -111,7 +115,10 @@ import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-sta
     MatCheckboxModule,
     NgOtpInputModule,
     MatBadgeModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatBadgeModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [AllergensChipsComponent, CustomerInterfaceComponent],
   bootstrap: [AppComponent]

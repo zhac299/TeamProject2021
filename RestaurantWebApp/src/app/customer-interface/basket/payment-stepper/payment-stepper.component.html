@@ -1,0 +1,35 @@
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="reviewOrderGroup" errorMessage="Order Confirmation Required!">
+      <form [formGroup]="reviewOrderGroup">
+        <ng-template matStepLabel>Review your Order</ng-template>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="paymentGroup" errorMessage="Address is required.">
+      <form [formGroup]="paymentGroup">
+        <ng-template matStepLabel>Please Insert Your Card Details</ng-template>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Payment Confirmed!</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
