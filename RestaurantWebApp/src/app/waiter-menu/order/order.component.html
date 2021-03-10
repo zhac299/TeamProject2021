@@ -15,47 +15,42 @@
       </div>
     </div>
   </div>
+  <hr>
   <mat-dialog-content class="mat-dialog">
     <div class="container">
       <div class="row">
-        <div class="col-4">
-          <mat-card class="card">
-            <h1>Meals</h1>
-            <table class="table orderedItemsTable">
+        <div class="col-5">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-striped orderedItemsTable">
               <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
+                <th scope="col">Item</th>
                 <th scope="col">Price</th>
-                <th scope="col">Amount</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Delete</th>
               </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let meal of orderedMealItems$ | async; let i = index">
-                  <td>{{i+1}}</td>
-                  <td>{{meal.menu.name}}</td>
-                  <td>(£{{meal.menu.price}})</td>
-                  <td>x{{meal.numberSelections}}</td>
-                </tr>
+              <tr *ngFor="let meal of orderedMealItems$ | async; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{meal.menu.name}}</td>
+                <td>£{{meal.menu.price}}</td>
+                <td>x{{meal.numberSelections}}</td>
+                <td><button (click)="deleteOrderedMenuItem(meal)"><mat-icon>delete</mat-icon></button></td>
+              </tr>
               </tbody>
             </table>
-            <mat-card-title>Total: {{total}}$</mat-card-title>
-          </mat-card>
+          </div>
+            <h3>Total: £{{total}}</h3>
         </div>
-        <div class="col-8">
-          <mat-card class="card">
-            <mat-card-header>
-              <mat-card-title>ITEMS</mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="container">
-              <div class="row">
-                <div *ngFor="let menu of menuList" class="col">
-                  <button mat-raised-button style="width: 100%; color: green; font-stretch: condensed"
-                          (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
+        <div class="col-7">
+          <div class="row">
+            <div *ngFor="let menu of menuList" class="col">
+              <button mat-raised-button class="foodBtn"
+                      (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
