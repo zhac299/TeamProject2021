@@ -18,7 +18,8 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
 export class BasketComponent implements OnInit {
 
   mealList: Meal[];
-  customer: Observable<Customer>;
+  customerObservable: Observable<Customer>;
+  customer: Customer;
   orderPlaced: Boolean;
   
   constructor(
@@ -29,16 +30,18 @@ export class BasketComponent implements OnInit {
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
       this.mealList = data.selectedMeals;
-      this.customer = data.customer;
+      this.customerObservable = data.customer;
     }
 
   async ngOnInit(): Promise<void> {
-    const customer = await this.customer.pipe(take(1)).toPromise();
-    if (customer.orders != undefined) {
-      this.orderPlaced = true;
-    } else {
+
+    this.customer = await this.customerObservable.pipe(take(1)).toPromise();
+    if (this.customer.orders.length == 0) {
       this.orderPlaced = false;
+    } else {
+      this.orderPlaced = true;
     }
+    console.log(this.orderPlaced);
   }
 
   ngAfterViewInit(): void {
@@ -76,22 +79,19 @@ export class BasketComponent implements OnInit {
 
   placeOrder(): void {
     if(this.orderPlaced == false) {
-      this.customer.subscribe((customer) => {
-        this.orderService.createNewOrder(customer, this.priceTotal()).subscribe((order) => {
-          var total: number = 0;
+        this.orderService.createNewOrder(this.customer, this.priceTotal()).subscribe((order) => {
           for(var i = 0 ; i < this.mealList.length; i++) {
             this.mealList[i].order = order;
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
-            total += this.mealList[i].menu.price * this.mealList[i].numberSelections;
           }
         });
-      });
       this.orderPlaced = true;
       this.openSnackBar("You placed your order","Enjoy!")
     } 
   }
 
   getMealList(): Meal[] {
+    console.log(this.mealList);
     return this.mealList;
   }
 
