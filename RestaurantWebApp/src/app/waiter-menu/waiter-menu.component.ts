@@ -51,7 +51,7 @@ export class WaiterMenuComponent implements OnInit {
   }
 
   createNewTable(): void {
-    this.tableService.createTable();
+    this.tableService.createTable().subscribe();
   }
 
 }
