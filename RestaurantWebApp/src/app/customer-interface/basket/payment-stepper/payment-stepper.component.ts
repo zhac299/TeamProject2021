@@ -46,12 +46,12 @@ export class PaymentStepperComponent implements OnInit {
       expDateControl: ['', Validators.required],
       cvvCodeControl: ['', Validators.required]
     });
-    this.mealList = this.basketComponent.getMealList();
     var customer = await this.basketComponent.customerObservable.pipe(take(1)).toPromise();
     this.orders = customer.orders;
     for (let order of this.orders) {
       if (order.isPaid == true) {
         this.isPaid = true;
+        this.mealList = order.meal;
       }
     }
     console.log(this.mealList);
