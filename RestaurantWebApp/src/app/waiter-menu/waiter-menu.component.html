@@ -35,11 +35,17 @@
         </button>
       </ng-template>
     </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button mat-fab color="accent" class="addTable" (click)="createNewTable()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-grid-tile>
+
   </mat-grid-list>
   <hr>
-  <app-orders-list-display
-    [createPermission] = "true"
-  ></app-orders-list-display>
+  <app-orders-list-display [createPermission] = "true">
+  </app-orders-list-display>
 
   <hr>
 <app-menus-list-display></app-menus-list-display>
