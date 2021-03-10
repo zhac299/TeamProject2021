@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Table} from '../../models/Table';
 import {MatDialog} from '@angular/material/dialog';
 import {Order} from "../../models/Order";
@@ -7,6 +7,7 @@ import {Menu} from "../../models/Menu";
 import {Observable} from "rxjs";
 import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.component";
 import { TableService } from '../table.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-waiter-menu',
@@ -47,6 +48,10 @@ export class WaiterMenuComponent implements OnInit {
 
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu);
+  }
+
+  createNewTable(): void {
+    this.tableService.createTable();
   }
 
 }
