@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.backend.restaurantApi.exception.RestaurantTableNotFoundException;
 import com.backend.restaurantApi.model.RestaurantTable;
-import com.backend.restaurantApi.model.WaiterTable;
 import com.backend.restaurantApi.repository.RestaurantTableRepository;
 import com.backend.restaurantApi.repository.StaffRepository;
-import com.backend.restaurantApi.repository.WaiterTableRepository;
 
 /**
  * The Service clas of the ResturantTable model  that handles
@@ -25,11 +23,6 @@ public class RestaurantTableService {
      */
     @Autowired
     RestaurantTableRepository restaurantTableRepository;
-    /**
-     * Autowires to the the custom repository.
-     */
-    @Autowired
-    WaiterTableRepository waiterTableRepository;
     
     /**
      * Autowires to the the custom repository.
@@ -136,10 +129,15 @@ public class RestaurantTableService {
      * @param WaiterTable the new RestaurantTable
      * @return the updated repository
      */
-    public WaiterTable assignTableToWaiter(WaiterTable waiterTable) {
-    	waiterTable.setRestaurantTable(restaurantTableRepository.getOne(waiterTable.getRestaurantTable().getTableNumber()));
-    	waiterTable.setStaff(staffRepository.getRandomWaiter());
-        return waiterTableRepository.save(waiterTable);
+    public RestaurantTable assignTableToWaiter(RestaurantTable restaurantTable) {
+    	RestaurantTable tableToBesaved = getTableByNumber(restaurantTable.getTableNumber());
+    	if(tableToBesaved != null) {
+    		tableToBesaved.setStaff(staffRepository.getRandomWaiter());
+            restaurantTableRepository.save(tableToBesaved);
+    	} else {
+    		throw new RestaurantTableNotFoundException("Restaurant Table Record is not available...");
+    	}
+    	return tableToBesaved;
     }
 
     public RestaurantTable updateRestaurantTable(RestaurantTable table, Long id) {

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.restaurantApi.model.RestaurantTable;
-import com.backend.restaurantApi.model.WaiterTable;
 import com.backend.restaurantApi.repository.RestaurantTableRepository;
 import com.backend.restaurantApi.service.RestaurantTableService;
 
@@ -158,7 +157,7 @@ public class RestaurantTableController {
      * @return the updated Restaurant Table
      */
     @PostMapping("/tables/assignTable")
-    public WaiterTable assignTableToWaiter(@RequestBody WaiterTable waiterTable){
-        return restaurantTableService.assignTableToWaiter(waiterTable);
+    public RestaurantTable assignTableToWaiter(@RequestBody RestaurantTable restaurantTable){
+        return restaurantTableService.assignTableToWaiter(restaurantTable);
     }
 }

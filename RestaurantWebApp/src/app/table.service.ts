@@ -4,7 +4,6 @@ import { Observable, Subject} from 'rxjs';
 import {exhaustMap, map, share, tap} from 'rxjs/operators';
 
 import { Table} from '../models/Table';
-import { WaiterTable} from '../models/waiter-table';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -128,8 +127,8 @@ export class TableService {
     return this.httpClient.post<Table>(this.restaurantTablesURL, newTable);
   }
 
-  public assignTable(waiterTable: WaiterTable): Observable<WaiterTable> {
-    return this.httpClient.post<WaiterTable>(this.restaurantTablesURL + '/assignTable', waiterTable);
+  public assignTable(table: Table): Observable<WaiterTable> {
+    return this.httpClient.post<WaiterTable>(this.restaurantTablesURL + '/assignTable', table);
   }
 
 }
