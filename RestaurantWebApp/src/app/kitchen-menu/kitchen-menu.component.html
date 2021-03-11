@@ -5,7 +5,10 @@
     </button>
     <span>Kitchen Menu</span>
     <span class="spacer"></span>
-    <notifications class="notifications"></notifications>
+    <button (click)="openDialog()" mat-raised-button color="primary"
+        matBadge="3" matBadgePosition="before" matBadgeColor="accent">
+      notifications
+    </button>
   </mat-toolbar>
 
   <mat-drawer #drawer class="example-sidenav" mode="side">

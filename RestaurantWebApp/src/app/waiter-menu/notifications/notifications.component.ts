@@ -25,6 +25,18 @@ export class NotificationsComponent implements OnInit {
     this.numberOfNotifications = newNumberOfNotifications;
   }
 
+  incrementNotificationCount() {
+    this.numberOfNotifications++;
+    this.hideMatBadge = false;
+  }
+
+  decrementNotificationCount(){
+    this.numberOfNotifications--;
+    if(this.numberOfNotifications <= 0){
+      this.hideMatBadge = true;
+    }
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(NotificationsDialogComponent);
 
