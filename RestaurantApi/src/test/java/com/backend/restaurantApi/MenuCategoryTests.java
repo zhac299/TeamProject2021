@@ -1,5 +1,6 @@
 package com.backend.restaurantApi;
 
+import com.backend.restaurantApi.exception.MenuCategoryNotFoundException;
 import com.backend.restaurantApi.model.*;
 import com.backend.restaurantApi.service.*;
 import org.junit.jupiter.api.Assertions;
@@ -46,5 +47,14 @@ public class MenuCategoryTests {
 
         Assertions.assertEquals(menuService.getMenuById(
             menuItem.getId()).getCategory(), menuItem.getCategory());
+    }
+
+    @Transactional
+    @Test
+    void testDeleteMenuCategory() {
+        menuCategoryService.deleteMenuCategory(menuCategory.getId());
+        Assertions.assertThrows(MenuCategoryNotFoundException.class, () -> {
+            menuCategoryService.findCategoryById(menuCategory.getId());
+        });
     }
 }
