@@ -4,7 +4,7 @@
       <h1 mat-dialog-title>Order #{{order.id}}</h1>
     </mat-grid-tile>
     <mat-grid-tile>
-      <mat-checkbox *ngIf="order.isConfirmed" (change)="updateOrderConfirmed(order)">Order ready</mat-checkbox>
+      <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
     </mat-grid-tile>
     <mat-grid-tile>
 
@@ -18,7 +18,7 @@
     </mat-grid-tile>
     <mat-grid-tile>
 
-      <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
+      <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isReady" (change)="updateOrderReady(order)">Ready</mat-checkbox>
 
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
