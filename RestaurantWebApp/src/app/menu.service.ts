@@ -80,6 +80,10 @@ export class MenuService {
       });
   }
 
+  update(menu: Menu): Observable<Menu> {
+    return this.httpClient.put<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`,menu);
+  }
+
     // Filter methods for filtering by dish.
     getCat(): selectedCategory {
         if (Object.keys(this.cat).length === 0) {

@@ -42,7 +42,8 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        this.menuService.updateMenu(result);
+        console.log(result);
+        this.menuService.update(result).subscribe();
         this.refreshTimer$.subscribe();
       }
     });
@@ -64,6 +65,7 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(menu => {
       if(menu){
+        console.log(menu);
         this.menuService.createMenuItem(menu);
       }
     })
