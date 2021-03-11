@@ -83,7 +83,7 @@ export class CustomerInterfaceComponent implements OnInit {
 
   filter(filterArgs: string): void {
       this.menuFilterService.filter(filterArgs).subscribe(orders => {
-          this.menuService.setCat(orders);
+      this.menuService.setCat(orders);
     });
   }
 

@@ -10,4 +10,16 @@
         <u>{{tile.text}}</u>
       </div>
   </mat-grid-tile>
+
+  <mat-grid-tile class = "category"
+        *ngFor="let tile of tiles2"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color"
+        (click) = showSuggestions()>
+      <div>
+        <u>{{tile.text}}</u>
+      </div>
+  </mat-grid-tile>
+
 </mat-grid-list>
