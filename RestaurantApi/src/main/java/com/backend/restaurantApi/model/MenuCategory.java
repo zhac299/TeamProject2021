@@ -22,6 +22,8 @@ public class MenuCategory {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Menu> menu;
 
+    public MenuCategory(){};
+
     public Long getId() {
         return id;
     }
