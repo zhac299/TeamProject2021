@@ -54,6 +54,12 @@ export class OrderComponent implements OnInit {
     })
   }
 
+  updateOrderDelivered(order: Order): void {
+    this.orderService.updateOrderDelivered(order).subscribe((order) => {
+      this.orderSubject$.next(order);
+    })
+  }
+
   updateOrderConfirmed(order: Order): void {
     this.orderService.updateOrderConfirmed(order)
       .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
