@@ -17,8 +17,8 @@
     </mat-form-field>
   </div>
   <div class="row">
-    <div class="col" *ngFor="let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
-      <mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i">{{item}}</mat-checkbox>
+    <div class="col" *ngFor="let category of categories;  let i = index">
+      <mat-radio-button (change)="changeCategory(category); selected = i" [checked]="catContainsMenu(category)">{{category.category}}</mat-radio-button>
     </div>
   </div>
   <!--  Adds whitespace  -->
@@ -78,5 +78,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="this.data.menu">Ok</button>
+  <button mat-button (click)="closeDialog()">Ok</button>
 </mat-dialog-actions>
