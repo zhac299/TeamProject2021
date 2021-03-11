@@ -47,7 +47,7 @@ export class OrderComponent implements OnInit {
       this.order = orders;
     });
   }
-
+  
   updateOrderConfirmed(order: Order): void {
     this.orderService.updateOrderConfirmed(order)
       .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
