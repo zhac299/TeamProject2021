@@ -83,6 +83,11 @@ public class OrderController {
         return orderService.getNoConfirmedOrders();
     }
 
+    @GetMapping("/orders/readyorders")
+    public List<Order> getReadyOrders() {
+        return orderService.getReadyOrders();
+    }
+
     @PutMapping("/orders/isPaid/{id}/{isPaid}")
     public Order updateIsPaid(@PathVariable("id") Long id, @PathVariable("isPaid") boolean isPaid) {
         Order order = orderService.getOrderById(id);
