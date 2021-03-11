@@ -20,7 +20,11 @@ export class StaffService {
     return this.httpClient.get<Staff[]>(this.restaurantWebApiUrl);
   }
 
-  public getStaffById(id: number): Observable<Staff>{
-    return this.httpClient.get<Staff>(`${this.restaurantWebApiUrl}/${id}`);
+  createStaff(staff: Staff): Observable<Staff> {
+    return this.httpClient.post<Staff>(this.restaurantWebApiUrl, staff);
+  }
+
+  updateStaff(staff: Staff): Observable<Staff> {
+    return this.httpClient.put<Staff>(this.restaurantWebApiUrl + '/'+staff.id, staff);
   }
 }

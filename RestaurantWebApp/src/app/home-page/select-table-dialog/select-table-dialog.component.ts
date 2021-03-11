@@ -7,6 +7,7 @@ import { TableService } from 'src/app/table.service';
 import { Customer } from 'src/models/Customer';
 import { Order } from 'src/models/Order';
 import { Table } from 'src/models/Table';
+import { WaiterTable} from 'src/models/waiter-table';
 
 @Component({
   selector: 'select-table-dialog',
@@ -19,6 +20,7 @@ export class SelectTableDialogComponent implements OnInit {
   selectedTable: Table = null;
   customer: Customer;
   orders: Order[] = [];
+  waiterTable: WaiterTable = new WaiterTable();
   
   constructor(
     private router: Router,
@@ -41,11 +43,14 @@ export class SelectTableDialogComponent implements OnInit {
   forCustomer(): void { 
     if (this.selectedTable != null) {
       this.createNewCustomer();
-
-      this.customerService.createCustomer(this.customer).subscribe((newCustomer) =>
-      {      
-        this.router.navigate(['/customer-menu'], 
-        { queryParams: {  customerID: newCustomer.id, selectedTable: this.selectedTable.tableNumber } });
+      this.waiterTable.restaurantTable = this.selectedTable;
+      this.tableService.assignTable(this.waiterTable).subscribe((obj) =>
+      {
+        this.customerService.createCustomer(this.customer).subscribe((newCustomer) =>
+        {      
+          this.router.navigate(['/customer-menu'], 
+          { queryParams: {  customerID: newCustomer.id, selectedTable: this.selectedTable.tableNumber } });
+        });
       });
     } 
     this.dialogRef.close();

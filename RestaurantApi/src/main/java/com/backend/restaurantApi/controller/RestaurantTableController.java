@@ -1,13 +1,22 @@
 package com.backend.restaurantApi.controller;
 
-import com.backend.restaurantApi.model.RestaurantTable;
-import com.backend.restaurantApi.repository.RestaurantTableRepository;
-import com.backend.restaurantApi.service.RestaurantTableService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.backend.restaurantApi.model.RestaurantTable;
+import com.backend.restaurantApi.model.WaiterTable;
+import com.backend.restaurantApi.repository.RestaurantTableRepository;
+import com.backend.restaurantApi.service.RestaurantTableService;
 
 /**
  * The Controller of the Restaurant Table.
@@ -140,5 +149,16 @@ public class RestaurantTableController {
     @GetMapping("/tables/needHelp")
     public List<RestaurantTable> getNeedHelpTables() {
         return restaurantTableService.getNeedHelpTables();
+    }
+    
+    /**
+     * Creates a new table and calls the service to add it to the repo.
+     * 
+     * @param table the new table to be added
+     * @return the updated Restaurant Table
+     */
+    @PostMapping("/tables/assignTable")
+    public WaiterTable assignTableToWaiter(@RequestBody WaiterTable waiterTable){
+        return restaurantTableService.assignTableToWaiter(waiterTable);
     }
 }

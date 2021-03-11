@@ -14,5 +14,9 @@ public interface StaffRepository extends JpaRepository<Staff, Long> {
     @Query
     (value ="SELECT * from staff  WHERE :user_name = user_name AND :password = password", nativeQuery = true)
     List<Staff> getStaffMember(@Param("user_name") String userName, @Param("password")String password);
+    
+    @Query
+    (value ="SELECT * from staff where is_waiter = true ORDER BY RAND() LIMIT 1", nativeQuery = true)
+    Staff getRandomWaiter();
 
 }
