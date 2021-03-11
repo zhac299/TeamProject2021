@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {OrderService} from "../order.service";
 import {fromEvent, Observable, Subscription, timer} from "rxjs";
-import {debounceTime, switchMap, tap} from "rxjs/operators";
+import {debounceTime, map, switchMap, tap} from "rxjs/operators";
 import {Order} from "../../models/Order";
 import {OrderComponent} from "../waiter-menu/order/order.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -34,7 +34,9 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
     if (this.isKitchenStaff) {
-      this.orderService.getConfirmedOrders()
+      this.orderService.orders$.pipe(
+        map((orders) => orders.filter((order) => order.isConfirmed))
+      )
         .subscribe((orders) =>this.orders = orders);
     } else {
       this.orderService.orders$.subscribe((orders) => {
