@@ -1,5 +1,6 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Menu {
     @Column(name = "price")
     private Double price = 0.0;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category")
     private MenuCategory category;

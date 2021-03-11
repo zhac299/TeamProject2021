@@ -52,7 +52,7 @@ public class MenuCategoryTests {
     }
 
     /**
-     * Test if category deleted also deletes menu items in that category
+     * Test if category deleted also deletes menu items in that category.
      */
     @Test
     @Transactional

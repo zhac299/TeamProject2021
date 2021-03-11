@@ -1,6 +1,8 @@
 package com.backend.restaurantApi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -18,7 +20,7 @@ public class MenuCategory {
     @Column
     private String category;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @JsonManagedReference
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Menu> menu;
 
@@ -37,7 +39,7 @@ public class MenuCategory {
     }
 
     public void setCategory(String category) {
-        category = category;
+        this.category = category;
     }
 
     public List<Menu> getMenu() {
