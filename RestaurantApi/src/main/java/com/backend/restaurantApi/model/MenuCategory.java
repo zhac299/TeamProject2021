@@ -1,5 +1,6 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -20,6 +21,8 @@ public class MenuCategory {
     @Column
     private String category;
 
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @JsonManagedReference
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Menu> menu;

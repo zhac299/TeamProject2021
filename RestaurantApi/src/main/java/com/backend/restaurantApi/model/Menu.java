@@ -2,6 +2,7 @@ package com.backend.restaurantApi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -23,6 +24,7 @@ public class Menu {
     @Column(name = "price")
     private Double price = 0.0;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category")
