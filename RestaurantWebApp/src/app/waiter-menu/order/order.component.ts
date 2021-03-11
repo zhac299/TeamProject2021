@@ -28,7 +28,7 @@ export class OrderComponent implements OnInit {
   private orderSubject$ = new BehaviorSubject<Order>(this.order);
   order$ = this.orderSubject$.asObservable();
   subscription: Subscription;
-  refreshTimer$ = timer(0, 5000)
+  refreshTimer$ = timer(0, 1000)
     .pipe(tap(() => console.log('Fetching...')));
 
 
@@ -40,7 +40,10 @@ export class OrderComponent implements OnInit {
     private mealService: MealService) {}
 
   ngOnInit(): void {
-    this.updateAllOrder();
+    this.updateOrderedMealItems();
+    this.menuService.menus$.subscribe((menu) => {
+      this.menuList = menu;
+    });
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
     this.orderService.getOrderById(this.order.id).subscribe((orders) => {
       this.orderSubject$.next(orders);
@@ -77,13 +80,6 @@ export class OrderComponent implements OnInit {
         this.total = order.total;
       })
     }
-  }
-
-  updateAllOrder(): void {
-    this.updateOrderedMealItems();
-    this.menuService.menus$.subscribe((menu) => {
-      this.menuList = menu;
-    });
   }
 
   deleteOrder(): void {
