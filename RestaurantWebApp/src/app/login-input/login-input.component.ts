@@ -14,6 +14,7 @@ export class LoginInputComponent implements OnInit {
     password: string = "";
     waiter: boolean = false;
     kitchen: boolean = false;
+    isCorrect: boolean;
     
     loginTwo: Login = undefined;
     html: string = "";
