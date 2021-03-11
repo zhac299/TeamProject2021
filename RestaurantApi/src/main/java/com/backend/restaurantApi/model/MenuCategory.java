@@ -18,8 +18,8 @@ public class MenuCategory {
     @Column
     private String Category;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Menu> menu;
 
     public MenuCategory(){};

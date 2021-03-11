@@ -57,12 +57,12 @@ public class MenuCategoryTests {
     @Test
     @Transactional
     void deleteMenuCategoryDeletesMenuItemTest() {
-        // Create
         menuCategoryService.deleteMenuCategory(menuCategory.getId());
         Assertions.assertThrows(MenuCategoryNotFoundException.class,
-                ()-> menuCategoryService.deleteMenuCategory(menuCategory.getId()));
+                ()-> menuCategoryService.findCategoryById(menuCategory.getId()));
+
         Assertions.assertThrows(MenuNotFoundException.class,
-                ()-> menuService.deleteMenuItem(menuItem.getId()));
+                ()-> menuService.getMenuById(menuItem.getId()));
     }
 
     @Transactional

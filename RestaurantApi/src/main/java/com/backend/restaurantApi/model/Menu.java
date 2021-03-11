@@ -22,7 +22,7 @@ public class Menu {
     @Column(name = "price")
     private Double price = 0.0;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+//    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category")
     private MenuCategory category;
