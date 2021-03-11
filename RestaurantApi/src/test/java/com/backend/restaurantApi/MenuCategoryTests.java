@@ -1,6 +1,7 @@
 package com.backend.restaurantApi;
 
 import com.backend.restaurantApi.exception.MenuCategoryNotFoundException;
+import com.backend.restaurantApi.exception.MenuCategoryNotFoundException;
 import com.backend.restaurantApi.exception.MenuNotFoundException;
 import com.backend.restaurantApi.model.*;
 import com.backend.restaurantApi.service.*;
@@ -62,5 +63,24 @@ public class MenuCategoryTests {
                 ()-> menuCategoryService.deleteMenuCategory(menuCategory.getId()));
         Assertions.assertThrows(MenuNotFoundException.class,
                 ()-> menuService.deleteMenuItem(menuItem.getId()));
+    }
+
+    @Transactional
+    @Test
+    void testDeleteMenuCategory() {
+        menuCategoryService.deleteMenuCategory(menuCategory.getId());
+        Assertions.assertThrows(MenuCategoryNotFoundException.class, () -> {
+            menuCategoryService.findCategoryById(menuCategory.getId());
+        }, "Should throw an exception, since the menu category was deleted.");
+    }
+
+    @Transactional
+    @Test
+    void testDeleteMenuCheckCategory() {
+        menuService.deleteMenuItem(menuItem.getId());
+
+        Assertions.assertDoesNotThrow(()->{
+            menuCategoryService.findCategoryById(menuCategory.getId());
+        },"Should not throw an exception, deleting the menu item should not delete the category.");
     }
 }
