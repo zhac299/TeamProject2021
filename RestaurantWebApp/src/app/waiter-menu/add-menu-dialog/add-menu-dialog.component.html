@@ -20,6 +20,7 @@
     <div class="col" *ngFor="let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
       <mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i">{{item}}</mat-checkbox>
     </div>
+    <mat-checkbox (change) = "isSuggested($event)">Waiter Suggested Meal</mat-checkbox>
   </div>
   <!--  Adds whitespace  -->
   <div class="row">
@@ -72,6 +73,7 @@
                   max="2000"
                   (input)="onCaloriesChange($event)">
       </mat-slider>
+      <mat-label>Waiter Suggestion</mat-label>
     </div>
   </div>
 </mat-dialog-content>
