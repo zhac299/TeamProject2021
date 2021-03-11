@@ -55,6 +55,16 @@ public class MenuCategoryTests {
         menuCategoryService.deleteMenuCategory(menuCategory.getId());
         Assertions.assertThrows(MenuCategoryNotFoundException.class, () -> {
             menuCategoryService.findCategoryById(menuCategory.getId());
-        });
+        }, "Should throw an exception, since the menu category was deleted.");      
+    }
+
+    @Transactional
+    @Test
+    void testDeleteMenuCheckCategory() {
+        menuService.deleteMenuItem(menuItem.getId());
+
+        Assertions.assertDoesNotThrow(()->{
+            menuCategoryService.findCategoryById(menuCategory.getId());
+        },"Should not throw an exception, deleting the menu item should not delete the category.");
     }
 }
