@@ -91,7 +91,7 @@ export class OrderService {
   }
 
   updateOrderReady(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isready/${order.isConfirmed}`,order);
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isready/${order.isReady}`,order);
   }
 
   updateOrderDelivered(order: Order): Observable<Order> {

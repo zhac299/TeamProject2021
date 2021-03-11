@@ -8,6 +8,7 @@ export class Order {
   category: string;
   isDelivered: boolean;
   isConfirmed: boolean;
+  isReady: boolean;
   table: Table;
   waiterId: number;
   isPaid:boolean;
