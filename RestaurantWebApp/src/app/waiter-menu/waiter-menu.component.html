@@ -22,47 +22,14 @@
       </li>
     </ul>
   </mat-drawer>
-  <h2>Tables</h2>
-  <mat-grid-list cols="4" rowHeight="200px">
-    <mat-grid-tile *ngFor="let table of tableList" >
-      <button *ngIf="table.isReady else noIsReadyBlock" mat-raised-button class="readyToOrder" color="warn">
-        Table {{table.tableNumber}} is Ready to Order!
-      </button>
-      <ng-template #noIsReadyBlock>
-        <button mat-raised-button class="noIsReadyToOrder" color="primary">
-          Table {{table.tableNumber}}
-        </button>
-      </ng-template>
-    </mat-grid-tile>
-  </mat-grid-list>
+
+  <app-tables-list-display></app-tables-list-display>
   <hr>
-  <h2>Orders</h2>
-  <app-orders-list-display
-    [createPermission] = "true"
-  ></app-orders-list-display>
+  <app-orders-list-display [createPermission] = "true">
+  </app-orders-list-display>
 
   <hr>
-  <h2>Menu</h2>
-
-  <button mat-button (click)="openAddMenuDialog()">Add</button>
-
-  <mat-grid-list cols="4" rowHeight="15px">
-    <mat-grid-tile>Name</mat-grid-tile>
-    <mat-grid-tile>Description</mat-grid-tile>
-    <mat-grid-tile>Price</mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
-    <mat-grid-list class="menuItem" cols="4" rowHeight="75px" *ngFor="let menu of menuList">
-      <mat-grid-tile>{{menu.name}}</mat-grid-tile>
-      <mat-grid-tile>{{menu.description}}</mat-grid-tile>
-      <mat-grid-tile>{{menu.price}}</mat-grid-tile>
-      <mat-grid-tile>
-        <button mat-button (click)="openAddDialog(menu)">Edit</button>
-        <button mat-button (click)="deleteMenuItem(menu)">Delete</button>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-
+<app-menus-list-display></app-menus-list-display>
 
 </mat-drawer-container>
 

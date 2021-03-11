@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Menu} from '../models/Menu';
 import { selectedCategory } from 'src/models/selectedCategory';
 import {Order} from "../models/Order";
-import {map, repeat} from "rxjs/operators";
+import {exhaustMap, map, repeat, share} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +18,16 @@ export class MenuService {
   cat: selectedCategory = new selectedCategory;
 
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
-  readonly menus$ = this.menuSubject.asObservable();
+  // readonly menus$ = this.menuSubject.asObservable();
+  refresh$ = new BehaviorSubject(null);
 
-  private getMllenus(): Menu[] {
-    return this.menuSubject.getValue();
+  public getMenus(): Observable<Menu[]> {
+    return this.httpClient.get<Menu[]>(this.restaurantWebApiUrl);
   }
+  menus$ = this.refresh$.pipe(
+    exhaustMap( () => this.getMenus()),
+    share()
+  );
 
   private setMenus(menus: Menu[]) {
     this.menuSubject.next(menus);

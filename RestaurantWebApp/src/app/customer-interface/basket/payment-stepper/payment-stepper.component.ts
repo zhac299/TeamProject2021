@@ -7,6 +7,9 @@ import { Meal } from 'src/models/Meal';
 import { BasketComponent } from '../basket.component';
 import { OrderService } from 'src/app/order.service';
 import { Order } from 'src/models/Order';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { formatDate } from '@angular/common';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'payment-stepper',
@@ -24,13 +27,18 @@ export class PaymentStepperComponent implements OnInit {
   orders: Order[];
   interacted: Boolean = true;
   correctInputs: Boolean = true;
+  needToReview: Boolean = false;
+  wrongDetails: Boolean = false;
+  isPaid: Boolean = false;
+  isConfirmed: Boolean = false;
 
   constructor(
+    private snackBar: MatSnackBar,
     private _formBuilder: FormBuilder, 
     private basketComponent: BasketComponent,
     private orderService: OrderService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.reviewOrderGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -39,7 +47,20 @@ export class PaymentStepperComponent implements OnInit {
       expDateControl: ['', Validators.required],
       cvvCodeControl: ['', Validators.required]
     });
-    this.mealList = this.basketComponent.getMealList();
+    var customer = await this.basketComponent.customerObservable.pipe(take(1)).toPromise();
+    console.log(customer);
+    this.orders = customer.orders;
+    console.log(this.orders);
+    for (let order of this.orders) {
+      if (order.isPaid == true) {
+        this.isPaid = true;
+      }
+      if (order.isConfirmed == true) {
+        this.isConfirmed = true;
+      }
+      this.mealList = order.meal;
+    }
+    console.log(this.isPaid);
   }
 
   orderReviewed(): void{
@@ -47,14 +68,19 @@ export class PaymentStepperComponent implements OnInit {
   }
 
   checkCardInput(): void{
-    console.log(this.paymentGroup.get('cardNumberControl').value);
-    if(this.paymentGroup.get('cardNumberControl').value.length == 19 
-    || this.paymentGroup.get('cardNumberControl').value.length == 16){
-      if(this.paymentGroup.get('expDateControl').value.length == 5){
+    if(this.paymentGroup.get('cardNumberControl').value.length == 19){
+      if(this.paymentGroup.get('expDateControl').value.length == 5 
+      || this.paymentGroup.get('expDateControl').value.length == 7){
+        let trueDate = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+        let trueDateString = trueDate.split("/", 2);
         let date = this.paymentGroup.get('expDateControl').value.split("/", 2);
-        console.log(date);
-        console.log(parseInt(date[0]));
-        if((parseInt(date[0]) < 13 && parseInt(date[1]) > 21) || (parseInt(date[0]) < 13 && parseInt(date[0]) > 3 && parseInt(date[1]) == 21)){
+        let temp = trueDate.split("");
+        let century = temp[0] + temp[1]
+        if(date[1].length == 2){
+          date[1] = century + date[1];
+        }
+        if((parseInt(date[0]) < 13 && parseInt(date[1]) > parseInt(trueDateString[0])) 
+        || (parseInt(date[0]) < 13 && parseInt(date[0]) > parseInt(trueDateString[1])-1 && parseInt(date[1]) == parseInt(trueDateString[0]))){
           if(this.paymentGroup.get('cvvCodeControl').value.length == 3){
            this.correctInputs = false;
           } else {
@@ -69,16 +95,30 @@ export class PaymentStepperComponent implements OnInit {
     } else {
       this.correctInputs = true;
     }
-    console.log(this.correctInputs);
   }
 
   pay(): void {
-    this.basketComponent.customer.subscribe((customer) => {
-      this.orders = customer.orders;
-      for (let order of customer.orders) {
-        order.isPaid = true;
-        this.orderService.updateIsPaid(order);
+      if(!this.interacted){
+        this.needToReview = false;
+        if(!this.correctInputs){
+          this.wrongDetails = false;
+          for (let order of this.orders) {
+            order.isPaid = true;
+            this.orderService.updateIsPaid(order);
+          }
+        } else {
+          this.wrongDetails = true;
+        }
+      } else {
+        this.needToReview = true;
       }
-    })
+    this.isPaid = true;
+    this.openSnackBar("Your payment is confirmed","Muchas Gracias!")
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 }

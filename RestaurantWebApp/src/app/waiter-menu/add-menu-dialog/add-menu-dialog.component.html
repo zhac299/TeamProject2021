@@ -1,74 +1,82 @@
-<h1 mat-dialog-title>Add Log</h1>
-<div mat-dialog-content>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="data.name"/>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <textarea matInput class="fixInput" [(ngModel)]="data.description"></textarea>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Price</mat-label>
-        <input matInput class="fixInput" [(ngModel)]="data.price"/>
-      </mat-form-field>
-  <mat-list>
-    <mat-label>Category</mat-label>
-    <div *ngFor = "let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
-      <mat-list-item><mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i" >{{item}}</mat-checkbox></mat-list-item>
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content class="container">
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="data.menu.name"/>
+    </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Price</mat-label>
+      <input matInput class="fixInput" [(ngModel)]="data.menu.price"/>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Description</mat-label>
+      <textarea matInput class="fixInput" [(ngModel)]="data.menu.description"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col" *ngFor="let item of ['Fajita','Nachos','Dips', 'Desserts'];  let i = index">
+      <mat-checkbox (change)="onClick(item); selected = i" [checked]="selected === i">{{item}}</mat-checkbox>
     </div>
-
-    <mat-label>Calories</mat-label>
-    <div><mat-slider
-      thumbLabel
-      [displayWith]="setCalories"
-      tickInterval="100"
-      min="1"
-      max="2000"
-      (input)="onCaloriesChange($event)">
-    </mat-slider></div>
-
-    <mat-label>Allergen</mat-label>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.peanuts">Peanuts</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.celery">Celery</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.crustaceans">Crustacenas</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.eggs">Eggs</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.fish">Fish</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.gluten">Gluten</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.lupin">Lupin</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.milk">Milk</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.molluscs">Molluscs</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.mustard">Mustard</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.nuts">Nuts</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.sesameSeeds">Sesame Seeds</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.soya">Soya</mat-checkbox></mat-list-item>
-    <mat-list-item><mat-checkbox [(ngModel)]="data.sulphites">Sulphites</mat-checkbox></mat-list-item>
-    <mat-label>Waiter Suggestion</mat-label>
-    <mat-list-item><mat-checkbox  (change) = "isSuggested($event)">Waiter Suggested Meal</mat-checkbox></mat-list-item>
-  </mat-list>
-</div>
-<div mat-dialog-actions>
+  </div>
+  <!--  Adds whitespace  -->
+  <div class="row">
+    <hr>
+  </div>
+  <div class="row">
+    <h3>Allergens</h3>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-list-item >
+        <mat-checkbox [(ngModel)]="data.menu.fish">Fish</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-checkbox [(ngModel)]="data.menu.gluten">Gluten</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-checkbox [(ngModel)]="data.menu.lupin">Lupin</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-checkbox [(ngModel)]="data.menu.milk">Milk</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.menu.sulphites">Sulphites</mat-checkbox>
+      </mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.menu.molluscs">Molluscs</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.menu.mustard">Mustard</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.menu.nuts">Nuts</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.menu.sesameSeeds">Sesame Seeds</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox [(ngModel)]="data.menu.soya">Soya</mat-checkbox>
+      </mat-list-item>
+    </div>
+    <div class="col">
+      <h3>Calories</h3>
+      <mat-slider thumbLabel
+                  [displayWith]="setCalories"
+                  tickInterval="100"
+                  min="1"
+                  max="2000"
+                  (input)="onCaloriesChange($event)">
+      </mat-slider>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="this.data" cdkFocusInitial>Ok</button>
-</div>
-
-<!--export class Menu{-->
-<!--id: number;-->
-<!--name: string;-->
-<!--description: string;-->
-<!--price: number;-->
-<!--peanuts: boolean;-->
-<!--celery: boolean;-->
-<!--gluten: boolean;-->
-<!--crustaceans: boolean;-->
-<!--eggs: boolean;-->
-<!--fish: boolean;-->
-<!--lupin: boolean;-->
-<!--milk: boolean;-->
-<!--molluscs: boolean;-->
-<!--mustard: boolean;-->
-<!--nuts: boolean;-->
-<!--soya: boolean;-->
-<!--sesameSeeds: boolean;-->
-<!--sulphites: boolean;-->
-<!--}-->
+  <button mat-button [mat-dialog-close]="this.data.menu">Ok</button>
+</mat-dialog-actions>

@@ -32,7 +32,6 @@ import { MatSliderModule} from '@angular/material/slider';
 import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
 import { TableComponent } from './waiter-menu/table/table.component';
 import { MatTableModule} from "@angular/material/table";
-import { EditDialogComponent } from './waiter-menu/edit-dialog/edit-dialog.component';
 import { MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
 import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
@@ -54,6 +53,13 @@ import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
 import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { OrderTrackerComponent } from './customer-interface/order-tracker/order-tracker.component';
+import { MenusListDisplayComponent } from './menus-list-display/menus-list-display.component';
+import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
+import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-staff-dialog.component';
+import { TablesListDisplayComponent } from './tables-list-display/tables-list-display.component';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -68,7 +74,6 @@ import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
     AllergensChipsComponent,
     FoodCategoriesComponent,
     TableComponent,
-    EditDialogComponent,
     AddMenuDialogComponent,
     TwoFactorAuthComponent,
     BasketComponent,
@@ -82,7 +87,12 @@ import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
     KitchenMenuComponent,
     OrdersListDisplayComponent,
     ManagerMenuComponent,
-    PaymentStepperComponent
+    PaymentStepperComponent,
+    OrderTrackerComponent,
+    MenusListDisplayComponent,
+    AddStaffComponent,
+    AddStaffDialogComponent,
+    TablesListDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -114,9 +124,11 @@ import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
     MatSlideToggleModule,
     MatBadgeModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
-  providers: [AllergensChipsComponent, CustomerInterfaceComponent],
+  providers: [AllergensChipsComponent, CustomerInterfaceComponent, BasketComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

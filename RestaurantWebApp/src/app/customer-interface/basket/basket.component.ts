@@ -1,6 +1,8 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
 import { Customer } from 'src/models/Customer';
@@ -16,20 +18,31 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
 export class BasketComponent implements OnInit {
 
   mealList: Meal[];
-  customer: Observable<Customer>;
-  orderPlaced: Boolean = false;
+  customerObservable: Observable<Customer>;
+  customer: Customer;
+  orderPlaced: Boolean;
   
   constructor(
+    private snackBar: MatSnackBar,
     private elementRef: ElementRef,
     private mealService: MealService,
     private orderService: OrderService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
       this.mealList = data.selectedMeals;
-      this.customer = data.customer;
+      this.customerObservable = data.customer;
     }
 
-  ngOnInit(): void {}
+  async ngOnInit(): Promise<void> {
+
+    this.customer = await this.customerObservable.pipe(take(1)).toPromise();
+    if (this.customer.orders.length == 0) {
+      this.orderPlaced = false;
+    } else {
+      this.orderPlaced = true;
+    }
+    console.log(this.orderPlaced);
+  }
 
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
@@ -66,25 +79,30 @@ export class BasketComponent implements OnInit {
 
   placeOrder(): void {
     if(this.orderPlaced == false) {
-      this.customer.subscribe((customer) => {
-        this.orderService.createNewOrder(customer, this.priceTotal()).subscribe((order) => {
-          var total: number = 0;
+        this.orderService.createNewOrder(this.customer, this.priceTotal()).subscribe((order) => {
           for(var i = 0 ; i < this.mealList.length; i++) {
             this.mealList[i].order = order;
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
-            total += this.mealList[i].menu.price * this.mealList[i].numberSelections;
           }
         });
-      });
       this.orderPlaced = true;
+      this.openSnackBar("You placed your order","Enjoy!")
     } 
   }
 
   getMealList(): Meal[] {
+    console.log(this.mealList);
     return this.mealList;
   }
 
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: ['orderSnackBar']
+    });
+  }
+
   close(): void {
-    this.dialogRef.close(this.mealList);
+    this.dialogRef.close(this.orderPlaced);
   }
 }

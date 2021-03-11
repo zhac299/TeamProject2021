@@ -1,0 +1,18 @@
+<h2>Tables</h2>
+<mat-grid-list [cols]="this.windowWidth" rowHeight="200px">
+  <mat-grid-tile *ngFor="let table of tableList" >
+    <button *ngIf="table.isReady else noIsReadyBlock" mat-raised-button class="readyToOrder" color="warn">
+      Table {{table.tableNumber}} is Ready to Order!
+    </button>
+    <ng-template #noIsReadyBlock>
+      <button mat-raised-button class="noIsReadyToOrder" color="primary">
+        Table {{table.tableNumber}}
+      </button>
+    </ng-template>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-fab color="accent" class="addTable" (click)="createNewTable()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,7 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MenuService} from "../../menu.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {EditDialogComponent} from "../edit-dialog/edit-dialog.component";
 import {Menu} from "../../../models/Menu";
 import { MatSliderChange } from '@angular/material/slider';
 
@@ -12,8 +10,8 @@ import { MatSliderChange } from '@angular/material/slider';
 })
 export class AddMenuDialogComponent implements OnInit {
   selected = -1;
-  constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Menu) { }
+  constructor(public dialogRef: MatDialogRef<AddMenuDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: { menu:Menu,title:string }) { }
 
   ngOnInit(): void {}
 
@@ -22,29 +20,23 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    console.log(this.data);
+    console.log(this.data.menu);
     this.dialogRef.close();
   }
 
-  addMenuItem(): void {
-    // this.menuService.createMenuItem(this.data)
-    //   .subscribe( result => {
-    //     return result;
-    //   });
-  }
-
   setData(menu:Menu) {
-    this.data = menu;
+    this.data.menu = menu;
   }
 
   onCaloriesChange(event: MatSliderChange) {
-    console.log(this.data.calories);
-    this.data.calories = event.value;
+    console.log(this.data.menu.calories);
+    this.data.menu.calories = event.value;
   }
 
   onClick(type: string) {
     this.data.category = type;
     }
+  
     isSuggested(event) {
         if (event.checked) {
             this.data.suggested = "yes";

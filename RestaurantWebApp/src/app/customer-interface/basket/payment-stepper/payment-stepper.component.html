@@ -20,7 +20,7 @@
                 <tbody>
                   <tr *ngFor="let meal of mealList">
                     <th scope="row">{{meal.menu.name}}</th>
-                    <td>{{meal.menu.price * meal.numberSelections}}$</td>
+                    <td>({{meal.menu.price * meal.numberSelections}}$)</td>
                     <td>x {{meal.numberSelections}}</td>
                   </tr>
                 </tbody>
@@ -33,7 +33,7 @@
             <mat-label class = "orderReview">Order Reviewed?</mat-label> 
           </div>
           <div class = "inner">
-            <button mat-button (click) = "orderReviewed()">Yes</button>
+            <button mat-button matStepperNext (click) = "orderReviewed()">Yes</button>
           </div>
         </div>
         <br>
@@ -48,22 +48,45 @@
         <ng-template matStepLabel>Insert Your Card Details</ng-template>
         <mat-form-field>
           <mat-label>Card Number</mat-label>
-          <input matInput placeholder="XXXX-XXXX-XXXX-XXXX" (input) = "checkCardInput()" 
-          formControlName="cardNumberControl" required>
+          <input matInput onkeyup="this.value=this.value.replace(/(\d\d\d\d)(\d)/g,'$1-$2')"
+          placeholder="XXXX-XXXX-XXXX-XXXX" (input) = "checkCardInput()" formControlName="cardNumberControl" [maxLength] = "19" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Expiration Date</mat-label>
-          <input matInput placeholder="XX/XX" (input) = "checkCardInput()" 
-          formControlName="expDateControl" required>
+          <input matInput onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2')" placeholder="XX/XXXX" (input) = "checkCardInput()" 
+          formControlName="expDateControl" [maxLength] = "7" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>CVV Code</mat-label>
           <input matInput placeholder="XXX" (input) = "checkCardInput()" 
-          formControlName="cvvCodeControl" required>
+          formControlName="cvvCodeControl" [maxLength] = "3" required>
         </mat-form-field>
-        <div>
-          <button mat-button (click) = "pay()">Pay</button>
+        <div *ngIf = "this.interacted == false && this.correctInputs == false && this.isPaid == false 
+        && this.isConfirmed == true; else orderReviewBlock">
+          <button mat-button matStepperNext (click) = "pay()">Pay</button>
         </div>
+        <ng-template #orderReviewBlock>
+          <div class = "orderReviewBlock" *ngIf = "this.interacted == true && this.correctInputs == true 
+          && this.isPaid == false && this.isConfirmed == true; else isPaidBlock">
+            Review your Order!
+          </div>
+        </ng-template>
+        <ng-template #isPaidBlock>
+          <div class = "isPaidBlock" *ngIf = "this.isPaid == true && this.isConfirmed == true; else wrongDetailsBlock">
+            You have already paid!
+          </div>
+        </ng-template>
+        <ng-template #wrongDetailsBlock>
+          <div class = "wrongDetailsBlock" *ngIf = "this.interacted == false && this.correctInputs == true 
+          && this.isPaid == false && this.isConfirmed == true; else notConfirmedBlock">
+            The Card Details are Wrong!
+          </div>
+        </ng-template>
+        <ng-template #notConfirmedBlock>
+          <div class = "notConfirmedBlock" *ngIf = "this.isConfirmed == false">
+            Your Order has not been confirmed yet!
+          </div>
+        </ng-template>
         <br>
         <div>
           <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
