@@ -38,10 +38,11 @@ public class MenuCategoryTests {
         menuItem = menuService.createNewMenu(menuItem);
     }
 
+    @Transactional
     @Test
     void TestServiceGetters() {
-        Assertions.assertEquals(menuCategoryService.findCategoryById(
-            menuCategory.getId()).getCategory(), menuCategory.getCategory());
+        Assertions.assertTrue(menuCategoryService.findCategoryById(
+            menuCategory.getId()).getCategory().equals(menuCategory.getCategory()));
 
         Assertions.assertEquals(menuService.getMenuById(
             menuItem.getId()).getCategory(), menuItem.getCategory());
