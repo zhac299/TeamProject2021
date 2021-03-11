@@ -32,7 +32,7 @@ public class MenuCategoryController {
 
     @GetMapping("/menuCategory/{id}")
     public MenuCategory getMealById(@PathVariable("id") Long id) {
-        return menuCategoryService.getCategoryById(id);
+        return menuCategoryService.findCategoryById(id);
     }
 
     @PutMapping("/menuCategory/{id}")
