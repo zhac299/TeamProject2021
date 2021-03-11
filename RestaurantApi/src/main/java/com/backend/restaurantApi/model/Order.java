@@ -44,7 +44,7 @@ public class Order implements Comparable<Order> {
     @Column(name="is_paid")
     private boolean isPaid = false;
 
-    @Column(name="is_ready")
+    @Column(name="isReady")
     private boolean isReady = false;
 
     @Column(name = "total")
