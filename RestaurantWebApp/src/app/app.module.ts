@@ -60,6 +60,7 @@ import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component'
 import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-staff-dialog.component';
 import { TablesListDisplayComponent } from './tables-list-display/tables-list-display.component';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -94,40 +95,41 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     AddStaffDialogComponent,
     TablesListDisplayComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    CommonModule,
-    MatDialogModule,
-    MatCardModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatDividerModule,
-    MatListModule,
-    MatIconModule,
-    MatSelectModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatExpansionModule,
-    MatChipsModule,
-    MatAutocompleteModule,
-    MatSliderModule,
-    MatTableModule,
-    MatCheckboxModule,
-    NgOtpInputModule,
-    MatBadgeModule,
-    MatSlideToggleModule,
-    MatBadgeModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        CommonModule,
+        MatDialogModule,
+        MatCardModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatDividerModule,
+        MatListModule,
+        MatIconModule,
+        MatSelectModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatExpansionModule,
+        MatChipsModule,
+        MatAutocompleteModule,
+        MatSliderModule,
+        MatTableModule,
+        MatCheckboxModule,
+        NgOtpInputModule,
+        MatBadgeModule,
+        MatSlideToggleModule,
+        MatBadgeModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule,
+        MatRadioModule
+    ],
   providers: [AllergensChipsComponent, CustomerInterfaceComponent, BasketComponent],
   bootstrap: [AppComponent]
 })
