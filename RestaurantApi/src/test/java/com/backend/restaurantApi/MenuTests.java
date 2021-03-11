@@ -27,6 +27,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 /**
  * A tester class for the Menu Model.
  */
+@SpringBootTest
 public class MenuTests {
 
     /**
