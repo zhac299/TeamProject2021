@@ -90,16 +90,16 @@ export class OrderService {
       });
   }
 
-  updateOrderReady(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isready/${order.isReady}`,order);
-  }
-
   updateOrderDelivered(order: Order): Observable<Order> {
     return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isdelivered/${order.isDelivered}`,order);
   }
 
   updateOrderConfirmed(order: Order): Observable<Order> {
     return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isconfirmed/${order.isConfirmed}`,order);
+  }
+
+  updateOrderReady(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isready/${order.isReady}`,order);
   }
 
   updateOrder(order: Order): void {
