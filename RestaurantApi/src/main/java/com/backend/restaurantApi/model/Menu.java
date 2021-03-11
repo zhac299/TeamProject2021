@@ -243,7 +243,7 @@ public class Menu {
     }
     
     public String getSuggested() {
-        return this.isSuggested;
+        return isSuggested;
     }
 
 }

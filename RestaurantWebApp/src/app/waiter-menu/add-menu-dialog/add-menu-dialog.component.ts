@@ -27,10 +27,10 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   addMenuItem(): void {
-    // this.menuService.createMenuItem(this.data)
-    //   .subscribe( result => {
+     this.menuService.createMenuItem(this.data)
+     .subscribe( result => {
     //     return result;
-    //   });
+    });
   }
 
   setData(menu:Menu) {
