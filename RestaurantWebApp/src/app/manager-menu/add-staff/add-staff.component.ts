@@ -34,7 +34,7 @@ export class AddStaffComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(staff => {
-      if(staff){
+      if(staff && staff.userName && staff.email && staff.password){
         console.log(staff)
         this.staffService.createStaff(staff).subscribe((st) => {
           this.staffService.getStaffs().subscribe((stt) => {
