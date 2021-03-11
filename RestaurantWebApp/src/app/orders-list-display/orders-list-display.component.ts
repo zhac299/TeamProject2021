@@ -26,7 +26,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   ORDER_BUTTON_WIDTH = 300;
   orders: Order[];
   subscription: Subscription;
-  refreshTimer$ = timer(0, 5000)
+  refreshTimer$ = timer(0, 1000)
     .pipe(tap(() => console.log('Fetching Orders...')));
   resize$ = fromEvent(window, 'resize');
   windowWidth: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
@@ -35,7 +35,8 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
     if (this.isKitchenStaff) {
       this.orderService.orders$.pipe(
-        map((orders) => orders.filter((order) => order.isConfirmed))
+        map((orders) => orders.filter((order) => order.isConfirmed)),
+        map((orders) => orders.filter((order) => !order.isDelivered))
       )
         .subscribe((orders) =>this.orders = orders);
     } else {
