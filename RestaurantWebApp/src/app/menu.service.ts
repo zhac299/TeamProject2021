@@ -87,7 +87,7 @@ export class MenuService {
         this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe( orders => {
             this.orderList = orders;
             for (let order of this.orderList) {
-                if (order.category == "Fajita"&& order.isSuggested == "no") {
+                if (order.category == "Fajita"&& order.suggested == "no") {
                     this.sOrder.push(order);
                 }
             }
@@ -105,7 +105,7 @@ export class MenuService {
         this.menus$.subscribe(orders => {
             this.orderList = orders;
             for (let order of this.orderList) {
-                if (order.category == newCat && order.isSuggested == "no") {
+                if (order.category == newCat && order.suggested == "no") {
                     this.sOrder.push(order);
                 }
             }
@@ -114,20 +114,22 @@ export class MenuService {
         return this.cat;
     }
     showSuggestions() {
-        this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe( orders => {
+        this.sOrder.length = 0;
+        this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe(orders => {
             this.orderList = orders;
             for (let order of this.orderList) {
-                if (order.category == this.cat.name && order.isSuggested == "yes") {
+                if (order.category == this.cat.name && order.suggested == "yes") {
                     this.sOrder.push(order);
                 }
             }
         });
+    
     }
 
     setCat(menu: Menu[]) {
         this.sOrder = [];
         for (let order of menu) {
-            if (order.category == this.cat.name && order.isSuggested == "no") {
+            if (order.category == this.cat.name && order.suggested == "no") {
                 this.sOrder.push(order);
             }
         }

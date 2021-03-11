@@ -27,10 +27,10 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   addMenuItem(): void {
-     this.menuService.createMenuItem(this.data)
-     .subscribe( result => {
+    // this.menuService.createMenuItem(this.data)
+    //   .subscribe( result => {
     //     return result;
-    });
+    //   });
   }
 
   setData(menu:Menu) {
@@ -47,8 +47,9 @@ export class AddMenuDialogComponent implements OnInit {
     }
     isSuggested(event) {
         if (event.checked) {
-            this.data.isSuggested = "yes";
+            this.data.suggested = "yes";
+        } else {
+            this.data.suggested = "no";
         }
-        this.data.isSuggested = "no";
     }
 }
