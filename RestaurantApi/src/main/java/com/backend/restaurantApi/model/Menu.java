@@ -1,5 +1,7 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,8 +22,10 @@ public class Menu {
     @Column(name = "price")
     private Double price = 0.0;
 
-    @Column(name = "category")
-    private String category;
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "category")
+    private MenuCategory category;
 
     @Column(name = "calories")
     private Double calories;
@@ -101,14 +105,6 @@ public class Menu {
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public String getCategory(){
-        return category;
-    }
-
-    public void setCategory(String cat){
-        this.category = cat;
     }
 
     public boolean isPeanuts() {
@@ -236,4 +232,23 @@ public class Menu {
         return this.timeToCook;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public MenuCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(MenuCategory category) {
+        this.category = category;
+    }
+
+    public double getTimeToCook() {
+        return timeToCook;
+    }
+
+    public void setTimeToCook(double timeToCook) {
+        this.timeToCook = timeToCook;
+    }
 }

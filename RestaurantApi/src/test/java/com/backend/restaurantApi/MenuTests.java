@@ -92,7 +92,7 @@ public class MenuTests {
         menu = new Menu();
         menu.setName("Cheesy Nachos");
         menu.setPrice((double) 12);
-        menu.setCategory("Nachos");
+//        menu.setCategory("Nachos");
 
         menu = menuService.createNewMenu(menu);
 
