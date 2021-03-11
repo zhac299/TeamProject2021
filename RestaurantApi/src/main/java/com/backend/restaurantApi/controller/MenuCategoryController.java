@@ -31,7 +31,7 @@ public class MenuCategoryController {
     }
 
     @GetMapping("/menuCategory/{id}")
-    public MenuCategory getMealById(@PathVariable("id") Long id) {
+    public MenuCategory getMenuCategoryById(@PathVariable("id") Long id) {
         return menuCategoryService.findCategoryById(id);
     }
 

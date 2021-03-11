@@ -25,7 +25,6 @@ public class MenuCategoryTests {
 
     @BeforeEach
     void setUp() {
-
         //creating a menu category
         menuCategory = new MenuCategory();
         menuCategory.setCategory("Fajita");
@@ -37,5 +36,14 @@ public class MenuCategoryTests {
         menuItem.setName("cheesy fajita");
         menuItem.setCategory(menuCategory);
         menuItem = menuService.createNewMenu(menuItem);
+    }
+
+    @Test
+    void TestServiceGetters() {
+        Assertions.assertEquals(menuCategoryService.findCategoryById(
+            menuCategory.getId()).getCategory(), menuCategory.getCategory());
+
+        Assertions.assertEquals(menuService.getMenuById(
+            menuItem.getId()).getCategory(), menuItem.getCategory());
     }
 }
