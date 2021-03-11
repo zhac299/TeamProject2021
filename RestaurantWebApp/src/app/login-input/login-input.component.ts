@@ -14,7 +14,7 @@ export class LoginInputComponent implements OnInit {
     password: string = "";
     waiter: boolean = false;
     kitchen: boolean = false;
-    isCorrect: boolean;
+    isCorrect: boolean = true;
     
     loginTwo: Login = undefined;
     html: string = "";
@@ -34,7 +34,7 @@ export class LoginInputComponent implements OnInit {
                         this.router.navigateByUrl("/2FA");
                     }
                 } catch {
-                    console.log("Wrong login!");
+                    this.isCorrect = false;
                 }
             });
         this.username = "";
