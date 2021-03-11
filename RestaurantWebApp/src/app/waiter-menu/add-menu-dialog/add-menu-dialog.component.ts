@@ -47,8 +47,8 @@ export class AddMenuDialogComponent implements OnInit {
     }
     isSuggested(event) {
         if (event.checked) {
-            this.data.isSuggested = true;
+            this.data.isSuggested = "yes";
         }
-        this.data.isSuggested = false;
+        this.data.isSuggested = "no";
     }
 }
