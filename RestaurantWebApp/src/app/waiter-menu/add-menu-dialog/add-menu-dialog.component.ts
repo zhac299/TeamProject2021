@@ -34,14 +34,14 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   onClick(type: string) {
-    this.data.category = type;
+    this.data.menu.category = type;
     }
   
     isSuggested(event) {
         if (event.checked) {
-            this.data.suggested = "yes";
+            this.data.menu.suggested = "yes";
         } else {
-            this.data.suggested = "no";
+            this.data.menu.suggested = "no";
         }
     }
 }
