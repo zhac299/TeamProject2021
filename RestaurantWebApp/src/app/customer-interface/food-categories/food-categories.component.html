@@ -1,13 +1,2 @@
 
-<mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
-  <mat-grid-tile class = "category"
-        *ngFor="let tile of tiles"
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color"
-        (click) = onClick(tile.text)>
-      <div>
-        <u>{{tile.text}}</u>
-      </div>
-  </mat-grid-tile>
-</mat-grid-list>
+

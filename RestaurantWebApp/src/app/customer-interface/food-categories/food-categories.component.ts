@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuService} from "../../menu.service";
+import {MenuFilterService} from "../../menu-filter.service";
+import {MenuCategory} from "../../../models/MenuCategory";
 export interface Tile {
   color: string;
   cols: number;
@@ -12,22 +14,11 @@ export interface Tile {
   styleUrls: ['./food-categories.component.sass'],
 })
 export class FoodCategoriesComponent implements OnInit {
-  constructor(private menuService: MenuService) { }
+
+  categories: MenuCategory[];
+
+  constructor() { }
 
   ngOnInit(): void {}
-
-  foodCategories: String[];
-
-  onClick(name:string): void{
-    this.menuService.modifyCat(name);
-  }
-  color = '#388572';
-
-  tiles: Tile[] = [
-    {text: 'Fajita', cols: 1, rows: 1, color: this.color},
-    {text: 'Nachos', cols: 1, rows: 1, color: this.color},
-    {text: 'Dips', cols: 1, rows: 1, color: this.color},
-    {text: 'Desserts', cols: 1, rows: 1, color: this.color},
-  ];
 
 }

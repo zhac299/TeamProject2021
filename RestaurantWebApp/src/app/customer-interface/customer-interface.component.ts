@@ -17,6 +17,7 @@ import { animate, keyframes, query, stagger, style, transition, trigger} from "@
 import { Meal } from 'src/models/Meal';
 import { MealService } from '../meal.service';
 import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
+import {MenuCategory} from "../../models/MenuCategory";
 // import { Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from '@angular/router'
 
 @Component({
@@ -45,12 +46,12 @@ export class CustomerInterfaceComponent implements OnInit {
 
   selectedMeals: Meal[] = [];
   menu: Menu[];
-  cat: selectedCategory = new selectedCategory;
   paramsObject: any;
   customer: Observable<Customer>;
   table:Observable<Table>;
   orderPlaced: Boolean = false;
-  
+  categories: MenuCategory[];
+
   showOverlay = true;
 
   constructor(private menuService: MenuService,
@@ -74,17 +75,24 @@ export class CustomerInterfaceComponent implements OnInit {
       this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
     });
 
-    this.menuService.getAllUpdatedMenus();
-    this.menuService.menus$.subscribe((menu)=> {
-        this.menu=menu;
-    });
-    this.cat = this.menuService.getCat();
+    // this.menuService.getAllUpdatedMenus();
+    // this.menuService.menus$.subscribe((menu)=> {
+    //     this.menu=menu;
+    // });
+
+    this.menuFilterService.getMenuCategories()
+      .subscribe((menuCats) => {
+        this.categories = menuCats;
+        this.menu = menuCats[0].menus;
+      });
+
   }
 
   filter(filterArgs: string): void {
       this.menuFilterService.filter(filterArgs).subscribe(orders => {
           this.menuService.setCat(orders);
     });
+
   }
 
   addMeal(menuItem: Menu): void {
@@ -156,6 +164,11 @@ export class CustomerInterfaceComponent implements OnInit {
 
   goHome(): void {
     this.router.navigateByUrl('/home');
+  }
+
+  selectCategory(category: MenuCategory): void{
+    this.menu = category.menus;
+    // this.menuService.modifyCat(name);
   }
 
 }

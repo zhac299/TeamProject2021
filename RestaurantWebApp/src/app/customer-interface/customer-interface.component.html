@@ -33,10 +33,15 @@
 <expansion-pannel></expansion-pannel>
 <br>
 
-<food-categories></food-categories>
+<mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
+  <mat-grid-tile colspan="1" *ngFor="let category of categories" class="category" (click)="selectCategory(category)">
+      {{category.category}}
+  </mat-grid-tile>
+</mat-grid-list>
+
 <mat-grid-list cols="3"
-               gutterSize="50px" rowHeight="600px" class="category" [@listAnimation]="cat.meal.length">
-  <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of cat.meal" colspan="1">
+               gutterSize="50px" rowHeight="600px" [@listAnimation]="menu.length">
+  <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of menu" colspan="1">
     <mat-card class="mat-card">
       <mat-card-header class="mat-card-header">
         <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>

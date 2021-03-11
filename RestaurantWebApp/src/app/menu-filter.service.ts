@@ -21,8 +21,8 @@ export class MenuFilterService {
     return this._refreshNeeded;
   }
 
-  public getMenuCategories(): Observable<MenuCategory> {
-    return this.httpClient.get<MenuCategory>(this.menuCategoryUrl);
+  public getMenuCategories(): Observable<MenuCategory[]> {
+    return this.httpClient.get<MenuCategory[]>(this.menuCategoryUrl);
   }
 
   public getMenuCategory(id: number): Observable<MenuCategory> {
