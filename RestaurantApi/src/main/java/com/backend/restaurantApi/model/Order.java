@@ -147,6 +147,14 @@ public class Order implements Comparable<Order> {
         this.isPaid = isPaid;    
     }
 
+    public boolean getIsReady(){
+        return this.isReady;
+    }
+
+    public void setIsReady(boolean isReady){
+        this.isReady = isReady;
+    }
+
     public int getTotal() {
         return this.total;
     }
