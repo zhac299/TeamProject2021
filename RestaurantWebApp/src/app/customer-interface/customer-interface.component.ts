@@ -18,7 +18,7 @@ import { Meal } from 'src/models/Meal';
 import { MealService } from '../meal.service';
 import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
 import {MenuCategory} from "../../models/MenuCategory";
-// import { Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from '@angular/router'
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-interface',
@@ -36,8 +36,6 @@ import {MenuCategory} from "../../models/MenuCategory";
             style({opacity: 1, transform: 'translateY(0)', offset: 1})
           ]))
         ]))
-
-
       ])
     ])
   ]
@@ -51,8 +49,7 @@ export class CustomerInterfaceComponent implements OnInit {
   table:Observable<Table>;
   orderPlaced: Boolean = false;
   categories: MenuCategory[];
-
-  showOverlay = true;
+  selectedCategory: MenuCategory;
 
   constructor(private menuService: MenuService,
               private mealService: MealService,
@@ -75,24 +72,33 @@ export class CustomerInterfaceComponent implements OnInit {
       this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
     });
 
-    // this.menuService.getAllUpdatedMenus();
-    // this.menuService.menus$.subscribe((menu)=> {
-    //     this.menu=menu;
-    // });
-
     this.menuFilterService.getMenuCategories()
       .subscribe((menuCats) => {
         this.categories = menuCats;
         this.menu = menuCats[0].menus;
-      });
-
+        this.selectedCategory = menuCats[0];
+    });
   }
 
-  filter(filterArgs: string): void {
-      this.menuFilterService.filter(filterArgs).subscribe(orders => {
-          this.menuService.setCat(orders);
-    });
+  async filter(filterArgs: string): Promise<void> {
+    var filteredItems = await this.menuFilterService.filter(filterArgs).pipe(take(1)).toPromise();
 
+    this.menuFilterService.getMenuCategory(this.selectedCategory.id).subscribe((menuCategory) =>{
+      this.menu = menuCategory.menus;
+    })
+
+    for (var i = 0; i < this.menu.length; i++) {
+      let containsFilteredItem = false;;
+      for (var j = 0; j < filteredItems.length && containsFilteredItem == false; i++) {
+        if (this.menu[i].name == filteredItems[j].name) {
+          containsFilteredItem = true;
+        }
+      }
+      if(containsFilteredItem == false) {
+        this.menu.splice(i);
+      }
+    }
+    console.log(this.menu);
   }
 
   addMeal(menuItem: Menu): void {
@@ -166,9 +172,10 @@ export class CustomerInterfaceComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-  selectCategory(category: MenuCategory): void{
+  selectCategory(category: MenuCategory): void {
+    this.selectedCategory = category;
     this.menu = category.menus;
-    // this.menuService.modifyCat(name);
+    console.log(this.menu);
   }
 
 }

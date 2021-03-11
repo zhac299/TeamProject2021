@@ -29,8 +29,6 @@ export class MenuFilterService {
     return this.httpClient.get<MenuCategory>(`${this.menuCategoryUrl}/${id}`);
   }
 
-
-
   public filter(val: string): Observable<Menu[]> {
     this.filteredDB = this.filteredDB.concat(val);
     let temp: string = this.filteredDB;
@@ -43,5 +41,5 @@ export class MenuFilterService {
       })
       ,map(response => response)
     )
-    }
+  }
 }

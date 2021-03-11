@@ -29,7 +29,6 @@ import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/
 import { AllergensChipsComponent } from './customer-interface/allergens-chips/allergens-chips.component';
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatSliderModule} from '@angular/material/slider';
-import { FoodCategoriesComponent } from './customer-interface/food-categories/food-categories.component';
 import { TableComponent } from './waiter-menu/table/table.component';
 import { MatTableModule} from "@angular/material/table";
 import { MatInputModule} from "@angular/material/input";
@@ -72,7 +71,6 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MenuFilterComponent,
     ExpansionPannelComponent,
     AllergensChipsComponent,
-    FoodCategoriesComponent,
     TableComponent,
     AddMenuDialogComponent,
     TwoFactorAuthComponent,
