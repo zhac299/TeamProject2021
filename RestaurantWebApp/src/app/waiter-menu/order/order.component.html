@@ -64,7 +64,6 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Item</th>
-                  <th scope="col">Price</th>
                   <th scope="col">Qty</th>
                 </tr>
                 </thead>
@@ -72,13 +71,11 @@
                 <tr *ngFor="let meal of orderedMealItems$ | async; let i = index">
                   <td>{{i+1}}</td>
                   <td>{{meal.menu.name}}</td>
-                  <td>£{{meal.menu.price}}</td>
                   <td>x{{meal.numberSelections}}</td>
                 </tr>
                 </tbody>
               </table>
             </div>
-            <h3>Total: £{{total}}</h3>
           </div>
         </div>
       </div>
