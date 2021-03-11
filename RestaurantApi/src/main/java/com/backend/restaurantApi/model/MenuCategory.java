@@ -16,7 +16,7 @@ public class MenuCategory {
     private Long id;
 
     @Column
-    private String Category;
+    private String category;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -33,11 +33,11 @@ public class MenuCategory {
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(String category) {
-        Category = category;
+        category = category;
     }
 
     public List<Menu> getMenu() {

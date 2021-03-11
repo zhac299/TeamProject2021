@@ -66,5 +66,9 @@ public class MenuCategoryTests {
         Assertions.assertDoesNotThrow(()->{
             menuCategoryService.findCategoryById(menuCategory.getId());
         },"Should not throw an exception, deleting the menu item should not delete the category.");
+
+        Assertions.assertNotNull(
+            menuCategoryService.findCategoryById(menuCategory.getId()),
+            "Should not be null, deleting the menu item should not delete the category");
     }
 }
