@@ -1,6 +1,8 @@
 package com.backend.restaurantApi;
 
 import com.backend.restaurantApi.exception.MenuCategoryNotFoundException;
+import com.backend.restaurantApi.exception.MenuCategoryNotFoundException;
+import com.backend.restaurantApi.exception.MenuNotFoundException;
 import com.backend.restaurantApi.model.*;
 import com.backend.restaurantApi.service.*;
 import org.junit.jupiter.api.Assertions;
@@ -49,13 +51,27 @@ public class MenuCategoryTests {
             menuItem.getId()).getCategory(), menuItem.getCategory());
     }
 
+    /**
+     * Test if category deleted also deletes menu items in that category
+     */
+    @Test
+    @Transactional
+    void deleteMenuCategoryDeletesMenuItemTest() {
+        menuCategoryService.deleteMenuCategory(menuCategory.getId());
+        Assertions.assertThrows(MenuCategoryNotFoundException.class,
+                ()-> menuCategoryService.findCategoryById(menuCategory.getId()));
+
+        Assertions.assertThrows(MenuNotFoundException.class,
+                ()-> menuService.getMenuById(menuItem.getId()));
+    }
+
     @Transactional
     @Test
     void testDeleteMenuCategory() {
         menuCategoryService.deleteMenuCategory(menuCategory.getId());
         Assertions.assertThrows(MenuCategoryNotFoundException.class, () -> {
             menuCategoryService.findCategoryById(menuCategory.getId());
-        }, "Should throw an exception, since the menu category was deleted.");      
+        }, "Should throw an exception, since the menu category was deleted.");
     }
 
     @Transactional
