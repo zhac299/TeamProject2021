@@ -22,7 +22,7 @@ public class MenuCategory {
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @JsonManagedReference
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Menu> menu;
+    private List<Menu> menus;
 
     public MenuCategory(){};
 
@@ -43,10 +43,10 @@ public class MenuCategory {
     }
 
     public List<Menu> getMenu() {
-        return menu;
+        return menus;
     }
 
     public void setMenu(List<Menu> menu) {
-        this.menu = menu;
+        this.menus = menu;
     }
 }
