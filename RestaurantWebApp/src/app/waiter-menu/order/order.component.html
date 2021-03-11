@@ -1,22 +1,22 @@
   <div mat-dialog-title class="container dialogHeader">
     <div class="row">
       <div class="col">
-        <h1 mat-dialog-title>Order #{{order.id}}</h1>
+        <h1 mat-dialog-title>Order #{{data.order.id}}</h1>
       </div>
       <div class="col">
-        <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isPaid" (change)="updateOrderIsPaid(order)">Paid</mat-checkbox>
+        <mat-checkbox *ngIf="data.order.isConfirmed" [(ngModel)]="data.order.isPaid" (change)="updateOrderIsPaid(data.order)">Paid</mat-checkbox>
       </div>
       <div class="col">
-        <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isDelivered" (change)="updateOrderDelivered(order)">Delivered</mat-checkbox>
+        <mat-checkbox *ngIf="data.order.isConfirmed" [(ngModel)]="data.order.isDelivered" (change)="updateOrderDelivered(data.order)">Delivered</mat-checkbox>
       </div>
       <div class="col">
-        <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
+        <mat-checkbox [(ngModel)]="data.order.isConfirmed" (change)="updateOrderConfirmed(data.order)">Confirmed</mat-checkbox>
       </div>
     </div>
   </div>
   <hr>
   <mat-dialog-content class="mat-dialog">
-    <div class="container">
+    <div class="container" *ngIf="!data.isKitchenStaff else isWaiter">
       <div class="row">
         <div class="col-5">
           <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -48,16 +48,45 @@
           <div class="row">
             <div *ngFor="let menu of menuList" class="col">
               <button mat-raised-button class="foodBtn"
-                      (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
+                      (click)="addMenuToOrder(menu, data.order)">{{menu.name}}</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <ng-template #isWaiter>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+              <table class="table table-striped orderedItemsTable">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Qty</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let meal of orderedMealItems$ | async; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{meal.menu.name}}</td>
+                  <td>£{{meal.menu.price}}</td>
+                  <td>x{{meal.numberSelections}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Total: £{{total}}</h3>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button mat-dialog-close (click)="save(order)">Save</button>
+    <button mat-button mat-dialog-close (click)="save(data.order)">Save</button>
     <button mat-button (click)="deleteOrder()">
       <mat-icon>delete</mat-icon>
     </button>
