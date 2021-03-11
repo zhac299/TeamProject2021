@@ -31,16 +31,12 @@
     </table>
   </mat-expansion-panel>
 </div>
-<ng-template #noOrderBlock>
-  <div class = "noOrderBlock">
-    You have not placed an order yet!
-  </div> 
-</ng-template>
 <hr>
 <div class = "orderStatusTitle">
   Order Status
 </div>
 <div>
+  <mat-spinner class = "loadingSpinner" *ngIf = "orderPlaced == true"></mat-spinner>
   {{orderStatus}}
 </div>
 </mat-dialog-content>

@@ -59,6 +59,7 @@ import { MenusListDisplayComponent } from './menus-list-display/menus-list-displ
 import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
 import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-staff-dialog.component';
 import { TablesListDisplayComponent } from './tables-list-display/tables-list-display.component';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -124,7 +125,8 @@ import { TablesListDisplayComponent } from './tables-list-display/tables-list-di
     MatBadgeModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [AllergensChipsComponent, CustomerInterfaceComponent, BasketComponent],
   bootstrap: [AppComponent]

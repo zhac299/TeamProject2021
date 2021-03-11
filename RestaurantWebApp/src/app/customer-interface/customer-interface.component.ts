@@ -13,10 +13,11 @@ import { CustomerService } from '../customer.service';
 import { BasketComponent} from './basket/basket.component';
 import { Table } from 'src/models/Table';
 import { TableService } from '../table.service';
-import {animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
+import { animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
 import { Meal } from 'src/models/Meal';
 import { MealService } from '../meal.service';
 import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
+// import { Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from '@angular/router'
 
 @Component({
   selector: 'app-customer-interface',
@@ -49,6 +50,8 @@ export class CustomerInterfaceComponent implements OnInit {
   customer: Observable<Customer>;
   table:Observable<Table>;
   orderPlaced: Boolean = false;
+  
+  showOverlay = true;
 
   constructor(private menuService: MenuService,
               private mealService: MealService,
@@ -61,7 +64,7 @@ export class CustomerInterfaceComponent implements OnInit {
               private router:Router) { }
 
   ngAfterViewInit(): void {
-        this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
   }
 
   ngOnInit(): void {

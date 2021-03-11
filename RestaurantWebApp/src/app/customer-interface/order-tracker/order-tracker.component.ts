@@ -1,11 +1,11 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
-import { MatDialogModule} from '@angular/material/dialog';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-order-tracker',
@@ -18,7 +18,7 @@ export class OrderTrackerComponent implements OnInit {
   customerObservable: Observable<Customer>;
   customer: Customer;
   orderPlaced: Boolean;
-  orderStatus: String;
+  orderStatus: String = "You haven't placed an order yet!";
 
   constructor(
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
@@ -52,7 +52,7 @@ export class OrderTrackerComponent implements OnInit {
           this.orderStatus = this.orderStatus + " And order was paid... Muchas Gracias!";
         }
       } else {
-        this.orderStatus = "Order has not been confirmed yet...";
+        this.orderStatus = "Order has not been confirmed yet... Paciencia por favor!";
       }
     }
     console.log(this.orderStatus);
