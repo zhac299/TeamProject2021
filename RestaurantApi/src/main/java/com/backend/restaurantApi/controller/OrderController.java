@@ -104,4 +104,12 @@ public class OrderController {
         orderRepo.save(order);
         return order;
     }
+
+    @PutMapping("/orders/{id}/isready/{isReady}")
+    public Order updateIsReady(@PathVariable("id") Long id, @PathVariable("isReady") boolean isReady) {
+        Order order = orderService.getOrderById(id);
+        order.setIsReady(isReady);
+        orderRepo.save(order);
+        return order;
+    }
 }
