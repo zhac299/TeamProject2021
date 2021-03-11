@@ -13,15 +13,15 @@
                     <label for = "waiter">Waiter</label>
                     <input type = "radio" (change) = "isKitchen()"  name = "staff"> 
                     <label for = "kitchen">Kitchen Staff</label>
-                    <p *ngIf= "isCorrect == false"
-                        style="color: darkred;font-size: small;">
-                        <i class="fa fa-exclamation-triangle"></i>
-                        Wrong details!
-                    </p>
                 </div>
         
             <input  (click) = "onSubmit()" type="submit" value="Login" class = "submit">
-            <br/><br/><br/><br/><br/>      
+            <br/><br/><br/><br/><br/>     
+            <p class = "wrong" *ngIf= "isCorrect == false"
+                        style="color: darkred;font-size: small;">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        Wrong details!
+                    </p> 
             <br/>      
             <section class="content" *ngIf="html" [innerHTML]="html"></section>
         </form>
