@@ -1,6 +1,9 @@
 
 <button (click)="openDialog()" mat-raised-button color="primary"
-        matBadge="3" matBadgePosition="before" matBadgeColor="accent">
+  [matBadge]="numberOfNotifications" 
+  matBadgePosition="before" 
+  matBadgeColor="accent" 
+  [matBadgeHidden]="hideMatBadge">
       notifications
 </button>
 

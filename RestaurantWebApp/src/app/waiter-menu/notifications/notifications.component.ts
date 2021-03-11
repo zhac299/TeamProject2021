@@ -11,9 +11,11 @@ import { NotificationsDialogComponent } from './notifications-dialog/notificatio
 export class NotificationsComponent implements OnInit {
 
   numberOfNotifications: number;
+  hideMatBadge: boolean;
 
   constructor(public dialog: MatDialog) { 
     this.numberOfNotifications = 0;
+    this.hideMatBadge = true;
   }
 
   ngOnInit(): void {
