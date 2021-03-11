@@ -1,7 +1,9 @@
+import {MenuCategory} from "./MenuCategory";
+
 export class Menu{
   id: number;
   name: string;
-  category: string;
+  category: MenuCategory;
   description: string;
   price: number;
   peanuts: boolean;
