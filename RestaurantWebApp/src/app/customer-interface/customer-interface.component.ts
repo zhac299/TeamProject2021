@@ -169,6 +169,11 @@ export class CustomerInterfaceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(orderPlaced => {
       this.orderPlaced = orderPlaced;
+      if(this.selectedMeals && this.selectedMeals.length > 0) {
+        this.cartCount = this.selectedMeals.length;
+      } else {
+        this.cartCount = 0;
+      }
     });
   }
 
