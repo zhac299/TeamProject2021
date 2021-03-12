@@ -1,0 +1,42 @@
+<mat-dialog-content>
+<mat-grid-list cols="1" rowHeight="50px">
+  <mat-grid-tile colspan="1">
+    <div class = "title" > Order Tracker
+      <button mat-icon-button (click) = close()><mat-icon>cancel</mat-icon></button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+<div *ngIf = "orderPlaced == true" class = "orderedItemsTitle">
+  <hr>
+  Ordered Items
+</div>
+<div *ngIf = "orderPlaced == true">
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Order Items
+      </mat-panel-title>
+      <mat-panel-description>
+        Click to review contents of your order.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <table class="table" class = "selectedItems">
+      <tbody>
+        <tr *ngFor="let meal of mealList">
+          <th scope="row">{{meal.menu.name}}</th>
+          <td>{{meal.menu.price * meal.numberSelections}}$</td>
+          <td>x {{meal.numberSelections}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-expansion-panel>
+</div>
+<hr>
+<div class = "orderStatusTitle">
+  Order Status
+</div>
+<div>
+  <mat-spinner class = "loadingSpinner" *ngIf = "orderPlaced == true"></mat-spinner>
+  {{orderStatus}}
+</div>
+</mat-dialog-content>

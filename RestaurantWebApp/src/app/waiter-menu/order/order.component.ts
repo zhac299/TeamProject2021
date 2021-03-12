@@ -25,26 +25,29 @@ export class OrderComponent implements OnInit {
   private orderedMealItemsSubject$ = new BehaviorSubject<Meal[]>([]);
   orderedMealItems$ = this.orderedMealItemsSubject$.asObservable();
 
-  private orderSubject$ = new BehaviorSubject<Order>(this.order);
+  private orderSubject$ = new BehaviorSubject<Order>(this.data.order);
   order$ = this.orderSubject$.asObservable();
   subscription: Subscription;
-  refreshTimer$ = timer(0, 5000)
+  refreshTimer$ = timer(0, 1000)
     .pipe(tap(() => console.log('Fetching...')));
 
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
-    @Inject(MAT_DIALOG_DATA) public order: Order,
+    @Inject(MAT_DIALOG_DATA) public data: {order: Order, isKitchenStaff: boolean},
     private orderService: OrderService,
     public menuService: MenuService,
     private mealService: MealService) {}
 
   ngOnInit(): void {
-    this.updateAllOrder();
+    this.updateOrderedMealItems();
+    this.menuService.menus$.subscribe((menu) => {
+      this.menuList = menu;
+    });
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
-    this.orderService.getOrderById(this.order.id).subscribe((orders) => {
+    this.orderService.getOrderById(this.data.order.id).subscribe((orders) => {
       this.orderSubject$.next(orders);
-      this.order = orders;
+      this.data.order = orders;
     });
   }
   
@@ -77,7 +80,7 @@ export class OrderComponent implements OnInit {
   }
 
   updateOrderedMealItems() {
-    if(this.order.meal.length > 0){
+    if(this.data.order.meal.length > 0){
       this.order$.subscribe((order) => {
         this.orderedMealItemsSubject$.next(order.meal);
         this.total = order.total;
@@ -85,16 +88,9 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  updateAllOrder(): void {
-    this.updateOrderedMealItems();
-    this.menuService.menus$.subscribe((menu) => {
-      this.menuList = menu;
-    });
-  }
-
   deleteOrder(): void {
-    console.log(this.order.id);
-    this.orderService.deleteOrderById(this.order.id);
+    console.log(this.data.order.id);
+    this.orderService.deleteOrderById(this.data.order.id);
     this.dialogRef.close();
   }
 
@@ -119,14 +115,14 @@ export class OrderComponent implements OnInit {
         _orderedMealItems.push(meal);
       });
     }
-    this.order.total += menu.price;
+    this.data.order.total += menu.price;
     this.orderService.updateTotal(order);
     this.orderedMealItemsSubject$.next(_orderedMealItems);
   }
 
   save(order: Order) {
     console.log(this.orderSubject$.getValue());
-    this.order = this.orderSubject$.getValue();
+    this.data.order = this.orderSubject$.getValue();
     this.orderedMealItemsSubject$.complete();
     this.orderedMealItemsSubject$.complete();
     this.dialogRef.close(order);

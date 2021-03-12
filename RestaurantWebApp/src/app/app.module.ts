@@ -54,10 +54,12 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
 import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { OrderTrackerComponent } from './customer-interface/order-tracker/order-tracker.component';
 import { MenusListDisplayComponent } from './menus-list-display/menus-list-display.component';
 import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
 import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-staff-dialog.component';
 import { TablesListDisplayComponent } from './tables-list-display/tables-list-display.component';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,7 @@ import { TablesListDisplayComponent } from './tables-list-display/tables-list-di
     OrdersListDisplayComponent,
     ManagerMenuComponent,
     PaymentStepperComponent,
+    OrderTrackerComponent,
     MenusListDisplayComponent,
     AddStaffComponent,
     AddStaffDialogComponent,
@@ -122,9 +125,10 @@ import { TablesListDisplayComponent } from './tables-list-display/tables-list-di
     MatBadgeModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
-  providers: [AllergensChipsComponent, CustomerInterfaceComponent],
+  providers: [AllergensChipsComponent, CustomerInterfaceComponent, BasketComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
