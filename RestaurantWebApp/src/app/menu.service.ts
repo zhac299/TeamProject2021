@@ -131,6 +131,7 @@ copyOrder: Menu[] = [];
             }
             if (this.sOrder.length == 0) {
                 this.sOrder = this.copyOrder;
+                this.copyOrder.length = 0;
             }
         });
     
