@@ -14,7 +14,8 @@ export class MenuService {
   mockDbUrl = 'http://localhost:3000/menu';
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu';
   orderList: Menu[] = [];
-  sOrder: Menu[] = [];
+sOrder: Menu[] = [];
+copyOrder: Menu[] = [];
   cat: selectedCategory = new selectedCategory;
 
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
@@ -119,6 +120,7 @@ export class MenuService {
         return this.cat;
     }
     showSuggestions() {
+        this.copyOrder = this.sOrder;
         this.sOrder.length = 0;
         this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe(orders => {
             this.orderList = orders;
@@ -126,6 +128,10 @@ export class MenuService {
                 if (order.category == this.cat.name && order.suggested == "yes") {
                     this.sOrder.push(order);
                 }
+            }
+            if (this.sOrder.length == 0) {
+                this.sOrder = this.copyOrder;
+                this.copyOrder.length = 0;
             }
         });
     
