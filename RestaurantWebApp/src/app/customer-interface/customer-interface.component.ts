@@ -82,10 +82,10 @@ export class CustomerInterfaceComponent implements OnInit {
 
   async filter(filterArgs: string): Promise<void> {
     var filteredItems = await this.menuFilterService.filter(filterArgs).pipe(take(1)).toPromise();
+    var category = this.menuFilterService.getMenuCategory(this.selectedCategory.id).pipe(take(1)).toPromise();
 
-    this.menuFilterService.getMenuCategory(this.selectedCategory.id).subscribe((menuCategory) =>{
-      this.menu = menuCategory.menus;
-    })
+    this.menu = (await category).menus;
+    console.log(this.menu);
 
     for (var i = 0; i < this.menu.length; i++) {
       let containsFilteredItem = false;;
