@@ -1,50 +1,65 @@
 <mat-dialog-content>
-<mat-grid-list cols="1" rowHeight="50px">
-  <mat-grid-tile colspan="1">
-    <br>
-    <div class = "title" >Shopping Cart
-      <button mat-icon-button (click) = close()><mat-icon>cancel</mat-icon></button>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>
-<div *ngIf = "orderPlaced == false">
-<hr>
-<p class = "selectedItemsTitle">Selected Items</p>
-<table class="table" class = "selecedItems">
-    <tbody>
-      <tr *ngFor="let meal of mealList">
-        <th scope="row">
-            <button mat-button (click) = "clear(meal)">
+  <mat-grid-list cols="1" rowHeight="50px">
+    <mat-grid-tile colspan="1">
+      <br>
+      <div class="title">Shopping Cart
+        <button mat-icon-button (click)=close()>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div *ngIf="orderPlaced == false">
+    <hr>
+    <table class="table" class="selectedItems">
+      <thead>
+        <tr>
+          <th scope="row" class="selectedItemsTitle">Selected Items</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meal of mealList">
+          <td>
+            <button mat-button (click)="clear(meal)">
               <mat-icon>delete</mat-icon>
             </button>
-            <span class = "mealName">{{meal.menu.name}} ({{meal.menu.price * meal.numberSelections}}$)</span>
-        </th>
-        <td class = "numberOfSelections">
-            <button mat-button (click) = "add(meal)">
+            <span class="mealName">{{meal.menu.name}} ({{meal.menu.price * meal.numberSelections}}$)</span>
+          </td>
+          <td class="numberOfSelections">
+            <button mat-button (click)="add(meal)">
               <mat-icon>add</mat-icon>
             </button>
             <button mat-mini-fab class="selection-fab">x{{meal.numberSelections}}</button>
-            <button mat-button (click) = "remove(meal)">
+            <button mat-button (click)="remove(meal)">
               <mat-icon>remove</mat-icon>
             </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-<mat-list>
-    <mat-list-item>
-        <div class="center" *ngIf = "orderPlaced == false">
-            <button mat-raised-button *ngIf = " this.mealList.length !=0; else emptyShoppingCartBlock" (click) = "placeOrder()" class = "placeOrder">
-                Place Order
+          </td>
+        </tr>
+        <tr *ngIf="orderTotal > 0">
+          <td>
+            <button mat-button>
+              <mat-icon>attach_money</mat-icon>
             </button>
-            <ng-template #emptyShoppingCartBlock>
-                <div class = "emptyShoppingCartBlock">
-                    Empty Shopping Cart!
-                </div>
-            </ng-template>
+            <span>Total: {{orderTotal}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-list>
+      <mat-list-item>
+        <div class="center" *ngIf="orderPlaced == false">
+          <button mat-raised-button *ngIf=" this.mealList.length !=0; else emptyShoppingCartBlock"
+            (click)="placeOrder()" class="placeOrder">
+            Place Order
+          </button>
+          <ng-template #emptyShoppingCartBlock>
+            <div class="emptyShoppingCartBlock">
+              Empty Shopping Cart!
+            </div>
+          </ng-template>
         </div>
-    </mat-list-item>
-</mat-list>
-</div>
-<payment-stepper *ngIf = "orderPlaced == true"></payment-stepper>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <payment-stepper *ngIf="orderPlaced == true"></payment-stepper>
 </mat-dialog-content>

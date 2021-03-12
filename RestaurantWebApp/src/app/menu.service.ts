@@ -18,12 +18,12 @@ export class MenuService {
   cat: selectedCategory = new selectedCategory;
 
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
+  // readonly menus$ = this.menuSubject.asObservable();
   refresh$ = new BehaviorSubject(null);
 
   public getMenus(): Observable<Menu[]> {
     return this.httpClient.get<Menu[]>(this.restaurantWebApiUrl);
   }
-  
   menus$ = this.refresh$.pipe(
     exhaustMap( () => this.getMenus()),
     share()
@@ -78,5 +78,9 @@ export class MenuService {
         this.menuSubject.next(menuList);
         this.getAllUpdatedMenus();
       });
+  }
+
+  update(menu: Menu): Observable<Menu> {
+    return this.httpClient.put<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`,menu);
   }
 }
