@@ -36,7 +36,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
     if (this.isKitchenStaff) {
       this.orderService.orders$.pipe(
         map((orders) => orders.filter((order) => order.isConfirmed)),
-        map((orders) => orders.filter((order) => !order.isDelivered))
+        map((orders) => orders.filter((order) => !order.isReady))
       )
         .subscribe((orders) =>this.orders = orders);
     } else {
