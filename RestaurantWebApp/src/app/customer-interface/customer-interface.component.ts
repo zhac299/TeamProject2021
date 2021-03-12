@@ -86,10 +86,12 @@ export class CustomerInterfaceComponent implements OnInit {
 
     this.menu = (await category).menus;
     console.log(this.menu);
+    console.log(filteredItems);
 
     for (var i = 0; i < this.menu.length; i++) {
       let containsFilteredItem = false;;
-      for (var j = 0; j < filteredItems.length && containsFilteredItem == false; i++) {
+      console.log(this.menu[i]);
+      for (var j = 0; j < filteredItems.length && containsFilteredItem == false; j++) {
         if (this.menu[i].name == filteredItems[j].name) {
           containsFilteredItem = true;
         }
@@ -175,7 +177,6 @@ export class CustomerInterfaceComponent implements OnInit {
   selectCategory(category: MenuCategory): void {
     this.selectedCategory = category;
     this.menu = category.menus;
-    console.log(this.menu);
   }
 
 }
