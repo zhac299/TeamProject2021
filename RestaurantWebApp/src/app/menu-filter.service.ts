@@ -21,20 +21,6 @@ export class MenuFilterService {
     return this._refreshNeeded;
   }
 
-  public getMenuCategories(): Observable<MenuCategory[]> {
-    return this.httpClient.get<MenuCategory[]>(this.menuCategoryUrl)
-      .pipe(
-        tap(()=> {
-          this._refreshNeeded.next();
-        })
-        ,map(response => response)
-      )
-  }
-
-  public getMenuCategory(id: number): Observable<MenuCategory> {
-    return this.httpClient.get<MenuCategory>(`${this.menuCategoryUrl}/${id}`);
-  }
-
   public filter(val: string): Observable<Menu[]> {
     this.filteredDB = this.filteredDB.concat(val);
     let temp: string = this.filteredDB;

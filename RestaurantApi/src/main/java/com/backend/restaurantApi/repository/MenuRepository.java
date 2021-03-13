@@ -48,4 +48,8 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
         @Param("sesame_seeds") Boolean sesame_seeds,
         @Param("sulphites") Boolean sulphites,
         @Param("calories") Double calories);
+
+    @Query
+    (value = "SELECT * FROM restaurant_menu_item WHERE :category = category", nativeQuery = true)
+    public List<Menu> getMenuByCategory( @Param("category") String category);
 }

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import { Order } from '../../models/Order';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription, timer } from 'rxjs';
 import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 import { MenuService} from "../menu.service";
@@ -18,8 +18,9 @@ import { Meal } from 'src/models/Meal';
 import { MealService } from '../meal.service';
 import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
 import {MenuCategory} from "../../models/MenuCategory";
-import { take } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { MenuCategoryService } from '../menu-category.service';
+import { coerceStringArray } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-customer-interface',
@@ -51,6 +52,9 @@ export class CustomerInterfaceComponent implements OnInit {
   orderPlaced: Boolean = false;
   categories: MenuCategory[];
   selectedCategory: MenuCategory;
+  subscription: Subscription;
+  refreshTimer$ = timer(0, 5000)
+    .pipe(tap(() => console.log('Fetching Menus...')));
 
   constructor(private menuService: MenuService,
               private menuCategoryService: MenuCategoryService,
@@ -77,11 +81,13 @@ export class CustomerInterfaceComponent implements OnInit {
       this.categories = categories;
       this.selectedCategory = this.categories[0];
     });
-
+    
     this.findCategoryItems();
   }
 
   findCategoryItems(): void{
+    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
+    // this.menuService.getAllUpdatedMenus();
     this.menuService.getMenus().subscribe((menu) => {
       this.menu = [];
       menu.forEach((menuItem) => {
@@ -89,12 +95,25 @@ export class CustomerInterfaceComponent implements OnInit {
           this.menu.push(menuItem);
         }
       })
-    })
+    });
   }
 
-  // filter(): void {
-  //   this
-  // }
+  async filter(filteredArgs: string): Promise<void> {
+    //this.findCategoryItems();
+    this.menuFilterService.filter(filteredArgs).subscribe((filteredMenu) => {
+      for (var i = 0; i < this.menu.length; i++ ) {
+        let containsItem = false;
+        for (var j = 0; j < filteredMenu.length; j++) {
+          if (this.menu[i].name == filteredMenu[j].name) {
+            containsItem = true;
+          }
+        }
+        if(containsItem == false) {
+          this.menu.splice(i);
+        }
+      }
+    })
+  }
 
   addMeal(menuItem: Menu): void {
     var mealNotPresent: Boolean = true;

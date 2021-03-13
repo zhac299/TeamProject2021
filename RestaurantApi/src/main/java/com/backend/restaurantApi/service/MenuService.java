@@ -83,4 +83,8 @@ public class MenuService {
         return menu.get();
     }
 
+    public List<Menu> getMenuByCategory(String category) {
+        return this.menuRepository.getMenuByCategory(category);
+    }
+
 }

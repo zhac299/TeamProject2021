@@ -101,6 +101,6 @@ export class AllergensChipsComponent implements OnInit {
   }
 
   filterByAllergensAndCalories(): void {
-    // this.customerInterfaceComponent.filter(this.getAllergensAndCalories());
+    this.customerInterfaceComponent.filter(this.getAllergensAndCalories());
   }
 }
