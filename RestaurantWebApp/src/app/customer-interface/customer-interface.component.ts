@@ -19,6 +19,7 @@ import { MealService } from '../meal.service';
 import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
 import {MenuCategory} from "../../models/MenuCategory";
 import { take } from 'rxjs/operators';
+import { MenuCategoryService } from '../menu-category.service';
 
 @Component({
   selector: 'app-customer-interface',
@@ -52,7 +53,7 @@ export class CustomerInterfaceComponent implements OnInit {
   selectedCategory: MenuCategory;
 
   constructor(private menuService: MenuService,
-              private mealService: MealService,
+              private menuCategoryService: MenuCategoryService,
               private customerService: CustomerService,
               private tableService: TableService,
               private menuFilterService: MenuFilterService,
@@ -65,43 +66,35 @@ export class CustomerInterfaceComponent implements OnInit {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
   }
 
-  ngOnInit(): void {
+  ngOnInit():void {
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
       this.customer = this.customerService.getCustomerByID(this.paramsObject.params.customerID)
       this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
     });
 
-    this.menuFilterService.getMenuCategories()
-      .subscribe((menuCats) => {
-        this.categories = menuCats;
-        this.menu = menuCats[0].menu;
-        this.selectedCategory = menuCats[0];
+    this.menuCategoryService.getMenuCategories().subscribe((categories) => {
+      this.categories = categories;
+      this.selectedCategory = this.categories[0];
     });
+
+    this.findCategoryItems();
   }
 
-  async filter(filterArgs: string): Promise<void> {
-    var filteredItems = await this.menuFilterService.filter(filterArgs).pipe(take(1)).toPromise();
-    var category = this.menuFilterService.getMenuCategory(this.selectedCategory.id).pipe(take(1)).toPromise();
-
-    this.menu = (await category).menu;
-    console.log(this.menu);
-    console.log(filteredItems);
-
-    for (var i = 0; i < this.menu.length; i++) {
-      let containsFilteredItem = false;;
-      console.log(this.menu[i]);
-      for (var j = 0; j < filteredItems.length && containsFilteredItem == false; j++) {
-        if (this.menu[i].name == filteredItems[j].name) {
-          containsFilteredItem = true;
+  findCategoryItems(): void{
+    this.menuService.getMenus().subscribe((menu) => {
+      this.menu = [];
+      menu.forEach((menuItem) => {
+        if (menuItem.category.category == this.selectedCategory.category) {
+          this.menu.push(menuItem);
         }
-      }
-      if(containsFilteredItem == false) {
-        this.menu.splice(i);
-      }
-    }
-    console.log(this.menu);
+      })
+    })
   }
+
+  // filter(): void {
+  //   this
+  // }
 
   addMeal(menuItem: Menu): void {
     var mealNotPresent: Boolean = true;
@@ -176,7 +169,7 @@ export class CustomerInterfaceComponent implements OnInit {
 
   selectCategory(category: MenuCategory): void {
     this.selectedCategory = category;
-    this.menu = category.menu;
+    this.findCategoryItems();
   }
 
 }
