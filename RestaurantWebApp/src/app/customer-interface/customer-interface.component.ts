@@ -85,9 +85,7 @@ export class CustomerInterfaceComponent implements OnInit {
     this.findCategoryItems();
   }
 
-  findCategoryItems(): void{
-    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
-    // this.menuService.getAllUpdatedMenus();
+  findCategoryItems(): void {
     this.menuService.getMenus().subscribe((menu) => {
       this.menu = [];
       menu.forEach((menuItem) => {
@@ -99,7 +97,6 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   async filter(filteredArgs: string): Promise<void> {
-    //this.findCategoryItems();
     this.menuFilterService.filter(filteredArgs).subscribe((filteredMenu) => {
       for (var i = 0; i < this.menu.length; i++ ) {
         let containsItem = false;
