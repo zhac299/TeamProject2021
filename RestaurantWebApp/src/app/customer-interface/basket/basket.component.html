@@ -35,12 +35,13 @@
             </button>
           </td>
         </tr>
+        <hr>
         <tr *ngIf="orderTotal > 0">
           <td>
             <button mat-button>
               <mat-icon>attach_money</mat-icon>
             </button>
-            <span>Total: {{orderTotal}}</span>
+            <span><b>Total: {{orderTotal}}</b></span>
           </td>
         </tr>
       </tbody>

@@ -20,7 +20,6 @@ import { MatDividerModule} from '@angular/material/divider';
 import { MatListModule} from '@angular/material/list';
 import { MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatExpansionModule} from '@angular/material/expansion';
@@ -69,7 +68,6 @@ import {MatRadioModule} from "@angular/material/radio";
     LoginInputComponent,
     HomePageComponent,
     OrderComponent,
-    MenuFilterComponent,
     ExpansionPannelComponent,
     AllergensChipsComponent,
     TableComponent,

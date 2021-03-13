@@ -5,7 +5,6 @@ import { LoginInputComponent } from './login-input/login-input.component';
 import { WaiterMenuComponent } from './waiter-menu/waiter-menu.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { OrderComponent } from './waiter-menu/order/order.component';
-import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
 import {KitchenMenuComponent} from "./kitchen-menu/kitchen-menu.component";
 import {ManagerMenuComponent} from "./manager-menu/manager-menu.component";
@@ -20,7 +19,6 @@ const routes: Routes = [
   { path: 'kitchen-menu', component: KitchenMenuComponent },
   { path: 'manager-menu', component: ManagerMenuComponent },
   { path: 'manager-menu/add-staff', component: AddStaffComponent },
-  { path: 'filter', component: MenuFilterComponent },
   { path: 'customer-menu', component: CustomerInterfaceComponent },
   { path: '2FA', component: TwoFactorAuthComponent }
 ];

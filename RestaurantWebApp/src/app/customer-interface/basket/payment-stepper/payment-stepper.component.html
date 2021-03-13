@@ -73,18 +73,18 @@
         </ng-template>
         <ng-template #isPaidBlock>
           <div class = "isPaidBlock" *ngIf = "this.isPaid == true && this.isConfirmed == true; else wrongDetailsBlock">
-            You have already paid!
+            <b>You have already paid!</b>
           </div>
         </ng-template>
         <ng-template #wrongDetailsBlock>
           <div class = "wrongDetailsBlock" *ngIf = "this.interacted == false && this.correctInputs == true 
           && this.isPaid == false && this.isConfirmed == true; else notConfirmedBlock">
-            The Card Details are Wrong!
+            <b>The Card Details are Wrong!</b>
           </div>
         </ng-template>
         <ng-template #notConfirmedBlock>
           <div class = "notConfirmedBlock" *ngIf = "this.isConfirmed == false">
-            Your Order has not been confirmed yet!
+            <b>Your Order has not been confirmed yet!</b>
           </div>
         </ng-template>
         <br>

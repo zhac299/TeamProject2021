@@ -49,15 +49,14 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   catContainsMenu(category: MenuCategory): boolean {
-    if(category.menus.find((menu) => menu.name === this.data.menu.name)){
+    if(category.menu.find((menu) => menu.name === this.data.menu.name)){
       this.selectedCategory = category;
       return true;
     } else return false;
   }
 
   closeDialog(): void {
-    this.data.menu.category = this.selectedCategory;
-    this.data.menu.category.menus = [];
+    
     this.dialogRef.close(this.data.menu);
-}
+  }
 }

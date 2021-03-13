@@ -75,7 +75,7 @@ export class CustomerInterfaceComponent implements OnInit {
     this.menuFilterService.getMenuCategories()
       .subscribe((menuCats) => {
         this.categories = menuCats;
-        this.menu = menuCats[0].menus;
+        this.menu = menuCats[0].menu;
         this.selectedCategory = menuCats[0];
     });
   }
@@ -84,7 +84,7 @@ export class CustomerInterfaceComponent implements OnInit {
     var filteredItems = await this.menuFilterService.filter(filterArgs).pipe(take(1)).toPromise();
     var category = this.menuFilterService.getMenuCategory(this.selectedCategory.id).pipe(take(1)).toPromise();
 
-    this.menu = (await category).menus;
+    this.menu = (await category).menu;
     console.log(this.menu);
     console.log(filteredItems);
 
@@ -176,7 +176,7 @@ export class CustomerInterfaceComponent implements OnInit {
 
   selectCategory(category: MenuCategory): void {
     this.selectedCategory = category;
-    this.menu = category.menus;
+    this.menu = category.menu;
   }
 
 }
