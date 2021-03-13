@@ -160,6 +160,7 @@ export class CustomerInterfaceComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
     dialogConfig.width = "60%";
+    dialogConfig.backdropClass = "basket";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(orderPlaced => {
