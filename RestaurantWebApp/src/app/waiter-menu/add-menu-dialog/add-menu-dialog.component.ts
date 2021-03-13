@@ -2,10 +2,10 @@ import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Menu} from "../../../models/Menu";
 import { MatSliderChange } from '@angular/material/slider';
-import {MenuFilterService} from "../../menu-filter.service";
 import {MenuCategory} from "../../../models/MenuCategory";
-import {selectedCategory} from "../../../models/selectedCategory";
 import {MenuCategoryService} from "../../menu-category.service";
+import {map, tap} from "rxjs/operators";
+import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 
 @Component({
   selector: 'app-add-order-dialog',
@@ -13,18 +13,20 @@ import {MenuCategoryService} from "../../menu-category.service";
   styleUrls: ['./add-menu-dialog.component.sass']
 })
 export class AddMenuDialogComponent implements OnInit {
-  selected = -1;
   categories: MenuCategory[];
-  selectedCategory: MenuCategory;
+  selectedCategory: BehaviorSubject<MenuCategory> = new BehaviorSubject<MenuCategory>(this.data.menu.category);
 
   constructor(public dialogRef: MatDialogRef<AddMenuDialogComponent>,
               private menuCategoryService: MenuCategoryService,
               @Inject(MAT_DIALOG_DATA) public data: { menu:Menu,title:string }) { }
 
   ngOnInit(): void {
-    this.menuCategoryService.getMenuCategories().subscribe((menuCategories) => {
+    console.log(this.data.menu.category)
+    this.menuCategoryService.getMenuCategories()
+      .subscribe((menuCategories) => {
       this.categories = menuCategories;
     })
+
   }
 
   setCalories(value: number) {
@@ -44,20 +46,19 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   changeCategory(category: MenuCategory) {
-    this.selectedCategory = category;
-    console.log(this.selectedCategory);
+    this.selectedCategory.next(category);
   }
 
-  catContainsMenu(category: MenuCategory): boolean {
-    // if(category.menu.find((menu) => menu.name === this.data.menu.name)){
-    //   this.selectedCategory = category;
-    //   return true;
-    // } 
-    return false;
+  isSelectedCat(category: MenuCategory){
+    let isSelectedCat;
+    this.selectedCategory.pipe(
+      map((sc) => sc.id == category.id)
+    ).subscribe((isCat) => isSelectedCat = isCat);
+    return isSelectedCat;
   }
 
   closeDialog(): void {
-    this.data.menu.category = this.selectedCategory;  
+    this.selectedCategory.subscribe((sc) => this.data.menu.category = sc);
     this.dialogRef.close(this.data.menu);
   }
 }

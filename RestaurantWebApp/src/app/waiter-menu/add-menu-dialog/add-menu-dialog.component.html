@@ -18,7 +18,8 @@
   </div>
   <div class="row">
     <div class="col" *ngFor="let category of categories;  let i = index">
-      <mat-radio-button (change)="changeCategory(category); selected = i" [checked]="catContainsMenu(category)">{{category.category}}</mat-radio-button>
+      <mat-radio-button (change)="changeCategory(category)"
+                        [checked]="isSelectedCat(category)">{{category.category}}</mat-radio-button>
     </div>
   </div>
   <!--  Adds whitespace  -->
