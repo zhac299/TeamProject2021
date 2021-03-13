@@ -6,13 +6,21 @@ import { MenuCategory } from 'src/models/MenuCategory';
 @Injectable({
   providedIn: 'root'
 })
-export class MenuCategoryServiceService {
+export class MenuCategoryService {
 
   menuCategoryURL = "http://localhost:8080/api/v1/menuCategory";
 
   constructor(private httpClient: HttpClient) { }
 
-  createnewCategory(category: MenuCategory): Observable<MenuCategory> {
+  public getMenuCategories(): Observable<MenuCategory[]> {
+    return this.httpClient.get<MenuCategory[]>(this.menuCategoryURL);
+  }
+
+  public getMenuCategory(id: number): Observable<MenuCategory> {
+    return this.httpClient.get<MenuCategory>(`${this.menuCategoryURL}/${id}`);
+  }
+
+  createNewCategory(category: MenuCategory): Observable<MenuCategory> {
     return this.httpClient.post<MenuCategory>(this.menuCategoryURL, category);
   }
 

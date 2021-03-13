@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table
+@JsonIgnoreProperties(value = { "menu" })
 public class MenuCategory {
 
     @Id
@@ -20,7 +21,7 @@ public class MenuCategory {
     @Column
     private String category;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Menu> menus;
 
     public MenuCategory(){};

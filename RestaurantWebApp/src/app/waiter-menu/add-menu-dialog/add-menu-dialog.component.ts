@@ -5,6 +5,7 @@ import { MatSliderChange } from '@angular/material/slider';
 import {MenuFilterService} from "../../menu-filter.service";
 import {MenuCategory} from "../../../models/MenuCategory";
 import {selectedCategory} from "../../../models/selectedCategory";
+import {MenuCategoryService} from "../../menu-category.service";
 
 @Component({
   selector: 'app-add-order-dialog',
@@ -17,13 +18,13 @@ export class AddMenuDialogComponent implements OnInit {
   selectedCategory: MenuCategory;
 
   constructor(public dialogRef: MatDialogRef<AddMenuDialogComponent>,
-              private menuFilterService: MenuFilterService,
+              private menuCategoryService: MenuCategoryService,
               @Inject(MAT_DIALOG_DATA) public data: { menu:Menu,title:string }) { }
 
   ngOnInit(): void {
-    this.menuFilterService.getMenuCategories().subscribe((cats) => {
-      this.categories = cats;
-    });
+    this.menuCategoryService.getMenuCategories().subscribe((menuCategories) => {
+      this.categories = menuCategories;
+    })
   }
 
   setCalories(value: number) {
@@ -39,7 +40,6 @@ export class AddMenuDialogComponent implements OnInit {
   }
 
   onCaloriesChange(event: MatSliderChange) {
-    console.log(this.data.menu.calories);
     this.data.menu.calories = event.value;
   }
 
@@ -52,11 +52,12 @@ export class AddMenuDialogComponent implements OnInit {
     if(category.menu.find((menu) => menu.name === this.data.menu.name)){
       this.selectedCategory = category;
       return true;
-    } else return false;
+    } 
+    return false;
   }
 
   closeDialog(): void {
-    
+    this.data.menu.category = this.selectedCategory;  
     this.dialogRef.close(this.data.menu);
   }
 }

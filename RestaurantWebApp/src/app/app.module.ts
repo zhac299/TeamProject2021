@@ -48,7 +48,7 @@ import { MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentStepperComponent } from './customer-interface/basket/payment-stepper/payment-stepper.component';
 import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
 import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
@@ -58,7 +58,7 @@ import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component'
 import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-staff-dialog.component';
 import { TablesListDisplayComponent } from './tables-list-display/tables-list-display.component';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatRadioModule} from "@angular/material/radio";
+import { MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [

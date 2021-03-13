@@ -25,9 +25,8 @@ public class Menu {
     @Column(name = "price")
     private Double price = 0.0;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category")
+    @ManyToOne
+    @JoinColumn(name = "category", nullable = false)
     private MenuCategory category;
 
     @Column(name = "calories")

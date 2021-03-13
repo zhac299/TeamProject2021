@@ -11,7 +11,6 @@ import {MenuCategory} from "../models/MenuCategory";
 export class MenuFilterService {
 
   filteredDB = 'http://localhost:8080/api/v1/menu/filter';
-  menuCategoryUrl = 'http://localhost:8080/api/v1/menuCategory'
 
   private _refreshNeeded = new Subject<void>();
 
@@ -19,14 +18,6 @@ export class MenuFilterService {
 
   get refreshNeeded() {
     return this._refreshNeeded;
-  }
-
-  public getMenuCategories(): Observable<MenuCategory[]> {
-    return this.httpClient.get<MenuCategory[]>(this.menuCategoryUrl);
-  }
-
-  public getMenuCategory(id: number): Observable<MenuCategory> {
-    return this.httpClient.get<MenuCategory>(`${this.menuCategoryUrl}/${id}`);
   }
 
   public filter(val: string): Observable<Menu[]> {

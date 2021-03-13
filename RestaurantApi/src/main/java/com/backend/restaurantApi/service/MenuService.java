@@ -29,9 +29,7 @@ public class MenuService {
         if (!menu.isPresent()) {
             throw new MenuNotFoundException("Menu record is not available...");
         } else {
-            // create the meal and add it to menu
             mealService.createNewMeal(meal);
-//            menu.get().getMeal().add(meal);
         }
         return menuRepository.save(menu.get());
     }
