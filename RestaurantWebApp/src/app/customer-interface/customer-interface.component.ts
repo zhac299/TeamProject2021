@@ -74,14 +74,43 @@ export class CustomerInterfaceComponent implements OnInit {
     var textWrapper = document.querySelector('.an-2');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
+    // ANIMATE TITLE
     anime.timeline({loop: false})
       .add({
         targets: '.an-2 .letter',
         opacity: [0,1],
+        scale: 2,
         easing: "easeInOutQuad",
-        duration: 2250,
-        delay: (el, i) => 150 * (i+1)
+        duration: 1000,
+        delay: (el, i) => 50 * (i+1)
       });
+    //ANIMATE ICON
+    anime({
+      targets: '.dividerIcon',
+      opacity: [0,1],
+      easing: "easeInOutQuad",
+      duration: 500,
+      scale: {
+        value: [.5,1],
+        duration: 2000,
+        delay: 800,
+        easing: 'easeInOutQuart'
+      },
+      rotate: {
+        value: 360,
+        duration: 1000,
+        easing: 'easeInOutSine'
+      },
+      delay: 1000
+    });
+    //ANIMATE MENU TITLE
+    anime({
+      targets: '.menuTitle',
+      opacity: [0,1],
+      easing: "easeInOutQuad",
+      duration: 500,
+      delay: 1500
+    });
   }
 
   ngOnInit():void {
