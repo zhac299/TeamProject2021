@@ -3,16 +3,13 @@
     <button type="button" mat-button (click)="drawer.toggle()">
       <mat-icon>reorder</mat-icon>
     </button>
-    <span>Kitchen Menu</span>
+    <span>Manager Menu</span>
     <span class="spacer"></span>
     <notifications class="notifications"></notifications>
   </mat-toolbar>
 
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <ul class="buttonRow">
-      <li class="flex-item">
-        <button mat-button>Add Table</button>
-      </li>
       <li class="flex-item">
         <a routerLink="/manager-menu/add-staff">
           <button mat-button>Add Staff</button>

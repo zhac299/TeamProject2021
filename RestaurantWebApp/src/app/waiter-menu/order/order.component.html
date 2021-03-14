@@ -1,80 +1,100 @@
 <div>
   <mat-grid-list cols="5" rowHeight="60px">
     <mat-grid-tile>
-      <h1 mat-dialog-title>Order #{{order.id}}</h1>
+      <h1 mat-dialog-title>Order #{{data.order.id}}</h1>
     </mat-grid-tile>
     <mat-grid-tile>
+      <mat-checkbox [(ngModel)]="data.order.isConfirmed" (change)="updateOrderConfirmed(data.order)">Confirmed</mat-checkbox>
     </mat-grid-tile>
     <mat-grid-tile>
 
-      <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isPaid" (change)="updateOrderIsPaid(order)">Paid</mat-checkbox>
+      <mat-checkbox *ngIf="data.order.isConfirmed" [(ngModel)]="data.order.isPaid" (change)="updateOrderIsPaid(data.order)">Paid</mat-checkbox>
 
     </mat-grid-tile>
     <mat-grid-tile>
       
-      <mat-checkbox *ngIf="order.isConfirmed" [(ngModel)]="order.isDelivered" (change)="updateOrderDelivered(order)">Delivered</mat-checkbox>
+      <mat-checkbox *ngIf="data.order.isConfirmed" [(ngModel)]="data.order.isDelivered" (change)="updateOrderDelivered(data.order)">Delivered</mat-checkbox>
       
     </mat-grid-tile>
     <mat-grid-tile>
 
-      <mat-checkbox [(ngModel)]="order.isConfirmed" (change)="updateOrderConfirmed(order)">Confirmed</mat-checkbox>
+      <mat-checkbox *ngIf="data.order.isConfirmed && data.isKitchenStaff" [(ngModel)]="data.order.isReady" (change)="updateOrderReady(data.order)">Ready</mat-checkbox>
 
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
   </mat-grid-list>
 
   <hr>
-
   <mat-dialog-content class="mat-dialog">
-    <mat-grid-list cols="4" rowHeight="700px" style="height: 400px">
-      <mat-grid-tile colspan="1" class="tile">
-        <mat-card class="card">
-          <mat-card-title>Meals</mat-card-title>
-          <mat-card-content>
-            <mat-list *ngFor="let meal of orderedMealItems$ | async">
-              <mat-list-item>
-                <p mat-card-subtitle style="font-size:14px" mat-line>{{meal.menu.name}}</p>
-                <p mat-subheader>({{meal.menu.price}}$)</p>
-                <p mat-subheader>x{{meal.numberSelections}}</p>
-              </mat-list-item>
-              <mat-divider></mat-divider>
-            </mat-list>
-          </mat-card-content>
-          <mat-card-title>Total: {{total}}$</mat-card-title>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2">
-        <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title>ITEMS</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-grid-list cols="4" rowHeight="50px">
-              <mat-grid-tile *ngFor="let menu of menuList" colspan="1">
-                <button mat-raised-button style="width: 100%; color: green"
-                        (click)="addMenuToOrder(menu, order)">{{menu.name}}</button>
-              </mat-grid-tile>
-            </mat-grid-list>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="1">
-        <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title style="color: green">FOOD</mat-card-title>
-            <mat-card-title style="color: lightblue">DRAUGHT</mat-card-title>
-            <mat-card-title style="color: coral">MINERALS</mat-card-title>
-            <mat-card-title style="color: pink">COCKTAILS</mat-card-title>
-          </mat-card-header>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+    <div class="container" *ngIf="!data.isKitchenStaff else isWaiter">
+      <div class="row">
+        <div class="col-5">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-striped orderedItemsTable">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let meal of orderedMealItems$ | async; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{meal.menu.name}}</td>
+                <td>£{{meal.menu.price}}</td>
+                <td>x{{meal.numberSelections}}</td>
+                <td><button mat-button (click)="deleteOrderedMenuItem(meal)"><mat-icon>delete</mat-icon></button></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+            <h3>Total: £{{total}}</h3>
+        </div>
+        <div class="col-7">
+          <h2>Add to Order</h2>
+          <div class="row">
+            <div *ngFor="let menu of menuList" class="col">
+              <button mat-raised-button class="foodBtn"
+                      (click)="addMenuToOrder(menu, data.order)">{{menu.name}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #isWaiter>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+              <table class="table table-striped orderedItemsTable">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Qty</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let meal of orderedMealItems$ | async; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{meal.menu.name}}</td>
+                  <td>x{{meal.numberSelections}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button mat-dialog-close (click)="save(order)">Save</button>
+    <button mat-button mat-dialog-close (click)="save(data.order)">Save</button>
     <button mat-button (click)="deleteOrder()">
       <mat-icon>delete</mat-icon>
     </button>
   </mat-dialog-actions>
-</div>

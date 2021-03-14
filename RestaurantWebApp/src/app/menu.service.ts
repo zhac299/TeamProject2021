@@ -14,7 +14,8 @@ export class MenuService {
   mockDbUrl = 'http://localhost:3000/menu';
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu';
   orderList: Menu[] = [];
-  sOrder: Menu[] = [];
+sOrder: Menu[] = [];
+copyOrder: Menu[] = [];
   cat: selectedCategory = new selectedCategory;
 
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());

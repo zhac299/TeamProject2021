@@ -4,6 +4,7 @@ export class Menu{
   id: number;
   name: string;
   category: MenuCategory;
+  suggested: string = "no";
   description: string;
   price: number;
   peanuts: boolean;

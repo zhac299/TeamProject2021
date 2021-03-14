@@ -29,6 +29,9 @@ public class Menu {
     @JoinColumn(name = "category", nullable = false)
     private MenuCategory category;
 
+    @Column(name = "isSuggested")
+    private String isSuggested;
+
     @Column(name = "calories")
     private Double calories;
 
@@ -232,6 +235,13 @@ public class Menu {
 
     public double getTimeToTime() {
         return this.timeToCook;
+    }
+    public void setSuggested(String suggest) {
+        this.isSuggested = suggest;
+    }
+    
+    public String getSuggested() {
+        return isSuggested;
     }
 
     public void setId(Long id) {

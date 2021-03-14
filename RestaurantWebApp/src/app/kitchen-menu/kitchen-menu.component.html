@@ -5,7 +5,6 @@
     </button>
     <span>Kitchen Menu</span>
     <span class="spacer"></span>
-    <notifications class="notifications"></notifications>
   </mat-toolbar>
 
   <mat-drawer #drawer class="example-sidenav" mode="side">
@@ -21,7 +20,6 @@
       </li>
     </ul>
   </mat-drawer>
-  <h2>Orders</h2>
   <app-orders-list-display
     [createPermission] = "false"
     [isKitchenStaff]="true">

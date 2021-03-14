@@ -44,6 +44,9 @@ public class Order implements Comparable<Order> {
     @Column(name="is_paid")
     private boolean isPaid = false;
 
+    @Column(name="isReady")
+    private boolean isReady = false;
+
     @Column(name = "total")
     private int total = 0;
 
@@ -142,6 +145,14 @@ public class Order implements Comparable<Order> {
 
     public void setIsPaid(boolean isPaid) {
         this.isPaid = isPaid;    
+    }
+
+    public boolean getIsReady(){
+        return this.isReady;
+    }
+
+    public void setIsReady(boolean isReady){
+        this.isReady = isReady;
     }
 
     public int getTotal() {

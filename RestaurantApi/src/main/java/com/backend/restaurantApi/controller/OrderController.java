@@ -83,6 +83,11 @@ public class OrderController {
         return orderService.getNoConfirmedOrders();
     }
 
+    @GetMapping("/orders/readyorders")
+    public List<Order> getReadyOrders() {
+        return orderService.getReadyOrders();
+    }
+
     @PutMapping("/orders/isPaid/{id}/{isPaid}")
     public Order updateIsPaid(@PathVariable("id") Long id, @PathVariable("isPaid") boolean isPaid) {
         Order order = orderService.getOrderById(id);
@@ -96,6 +101,14 @@ public class OrderController {
     public Order updateTotal(@PathVariable("id") Long id, @PathVariable("total") int total) {
         Order order = orderService.getOrderById(id);
         order.setTotal(total);
+        orderRepo.save(order);
+        return order;
+    }
+
+    @PutMapping("/orders/{id}/isready/{isReady}")
+    public Order updateIsReady(@PathVariable("id") Long id, @PathVariable("isReady") boolean isReady) {
+        Order order = orderService.getOrderById(id);
+        order.setIsReady(isReady);
         orderRepo.save(order);
         return order;
     }

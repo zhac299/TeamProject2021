@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <p>  <a href  = 'home'>Home</a> |  <a href = "https://google.co.uk">Create Account</a> </p>
 <div class = "main">
     <div class = "sign">
@@ -6,18 +7,19 @@
             <input class="un"  type = "text" name = "username" [(ngModel)] = "username" placeholder = "Username" >
             <br/>
             <input class="pass" type = "password"  name = "password" [(ngModel)] = "password" placeholder = "Password"/>
-            <br/>
-                <div class = "staff">
-                    <input  type = "radio" (change) = "isWaiter()" name = "staff"> 
-                    <label for = "waiter">Waiter</label>
-                    <input type = "radio" (change) = "isKitchen()"  name = "staff"> 
-                    <label for = "kitchen">Kitchen Staff</label>
-                </div>
-        
             <input  (click) = "onSubmit()" type="submit" value="Login" class = "submit">
-            <br/><br/><br/><br/><br/>      
+            <br/><br/><br/><br/><br/>     
+            <p class = "wrong" *ngIf= "correct == false"
+                        style="color: darkred;font-size: small;">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        Wrong details!
+                    </p> 
             <br/>      
-            <section class="content" *ngIf="html" [innerHTML]="html"></section>
+            <p class = "wrong" *ngIf="correct == false"
+                        style="color: darkred;font-size: small;">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        Wrong details!
+                    </p>
         </form>
     </div>
 </div>

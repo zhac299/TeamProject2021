@@ -14,6 +14,7 @@ export class LoginInputComponent implements OnInit {
     password: string = "";
     waiter: boolean = false;
     kitchen: boolean = false;
+    correct: boolean = true;
     
     loginTwo: Login = undefined;
     html: string = "";
@@ -23,6 +24,7 @@ export class LoginInputComponent implements OnInit {
     }
     
     onSubmit() {
+            
             this.input.getLogin(this.username, this.password).subscribe(login => {
                 try {
                     this.loginTwo = login[0];
@@ -33,7 +35,7 @@ export class LoginInputComponent implements OnInit {
                         this.router.navigateByUrl("/2FA");
                     }
                 } catch {
-                    console.log("Wrong login!");
+                    this.correct = false;
                 }
             });
         this.username = "";

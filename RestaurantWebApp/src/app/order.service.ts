@@ -98,6 +98,10 @@ export class OrderService {
     return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isconfirmed/${order.isConfirmed}`,order);
   }
 
+  updateOrderReady(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isready/${order.isReady}`,order);
+  }
+
   updateOrder(order: Order): void {
     this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`,order)
       .subscribe((order) => {
@@ -149,10 +153,6 @@ export class OrderService {
           this._refreshNeeded.next();
         })
       )
-  }
-
-  public getConfirmedOrders(): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/isconfirmed`);
   }
 
   public getNoConfirmedOrders(): Observable<Order[]> {

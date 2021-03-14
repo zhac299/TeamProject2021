@@ -106,4 +106,17 @@ public class OrderService {
 
         return noConfirmedOrders;
     }
+
+    public List<Order> getReadyOrders() {
+        List<Order> readyOrders = new ArrayList<>();
+        List<Order> allOrders = orderRepository.findAll();
+
+        for (Order order : allOrders) {
+            if (order.getIsReady() == true) {
+                readyOrders.add(order);
+            }
+        }
+
+        return readyOrders;
+    }
 }

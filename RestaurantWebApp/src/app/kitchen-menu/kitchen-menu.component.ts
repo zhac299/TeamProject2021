@@ -15,6 +15,7 @@ export class KitchenMenuComponent implements OnInit {
   orders: Order[];
   displayedColumns: string[] = ['name', 'description', 'price'];
   getOrders = true;
+  isComplete: boolean;
 
   constructor() {}
 
