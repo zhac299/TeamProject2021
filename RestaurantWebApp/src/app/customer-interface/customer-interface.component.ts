@@ -21,6 +21,7 @@ import {MenuCategory} from "../../models/MenuCategory";
 import { take, tap } from 'rxjs/operators';
 import { MenuCategoryService } from '../menu-category.service';
 import { coerceStringArray } from '@angular/cdk/coercion';
+import anime from 'animejs/lib/anime.es.js'
 
 @Component({
   selector: 'app-customer-interface',
@@ -68,6 +69,28 @@ export class CustomerInterfaceComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
+
+    // Wrap every letter in a span
+    var textWrapper = document.querySelector('.an-2');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({loop: false})
+      .add({
+        targets: '.an-2 .letter',
+        opacity: [0,1],
+        easing: "easeInOutQuad",
+        duration: 2250,
+        delay: (el, i) => 150 * (i+1)
+      });
+
+    anime.timeline({loop: false})
+      .add({
+        targets: '.an-2 .letter',
+        opacity: [0,1],
+        easing: "easeInOutQuad",
+        duration: 2250,
+        delay: (el, i) => 150 * (i+1)
+      });
   }
 
   ngOnInit():void {
@@ -188,5 +211,4 @@ export class CustomerInterfaceComponent implements OnInit {
     this.selectedCategory = category;
     this.findCategoryItems();
   }
-
 }
