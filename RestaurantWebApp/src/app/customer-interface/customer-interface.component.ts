@@ -82,15 +82,6 @@ export class CustomerInterfaceComponent implements OnInit {
         duration: 2250,
         delay: (el, i) => 150 * (i+1)
       });
-
-    anime.timeline({loop: false})
-      .add({
-        targets: '.an-2 .letter',
-        opacity: [0,1],
-        easing: "easeInOutQuad",
-        duration: 2250,
-        delay: (el, i) => 150 * (i+1)
-      });
   }
 
   ngOnInit():void {
