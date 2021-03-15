@@ -127,4 +127,8 @@ export class TableService {
     return this.httpClient.post<Table>(this.restaurantTablesURL, newTable);
   }
 
+  public assignTable(table: Table): Observable<Table> {
+    return this.httpClient.post<Table>(this.restaurantTablesURL + '/assignTable', table);
+  }
+
 }
