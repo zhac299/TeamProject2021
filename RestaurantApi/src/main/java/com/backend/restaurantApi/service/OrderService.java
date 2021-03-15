@@ -8,10 +8,15 @@ import java.util.PriorityQueue;
 
 import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
+import com.backend.restaurantApi.model.Customer;
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
 import com.backend.restaurantApi.model.Order;
+import com.backend.restaurantApi.model.RestaurantTable;
+import com.backend.restaurantApi.model.Staff;
+import com.backend.restaurantApi.repository.CustomerRepository;
 import com.backend.restaurantApi.repository.OrderRepository;
+import com.backend.restaurantApi.repository.RestaurantTableRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +32,24 @@ public class OrderService {
 
     @Autowired
     CustomerService customerService;
+    
+    @Autowired
+    RestaurantTableRepository restaurantTableRepository;
+    
+    @Autowired
+    CustomerRepository customerRepository;
 
     public Order createNewOrder(Order order) {
+    	Optional<Customer> customer = customerRepository.findById(order.getCustomer().getId());
+    	if(customer.isPresent()) {
+    		RestaurantTable table = customer.get().getTable();
+    		if(table != null) {
+    			Staff staff = table.getStaff();
+				if(staff != null) {
+			    	order.setWaiterId(staff.getId());
+				}
+    		}
+    	}
         return orderRepository.save(order);
     }
 
