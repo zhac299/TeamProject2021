@@ -130,7 +130,7 @@ public class RestaurantTableService {
      * @return the updated repository
      */
     public RestaurantTable assignTableToWaiter(RestaurantTable restaurantTable) {
-    	RestaurantTable tableToBesaved = getTableByNumber(restaurantTable.getTableNumber());
+    	RestaurantTable tableToBesaved = restaurantTableRepository.findByTableNumber(restaurantTable.getTableNumber());
     	if(tableToBesaved != null) {
     		tableToBesaved.setStaff(staffRepository.getRandomWaiter());
             restaurantTableRepository.save(tableToBesaved);
