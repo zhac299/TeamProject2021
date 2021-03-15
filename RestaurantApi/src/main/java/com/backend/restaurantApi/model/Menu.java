@@ -1,5 +1,10 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,8 +25,9 @@ public class Menu {
     @Column(name = "price")
     private Double price = 0.0;
 
-    @Column(name = "category")
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "category", nullable = false)
+    private MenuCategory category;
 
     @Column(name = "isSuggested")
     private String isSuggested;
@@ -104,14 +110,6 @@ public class Menu {
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public String getCategory(){
-        return category;
-    }
-
-    public void setCategory(String cat){
-        this.category = cat;
     }
 
     public boolean isPeanuts() {
@@ -246,4 +244,23 @@ public class Menu {
         return isSuggested;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public MenuCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(MenuCategory category) {
+        this.category = category;
+    }
+
+    public double getTimeToCook() {
+        return timeToCook;
+    }
+
+    public void setTimeToCook(double timeToCook) {
+        this.timeToCook = timeToCook;
+    }
 }

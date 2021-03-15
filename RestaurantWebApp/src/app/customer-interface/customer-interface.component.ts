@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import { Order } from '../../models/Order';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription, timer } from 'rxjs';
 import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 import { MenuService} from "../menu.service";
@@ -17,7 +17,10 @@ import { animate, keyframes, query, stagger, style, transition, trigger} from "@
 import { Meal } from 'src/models/Meal';
 import { MealService } from '../meal.service';
 import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
-// import { Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from '@angular/router'
+import {MenuCategory} from "../../models/MenuCategory";
+import { take, tap } from 'rxjs/operators';
+import { MenuCategoryService } from '../menu-category.service';
+import { coerceStringArray } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-customer-interface',
@@ -28,15 +31,13 @@ import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
       transition('*=>*', [
         query(':enter', style({opacity: 0}), {optional: true}),
 
-        query(':enter', stagger('300ms', [
-          animate('1s ease-in', keyframes([
+        query(':enter', stagger('100ms', [
+          animate('.5s ease-in', keyframes([
             style({opacity: 0, transform: 'translateY(-50px)', offset: 0}),
-            style({opacity: .5, transform: 'translateY(35px)', offset: 0.3}),
+            style({opacity: .5, transform: 'translateY(15px)', offset: 0.3}),
             style({opacity: 1, transform: 'translateY(0)', offset: 1})
           ]))
         ]))
-
-
       ])
     ])
   ]
@@ -45,16 +46,18 @@ export class CustomerInterfaceComponent implements OnInit {
 
   selectedMeals: Meal[] = [];
   menu: Menu[];
-  cat: selectedCategory = new selectedCategory;
   paramsObject: any;
   customer: Observable<Customer>;
   table:Observable<Table>;
   orderPlaced: Boolean = false;
-  
-  showOverlay = true;
+  categories: MenuCategory[];
+  selectedCategory: MenuCategory;
+  subscription: Subscription;
+  refreshTimer$ = timer(0, 5000)
+    .pipe(tap(() => console.log('Fetching Menus...')));
 
   constructor(private menuService: MenuService,
-              private mealService: MealService,
+              private menuCategoryService: MenuCategoryService,
               private customerService: CustomerService,
               private tableService: TableService,
               private menuFilterService: MenuFilterService,
@@ -67,24 +70,46 @@ export class CustomerInterfaceComponent implements OnInit {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
   }
 
-  ngOnInit(): void {
+  ngOnInit():void {
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
       this.customer = this.customerService.getCustomerByID(this.paramsObject.params.customerID)
       this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
     });
 
-    this.menuService.getAllUpdatedMenus();
-    this.menuService.menus$.subscribe((menu)=> {
-        this.menu=menu;
+    this.menuCategoryService.getMenuCategories().subscribe((categories) => {
+      this.categories = categories;
+      this.selectedCategory = this.categories[0];
     });
-    this.cat = this.menuService.getCat();
+
+    this.findCategoryItems();
   }
 
-  filter(filterArgs: string): void {
-      this.menuFilterService.filter(filterArgs).subscribe(orders => {
-      this.menuService.setCat(orders);
+  findCategoryItems(): void {
+    this.menuService.getMenus().subscribe((menu) => {
+      this.menu = [];
+      menu.forEach((menuItem) => {
+        if (menuItem.category.category == this.selectedCategory.category) {
+          this.menu.push(menuItem);
+        }
+      })
     });
+  }
+
+  async filter(filteredArgs: string): Promise<void> {
+    this.menuFilterService.filter(filteredArgs).subscribe((filteredMenu) => {
+      for (var i = 0; i < this.menu.length; i++ ) {
+        let containsItem = false;
+        for (var j = 0; j < filteredMenu.length; j++) {
+          if (this.menu[i].name == filteredMenu[j].name) {
+            containsItem = true;
+          }
+        }
+        if(containsItem == false) {
+          this.menu.splice(i);
+        }
+      }
+    })
   }
 
   addMeal(menuItem: Menu): void {
@@ -135,6 +160,7 @@ export class CustomerInterfaceComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
     dialogConfig.width = "60%";
+    dialogConfig.backdropClass = "basket";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(orderPlaced => {
@@ -156,6 +182,11 @@ export class CustomerInterfaceComponent implements OnInit {
 
   goHome(): void {
     this.router.navigateByUrl('/home');
+  }
+
+  selectCategory(category: MenuCategory): void {
+    this.selectedCategory = category;
+    this.findCategoryItems();
   }
 
 }

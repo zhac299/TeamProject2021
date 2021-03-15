@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomerInterfaceComponent } from './customer-interface.component';
-import { FoodCategoriesComponent } from './food-categories/food-categories.component';
 import { ExpansionPannelComponent } from './expansion-pannel/expansion-pannel.component';
 
 describe('CustomerInterfaceComponent', () => {
@@ -11,7 +10,6 @@ describe('CustomerInterfaceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CustomerInterfaceComponent, 
-        FoodCategoriesComponent,
         ExpansionPannelComponent]
     })
     .compileComponents();

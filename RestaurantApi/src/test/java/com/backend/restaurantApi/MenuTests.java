@@ -27,6 +27,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 /**
  * A tester class for the Menu Model.
  */
+@SpringBootTest
 public class MenuTests {
 
     /**
@@ -92,7 +93,7 @@ public class MenuTests {
         menu = new Menu();
         menu.setName("Cheesy Nachos");
         menu.setPrice((double) 12);
-        menu.setCategory("Nachos");
+//        menu.setCategory("Nachos");
 
         menu = menuService.createNewMenu(menu);
 

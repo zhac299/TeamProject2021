@@ -81,69 +81,7 @@ copyOrder: Menu[] = [];
       });
   }
 
-    // Filter methods for filtering by dish.
-    getCat(): selectedCategory {
-        if (Object.keys(this.cat).length === 0) {
-            this.createSelectedCat();
-        }
-        return this.cat;
-    }
-
-    createSelectedCat(): selectedCategory {
-        this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe( orders => {
-            this.orderList = orders;
-            for (let order of this.orderList) {
-                if (order.category == "Fajita"&& order.suggested == "no") {
-                    this.sOrder.push(order);
-                }
-            }
-
-            this.cat.name = "Fajita";
-            this.cat.meal = this.sOrder;
-
-        });
-        return this.cat;
-    }
-
-    modifyCat(newCat: string): selectedCategory {
-        this.sOrder = [];
-        this.cat.name = newCat;
-        this.menus$.subscribe(orders => {
-            this.orderList = orders;
-            for (let order of this.orderList) {
-                if (order.category == newCat && order.suggested == "no") {
-                    this.sOrder.push(order);
-                }
-            }
-        });
-        this.cat.meal = this.sOrder;
-        return this.cat;
-    }
-    showSuggestions() {
-        this.copyOrder = this.sOrder;
-        this.sOrder.length = 0;
-        this.httpClient.get<Menu[]>(this.restaurantWebApiUrl).subscribe(orders => {
-            this.orderList = orders;
-            for (let order of this.orderList) {
-                if (order.category == this.cat.name && order.suggested == "yes") {
-                    this.sOrder.push(order);
-                }
-            }
-            if (this.sOrder.length == 0) {
-                this.sOrder = this.copyOrder;
-                this.copyOrder.length = 0;
-            }
-        });
-    
-    }
-
-    setCat(menu: Menu[]) {
-        this.sOrder = [];
-        for (let order of menu) {
-            if (order.category == this.cat.name && order.suggested == "no") {
-                this.sOrder.push(order);
-            }
-        }
-        this.cat.meal = this.sOrder;
-    }
+  update(menu: Menu): Observable<Menu> {
+    return this.httpClient.put<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`,menu);
+  }
 }

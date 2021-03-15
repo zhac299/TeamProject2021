@@ -92,4 +92,9 @@ public class MenuController {
             sulphites,
             calories);
         }
+
+    @GetMapping(path = "/menu/getMenuByCategory/{category}")
+    public List<Menu> getMenuByCategory(@PathVariable("category") String category) {
+        return this.menuService.getMenuByCategory(category);
+    }
 }

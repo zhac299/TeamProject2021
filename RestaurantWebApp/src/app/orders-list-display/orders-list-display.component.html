@@ -5,7 +5,7 @@
       <button *ngIf="order.isConfirmed && order.isDelivered && order.isReady && order.isPaid else deliveredNotPaid" mat-raised-button class="deliveredPaidButton"
               (click)="openOrderDialog(order)">
         <h1>Order #{{order.id}}</h1>
-        <h2> order-confirmed | delivered</h2>
+        <p> order-confirmed | delivered</p>
         <p> (paid)</p>
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
@@ -16,8 +16,8 @@
               (click)="openOrderDialog(order)"
               color="primary">
         <h1>Order #{{order.id}}</h1>
-        <h2>PREPARED ORDER HAS BEEN DELIVERED</h2>
-        <h2>AWAITING PAYMENT</h2>
+        <h4>PREPARED ORDER HAS BEEN DELIVERED</h4>
+        <h4>AWAITING PAYMENT</h4>
         <img src="assets/images/payment-method.png" class="deliveryImg">
         <p *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</p>
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
@@ -31,7 +31,7 @@
               (click)="openOrderDialog(order)"
               color="accent">
         <h1>Order #{{order.id}}</h1>
-        <h2>ORDER IS READY FOR DELIVERY</h2>
+        <h4>ORDER IS READY FOR DELIVERY</h4>
         <img src="assets/images/food.png" class="deliveryImg">
         <p *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</p>
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
@@ -45,8 +45,8 @@
               (click)="openOrderDialog(order)"
               color="accent">
         <h1>Order #{{order.id}}</h1>
-        <h2>ORDER IS BEING PREPARED</h2>
-        <img src="assets/images/food.png" class="deliveryImg">
+        <h4>ORDER IS BEING PREPARED</h4>
+        <img src="assets/images/cooking.png" class="deliveryImg">
         <p *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</p>
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
@@ -60,7 +60,7 @@
               (click)="openOrderDialog(order)"
               color="warn">
         <h1>Order #{{order.id}}</h1>
-        <h2>NEEDS CONFIRMATION</h2>
+        <h4>NEEDS CONFIRMATION</h4>
         <img src="assets/images/confirm.png" class="deliveryImg">
         <p *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</p>
         <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
