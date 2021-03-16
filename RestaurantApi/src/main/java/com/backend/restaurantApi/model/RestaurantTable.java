@@ -38,7 +38,7 @@ public class RestaurantTable {
     @Column(name = "isReady", nullable = false)
     private boolean isReady = false;
 
-    //@JsonBackReference(value = "staff_table")
+    @JsonBackReference(value = "staff_table")
     @ManyToOne(optional = false)
     @JoinColumn(name = "staff", nullable = true)
     private Staff staff;

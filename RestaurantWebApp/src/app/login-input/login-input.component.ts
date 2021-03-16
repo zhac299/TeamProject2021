@@ -16,7 +16,6 @@ export class LoginInputComponent implements OnInit {
     waiter: boolean = false;
     kitchen: boolean = false;
     correct: boolean = true;   
-    loginTwo: Login = undefined;
     html: string = "";
 
     constructor(
@@ -34,10 +33,10 @@ export class LoginInputComponent implements OnInit {
     onSubmit() {           
         this.input.getLogin(this.username, this.password).subscribe(user => {
             try {
-                this.loginTwo = user[0];
-                if (Object.keys(this.loginTwo).length > 0) {
+                if (Object.keys(user[0]).length > 0) {
                     if(user[0].waiter) {
-                        this.router.navigateByUrl('waiter-menu');   
+                        this.router.navigate(['/waiter-menu'], 
+                        { queryParams: {staffId: user[0].id} });   
                     } else {
                         this.router.navigateByUrl('kitchen-menu');
                     }              
