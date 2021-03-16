@@ -19,6 +19,20 @@ export class AddStaffComponent implements OnInit {
   ngOnInit(): void {
     this.staffService.getStaffs().subscribe((staff) => {
       this.staffs = staff;
+      if(this.staffs && this.staffs.length > 0) {
+        this.staffs.forEach((item, index) => {
+          this.staffService.getSales(item.id).subscribe((sale) => {
+            item.orderDelivered = 0;
+            item.salesPrice = 0;
+            if(sale && sale.length > 0) {
+              item.orderDelivered = sale.length;
+              sale.forEach((sa, index) => {
+                item.salesPrice += sa.total;
+              });
+            }
+          });
+        }); 
+      }
     });
   }
 
@@ -33,16 +47,16 @@ export class AddStaffComponent implements OnInit {
       autoFocus: false
     });
 
-    // dialogRef.afterClosed().subscribe(staff => {
-    //   if(staff){
-    //     console.log(staff)
-    //     this.staffService.createStaff(staff).subscribe((st) => {
-    //       this.staffService.getStaffs().subscribe((stt) => {
-    //         this.staffs = stt;
-    //       });
-    //     });
-    //   }
-    // })
+    dialogRef.afterClosed().subscribe(staff => {
+      if(staff && staff.userName && staff.email && staff.password){
+        console.log(staff)
+        this.staffService.createStaff(staff).subscribe((st) => {
+          this.staffService.getStaffs().subscribe((stt) => {
+            this.staffs = stt;
+          });
+        });
+      }
+    })
   }
 
   
@@ -55,15 +69,15 @@ export class AddStaffComponent implements OnInit {
       autoFocus: false
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if(staff){
-    //     this.staffService.updateStaff(staff).subscribe((st) => {
-    //       this.staffService.getStaffs().subscribe((stt) => {
-    //         this.staffs = stt;
-    //       });
-    //     });
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if(staff){
+        this.staffService.updateStaff(staff).subscribe((st) => {
+          this.staffService.getStaffs().subscribe((stt) => {
+            this.staffs = stt;
+          });
+        });
+      }
+    });
 
   }
 

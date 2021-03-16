@@ -26,4 +26,6 @@ public interface RestaurantTableRepository extends JpaRepository<RestaurantTable
     " WHERE needs_help = true",
      nativeQuery = true)
     public List<RestaurantTable> getNeedHelpTables();
+    
+    RestaurantTable findByTableNumber(long tableNumber);
 }

@@ -56,6 +56,7 @@ export class CustomerInterfaceComponent implements OnInit {
   subscription: Subscription;
   refreshTimer$ = timer(0, 5000)
     .pipe(tap(() => console.log('Fetching Menus...')));
+  cartCount: number = 0;
 
   constructor(private menuService: MenuService,
               private menuCategoryService: MenuCategoryService,
@@ -168,6 +169,7 @@ export class CustomerInterfaceComponent implements OnInit {
       newMeal.menu = menuItem;
       newMeal.numberSelections = 1;
       this.selectedMeals.push(newMeal);
+      this.cartCount++;
     }
   }
 
@@ -177,6 +179,7 @@ export class CustomerInterfaceComponent implements OnInit {
         this.selectedMeals[i].numberSelections -= 1;
         if(this.selectedMeals[i].numberSelections == 0) {
           this.selectedMeals.splice(i);
+          this.cartCount--;
         }
       }
     }
@@ -186,6 +189,7 @@ export class CustomerInterfaceComponent implements OnInit {
     for(var i = 0; i < this.selectedMeals.length; i++) {
       if (this.selectedMeals[i].menu == menuItem) {
         this.selectedMeals.splice(i);
+        this.cartCount--;
       }
     }
   }
@@ -208,6 +212,11 @@ export class CustomerInterfaceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(orderPlaced => {
       this.orderPlaced = orderPlaced;
+      if(this.selectedMeals && this.selectedMeals.length > 0) {
+        this.cartCount = this.selectedMeals.length;
+      } else {
+        this.cartCount = 0;
+      }
     });
   }
 

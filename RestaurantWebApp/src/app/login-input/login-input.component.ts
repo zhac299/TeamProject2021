@@ -29,10 +29,8 @@ export class LoginInputComponent implements OnInit {
                 try {
                     this.loginTwo = login[0];
                     if (Object.keys(this.loginTwo).length > 0 && this.waiter == true) {
-                        this.input.setOTP(this.loginTwo);
-                        this.input.setLogin(this.loginTwo);
-                        
-                        this.router.navigateByUrl("/2FA");
+                        this.router.navigateByUrl('waiter-menu');
+                        // activated route
                     }
                 } catch {
                     this.correct = false;

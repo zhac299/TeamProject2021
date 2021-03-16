@@ -1,9 +1,12 @@
 package com.backend.restaurantApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,6 +31,11 @@ public class Staff {
 	@Column(name = "isWaiter")
 	private boolean isWaiter;
 
+	@JsonManagedReference(value = "staff_table")
+	@Column()
+	@OneToMany(mappedBy = "staff")
+	private List<RestaurantTable> tables;
+
 // used to serialize object to json
 	@Override
 	public String toString() {
@@ -38,11 +46,13 @@ public class Staff {
 	public Staff() {
 	}
 
-	public Staff(String userName, String password, String email, boolean isWaiter) {
+	public Staff(long id, String userName, String password, String email, boolean isWaiter, List<RestaurantTable> tables) {
+		this.id = id;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
 		this.isWaiter = isWaiter;
+		this.tables = tables;
 	}
 
 	public long getId() {
@@ -85,4 +95,11 @@ public class Staff {
 		this.isWaiter = isWaiter;
 	}
 
+	public List<RestaurantTable> getTables() {
+		return tables;
+	}
+
+	public void setTables(List<RestaurantTable> tables) {
+		this.tables = tables;
+	}
 }

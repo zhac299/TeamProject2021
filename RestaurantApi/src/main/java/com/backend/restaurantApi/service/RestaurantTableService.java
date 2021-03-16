@@ -1,14 +1,15 @@
 package com.backend.restaurantApi.service;
 
-import com.backend.restaurantApi.exception.RestaurantTableNotFoundException;
-import com.backend.restaurantApi.model.RestaurantTable;
-import com.backend.restaurantApi.repository.RestaurantTableRepository;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.backend.restaurantApi.exception.RestaurantTableNotFoundException;
+import com.backend.restaurantApi.model.RestaurantTable;
+import com.backend.restaurantApi.repository.RestaurantTableRepository;
+import com.backend.restaurantApi.repository.StaffRepository;
 
 /**
  * The Service clas of the ResturantTable model  that handles
@@ -22,6 +23,12 @@ public class RestaurantTableService {
      */
     @Autowired
     RestaurantTableRepository restaurantTableRepository;
+    
+    /**
+     * Autowires to the the custom repository.
+     */
+    @Autowired
+    StaffRepository staffRepository;
 
     /**
      * Creates a new Restaurant Table and upates the repository.
@@ -114,6 +121,23 @@ public class RestaurantTableService {
      */
     public List<RestaurantTable> getNeedHelpTables() {
         return restaurantTableRepository.getNeedHelpTables();
+    }
+    
+    /**
+     * Assign table to waiter
+     * 
+     * @param WaiterTable the new RestaurantTable
+     * @return the updated repository
+     */
+    public RestaurantTable assignTableToWaiter(RestaurantTable restaurantTable) {
+    	RestaurantTable tableToBesaved = restaurantTableRepository.findByTableNumber(restaurantTable.getTableNumber());
+    	if(tableToBesaved != null) {
+    		tableToBesaved.setStaff(staffRepository.getRandomWaiter());
+            restaurantTableRepository.save(tableToBesaved);
+    	} else {
+    		throw new RestaurantTableNotFoundException("Restaurant Table Record is not available...");
+    	}
+    	return tableToBesaved;
     }
 
     public RestaurantTable updateRestaurantTable(RestaurantTable table, Long id) {
