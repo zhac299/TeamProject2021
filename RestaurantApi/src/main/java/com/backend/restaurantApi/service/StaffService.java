@@ -3,18 +3,23 @@ package com.backend.restaurantApi.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.backend.restaurantApi.exception.StaffNotFoundException;
-import com.backend.restaurantApi.model.Staff;
-import com.backend.restaurantApi.repository.StaffRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.backend.restaurantApi.exception.StaffNotFoundException;
+import com.backend.restaurantApi.model.Order;
+import com.backend.restaurantApi.model.Staff;
+import com.backend.restaurantApi.repository.OrderRepository;
+import com.backend.restaurantApi.repository.StaffRepository;
 
 @Service
 public class StaffService {
     
     @Autowired
     StaffRepository staffRepository;
+    
+    @Autowired
+    OrderRepository orderRepository;
 
     public Staff createNewStaff(Staff Staff) {
         return staffRepository.save(Staff);
@@ -27,6 +32,10 @@ public class StaffService {
             throw new StaffNotFoundException("Staff Record is not available...");
         }
         return optionalStaff.get();
+	}
+
+	public List<Order> getSales(Long StaffId) {
+		return orderRepository.findByWaiterIdAndIsPaid(StaffId, true);
 	}
 
 	public Staff updateStaff(Long id, Staff Staff) {

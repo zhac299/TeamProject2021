@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Staff} from '../models/Staff';
 import { selectedCategory } from 'src/models/selectedCategory';
 import {exhaustMap, map, repeat, share} from "rxjs/operators";
+import { Order } from 'src/models/Order';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class StaffService {
 
   public getStaffs(): Observable<Staff[]> {
     return this.httpClient.get<Staff[]>(this.restaurantWebApiUrl);
+  }
+
+  public getSales(id: number): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(this.restaurantWebApiUrl + '/getSales/'+id);
   }
 
   createStaff(staff: Staff): Observable<Staff> {

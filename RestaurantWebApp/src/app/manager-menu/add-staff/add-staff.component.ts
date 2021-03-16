@@ -19,6 +19,20 @@ export class AddStaffComponent implements OnInit {
   ngOnInit(): void {
     this.staffService.getStaffs().subscribe((staff) => {
       this.staffs = staff;
+      if(this.staffs && this.staffs.length > 0) {
+        this.staffs.forEach((item, index) => {
+          this.staffService.getSales(item.id).subscribe((sale) => {
+            item.orderDelivered = 0;
+            item.salesPrice = 0;
+            if(sale && sale.length > 0) {
+              item.orderDelivered = sale.length;
+              sale.forEach((sa, index) => {
+                item.salesPrice += sa.total;
+              });
+            }
+          });
+        }); 
+      }
     });
   }
 
