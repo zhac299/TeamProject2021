@@ -5,6 +5,7 @@ import {Order} from '../models/Order';
 import {exhaustMap, share, tap} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 import {Customer} from "../models/Customer";
+import { StaffService } from './staff.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class OrderService {
   mealsURL = 'http://localhost:8080/api/v1/meals';
 
   private _refreshNeeded = new Subject<void>();
+
+  private staffService = StaffService;
 
   orderSubject$ = new BehaviorSubject<Order[]>([]);
   refresh$ = new BehaviorSubject(null);
@@ -46,7 +49,9 @@ export class OrderService {
       });
   }
 
-  createNewOrderWithCustomer(customer: Customer): void {
+  createNewOrderWithCustomer(customer: Customer, username: String, password: String): void {
+    const staffMember = this.staffService.getStaffByUsernameAndPassword(username, password);
+
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
     orderWithCustomer.isPaid=false;
