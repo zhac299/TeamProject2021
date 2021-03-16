@@ -32,12 +32,15 @@ export class LoginInputComponent implements OnInit {
     }
     
     onSubmit() {           
-        this.input.getLogin(this.username, this.password).subscribe(login => {
+        this.input.getLogin(this.username, this.password).subscribe(user => {
             try {
-                this.loginTwo = login[0];
-                if (Object.keys(this.loginTwo).length > 0 && this.waiter == true) {
-                    this.router.navigateByUrl('waiter-menu');
-                        
+                this.loginTwo = user[0];
+                if (Object.keys(this.loginTwo).length > 0) {
+                    if(user[0].waiter) {
+                        this.router.navigateByUrl('waiter-menu');   
+                    } else {
+                        this.router.navigateByUrl('kitchen-menu');
+                    }              
                 }
             } catch {
                 this.correct = false;
@@ -46,15 +49,6 @@ export class LoginInputComponent implements OnInit {
         });
         this.username = "";
         this.password = "";
-    }
-
-    isKitchen() {
-        this.kitchen = true
-        this.waiter = false;
-    }
-    isWaiter() {
-        this.waiter = true;
-        this.kitchen = false; 
     }
 
     goHome(): void {

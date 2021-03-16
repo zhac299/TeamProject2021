@@ -4,16 +4,16 @@
       <h1 mat-dialog-title>Order #{{data.order.id}}</h1>
     </mat-grid-tile>
     <mat-grid-tile>
-      <mat-checkbox [(ngModel)]="data.order.isConfirmed" (change)="updateOrderConfirmed(data.order)">Confirmed</mat-checkbox>
+      <mat-checkbox *ngIf="data.order.isConfirmed && !data.isKitchenStaff" [(ngModel)]="data.order.isConfirmed" (change)="updateOrderConfirmed(data.order)">Confirmed</mat-checkbox>
     </mat-grid-tile>
     <mat-grid-tile>
 
-      <mat-checkbox *ngIf="data.order.isConfirmed" [(ngModel)]="data.order.isPaid" (change)="updateOrderIsPaid(data.order)">Paid</mat-checkbox>
+      <mat-checkbox *ngIf="data.order.isConfirmed && !data.isKitchenStaff" [(ngModel)]="data.order.isPaid" (change)="updateOrderIsPaid(data.order)">Paid</mat-checkbox>
 
     </mat-grid-tile>
     <mat-grid-tile>
       
-      <mat-checkbox *ngIf="data.order.isConfirmed" [(ngModel)]="data.order.isDelivered" (change)="updateOrderDelivered(data.order)">Delivered</mat-checkbox>
+      <mat-checkbox *ngIf="data.order.isConfirmed && !data.isKitchenStaff" [(ngModel)]="data.order.isDelivered" (change)="updateOrderDelivered(data.order)">Delivered</mat-checkbox>
       
     </mat-grid-tile>
     <mat-grid-tile>

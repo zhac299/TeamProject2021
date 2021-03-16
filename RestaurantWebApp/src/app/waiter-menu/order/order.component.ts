@@ -49,6 +49,10 @@ export class OrderComponent implements OnInit {
       this.orderSubject$.next(orders);
       this.data.order = orders;
     });
+    if(this.data.isKitchenStaff == undefined) {
+      this.data.isKitchenStaff = false;
+    }
+    console.log(this.data.isKitchenStaff);
   }
   
   updateOrderReady(order: Order): void{
