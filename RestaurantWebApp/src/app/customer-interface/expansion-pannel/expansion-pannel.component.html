@@ -1,14 +1,13 @@
 <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header class = "expansionPannel">
-        <mat-panel-title id = "title">
-            Filter
-        </mat-panel-title>
-        <mat-panel-description id = "description">
-            Filter by Allergens or Calories
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div id = "allergens and calories">
-            <p> <b>Allergens and Calories</b> <allergens-chips></allergens-chips></p></div>
-    </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header class="expansionPannel">
+      <mat-panel-title class="expansionPannelTitle">
+        <mat-icon>filter_alt</mat-icon>
+      </mat-panel-title>
+      <mat-panel-description>
+        Filter by Allergens or Calories
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <allergens-chips></allergens-chips>
+  </mat-expansion-panel>
 </mat-accordion>
