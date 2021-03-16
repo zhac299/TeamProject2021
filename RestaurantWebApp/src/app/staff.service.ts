@@ -17,6 +17,10 @@ export class StaffService {
 
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/staff';
 
+  public getStaffByUsernameAndPassword(username: String, password: String): Observable<Staff> {
+    return this.httpClient.get<Staff>(this.restaurantWebApiUrl + `/${username}/${password}`);
+  }
+
   public getStaffs(): Observable<Staff[]> {
     return this.httpClient.get<Staff[]>(this.restaurantWebApiUrl);
   }
