@@ -9,14 +9,9 @@
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-  <div *ngIf="orderPlaced == false">
+  <div *ngIf="orderPlaced == false" class = list>
     <hr>
     <table class="table" class="selectedItems">
-      <thead>
-        <tr>
-          <th scope="row" class="selectedItemsTitle">Selected Items</th>
-        </tr>
-      </thead>
       <tbody>
         <tr *ngFor="let meal of mealList">
           <td>
@@ -55,7 +50,7 @@
           </button>
           <ng-template #emptyShoppingCartBlock>
             <div class="emptyShoppingCartBlock">
-              Empty Shopping Cart!
+              <button mat-button> Empty Shopping Cart!</button>
             </div>
           </ng-template>
         </div>
