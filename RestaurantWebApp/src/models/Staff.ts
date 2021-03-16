@@ -4,4 +4,6 @@ export class Staff{
   userName: string;
   password: string;
   waiter: boolean;
+  salesPrice: number;
+  orderDelivered: number
 }

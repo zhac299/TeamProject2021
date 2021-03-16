@@ -1,5 +1,6 @@
 package com.backend.restaurantApi.controller;
 
+import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.model.Staff;
 import org.springframework.ui.Model;
 import com.backend.restaurantApi.repository.*;
@@ -32,6 +33,11 @@ public class StaffController {
     @GetMapping("/staff")
     public List<Staff> index() {
       return staffRepo.findAll();
+    }  
+
+    @GetMapping("/staff/getSales/{id}")
+    public List<Order> getSales(@PathVariable("id") long id) {
+      return staffService.getSales(id);
     }  
 
    @PostMapping("/staff")
