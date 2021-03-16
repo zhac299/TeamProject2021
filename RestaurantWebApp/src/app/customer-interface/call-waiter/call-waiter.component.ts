@@ -23,8 +23,9 @@ export class CallWaiterComponent implements OnInit {
 
   callWaiter(): void {
     this.customerInterface.table.subscribe((table) => {
+      console.log(table);
       table.needsHelp = true;
-      this.tableService.updateTable(table).subscribe();
+      this.tableService.updateRestaurantTableNeedsHelp(table,true).subscribe();
     });
     this.waiterCalled = true;
     this.openSnackBar("A waiter will come to you","Please Wait");
@@ -40,7 +41,7 @@ export class CallWaiterComponent implements OnInit {
   cancel(): void {
     this.customerInterface.table.subscribe((table) => {
       table.needsHelp = false;
-      this.tableService.updateTable(table).subscribe();
+      this.tableService.updateRestaurantTableNeedsHelp(table,false).subscribe();
     });
     this.waiterCalled = false;
     this.openSnackBar("You canceled the waiter call","Still need help?");

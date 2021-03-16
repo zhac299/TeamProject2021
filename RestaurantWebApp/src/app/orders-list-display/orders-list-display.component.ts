@@ -63,7 +63,6 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.orderService.getUpdatedOrders();
-        // this.orderService.updateOrder(result);
       }
     });
   }

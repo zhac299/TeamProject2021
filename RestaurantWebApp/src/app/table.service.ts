@@ -53,13 +53,9 @@ export class TableService {
       );
   }
 
-  public updateTable(table: Table): Observable<Table> {
+  public updateTable(table: Table): Observable<Table>{
+    console.log(table);
     return this.httpClient.put<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`, table)
-      .pipe(
-        tap(() => {
-          this._refreshNeeded.next();
-        })
-      );
   }
 
   public getUnoccupiedTables(): Observable<Table[]> {
@@ -80,7 +76,6 @@ export class TableService {
 
   public updateRestaurantTableNeedsHelp(table: Table, newNeedsHelp: boolean): Observable<Table> {
     let restaurantTablesNeedHelpURL: string = this.restaurantTablesURL + '/updateNeedsHelp';
-    table.needsHelp = true;
     return this.httpClient.put<Table>(`${restaurantTablesNeedHelpURL}/${newNeedsHelp.valueOf()}`, table)
       .pipe(
         tap(()=> {
@@ -91,7 +86,6 @@ export class TableService {
 
   public updateRestaurantTableReadyToOrder(table: Table, newisReady: boolean): Observable<Table> {
     let restaurantTablesIsReadyURL: string = this.restaurantTablesURL + '/updateNeedsHelp';
-    table.needsHelp = true;
     return this.httpClient.put<Table>(`${restaurantTablesIsReadyURL}/${newisReady.valueOf()}`, table)
       .pipe(
         tap(()=> {
