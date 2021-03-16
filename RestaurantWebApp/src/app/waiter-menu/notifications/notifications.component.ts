@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TableService } from 'src/app/table.service';
 
 import { NotificationsDialogComponent } from './notifications-dialog/notifications-dialog.component';
 
@@ -13,30 +14,19 @@ export class NotificationsComponent implements OnInit {
   numberOfNotifications: number;
   hideMatBadge: boolean;
 
-  constructor(public dialog: MatDialog) { 
+  constructor(
+    public dialog: MatDialog,
+    private tableService: TableService) { 
     this.numberOfNotifications = 0;
     this.hideMatBadge = true;
   }
 
   ngOnInit(): void {
+    this.tableService.getNeedHelpTables().subscribe((tables) => {
+      this.numberOfNotifications = tables.length;
+    })
   }
-
-  public setNumberOfNotifications(newNumberOfNotifications: number) {
-    this.numberOfNotifications = newNumberOfNotifications;
-  }
-
-  incrementNotificationCount() {
-    this.numberOfNotifications++;
-    this.hideMatBadge = false;
-  }
-
-  decrementNotificationCount(){
-    this.numberOfNotifications--;
-    if(this.numberOfNotifications <= 0){
-      this.hideMatBadge = true;
-    }
-  }
-
+  
   openDialog() {
     const dialogRef = this.dialog.open(NotificationsDialogComponent);
 

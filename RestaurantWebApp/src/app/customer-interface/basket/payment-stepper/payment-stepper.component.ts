@@ -58,7 +58,9 @@ export class PaymentStepperComponent implements OnInit {
       if (order.isConfirmed == true) {
         this.isConfirmed = true;
       }
-      this.mealList = order.meal;
+      this.orderService.getOrderById(order.id).subscribe((order) => {
+        this.mealList = order.meal;
+      })
     }
     console.log(this.isPaid);
   }

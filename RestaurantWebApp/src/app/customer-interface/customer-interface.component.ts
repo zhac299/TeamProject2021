@@ -52,8 +52,6 @@ export class CustomerInterfaceComponent implements OnInit {
   orderPlaced: Boolean = false;
   categories: MenuCategory[];
   selectedCategory: MenuCategory;
-  cartCount: number = 0;
-  changedCategory = false;
 
   constructor(private menuService: MenuService,
               private menuCategoryService: MenuCategoryService,
@@ -127,7 +125,6 @@ export class CustomerInterfaceComponent implements OnInit {
       newMeal.menu = menuItem;
       newMeal.numberSelections = 1;
       this.selectedMeals.push(newMeal);
-      this.cartCount++;
     }
   }
 
@@ -137,7 +134,6 @@ export class CustomerInterfaceComponent implements OnInit {
         this.selectedMeals[i].numberSelections -= 1;
         if(this.selectedMeals[i].numberSelections == 0) {
           this.selectedMeals.splice(i);
-          this.cartCount--;
         }
       }
     }
@@ -147,7 +143,6 @@ export class CustomerInterfaceComponent implements OnInit {
     for(var i = 0; i < this.selectedMeals.length; i++) {
       if (this.selectedMeals[i].menu.name == menuItem.name) {
         this.selectedMeals.splice(i);
-        this.cartCount--;
       }
     }
   }
@@ -171,11 +166,6 @@ export class CustomerInterfaceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(orderPlaced => {
       this.orderPlaced = orderPlaced;
-      if(this.selectedMeals && this.selectedMeals.length > 0) {
-        this.cartCount = this.selectedMeals.length;
-      } else {
-        this.cartCount = 0;
-      }
     });
   }
 
