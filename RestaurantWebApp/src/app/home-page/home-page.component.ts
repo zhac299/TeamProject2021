@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SelectTableDialogComponent } from './select-table-dialog/select-table-dialog.component';
@@ -11,10 +11,14 @@ import { SelectTableDialogComponent } from './select-table-dialog/select-table-d
 export class HomePageComponent implements OnInit {
 
   constructor(
+    private elementRef: ElementRef,
     private router:Router,
     private dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
   }
 
   openSelectTableDialog() : void {

@@ -1,7 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, ElementRef, OnInit} from '@angular/core';
 import { Login } from 'src/models/Login';
 import { InputService } from './login-input.service';
 import { Router } from '@angular/router'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-login-input',
@@ -14,28 +15,35 @@ export class LoginInputComponent implements OnInit {
     password: string = "";
     waiter: boolean = false;
     kitchen: boolean = false;
-    correct: boolean = true;
-    
+    correct: boolean = true;   
     loginTwo: Login = undefined;
     html: string = "";
 
-    constructor(private input: InputService, private router:Router) { }
-    ngOnInit(): void {
+    constructor(
+        private input: InputService,
+        private router:Router,
+        private elementRef: ElementRef,
+        private snackBar: MatSnackBar) { }
+
+    ngOnInit(): void {}
+
+    ngAfterViewInit(): void {
+        this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
     }
     
-    onSubmit() {
-            
-            this.input.getLogin(this.username, this.password).subscribe(login => {
-                try {
-                    this.loginTwo = login[0];
-                    if (Object.keys(this.loginTwo).length > 0 && this.waiter == true) {
-                        this.router.navigateByUrl('waiter-menu');
-                        // activated route
-                    }
-                } catch {
-                    this.correct = false;
+    onSubmit() {           
+        this.input.getLogin(this.username, this.password).subscribe(login => {
+            try {
+                this.loginTwo = login[0];
+                if (Object.keys(this.loginTwo).length > 0 && this.waiter == true) {
+                    this.router.navigateByUrl('waiter-menu');
+                        
                 }
-            });
+            } catch {
+                this.correct = false;
+                this.openSnackBar("Login Credentials are wrong!","Try again")
+            }
+        });
         this.username = "";
         this.password = "";
     }
@@ -47,5 +55,16 @@ export class LoginInputComponent implements OnInit {
     isWaiter() {
         this.waiter = true;
         this.kitchen = false; 
+    }
+
+    goHome(): void {
+        this.router.navigateByUrl('/home');
+    }
+
+    private openSnackBar(message: string, action: string) {
+        this.snackBar.open(message, action, {
+          duration: 3000,
+          panelClass: ['orderSnackBar']
+        });
     }
 }
