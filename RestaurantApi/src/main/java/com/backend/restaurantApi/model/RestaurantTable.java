@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -37,7 +38,24 @@ public class RestaurantTable {
     @Column(name = "isReady", nullable = false)
     private boolean isReady = false;
 
-    /**
+    @JsonBackReference(value = "staff_table")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "staff", nullable = true)
+    private Staff staff;
+
+    public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
+
+	public void setOccupied(boolean isOccupied) {
+		this.isOccupied = isOccupied;
+	}
+
+	/**
      * A column that stores all the customers seated a table.
      */
     @JsonManagedReference(value = "restaurant_table")
@@ -128,13 +146,9 @@ public class RestaurantTable {
     /**
      * Returns A Jason object containing all the tables details.
      */
-    @Override
-    public String toString() {
-        return "RestaurantTables{" +
-            "tableNumber='" + this.tableNumber +
-            ", needsHelp='" + this.needsHelp + '\'' +
-            ", IsOccupied='" + this.isOccupied + '\'' +
-            ", IsReady='" + this.isReady + '\'' +
-            '}';
-    }
+	@Override
+	public String toString() {
+		return "RestaurantTable [tableNumber=" + tableNumber + ", needsHelp=" + needsHelp + ", isOccupied=" + isOccupied
+				+ ", isReady=" + isReady + ", staff=" + staff + ", customer=" + customer + "]";
+	}
 }

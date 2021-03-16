@@ -32,7 +32,6 @@ import { TableComponent } from './waiter-menu/table/table.component';
 import { MatTableModule} from "@angular/material/table";
 import { MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
-import { TwoFactorAuthComponent } from './two-factor-auth/two-factor-auth.component';
 import { NgOtpInputModule } from  'ng-otp-input';
 import { MatCheckboxModule} from "@angular/material/checkbox";
 import { BasketComponent } from './customer-interface/basket/basket.component';
@@ -72,7 +71,6 @@ import { MatRadioModule} from "@angular/material/radio";
     AllergensChipsComponent,
     TableComponent,
     AddMenuDialogComponent,
-    TwoFactorAuthComponent,
     BasketComponent,
     CustomerTablesComponent,
     CallWaiterComponent,
