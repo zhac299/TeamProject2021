@@ -3,6 +3,7 @@ import {TableService} from "../table.service";
 import {Table} from "../../models/Table";
 import {fromEvent, Subscription, timer} from "rxjs";
 import {debounceTime, tap} from "rxjs/operators";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tables-list-display',
@@ -11,7 +12,9 @@ import {debounceTime, tap} from "rxjs/operators";
 })
 export class TablesListDisplayComponent implements OnInit {
 
-  constructor(public tableService: TableService) { }
+  constructor(
+    public tableService: TableService,
+    private snackBar: MatSnackBar) { }
 
   tableList: Table[] = [];
   subscription: Subscription;
@@ -38,6 +41,23 @@ export class TablesListDisplayComponent implements OnInit {
 
   createNewTable(): void {
     this.tableService.createTable().subscribe();
+  }
+
+  markAsHelped(table: Table): void {
+    if(table.needsHelp) {
+      table.needsHelp = false;
+      this.tableService.updateRestaurantTableNeedsHelp(table, false).subscribe();
+      this.openSnackBar("Table was marked as helped!","Close");
+    } else {
+      this.openSnackBar("Table doesn't need help!","Close");
+    }
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: ['orderSnackBar']
+    });
   }
 
 }

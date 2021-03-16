@@ -1,27 +1,27 @@
 <h2>Tables</h2>
 <mat-grid-list [cols]="this.windowWidth" rowHeight="200px">
   <mat-grid-tile *ngFor="let table of tableList" >
-    <button *ngIf="table.needsHelp && table.isReady else needsHelpBlock" mat-raised-button class="needsHelpReadyToOrder">
+    <button *ngIf="table.needsHelp && table.isReady else needsHelpBlock" mat-raised-button class="needsHelpReadyToOrder" (click) = "markAsHelped(table)">
       <span class = "tableNumber">Table {{table.tableNumber}}</span> <br>
       <span>Needs Help and is Ready to Order!</span>
     </button>
 
     <ng-template #needsHelpBlock>
-      <button *ngIf="table.needsHelp else noNeedsHelpBlock" mat-raised-button class="needsHelp" color="accent">
+      <button *ngIf="table.needsHelp else noNeedsHelpBlock" mat-raised-button class="needsHelp" color="accent" (click) = "markAsHelped(table)">
         <span class = "tableNumber">Table {{table.tableNumber}}</span> <br>
         Needs Help!
       </button>
     </ng-template> 
 
     <ng-template #noNeedsHelpBlock>
-        <button *ngIf="table.isReady else noIsReadyBlock" mat-raised-button class="readyToOrder" color="warn">
+        <button *ngIf="table.isReady else noIsReadyBlock" mat-raised-button class="readyToOrder" color="warn" (click) = "markAsHelped(table)">
           <span class = "tableNumber">Table {{table.tableNumber}}</span> <br>
           is Ready to Order!
         </button> 
     </ng-template>
 
     <ng-template #noIsReadyBlock>
-      <button mat-raised-button class="noIsReadyToOrder" color="primary">
+      <button mat-raised-button class="noIsReadyToOrder" color="primary" (click) = "markAsHelped(table)">
         <span class = "tableNumber">Table {{table.tableNumber}}</span> <br>
       </button>
     </ng-template>
