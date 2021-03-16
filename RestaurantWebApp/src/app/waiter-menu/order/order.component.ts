@@ -137,5 +137,8 @@ export class OrderComponent implements OnInit {
 
   deleteOrderedMenuItem(meal: Meal) {
     this.mealService.deleteMeal(meal).subscribe((deletedMeal) => console.log(deletedMeal));
+    this.data.order.total -= meal.menu.price * meal.numberSelections;
+    this.total = this.data.order.total;
+    this.orderService.updateTotal(this.data.order);
   }
 }
