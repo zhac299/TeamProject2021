@@ -53,8 +53,16 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
         targets: '.btn',
         opacity:[0,1],
         scale: 1.5,
-        duration: 1000
+        duration: 500
     });
+
+    anime.timeline({loop:true})
+      .add({
+        targets: '.btn',
+        scale: [1,1.10,1],
+        ease: 'easeInOutQuad',
+        duration: 5000
+      })
   }
 
 }
