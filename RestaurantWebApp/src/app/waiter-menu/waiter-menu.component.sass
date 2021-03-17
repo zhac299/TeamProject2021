@@ -11,6 +11,10 @@ $tableButCol: brown
   gap: 1rem
   width: border-box
 
+.addTableButton
+  width: 35px
+  height: 35px
+
 li
   display: flex
   flex-direction: row
@@ -36,17 +40,22 @@ li
 
 .addOrder
   border-color: yellow
-  //width: $btnSize
-  //height: $btnSize
-  //border-radius: 250px
 
 .tableBut
   border-color: $tableButCol
   width: $btnSize
   height: $btnSize
 
-h1
-  color: $h1Col
+.toolBarTitle
+  font-family: 'Raleway', sans-serif
+  font-size: 50px
+  padding-left: 300px
+
+.toolBar
+  background-color: #76cfb9
+  z-index: 1
+  color: white
+  position: fixed
 
 .buttonRow
   list-style: none
@@ -65,3 +74,4 @@ h1
 
 .spacer
   flex: 1 1 auto
+
