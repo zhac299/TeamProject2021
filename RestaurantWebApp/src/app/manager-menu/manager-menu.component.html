@@ -15,9 +15,9 @@
     <a routerLink="/manager-menu/add-staff">
       <button mat-button><img class = "quickAddButton" src="assets/images/staff.png"></button>
     </a><br><br><br>
-    <button mat-button><img class = "quickAddButton" src="assets/images/food.png"></button><br><br><br>
-    <button mat-button><img class = "quickAddButton" src="assets/images/table-dinner-restaurant-furniture-chair-512.png"></button><br><br><br>
-    <button mat-button><img class = "quickAddButton" src="assets/images/burito.png"></button><br><br><br>
+    <button mat-button (click) = "createNewOrder()"><img class = "quickAddButton" src="assets/images/food.png"></button><br><br><br>
+    <button mat-button (click) = "createNewTable()"><img class = "quickAddButton" src="assets/images/table-dinner-restaurant-furniture-chair-512.png"></button><br><br><br>
+    <button mat-button (click) = "openAddMenuDialog()"><img class = "quickAddButton" src="assets/images/burito.png"></button><br><br><br>
   </mat-drawer>
   <app-tables-list-display></app-tables-list-display>
 
