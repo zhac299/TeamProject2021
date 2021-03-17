@@ -6,6 +6,7 @@ import {exhaustMap, share, tap} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 import {Customer} from "../models/Customer";
 import { StaffService } from './staff.service';
+import { Staff } from 'src/models/Staff';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class OrderService {
 
   private _refreshNeeded = new Subject<void>();
 
-  private staffService = StaffService;
+  public waiterId = 0;
 
   orderSubject$ = new BehaviorSubject<Order[]>([]);
   refresh$ = new BehaviorSubject(null);
@@ -49,13 +50,12 @@ export class OrderService {
       });
   }
 
-  createNewOrderWithCustomer(customer: Customer, username: String, password: String): void {
-    const staffMember = this.staffService.getStaffByUsernameAndPassword(username, password);
-
+  createNewOrderWithCustomer(customer: Customer): void {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
     orderWithCustomer.isPaid=false;
     orderWithCustomer.total=0;
+    orderWithCustomer.waiterId = this.waiterId;
     this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer)
       .subscribe((order) => {
         const _orders = this.orderSubject$.getValue();
@@ -162,6 +162,10 @@ export class OrderService {
 
   public getNoConfirmedOrders(): Observable<Order[]> {
     return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/noisconfirmed`);
+  }
+
+  public getWaiterSpecificOrders(waiterId: number): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/waiterid/${waiterId}`);
   }
 
 }
