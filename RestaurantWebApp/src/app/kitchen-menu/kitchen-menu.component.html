@@ -1,8 +1,10 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-toolbar>
-    <span>Kitchen Menu</span>
-    <span class="spacer"></span>
+  <mat-toolbar class = "toolBar">
+    <mat-toolbar-row>
+      <span class = "toolBarTitle">Kitchen Menu</span>
+    </mat-toolbar-row>
   </mat-toolbar>
+  <br><br><br><br><br>
   <app-orders-list-display
     [createPermission] = "false"
     [isKitchenStaff]="true">

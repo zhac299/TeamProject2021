@@ -1,40 +1,42 @@
-<h2>Orders</h2>
-<mat-grid-list  [cols]="this.windowWidth" rowHeight="300px">
+<img class="orderTitle" src="assets/images/food.png">
+<mat-grid-list [cols]="this.windowWidth" rowHeight="300px">
   <mat-grid-tile *ngFor="let order of orders">
 
-      <button *ngIf="order.isConfirmed && order.isDelivered && order.isReady && order.isPaid else deliveredNotPaid" mat-raised-button class="deliveredPaidButton"
-              (click)="openOrderDialog(order)">
-        <h1>Order #{{order.id}}</h1>
-        <p> order-confirmed | delivered</p>
-        <p> (paid)</p>
-        <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
-      </button>
+    <button *ngIf="order.isConfirmed && order.isDelivered && order.isReady && order.isPaid else deliveredNotPaid"
+      mat-raised-button class="deliveredPaidButton" (click)="openOrderDialog(order)">
+      <h1>Order #{{order.id}}</h1>
+      <p> order-confirmed | delivered</p>
+      <p> (paid)</p>
+      <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}
+      </p>
+    </button>
 
     <ng-template #deliveredNotPaid>
 
-      <button *ngIf="order.isConfirmed && order.isDelivered && order.isReady && !order.isPaid  else confirmedNoDeliverBlock" mat-raised-button class="confirmDeliverButton"
-              (click)="openOrderDialog(order)"
-              color="primary">
+      <button
+        *ngIf="order.isConfirmed && order.isDelivered && order.isReady && !order.isPaid  else confirmedNoDeliverBlock"
+        mat-raised-button class="confirmDeliverButton" (click)="openOrderDialog(order)" color="primary">
         <h1>Order #{{order.id}}</h1>
         <h4>PREPARED ORDER HAS BEEN DELIVERED</h4>
         <h4>AWAITING PAYMENT</h4>
         <img src="assets/images/payment-method.png" class="deliveryImg">
-        <p *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</p>
-        <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
+        <p *ngIf="!order.isPaid else PaidBlock"> (not-paid)</p>
+        <p>Time Ordered:
+          {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
 
     </ng-template>
 
     <ng-template #confirmedNoDeliverBlock>
 
-      <button *ngIf="order.isConfirmed && order.isReady && !order.isDelivered else confirmedReadyNoDeliver" mat-raised-button class="orderBtn"
-              (click)="openOrderDialog(order)"
-              color="accent">
+      <button *ngIf="order.isConfirmed && order.isReady && !order.isDelivered else confirmedReadyNoDeliver"
+        mat-raised-button class="orderBtn" (click)="openOrderDialog(order)" color="accent">
         <h1>Order #{{order.id}}</h1>
         <h4>ORDER IS READY FOR DELIVERY</h4>
         <img src="assets/images/food.png" class="deliveryImg">
-        <p *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</p>
-        <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
+        <p *ngIf="!order.isPaid else PaidBlock"> (not-paid)</p>
+        <p>Time Ordered:
+          {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
 
     </ng-template>
@@ -42,13 +44,13 @@
     <ng-template #confirmedReadyNoDeliver>
 
       <button *ngIf="order.isConfirmed && !order.isReady else noConfirmedBlock" mat-raised-button class="orderBtn"
-              (click)="openOrderDialog(order)"
-              color="accent">
+        (click)="openOrderDialog(order)" color="accent">
         <h1>Order #{{order.id}}</h1>
         <h4>ORDER IS BEING PREPARED</h4>
         <img src="assets/images/cooking.png" class="deliveryImg">
-        <p *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</p>
-        <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
+        <p *ngIf="!order.isPaid else PaidBlock"> (not-paid)</p>
+        <p>Time Ordered:
+          {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
 
     </ng-template>
@@ -56,14 +58,14 @@
 
     <ng-template #noConfirmedBlock>
 
-      <button *ngIf="!order.isConfirmed" mat-raised-button class="orderBtn"
-              (click)="openOrderDialog(order)"
-              color="warn">
+      <button *ngIf="!order.isConfirmed" mat-raised-button class="orderBtn" (click)="openOrderDialog(order)"
+        color="warn">
         <h1>Order #{{order.id}}</h1>
         <h4>NEEDS CONFIRMATION</h4>
         <img src="assets/images/confirm.png" class="deliveryImg">
-        <p *ngIf = "!order.isPaid else PaidBlock"> (not-paid)</p>
-        <p>Time Ordered: {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
+        <p *ngIf="!order.isPaid else PaidBlock"> (not-paid)</p>
+        <p>Time Ordered:
+          {{getDate(order.orderPlacedTime).getUTCHours()}}:{{getDate(order.orderPlacedTime).getMinutes()}}</p>
       </button>
 
     </ng-template>
@@ -72,7 +74,7 @@
   <ng-template #PaidBlock>(paid)</ng-template>
 
   <mat-grid-tile *ngIf="createPermission">
-    <button mat-fab color="accent"class="addOrder" (click)="createNewOrder()">
+    <button mat-fab color="accent" class="addOrder" (click)="createNewOrder()">
       <mat-icon>add</mat-icon>
     </button>
   </mat-grid-tile>

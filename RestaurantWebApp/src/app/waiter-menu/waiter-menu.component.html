@@ -1,20 +1,18 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-toolbar class = "toolBar">
       <mat-toolbar-row>
-        <button mat-button ><img class = "addTableButton" src="assets/images/table-dinner-restaurant-furniture-chair-512.png"></button>
-        <button mat-button ><img class = "addTableButton" src="assets/images/food.png"></button>
-        <button mat-button ><img class = "addTableButton" src="assets/images/burito.png"></button>
+        <button mat-button (click) = "createNewTable()"><img class = "addTableButton" src="assets/images/table-dinner-restaurant-furniture-chair-512.png"></button>
+        <button mat-button (click) = "createNewOrder()"><img class = "addTableButton" src="assets/images/food.png"></button>
+        <button mat-button (click) = "openAddMenuDialog()"><img class = "addTableButton" src="assets/images/burito.png"></button>
         <span class = "toolBarTitle">Waiter Menu</span>
         <span class="spacer"></span>
         <notifications></notifications>
       </mat-toolbar-row>
     </mat-toolbar>
-
+  <br><br><br>
   <app-tables-list-display></app-tables-list-display>
-  <hr>
   <app-orders-list-display [createPermission] = "true">
   </app-orders-list-display>
-  <hr>
 <app-menus-list-display></app-menus-list-display>
 
 </mat-drawer-container>
