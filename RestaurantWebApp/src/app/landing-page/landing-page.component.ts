@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
-import {fromEvent} from "rxjs";
-import {debounceTime, map, tap} from "rxjs/operators";
 import anime from "animejs/lib/anime.es";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-landing-page',
@@ -9,31 +8,20 @@ import anime from "animejs/lib/anime.es";
   styleUrls: ['./landing-page.component.sass'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class LandingPageComponent implements OnInit, AfterViewInit {
-  windowWidth: number;
-  windowHeight: number;
 
-  constructor(private elementRef: ElementRef) { }
-
-  resize$ = fromEvent(window, 'resize');
+  constructor(private elementRef: ElementRef,
+              private router:Router) { }
   ngOnInit(): void {
-    this.resize$
-      .pipe(debounceTime(50),
-        tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
-        map((w) => {
-          return window
-        })
-      )
-      .subscribe((w) => {
-        this.windowWidth = w.innerWidth;
-        this.windowHeight = w.innerHeight;
-        });
+  }
 
+  toMenu(){
+    this.router.navigateByUrl('customer-menu');
   }
 
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.backgroundImage = 'url(assets/images/background.jpg)';
-    this.elementRef.nativeElement.ownerDocument.body.width = this.windowWidth;
     // var title = document.getElementById('title');
     // title.style.width= `${this.windowWidth}px`;
 
