@@ -34,18 +34,26 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   }
 
   openEditMenuDialog(menu:Menu): void {
-    const title = "Edit Dish";
-    const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-      data: {menu,title},
-      width: '50%'
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result){
-        console.log(result);
-        this.menuService.update(result).subscribe();
-        this.refreshTimer$.subscribe();
-      }
+    this.menuService.getIngredients(menu.id).subscribe(ings => {
+      menu.ingredients = [];
+      ings.forEach(element => {
+        menu.ingredients.push(element.ingredient.id);
+      });
+      const title = "Edit Dish";
+      const dialogRef = this.dialog.open(AddMenuDialogComponent, {
+        data: {menu,title},
+        width: '50%'
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result){
+          console.log(result);
+          this.menuService.update(result).subscribe();
+          this.menuService.addIngredients(result.id, result.ingredients);
+          this.refreshTimer$.subscribe();
+        }
+      });
     });
 
   }

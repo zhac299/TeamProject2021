@@ -23,4 +23,5 @@ export class Menu{
   sulphites: boolean;
   calories: number;
   timeToCook: number;
+  ingredients: number[];
 }
