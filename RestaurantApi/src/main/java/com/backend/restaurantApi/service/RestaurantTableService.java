@@ -37,6 +37,7 @@ public class RestaurantTableService {
      * @return the updated repository
      */
     public RestaurantTable createNewRestaurantTable(RestaurantTable restaurantTable) {
+    	restaurantTable.setStaff(staffRepository.getRandomWaiter());
         return restaurantTableRepository.save(restaurantTable);
     }
 

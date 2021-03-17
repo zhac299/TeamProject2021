@@ -58,6 +58,9 @@ import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-sta
 import { TablesListDisplayComponent } from './tables-list-display/tables-list-display.component';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatRadioModule} from "@angular/material/radio";
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingredient.component';
+import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dialog/add-ingredient-dialog.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +90,10 @@ import { MatRadioModule} from "@angular/material/radio";
     MenusListDisplayComponent,
     AddStaffComponent,
     AddStaffDialogComponent,
-    TablesListDisplayComponent
+    TablesListDisplayComponent,
+    AddIngredientComponent,
+    AddIngredientDialogComponent,
+    LandingPageComponent
   ],
     imports: [
         BrowserModule,
