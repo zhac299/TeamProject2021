@@ -49,6 +49,10 @@ export class OrderComponent implements OnInit {
       this.orderSubject$.next(orders);
       this.data.order = orders;
     });
+    if(this.data.isKitchenStaff == undefined) {
+      this.data.isKitchenStaff = false;
+    }
+    console.log(this.data.order[0].total);
   }
   
   updateOrderReady(order: Order): void{
@@ -100,7 +104,9 @@ export class OrderComponent implements OnInit {
     _orderedMealItems.forEach((meal) => {
       if (meal.menu.name == menu.name){
         meal.numberSelections += 1;
-        this.total += meal.menu.price;
+        order.total += meal.menu.price
+        this.total = order.total;
+        this.orderService.updateTotal(order);
         this.mealService.updateNumberSelections(meal);
         alreadyOrdered = true;
       }
@@ -110,13 +116,14 @@ export class OrderComponent implements OnInit {
       newMeal.numberSelections = 1;
       newMeal.menu = menu;
       newMeal.order = order;
-      this.total += newMeal.menu.price;
+      order.total += menu.price
+      this.total = order.total;
+      this.orderService.updateTotal(order);
       this.mealService.createNewMeal(newMeal).subscribe((meal) =>{
         _orderedMealItems.push(meal);
       });
     }
-    this.data.order.total += menu.price;
-    this.orderService.updateTotal(order);
+    console.log(this.total);
     this.orderedMealItemsSubject$.next(_orderedMealItems);
   }
 
@@ -130,5 +137,8 @@ export class OrderComponent implements OnInit {
 
   deleteOrderedMenuItem(meal: Meal) {
     this.mealService.deleteMeal(meal).subscribe((deletedMeal) => console.log(deletedMeal));
+    this.data.order.total -= meal.menu.price * meal.numberSelections;
+    this.total = this.data.order.total;
+    this.orderService.updateTotal(this.data.order);
   }
 }

@@ -1,13 +1,14 @@
-import { Component, ElementRef, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
+import { TableService } from 'src/app/table.service';
 import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
-import { Order } from 'src/models/Order';
+import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 @Component({
@@ -19,19 +20,22 @@ export class BasketComponent implements OnInit {
 
   mealList: Meal[];
   customerObservable: Observable<Customer>;
+  tableObservable: Observable<Table>;
   customer: Customer;
+  table: Table;
   orderPlaced: Boolean;
   orderTotal: number = 0;
 
   constructor(
     private snackBar: MatSnackBar,
-    private elementRef: ElementRef,
+    private tableService: TableService,
     private mealService: MealService,
     private orderService: OrderService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
     this.mealList = data.selectedMeals;
     this.customerObservable = data.customer;
+    this.tableObservable = data.table;
     for (let meal of this.mealList) {
       this.orderTotal += meal.menu.price * meal.numberSelections;
     }
@@ -39,6 +43,7 @@ export class BasketComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.customer = await this.customerObservable.pipe(take(1)).toPromise();
+    this.table = await this.tableObservable.pipe(take(1)).toPromise();
     if (this.customer.orders.length == 0) {
       this.orderPlaced = false;
     } else {
@@ -78,6 +83,8 @@ export class BasketComponent implements OnInit {
           this.mealService.createNewMeal(this.mealList[i]).subscribe();
         }
       });
+      this.table.isReady = true;
+      this.tableService.updateRestaurantTableReadyToOrder(this.table, true).subscribe();
       this.orderPlaced = true;
       this.openSnackBar("You placed your order", "Enjoy!")
     }

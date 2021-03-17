@@ -21,6 +21,10 @@ export class StaffService {
     return this.httpClient.get<Staff[]>(this.restaurantWebApiUrl);
   }
 
+  public getStaffById(staffId: number): Observable<Staff> {
+     return this.httpClient.get<Staff>(`${this.restaurantWebApiUrl}/${staffId}`);
+}
+
   public getSales(id: number): Observable<Order[]> {
     return this.httpClient.get<Order[]>(this.restaurantWebApiUrl + '/getSales/'+id);
   }

@@ -1,8 +1,5 @@
 
-<button (click)="openDialog()" mat-raised-button color="primary"
-  [matBadge]="numberOfNotifications" 
-  matBadgePosition="before" 
-  matBadgeColor="accent" 
-  [matBadgeHidden]="hideMatBadge">
-      notifications
+<button mat-icon-button (click)="openDialog()">
+  <mat-icon>notification_important</mat-icon>
+  <span class='badge badge-warning' id='lblCartCount'> {{numberOfNotifications}} </span>
 </button>

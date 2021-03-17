@@ -53,10 +53,6 @@ export class CustomerInterfaceComponent implements OnInit {
   orderPlaced: Boolean = false;
   categories: MenuCategory[];
   selectedCategory: MenuCategory;
-  subscription: Subscription;
-  refreshTimer$ = timer(0, 5000)
-    .pipe(tap(() => console.log('Fetching Menus...')));
-  cartCount: number = 0;
 
   constructor(private menuService: MenuService,
               private menuCategoryService: MenuCategoryService,
@@ -157,6 +153,9 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   addMeal(menuItem: Menu): void {
+    console.log(menuItem);
+    console.log(this.selectedMeals)
+    console.log(this.getNumberOfSelections(menuItem))
     var mealNotPresent: Boolean = true;
     for(var i = 0 ; i < this.selectedMeals.length; i++) {
       if (this.selectedMeals[i].menu.name == menuItem.name) {
@@ -169,17 +168,15 @@ export class CustomerInterfaceComponent implements OnInit {
       newMeal.menu = menuItem;
       newMeal.numberSelections = 1;
       this.selectedMeals.push(newMeal);
-      this.cartCount++;
     }
   }
 
   removeMeal(menuItem: Menu): void {
     for(var i = 0; i < this.selectedMeals.length; i++) {
-      if(this.selectedMeals[i].menu == menuItem) {
+      if(this.selectedMeals[i].menu.name == menuItem.name) {
         this.selectedMeals[i].numberSelections -= 1;
         if(this.selectedMeals[i].numberSelections == 0) {
           this.selectedMeals.splice(i);
-          this.cartCount--;
         }
       }
     }
@@ -187,36 +184,31 @@ export class CustomerInterfaceComponent implements OnInit {
 
   clearMeal(menuItem: Menu): void {
     for(var i = 0; i < this.selectedMeals.length; i++) {
-      if (this.selectedMeals[i].menu == menuItem) {
+      if (this.selectedMeals[i].menu.name == menuItem.name) {
         this.selectedMeals.splice(i);
-        this.cartCount--;
       }
     }
   }
 
   getNumberOfSelections(menuItem: Menu): number {
     for(let meal of this.selectedMeals) {
-      if(meal.menu == menuItem) {
+      if(meal.menu.name == menuItem.name) {
         return meal.numberSelections;
       }
     }
+    return 0;
   }
 
-  openDialog() {
+  openBasket() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals};
+    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals, table: this.table};
     dialogConfig.width = "60%";
     dialogConfig.backdropClass = "basket";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(orderPlaced => {
       this.orderPlaced = orderPlaced;
-      if(this.selectedMeals && this.selectedMeals.length > 0) {
-        this.cartCount = this.selectedMeals.length;
-      } else {
-        this.cartCount = 0;
-      }
     });
   }
 

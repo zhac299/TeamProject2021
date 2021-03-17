@@ -1,15 +1,20 @@
 <div class = "tableSelection" >
     <div id = "dialogTitle"><br>Select your Table<br><br></div>
-    <br>
-    <mat-form-field appearance="fill" id = "tableSelection">
-        <mat-label>Available tables</mat-label>
+    <hr>
+    <mat-form-field appearance="fill" id = "tableSelection" class = "formField">
+        <mat-label class = "label">Available tables</mat-label>
         <mat-select [(ngModel)]="selectedTable" name="table">
-            <mat-option [value]="table" *ngFor="let table of tables">Table {{table.tableNumber}}</mat-option>
+            <mat-option [value]="table" *ngFor="let table of tables" class = "option">Table {{table.tableNumber}}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>
-<div *ngIf = "selectedTable != null; else tableNotSelected">
-    <button mat-raised-button (click) = forCustomer()>Submit</button>
+<div class = "buttons">
+    <div *ngIf = "selectedTable != null; else tableNotSelected" class = "submitButton">
+        <button mat-raised-button (click) = forCustomer() class = "submitButton">Submit</button>
+    </div>
+    <ng-template #tableNotSelected>
+        <button mat-button  class = "selectMessage">Select a table</button>
+    </ng-template>
 </div>
-<ng-template #tableNotSelected>Select a Table!</ng-template>
+
 
