@@ -8,6 +8,7 @@ import { OrderComponent } from './waiter-menu/order/order.component';
 import {KitchenMenuComponent} from "./kitchen-menu/kitchen-menu.component";
 import {ManagerMenuComponent} from "./manager-menu/manager-menu.component";
 import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
+import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingredient.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'kitchen-menu', component: KitchenMenuComponent },
   { path: 'manager-menu', component: ManagerMenuComponent },
   { path: 'manager-menu/add-staff', component: AddStaffComponent },
+  { path: 'manager-menu/add-ingredient', component: AddIngredientComponent },
   { path: 'customer-menu', component: CustomerInterfaceComponent }
 ];
 
