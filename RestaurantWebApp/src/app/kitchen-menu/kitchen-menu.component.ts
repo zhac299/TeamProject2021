@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Table} from "../../models/Table";
 import {Order} from "../../models/Order";
+import { Menu } from 'src/models/Menu';
+import { MenuService } from '../menu.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddMenuDialogComponent } from '../waiter-menu/add-menu-dialog/add-menu-dialog.component';
 
 @Component({
   selector: 'app-kitchen-menu',
@@ -17,8 +21,27 @@ export class KitchenMenuComponent implements OnInit {
   getOrders = true;
   isComplete: boolean;
 
-  constructor() {}
-
+  constructor(
+    private menuService: MenuService,
+    public dialog: MatDialog) { }
+    
   ngOnInit(): void {}
+
+  openAddMenuDialog() {
+    const title = "Add New Dish";
+    let menu: Menu = new Menu();
+    const dialogRef = this.dialog.open(AddMenuDialogComponent, {
+      data: {menu,title},
+      width: '50%',
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(menu => {
+      if(menu){
+        console.log(menu);
+        this.menuService.createMenuItem(menu);
+      }
+    })
+  }
 
 }

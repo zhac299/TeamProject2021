@@ -1,6 +1,7 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-toolbar class = "toolBar">
     <mat-toolbar-row>
+      <button mat-button (click) = "openAddMenuDialog()"><img class = "quickAddButton" src="assets/images/burito.png"></button>
       <span class = "toolBarTitle">Kitchen Menu</span>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -9,7 +10,6 @@
     [createPermission] = "false"
     [isKitchenStaff]="true">
   </app-orders-list-display>
-  <hr>
 <app-menus-list-display></app-menus-list-display>
 </mat-drawer-container>
 
