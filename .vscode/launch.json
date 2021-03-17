@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RestaurantApiApplication<restaurantApi>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.backend.restaurantApi.RestaurantApiApplication",
+            "projectName": "restaurantApi",
+            "args": ""
+        }
+    ]
+}

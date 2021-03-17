@@ -8,6 +8,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {Table} from "../../models/Table";
 import {PickTableDialogComponent} from "../waiter-menu/pick-table-dialog/pick-table-dialog.component";
 import {CustomerService} from "../customer.service";
+import { ActivatedRoute } from '@angular/router';
+import { Staff } from 'src/models/Staff';
+import { StaffService } from '../staff.service';
 
 @Component({
   selector: 'app-orders-list-display',
@@ -18,10 +21,15 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
 
   constructor(private orderService: OrderService,
               private customerService: CustomerService,
+              private route: ActivatedRoute,
               public dialog: MatDialog) { }
 
   @Input() createPermission: boolean;
   @Input() isKitchenStaff: boolean;
+
+  waiter: Staff;
+  paramsObject: any;
+  staffService: StaffService;
 
   ORDER_BUTTON_WIDTH = 300;
   orders: Order[];
@@ -40,9 +48,9 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
       )
         .subscribe((orders) =>this.orders = orders);
     } else {
-      this.orderService.orders$.subscribe((orders) => {
-        this.orders = orders;
-      });
+        this.orderService.orders$.pipe(
+          map((orders) => orders.filter((order) => order.waiterId == this.orderService.waiterId)),
+        ).subscribe((orders) =>this.orders = orders);
     }
     this.resize$
       .pipe(debounceTime(250),
@@ -51,6 +59,14 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
       .subscribe((w) => {
         this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
         )});
+
+    this.route.queryParamMap.subscribe((params) => {
+      this.paramsObject = { ...params.keys, ...params };
+      this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
+        this.waiter = staff;
+        console.log(staff);
+      })
+    });
   }
 
 
