@@ -1,34 +1,15 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-toolbar>
     <mat-toolbar-row>
-      <button type="button" mat-button (click)="drawer.toggle()">
-        <mat-icon>reorder</mat-icon>
-      </button>
       <h1>Waiter Menu</h1>
       <span class="spacer"></span>
       <notifications></notifications>
     </mat-toolbar-row>
   </mat-toolbar>
-
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <ul class="buttonRow">
-      <li class="flex-item">
-        <button mat-button>Add Table</button>
-      </li>
-
-    </ul>
-    <ul class="botButtonRow">
-      <li class="flex-item">
-        <button mat-button color="warn">Log Out</button>
-      </li>
-    </ul>
-  </mat-drawer>
-
   <app-tables-list-display></app-tables-list-display>
   <hr>
   <app-orders-list-display [createPermission] = "true">
   </app-orders-list-display>
-
   <hr>
 <app-menus-list-display></app-menus-list-display>
 
