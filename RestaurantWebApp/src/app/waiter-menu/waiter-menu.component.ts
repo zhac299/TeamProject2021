@@ -11,6 +11,8 @@ import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Staff } from 'src/models/Staff';
 import { StaffService } from '../staff.service';
+import { CustomerService } from '../customer.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-waiter-menu',
@@ -24,6 +26,7 @@ export class WaiterMenuComponent implements OnInit {
     private menuService: MenuService,
     public dialog: MatDialog,
     private staffService: StaffService,
+    private orderService: OrderService
   ) { }
 
   menuList: Menu[] = [];
@@ -42,6 +45,7 @@ export class WaiterMenuComponent implements OnInit {
       this.paramsObject = { ...params.keys, ...params };
       this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
         this.waiter = staff;
+        this.orderService.waiterId = this.waiter.id;
         console.log(staff);
       })
     });
@@ -56,6 +60,5 @@ export class WaiterMenuComponent implements OnInit {
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu);
   }
-
 }
 
