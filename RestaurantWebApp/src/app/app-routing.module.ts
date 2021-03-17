@@ -14,8 +14,7 @@ import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingred
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'table/:id', component: OrderComponent},
-  { path: 'home', component: HomePageComponent },
-  {path: 'customerhome', component: LandingPageComponent},
+  {path: 'home', component: LandingPageComponent},
   { path: 'login', component: LoginInputComponent },
   { path: 'waiter-menu', component: WaiterMenuComponent },
   { path: 'kitchen-menu', component: KitchenMenuComponent },
