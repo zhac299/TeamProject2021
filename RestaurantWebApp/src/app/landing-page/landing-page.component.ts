@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
 import {fromEvent} from "rxjs";
 import {debounceTime, map, tap} from "rxjs/operators";
+import anime from "animejs/lib/anime.es";
 
 @Component({
   selector: 'app-landing-page',
@@ -27,11 +28,30 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
         this.windowWidth = w.innerWidth;
         this.windowHeight = w.innerHeight;
         });
+
   }
 
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.backgroundImage = 'url(assets/images/background.jpg)';
     this.elementRef.nativeElement.ownerDocument.body.width = this.windowWidth;
+
+    // ANIMATE TITLE
+    anime.timeline({loop: false})
+      .add({
+        targets: '.title',
+        opacity: [0,1],
+        scale: 1.5,
+        easing: "easeInOutQuad",
+        duration: 3000,
+        delay: (el, i) => 50 * (i+1)
+      }).add({
+        targets: '.title',
+        translateY: -50,
+        duration: 2000
+      }).add({
+        targets: '.btn',
+        opacity:[0,1]
+    })
   }
 
 }
