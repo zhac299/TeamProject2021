@@ -32,7 +32,7 @@ public class Staff {
 	private boolean isWaiter;
 
 	@JsonManagedReference(value = "staff_table")
-	@Column()
+	@Column
 	@OneToMany(mappedBy = "staff")
 	private List<RestaurantTable> tables;
 
