@@ -34,6 +34,8 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.backgroundImage = 'url(assets/images/background.jpg)';
     this.elementRef.nativeElement.ownerDocument.body.width = this.windowWidth;
+    // var title = document.getElementById('title');
+    // title.style.width= `${this.windowWidth}px`;
 
     // ANIMATE TITLE
     anime.timeline({loop: false})
@@ -42,16 +44,17 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
         opacity: [0,1],
         scale: 1.5,
         easing: "easeInOutQuad",
-        duration: 3000,
-        delay: (el, i) => 50 * (i+1)
+        duration: 3000
       }).add({
         targets: '.title',
-        translateY: -50,
+        translateY: -25,
         duration: 2000
       }).add({
         targets: '.btn',
-        opacity:[0,1]
-    })
+        opacity:[0,1],
+        scale: 1.5,
+        duration: 1000
+    });
   }
 
 }
