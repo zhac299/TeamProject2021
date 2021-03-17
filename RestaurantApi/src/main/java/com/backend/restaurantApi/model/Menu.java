@@ -26,7 +26,7 @@ public class Menu {
     private Double price = 0.0;
 
     @ManyToOne
-    @JoinColumn(name = "category", nullable = false)
+    @JoinColumn(name = "category")
     private MenuCategory category;
 
     @Column(name = "isSuggested")
