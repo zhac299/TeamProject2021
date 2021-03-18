@@ -65,7 +65,7 @@ export class CustomerInterfaceComponent implements OnInit {
               private router:Router) { }
 
   ngAfterViewInit(): void {
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
+    // this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
 
     // Wrap every letter in a span
     var textWrapper = document.querySelector('.an-2');
