@@ -6,6 +6,9 @@ import { selectedCategory } from 'src/models/selectedCategory';
 import {Order} from "../models/Order";
 import {exhaustMap, map, repeat, share} from "rxjs/operators";
 
+/**
+ * Service to fetch Menu's from the Restaurant API
+ */
 @Injectable({
   providedIn: 'root'
 })
