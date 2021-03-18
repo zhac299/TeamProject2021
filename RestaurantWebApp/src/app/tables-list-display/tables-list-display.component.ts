@@ -39,9 +39,9 @@ export class TablesListDisplayComponent implements OnInit {
         )});
   }
 
-  createNewTable(): void {
-    this.tableService.createTable().subscribe();
-  }
+  // createNewTable(): void {
+  //   this.tableService.createTable().subscribe();
+  // }
 
   markAsHelped(table: Table): void {
     if(table.needsHelp) {
