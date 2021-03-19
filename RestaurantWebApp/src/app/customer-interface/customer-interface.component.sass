@@ -1,7 +1,8 @@
-$background: #FFFDED
+$background: #fdfdf3
 $pure-gold: #dbc028
 $gold-light: #e9c46a
 $maroon: #3b0d0d
+$teal: #388572
 
 body
   background-image: url('../../assets/images/background.jpg')
@@ -131,5 +132,19 @@ body
     margin-left: -10px
 
 .menuCard
-  background-color: $background
-  opacity: 10%
+  //background-color: $background
+  border-radius: 10px
+  border: 1px double #c3b228
+  padding: 10px
+  margin: 50px
+  box-shadow: 15px 15px 15px 15px #626260
+  background: rgb(253,253,243)
+  background: radial-gradient(circle, rgba(253,253,243,1) 0%, rgba(242,227,191,1) 100%)
+
+.menuCard .innerBorder
+  border-radius: 10px
+  border: 1px dotted $teal
+
+.categoryTitle
+  font-size: 5vw
+  font-family: 'Cedarville Cursive', cursive
