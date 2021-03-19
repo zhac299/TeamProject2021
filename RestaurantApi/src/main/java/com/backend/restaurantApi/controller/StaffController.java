@@ -84,7 +84,11 @@ public class StaffController {
         }
         return waiters;
     }
-
+    
+    /**
+     * This method generates a random waiter from all members of staff.
+     * @return the selected member of staff.
+     */
     @GetMapping("/staff/randomwaiter")
     public Staff getRandomWaiter() {
         List<Long> allWaiterIds = new ArrayList<>();
