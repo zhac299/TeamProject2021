@@ -84,4 +84,28 @@ public class StaffController {
         }
         return waiters;
     }
+
+    @GetMapping("/staff/randomwaiter")
+    public Staff getRandomWaiter() {
+        List<Long> allWaiterIds = new ArrayList<>();
+        List<Staff> allStaff = index();
+
+        for (Staff i : allStaff) {
+            if (i.isWaiter()) {
+                allWaiterIds.add(i.getId());
+            }
+        }    
+        long largestId = Collections.max(allWaiterIds);
+        long smallestId = Collections.min(allWaiterIds);
+        long id = smallestId + (long) (Math.random() * (largestId - smallestId));
+
+        Staff staffMember = null;
+
+        for (Staff i : allStaff) {
+            if (i.getId() == id) {
+                staffMember = i;
+            }
+        }
+        return staffMember;
+    }
 }
