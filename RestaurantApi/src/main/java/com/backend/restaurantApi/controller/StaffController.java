@@ -47,6 +47,11 @@ public class StaffController {
         return staffService.createNewStaff(staff);
     }
 
+    /**
+     * Gets staff from the database according to the provided id.
+     * @param id generated from the input of a staff member.
+     * @return the staff object with the matching id.
+     */
     @GetMapping("/staff/{id}")
     public Staff getstaffById(@PathVariable("id") Long id) {
         return staffService.getStaffById(id);
