@@ -37,6 +37,11 @@ public class StaffController {
       return staffRepo.findAll();
     }  
 
+    /**
+     * Gets a list of sales that a staff member with the specific ID had made.
+     * @param id generated from the input of a staff member.
+     * @return the list of Orders done by the specific staff member.
+     */
     @GetMapping("/staff/getSales/{id}")
     public List<Order> getSales(@PathVariable("id") long id) {
       return staffService.getSales(id);
