@@ -40,4 +40,8 @@ export class StaffService {
   updateStaff(staff: Staff): Observable<Staff> {
     return this.httpClient.put<Staff>(this.restaurantWebApiUrl + '/'+staff.id, staff);
   }
+
+  public getRandomWaiter(): Observable<Staff> {
+    return this.httpClient.get<Staff>(this.restaurantWebApiUrl + '/randomwaiter')
+  }
 }
