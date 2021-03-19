@@ -96,9 +96,17 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <p>Payment Confirmed!</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-      </div>
+      <ng-template #doneBlock>
+        <div class = "doneBlock" *ngIf = "this.isPaid == true && this.interacted == false;
+         else notPaidBlock">
+          <p>Payment Confirmed!</p>
+        </div>
+      </ng-template>
+      <ng-template #notPaidBlock>
+        <div class = "notPaidBlock">
+          <p>Please do all the steps first!</p>
+        </div>
+      </ng-template>
+      <button mat-button matStepperPrevious>Back</button>
     </mat-step>
   </mat-horizontal-stepper>
