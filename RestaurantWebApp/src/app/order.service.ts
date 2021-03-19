@@ -5,6 +5,8 @@ import {Order} from '../models/Order';
 import {exhaustMap, share, tap} from 'rxjs/operators';
 import {Menu} from "../models/Menu";
 import {Customer} from "../models/Customer";
+import { StaffService } from './staff.service';
+import { Staff } from 'src/models/Staff';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,8 @@ export class OrderService {
   mealsURL = 'http://localhost:8080/api/v1/meals';
 
   private _refreshNeeded = new Subject<void>();
+
+  public waiterId = 0;
 
   orderSubject$ = new BehaviorSubject<Order[]>([]);
   refresh$ = new BehaviorSubject(null);
@@ -51,6 +55,7 @@ export class OrderService {
     orderWithCustomer.customer = customer;
     orderWithCustomer.isPaid=false;
     orderWithCustomer.total=0;
+    orderWithCustomer.waiterId = this.waiterId;
     this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer)
       .subscribe((order) => {
         const _orders = this.orderSubject$.getValue();
@@ -157,6 +162,10 @@ export class OrderService {
 
   public getNoConfirmedOrders(): Observable<Order[]> {
     return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/noisconfirmed`);
+  }
+
+  public getWaiterSpecificOrders(waiterId: number): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/waiterid/${waiterId}`);
   }
 
 }

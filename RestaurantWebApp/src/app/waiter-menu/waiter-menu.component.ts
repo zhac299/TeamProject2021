@@ -50,6 +50,7 @@ export class WaiterMenuComponent implements OnInit {
       this.paramsObject = { ...params.keys, ...params };
       this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
         this.waiter = staff;
+        this.orderService.waiterId = this.waiter.id;
         console.log(staff);
       })
     });

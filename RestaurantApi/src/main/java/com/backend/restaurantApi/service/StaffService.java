@@ -50,6 +50,5 @@ public class StaffService {
     public List<Staff> getStaffMember(String userName, String password){
         List<Staff> staff = staffRepository.getStaffMember(userName, password);
         return staff;
-    }
-    
+    }    
 }

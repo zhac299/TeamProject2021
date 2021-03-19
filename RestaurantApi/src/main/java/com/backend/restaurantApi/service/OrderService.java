@@ -140,4 +140,17 @@ public class OrderService {
 
         return readyOrders;
     }
+
+    public List<Order> getWaiterOrders(long waiterId) {
+        List<Order> allOrders = orderRepository.findAll();
+        List<Order> waiterOrders = new ArrayList<>();
+
+        for (Order order : allOrders) {
+            if (order.getWaiterId() == waiterId) {
+                waiterOrders.add(order);
+            }
+        }
+
+        return waiterOrders;
+    }
 }
