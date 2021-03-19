@@ -11,7 +11,7 @@ import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component'
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingredient.component';
 
-const routes: Routes = [
+const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'table/:id', component: OrderComponent},
   {path: 'home', component: LandingPageComponent},
@@ -25,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(APP_ROUTES, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
