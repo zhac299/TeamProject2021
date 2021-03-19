@@ -1,11 +1,3 @@
-<!--<mat-grid-list cols="1" rowHeight="100px">-->
-<!--&lt;!&ndash;  <mat-grid-tile colspan="1">&ndash;&gt;-->
-<!--&lt;!&ndash;    <img class="dividerIcon" src="https://cdn.scotts-restaurant.com/full-screen-assets/img/themes/scotts/menuWidgetGraphic1.png">&ndash;&gt;-->
-<!--&lt;!&ndash;  </mat-grid-tile>&ndash;&gt;-->
-<!--  <mat-grid-tile colspan="1">-->
-<!--    <p class="menuTitle">Menu</p>-->
-<!--  </mat-grid-tile>-->
-<!--</mat-grid-list>-->
 <div class="h-100 container-fluid">
   <div class="row justify-content-center ">
     <p class="display-1 menuTitle">Menu</p>
@@ -17,7 +9,6 @@
     <mat-icon>home</mat-icon>
   </button>
   <span></span>
-  <call-waiter></call-waiter>
   <ready-to-order></ready-to-order>
   <span class="spacer"></span>
   <button mat-icon-button (click)="openTracker()">
@@ -43,25 +34,22 @@
 <div class="container menuCard">
 
   <div class="container-fluid display-1">
-    <p class="row justify-content-center categoryTitle">{{this.selectedCategory.category}}</p>
+    <p class="row justify-content-center categoryTitle"><u>{{this.selectedCategory.category}}</u></p>
   </div>
 
   <div class="container-fluid">
     <div class="h-100 row" [@listAnimation]="menu.length">
       <div id="list" class="col-4 menuUI" *ngFor="let menuItem of menu">
-<!--        <div class="container-fluid" style="background-color: #0c5593">-->
-<!--          <div class="row justify-content-around">-->
-<!--            <h2 class="col menu-item-name">{{menuItem.name}}</h2>-->
-<!--            <p class="col menu-item-price">£{{menuItem.price}}</p>-->
-<!--          </div>-->
-<!--        </div>-->
         <mat-card class="mat-card">
           <mat-card-header class="mat-card-header">
-            <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
+            <mat-card-title class="menu-item-name ">
+              <p>{{menuItem.name}}</p>
+<!--              <p>£{{menuItem.price}}</p>-->
+            </mat-card-title>
             <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
           </mat-card-header>
           <hr class="break-line">
-          <img mat-card-image src="./assets/images/taco.png" alt="Photo of a Taco">
+          <img mat-card-image class="foodImg" src="./assets/images/ismael-trevino-Y0zbn9lPCEU-unsplash.jpg" alt="Photo of a Taco">
           <mat-card-content class="menu-item-description">
             <p>
               {{menuItem.description}}
@@ -90,4 +78,10 @@
     </div>
   </div>
 
+</div>
+
+<div class="callWaiterFloat">
+  <i class="container-fluid my-float">
+    <call-waiter class="row justify-content-center"></call-waiter>
+  </i>
 </div>
