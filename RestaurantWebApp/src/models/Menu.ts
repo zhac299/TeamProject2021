@@ -24,4 +24,5 @@ export class Menu{
   calories: number;
   timeToCook: number;
   ingredients: number[];
+  ingredientsName: string;
 }

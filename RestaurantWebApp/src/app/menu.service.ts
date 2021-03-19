@@ -72,8 +72,8 @@ copyOrder: Menu[] = [];
     });
   }
 
-  getIngredients(id: number): Observable<Menu> {
-    return this.httpClient.get<Menu>(this.restaurantWebApiUrl + '/getIngredients?id='+id);
+  getIngredients(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.restaurantWebApiUrl + '/getIngredients?id='+id);
   }
 
   deleteMenu(menu: Menu): void {
