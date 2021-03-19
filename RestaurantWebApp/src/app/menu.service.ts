@@ -53,13 +53,27 @@ copyOrder: Menu[] = [];
   }
 
   createMenuItem(menu: Menu): void {
+    let ingredients = menu.ingredients;
     this.httpClient.post<Menu>(this.restaurantWebApiUrl, menu)
       .subscribe((menu) => {
+        this.addIngredients(menu.id, ingredients);
         const currentList = this.menuSubject.getValue()
         currentList.push(menu)
         this.menuSubject.next(currentList);
         this.getAllUpdatedMenus();
       });
+  }
+
+  addIngredients(id: number, ingredients: number[]): void {
+    console.log(id)
+    console.log(ingredients)
+    this.httpClient.get<Menu>(this.restaurantWebApiUrl + '/ingredients?id='+id+'&ingredients='+ingredients)
+    .subscribe((menuList) => {
+    });
+  }
+
+  getIngredients(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.restaurantWebApiUrl + '/getIngredients?id='+id);
   }
 
   deleteMenu(menu: Menu): void {

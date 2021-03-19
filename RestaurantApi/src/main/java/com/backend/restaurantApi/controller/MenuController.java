@@ -2,6 +2,7 @@ package com.backend.restaurantApi.controller;
 
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
+import com.backend.restaurantApi.model.MenuIngredient;
 import com.backend.restaurantApi.repository.MenuRepository;
 import com.backend.restaurantApi.service.MealService;
 import com.backend.restaurantApi.service.MenuService;
@@ -32,6 +33,16 @@ public class MenuController {
     @PostMapping(path = "/menu") 
     public Menu createNewMenu(@RequestBody Menu menu) {
         return menuService.createNewMenu(menu);
+    }
+
+    @GetMapping(path = "/menu/ingredients") 
+    public Menu addIngredients(@RequestParam Long id, @RequestParam List<Long> ingredients) {
+        return menuService.addIngredients(id, ingredients);
+    }
+
+    @GetMapping(path = "/menu/getIngredients") 
+    public List<MenuIngredient> getIngredients(@RequestParam Long id) {
+        return menuService.getIngredients(id);
     }
 
     @GetMapping("/menu/{id}")

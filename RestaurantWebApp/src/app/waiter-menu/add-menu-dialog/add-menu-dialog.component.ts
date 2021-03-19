@@ -6,6 +6,8 @@ import {MenuCategory} from "../../../models/MenuCategory";
 import {MenuCategoryService} from "../../menu-category.service";
 import {map, tap} from "rxjs/operators";
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
+import { Ingredient } from 'src/models/Ingredient';
+import { IngredientService } from 'src/app/ingredient.service';
 
 @Component({
   selector: 'app-add-order-dialog',
@@ -17,10 +19,16 @@ export class AddMenuDialogComponent implements OnInit {
   selectedCategory: BehaviorSubject<MenuCategory> = new BehaviorSubject<MenuCategory>(this.data.menu.category);
 
   constructor(public dialogRef: MatDialogRef<AddMenuDialogComponent>,
+              private ingredientService: IngredientService,
               private menuCategoryService: MenuCategoryService,
               @Inject(MAT_DIALOG_DATA) public data: { menu:Menu,title:string }) { }
 
+  ingredients: Ingredient[] = [];
+  
   ngOnInit(): void {
+    this.ingredientService.getIngredients().subscribe((ing) => {
+      this.ingredients = ing;
+    });
     console.log(this.data.menu.category)
     this.menuCategoryService.getMenuCategories()
       .subscribe((menuCategories) => {
