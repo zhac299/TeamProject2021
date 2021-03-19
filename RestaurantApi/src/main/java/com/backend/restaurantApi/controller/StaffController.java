@@ -32,6 +32,10 @@ public class StaffController {
     @Autowired
     StaffService staffService;
 
+    /**
+     * Gets a list of all staff in the database both kitchen or waiter.
+     * @return the list of all staff.
+     */
     @GetMapping("/staff")
     public List<Staff> index() {
       return staffRepo.findAll();
