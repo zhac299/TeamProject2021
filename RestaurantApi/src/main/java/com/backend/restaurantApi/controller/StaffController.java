@@ -57,11 +57,15 @@ public class StaffController {
         return staffService.updateStaff(id, staff);
     }
 
+    /**
+     * Deletes staff member from the database.
+     * @param id generated from the input of a staff member.
+     */
     @DeleteMapping("/staff/{id}")
     public void deletestaff(@PathVariable("id") Long id) {
         staffService.deleteStaff(id);
     }
-    
+
     /**
      * This method finds the staff member with the matching username and password
      * entered by a user. 
