@@ -20,6 +20,8 @@ export class OrderService {
 
   public waiterId = 0;
 
+  public randomWaiter: Staff;
+
   orderSubject$ = new BehaviorSubject<Order[]>([]);
   refresh$ = new BehaviorSubject(null);
 
@@ -72,6 +74,7 @@ export class OrderService {
     orderWithCustomer.customer = customer;
     orderWithCustomer.total = total;
     orderWithCustomer.isPaid = false;
+    orderWithCustomer.waiterId = this.randomWaiter.id;
     return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 
