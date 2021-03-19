@@ -54,20 +54,20 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
     this.menuService.deleteMenu(menu);
   }
 
-  openAddMenuDialog() {
-    const title = "Add New Dish";
-    let menu: Menu = new Menu();
-    const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-      data: {menu,title},
-      width: '50%',
-      autoFocus: false
-    });
+  // openAddMenuDialog() {
+  //   const title = "Add New Dish";
+  //   let menu: Menu = new Menu();
+  //   const dialogRef = this.dialog.open(AddMenuDialogComponent, {
+  //     data: {menu,title},
+  //     width: '50%',
+  //     autoFocus: false
+  //   });
 
-    dialogRef.afterClosed().subscribe(menu => {
-      if(menu){
-        console.log(menu);
-        this.menuService.createMenuItem(menu);
-      }
-    })
-  }
+  //   dialogRef.afterClosed().subscribe(menu => {
+  //     if(menu){
+  //       console.log(menu);
+  //       this.menuService.createMenuItem(menu);
+  //     }
+  //   })
+  // }
 }

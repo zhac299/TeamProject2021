@@ -88,20 +88,20 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
     return date;
   }
 
-  openSelectTableDialog(): Observable<Table> {
-    const dialogRef = this.dialog.open(PickTableDialogComponent);
-    return dialogRef.afterClosed();
-  }
+  // openSelectTableDialog(): Observable<Table> {
+  //   const dialogRef = this.dialog.open(PickTableDialogComponent);
+  //   return dialogRef.afterClosed();
+  // }
 
-  createNewOrder(): void {
-    this.openSelectTableDialog()
-      .pipe(
-        switchMap((dialogResult) =>
-          this.customerService.createCustomerWithTable(dialogResult))
-      ).subscribe((a) =>
-      this.orderService.createNewOrderWithCustomer(a)
-    );
-  }
+  // createNewOrder(): void {
+  //   this.openSelectTableDialog()
+  //     .pipe(
+  //       switchMap((dialogResult) =>
+  //         this.customerService.createCustomerWithTable(dialogResult))
+  //     ).subscribe((a) =>
+  //     this.orderService.createNewOrderWithCustomer(a)
+  //   );
+  // }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
