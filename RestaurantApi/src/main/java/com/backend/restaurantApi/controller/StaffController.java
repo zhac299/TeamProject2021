@@ -42,6 +42,11 @@ public class StaffController {
       return staffService.getSales(id);
     }  
 
+    /**
+     * Creates a new staff member in the database.
+     * @param staff object to be created.
+     * @return the created staff object.
+     */
    @PostMapping("/staff")
     public Staff newstaff(@RequestBody Staff staff){
         return staffService.createNewStaff(staff);
