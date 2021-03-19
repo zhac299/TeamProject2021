@@ -1,20 +1,19 @@
-<mat-grid-list cols="1" rowHeight="140px" class="title">
-  <mat-grid-tile colspan="1"></mat-grid-tile>
-  <mat-grid-tile colspan="1">
-    <h1>Las Chinampas</h1>
-  </mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols="1" rowHeight="100px">
-  <mat-grid-tile colspan="1">
-    <img class="dividerIcon" src="https://cdn.scotts-restaurant.com/full-screen-assets/img/themes/scotts/menuWidgetGraphic1.png">
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1">
-    <p class="menuTitle">Menu</p>
-  </mat-grid-tile>
-</mat-grid-list>
+<!--<mat-grid-list cols="1" rowHeight="100px">-->
+<!--&lt;!&ndash;  <mat-grid-tile colspan="1">&ndash;&gt;-->
+<!--&lt;!&ndash;    <img class="dividerIcon" src="https://cdn.scotts-restaurant.com/full-screen-assets/img/themes/scotts/menuWidgetGraphic1.png">&ndash;&gt;-->
+<!--&lt;!&ndash;  </mat-grid-tile>&ndash;&gt;-->
+<!--  <mat-grid-tile colspan="1">-->
+<!--    <p class="menuTitle">Menu</p>-->
+<!--  </mat-grid-tile>-->
+<!--</mat-grid-list>-->
+<div class="h-100 container-fluid">
+  <div class="row justify-content-center menuTitle">
+    Menu
+  </div>
+</div>
 <p>
   <mat-toolbar class="toolbar">
-    <button mat-icon-button (click)=goHome()>
+    <button mat-icon-button (click)="goHome()">
       <mat-icon>home</mat-icon>
     </button>
     <span></span>
@@ -37,12 +36,12 @@
 <br>
 
 <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
-  <mat-grid-tile colspan="1" *ngFor="let category of categories" class="category" (click)="selectCategory(category)">
-    {{category.category}}
+  <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile" (click)="selectCategory(category)" (mouseover)="elevate(this)">
+    <button class="category" mat-raised-button>{{category.category}}</button>
   </mat-grid-tile>
 </mat-grid-list>
 
-<div class="container">
+<div class="container menuCard">
   <mat-grid-list cols="4" gutterSize="50px" rowHeight="600px" [@listAnimation]="menu.length">
     <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of menu" colspan="1">
       <mat-card class="mat-card">
