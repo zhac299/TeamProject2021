@@ -1,35 +1,21 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-toolbar>
-    <mat-toolbar-row>
-      <button type="button" mat-button (click)="drawer.toggle()">
-        <mat-icon>reorder</mat-icon>
-      </button>
-      <h1>Waiter Menu</h1>
-      <span class="spacer"></span>
-      <notifications></notifications>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <ul class="buttonRow">
-      <li class="flex-item">
-        <button mat-button>Add Table</button>
-      </li>
-
-    </ul>
-    <ul class="botButtonRow">
-      <li class="flex-item">
-        <button mat-button color="warn">Log Out</button>
-      </li>
-    </ul>
-  </mat-drawer>
-
+    <mat-toolbar class = "toolBar">
+      <mat-toolbar-row>
+        <button mat-button (click) = "createNewTable()"><img class = "quickAddButton" src="assets/images/table-dinner-restaurant-furniture-chair-512.png"></button>
+        <button mat-button (click) = "createNewOrder()"><img class = "quickAddButton" src="assets/images/food.png"></button>
+        <button mat-button (click) = "openAddMenuDialog()"><img class = "quickAddButton" src="assets/images/burito.png"></button>
+        <span class = "toolBarTitle">Waiter Menu</span>
+        <span class="spacer"></span>
+        <notifications></notifications>
+        <a routerLink="/home">
+          <button mat-button><img class="quickAddButton" src="assets/images/door.png"></button>
+        </a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  <br><br><br>
   <app-tables-list-display></app-tables-list-display>
-  <hr>
   <app-orders-list-display [createPermission] = "true">
   </app-orders-list-display>
-
-  <hr>
 <app-menus-list-display></app-menus-list-display>
 
 </mat-drawer-container>

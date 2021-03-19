@@ -1,6 +1,9 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
 import anime from "animejs/lib/anime.es";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {SelectTableDialogComponent} from "../home-page/select-table-dialog/select-table-dialog.component";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-landing-page',
@@ -12,12 +15,14 @@ import {Router} from "@angular/router";
 export class LandingPageComponent implements OnInit, AfterViewInit {
 
   constructor(private elementRef: ElementRef,
-              private router:Router) { }
+              private router:Router,
+              private dialog: MatDialog) { }
   ngOnInit(): void {
   }
 
   toMenu(){
-    this.router.navigateByUrl('customer-menu');
+    const dialogRef = this.dialog.open(SelectTableDialogComponent);
+    dialogRef.afterClosed().pipe(tap((result)=> console.log(result))).subscribe()
   }
 
   ngAfterViewInit(): void {
