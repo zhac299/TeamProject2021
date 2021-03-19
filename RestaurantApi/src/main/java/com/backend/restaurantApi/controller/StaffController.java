@@ -72,6 +72,10 @@ public class StaffController {
         return staff;
     }
 
+    /**
+     * This method gets a list of all waiters stored in the database.
+     * @return an ArrayList of all waiters.
+     */
     @GetMapping("/staff/waiters")
     public List<Staff> getAllWaiters() {
         List<Staff> allStaff = index();
@@ -84,7 +88,7 @@ public class StaffController {
         }
         return waiters;
     }
-    
+
     /**
      * This method generates a random waiter from all members of staff.
      * @return the selected member of staff.
