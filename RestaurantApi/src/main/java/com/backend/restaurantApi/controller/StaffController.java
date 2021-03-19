@@ -61,7 +61,15 @@ public class StaffController {
     public void deletestaff(@PathVariable("id") Long id) {
         staffService.deleteStaff(id);
     }
-
+    
+    /**
+     * This method finds the staff member with the matching username and password
+     * entered by a user. 
+     * @param model
+     * @param username generated from the input of a staff member. 
+     * @param password generated from the input of a staff member.
+     * @return a list of staff with the matching username and password.
+     */
     @GetMapping("/staff/{user_name}/{password}")
     public List<Staff> findStaffByUserName(Model model, @PathVariable("user_name") String username,  @PathVariable("password") String password) {
 
@@ -73,7 +81,7 @@ public class StaffController {
     }
 
     /**
-     * This method gets a list of all waiters stored in the database.
+     * This method generates a list of all waiters stored in the database.
      * @return an ArrayList of all waiters.
      */
     @GetMapping("/staff/waiters")
