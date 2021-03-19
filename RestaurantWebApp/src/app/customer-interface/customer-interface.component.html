@@ -7,12 +7,12 @@
 <!--  </mat-grid-tile>-->
 <!--</mat-grid-list>-->
 <div class="h-100 container-fluid">
-  <div class="row justify-content-center menuTitle">
+  <p class="row justify-content-center menuTitle">
     Menu
-  </div>
+  </p>
 </div>
 
-<mat-toolbar class="toolbar">
+<mat-toolbar class="container-fluid toolbar">
   <button mat-icon-button (click)="goHome()">
     <mat-icon>home</mat-icon>
   </button>
@@ -34,7 +34,7 @@
 <div class="container-fluid">
   <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
     <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"
-                   (click)="selectCategory(category)" (mouseover)="elevate(this)">
+                   (click)="selectCategory(category)">
       <button class="category" mat-raised-button>{{category.category}}</button>
     </mat-grid-tile>
   </mat-grid-list>
@@ -45,40 +45,46 @@
   <div class="container-fluid display-1">
     <p class="row justify-content-center categoryTitle">{{this.selectedCategory.category}}</p>
   </div>
-  <mat-grid-list cols="4" gutterSize="50px" rowHeight="600px" [@listAnimation]="menu.length">
-    <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of menu" colspan="1">
-      <mat-card class="mat-card">
-        <mat-card-header class="mat-card-header">
-          <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
-          <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
-        </mat-card-header>
-        <hr class="break-line">
-        <img mat-card-image src="./assets/images/taco.png" alt="Photo of a Taco">
-        <mat-card-content class="menu-item-description">
-          <p>
-            {{menuItem.description}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions class="card-actions">
-          <button mat-raised-button class="action-button"
-                  *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections" (click)="addMeal(menuItem)">Add
-            to Cart
-          </button>
 
-          <ng-template #editMealSelections>
-            <button mat-raised-button class="action-button" (click)="addMeal(menuItem)">
-              <mat-icon>add</mat-icon>
+  <div class="container-fluid">
+    <div class="h-100 row" [@listAnimation]="menu.length">
+      <div id="list" class="col-4 menuUI" *ngFor="let menuItem of menu">
+        <div class="card">
+
+        </div>
+        <mat-card class="mat-card">
+          <mat-card-header class="mat-card-header">
+            <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
+            <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
+          </mat-card-header>
+          <hr class="break-line">
+          <img mat-card-image src="./assets/images/taco.png" alt="Photo of a Taco">
+          <mat-card-content class="menu-item-description">
+            <p>
+              {{menuItem.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="card-actions">
+            <button mat-raised-button class="action-button"
+                    *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections"
+                    (click)="addMeal(menuItem)">
+              Add to Cart
             </button>
-            <button mat-raised-button class="action-button" (click)="removeMeal(menuItem)">
-              <mat-icon>remove</mat-icon>
-            </button>
-            <button mat-mini-fab class="selection-fab">
-              x{{getNumberOfSelections(menuItem)}}
-            </button>
-          </ng-template>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+            <ng-template #editMealSelections>
+              <button mat-raised-button class="action-button" (click)="addMeal(menuItem)">
+                <mat-icon>add</mat-icon>
+              </button>
+              <button mat-raised-button class="action-button" (click)="removeMeal(menuItem)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <button mat-mini-fab class="selection-fab">
+                x{{getNumberOfSelections(menuItem)}}
+              </button>
+            </ng-template>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 
 </div>
