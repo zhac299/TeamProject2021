@@ -52,6 +52,12 @@ public class StaffController {
         return staffService.getStaffById(id);
     }
 
+    /**
+     * Updates a staff member in the database.
+     * @param id generated from the input of a staff member.
+     * @param staff to be updated.
+     * @return updated Staff object.
+     */
     @PutMapping("/staff/{id}")
     public Staff updatestaff(@PathVariable("id") Long id, @RequestBody Staff staff) {
         return staffService.updateStaff(id, staff);
@@ -68,7 +74,7 @@ public class StaffController {
 
     /**
      * This method finds the staff member with the matching username and password
-     * entered by a user. 
+     * entered by a user in the database. 
      * @param model
      * @param username generated from the input of a staff member. 
      * @param password generated from the input of a staff member.
@@ -102,7 +108,7 @@ public class StaffController {
     }
 
     /**
-     * This method generates a random waiter from all members of staff.
+     * This method generates a random waiter from all members of staff in the database.
      * @return the selected member of staff.
      */
     @GetMapping("/staff/randomwaiter")
