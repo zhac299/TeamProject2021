@@ -20,7 +20,6 @@
   </button>
 </mat-toolbar>
 
-<expansion-pannel></expansion-pannel>
 <br>
 <div class="container-fluid">
   <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
@@ -36,7 +35,7 @@
   <div class="container-fluid display-1">
     <p class="row justify-content-center categoryTitle"><u>{{this.selectedCategory.category}}</u></p>
   </div>
-
+  <expansion-pannel class="expansionPannel"></expansion-pannel>
   <div class="container-fluid">
     <div class="h-100 row" [@listAnimation]="menu.length">
       <div id="list" class="col-4 menuUI" *ngFor="let menuItem of menu">
