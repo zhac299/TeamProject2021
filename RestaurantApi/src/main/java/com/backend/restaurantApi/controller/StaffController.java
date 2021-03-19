@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -68,5 +70,18 @@ public class StaffController {
         model.addAttribute("staff", staff);
 
         return staff;
+    }
+
+    @GetMapping("/staff/waiters")
+    public List<Staff> getAllWaiters() {
+        List<Staff> allStaff = index();
+        List<Staff> waiters = new ArrayList<>();
+
+        for (Staff i : allStaff) {
+            if (i.isWaiter()) {
+                waiters.add(i);
+            }
+        }
+        return waiters;
     }
 }
