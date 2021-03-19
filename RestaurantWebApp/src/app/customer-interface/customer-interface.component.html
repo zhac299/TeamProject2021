@@ -5,16 +5,16 @@
 </div>
 
 <mat-toolbar class="container-fluid toolbar">
-  <button mat-icon-button (click)="goHome()">
+  <button mat-icon-button (click)="goHome()" title="Home page">
     <mat-icon>home</mat-icon>
   </button>
   <span></span>
   <ready-to-order></ready-to-order>
   <span class="spacer"></span>
-  <button mat-icon-button (click)="openTracker()">
+  <button mat-icon-button (click)="openTracker()" title="Order Tracker">
     <mat-icon>timer</mat-icon>
   </button>
-  <button mat-icon-button (click)="openBasket()">
+  <button mat-icon-button (click)="openBasket()" title="Shopping Cart">
     <mat-icon>shopping_cart</mat-icon>
     <span class='badge badge-warning' id='lblCartCount'> {{selectedMeals.length}} </span>
   </button>
@@ -80,7 +80,7 @@
 </div>
 
 <div class="callWaiterFloat">
-  <i class="container-fluid my-float">
+  <i class="container-fluid my-float" data-toggle="popover" title="Need help? Click to call a waiter">
     <call-waiter class="row justify-content-center"></call-waiter>
   </i>
 </div>
