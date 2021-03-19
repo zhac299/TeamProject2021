@@ -28,17 +28,17 @@
             </mat-expansion-panel>
         </mat-accordion>
         <br>
-        <div id="yesOption">
+        <!-- <div id="yesOption">
           <div class = "inner">
             <mat-label class = "orderReview">Order Reviewed?</mat-label> 
           </div>
           <div class = "inner">
             <button mat-button matStepperNext (click) = "orderReviewed()">Yes</button>
           </div>
-        </div>
+        </div> -->
         <br>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext (click) = "orderReviewed()">Next</button>
         </div>
       </form>
     </mat-step>
@@ -62,15 +62,15 @@
           formControlName="cvvCodeControl" [maxLength] = "3" required>
         </mat-form-field>
         <div *ngIf = "this.interacted == false && this.correctInputs == false && this.isPaid == false 
-        && this.isConfirmed == true; else orderReviewBlock">
+        && this.isConfirmed == true; else isPaidBlock">
           <button mat-button matStepperNext (click) = "pay()">Pay</button>
         </div>
-        <ng-template #orderReviewBlock>
+        <!-- <ng-template #orderReviewBlock>
           <div class = "orderReviewBlock" *ngIf = "this.interacted == true && this.correctInputs == true 
           && this.isPaid == false && this.isConfirmed == true; else isPaidBlock">
             Review your Order!
           </div>
-        </ng-template>
+        </ng-template> -->
         <ng-template #isPaidBlock>
           <div class = "isPaidBlock" *ngIf = "this.isPaid == true && this.isConfirmed == true; else wrongDetailsBlock">
             <b>You have already paid!</b>
