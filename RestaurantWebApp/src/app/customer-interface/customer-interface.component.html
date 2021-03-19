@@ -7,9 +7,9 @@
 <!--  </mat-grid-tile>-->
 <!--</mat-grid-list>-->
 <div class="h-100 container-fluid">
-  <p class="row justify-content-center menuTitle">
-    Menu
-  </p>
+  <div class="row justify-content-center ">
+    <p class="display-1 menuTitle">Menu</p>
+  </div>
 </div>
 
 <mat-toolbar class="container-fluid toolbar">
@@ -49,9 +49,12 @@
   <div class="container-fluid">
     <div class="h-100 row" [@listAnimation]="menu.length">
       <div id="list" class="col-4 menuUI" *ngFor="let menuItem of menu">
-        <div class="card">
-
-        </div>
+<!--        <div class="container-fluid" style="background-color: #0c5593">-->
+<!--          <div class="row justify-content-around">-->
+<!--            <h2 class="col menu-item-name">{{menuItem.name}}</h2>-->
+<!--            <p class="col menu-item-price">£{{menuItem.price}}</p>-->
+<!--          </div>-->
+<!--        </div>-->
         <mat-card class="mat-card">
           <mat-card-header class="mat-card-header">
             <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
