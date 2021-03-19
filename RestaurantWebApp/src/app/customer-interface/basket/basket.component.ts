@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
+import { StaffService } from 'src/app/staff.service';
 import { TableService } from 'src/app/table.service';
 import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
@@ -31,6 +32,7 @@ export class BasketComponent implements OnInit {
     private tableService: TableService,
     private mealService: MealService,
     private orderService: OrderService,
+    private staffService: StaffService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
     this.mealList = data.selectedMeals;
@@ -77,6 +79,11 @@ export class BasketComponent implements OnInit {
 
   placeOrder(): void {
     if (this.orderPlaced == false) {
+      this.staffService.getRandomWaiter().subscribe(staff => {
+        this.orderService.randomWaiter = staff;
+      });
+
+
       this.orderService.createNewOrder(this.customer, this.orderTotal).subscribe((order) => {
         for (var i = 0; i < this.mealList.length; i++) {
           this.mealList[i].order = order;
