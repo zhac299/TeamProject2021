@@ -12,7 +12,6 @@ import { Order } from 'src/models/Order';
 export class StaffService {
 
   constructor(private httpClient: HttpClient) {
-    console.log('Instance created');
   }
 
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/staff';

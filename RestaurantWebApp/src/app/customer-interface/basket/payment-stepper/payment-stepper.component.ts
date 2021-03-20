@@ -48,9 +48,7 @@ export class PaymentStepperComponent implements OnInit {
       cvvCodeControl: ['', Validators.required]
     });
     var customer = await this.basketComponent.customerObservable.pipe(take(1)).toPromise();
-    console.log(customer);
     this.orders = customer.orders;
-    console.log(this.orders);
     for (let order of this.orders) {
       if (order.isPaid == true) {
         this.isPaid = true;
@@ -58,11 +56,11 @@ export class PaymentStepperComponent implements OnInit {
       if (order.isConfirmed == true) {
         this.isConfirmed = true;
       }
+      console.log(order.meal);
       this.orderService.getOrderById(order.id).subscribe((order) => {
         this.mealList = order.meal;
       })
     }
-    console.log(this.isPaid);
   }
 
   orderReviewed(): void{

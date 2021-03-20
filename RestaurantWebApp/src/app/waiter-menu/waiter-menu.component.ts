@@ -51,7 +51,6 @@ export class WaiterMenuComponent implements OnInit {
       this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
         this.waiter = staff;
         this.orderService.waiterId = this.waiter.id;
-        console.log(staff);
       })
     });
   }
@@ -91,7 +90,6 @@ export class WaiterMenuComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(menu => {
       if(menu){
-        console.log(menu);
         this.menuService.createMenuItem(menu);
       }
     })

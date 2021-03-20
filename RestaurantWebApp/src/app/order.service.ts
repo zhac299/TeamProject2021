@@ -31,7 +31,6 @@ export class OrderService {
   );
 
   constructor(private httpClient: HttpClient) {
-    console.log('Instance created');
   }
 
   public getOrders(): Observable<Order[]> {

@@ -1,11 +1,12 @@
 import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Observable, Subscription, timer } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
 import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
-import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CustomerService } from 'src/app/customer.service';
 
 @Component({
   selector: 'app-order-tracker',
@@ -15,33 +16,40 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 export class OrderTrackerComponent implements OnInit {
 
   mealList: Meal[];
-  customerObservable: Observable<Customer>;
-  customer: Customer;
+  customerId: number;
   orderPlaced: Boolean;
-  orderStatus: String = "You haven't placed an order yet!";
+  orderStatus: String;
+  subscription: Subscription;
 
   constructor(
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
+    private customerService: CustomerService,
     @Inject(MAT_DIALOG_DATA) data) {
-      this.customerObservable = data.customer;
-    }
+    this.customerId = data.customerId;
+  }
 
-  async ngOnInit(): Promise<void> {
-    this.customer = await this.customerObservable.pipe(take(1)).toPromise();
+  ngOnInit(): void {
+    this.updateMealList();
     this.displayStatus();
-    if (this.customer.orders.length == 0) {
-      this.orderPlaced = false;
-    } else {
-      this.orderPlaced = true;
-      for (let order of this.customer.orders) {
-        this.mealList = order.meal;
+  }
+
+  updateMealList(): void {
+    this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
+      if (customer.orders.length == 0) {
+        this.orderPlaced = false;
+      } else {
+        this.orderPlaced = true;
+        this.mealList = customer.orders[0].meal;
       }
-    }
+    })
   }
 
   displayStatus(): void {
-    for (let order of this.customer.orders) {
-      if (order.isDelivered == true) {
+    this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
+      let order = customer.orders[0];
+      if (order == undefined) {
+        this.orderStatus = "You haven't placed an order yet!"
+      } else if (order.isDelivered == true) {
         this.orderStatus = "Order was delivered... Buen apetito!";
         if (order.isPaid == true) {
           this.orderStatus = this.orderStatus + " And order was paid... Muchas Gracias!";
@@ -54,8 +62,7 @@ export class OrderTrackerComponent implements OnInit {
       } else {
         this.orderStatus = "Order has not been confirmed yet... Paciencia por favor!";
       }
-    }
-    console.log(this.orderStatus);
+    })
   }
 
   close(): void {

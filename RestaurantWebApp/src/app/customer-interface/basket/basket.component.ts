@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
@@ -9,6 +9,7 @@ import { StaffService } from 'src/app/staff.service';
 import { TableService } from 'src/app/table.service';
 import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
+import { Order } from 'src/models/Order';
 import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
@@ -83,7 +84,6 @@ export class BasketComponent implements OnInit {
         this.orderService.randomWaiter = staff;
       });
 
-
       this.orderService.createNewOrder(this.customer, this.orderTotal).subscribe((order) => {
         for (var i = 0; i < this.mealList.length; i++) {
           this.mealList[i].order = order;
@@ -95,11 +95,6 @@ export class BasketComponent implements OnInit {
       this.orderPlaced = true;
       this.openSnackBar("You placed your order", "Enjoy!")
     }
-  }
-
-  getMealList(): Meal[] {
-    console.log(this.mealList);
-    return this.mealList;
   }
 
   private openSnackBar(message: string, action: string) {
