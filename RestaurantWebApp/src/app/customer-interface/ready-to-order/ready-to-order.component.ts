@@ -12,8 +12,7 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
 })
 export class ReadyToOrderComponent implements OnInit {
 
-  ready: boolean = false;
-  tables: Table[] = [];
+  ready: boolean;
   tableNumber: number;
 
   constructor(
