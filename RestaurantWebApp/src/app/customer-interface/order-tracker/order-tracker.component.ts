@@ -1,11 +1,7 @@
-import { Component, ElementRef, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable, Subscription, timer } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
-import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CustomerService } from 'src/app/customer.service';
 
 @Component({
@@ -19,7 +15,6 @@ export class OrderTrackerComponent implements OnInit {
   customerId: number;
   orderPlaced: Boolean;
   orderStatus: String;
-  subscription: Subscription;
 
   constructor(
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
@@ -29,8 +24,11 @@ export class OrderTrackerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.customerService.refreshNeeded.subscribe(() => {
+      this.updateStatus();
+    })
     this.updateMealList();
-    this.displayStatus();
+    this.updateStatus();
   }
 
   updateMealList(): void {
@@ -44,7 +42,7 @@ export class OrderTrackerComponent implements OnInit {
     })
   }
 
-  displayStatus(): void {
+  updateStatus(): void {
     this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
       let order = customer.orders[0];
       if (order == undefined) {
