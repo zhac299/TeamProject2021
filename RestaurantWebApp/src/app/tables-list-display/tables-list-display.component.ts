@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {TableService} from "../table.service";
 import {Table} from "../../models/Table";
 import {fromEvent, Subscription, timer} from "rxjs";
-import {debounceTime, tap} from "rxjs/operators";
+import {debounceTime, map, tap} from "rxjs/operators";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Staff } from 'src/models/Staff';
 
 @Component({
   selector: 'app-tables-list-display',
@@ -18,25 +19,45 @@ export class TablesListDisplayComponent implements OnInit {
 
   tableList: Table[] = [];
   subscription: Subscription;
-  refreshTimer$ = timer(0, 5000)
-    .pipe(tap(() => console.log('Fetching Tables...')));
+
+  refreshTimer$ = timer(0, 5000).pipe(tap(() => console.log('Fetching Tables...')));
   ORDER_BUTTON_WIDTH = 300;
   resize$ = fromEvent(window, 'resize');
   windowWidth: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
 
+  @Input() isWaiter: boolean;
+  waiter: Staff;
+  
   ngOnInit(): void {
     this.tableService.getUpdatedTables()
-    this.tableService.tables$.subscribe((tables) => {
-      this.tableList = tables;
-    })
-    this.subscription = this.refreshTimer$.subscribe(this.tableService.refresh$);
-    this.resize$
-      .pipe(debounceTime(250),
-        tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
-      )
-      .subscribe((w) => {
-        this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
-        )});
+    
+    if (!this.isWaiter) {
+      this.tableService.tables$.subscribe((tables) => {
+        this.tableList = tables;
+      })
+      this.subscription = this.refreshTimer$.subscribe(this.tableService.refresh$);
+      this.resize$
+        .pipe(debounceTime(250),
+          tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
+        )
+        .subscribe((w) => {
+          this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
+          )});
+    } else {
+      this.tableService.tables$.pipe(
+        map((tables) => tables.filter(table => table.waiterId == this.tableService.currentStaff))
+      ).subscribe((tables) => {
+        this.tableList = tables;
+      })
+      this.subscription = this.refreshTimer$.subscribe(this.tableService.refresh$);
+      this.resize$
+        .pipe(debounceTime(250),
+          tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
+        )
+        .subscribe((w) => {
+          this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
+          )});
+    }
   }
 
   createNewTable(): void {

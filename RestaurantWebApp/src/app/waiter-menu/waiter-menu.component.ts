@@ -51,6 +51,7 @@ export class WaiterMenuComponent implements OnInit {
       this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
         this.waiter = staff;
         this.orderService.waiterId = this.waiter.id;
+        this.tableService.currentStaff = this.waiter.id;
         console.log(staff);
       })
     });

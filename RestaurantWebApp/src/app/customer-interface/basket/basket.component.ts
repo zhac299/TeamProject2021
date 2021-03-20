@@ -79,10 +79,7 @@ export class BasketComponent implements OnInit {
 
   placeOrder(): void {
     if (this.orderPlaced == false) {
-      this.staffService.getRandomWaiter().subscribe(staff => {
-        this.orderService.randomWaiter = staff;
-      });
-
+      this.orderService.waiterId = this.table.waiterId;     
 
       this.orderService.createNewOrder(this.customer, this.orderTotal).subscribe((order) => {
         for (var i = 0; i < this.mealList.length; i++) {
@@ -90,6 +87,7 @@ export class BasketComponent implements OnInit {
           this.mealService.createNewMeal(this.mealList[i]).subscribe();
         }
       });
+
       this.table.isReady = true;
       this.tableService.updateRestaurantTableReadyToOrder(this.table, true).subscribe();
       this.orderPlaced = true;
