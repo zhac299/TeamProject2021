@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomerService } from 'src/app/customer.service';
 import { TableService } from 'src/app/table.service';
 import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
@@ -13,29 +14,38 @@ export class ReadyToOrderComponent implements OnInit {
 
   ready: boolean = false;
   tables: Table[] = [];
+  tableNumber: number;
 
   constructor(
     private customerInterface: CustomerInterfaceComponent, 
     private tableService: TableService,
     private snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tableNumber = this.customerInterface.paramsObject.params.selectedTable;
+    this.getReadyToOrder();
+  }
+
+  getReadyToOrder(): void {
+    this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
+      this.ready = table.isReady;
+    })
+  }
 
   readyToOrder(): void {
-    this.customerInterface.table.subscribe((table) => {
+    this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
       table.isReady = true;
-      this.tableService.updateRestaurantTableReadyToOrder(table, true).subscribe();
-    });
+      this.tableService.updateTable(table).subscribe();
+    })
     this.ready = true;
-
     this.openSnackBar("A waiter will come to take your order", "Please Wait")
   }
 
   cancel(): void {
-    this.customerInterface.table.subscribe((table) => {
+    this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
       table.isReady = false;
-      this.tableService.updateRestaurantTableReadyToOrder(table, false).subscribe();
-    });
+      this.tableService.updateTable(table).subscribe();
+    })
     this.ready = false;
     this.openSnackBar("You canceled the waiter call","Still need help?");
   }
