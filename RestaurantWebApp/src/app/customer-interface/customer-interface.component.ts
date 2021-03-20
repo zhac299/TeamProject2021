@@ -1,32 +1,28 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
-import { Order } from '../../models/Order';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription, timer } from 'rxjs';
-import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
-import { MenuService} from "../menu.service";
-import { MenuFilterService} from "../menu-filter.service";
-import { Menu } from "../../models/Menu";
-import { selectedCategory } from "../../models/selectedCategory";
-import { Customer } from 'src/models/Customer';
-import { CustomerService } from '../customer.service';
-import { BasketComponent} from './basket/basket.component';
-import { Table } from 'src/models/Table';
-import { TableService } from '../table.service';
-import { animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
-import { Meal } from 'src/models/Meal';
-import { MealService } from '../meal.service';
-import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
+import {MenuService} from "../menu.service";
+import {MenuFilterService} from "../menu-filter.service";
+import {Menu} from "../../models/Menu";
+import {Customer} from 'src/models/Customer';
+import {CustomerService} from '../customer.service';
+import {BasketComponent} from './basket/basket.component';
+import {Table} from 'src/models/Table';
+import {TableService} from '../table.service';
+import {animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
+import {Meal} from 'src/models/Meal';
+import {OrderTrackerComponent} from './order-tracker/order-tracker.component';
 import {MenuCategory} from "../../models/MenuCategory";
-import { take, tap } from 'rxjs/operators';
-import { MenuCategoryService } from '../menu-category.service';
-import { coerceStringArray } from '@angular/cdk/coercion';
+import {MenuCategoryService} from '../menu-category.service';
 import anime from 'animejs/lib/anime.es.js'
 
 @Component({
   selector: 'app-customer-interface',
   templateUrl: './customer-interface.component.html',
   styleUrls: ['./customer-interface.component.sass'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('listAnimation', [
       transition('*=>*', [
@@ -65,49 +61,69 @@ export class CustomerInterfaceComponent implements OnInit {
               private router:Router) { }
 
   ngAfterViewInit(): void {
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
+    // this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
+    // this.elementRef.nativeElement.ownerDocument.body.backgroundImage = 'url(assets/images/background.jpg)';
 
     // Wrap every letter in a span
-    var textWrapper = document.querySelector('.an-2');
+    var textWrapper = document.querySelector('.menuTitle');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
     // ANIMATE TITLE
     anime.timeline({loop: false})
       .add({
-        targets: '.an-2 .letter',
+        delay: 1000
+      })
+      .add({
+        targets: '.menuTitle .letter',
         opacity: [0,1],
         scale: 2,
         easing: "easeInOutQuad",
-        duration: 1000,
+        duration: 500,
         delay: (el, i) => 50 * (i+1)
-      });
+      }).add({
+        targets: '.toolbar',
+        translateY: [100, 0],
+        opacity: [0,1],
+        duration: 500,
+        delay: (el, i) => {
+          return 1000 + 100 * i;
+        }
+      }).add({
+      targets: '.categoryTile',
+      translateY: [100, 0],
+      opacity: [0,1],
+      duration: 500,
+      delay: (el, i) => {
+        return 1000 + 100 * i;
+      }
+    }).add({
+      targets: '.menuCard',
+      translateY: [100, 0],
+      opacity: [0,1],
+      duration: 500,
+      delay: (el, i) => {
+        return 500 + 100 * i;
+      }
+    });
     //ANIMATE ICON
-    anime({
-      targets: '.dividerIcon',
-      opacity: [0,1],
-      easing: "easeInOutQuad",
-      duration: 500,
-      scale: {
-        value: [.5,1],
-        duration: 2000,
-        delay: 800,
-        easing: 'easeInOutQuart'
-      },
-      rotate: {
-        value: 360,
-        duration: 1000,
-        easing: 'easeInOutSine'
-      },
-      delay: 1000
-    });
-    //ANIMATE MENU TITLE
-    anime({
-      targets: '.menuTitle',
-      opacity: [0,1],
-      easing: "easeInOutQuad",
-      duration: 500,
-      delay: 1500
-    });
+    // anime({
+    //   targets: '.dividerIcon',
+    //   opacity: [0,1],
+    //   easing: "easeInOutQuad",
+    //   duration: 500,
+    //   scale: {
+    //     value: [.5,1],
+    //     duration: 2000,
+    //     delay: 800,
+    //     easing: 'easeInOutQuart'
+    //   },
+    //   rotate: {
+    //     value: 360,
+    //     duration: 1000,
+    //     easing: 'easeInOutSine'
+    //   },
+    //   delay: 1000
+    // });
   }
 
   ngOnInit():void {
@@ -231,5 +247,17 @@ export class CustomerInterfaceComponent implements OnInit {
   selectCategory(category: MenuCategory): void {
     this.selectedCategory = category;
     this.findCategoryItems();
+  }
+
+  elevate(category: any) {
+    anime.timeline({loop: false})
+      .add({
+        targets: `${category}`,
+        opacity: [0,1],
+        scale: 2,
+        easing: "easeInOutQuad",
+        duration: 1000,
+        delay: (el, i) => 50 * (i+1)
+      });
   }
 }
