@@ -1,13 +1,11 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
-import { Order } from '../../models/Order';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription, timer } from 'rxjs';
+import { Observable} from 'rxjs';
 import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 import { MenuService} from "../menu.service";
 import { MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
-import { selectedCategory } from "../../models/selectedCategory";
 import { Customer } from 'src/models/Customer';
 import { CustomerService } from '../customer.service';
 import { BasketComponent} from './basket/basket.component';
@@ -15,13 +13,9 @@ import { Table } from 'src/models/Table';
 import { TableService } from '../table.service';
 import { animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
 import { Meal } from 'src/models/Meal';
-import { MealService } from '../meal.service';
 import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
-import {MenuCategory} from "../../models/MenuCategory";
-import { take, tap } from 'rxjs/operators';
+import { MenuCategory} from "../../models/MenuCategory";
 import { MenuCategoryService } from '../menu-category.service';
-import { coerceStringArray } from '@angular/cdk/coercion';
-import anime from 'animejs/lib/anime.es.js'
 
 @Component({
   selector: 'app-customer-interface',
@@ -48,16 +42,12 @@ export class CustomerInterfaceComponent implements OnInit {
   selectedMeals: Meal[] = [];
   menu: Menu[];
   paramsObject: any;
-  customer: Observable<Customer>;
-  table:Observable<Table>;
   orderPlaced: Boolean = false;
   categories: MenuCategory[];
   selectedCategory: MenuCategory;
 
   constructor(private menuService: MenuService,
               private menuCategoryService: MenuCategoryService,
-              private customerService: CustomerService,
-              private tableService: TableService,
               private menuFilterService: MenuFilterService,
               private route: ActivatedRoute,
               private elementRef: ElementRef,
@@ -71,8 +61,6 @@ export class CustomerInterfaceComponent implements OnInit {
   ngOnInit():void {
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
-      this.customer = this.customerService.getCustomerByID(this.paramsObject.params.customerID)
-      this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
     });
 
     this.menuCategoryService.getMenuCategories().subscribe((categories) => {
@@ -157,9 +145,8 @@ export class CustomerInterfaceComponent implements OnInit {
   openBasket() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals, table: this.table};
+    dialogConfig.data = {customerId: this.paramsObject.params.customerID, selectedMeals: this.selectedMeals, tableNumber: this.paramsObject.params.customerID};
     dialogConfig.width = "60%";
-    dialogConfig.backdropClass = "basket";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(orderPlaced => {

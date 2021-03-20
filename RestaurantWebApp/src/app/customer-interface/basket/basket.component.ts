@@ -1,15 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable, Subscription } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { CustomerService } from 'src/app/customer.service';
 import { MealService } from 'src/app/meal.service';
 import { OrderService } from 'src/app/order.service';
 import { StaffService } from 'src/app/staff.service';
 import { TableService } from 'src/app/table.service';
 import { Customer } from 'src/models/Customer';
 import { Meal } from 'src/models/Meal';
-import { Order } from 'src/models/Order';
 import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
@@ -21,12 +19,10 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
 export class BasketComponent implements OnInit {
 
   mealList: Meal[];
-  customerObservable: Observable<Customer>;
-  tableObservable: Observable<Table>;
-  customer: Customer;
-  table: Table;
   orderPlaced: Boolean;
   orderTotal: number = 0;
+  customerId: number;
+  tableNumber: number;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -34,24 +30,36 @@ export class BasketComponent implements OnInit {
     private mealService: MealService,
     private orderService: OrderService,
     private staffService: StaffService,
+    private customerService: CustomerService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
     this.mealList = data.selectedMeals;
-    this.customerObservable = data.customer;
-    this.tableObservable = data.table;
+    this.customerId = data.customerId;
+    this.tableNumber = data.tableNumber;
+  }
+
+  ngOnInit(): void {
+    this.customerService.refreshNeeded.subscribe(() => {
+      this.updateOrderPlaced();
+    })
+    this.updateOrderPlaced();
+    this.getInitialOrderTotal();
+  }
+
+  getInitialOrderTotal() {
     for (let meal of this.mealList) {
       this.orderTotal += meal.menu.price * meal.numberSelections;
     }
   }
 
-  async ngOnInit(): Promise<void> {
-    this.customer = await this.customerObservable.pipe(take(1)).toPromise();
-    this.table = await this.tableObservable.pipe(take(1)).toPromise();
-    if (this.customer.orders.length == 0) {
-      this.orderPlaced = false;
-    } else {
-      this.orderPlaced = true;
-    }
+  updateOrderPlaced(): void {
+    this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
+      if (customer.orders.length == 0) {
+        this.orderPlaced = false;
+      } else {
+        this.orderPlaced = true;
+      }
+    })
   }
 
   clear(meal: Meal): void {
@@ -84,15 +92,18 @@ export class BasketComponent implements OnInit {
         this.orderService.randomWaiter = staff;
       });
 
-      this.orderService.createNewOrder(this.customer, this.orderTotal).subscribe((order) => {
-        for (var i = 0; i < this.mealList.length; i++) {
-          this.mealList[i].order = order;
-          this.mealService.createNewMeal(this.mealList[i]).subscribe();
-        }
-      });
-      this.table.isReady = true;
-      this.tableService.updateRestaurantTableReadyToOrder(this.table, true).subscribe();
-      this.orderPlaced = true;
+      this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
+        this.orderService.createNewOrder(customer, this.orderTotal).subscribe((order) => {
+          for (var i = 0; i < this.mealList.length; i++) {
+            this.mealList[i].order = order;
+            this.mealService.createNewMeal(this.mealList[i]).subscribe();
+          }
+        });
+        this.orderPlaced = true;
+      })
+      this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
+        this.tableService.updateRestaurantTableReadyToOrder(table, true).subscribe();
+      })
       this.openSnackBar("You placed your order", "Enjoy!")
     }
   }
