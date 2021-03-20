@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { Observable, Subject} from 'rxjs';
-import {exhaustMap, map, share, tap} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { exhaustMap, map, share, tap } from 'rxjs/operators';
 
-import { Table} from '../models/Table';
+import { Table } from '../models/Table';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -12,21 +12,19 @@ import { BehaviorSubject } from 'rxjs';
 export class TableService {
 
   private restaurantTablesURL = 'http://localhost:8080/api/v1/tables';
-  private _refreshNeeded = new Subject<void>();
 
   private readonly tableSubject$ = new BehaviorSubject<Table[]>(new Array<Table>());
-  // get tables$() {
-  //   return this.tableSubject$.asObservable();
-  // }
 
-  public getRefreshNeeded () {
-    return this._refreshNeeded;
+  private _refreshNeeded$ = new Subject<void>();
+
+  get refreshNeeded() {
+    return this._refreshNeeded$;
   }
 
   refresh$ = new BehaviorSubject(null);
 
   tables$ = this.refresh$.pipe(
-    exhaustMap( () => this.getTables()),
+    exhaustMap(() => this.getTables()),
     share()
   );
 
@@ -49,18 +47,20 @@ export class TableService {
   public getTableByNumber(id: number): Observable<Table> {
     return this.httpClient.get<Table>(`${this.restaurantTablesURL}/${id}`)
       .pipe(
-        map(response => response)
-      );
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      )
   }
 
-  public updateTable(table: Table): Observable<Table>{
+  public updateTable(table: Table): Observable<Table> {
     console.log(table);
     return this.httpClient.put<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`, table)
-    .pipe(
-      tap(()=> {
-        this._refreshNeeded.next();
-      })
-    )
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      )
   }
 
   public getUnoccupiedTables(): Observable<Table[]> {
@@ -79,16 +79,16 @@ export class TableService {
       );
   }
 
-  public deleteTable(table: Table): Observable<Table>{
+  public deleteTable(table: Table): Observable<Table> {
     return this.httpClient.delete<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`)
       .pipe(
-        tap(()=> {
-          this._refreshNeeded.next();
+        tap(() => {
+          this._refreshNeeded$.next();
         })
       );
   }
 
-  public createTable():Observable<Table> {
+  public createTable(): Observable<Table> {
     const newTable = new Table;
     newTable.isOccupied = false;
     newTable.isReady = false;
