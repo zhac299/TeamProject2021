@@ -5,6 +5,7 @@ import {exhaustMap, map, share, tap} from 'rxjs/operators';
 
 import { Table} from '../models/Table';
 import { BehaviorSubject } from 'rxjs';
+import { Staff } from 'src/models/Staff';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class TableService {
 
   private restaurantTablesURL = 'http://localhost:8080/api/v1/tables';
   private _refreshNeeded = new Subject<void>();
+
+  public currentStaff: number;
 
   private readonly tableSubject$ = new BehaviorSubject<Table[]>(new Array<Table>());
   // get tables$() {
@@ -118,6 +121,7 @@ export class TableService {
     newTable.isOccupied = false;
     newTable.isReady = false;
     newTable.needsHelp = false;
+    newTable.waiterId = this.currentStaff;
     return this.httpClient.post<Table>(this.restaurantTablesURL, newTable);
   }
 
