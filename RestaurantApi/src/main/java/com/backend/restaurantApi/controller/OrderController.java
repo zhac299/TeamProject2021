@@ -167,6 +167,12 @@ public class OrderController {
         return order;
     }
 
+    /**
+     * Updates the order in the database with matching id by marking as ready. 
+     * @param id of the order Object to be updated.
+     * @param isReady value to give updated isReady attribute.
+     * @return the updated order.
+     */
     @PutMapping("/orders/{id}/isready/{isReady}")
     public Order updateIsReady(@PathVariable("id") Long id, @PathVariable("isReady") boolean isReady) {
         Order order = orderService.getOrderById(id);
