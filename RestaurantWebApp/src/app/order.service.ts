@@ -121,9 +121,16 @@ export class OrderService {
 
   updateTotal(order: Order): void {
     let updateTotalUrl = this.restaurantWebApiUrl + "/total";
-    this.httpClient.put<Order>(`${updateTotalUrl}/${order.id}/${order.total}`, order).subscribe((order) => {
-      console.log(order);
-    })
+    this.httpClient.put<Order>(`${updateTotalUrl}/${order.id}/${order.total}`, order)
+      .subscribe((order) => {
+        let _orders = this.orderSubject$.getValue();
+        _orders.forEach((whichOrder) => {
+          if (whichOrder.id == order.id) {
+            whichOrder = order;
+          }
+        });
+        this.orderSubject$.next(_orders);
+      })
   }
 
   updateIsPaid(order: Order): void {

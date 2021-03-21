@@ -37,9 +37,9 @@ export class BasketComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customerService.refreshNeeded.subscribe(() => {
-      this.updateOrderPlaced();
-    })
+    // this.customerService.refreshNeeded.subscribe(() => {
+    //   this.updateOrderPlaced();
+    // })
     this.updateOrderPlaced();
     this.getInitialOrderTotal();
   }

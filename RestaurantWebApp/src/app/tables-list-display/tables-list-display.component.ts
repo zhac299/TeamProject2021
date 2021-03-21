@@ -62,8 +62,8 @@ export class TablesListDisplayComponent implements OnInit {
 
   markAsHelped(table: Table): void {
     if(table.needsHelp) {
-      table.needsHelp = false;
       this.tableService.getTableByNumber(table.tableNumber).subscribe((updatedTable) => {
+        updatedTable.needsHelp = false;
         this.tableService.updateTable(updatedTable).subscribe();
       })     
       this.openSnackBar("Table was marked as helped!","Close");

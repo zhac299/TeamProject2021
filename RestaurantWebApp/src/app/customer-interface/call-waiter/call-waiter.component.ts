@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { TableService } from '../../table.service';
+import { Subscription, timer } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'call-waiter',
@@ -12,6 +14,8 @@ export class CallWaiterComponent implements OnInit {
 
   waiterCalled: boolean;
   tableNumber: number;
+  subscription: Subscription;
+  refreshTimer$ = timer(0, 1000).pipe(tap(() => console.log('Fetching Tables...')));
 
   constructor(
     private customerInterface: CustomerInterfaceComponent,
@@ -34,7 +38,9 @@ export class CallWaiterComponent implements OnInit {
       table.needsHelp = true;
       this.tableService.updateTable(table).subscribe();
     })
-    this.waiterCalled = true;
+    this.tableService.refreshNeeded.subscribe(() => {
+      this.getNeedHelp();
+    })
     this.openSnackBar("A waiter will come to you","Please Wait");
   }
 
@@ -43,7 +49,9 @@ export class CallWaiterComponent implements OnInit {
       table.needsHelp = false;
       this.tableService.updateTable(table).subscribe();
     })
-    this.waiterCalled = false;
+    this.tableService.refreshNeeded.subscribe(() => {
+      this.getNeedHelp();
+    })
     this.openSnackBar("You canceled the waiter call","Still need help?");
   }
 
