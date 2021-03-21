@@ -48,8 +48,7 @@
           <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
         </mat-card-header>
         <hr class="break-line">
-        <img mat-card-image class="foodImg" src="./assets/images/ismael-trevino-Y0zbn9lPCEU-unsplash.jpg"
-             alt="Photo of a Taco">
+        <img mat-card-image class="foodImg" [src]="menuItem.pictureUrl">
         <mat-card-content class="menu-item-description">
           <p>
             {{menuItem.description}}
