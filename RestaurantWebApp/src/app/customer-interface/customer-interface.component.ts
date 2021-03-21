@@ -78,29 +78,29 @@ export class CustomerInterfaceComponent implements OnInit {
         opacity: [0,1],
         scale: 2,
         easing: "easeInOutQuad",
-        duration: 500,
+        duration: 250,
         delay: (el, i) => 50 * (i+1)
       }).add({
         targets: '.toolbar',
         translateY: [100, 0],
         opacity: [0,1],
-        duration: 500,
+        duration: 250,
         delay: (el, i) => {
-          return 1000 + 100 * i;
+          return 500 + 100 * i;
         }
       }).add({
-      targets: '.categoryTile',
+      targets: '.catDiv',
       translateY: [100, 0],
       opacity: [0,1],
-      duration: 500,
+      duration: 250,
       delay: (el, i) => {
-        return 1000 + 100 * i;
+        return 500 + 100 * i;
       }
     }).add({
       targets: '.menuCard',
       translateY: [100, 0],
       opacity: [0,1],
-      duration: 500,
+      duration: 250,
       delay: (el, i) => {
         return 500 + 100 * i;
       }
