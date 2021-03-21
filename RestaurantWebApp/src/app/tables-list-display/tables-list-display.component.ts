@@ -39,14 +39,12 @@ export class TablesListDisplayComponent implements OnInit {
         )});
   }
 
-  // createNewTable(): void {
-  //   this.tableService.createTable().subscribe();
-  // }
-
   markAsHelped(table: Table): void {
     if(table.needsHelp) {
       table.needsHelp = false;
-      this.tableService.updateRestaurantTableNeedsHelp(table, false).subscribe();
+      this.tableService.getTableByNumber(table.tableNumber).subscribe((updatedTable) => {
+        this.tableService.updateTable(updatedTable).subscribe();
+      })     
       this.openSnackBar("Table was marked as helped!","Close");
     } else {
       this.openSnackBar("Table doesn't need help!","Close");

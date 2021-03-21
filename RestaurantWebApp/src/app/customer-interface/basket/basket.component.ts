@@ -102,7 +102,8 @@ export class BasketComponent implements OnInit {
         this.orderPlaced = true;
       })
       this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
-        this.tableService.updateRestaurantTableReadyToOrder(table, true).subscribe();
+        table.isReady = true;
+        this.tableService.updateTable(table).subscribe();
       })
       this.openSnackBar("You placed your order", "Enjoy!")
     }

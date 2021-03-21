@@ -22,9 +22,6 @@ export class ReadyToOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableNumber = this.customerInterface.paramsObject.params.selectedTable;
-    this.tableService.refreshNeeded.subscribe(() => {
-      this.getReadyToOrder();
-    })
     this.getReadyToOrder();
   }
 
@@ -39,6 +36,7 @@ export class ReadyToOrderComponent implements OnInit {
       table.isReady = true;
       this.tableService.updateTable(table).subscribe();
     })
+    this.ready = true;
     this.openSnackBar("A waiter will come to take your order", "Please Wait")
   }
 
@@ -47,6 +45,7 @@ export class ReadyToOrderComponent implements OnInit {
       table.isReady = false;
       this.tableService.updateTable(table).subscribe();
     })
+    this.ready = false;
     this.openSnackBar("You canceled the waiter call","Still need help?");
   }
 

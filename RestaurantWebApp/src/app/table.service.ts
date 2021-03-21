@@ -54,13 +54,7 @@ export class TableService {
   }
 
   public updateTable(table: Table): Observable<Table> {
-    console.log(table);
-    return this.httpClient.put<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`, table)
-      .pipe(
-        tap(() => {
-          this._refreshNeeded$.next();
-        })
-      )
+    return this.httpClient.put<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`, table);
   }
 
   public getUnoccupiedTables(): Observable<Table[]> {

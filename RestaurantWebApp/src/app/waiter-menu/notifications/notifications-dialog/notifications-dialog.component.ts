@@ -16,7 +16,7 @@ export class NotificationsDialogComponent implements OnInit {
   tables: Table[] = [];
 
   ngOnInit(): void {
-    this.tableService.getRefreshNeeded().subscribe(() => {
+    this.tableService.refreshNeeded.subscribe(() => {
       this.getNeedHelpTables();
     });
     this.getNeedHelpTables();  
@@ -29,7 +29,9 @@ export class NotificationsDialogComponent implements OnInit {
   }
 
   setTableHelped(table: Table) {
-    this.tableService.updateRestaurantTableNeedsHelp(table, false).subscribe();
+    this.tableService.getTableByNumber(table.tableNumber).subscribe((table) => {
+      this.tableService.updateTable(table).subscribe();
+    })
     this.tableService.getNeedHelpTables().subscribe(tables => {
       this.tables = tables;
     })
