@@ -26,3 +26,23 @@
   </tbody>
 </table>
 
+<h1>Manage Categories</h1>
+<button mat-button (click)="openAddCategoryDialog()">Add Category</button>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Cateogory</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="menuItem" *ngFor="let category of categories; let i = index">
+    <th scope="row">{{i+1}}</th>
+    <td>{{category.category}}</td>
+    <td>
+      <button *ngIf="isAuth" mat-button (click)="openEditCategoryDialog(category)">Edit</button>
+      <button *ngIf="isAuth" mat-button (click)="deleteCategoryItem(category)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

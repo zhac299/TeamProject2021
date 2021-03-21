@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Menu} from "../../models/Menu";
+import {MenuCategory} from "../../models/MenuCategory";
 
 @Component({
   selector: 'app-category-dialog',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<CategoryDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: MenuCategory) { }
 
   ngOnInit(): void {
   }
 
+  onNoClick() {
+    this.dialogRef.close();
+  }
+
+  closeDialog() {
+    this.dialogRef.close(this.data);
+  }
 }

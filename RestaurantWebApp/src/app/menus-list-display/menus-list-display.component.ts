@@ -6,6 +6,9 @@ import {AddMenuDialogComponent} from "../waiter-menu/add-menu-dialog/add-menu-di
 import {Subscription, timer} from "rxjs";
 import {tap} from "rxjs/operators";
 import { Router } from '@angular/router';
+import {MenuCategoryService} from "../menu-category.service";
+import {MenuCategory} from "../../models/MenuCategory";
+import {CategoryDialogComponent} from "../category-dialog/category-dialog.component";
 
 @Component({
   selector: 'app-menus-list-display',
@@ -14,14 +17,19 @@ import { Router } from '@angular/router';
 })
 export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
-  constructor(private menuService: MenuService, private router: Router,
+
+  constructor(private menuService: MenuService,
+              private categoryService: MenuCategoryService,
+              private router: Router,
               public dialog: MatDialog) { }
 
+  categories: MenuCategory[];
   menuList: Menu[] = [];
   subscription: Subscription;
+  catSubscription: Subscription;
   refreshTimer$ = timer(0, 1000)
     .pipe(tap());
-  
+
   isAuth: boolean = true;
 
   ngOnInit(): void {
@@ -29,18 +37,22 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
       this.isAuth = false;
     }
     this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
+    this.catSubscription = this.refreshTimer$.subscribe(this.categoryService.refresh$);
+    this.categoryService.categories$.subscribe((categories) => {
+      this.categories = categories;
+    })
     this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
-      this.menuList.forEach(element => {
-        this.menuService.getIngredients(element.id).subscribe(ings => {
-          element.ingredientsName = "";
-          ings.forEach(name => {
-            element.ingredientsName +=  name.ingredient.name+", ";
-          });
-          element.ingredientsName = element.ingredientsName.substring(0, element.ingredientsName.length-2);
-        });
-      });
+      // this.menuList.forEach(element => {
+      //   this.menuService.getIngredients(element.id).subscribe(ings => {
+      //     element.ingredientsName = "";
+      //     ings.forEach(name => {
+      //       element.ingredientsName +=  name.ingredient.name+", ";
+      //     });
+      //     element.ingredientsName = element.ingredientsName.substring(0, element.ingredientsName.length-2);
+      //   });
+      // });
     });
   }
 
@@ -74,5 +86,29 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu);
+  }
+
+  openEditCategoryDialog(category: MenuCategory) {
+    const dialogRef = this.dialog.open(CategoryDialogComponent, {
+      data: category
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.categoryService.updateCategory(result).subscribe();
+    });
+  }
+
+  deleteCategoryItem(category: MenuCategory) {
+    this.categoryService.deleteCategory(category).subscribe();
+  }
+
+  openAddCategoryDialog() {
+    const dialogRef = this.dialog.open(CategoryDialogComponent, {
+      data: new MenuCategory()
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.categoryService.createNewCategory(result).subscribe();
+    });
   }
 }
