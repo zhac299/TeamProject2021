@@ -18,11 +18,11 @@ import { Order } from '../../../models/Order';
 export class BasketComponent implements OnInit {
 
   mealList: Meal[];
-  orderPlaced: Boolean;
   orderTotal: number = 0;
   customerId: number;
   tableNumber: number;
   orders: Order[] = [];
+  orderPlaced: boolean = false;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -39,7 +39,6 @@ export class BasketComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateOrderPlaced();
     this.getInitialOrderTotal();
   }
 
@@ -47,16 +46,6 @@ export class BasketComponent implements OnInit {
     for (let meal of this.mealList) {
       this.orderTotal += meal.menu.price * meal.numberSelections;
     }
-  }
-
-  updateOrderPlaced(): void {
-    this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
-      if (customer.orders.length == 0) {
-        this.orderPlaced = false;
-      } else {
-        this.orderPlaced = true;
-      }
-    })
   }
 
   clear(meal: Meal): void {
@@ -100,6 +89,7 @@ export class BasketComponent implements OnInit {
         });
       })
       this.orderPlaced = true;
+      this.mealList = [];
       this.openSnackBar("You placed your order", "Enjoy!")
     }
   }
@@ -121,6 +111,6 @@ export class BasketComponent implements OnInit {
   }
 
   close(): void {
-    this.dialogRef.close(this.orderPlaced);
+    this.dialogRef.close();
   }
 }

@@ -9,7 +9,7 @@
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-  <div class = list>
+  <div class = list *ngIf = "orderPlaced == false; else emptyShoppingCartBlock">
     <table class="table" class="selectedItems">
       <tbody>
         <tr *ngFor="let meal of mealList">
@@ -29,7 +29,7 @@
             </button>
           </td>
         </tr>
-        <tr *ngIf="orderTotal > 0">
+        <tr *ngIf="orderTotal > 0 ">
           <td>
             <button mat-button>
               <mat-icon>attach_money</mat-icon>
@@ -46,13 +46,13 @@
             (click)="placeOrder()" class="placeOrder">
             Place Order
           </button>
-          <ng-template #emptyShoppingCartBlock>
-            <div class="emptyShoppingCartBlock">
-              <button mat-button> Empty Shopping Cart!</button>
-            </div>
-          </ng-template>
         </div>
       </mat-list-item>
     </mat-list>
   </div>
+  <ng-template #emptyShoppingCartBlock>
+    <div class="emptyShoppingCartBlock">
+      <button mat-button> Empty Shopping Cart!</button>
+    </div>
+  </ng-template>
 </mat-dialog-content>
