@@ -1,5 +1,7 @@
 <img class="orderTitle" src="assets/images/food.png">
-<mat-grid-list [cols]="this.windowWidth" rowHeight="300px">
+
+
+<mat-grid-list [cols]="this.columns" rowHeight="300px">
   <mat-grid-tile *ngFor="let order of orders">
 
     <button *ngIf="order.isConfirmed && order.isDelivered && order.isReady && order.isPaid else deliveredNotPaid"
