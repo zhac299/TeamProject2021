@@ -64,7 +64,7 @@ export class TablesListDisplayComponent implements OnInit {
     if(table.needsHelp) {
       this.tableService.getTableByNumber(table.tableNumber).subscribe((updatedTable) => {
         updatedTable.needsHelp = false;
-        this.tableService.updateTable(updatedTable).subscribe();
+        this.tableService.updateTable(updatedTable);
       })     
       this.openSnackBar("Table was marked as helped!","Close");
     } else {

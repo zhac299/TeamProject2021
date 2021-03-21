@@ -57,7 +57,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
     }
     this.resize$
       .pipe(debounceTime(250),
-      tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
+      tap(),
         )
       .subscribe((w) => {
         this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
@@ -67,7 +67,6 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
       this.paramsObject = { ...params.keys, ...params };
       this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
         this.waiter = staff;
-        console.log(staff);
       })
     });
   }
@@ -90,21 +89,6 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
     const date = new Date(Date.parse(orderPlacedTime));
     return date;
   }
-
-  // openSelectTableDialog(): Observable<Table> {
-  //   const dialogRef = this.dialog.open(PickTableDialogComponent);
-  //   return dialogRef.afterClosed();
-  // }
-
-  // createNewOrder(): void {
-  //   this.openSelectTableDialog()
-  //     .pipe(
-  //       switchMap((dialogResult) =>
-  //         this.customerService.createCustomerWithTable(dialogResult))
-  //     ).subscribe((a) =>
-  //     this.orderService.createNewOrderWithCustomer(a)
-  //   );
-  // }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

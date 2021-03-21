@@ -28,8 +28,7 @@ export class OrderComponent implements OnInit {
   private orderSubject$ = new BehaviorSubject<Order>(this.data.order);
   order$ = this.orderSubject$.asObservable();
   subscription: Subscription;
-  refreshTimer$ = timer(0, 1000)
-    .pipe(tap());
+  refreshTimer$ = timer(0, 1000).pipe(tap());
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,

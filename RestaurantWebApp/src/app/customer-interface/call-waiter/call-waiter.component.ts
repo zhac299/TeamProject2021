@@ -24,6 +24,9 @@ export class CallWaiterComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableNumber = this.customerInterface.paramsObject.params.selectedTable;
+    this.tableService.refreshNeeded.subscribe(() => {
+      this.getNeedHelp();
+    })
     this.getNeedHelp();
   }
 
@@ -36,22 +39,16 @@ export class CallWaiterComponent implements OnInit {
   callWaiter(): void {
     this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
       table.needsHelp = true;
-      this.tableService.updateTable(table).subscribe();
+      this.tableService.updateTable(table);
     })
-    // this.tableService.refreshNeeded.subscribe(() => {
-    //   this.getNeedHelp();
-    // })
     this.openSnackBar("A waiter will come to you","Please Wait");
   }
 
   cancel(): void {
     this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
       table.needsHelp = false;
-      this.tableService.updateTable(table).subscribe();
+      this.tableService.updateTable(table);
     })
-    // this.tableService.refreshNeeded.subscribe(() => {
-    //   this.getNeedHelp();
-    // })
     this.openSnackBar("You canceled the waiter call","Still need help?");
   }
 

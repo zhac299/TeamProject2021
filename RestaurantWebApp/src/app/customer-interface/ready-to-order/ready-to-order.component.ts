@@ -34,7 +34,7 @@ export class ReadyToOrderComponent implements OnInit {
   readyToOrder(): void {
     this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
       table.isReady = true;
-      this.tableService.updateTable(table).subscribe();
+      this.tableService.updateTable(table);
     })
     this.ready = true;
     this.openSnackBar("A waiter will come to take your order", "Please Wait")
@@ -43,7 +43,7 @@ export class ReadyToOrderComponent implements OnInit {
   cancel(): void {
     this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
       table.isReady = false;
-      this.tableService.updateTable(table).subscribe();
+      this.tableService.updateTable(table);
     })
     this.ready = false;
     this.openSnackBar("You canceled the waiter call","Still need help?");

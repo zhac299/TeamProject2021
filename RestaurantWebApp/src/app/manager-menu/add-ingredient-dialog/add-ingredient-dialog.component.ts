@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Ingredient } from '../../../models/Ingredient';
 
 @Component({
@@ -11,9 +11,9 @@ export class AddIngredientDialogComponent implements OnInit {
 
   selected = -1;
   constructor(public dialogRef: MatDialogRef<AddIngredientDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { ingredient:Ingredient,title:string }) { }
+    @Inject(MAT_DIALOG_DATA) public data: { ingredient: Ingredient, title: string }) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   setCalories(value: number) {
     return value;
@@ -24,9 +24,9 @@ export class AddIngredientDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  setData(ingredient:Ingredient) {
+  setData(ingredient: Ingredient) {
     this.data.ingredient = ingredient;
   }
 
 }
-            
+

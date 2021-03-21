@@ -56,8 +56,17 @@ export class TableService {
       )
   }
 
-  public updateTable(table: Table): Observable<Table> {
-    return this.httpClient.put<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`, table);
+  public updateTable(table: Table): void {
+    this.httpClient.put<Table>(`${this.restaurantTablesURL}/${table.tableNumber}`, table)
+    .subscribe((table) => {
+      let _orders = this.tableSubject$.getValue();
+      _orders.forEach((whichTable) => {
+        if (whichTable.tableNumber == table.tableNumber) {
+          whichTable = table;
+        }
+      });
+      this.tableSubject$.next(_orders);
+    })
   }
 
   public getUnoccupiedTables(): Observable<Table[]> {
