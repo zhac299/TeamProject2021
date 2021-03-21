@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CustomerService } from 'src/app/customer.service';
-import { TableService } from 'src/app/table.service';
-import { Table } from 'src/models/Table';
+import { CustomerService } from '../../customer.service';
+import { TableService } from '../../table.service';
+import { Table } from '../../../models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 @Component({

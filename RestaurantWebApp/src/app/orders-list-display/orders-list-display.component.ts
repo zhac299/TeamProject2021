@@ -9,7 +9,7 @@ import {Table} from "../../models/Table";
 import {PickTableDialogComponent} from "../waiter-menu/pick-table-dialog/pick-table-dialog.component";
 import {CustomerService} from "../customer.service";
 import { ActivatedRoute } from '@angular/router';
-import { Staff } from 'src/models/Staff';
+import { Staff } from '../../models/Staff';
 import { StaffService } from '../staff.service';
 
 @Component({
@@ -26,6 +26,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
 
   @Input() createPermission: boolean;
   @Input() isKitchenStaff: boolean;
+  @Input() isWaiter: boolean;
 
   waiter: Staff;
   paramsObject: any;
@@ -47,10 +48,12 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
         map((orders) => orders.filter((order) => !order.isReady))
       )
         .subscribe((orders) =>this.orders = orders);
-    } else {
+    } else if(this.isWaiter) {
         this.orderService.orders$.pipe(
           map((orders) => orders.filter((order) => order.waiterId == this.orderService.waiterId)),
         ).subscribe((orders) =>this.orders = orders);
+    } else {
+      this.orderService.orders$.subscribe((orders) =>this.orders = orders);
     }
     this.resize$
       .pipe(debounceTime(250),

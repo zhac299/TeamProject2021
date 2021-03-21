@@ -1,78 +1,87 @@
-<mat-grid-list cols="1" rowHeight="140px" class="title">
-  <mat-grid-tile colspan="1"></mat-grid-tile>
-  <mat-grid-tile colspan="1">
-    <h1>Las Chinampas</h1>
-  </mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols="1" rowHeight="100px">
-  <mat-grid-tile colspan="1">
-    <img class="dividerIcon" src="https://cdn.scotts-restaurant.com/full-screen-assets/img/themes/scotts/menuWidgetGraphic1.png">
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1">
-    <p class="menuTitle">Menu</p>
-  </mat-grid-tile>
-</mat-grid-list>
-<p>
-  <mat-toolbar class="toolbar">
-    <button mat-icon-button (click)=goHome()>
-      <mat-icon>home</mat-icon>
-    </button>
-    <span></span>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <call-waiter></call-waiter>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <ready-to-order></ready-to-order>
-    <span class="spacer"></span>
-    <button mat-icon-button (click)="openTracker()">
-      <mat-icon>timer</mat-icon>
-    </button>
-    &nbsp;&nbsp;&nbsp;
-    <button mat-icon-button (click)="openBasket()">
-      <mat-icon>shopping_cart</mat-icon>
-      <span class='badge badge-warning' id='lblCartCount'> {{selectedMeals.length}} </span>
-    </button>
-  </mat-toolbar>
-</p>
-<expansion-pannel></expansion-pannel>
+<div class="h-100 container-fluid">
+  <div class="row justify-content-center ">
+    <p class="display-1 menuTitle">Menu</p>
+  </div>
+</div>
+
+<mat-toolbar class="container-fluid toolbar">
+  <button mat-icon-button (click)="goHome()">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span></span>
+  <call-waiter></call-waiter>
+  <ready-to-order></ready-to-order>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="openTracker()">
+    <mat-icon>timer</mat-icon>
+  </button>
+  <button mat-icon-button (click)="openBasket()">
+    <mat-icon>shopping_cart</mat-icon>
+    <span class='badge badge-warning' id='lblCartCount'> {{selectedMeals.length}} </span>
+  </button>
+</mat-toolbar>
+
 <br>
+<div class="container-fluid">
+  <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
+    <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"
+                   (click)="selectCategory(category)">
+      <button class="category" mat-raised-button>{{category.category}}</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
 
-<mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
-  <mat-grid-tile colspan="1" *ngFor="let category of categories" class="category" (click)="selectCategory(category)">
-    {{category.category}}
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="container menuCard">
 
-<mat-grid-list cols="4" gutterSize="50px" rowHeight="600px" [@listAnimation]="menu.length">
-  <mat-grid-tile id="list" class="menuUI" *ngFor="let menuItem of menu" colspan="1">
-    <mat-card class="mat-card">
-      <mat-card-header class="mat-card-header">
-        <mat-card-title class="menu-item-name">{{menuItem.name}}</mat-card-title>
-        <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
-      </mat-card-header>
-      <hr class="break-line">
-      <img mat-card-image src="./assets/images/taco.png" alt="Photo of a Taco">
-      <mat-card-content class="menu-item-description">
-        <p>
-          {{menuItem.description}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions class="card-actions">
-        <button mat-raised-button class="action-button"
-          *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections" (click)="addMeal(menuItem)">Add to Cart
-        </button>
+  <div class="container-fluid display-1">
+    <p class="row justify-content-center categoryTitle"><u>{{this.selectedCategory.category}}</u></p>
+  </div>
+  <expansion-pannel class="expansionPannel"></expansion-pannel>
+  <div class="container-fluid">
+    <div class="h-100 row" [@listAnimation]="menu.length">
+      <div id="list" class="col-4 menuUI" *ngFor="let menuItem of menu">
+        <mat-card class="mat-card">
+          <mat-card-header class="mat-card-header">
+            <mat-card-title class="menu-item-name ">
+              <p>{{menuItem.name}}</p>
+<!--              <p>£{{menuItem.price}}</p>-->
+            </mat-card-title>
+            <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
+          </mat-card-header>
+          <hr class="break-line">
+          <img mat-card-image class="foodImg" src="./assets/images/ismael-trevino-Y0zbn9lPCEU-unsplash.jpg" alt="Photo of a Taco">
+          <mat-card-content class="menu-item-description">
+            <p>
+              {{menuItem.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="card-actions">
+            <button mat-raised-button class="action-button"
+                    *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections"
+                    (click)="addMeal(menuItem)">
+              Add to Cart
+            </button>
+            <ng-template #editMealSelections>
+              <button mat-raised-button class="action-button" (click)="addMeal(menuItem)">
+                <mat-icon>add</mat-icon>
+              </button>
+              <button mat-raised-button class="action-button" (click)="removeMeal(menuItem)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <button mat-mini-fab class="selection-fab">
+                x{{getNumberOfSelections(menuItem)}}
+              </button>
+            </ng-template>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 
-        <ng-template #editMealSelections>
-          <button mat-raised-button class="action-button" (click)="addMeal(menuItem)">
-            <mat-icon>add</mat-icon>
-          </button>
-          <button mat-raised-button class="action-button" (click)="removeMeal(menuItem)">
-            <mat-icon>remove</mat-icon>
-          </button>
-          <button mat-mini-fab class="selection-fab">
-            x{{getNumberOfSelections(menuItem)}}
-          </button>
-        </ng-template>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+</div>
+
+<div class="callWaiterFloat">
+  <i class="container-fluid my-float">
+    <call-waiter class="row justify-content-center"></call-waiter>
+  </i>
+</div>

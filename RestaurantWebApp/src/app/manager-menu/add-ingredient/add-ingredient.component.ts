@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import { Ingredient } from 'src/models/Ingredient';
+import { Ingredient } from '../../../models/Ingredient';
 import {IngredientService} from "../../ingredient.service"
 import { AddIngredientDialogComponent } from '../add-ingredient-dialog/add-ingredient-dialog.component';
 import { AddStaffDialogComponent } from '../add-staff-dialog/add-staff-dialog.component';

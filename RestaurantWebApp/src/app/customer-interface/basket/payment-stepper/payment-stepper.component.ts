@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { Meal } from 'src/models/Meal';
 import { BasketComponent } from '../basket.component';
-import { OrderService } from 'src/app/order.service';
-import { Order } from 'src/models/Order';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { formatDate } from '@angular/common';
-import { take } from 'rxjs/operators';
-import { CustomerService } from 'src/app/customer.service';
+import { Meal } from '../../../../models/Meal';
+import { CustomerService } from '../../../customer.service';
+import { OrderService } from '../../../order.service';
 
 @Component({
   selector: 'payment-stepper',

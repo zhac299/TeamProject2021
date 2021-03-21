@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Table} from '../../models/Table';
 import {MatDialog} from '@angular/material/dialog';
 import {Order} from "../../models/Order";
@@ -9,13 +9,11 @@ import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.co
 import { TableService } from '../table.service';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { Staff } from 'src/models/Staff';
+import { Staff } from '../../models/Staff';
 import { StaffService } from '../staff.service';
 import { CustomerService } from '../customer.service';
 import { OrderService } from '../order.service';
-import { TablesListDisplayComponent } from '../tables-list-display/tables-list-display.component';
-import { MenusListDisplayComponent } from '../menus-list-display/menus-list-display.component';
-import { AddMenuDialogComponent } from './add-menu-dialog/add-menu-dialog.component';
+import { AddMenuDialogComponent} from './add-menu-dialog/add-menu-dialog.component';
 
 @Component({
   selector: 'app-waiter-menu',
@@ -51,6 +49,8 @@ export class WaiterMenuComponent implements OnInit {
       this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
         this.waiter = staff;
         this.orderService.waiterId = this.waiter.id;
+        this.tableService.currentStaff = this.waiter.id;
+        console.log(staff);
       })
     });
   }

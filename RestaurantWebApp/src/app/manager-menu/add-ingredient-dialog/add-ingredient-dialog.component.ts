@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import { Ingredient } from 'src/models/Ingredient';
+import { Ingredient } from '../../../models/Ingredient';
 
 @Component({
   selector: 'app-add-ingredient-dialog',

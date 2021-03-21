@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TableService } from 'src/app/table.service';
-import { Table } from 'src/models/Table';
+import { TableService } from '../../../table.service';
+import { Table } from '../../../../models/Table';
 
 @Component({
   selector: 'notifications-dialog',

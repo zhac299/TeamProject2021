@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Meal } from 'src/models/Meal';
+import { Meal } from '../../../models/Meal';
+import { CustomerService } from '../../customer.service';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
-import { CustomerService } from 'src/app/customer.service';
 
 @Component({
   selector: 'app-order-tracker',

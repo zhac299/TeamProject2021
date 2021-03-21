@@ -61,6 +61,9 @@ import { MatRadioModule} from "@angular/material/radio";
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingredient.component';
 import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dialog/add-ingredient-dialog.component';
+import { ClientMenuComponent } from './customer-interface/client-menu/client-menu.component';
+import { ClientRegisterComponent } from './customer-interface/client-menu/client-register/client-register.component';
+import { CustomersListComponent } from './manager-menu/customers-list/customers-list.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +96,9 @@ import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dial
     TablesListDisplayComponent,
     AddIngredientComponent,
     AddIngredientDialogComponent,
-    LandingPageComponent
+    ClientMenuComponent,
+    ClientRegisterComponent,
+    CustomersListComponent
   ],
     imports: [
         BrowserModule,

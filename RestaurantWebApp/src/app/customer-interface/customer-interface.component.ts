@@ -1,26 +1,23 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable} from 'rxjs';
 import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 import { MenuService} from "../menu.service";
 import { MenuFilterService} from "../menu-filter.service";
 import { Menu } from "../../models/Menu";
-import { Customer } from 'src/models/Customer';
-import { CustomerService } from '../customer.service';
 import { BasketComponent} from './basket/basket.component';
-import { Table } from 'src/models/Table';
-import { TableService } from '../table.service';
 import { animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
-import { Meal } from 'src/models/Meal';
+import { Meal } from '../../models/Meal';
 import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
 import { MenuCategory} from "../../models/MenuCategory";
 import { MenuCategoryService } from '../menu-category.service';
+import anime from 'animejs';
 
 @Component({
   selector: 'app-customer-interface',
   templateUrl: './customer-interface.component.html',
   styleUrls: ['./customer-interface.component.sass'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('listAnimation', [
       transition('*=>*', [
@@ -173,5 +170,17 @@ export class CustomerInterfaceComponent implements OnInit {
   selectCategory(category: MenuCategory): void {
     this.selectedCategory = category;
     this.findCategoryItems();
+  }
+
+  elevate(category: any) {
+    anime.timeline({loop: false})
+      .add({
+        targets: `${category}`,
+        opacity: [0,1],
+        scale: 2,
+        easing: "easeInOutQuad",
+        duration: 1000,
+        delay: (el, i) => 50 * (i+1)
+      });
   }
 }

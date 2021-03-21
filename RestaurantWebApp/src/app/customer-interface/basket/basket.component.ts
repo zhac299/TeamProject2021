@@ -1,14 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CustomerService } from 'src/app/customer.service';
-import { MealService } from 'src/app/meal.service';
-import { OrderService } from 'src/app/order.service';
-import { StaffService } from 'src/app/staff.service';
-import { TableService } from 'src/app/table.service';
-import { Customer } from 'src/models/Customer';
-import { Meal } from 'src/models/Meal';
-import { Table } from 'src/models/Table';
+import { MealService } from '../../meal.service';
+import { OrderService } from '../../order.service';
+import { TableService } from '../../table.service';
+import { Customer } from '../../../models/Customer';
+import { Meal } from '../../../models/Meal';
+import { Table } from '../../../models/Table';
+import { CustomerService } from '../../customer.service';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 
 @Component({
@@ -29,7 +28,6 @@ export class BasketComponent implements OnInit {
     private tableService: TableService,
     private mealService: MealService,
     private orderService: OrderService,
-    private staffService: StaffService,
     private customerService: CustomerService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
@@ -88,10 +86,12 @@ export class BasketComponent implements OnInit {
 
   placeOrder(): void {
     if (this.orderPlaced == false) {
-      this.staffService.getRandomWaiter().subscribe(staff => {
-        this.orderService.randomWaiter = staff;
-      });
-
+      this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
+        this.orderService.waiterId = table.waiterId;  
+        table.isReady = true;
+        this.tableService.updateTable(table).subscribe();
+      })
+         
       this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
         this.orderService.createNewOrder(customer, this.orderTotal).subscribe((order) => {
           for (var i = 0; i < this.mealList.length; i++) {
@@ -99,12 +99,8 @@ export class BasketComponent implements OnInit {
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
           }
         });
-        this.orderPlaced = true;
       })
-      this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
-        table.isReady = true;
-        this.tableService.updateTable(table).subscribe();
-      })
+      this.orderPlaced = true;
       this.openSnackBar("You placed your order", "Enjoy!")
     }
   }

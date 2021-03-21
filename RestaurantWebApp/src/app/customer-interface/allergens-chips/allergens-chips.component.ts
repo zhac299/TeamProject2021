@@ -1,13 +1,13 @@
-import {OnInit } from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { OnInit } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
-import {CustomerInterfaceComponent} from "../customer-interface.component";
+import { CustomerInterfaceComponent } from "../customer-interface.component";
 import { MatSliderChange } from '@angular/material/slider';
 @Component({
   selector: 'allergens-chips',
@@ -29,12 +29,12 @@ export class AllergensChipsComponent implements OnInit {
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-   constructor(
-     private customerInterfaceComponent: CustomerInterfaceComponent
-   ) {
+  constructor(
+    private customerInterfaceComponent: CustomerInterfaceComponent
+  ) {
     this.filteredAllergens = this.allergensCtrl.valueChanges.pipe(
-        startWith(null),
-        map((allergen: string | null) => allergen ? this._filter(allergen) : this.allAllergens.slice()));
+      startWith(null),
+      map((allergen: string | null) => allergen ? this._filter(allergen) : this.allAllergens.slice()));
   }
 
   add(event: MatChipInputEvent): void {
