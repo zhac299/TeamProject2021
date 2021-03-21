@@ -64,6 +64,7 @@ import { ClientMenuComponent } from './customer-interface/client-menu/client-men
 import { ClientRegisterComponent } from './customer-interface/client-menu/client-register/client-register.component';
 import { CustomersListComponent } from './manager-menu/customers-list/customers-list.component';
 import { PaymentComponent } from './customer-interface/payment/payment.component';
+import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { PaymentComponent } from './customer-interface/payment/payment.component
     ClientMenuComponent,
     ClientRegisterComponent,
     CustomersListComponent,
-    PaymentComponent
+    PaymentComponent,
+    CategoryDialogComponent
   ],
     imports: [
         BrowserModule,
