@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MenuService } from 'src/app/menu.service';
-import { Client } from 'src/models/Client';
-import { Menu } from 'src/models/Menu';
+import { Client } from '../../../../models/Client';
+import { Menu } from '../../../../models/Menu';
 import {ClientService} from "../../../client.service"
+import { MenuService } from '../../../menu.service';
 
 @Component({
   selector: 'app-client-register',

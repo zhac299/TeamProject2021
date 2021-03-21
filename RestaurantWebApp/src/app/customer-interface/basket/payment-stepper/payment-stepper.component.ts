@@ -44,18 +44,26 @@ export class PaymentStepperComponent implements OnInit {
       expDateControl: ['', Validators.required],
       cvvCodeControl: ['', Validators.required]
     });
+    // this.customerService.refreshNeeded.subscribe(() => {
+    //   this.updateMealList();
+    // })
     this.updateMealList();
   }
 
   updateMealList(): void {
     this.customerService.getCustomerByID(this.basketComponent.customerId).subscribe((customer) => {
-      if (customer.orders[0].isPaid == true) {
-        this.isPaid = true;
-      }
-      if (customer.orders[0].isConfirmed == true) {
-        this.isConfirmed = true;
-      }
-      this.mealList = customer.orders[0].meal;
+      // if (customer.orders[0] == undefined) {
+      //   this.isConfirmed = false;
+      //   this.isPaid = false;
+      // } else {
+        if (customer.orders[0].isPaid == true) {
+          this.isPaid = true;
+        }
+        if (customer.orders[0].isConfirmed == true) {
+          this.isConfirmed = true;
+        }
+        this.mealList = customer.orders[0].meal;
+
     })
   }
 

@@ -24,9 +24,9 @@ export class OrderTrackerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.customerService.refreshNeeded.subscribe(() => {
-    //   this.updateStatus();
-    // })
+    this.customerService.refreshNeeded.subscribe(() => {
+      this.updateStatus();
+    })
     this.updateMealList();
     this.updateStatus();
   }

@@ -37,9 +37,6 @@ export class BasketComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.customerService.refreshNeeded.subscribe(() => {
-    //   this.updateOrderPlaced();
-    // })
     this.updateOrderPlaced();
     this.getInitialOrderTotal();
   }
@@ -89,7 +86,7 @@ export class BasketComponent implements OnInit {
       this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
         this.orderService.waiterId = table.waiterId;  
         table.isReady = true;
-        this.tableService.updateTable(table).subscribe();
+        this.tableService.updateTable(table);
       })
          
       this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
