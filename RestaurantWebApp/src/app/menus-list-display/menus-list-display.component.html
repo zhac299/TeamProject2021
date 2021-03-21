@@ -18,7 +18,7 @@
     <td>{{menu.description}}</td>
     <td>{{menu.price}}</td>
     <td>{{menu.ingredientsName}}</td>
-    <td>
+    <td class="text-right">
       <button *ngIf="isAuth" mat-button (click)="openEditMenuDialog(menu)">Edit</button>
       <button *ngIf="isAuth" mat-button (click)="deleteMenuItem(menu)">Delete</button>
     </td>
@@ -32,14 +32,14 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">Cateogory</th>
+    <th scope="col" class="text-center">Cateogory</th>
   </tr>
   </thead>
   <tbody>
   <tr class="menuItem" *ngFor="let category of categories; let i = index">
-    <th scope="row">{{i+1}}</th>
-    <td>{{category.category}}</td>
-    <td>
+    <th scope="row" >{{i+1}}</th>
+    <td class="text-center">{{category.category}}</td>
+    <td class="text-right">
       <button *ngIf="isAuth" mat-button (click)="openEditCategoryDialog(category)">Edit</button>
       <button *ngIf="isAuth" mat-button (click)="deleteCategoryItem(category)">Delete</button>
     </td>
