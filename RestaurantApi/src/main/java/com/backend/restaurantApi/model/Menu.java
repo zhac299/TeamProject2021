@@ -1,11 +1,13 @@
 package com.backend.restaurantApi.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "restaurant_menu_item")
@@ -26,7 +28,7 @@ public class Menu {
     private Double price = 0.0;
 
     @ManyToOne
-    @JoinColumn(name = "category")
+    @JoinColumn(name = "category", nullable = true)
     private MenuCategory category;
 
     @Column(name = "isSuggested")

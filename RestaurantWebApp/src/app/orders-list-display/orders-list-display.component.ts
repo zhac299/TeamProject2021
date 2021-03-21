@@ -9,7 +9,7 @@ import {Table} from "../../models/Table";
 import {PickTableDialogComponent} from "../waiter-menu/pick-table-dialog/pick-table-dialog.component";
 import {CustomerService} from "../customer.service";
 import { ActivatedRoute } from '@angular/router';
-import { Staff } from 'src/models/Staff';
+import { Staff } from '../../models/Staff';
 import { StaffService } from '../staff.service';
 
 @Component({
@@ -26,6 +26,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
 
   @Input() createPermission: boolean;
   @Input() isKitchenStaff: boolean;
+  @Input() isWaiter: boolean;
 
   waiter: Staff;
   paramsObject: any;
@@ -33,10 +34,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
 
   orders: Order[];
   subscription: Subscription;
-  refreshTimer$ = timer(0, 1000)
-    .pipe(tap(() => console.log('Fetching Orders...')));
-
-
+  refreshTimer$ = timer(0, 1000);
   resize$ = fromEvent(window, 'resize');
   ORDER_BUTTON_WIDTH = 300;
   columns: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
@@ -49,12 +47,13 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
         map((orders) => orders.filter((order) => !order.isReady))
       )
         .subscribe((orders) =>this.orders = orders);
-    } else {
+    } else if(this.isWaiter) {
         this.orderService.orders$.pipe(
           map((orders) => orders.filter((order) => order.waiterId == this.orderService.waiterId)),
         ).subscribe((orders) =>this.orders = orders);
+    } else {
+      this.orderService.orders$.subscribe((orders) =>this.orders = orders);
     }
-
     this.resize$
       .pipe(debounceTime(250))
       .subscribe((w) => {
@@ -65,7 +64,6 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
       this.paramsObject = { ...params.keys, ...params };
       this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
         this.waiter = staff;
-        console.log(staff);
       })
     });
   }
@@ -87,21 +85,6 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   getDate(orderPlacedTime: string): Date {
     const date = new Date(Date.parse(orderPlacedTime));
     return date;
-  }
-
-  openSelectTableDialog(): Observable<Table> {
-    const dialogRef = this.dialog.open(PickTableDialogComponent);
-    return dialogRef.afterClosed();
-  }
-
-  createNewOrder(): void {
-    this.openSelectTableDialog()
-      .pipe(
-        switchMap((dialogResult) =>
-          this.customerService.createCustomerWithTable(dialogResult))
-      ).subscribe((a) =>
-      this.orderService.createNewOrderWithCustomer(a)
-    );
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import { Staff } from 'src/models/Staff';
+import { Staff } from '../../../models/Staff';
 
 @Component({
   selector: 'app-add-staff-dialog',

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Menu } from 'src/models/Menu';
+import { Menu } from '../models/Menu';
 import {MenuCategory} from "../models/MenuCategory";
 
 @Injectable({

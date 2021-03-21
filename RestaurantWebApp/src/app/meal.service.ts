@@ -21,15 +21,12 @@ export class MealService {
   }
 
   updateMeal(meal: Meal): void {
-    console.log(meal.order);
     this.httpClient.put<Meal>(`${this.mealsURL}/${meal.id}`,meal);
   }
 
   updateNumberSelections(meal: Meal): void {
-    console.log(meal.numberSelections);
     let updateNumberSelectionsUrl = this.mealsURL + "/numberSelections";
     this.httpClient.put<Meal>(`${updateNumberSelectionsUrl}/${meal.id}/${meal.numberSelections}`,meal).subscribe((meal)=>{
-      console.log(meal);
     });
   }
 }

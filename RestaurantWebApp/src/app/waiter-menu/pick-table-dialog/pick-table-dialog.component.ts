@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
-import {Table} from "../../../models/Table";
-import {TableService} from "../../table.service";
-import {Observable} from "rxjs";
+import { MatDialogRef } from "@angular/material/dialog";
+import { Table } from "../../../models/Table";
+import { TableService } from "../../table.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-pick-table-dialog',
@@ -15,7 +15,7 @@ export class PickTableDialogComponent implements OnInit {
   selectedTable: Table;
 
   constructor(public dialogRef: MatDialogRef<PickTableDialogComponent>,
-              private tableService: TableService,) { }
+    private tableService: TableService,) { }
 
   ngOnInit(): void {
     this.tableService.getUnoccupiedTables().subscribe(tables => {

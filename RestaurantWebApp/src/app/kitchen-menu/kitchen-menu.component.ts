@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Table} from "../../models/Table";
 import {Order} from "../../models/Order";
-import { Menu } from 'src/models/Menu';
+import { Menu } from '../../models/Menu';
 import { MenuService } from '../menu.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddMenuDialogComponent } from '../waiter-menu/add-menu-dialog/add-menu-dialog.component';

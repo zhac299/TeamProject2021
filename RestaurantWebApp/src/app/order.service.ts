@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {Order} from '../models/Order';
-import {exhaustMap, share, tap} from 'rxjs/operators';
-import {Menu} from "../models/Menu";
-import {Customer} from "../models/Customer";
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Order } from '../models/Order';
+import { exhaustMap, share, tap } from 'rxjs/operators';
+import { Menu } from "../models/Menu";
+import { Customer } from "../models/Customer";
 import { StaffService } from './staff.service';
-import { Staff } from 'src/models/Staff';
+import { Staff } from '../models/Staff';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +18,17 @@ export class OrderService {
 
   private _refreshNeeded = new Subject<void>();
 
-  public waiterId = 0;
-
-  public randomWaiter: Staff;
+  public waiterId: number;
 
   orderSubject$ = new BehaviorSubject<Order[]>([]);
   refresh$ = new BehaviorSubject(null);
 
   orders$ = this.refresh$.pipe(
-    exhaustMap( () => this.getOrders()),
+    exhaustMap(() => this.getOrders()),
     share()
   );
 
   constructor(private httpClient: HttpClient) {
-    console.log('Instance created');
   }
 
   public getOrders(): Observable<Order[]> {
@@ -55,8 +52,8 @@ export class OrderService {
   createNewOrderWithCustomer(customer: Customer): void {
     const orderWithCustomer = new Order();
     orderWithCustomer.customer = customer;
-    orderWithCustomer.isPaid=false;
-    orderWithCustomer.total=0;
+    orderWithCustomer.isPaid = false;
+    orderWithCustomer.total = 0;
     orderWithCustomer.waiterId = this.waiterId;
     this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer)
       .subscribe((order) => {
@@ -74,15 +71,14 @@ export class OrderService {
     orderWithCustomer.customer = customer;
     orderWithCustomer.total = total;
     orderWithCustomer.isPaid = false;
-    orderWithCustomer.waiterId = this.randomWaiter.id;
     return this.httpClient.post<Order>(this.restaurantWebApiUrl, orderWithCustomer);
   }
 
   getOrderById(orderId: number): Observable<Order> {
     return this.refresh$.pipe(
-      exhaustMap( () =>
+      exhaustMap(() =>
         this.httpClient.get<Order>(`${this.restaurantWebApiUrl}/${orderId}`)
-          )
+      )
     );
   }
 
@@ -99,23 +95,23 @@ export class OrderService {
   }
 
   updateOrderDelivered(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isdelivered/${order.isDelivered}`,order);
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isdelivered/${order.isDelivered}`, order);
   }
 
   updateOrderConfirmed(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isconfirmed/${order.isConfirmed}`,order);
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isconfirmed/${order.isConfirmed}`, order);
   }
 
   updateOrderReady(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isready/${order.isReady}`,order);
+    return this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}/isready/${order.isReady}`, order);
   }
 
   updateOrder(order: Order): void {
-    this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`,order)
+    this.httpClient.put<Order>(`${this.restaurantWebApiUrl}/${order.id}`, order)
       .subscribe((order) => {
         let _orders = this.orderSubject$.getValue();
         _orders.forEach((whichOrder) => {
-          if(whichOrder.id == order.id) {
+          if (whichOrder.id == order.id) {
             whichOrder = order;
           }
         });
@@ -125,14 +121,21 @@ export class OrderService {
 
   updateTotal(order: Order): void {
     let updateTotalUrl = this.restaurantWebApiUrl + "/total";
-    this.httpClient.put<Order>(`${updateTotalUrl}/${order.id}/${order.total}`,order).subscribe((order) =>{
-      console.log(order);
-    })
+    this.httpClient.put<Order>(`${updateTotalUrl}/${order.id}/${order.total}`, order)
+      .subscribe((order) => {
+        let _orders = this.orderSubject$.getValue();
+        _orders.forEach((whichOrder) => {
+          if (whichOrder.id == order.id) {
+            whichOrder = order;
+          }
+        });
+        this.orderSubject$.next(_orders);
+      })
   }
 
   updateIsPaid(order: Order): void {
     let updateIsPaidUrl = this.restaurantWebApiUrl + "/isPaid";
-    this.httpClient.put<Order>(`${updateIsPaidUrl}/${order.id}/${order.isPaid}`,order).subscribe((order) =>{
+    this.httpClient.put<Order>(`${updateIsPaidUrl}/${order.id}/${order.isPaid}`, order).subscribe((order) => {
       console.log(order);
     })
   }
@@ -146,7 +149,7 @@ export class OrderService {
     order.isDelivered = newIsDelivered;
     return this.httpClient.put<Order>(`${restaurantOrderIsDeliveredURL}/${newIsDelivered.valueOf()}`, order)
       .pipe(
-        tap(()=> {
+        tap(() => {
           this._refreshNeeded.next();
         })
       )
@@ -157,7 +160,7 @@ export class OrderService {
     order.isConfirmed = newIsConfirmed;
     return this.httpClient.put<Order>(`${restaurantOrderIsConfirmedURL}/${newIsConfirmed.valueOf()}`, order)
       .pipe(
-        tap(()=> {
+        tap(() => {
           this._refreshNeeded.next();
         })
       )

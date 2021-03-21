@@ -13,8 +13,8 @@
       </mat-toolbar-row>
     </mat-toolbar>
   <br><br><br>
-  <app-tables-list-display></app-tables-list-display>
-  <app-orders-list-display [createPermission] = "true">
+  <app-tables-list-display [isWaiter] = "true"></app-tables-list-display>
+  <app-orders-list-display [createPermission] = "true" [isWaiter] = "true">
   </app-orders-list-display>
 <app-menus-list-display></app-menus-list-display>
 

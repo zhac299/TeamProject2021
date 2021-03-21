@@ -12,6 +12,12 @@
   </div>
   <div class="row">
     <mat-form-field class="col">
+      <mat-label>Ingredient</mat-label>
+      <mat-select placeholder="Ingredient" [(ngModel)]="data.menu.ingredients" multiple>
+        <mat-option *ngFor="let ing of ingredients" [value]="ing.id">{{ing.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col">
       <mat-label>Description</mat-label>
       <textarea matInput class="fixInput" [(ngModel)]="data.menu.description"></textarea>
     </mat-form-field>

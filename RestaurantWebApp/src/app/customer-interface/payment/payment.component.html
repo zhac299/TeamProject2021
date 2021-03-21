@@ -1,0 +1,97 @@
+<h1 class="paymentTitle">Payment</h1>
+<mat-horizontal-stepper #stepper class="paymentStepper">
+    <mat-step [stepControl]="reviewOrderGroup" #step errorMessage="Order Confirmation Required!"
+        [hasError]="this.interacted">
+        <form [formGroup]="reviewOrderGroup">
+            <ng-template matStepLabel>Review your Order</ng-template>
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Order Items
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Click to review contents of your order.
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <table class="table" class="selectedItems">
+                        <tbody>
+                            <tr *ngFor="let meal of mealList">
+                                <th scope="row">{{meal.menu.name}}</th>
+                                <td>({{meal.menu.price * meal.numberSelections}}$)</td>
+                                <td>x {{meal.numberSelections}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <br><br>
+            <div>
+                <button mat-button matStepperNext (click)="orderReviewed()">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="paymentGroup" #step errorMessage="Payment is required" [hasError]="this.correctInputs">
+        <form [formGroup]="paymentGroup">
+            <ng-template matStepLabel>Insert Your Card Details</ng-template>
+            <mat-form-field>
+                <mat-label>Card Number</mat-label>
+                <input matInput onkeyup="this.value=this.value.replace(/(\d\d\d\d)(\d)/g,'$1-$2')"
+                    placeholder="XXXX-XXXX-XXXX-XXXX" (input)="checkCardInput()" formControlName="cardNumberControl"
+                    [maxLength]="19" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Expiration Date</mat-label>
+                <input matInput onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2')" placeholder="XX/XXXX"
+                    (input)="checkCardInput()" formControlName="expDateControl" [maxLength]="7" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>CVV Code</mat-label>
+                <input matInput placeholder="XXX" (input)="checkCardInput()" formControlName="cvvCodeControl"
+                    [maxLength]="3" required>
+            </mat-form-field>
+            <div *ngIf="this.interacted == false && this.correctInputs == false && this.isPaid == false 
+        && this.isConfirmed == true; else isPaidBlock">
+                <button mat-button matStepperNext (click)="pay()">Pay</button>
+            </div>
+            <ng-template #isPaidBlock>
+                <div class="isPaidBlock"
+                    *ngIf="this.isPaid == true && this.isConfirmed == true; else wrongDetailsBlock">
+                    <b>You have already paid!</b>
+                </div>
+            </ng-template>
+            <ng-template #wrongDetailsBlock>
+                <div class="wrongDetailsBlock" *ngIf="this.interacted == false && this.correctInputs == true 
+          && this.isPaid == false && this.isConfirmed == true; else notConfirmedBlock">
+                    <b>The Card Details are Wrong!</b>
+                </div>
+            </ng-template>
+            <ng-template #notConfirmedBlock>
+                <div class="notConfirmedBlock" *ngIf="this.isConfirmed == false">
+                    <b>Your Order has not been confirmed yet!</b>
+                </div>
+            </ng-template>
+            <br>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <ng-template #doneBlock>
+            <div class="doneBlock" *ngIf="this.isPaid == true && this.interacted == false;
+         else notPaidBlock">
+                <p>Payment Confirmed!</p>
+            </div>
+        </ng-template>
+        <ng-template #notPaidBlock>
+            <div class="notPaidBlock">
+                <p>Please do all the steps first!</p>
+            </div>
+        </ng-template>
+        <button mat-button (click) = "navigateToMenu()">Go back to Menu</button><br><br>
+        <button mat-button matStepperPrevious>Back</button>
+    </mat-step>
+</mat-horizontal-stepper>

@@ -1,11 +1,11 @@
-import { Component, ElementRef, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { Customer } from 'src/models/Customer';
-import { Meal } from 'src/models/Meal';
+import { Router } from '@angular/router';
+import { Meal } from '../../../models/Meal';
+import { Order } from '../../../models/Order';
+import { CustomerService } from '../../customer.service';
+import { OrderService } from '../../order.service';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
-import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-order-tracker',
@@ -15,47 +15,47 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 export class OrderTrackerComponent implements OnInit {
 
   mealList: Meal[];
-  customerObservable: Observable<Customer>;
-  customer: Customer;
+  customerId: number;
   orderPlaced: Boolean;
-  orderStatus: String = "You haven't placed an order yet!";
+  orderStatus: String;
+  orders: Order[] = [];
+  tableNumber: number;
 
   constructor(
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
+    private customerService: CustomerService,
+    private orderService: OrderService,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) data) {
-      this.customerObservable = data.customer;
-    }
-
-  async ngOnInit(): Promise<void> {
-    this.customer = await this.customerObservable.pipe(take(1)).toPromise();
-    this.displayStatus();
-    if (this.customer.orders.length == 0) {
-      this.orderPlaced = false;
-    } else {
-      this.orderPlaced = true;
-      for (let order of this.customer.orders) {
-        this.mealList = order.meal;
-      }
-    }
+    this.customerId = data.customerId;
+    this.tableNumber = data.tableNumber;
   }
 
-  displayStatus(): void {
-    for (let order of this.customer.orders) {
-      if (order.isDelivered == true) {
-        this.orderStatus = "Order was delivered... Buen apetito!";
-        if (order.isPaid == true) {
-          this.orderStatus = this.orderStatus + " And order was paid... Muchas Gracias!";
-        }
-      } else if (order.isConfirmed == true) {
-        this.orderStatus = "Order was confirmed by a waiter... Paciencia por favor!";
-        if (order.isPaid == true) {
-          this.orderStatus = this.orderStatus + " And order was paid... Muchas Gracias!";
-        }
-      } else {
-        this.orderStatus = "Order has not been confirmed yet... Paciencia por favor!";
-      }
-    }
-    console.log(this.orderStatus);
+  ngOnInit(): void {
+    this.displayOrders();
+  }
+
+  displayOrders(): void {
+    this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
+      customer.orders.forEach((customerOrder) => {
+        this.orderService.getOrders().subscribe((orders) => {
+          orders.forEach((order) => {
+            if (order.id == customerOrder.id) {
+              this.orders.push(order);
+            }
+          })
+        })
+      })
+    })
+  }
+
+  navigateToPayment(orderId: number): void {
+    this.router.navigate(['/payment'], 
+          { queryParams: { 
+            tableNumber: this.tableNumber,
+            orderId: orderId, 
+            customerId: this.customerId} });
+    this.dialogRef.close();
   }
 
   close(): void {
