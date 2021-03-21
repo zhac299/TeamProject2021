@@ -36,7 +36,7 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   orders: Order[];
   subscription: Subscription;
   refreshTimer$ = timer(0, 1000)
-    .pipe(tap(() => console.log('Fetching Orders...')));
+    .pipe(tap());
   resize$ = fromEvent(window, 'resize');
   windowWidth: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
 

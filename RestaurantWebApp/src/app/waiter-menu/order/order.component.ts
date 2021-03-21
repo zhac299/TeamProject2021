@@ -29,8 +29,7 @@ export class OrderComponent implements OnInit {
   order$ = this.orderSubject$.asObservable();
   subscription: Subscription;
   refreshTimer$ = timer(0, 1000)
-    .pipe(tap(() => console.log('Fetching...')));
-
+    .pipe(tap());
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
@@ -52,7 +51,6 @@ export class OrderComponent implements OnInit {
     if(this.data.isKitchenStaff == undefined) {
       this.data.isKitchenStaff = false;
     }
-    console.log(this.data.order[0].total);
   }
   
   updateOrderReady(order: Order): void{

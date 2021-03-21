@@ -19,13 +19,12 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
   menuList: Menu[] = [];
   subscription: Subscription;
-  refreshTimer$ = timer(0, 60000)
-    .pipe(tap(() => console.log('Fetching Menus...')));
+  refreshTimer$ = timer(0, 1000)
+    .pipe(tap());
   
   isAuth: boolean = true;
 
   ngOnInit(): void {
-    console.log(this.router.url)
     if(this.router.url === '/client-menu') {
       this.isAuth = false;
     }
@@ -35,7 +34,6 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
       this.menuList = menu;
       this.menuList.forEach(element => {
         this.menuService.getIngredients(element.id).subscribe(ings => {
-          console.log(ings)
           element.ingredientsName = "";
           ings.forEach(name => {
             element.ingredientsName +=  name.ingredient.name+", ";

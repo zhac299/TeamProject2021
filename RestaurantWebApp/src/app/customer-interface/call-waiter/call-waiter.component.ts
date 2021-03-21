@@ -38,9 +38,9 @@ export class CallWaiterComponent implements OnInit {
       table.needsHelp = true;
       this.tableService.updateTable(table).subscribe();
     })
-    this.tableService.refreshNeeded.subscribe(() => {
-      this.getNeedHelp();
-    })
+    // this.tableService.refreshNeeded.subscribe(() => {
+    //   this.getNeedHelp();
+    // })
     this.openSnackBar("A waiter will come to you","Please Wait");
   }
 
@@ -49,9 +49,9 @@ export class CallWaiterComponent implements OnInit {
       table.needsHelp = false;
       this.tableService.updateTable(table).subscribe();
     })
-    this.tableService.refreshNeeded.subscribe(() => {
-      this.getNeedHelp();
-    })
+    // this.tableService.refreshNeeded.subscribe(() => {
+    //   this.getNeedHelp();
+    // })
     this.openSnackBar("You canceled the waiter call","Still need help?");
   }
 

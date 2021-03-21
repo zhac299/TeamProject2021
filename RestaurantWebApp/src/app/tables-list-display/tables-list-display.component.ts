@@ -20,7 +20,7 @@ export class TablesListDisplayComponent implements OnInit {
   tableList: Table[] = [];
   subscription: Subscription;
 
-  refreshTimer$ = timer(0, 5000).pipe(tap(() => console.log('Fetching Tables...')));
+  refreshTimer$ = timer(0, 1000).pipe(tap());
   ORDER_BUTTON_WIDTH = 300;
   resize$ = fromEvent(window, 'resize');
   windowWidth: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
@@ -38,7 +38,7 @@ export class TablesListDisplayComponent implements OnInit {
       this.subscription = this.refreshTimer$.subscribe(this.tableService.refresh$);
       this.resize$
         .pipe(debounceTime(250),
-          tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
+          tap(),
         )
         .subscribe((w) => {
           this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
@@ -52,7 +52,7 @@ export class TablesListDisplayComponent implements OnInit {
       this.subscription = this.refreshTimer$.subscribe(this.tableService.refresh$);
       this.resize$
         .pipe(debounceTime(250),
-          tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
+          tap(),
         )
         .subscribe((w) => {
           this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
