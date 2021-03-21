@@ -7,6 +7,7 @@ import { Meal } from '../../../models/Meal';
 import { BasketComponent } from '../basket/basket.component';
 import { CustomerService } from '../../customer.service';
 import { OrderService } from '../../order.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'payment-stepper',
@@ -27,13 +28,14 @@ export class PaymentComponent implements OnInit {
   wrongDetails: Boolean = false;
   isPaid: Boolean = false;
   isConfirmed: Boolean = false;
+  paramsObject:any;
 
   constructor(
     private snackBar: MatSnackBar,
     private _formBuilder: FormBuilder,
-    // private basketComponent: BasketComponent,
     private customerService: CustomerService,
-    private orderService: OrderService) { }
+    private orderService: OrderService,
+    private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.reviewOrderGroup = this._formBuilder.group({
@@ -44,6 +46,10 @@ export class PaymentComponent implements OnInit {
       expDateControl: ['', Validators.required],
       cvvCodeControl: ['', Validators.required]
     });
+
+    this.route.queryParamMap.subscribe((params) => {
+      this.paramsObject = { ...params.keys, ...params };
+    });
     // this.customerService.refreshNeeded.subscribe(() => {
     //   this.updateMealList();
     // })
@@ -51,20 +57,15 @@ export class PaymentComponent implements OnInit {
   }
 
   updateMealList(): void {
-    // this.customerService.getCustomerByID(this.basketComponent.customerId).subscribe((customer) => {
-    //   // if (customer.orders[0] == undefined) {
-    //   //   this.isConfirmed = false;
-    //   //   this.isPaid = false;
-    //   // } else {
-    //     if (customer.orders[0].isPaid == true) {
-    //       this.isPaid = true;
-    //     }
-    //     if (customer.orders[0].isConfirmed == true) {
-    //       this.isConfirmed = true;
-    //     }
-    //     this.mealList = customer.orders[0].meal;
-
-    // })
+    this.orderService.getOrderById(this.paramsObject.params.orderId).subscribe((order) => {
+      if (order.isPaid == true) {
+        this.isPaid = true;
+      }
+      if (order.isConfirmed == true) {
+        this.isConfirmed = true;
+      }
+      this.mealList = order.meal;
+    })
   }
 
   orderReviewed(): void {
@@ -106,10 +107,10 @@ export class PaymentComponent implements OnInit {
       this.needToReview = false;
       if (!this.correctInputs) {
         this.wrongDetails = false;
-        // this.customerService.getCustomerByID(this.basketComponent.customerId).subscribe((customer) => {
-        //   customer.orders[0].isPaid = true;
-        //   this.orderService.updateIsPaid(customer.orders[0]);
-        // })
+        this.orderService.getOrderById(this.paramsObject.params.orderId).subscribe((order) => {
+          order.isPaid = true;
+          this.orderService.updateIsPaid(order);
+        })
       } else {
         this.wrongDetails = true;
       }

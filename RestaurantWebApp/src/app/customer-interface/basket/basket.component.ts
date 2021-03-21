@@ -131,7 +131,7 @@ export class BasketComponent implements OnInit {
 
   navigateToPayment(orderId: number): void {
     this.router.navigate(['/payment'], 
-          { queryParams: {  customerId: this.customerId, orderId: orderId  } });
+          { queryParams: {  orderId: orderId  } });
     this.dialogRef.close();
   }
 
