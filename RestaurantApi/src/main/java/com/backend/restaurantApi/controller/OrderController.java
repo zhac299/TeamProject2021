@@ -16,9 +16,15 @@ import java.util.PriorityQueue;
 @RequestMapping(path = "/api/v1/")
 public class OrderController {
 
+    /**
+     * Autowires to the Order repository.
+     */
     @Autowired
     OrderRepository orderRepo;
 
+    /**
+     * Autowires to the Order service.
+     */
     @Autowired
     OrderService orderService;
 
