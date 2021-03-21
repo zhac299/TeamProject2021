@@ -7,7 +7,7 @@ import { Meal } from '../../../models/Meal';
 import { BasketComponent } from '../basket/basket.component';
 import { CustomerService } from '../../customer.service';
 import { OrderService } from '../../order.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'payment-stepper',
@@ -31,6 +31,7 @@ export class PaymentComponent implements OnInit {
   paramsObject:any;
 
   constructor(
+    private router: Router,
     private snackBar: MatSnackBar,
     private _formBuilder: FormBuilder,
     private customerService: CustomerService,
@@ -119,6 +120,14 @@ export class PaymentComponent implements OnInit {
     }
     this.isPaid = true;
     this.openSnackBar("Your payment is confirmed", "Muchas Gracias!")
+  }
+
+  navigateToMenu(): void {
+    console.log(this.paramsObject.params);
+    this.router.navigate(['/customer-menu'], 
+          { queryParams: {  
+            customerId: this.paramsObject.params.customerId,
+            selectedTable: this.paramsObject.params.tableNumber } });
   }
 
   private openSnackBar(message: string, action: string) {
