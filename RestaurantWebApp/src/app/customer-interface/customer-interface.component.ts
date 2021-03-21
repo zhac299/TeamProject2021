@@ -56,69 +56,10 @@ export class CustomerInterfaceComponent implements OnInit {
     private router: Router) { }
 
   ngAfterViewInit(): void {
-    // this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
-    // this.elementRef.nativeElement.ownerDocument.body.backgroundImage = 'url(assets/images/background.jpg)';
 
     // Wrap every letter in a span
     var textWrapper = document.querySelector('.menuTitle');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-    // ANIMATE TITLE
-    anime.timeline({loop: false})
-      .add({
-        delay: 1000
-      })
-      .add({
-        targets: '.menuTitle .letter',
-        opacity: [0,1],
-        scale: 2,
-        easing: "easeInOutQuad",
-        duration: 250,
-        delay: (el, i) => 50 * (i+1)
-      }).add({
-        targets: '.toolbar',
-        translateY: [100, 0],
-        opacity: [0,1],
-        duration: 250,
-        delay: (el, i) => {
-          return 500 + 100 * i;
-        }
-      }).add({
-      targets: '.catDiv',
-      translateY: [100, 0],
-      opacity: [0,1],
-      duration: 250,
-      delay: (el, i) => {
-        return 500 + 100 * i;
-      }
-    }).add({
-      targets: '.menuCard',
-      translateY: [100, 0],
-      opacity: [0,1],
-      duration: 250,
-      delay: (el, i) => {
-        return 500 + 100 * i;
-      }
-    });
-    //ANIMATE ICON
-    // anime({
-    //   targets: '.dividerIcon',
-    //   opacity: [0,1],
-    //   easing: "easeInOutQuad",
-    //   duration: 500,
-    //   scale: {
-    //     value: [.5,1],
-    //     duration: 2000,
-    //     delay: 800,
-    //     easing: 'easeInOutQuart'
-    //   },
-    //   rotate: {
-    //     value: 360,
-    //     duration: 1000,
-    //     easing: 'easeInOutSine'
-    //   },
-    //   delay: 1000
-    // });
   }
 
   ngOnInit(): void {
