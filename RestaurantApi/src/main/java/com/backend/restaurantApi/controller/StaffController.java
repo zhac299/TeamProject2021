@@ -21,14 +21,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The Controller of the Staff Table.
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping(path = "/api/v1/")
 public class StaffController {
 
+    /**
+     * Autowires to the the Staff repository.
+     */
     @Autowired
     StaffRepository staffRepo;
 
+    /**
+     * Autowires to the Staff service.
+     */
     @Autowired
     StaffService staffService;
 
