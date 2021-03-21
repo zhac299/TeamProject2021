@@ -25,7 +25,7 @@
   <div class="container-fluid display-1">
     <p class="row justify-content-center categoryTitle"><u>Today's Selection</u></p>
   </div>
-  <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
+  <mat-grid-list [cols]="categories.length" rowHeight="150px" gutterSize="60px">
     <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"
                    (click)="selectCategory(category)">
       <button class="category" mat-raised-button>{{category.category}}</button>
