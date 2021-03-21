@@ -4,48 +4,48 @@
   </div>
 </div>
 
-<mat-toolbar class="container-fluid toolbar">
-  <button mat-icon-button (click)="goHome()" title="Home page">
-    <mat-icon>home</mat-icon>
-  </button>
-  <span></span>
-  <ready-to-order></ready-to-order>
-  <span class="spacer"></span>
-  <button mat-icon-button (click)="openTracker()" title="Order Tracker">
-    <mat-icon>timer</mat-icon>
-  </button>
-  <button mat-icon-button (click)="openBasket()" title="Shopping Cart">
-    <mat-icon>shopping_cart</mat-icon>
-    <span class='badge badge-warning' id='lblCartCount'> {{selectedMeals.length}} </span>
-  </button>
-</mat-toolbar>
-<expansion-pannel class="expansionPannel"></expansion-pannel>
-<br>
-<div class="container-fluid catDiv">
-  <div class="container-fluid display-1">
-    <p class="row justify-content-center categoryTitle"><u>Categories</u></p>
+<div class="toolsAndCategories">
+  <mat-toolbar class="container-fluid toolbar toolbarDiv">
+    <button mat-icon-button (click)="goHome()" title="Home page">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span></span>
+    <ready-to-order></ready-to-order>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="openTracker()" title="Order Tracker">
+      <mat-icon>timer</mat-icon>
+    </button>
+    <button mat-icon-button (click)="openBasket()" title="Shopping Cart">
+      <mat-icon>shopping_cart</mat-icon>
+      <span class='badge badge-warning' id='lblCartCount'> {{selectedMeals.length}} </span>
+    </button>
+  </mat-toolbar>
+
+  <expansion-pannel class="expansionPannel"></expansion-pannel>
+  <div class="container-fluid catDiv">
+    <div class="container-fluid display-1">
+      <p class="row justify-content-center categoryTitle"><u>Today's Selection</u></p>
+    </div>
+    <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
+      <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"
+                     (click)="selectCategory(category)">
+        <button class="category" mat-raised-button>{{category.category}}</button>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
-  <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
-    <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"
-                   (click)="selectCategory(category)">
-      <button class="category" mat-raised-button>{{category.category}}</button>
-    </mat-grid-tile>
-  </mat-grid-list>
 </div>
 
-<div class="container menuCard">
+<div class="container-fluid menuCard">
 
-  <div class="container-fluid display-2">
+  <div class="container-fluid display-2 justify-content-center">
     <p class="row justify-content-center categoryTitle"><u>{{this.selectedCategory.category}}</u></p>
   </div>
   <div class="container-fluid">
-    <div class="h-100 row" [@listAnimation]="menu.length">
-      <div id="list" class="col-4 menuUI" *ngFor="let menuItem of menu">
-        <mat-card class="mat-card">
+    <div class="h-100 row justify-content-center">
+        <mat-card class="card col-4" id="list" *ngFor="let menuItem of menu">
           <mat-card-header class="mat-card-header">
             <mat-card-title class="menu-item-name ">
               <p>{{menuItem.name}}</p>
-<!--              <p>£{{menuItem.price}}</p>-->
             </mat-card-title>
             <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
           </mat-card-header>
@@ -75,7 +75,6 @@
             </ng-template>
           </mat-card-actions>
         </mat-card>
-      </div>
     </div>
   </div>
 
