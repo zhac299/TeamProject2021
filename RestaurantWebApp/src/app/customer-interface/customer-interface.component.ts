@@ -56,10 +56,6 @@ export class CustomerInterfaceComponent implements OnInit {
     private router: Router) { }
 
   ngAfterViewInit(): void {
-
-    // Wrap every letter in a span
-    var textWrapper = document.querySelector('.menuTitle');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
   }
 
   ngOnInit(): void {
