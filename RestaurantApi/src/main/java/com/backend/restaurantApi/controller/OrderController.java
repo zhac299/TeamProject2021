@@ -22,6 +22,10 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
+    /**
+     * Gets list of all orders.
+     * @return a list of Order objects.
+     */
     @GetMapping("/orders")
     public List<Order> index() {
         return orderRepo.findAll();
