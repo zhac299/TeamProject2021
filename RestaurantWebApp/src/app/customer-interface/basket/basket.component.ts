@@ -78,18 +78,17 @@ export class BasketComponent implements OnInit {
         this.orderService.waiterId = table.waiterId;  
         table.isReady = true;
         this.tableService.updateTable(table);
-      })
-         
+      })       
       this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
         this.orderService.createNewOrder(customer, this.orderTotal).subscribe((order) => {
           for (var i = 0; i < this.mealList.length; i++) {
             this.mealList[i].order = order;
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
           }
+          this.mealList = [];
         });
       })
       this.orderPlaced = true;
-      this.mealList = [];
       this.openSnackBar("You placed your order", "Enjoy!")
     }
   }
