@@ -64,6 +64,7 @@ import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dial
 import { ClientMenuComponent } from './customer-interface/client-menu/client-menu.component';
 import { ClientRegisterComponent } from './customer-interface/client-menu/client-register/client-register.component';
 import { CustomersListComponent } from './manager-menu/customers-list/customers-list.component';
+import { PaymentComponent } from './customer-interface/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { CustomersListComponent } from './manager-menu/customers-list/customers-
     AddIngredientDialogComponent,
     ClientMenuComponent,
     ClientRegisterComponent,
-    CustomersListComponent
+    CustomersListComponent,
+    PaymentComponent
   ],
     imports: [
         BrowserModule,

@@ -9,7 +9,7 @@
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-  <div *ngIf="orderPlaced == false" class = list>
+  <div class = list>
     <hr>
     <table class="table" class="selectedItems">
       <tbody>
@@ -57,5 +57,5 @@
       </mat-list-item>
     </mat-list>
   </div>
-  <payment-stepper *ngIf="orderPlaced == true"></payment-stepper>
+  <!-- <payment-stepper *ngIf="orderPlaced == true"></payment-stepper> -->
 </mat-dialog-content>
