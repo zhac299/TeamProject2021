@@ -51,9 +51,9 @@ export class PaymentComponent implements OnInit {
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
     });
-    // this.customerService.refreshNeeded.subscribe(() => {
-    //   this.updateMealList();
-    // })
+    this.customerService.refreshNeeded.subscribe(() => {
+      this.updateMealList();
+    })
     this.updateMealList();
   }
 
