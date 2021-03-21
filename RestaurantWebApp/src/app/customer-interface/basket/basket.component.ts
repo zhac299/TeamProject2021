@@ -9,6 +9,8 @@ import { Meal } from '../../../models/Meal';
 import { Table } from '../../../models/Table';
 import { CustomerService } from '../../customer.service';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
+import { Router } from '@angular/router';
+import { Order } from '../../../models/Order';
 
 @Component({
   selector: 'app-basket',
@@ -22,6 +24,7 @@ export class BasketComponent implements OnInit {
   orderTotal: number = 0;
   customerId: number;
   tableNumber: number;
+  orders: Order[] = [];
 
   constructor(
     private snackBar: MatSnackBar,
@@ -30,6 +33,7 @@ export class BasketComponent implements OnInit {
     private orderService: OrderService,
     private customerService: CustomerService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) data) {
     this.mealList = data.selectedMeals;
     this.customerId = data.customerId;
@@ -39,6 +43,7 @@ export class BasketComponent implements OnInit {
   ngOnInit(): void {
     this.updateOrderPlaced();
     this.getInitialOrderTotal();
+    this.displayOrders();
   }
 
   getInitialOrderTotal() {
@@ -102,11 +107,32 @@ export class BasketComponent implements OnInit {
     }
   }
 
+  displayOrders(): void {
+    this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
+      customer.orders.forEach((customerOrder) => {
+        this.orderService.getOrders().subscribe((orders) => {
+          orders.forEach((order) => {
+            if (order.id == customerOrder.id) {
+              console.log(order);
+              this.orders.push(order);
+            }
+          })
+        })
+      })
+    })
+  }
+
   private openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,
       panelClass: ['orderSnackBar']
     });
+  }
+
+  navigateToPayment(orderId: number): void {
+    this.router.navigate(['/payment'], 
+          { queryParams: {  customerId: this.customerId, orderId: orderId  } });
+    this.dialogRef.close();
   }
 
   close(): void {

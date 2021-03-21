@@ -57,5 +57,10 @@
       </mat-list-item>
     </mat-list>
   </div>
+  <div *ngFor = "let order of orders">
+    <p>{{order.id}}
+      <button mat-button (click) = "navigateToPayment(order.id)"> pay</button>
+    </p>
+  </div>
   <!-- <payment-stepper *ngIf="orderPlaced == true"></payment-stepper> -->
 </mat-dialog-content>
