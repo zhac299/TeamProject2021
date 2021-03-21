@@ -154,7 +154,7 @@ export class CustomerInterfaceComponent implements OnInit {
   openTracker() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.data = { customerId: this.paramsObject.params.customerID };
+    dialogConfig.data = {  customerId: this.paramsObject.params.customerID, tableNumber: this.paramsObject.params.selectedTable };
     dialogConfig.width = "60%";
     const dialogRef = this.dialog.open(OrderTrackerComponent, dialogConfig);
 

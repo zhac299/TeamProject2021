@@ -11,34 +11,26 @@
     </mat-grid-tile>
     <br>
   </mat-grid-list>
-  <hr>
-  <div *ngIf="orderPlaced == true">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Order Items
-        </mat-panel-title>
-        <mat-panel-description>
-          Click to review contents of your order.
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <table class="table" class="selectedItems">
-        <tbody>
-          <tr *ngFor="let meal of mealList">
-            <th scope="row">{{meal.menu.name}}</th>
-            <td>{{meal.menu.price * meal.numberSelections}}$</td>
-            <td>x {{meal.numberSelections}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </mat-expansion-panel>
-    <br>
-  </div>
-  <div class="orderStatusTitle">
-    Order Status
-  </div>
-  <div class="orderStatusWrapper">
-    <!-- <mat-spinner class="loadingSpinner" *ngIf="orderPlaced == true"></mat-spinner> -->
-    <button mat-button class="orderStatus">{{orderStatus}}</button>
-  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Order #</th>
+        <th scope="col">Total</th>
+        <th scope="col">Confirmed</th>
+        <th scope="col">Status</th>
+        <th scope="col">Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let order of orders">
+        <td>{{order.id}}</td>
+        <td>{{order.total}}</td>
+        <td>{{order.isConfirmed}}</td>
+        <td>{{order.isPaid}}</td>
+        <td *ngIf = "order.isPaid == false && order.isConfirmed == true">
+          <button mat-button (click) = "navigateToPayment(order.id)">Pay</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </mat-dialog-content>

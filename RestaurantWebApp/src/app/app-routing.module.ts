@@ -13,7 +13,6 @@ import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingred
 import { ClientMenuComponent } from './customer-interface/client-menu/client-menu.component';
 import { ClientRegisterComponent } from './customer-interface/client-menu/client-register/client-register.component';
 import { CustomersListComponent } from './manager-menu/customers-list/customers-list.component';
-import { PaymentStepperComponent } from './customer-interface/basket/payment-stepper/payment-stepper.component';
 import { PaymentComponent } from './customer-interface/payment/payment.component';
 
 const APP_ROUTES: Routes = [

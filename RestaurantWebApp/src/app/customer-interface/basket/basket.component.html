@@ -10,7 +10,6 @@
     </mat-grid-tile>
   </mat-grid-list>
   <div class = list>
-    <hr>
     <table class="table" class="selectedItems">
       <tbody>
         <tr *ngFor="let meal of mealList">
@@ -30,7 +29,6 @@
             </button>
           </td>
         </tr>
-        <hr>
         <tr *ngIf="orderTotal > 0">
           <td>
             <button mat-button>
@@ -57,10 +55,4 @@
       </mat-list-item>
     </mat-list>
   </div>
-  <div *ngFor = "let order of orders">
-    <p>{{order.id}}
-      <button mat-button (click) = "navigateToPayment(order.id)"> pay</button>
-    </p>
-  </div>
-  <!-- <payment-stepper *ngIf="orderPlaced == true"></payment-stepper> -->
 </mat-dialog-content>

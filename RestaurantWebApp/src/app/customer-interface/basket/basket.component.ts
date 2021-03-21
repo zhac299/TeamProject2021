@@ -4,9 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MealService } from '../../meal.service';
 import { OrderService } from '../../order.service';
 import { TableService } from '../../table.service';
-import { Customer } from '../../../models/Customer';
 import { Meal } from '../../../models/Meal';
-import { Table } from '../../../models/Table';
 import { CustomerService } from '../../customer.service';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 import { Router } from '@angular/router';
@@ -43,7 +41,6 @@ export class BasketComponent implements OnInit {
   ngOnInit(): void {
     this.updateOrderPlaced();
     this.getInitialOrderTotal();
-    this.displayOrders();
   }
 
   getInitialOrderTotal() {
@@ -107,21 +104,6 @@ export class BasketComponent implements OnInit {
     }
   }
 
-  displayOrders(): void {
-    this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
-      customer.orders.forEach((customerOrder) => {
-        this.orderService.getOrders().subscribe((orders) => {
-          orders.forEach((order) => {
-            if (order.id == customerOrder.id) {
-              console.log(order);
-              this.orders.push(order);
-            }
-          })
-        })
-      })
-    })
-  }
-
   private openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,
@@ -130,7 +112,6 @@ export class BasketComponent implements OnInit {
   }
 
   navigateToPayment(orderId: number): void {
-    console.log(this.tableNumber);
     this.router.navigate(['/payment'], 
           { queryParams: { 
             tableNumber: this.tableNumber,
