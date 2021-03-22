@@ -1,4 +1,10 @@
-<img class = "menuTitle" src="assets/images/burito.png">
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <p class="display-3"><b>Menu</b></p>
+    <img src="assets/images/burito.png" class="deliveryImg">
+  </div>
+</div>
+
 <br><br>
 <table class="table">
   <thead class = "tableHead">
@@ -42,7 +48,7 @@
     </td>
     <td>
       <button *ngIf="isAuth" mat-button (click)="deleteCategoryItem(category)"><b>Delete</b></button>
-    </td>  
+    </td>
   </tr>
   </tbody>
 </table>
