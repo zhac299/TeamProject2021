@@ -25,7 +25,7 @@
 <div class="container-fluid catDiv">
   <mat-grid-list [cols]="categories.length" rowHeight="150px" gutterSize="60px">
     <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"
-                   (click)="selectCategory(category)">
+      (click)="selectCategory(category)">
       <button class="category" mat-raised-button>{{category.category}}</button>
     </mat-grid-tile>
   </mat-grid-list>
@@ -41,7 +41,7 @@
       <mat-card class="card col-4" id="list" *ngFor="let menuItem of menu">
         <mat-card-header class="mat-card-header">
           <mat-card-title class="menu-item-name ">
-            <p>{{menuItem.name}}</p>
+            <p><b>{{menuItem.name}}</b></p>
           </mat-card-title>
           <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
         </mat-card-header>
@@ -51,10 +51,17 @@
             {{menuItem.description}}
           </p>
         </mat-card-content>
+        <mat-card-content class="menu-item-calories-allergens">
+          <p>
+            <b>{{menuItem.calories}} calories</b>
+          </p>
+          <p class = "allergens">
+
+          </p>
+        </mat-card-content>
         <mat-card-actions class="card-actions">
           <button mat-raised-button class="action-button"
-                  *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections"
-                  (click)="addMeal(menuItem)">
+            *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections" (click)="addMeal(menuItem)">
             Add to Cart
           </button>
           <ng-template #editMealSelections>

@@ -1,13 +1,13 @@
 <img class = "menuTitle" src="assets/images/burito.png">
-<h1>Manage Menu Items</h1>
+<br><br>
 <table class="table">
-  <thead>
+  <thead class = "tableHead">
   <tr>
     <th scope="col">Name</th>
     <th scope="col">Description</th>
     <th scope="col">Price</th>
     <th scope="col">Ingredients</th>
-    <th scope="col"></th>
+    <th scope="col">Edit/Delete</th>
   </tr>
   </thead>
   <tbody>
@@ -17,31 +17,32 @@
     <td>{{menu.price}}</td>
     <td>{{menu.ingredientsName}}</td>
     <td class="text-right">
-      <button *ngIf="isAuth" mat-button (click)="openEditMenuDialog(menu)">Edit</button>
-      <button *ngIf="isAuth" mat-button (click)="deleteMenuItem(menu)">Delete</button>
+      <button *ngIf="isAuth" mat-button (click)="openEditMenuDialog(menu)"><b>Edit</b></button>
+      <button *ngIf="isAuth" mat-button (click)="deleteMenuItem(menu)"><b>Delete</b></button>
     </td>
   </tr>
   </tbody>
 </table>
-<button *ngIf="isAuth" mat-button (click)="openAddMenuDialog()">Add</button>
-
-<h1>Manage Categories</h1>
-<button mat-button (click)="openAddCategoryDialog()">Add Category</button>
+<button mat-button (click)="openAddCategoryDialog()" class = "addCategoryButton">Add Category</button>
 <table class="table">
-  <thead>
+  <thead class = "tableHead">
   <tr>
     <th scope="col">#</th>
-    <th scope="col" class="text-center">Cateogory</th>
+    <th scope="col" class="text-center">Category</th>
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
   </thead>
   <tbody>
   <tr class="menuItem" *ngFor="let category of categories; let i = index">
     <th scope="row" >{{i+1}}</th>
     <td class="text-center">{{category.category}}</td>
-    <td class="text-right">
-      <button *ngIf="isAuth" mat-button (click)="openEditCategoryDialog(category)">Edit</button>
-      <button *ngIf="isAuth" mat-button (click)="deleteCategoryItem(category)">Delete</button>
+    <td>
+      <button *ngIf="isAuth" mat-button (click)="openEditCategoryDialog(category)"><b>Edit</b></button>
     </td>
+    <td>
+      <button *ngIf="isAuth" mat-button (click)="deleteCategoryItem(category)"><b>Delete</b></button>
+    </td>  
   </tr>
   </tbody>
 </table>

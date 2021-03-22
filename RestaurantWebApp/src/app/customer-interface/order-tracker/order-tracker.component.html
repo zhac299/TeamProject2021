@@ -1,15 +1,14 @@
 <mat-dialog-content>
-  <mat-grid-list cols="1" rowHeight="50px">
-    <mat-grid-tile colspan="1">
-      <br>
-      <div class="title"> Order Tracker</div>
+  <mat-grid-list cols="1" rowHeight="80px">
+    <mat-grid-tile colspan="1" class="title">
+      Orders
     </mat-grid-tile>
     <br>
   </mat-grid-list>
   <table class="table">
-    <thead>
+    <thead class = "tableHead">
       <tr>
-        <th scope="col">Order #</th>
+        <th scope="col">#</th>
         <th scope="col">Status</th>
         <th scope="col">Total</th>
         <th scope="col">Confirmed</th>
@@ -18,7 +17,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
-        <td>{{order.id}}</td>
+        <td><b>{{order.id}}</b></td>
         <td *ngIf = "!order.isConfirmed">A waiter has to confirm the order</td>
         <td *ngIf = "order.isConfirmed">Order is being prepared</td>
         <td *ngIf = "order.isReady">Order is ready</td>
