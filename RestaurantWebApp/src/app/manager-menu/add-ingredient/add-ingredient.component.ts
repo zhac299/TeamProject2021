@@ -32,7 +32,7 @@ export class AddIngredientComponent implements OnInit {
     });
   }
 
-  openAddMenuDialog() {
+  openAddIngredientDialog() {
     const title = "Add New Ingredient";
     let ingredient: Ingredient = new Ingredient();
     const dialogRef = this.dialog.open(AddIngredientDialogComponent, {
@@ -43,7 +43,6 @@ export class AddIngredientComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(staff => {
       if (ingredient && ingredient.name && ingredient.quantity) {
-        console.log(ingredient)
         this.ingredientService.createIngredient(ingredient).subscribe((st) => {
           this.getAll();
         });

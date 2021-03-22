@@ -38,7 +38,7 @@ export class AddStaffComponent implements OnInit {
 
 
 
-  openAddMenuDialog() {
+  openAddStaffDialog() {
     const title = "Add New Staff";
     let staff: Staff = new Staff();
     const dialogRef = this.dialog.open(AddStaffDialogComponent, {

@@ -8,12 +8,13 @@
   <button mat-icon-button (click)="goHome()" title="Home page">
     <mat-icon>home</mat-icon>
   </button>
-  <span></span>
+  &nbsp;&nbsp;&nbsp;
   <ready-to-order></ready-to-order>
   <span class="spacer"></span>
   <button mat-icon-button (click)="openTracker()" title="Order Tracker">
     <mat-icon>timer</mat-icon>
   </button>
+  &nbsp;&nbsp;&nbsp;
   <button mat-icon-button (click)="openBasket()" title="Shopping Cart">
     <mat-icon>shopping_cart</mat-icon>
     <span class='badge badge-warning' id='lblCartCount'> {{selectedMeals.length}} </span>
@@ -22,9 +23,6 @@
 
 <expansion-pannel class="expansionPannel"></expansion-pannel>
 <div class="container-fluid catDiv">
-  <div class="container-fluid display-1">
-    <p class="row justify-content-center categoryTitle"><u>Today's Selection</u></p>
-  </div>
   <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
     <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"
                    (click)="selectCategory(category)">
@@ -36,7 +34,7 @@
 <div class="container-fluid menuCard">
 
   <div class="container-fluid display-2 justify-content-center">
-    <p class="row justify-content-center categoryTitle"><u>{{this.selectedCategory.category}}</u></p>
+    <p class="row justify-content-center categoryTitle">{{this.selectedCategory.category}}</p>
   </div>
   <div class="container-fluid">
     <div class="h-100 row justify-content-center">

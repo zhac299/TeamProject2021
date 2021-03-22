@@ -4,7 +4,6 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { formatDate } from '@angular/common';
 import { Meal } from '../../../models/Meal';
-import { BasketComponent } from '../basket/basket.component';
 import { CustomerService } from '../../customer.service';
 import { OrderService } from '../../order.service';
 import { ActivatedRoute, Router } from '@angular/router';
