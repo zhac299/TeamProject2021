@@ -30,34 +30,38 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   refreshTimer$ = timer(0, 1000)
     .pipe(tap());
 
+  // refreshTimer$ = timer(0, 5000)
+  //   .pipe(tap(() => console.log('Fetching Menus...')));
+  
   isAuth: boolean = true;
 
   ngOnInit(): void {
     if(this.router.url === '/client-menu') {
       this.isAuth = false;
     }
-    this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
+    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.catSubscription = this.refreshTimer$.subscribe(this.categoryService.refresh$);
     this.categoryService.categories$.subscribe((categories) => {
       this.categories = categories;
     })
+    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
-      // this.menuList.forEach(element => {
-      //   this.menuService.getIngredients(element.id).subscribe(ings => {
-      //     element.ingredientsName = "";
-      //     ings.forEach(name => {
-      //       element.ingredientsName +=  name.ingredient.name+", ";
-      //     });
-      //     element.ingredientsName = element.ingredientsName.substring(0, element.ingredientsName.length-2);
-      //   });
-      // });
+      this.menuList.forEach(element => {
+        this.menuService.getIngredients(element.id).subscribe(ings => {
+          element.ingredientsName = "";
+          ings.forEach(name => {
+            element.ingredientsName +=  name.ingredient.name+", ";
+          });
+          element.ingredientsName = element.ingredientsName.substring(0, element.ingredientsName.length-2);
+        });
+      });
     });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   openEditMenuDialog(menu:Menu): void {

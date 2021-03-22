@@ -23,6 +23,7 @@
   </tr>
   </tbody>
 </table>
+<button *ngIf="isAuth" mat-button (click)="openAddMenuDialog()">Add</button>
 
 <h1>Manage Categories</h1>
 <button mat-button (click)="openAddCategoryDialog()">Add Category</button>
