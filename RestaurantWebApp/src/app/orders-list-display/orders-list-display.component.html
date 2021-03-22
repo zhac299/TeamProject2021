@@ -1,6 +1,5 @@
 <img class="orderTitle" src="assets/images/food.png">
-
-
+<br><br><br>
 <mat-grid-list [cols]="this.columns" rowHeight="300px">
   <mat-grid-tile *ngFor="let order of orders">
 
@@ -73,11 +72,5 @@
     </ng-template>
   </mat-grid-tile>
 
-  <ng-template #PaidBlock>(paid)</ng-template>
-
-  <mat-grid-tile *ngIf="createPermission">
-    <button mat-fab color="accent" class="addOrder" (click)="createNewOrder()">
-      <mat-icon>add</mat-icon>
-    </button>
-  </mat-grid-tile>
+  <ng-template #PaidBlock><br>(paid)</ng-template>
 </mat-grid-list>

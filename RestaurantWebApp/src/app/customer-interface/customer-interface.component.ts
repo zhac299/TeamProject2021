@@ -2,20 +2,16 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation } from 
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
-import {MenuService} from "../menu.service";
-import {MenuFilterService} from "../menu-filter.service";
-import {Menu} from "../../models/Menu";
-import {Customer} from 'src/models/Customer';
-import {CustomerService} from '../customer.service';
-import {BasketComponent} from './basket/basket.component';
-import {Table} from 'src/models/Table';
-import {TableService} from '../table.service';
-import {animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
-import {Meal} from 'src/models/Meal';
-import {OrderTrackerComponent} from './order-tracker/order-tracker.component';
-import {MenuCategory} from "../../models/MenuCategory";
-import {MenuCategoryService} from '../menu-category.service';
+import { MenuService } from "../menu.service";
+import { MenuFilterService } from "../menu-filter.service";
+import { Menu } from "../../models/Menu";
+import { BasketComponent } from './basket/basket.component';
+import { animate, keyframes, query, stagger, style, transition, trigger } from "@angular/animations";
+import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
+import { MenuCategory } from "../../models/MenuCategory";
+import { MenuCategoryService } from '../menu-category.service';
 import anime from 'animejs/lib/anime.es.js'
+import { Meal } from '../../models/Meal';
 
 @Component({
   selector: 'app-customer-interface',
@@ -144,7 +140,6 @@ export class CustomerInterfaceComponent implements OnInit {
 
   openBasket() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
     dialogConfig.data = { customerId: this.paramsObject.params.customerID, selectedMeals: this.selectedMeals, tableNumber: this.paramsObject.params.selectedTable };
     dialogConfig.width = "60%";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
@@ -156,8 +151,7 @@ export class CustomerInterfaceComponent implements OnInit {
 
   openTracker() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.data = {  customerId: this.paramsObject.params.customerID, tableNumber: this.paramsObject.params.selectedTable };
+    dialogConfig.data = { customerId: this.paramsObject.params.customerID, tableNumber: this.paramsObject.params.selectedTable };
     dialogConfig.width = "60%";
     const dialogRef = this.dialog.open(OrderTrackerComponent, dialogConfig);
 

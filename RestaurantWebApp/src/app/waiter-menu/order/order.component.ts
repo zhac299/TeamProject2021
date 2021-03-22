@@ -120,7 +120,6 @@ export class OrderComponent implements OnInit {
         _orderedMealItems.push(meal);
       });
     }
-    console.log(this.total);
     this.orderedMealItemsSubject$.next(_orderedMealItems);
   }
 

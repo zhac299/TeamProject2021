@@ -58,8 +58,4 @@ export class OrderTrackerComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  close(): void {
-    this.dialogRef.close(this.orderPlaced);
-  }
-
 }
