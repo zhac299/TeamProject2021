@@ -32,13 +32,12 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
   paramsObject: any;
   staffService: StaffService;
 
-  ORDER_BUTTON_WIDTH = 300;
   orders: Order[];
   subscription: Subscription;
-  refreshTimer$ = timer(0, 1000)
-    .pipe(tap());
+  refreshTimer$ = timer(0, 1000);
   resize$ = fromEvent(window, 'resize');
-  windowWidth: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
+  ORDER_BUTTON_WIDTH = 300;
+  columns: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
 
   ngOnInit(): void {
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
@@ -56,11 +55,9 @@ export class OrdersListDisplayComponent implements OnInit, OnDestroy {
       this.orderService.orders$.subscribe((orders) =>this.orders = orders);
     }
     this.resize$
-      .pipe(debounceTime(250),
-      tap(),
-        )
+      .pipe(debounceTime(250))
       .subscribe((w) => {
-        this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
+        this.columns = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
         )});
 
     this.route.queryParamMap.subscribe((params) => {

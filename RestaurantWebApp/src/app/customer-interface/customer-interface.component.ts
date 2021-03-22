@@ -2,15 +2,19 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation } from 
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
-import { MenuService } from "../menu.service";
-import { MenuFilterService } from "../menu-filter.service";
-import { Menu } from "../../models/Menu";
-import { BasketComponent } from './basket/basket.component';
-import { animate, keyframes, query, stagger, style, transition, trigger } from "@angular/animations";
-import { Meal } from '../../models/Meal';
-import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
-import { MenuCategory } from "../../models/MenuCategory";
-import { MenuCategoryService } from '../menu-category.service';
+import {MenuService} from "../menu.service";
+import {MenuFilterService} from "../menu-filter.service";
+import {Menu} from "../../models/Menu";
+import {Customer} from 'src/models/Customer';
+import {CustomerService} from '../customer.service';
+import {BasketComponent} from './basket/basket.component';
+import {Table} from 'src/models/Table';
+import {TableService} from '../table.service';
+import {animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
+import {Meal} from 'src/models/Meal';
+import {OrderTrackerComponent} from './order-tracker/order-tracker.component';
+import {MenuCategory} from "../../models/MenuCategory";
+import {MenuCategoryService} from '../menu-category.service';
 import anime from 'animejs/lib/anime.es.js'
 
 @Component({
@@ -52,7 +56,6 @@ export class CustomerInterfaceComponent implements OnInit {
     private router: Router) { }
 
   ngAfterViewInit(): void {
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
   }
 
   ngOnInit(): void {

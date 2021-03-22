@@ -39,6 +39,7 @@ body
   font-family: 'Calibri Light'
   height: 100%
   width: 100%
+  padding: 10px
 
 .menuTitle
   font-family: 'Cedarville Cursive', cursive
@@ -46,13 +47,20 @@ body
   text-shadow: 5px 5px 5px #565656
 
 .card-actions
-  padding: 10px
+  padding: 0
+  margin: 0
 
 .selection-fab
-  background-color: #388572
+  margin: 5px
+  background-color: #0e0b00
   font-family: 'Raleway', sans-serif
   color: #b9a239
-  font-size: 20px
+  height: 25px
+  width: 25px
+  border-radius: 50%
+  display: inline-block
+  text-align: center
+
 
 .an-2
   font-weight: 900
@@ -62,7 +70,12 @@ body
   font-family: 'Raleway', sans-serif
   background-color: #388572
   color: #e9c46a
-  font-size: 20px
+  font-size: 15px
+
+.quantity-action-button
+  width: 10px
+  background-color: #388572
+
 
 .break-line
   border: 1px solid black
@@ -117,13 +130,14 @@ body
 .menuCard
   width: 90%
   border-radius: 10px
-  border: 1px double #c3b228
   padding: 10px
   margin: 50px
-  box-shadow: 15px 15px 15px 5px #626260
-  background: rgb(253,253,243)
-  background: radial-gradient(circle, rgba(253,253,243,1) 0%, rgb(236, 232, 225) 100%)
   min-height: 100vh
+  padding-bottom: 20px
+
+.card
+  padding: 15px
+  margin: 20px
 
 .menuCard .innerBorder
   border-radius: 10px
@@ -131,7 +145,9 @@ body
 
 .categoryTitle
   font-size: 5vw
-  font-family: 'Cedarville Cursive', cursive
+  font-family: 'Reenie Beanie', cursive
+  color: $gold-light
+  text-shadow: 2px 2px 2px #302f2f
 
 .helpBubble
   position: absolute
@@ -152,4 +168,5 @@ body
 
 .expansionPannel
   padding: 20px
+  width: 100%
 
