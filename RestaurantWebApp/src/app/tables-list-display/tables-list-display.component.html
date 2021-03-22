@@ -1,5 +1,6 @@
-<br><br>
+
 <img class = "tableTitle" src="assets/images/table-dinner-restaurant-furniture-chair-512.png">
+<br><br><br>
 <mat-grid-list [cols]="this.windowWidth" rowHeight="200px">
   <mat-grid-tile *ngFor="let table of tableList" >
     <button *ngIf="table.needsHelp && table.isReady else needsHelpBlock" mat-raised-button class="needsHelpReadyToOrder" (click) = "markAsHelped(table)">
