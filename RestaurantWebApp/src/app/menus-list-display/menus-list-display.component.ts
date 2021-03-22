@@ -39,7 +39,7 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
     if(this.router.url === '/client-menu') {
       this.isAuth = false;
     }
-    this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
+    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.catSubscription = this.refreshTimer$.subscribe(this.categoryService.refresh$);
     this.categoryService.categories$.subscribe((categories) => {
       this.categories = categories;
