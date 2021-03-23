@@ -157,10 +157,18 @@ public class Menu {
         return id;
     }
 
+    /**
+     * Getter from calories in a Meal object.
+     * @return Double instance representing calories.
+     */
     public Double getCalories() {
         return calories;
     }
 
+    /**
+     * Setter for the calories in a Meal object.
+     * @param calories to set.
+     */
     public void setCalories(Double calories) {
         this.calories = calories;
     }
