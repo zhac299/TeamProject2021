@@ -55,6 +55,11 @@ public class CustomerController {
     return customerService.createNewCustomer(Customer);
   }
 
+  /**
+   * Retrieves a Customer Object according to its id from the repo by calling the service.
+   * @param id of the Customer object to be deleted.
+   * @return deleted Customer object.
+   */
   @GetMapping("/customer/{id}")
   public Customer getCustomerById(@PathVariable("id") Long id) {
     return customerService.getCustomerById(id);
