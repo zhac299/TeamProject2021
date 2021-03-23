@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Table } from '../../models/Table';
 import { MatDialog } from '@angular/material/dialog';
-import { Order } from "../../models/Order";
 import { MenuService } from "../menu.service";
 import { Menu } from "../../models/Menu";
 import { Observable } from "rxjs";
@@ -15,6 +14,9 @@ import { CustomerService } from '../customer.service';
 import { OrderService } from '../order.service';
 import { AddMenuDialogComponent } from './add-menu-dialog/add-menu-dialog.component';
 
+/**
+ * Component for all waiter staff specific features including their related permissions
+ */
 @Component({
   selector: 'app-waiter-menu',
   templateUrl: './waiter-menu.component.html',
@@ -32,28 +34,24 @@ export class WaiterMenuComponent implements OnInit {
     private orderService: OrderService
   ) { }
 
-  menuList: Menu[] = [];
-  showFiller = false;
-  orders: Order[];
-  displayedColumns: string[] = ['name', 'description', 'price'];
   waiter: Staff;
   paramsObject: any;
 
+  /**
+   * Initialises with given waiter ID through the activated route
+   * and initialises order and table services with this waiter Id.
+   */
   ngOnInit(): void {
-    this.menuService.getAllUpdatedMenus();
-    this.menuService.menus$.subscribe((menu) => {
-      this.menuList = menu;
-    });
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
       this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) => {
         this.waiter = staff;
         this.orderService.waiterId = this.waiter.id;
         this.tableService.currentStaff = this.waiter.id;
-        console.log(staff);
       })
     });
   }
+
 
   openSelectTableDialog(): Observable<Table> {
     const dialogRef = this.dialog.open(PickTableDialogComponent);
