@@ -29,6 +29,10 @@ public class MenuCategoryController {
     @Autowired
     MenuCategoryService menuCategoryService;
     
+    /**
+     * Gets all the menu categories.
+     * @return list of MenuCategory objects.
+     */
     @GetMapping("/menuCategory")
     public List<MenuCategory> index() {
         return menuCategoryRepository.findAll();
