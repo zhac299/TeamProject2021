@@ -1,6 +1,11 @@
-<br><br><br>
-<img class = "tableTitle" src="assets/images/table-dinner-restaurant-furniture-chair-512.png">
-<br><br><br>
+<br><br>
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <p class="display-3"><b>Tables</b></p>
+    <img src="assets/images/table-dinner-restaurant-furniture-chair-512.png" class="deliveryImg">
+  </div>
+</div>
+
 <mat-grid-list [cols]="this.windowWidth" rowHeight="200px">
   <mat-grid-tile *ngFor="let table of tableList" >
     <button *ngIf="table.needsHelp && table.isReady else needsHelpBlock" mat-raised-button class="needsHelpReadyToOrder" (click) = "markAsHelped(table)">
@@ -13,13 +18,13 @@
         <span class = "tableNumber">Table {{table.tableNumber}}</span> <br>
         Needs Help!
       </button>
-    </ng-template> 
+    </ng-template>
 
     <ng-template #noNeedsHelpBlock>
         <button *ngIf="table.isReady else noIsReadyBlock" mat-raised-button class="readyToOrder" color="warn" (click) = "markAsHelped(table)">
           <span class = "tableNumber">Table {{table.tableNumber}}</span> <br>
           is Ready to Order!
-        </button> 
+        </button>
     </ng-template>
 
     <ng-template #noIsReadyBlock>

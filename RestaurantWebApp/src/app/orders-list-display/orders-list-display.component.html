@@ -1,5 +1,9 @@
-<img class="orderTitle" src="assets/images/food.png">
-<br><br><br>
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <p class="display-3"><b>Orders</b></p>
+    <img src="assets/images/order.png" class="deliveryImg">
+  </div>
+</div>
 <mat-grid-list [cols]="this.columns" rowHeight="300px">
   <mat-grid-tile *ngFor="let order of orders">
 
