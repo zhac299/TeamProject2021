@@ -75,6 +75,12 @@ public class MenuController {
         return menuService.addMenuMeal(meal, id);
     }
 
+    /**
+     * Updates a menu.
+     * @param id of the menu to update.
+     * @param menu the updated menu.
+     * @return the updated Menu object.
+     */
     @PutMapping("/menu/{id}")
     public Menu updateMeal(@PathVariable("id") Long id, @RequestBody Menu menu) {
         return menuService.updateMenuItem(id, menu);
