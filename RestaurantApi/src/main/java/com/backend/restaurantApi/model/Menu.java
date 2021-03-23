@@ -189,14 +189,26 @@ public class Menu {
         return name;
     }
 
+    /**
+     * Setter for the name
+     * @param name name to be set.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Getter for price of Meal.
+     * @return a double representing the price.
+     */
     public Double getPrice() {
         return price;
     }
 
+    /**
+     * Setter for the price.
+     * @param price the amount you want the price to be.
+     */
     public void setPrice(Double price) {
         this.price = price;
     }
