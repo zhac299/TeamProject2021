@@ -34,34 +34,64 @@ public class Menu {
     @Column(name = "description")
     private String description;
 
+    /**
+     * Column for the price of the menu.
+     */
     @Column(name = "price")
     private Double price = 0.0;
 
+    /**
+     * Column for category that has a ManyToOne relationship.
+     */
     @ManyToOne
     @JoinColumn(name = "category")
     private MenuCategory category;
 
+    /**
+     * Column for the isSuggested.
+     */
     @Column(name = "isSuggested")
     private String isSuggested;
 
+    /**
+     * Column for the calories.
+     */
     @Column(name = "calories")
     private Double calories;
 
+    /**
+     * Column for the peanuts.
+     */
     @Column(name = "peanuts")
     private boolean peanuts = false;
 
+    /**
+     * Column for the celery.
+     */
     @Column(name = "celery")
     private boolean celery = false;
 
+    /**
+     * Column for the gluten.
+     */
     @Column(name = "gluten")
     private boolean gluten = false;
 
+    /**
+     * Column for the crustaceans
+     */
     @Column(name = "crustaceans")
     private boolean crustaceans = false;
 
+    /**
+     * Column for eggs.
+     */
     @Column(name = "eggs")
     private boolean eggs = false;
 
+    /**
+     * Column for fish.
+     */
     @Column(name = "fish")
     private boolean fish = false;
 
