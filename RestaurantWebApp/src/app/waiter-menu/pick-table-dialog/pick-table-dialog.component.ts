@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from "@angular/material/dialog";
-import { Table } from "../../../models/Table";
-import { TableService } from "../../table.service";
-import { Observable } from "rxjs";
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
+import {Table} from "../../../models/Table";
+import {TableService} from "../../table.service";
 
+/**
+ * Dialog component for staff picking a table
+ */
 @Component({
   selector: 'app-pick-table-dialog',
   templateUrl: './pick-table-dialog.component.html',
@@ -15,14 +17,21 @@ export class PickTableDialogComponent implements OnInit {
   selectedTable: Table;
 
   constructor(public dialogRef: MatDialogRef<PickTableDialogComponent>,
-    private tableService: TableService,) { }
+              private tableService: TableService) {
+  }
 
+  /**
+   * Gets all unoccupied tables for user to pick from
+   */
   ngOnInit(): void {
     this.tableService.getUnoccupiedTables().subscribe(tables => {
       this.tables = tables;
     });
   }
 
+  /**
+   * Closes dialog and returns selected table to parent component
+   */
   onSelect(): void {
     this.dialogRef.close(this.selectedTable);
   }
