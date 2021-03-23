@@ -149,6 +149,10 @@ public class Menu {
     @Column(name = "time_to_cook")
     private double timeToCook = 20;
     
+    /**
+     * Getter for the id.
+     * @return the Meal object id.
+     */
     public Long getId() {
         return id;
     }
