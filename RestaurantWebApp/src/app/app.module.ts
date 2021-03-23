@@ -60,9 +60,6 @@ import { MatRadioModule} from "@angular/material/radio";
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingredient.component';
 import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dialog/add-ingredient-dialog.component';
-import { ClientMenuComponent } from './customer-interface/client-menu/client-menu.component';
-import { ClientRegisterComponent } from './customer-interface/client-menu/client-register/client-register.component';
-import { CustomersListComponent } from './manager-menu/customers-list/customers-list.component';
 import { PaymentComponent } from './customer-interface/payment/payment.component';
 import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 
@@ -96,9 +93,6 @@ import { CategoryDialogComponent } from './category-dialog/category-dialog.compo
     TablesListDisplayComponent,
     AddIngredientComponent,
     AddIngredientDialogComponent,
-    ClientMenuComponent,
-    ClientRegisterComponent,
-    CustomersListComponent,
     PaymentComponent,
     CategoryDialogComponent
   ],

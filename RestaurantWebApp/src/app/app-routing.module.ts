@@ -10,9 +10,6 @@ import { ManagerMenuComponent } from "./manager-menu/manager-menu.component";
 import { AddStaffComponent } from './manager-menu/add-staff/add-staff.component';
 import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingredient.component';
-import { ClientMenuComponent } from './customer-interface/client-menu/client-menu.component';
-import { ClientRegisterComponent } from './customer-interface/client-menu/client-register/client-register.component';
-import { CustomersListComponent } from './manager-menu/customers-list/customers-list.component';
 import { PaymentComponent } from './customer-interface/payment/payment.component';
 
 const APP_ROUTES: Routes = [
@@ -22,9 +19,6 @@ const APP_ROUTES: Routes = [
   { path: 'login', component: LoginInputComponent },
   { path: 'waiter-menu', component: WaiterMenuComponent },
   { path: 'kitchen-menu', component: KitchenMenuComponent },
-  { path: 'client-menu', component: ClientMenuComponent },
-  { path: 'customer-registration', component: ClientRegisterComponent },
-  { path: 'customer-list', component: CustomersListComponent },
   { path: 'manager-menu', component: ManagerMenuComponent },
   { path: 'manager-menu/add-staff', component: AddStaffComponent },
   { path: 'manager-menu/add-ingredient', component: AddIngredientComponent },
