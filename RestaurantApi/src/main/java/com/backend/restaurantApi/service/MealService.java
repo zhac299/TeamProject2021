@@ -13,12 +13,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class MealService {
 
+    /**
+     * The Meal Repository used to query the database.
+     */
     @Autowired
     private MealRepository mealRepository;
-
+     /**
+     * The Menu Repository used to query the database.
+     */
     @Autowired
     private MenuRepository menuRepository;
-
+    /**
+     * The method for creating a new meal in the database.
+     * 
+     * @param meal the object representing the meal to be created in the database.
+     * @return the state of the meal repository after adding the meal.
+     */
     public Meal createNewMeal(Meal meal) {
 //        if(meal.getOrder() == null){
 //            Order order = new Order();
@@ -33,7 +43,13 @@ public class MealService {
         }
         return mealRepository.save(meal);
     }
-
+    /**
+     *  The method for retrieving a meal by id.
+     * 
+     * 
+     * @param mealId the ID of the meal in question.
+     * @return the object of meal associated with the ID.
+     */
 	public Meal getMealById(Long mealId) {
 		Optional<Meal> optionalMenu = mealRepository.findById(mealId);
 
