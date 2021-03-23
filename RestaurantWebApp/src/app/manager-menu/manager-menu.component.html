@@ -23,7 +23,7 @@
     <a routerLink="/manager-menu/add-ingredient">
       <button mat-button>
         <div class="container-fluid quickAddButton">
-          <img class = "row justify-content-center quickAddButton" src="assets/images/ingredients.png">
+          <img class="row justify-content-center quickAddButton" src="assets/images/ingredients.png">
           <p class="row justify-content-center">Manage Stock</p>
         </div>
       </button>
@@ -31,43 +31,30 @@
     <a routerLink="/manager-menu/add-staff">
       <button mat-button>
         <div class="container-fluid quickAddButton">
-          <img class = "row justify-content-center quickAddButton" src="assets/images/staff.png">
+          <img class="row justify-content-center quickAddButton" src="assets/images/staff.png">
           <p class="row justify-content-center">Manage Staff</p>
         </div>
       </button>
     </a><br><br><br>
-    <button mat-button (click) = "createNewOrder()">
+    <button mat-button (click)="createNewOrder()">
       <div class="container-fluid quickAddButton">
-        <img class = "row justify-content-center quickAddButton" src="assets/images/order.png">
+        <img class="row justify-content-center quickAddButton" src="assets/images/order.png">
         <p class="row justify-content-center">Create Order</p>
       </div>
     </button><br><br><br>
-    <button mat-button (click) = "createNewTable()">
+    <button mat-button (click)="createNewTable()">
       <div class="container-fluid quickAddButton">
-        <img class = "row justify-content-center quickAddButton" src="assets/images/table-dinner-restaurant-furniture-chair-512.png">
+        <img class="row justify-content-center quickAddButton"
+          src="assets/images/table-dinner-restaurant-furniture-chair-512.png">
         <p class="row justify-content-center">Add Table</p>
       </div>
     </button><br><br><br>
-    <button mat-button (click) = "openAddMenuDialog()">
+    <button mat-button (click)="openAddMenuDialog()">
       <div class="container-fluid quickAddButton">
-        <img class = "row justify-content-center quickAddButton" src="assets/images/burito.png">
+        <img class="row justify-content-center quickAddButton" src="assets/images/burito.png">
         <p class="row justify-content-center">Add To Menu</p>
       </div>
     </button><br><br><br>
-    <button mat-button>
-      <div class="container-fluid quickAddButton">
-        <a routerLink="/home" class="row justify-content-center quickAddButton">
-          <button mat-button><img class="exitButton" src="assets/images/door.png"></button>
-        </a>
-        <p class="row justify-content-center">Exit</p>
-      </div>
-
-    </button>
-      <button mat-button><img class = "quickAddButton" src="assets/images/staff.png"></button>
-    </a><br><br><br>
-    <button mat-button (click) = "createNewOrder()"><img class = "quickAddButton" src="assets/images/food.png"></button><br><br><br>
-    <button mat-button (click) = "createNewTable()"><img class = "quickAddButton" src="assets/images/table-dinner-restaurant-furniture-chair-512.png"></button><br><br><br>
-    <button mat-button (click) = "openAddMenuDialog()"><img class = "quickAddButton" src="assets/images/burito.png"></button><br><br><br>
   </mat-drawer>
   <app-tables-list-display></app-tables-list-display>
 

@@ -51,9 +51,6 @@ export class CustomerInterfaceComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router) { }
 
-  ngAfterViewInit(): void {
-  }
-
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
@@ -179,5 +176,52 @@ export class CustomerInterfaceComponent implements OnInit {
         duration: 1000,
         delay: (el, i) => 50 * (i + 1)
       });
+  }
+
+  allergensArray(item: Menu): Array<String> {
+    var allergyArray: Array<String> = []
+    if(item.peanuts == true){
+      allergyArray.push("Peanuts");
+    }
+    if(item.celery == true){
+      allergyArray.push("Celery");
+    }
+    if(item.gluten == true){
+      allergyArray.push("Gluten");
+    }
+    if(item.crustaceans == true){
+      allergyArray.push("Crustaceans");
+    }
+    if(item.eggs == true){
+      allergyArray.push("Eggs");
+    }
+    if(item.fish == true){
+      allergyArray.push("Fish");
+    }
+    if(item.lupin == true){
+      allergyArray.push("Lupin");
+    }
+    if(item.milk == true){
+      allergyArray.push("Milk");
+    }
+    if(item.molluscs == true){
+      allergyArray.push("Molluscs");
+    }
+    if(item.mustard == true){
+      allergyArray.push("Mustard");
+    }
+    if(item.nuts == true){
+      allergyArray.push("Nuts");
+    }
+    if(item.soya == true){
+      allergyArray.push("Soya");
+    }
+    if(item.sesameSeeds == true){
+      allergyArray.push("Sesame Seeds");
+    }
+    if(item.sulphites == true){
+      allergyArray.push("Sulphites");
+    }
+    return allergyArray;
   }
 }

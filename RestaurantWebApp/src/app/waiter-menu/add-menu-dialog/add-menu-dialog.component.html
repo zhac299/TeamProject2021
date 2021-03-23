@@ -6,15 +6,19 @@
       <input matInput [(ngModel)]="data.menu.name"/>
     </mat-form-field>
     <mat-form-field class="col">
-      <mat-label>Price</mat-label>
+      <mat-label>Price(suggested)</mat-label>
       <input matInput class="fixInput" [(ngModel)]="data.menu.price"/>
+      <span *ngIf = "suggestedPriceRange[0] != 0 else noSuggestionBlock">
+        {{suggestedPriceRange[0]}} - {{suggestedPriceRange[1]}} $
+      </span>
+      <ng-template #noSuggestionBlock><span *ngIf = "this.data.hasMenuItem == undefined">0$</span></ng-template>
     </mat-form-field>
   </div>
   <div class="row">
     <mat-form-field class="col">
       <mat-label>Ingredient</mat-label>
       <mat-select placeholder="Ingredient" [(ngModel)]="data.menu.ingredients" multiple>
-        <mat-option *ngFor="let ing of ingredients" [value]="ing.id">{{ing.name}}</mat-option>
+        <mat-option *ngFor="let ing of ingredients" [value]="ing.id" (click) = "updateSuggestedPriceRange()">{{ing.name}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="col">
@@ -75,7 +79,7 @@
       </mat-list-item>
     </div>
     <div class="col">
-      <h3>Calories</h3>
+      <h3>Calories</h3><span><b>{{data.menu.calories}}</b></span>
       <mat-slider thumbLabel
                   [displayWith]="setCalories"
                   tickInterval="100"

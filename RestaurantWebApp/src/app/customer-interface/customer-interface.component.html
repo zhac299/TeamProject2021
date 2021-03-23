@@ -55,9 +55,19 @@
           <p>
             <b>{{menuItem.calories}} calories</b>
           </p>
-          <p class = "allergens">
-
-          </p>
+          <div *ngIf="this.allergensArray(menuItem) == []; else allergensListBlock">
+            No Allergens!
+          </div>
+          <ng-template #allergensListBlock>
+            <span class = "allergens" *ngFor="let allergen of this.allergensArray(menuItem)">
+              <span *ngIf="allergen != this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]"> 
+                {{allergen}}, 
+              </span>
+              <span *ngIf="allergen == this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]">
+                {{allergen}}
+              </span>
+            </span>
+          </ng-template>
         </mat-card-content>
         <mat-card-actions class="card-actions">
           <button mat-raised-button class="action-button"
