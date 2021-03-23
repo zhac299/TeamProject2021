@@ -7,10 +7,16 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
+/**
+ * Class for the Menu model.
+ */
 @Entity
 @Table(name = "restaurant_menu_item")
 public class Menu {
 
+    /**
+     * Defining column for Menu called id that is generated every time there is a new instance.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
