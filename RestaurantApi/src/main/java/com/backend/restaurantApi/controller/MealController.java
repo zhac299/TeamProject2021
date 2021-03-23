@@ -48,6 +48,11 @@ public class MealController {
         return mealService.createNewMeal(meal);
     }
 
+    /**
+     * Retrieves a meal according to if the input id matches.
+     * @param id of the Meal to be retrieved.
+     * @return
+     */
     @GetMapping("/meals/{id}")
     public Meal getMealById(@PathVariable("id") Long id) {
         return mealService.getMealById(id);
