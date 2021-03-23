@@ -39,7 +39,7 @@ public class MealController {
     }
 
     /**
-     * Calls the service to create a new meal.
+     * Calls the service to create a new meal in the repo.
      * @param meal the meal to be created.
      * @return the created Meal object.
      */
@@ -51,7 +51,7 @@ public class MealController {
     /**
      * Retrieves a meal according to if the input id matches.
      * @param id of the Meal to be retrieved.
-     * @return
+     * @return the Meal object with matching id.
      */
     @GetMapping("/meals/{id}")
     public Meal getMealById(@PathVariable("id") Long id) {
@@ -59,7 +59,7 @@ public class MealController {
     }
 
     /**
-     * Updates a meal by using its id.
+     * Updates a meal by using its id calling the mealService to update the repo.
      * @param id of the Meal to update.
      * @param meal the updated Meal.
      * @return the updated Meal object.
@@ -69,6 +69,10 @@ public class MealController {
         return mealService.updateMeal(id, meal);
     }
 
+    /**
+     * Deletes a Meal calling the service to delete it from the repo.
+     * @param id of the meal to be deleted.
+     */
     @DeleteMapping("/meals/{id}")
     public void deleteMeal(@PathVariable("id") Long id) {
         mealService.deleteMeal(id);

@@ -67,7 +67,7 @@ public class RestaurantStockController {
 	}
 
 	/**
-	 * Updates existing stock with new ingredient.
+	 * Updates existing stock with new ingredient calling the service to update the repo.
 	 * @param id of stock.
 	 * @param ingredient to update stock with.
 	 * @return the Ingredient object.
