@@ -58,6 +58,10 @@ public class MenuCategoryController {
         return menuCategoryService.findCategoryById(id);
     }
 
+    /**
+     * Updates a category by using its id.
+     * @return the updated MenuCategory.
+     */
     @PutMapping("/menuCategory/{id}")
     public MenuCategory updateMenuCategory(@PathVariable("id") Long id, @RequestBody MenuCategory menuCategory) {
         return menuCategoryService.updateMenuCategory(id, menuCategory);
