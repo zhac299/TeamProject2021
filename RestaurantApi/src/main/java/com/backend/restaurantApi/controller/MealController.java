@@ -78,6 +78,12 @@ public class MealController {
         mealService.deleteMeal(id);
     }
 
+    /**
+     * Updates the number of selections a Meal object has and saves it to the repo.
+     * @param id of the Meal Object to be updated.
+     * @param numberSelections amount of selections the meal has.
+     * @return the updated Meal object.
+     */
     @PutMapping("/meals/numberSelections/{id}/{numberSelections}")
     public Meal updateNumberSelections(@PathVariable("id") Long id, @PathVariable("numberSelections") int numberSelections) {
         Meal meal = mealService.getMealById(id);
