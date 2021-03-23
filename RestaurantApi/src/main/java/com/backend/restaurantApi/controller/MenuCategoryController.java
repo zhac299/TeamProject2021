@@ -48,6 +48,11 @@ public class MenuCategoryController {
         return menuCategoryService.createNewCategory(menuCategory);
     }
 
+    /**
+     * Gets the MenuCategory Object accoring to its id.
+     * @param id of the MenuCategory object you want to get.
+     * @return MenuCategory object.
+     */
     @GetMapping("/menuCategory/{id}")
     public MenuCategory getMenuCategoryById(@PathVariable("id") Long id) {
         return menuCategoryService.findCategoryById(id);
