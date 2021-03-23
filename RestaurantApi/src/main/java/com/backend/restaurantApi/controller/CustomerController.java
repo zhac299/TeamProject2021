@@ -65,6 +65,12 @@ public class CustomerController {
     return customerService.getCustomerById(id);
   }
 
+  /**
+   * Updates a specific Customer according to the id in the repo by calling the Service
+   * @param id of Customer object to be updated.
+   * @param Customer updated Customer object.
+   * @return the updated Customer object. 
+   */
   @PutMapping("/customer/{id}")
   public Customer updateCustomer(@PathVariable("id") Long id, @RequestBody Customer Customer) {
     return customerService.updateCustomer(id, Customer);
