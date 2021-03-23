@@ -9,14 +9,23 @@ import com.backend.restaurantApi.service.MenuCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * The Controller of the MenuCategory.
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping(path = "/api/v1/")
 public class MenuCategoryController {
 
+    /**
+     * Autowires to menuCategory repo.
+     */
     @Autowired
     MenuCategoryRepository menuCategoryRepository;
 
+    /**
+    * The Controller of the menuCategory service.
+    */
     @Autowired
     MenuCategoryService menuCategoryService;
     
