@@ -25,6 +25,9 @@ public class Ingredient {
 	@Column
 	private Integer quantity;
 
+	@Column
+	private double pricePerItem;
+
 	public Long getId() {
 		return id;
 	}
@@ -49,9 +52,14 @@ public class Ingredient {
 		this.quantity = quantity;
 	}
 
-	@Override
-	public String toString() {
-		return "Ingredient [id=" + id + ", name=" + name + ", quantity=" + quantity + "]";
+	public double getPricePerItem() {
+		return this.pricePerItem;
 	}
+
+	public void setPricePerItem(double newPrice) {
+		this.pricePerItem = newPrice;
+	}
+
+
 
 }

@@ -15,9 +15,10 @@
 
   <br><br>
   <div class="tableTitle">
-    <mat-grid-list cols="5" rowHeight="35px">
+    <mat-grid-list cols="6" rowHeight="35px">
       <mat-grid-tile>Name</mat-grid-tile>
       <mat-grid-tile>Quantity</mat-grid-tile>
+      <mat-grid-tile>Price/Item</mat-grid-tile>
       <mat-grid-tile>Edit</mat-grid-tile>
       <mat-grid-tile>Delete</mat-grid-tile>
       <mat-grid-tile>
@@ -25,15 +26,15 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <mat-grid-list class="menuItem" cols="5" rowHeight="75px" *ngFor="let ing of ingredients">
+  <mat-grid-list class="menuItem" cols="6" rowHeight="75px" *ngFor="let ing of ingredients">
     <mat-grid-tile>{{ing.name}}</mat-grid-tile>
     <mat-grid-tile>{{ing.quantity}}</mat-grid-tile>
+    <mat-grid-tile>{{ing.pricePerItem}}</mat-grid-tile>
     <mat-grid-tile>
       <button mat-button (click)="openEditMenuDialog(ing)">Edit</button>
     </mat-grid-tile>
     <mat-grid-tile>
       <button mat-button (click)="delete(ing)">Delete</button>
     </mat-grid-tile>   
-    <mat-grid-tile></mat-grid-tile> 
   </mat-grid-list>
 </mat-drawer-container>
