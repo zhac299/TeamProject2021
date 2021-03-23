@@ -64,6 +64,12 @@ public class MenuController {
         return menuService.getMenuById(id);
     }
 
+    /**
+     * Adds a new new meal to the menu specified by its id.
+     * @param meal to be added to the menu.
+     * @param id of the menu you want to add to.
+     * @return the Menu object with the added meal.
+     */
     @PostMapping(path = "/menuadd/{id}")
     public Menu addNewMeal(@RequestBody Meal meal, @PathVariable Long id) {
         return menuService.addMenuMeal(meal, id);
