@@ -77,6 +77,10 @@ public class RestaurantStockController {
 		return restaurantStockService.updatStock(id, ingredient);
 	}
 
+	/**
+	 * Deletes ingredient from stock by id.
+	 * @param id of the ingredient to be deleted.
+	 */
 	@DeleteMapping("/stock/{id}")
 	public void deleteStock(@PathVariable("id") Long id) {
 		restaurantStockService.deleteStock(id);
