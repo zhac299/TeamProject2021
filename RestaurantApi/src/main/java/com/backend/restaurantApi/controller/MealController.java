@@ -58,6 +58,12 @@ public class MealController {
         return mealService.getMealById(id);
     }
 
+    /**
+     * Updates a meal by using its id.
+     * @param id of the Meal to update.
+     * @param meal the updated Meal.
+     * @return the updated Meal object.
+     */
     @PutMapping("/meals/{id}")
     public Meal updateMeal(@PathVariable("id") Long id, @RequestBody Meal meal) {
         return mealService.updateMeal(id, meal);
