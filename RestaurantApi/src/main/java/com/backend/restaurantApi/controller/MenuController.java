@@ -86,14 +86,35 @@ public class MenuController {
         return menuService.updateMenuItem(id, menu);
     }
 
+    /**
+     * Deletes a meal from a given menu.
+     * @param id of the meal to delete.
+     */
     @DeleteMapping("/menu/{id}")
     public void deleteMeal(@PathVariable("id") Long id) {
         menuService.deleteMenuItem(id);
     }
 
-    //Link model format to be tested in the browser http://localhost:8080/api/v1/menu/filterByAllergens/0/1/0/0/0/0/0/0/0/0/0/0/0/0
-    //Boolean parameters are passed as either 1 or 0. 
-    //When you make the get request, you also pass all the allergens in the link.
+
+    /**
+     * Gets all the filters in the menu 
+     * @param peanuts
+     * @param celery
+     * @param gluten
+     * @param crustaceans
+     * @param eggs
+     * @param fish
+     * @param lupin
+     * @param milk
+     * @param molluscs
+     * @param mustard
+     * @param nuts
+     * @param soya
+     * @param sesame_seeds
+     * @param sulphites
+     * @param calories
+     * @return a list of Menu objects.
+     */
     @GetMapping(path = "/menu/filter/{peanuts}/{celery}/{gluten}/{crustaceans}/{eggs}/{fish}/{lupin}/{milk}/{molluscs}/{mustard}/{nuts}/{soya}/{sesame_seeds}/{sulphites}/{calories}")
     public List<Menu> filter(
         @PathVariable("peanuts") Boolean peanuts,
