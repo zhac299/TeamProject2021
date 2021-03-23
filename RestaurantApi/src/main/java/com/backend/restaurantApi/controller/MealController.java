@@ -9,14 +9,23 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller for the Meal.
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping(path = "/api/v1/") 
 public class MealController {
 
+    /**
+     * Autowires Meal repo.
+     */
     @Autowired
     MealRepository mealRepo;
 
+    /**
+     * Autowires Meal service.
+     */
     @Autowired
     MealService mealService;
 
