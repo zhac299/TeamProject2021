@@ -36,6 +36,10 @@ public class CustomerController {
   @Autowired
   CustomerService customerService;
 
+  /**
+   * Gets all the Customer objects from the customer repo.
+   * @return a list of Customer objects.
+   */
   @GetMapping("/customer")
   public List<Customer> index() {
     return customerRepo.findAll();
