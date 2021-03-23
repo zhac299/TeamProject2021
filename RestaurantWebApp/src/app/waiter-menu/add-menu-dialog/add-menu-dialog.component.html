@@ -11,7 +11,7 @@
       <span *ngIf = "suggestedPriceRange[0] != 0 else noSuggestionBlock">
         {{suggestedPriceRange[0]}} - {{suggestedPriceRange[1]}} $
       </span>
-      <ng-template #noSuggestionBlock>0$</ng-template>
+      <ng-template #noSuggestionBlock><span *ngIf = "this.data.hasMenuItem == undefined">0$</span></ng-template>
     </mat-form-field>
   </div>
   <div class="row">
@@ -79,7 +79,7 @@
       </mat-list-item>
     </div>
     <div class="col">
-      <h3>Calories</h3>
+      <h3>Calories</h3><span><b>{{data.menu.calories}}</b></span>
       <mat-slider thumbLabel
                   [displayWith]="setCalories"
                   tickInterval="100"

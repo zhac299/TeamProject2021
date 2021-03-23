@@ -82,8 +82,9 @@ export class WaiterMenuComponent implements OnInit {
   openAddMenuDialog() {
     const title = "Add New Dish";
     let menu: Menu = new Menu();
+    const hasMenuItem: boolean = false;
     const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-      data: { menu, title },
+      data: { menu, title, hasMenuItem },
       width: '50%',
       autoFocus: false
     });
