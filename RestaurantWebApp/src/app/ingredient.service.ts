@@ -19,6 +19,10 @@ export class IngredientService {
     return this.httpClient.get<Ingredient[]>(this.restaurantWebApiUrl);
   }
 
+  public getIngredientById(ingredientId: number) {
+    this.httpClient.get<Ingredient>(`${this.restaurantWebApiUrl}/${ingredientId}`)
+  }
+
   createIngredient(staff: Ingredient): Observable<Ingredient> {
     return this.httpClient.post<Ingredient>(this.restaurantWebApiUrl, staff);
   }
