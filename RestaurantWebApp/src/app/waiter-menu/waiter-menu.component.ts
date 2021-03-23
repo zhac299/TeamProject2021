@@ -53,20 +53,33 @@ export class WaiterMenuComponent implements OnInit {
   }
 
 
+  /**
+   *
+   */
   openSelectTableDialog(): Observable<Table> {
     const dialogRef = this.dialog.open(PickTableDialogComponent);
     return dialogRef.afterClosed();
   }
 
 
+  /**
+   * Deletes a menu
+   * @param menu to delete
+   */
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu);
   }
 
+  /**
+   * Creates new table
+   */
   createNewTable(): void {
     this.tableService.createTable().subscribe();
   }
 
+  /**
+   * Creates a new order with a new customer
+   */
   createNewOrder(): void {
     this.openSelectTableDialog()
       .pipe(
@@ -77,6 +90,9 @@ export class WaiterMenuComponent implements OnInit {
       );
   }
 
+  /**
+   * Opens dialog to add menu item
+   */
   openAddMenuDialog() {
     const title = "Add New Dish";
     let menu: Menu = new Menu();
