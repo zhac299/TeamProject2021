@@ -28,7 +28,6 @@ import { ExpansionPannelComponent } from './customer-interface/expansion-pannel/
 import { AllergensChipsComponent } from './customer-interface/allergens-chips/allergens-chips.component';
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatSliderModule} from '@angular/material/slider';
-import { TableComponent } from './waiter-menu/table/table.component';
 import { MatTableModule} from "@angular/material/table";
 import { MatInputModule} from "@angular/material/input";
 import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-dialog.component';
@@ -57,11 +56,11 @@ import { AddStaffDialogComponent } from './manager-menu/add-staff-dialog/add-sta
 import { TablesListDisplayComponent } from './tables-list-display/tables-list-display.component';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatRadioModule} from "@angular/material/radio";
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingredient.component';
 import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dialog/add-ingredient-dialog.component';
 import { PaymentComponent } from './customer-interface/payment/payment.component';
 import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
+import {LandingPageComponent} from "./landing-page/landing-page.component";
 
 @NgModule({
   declarations: [
@@ -73,7 +72,6 @@ import { CategoryDialogComponent } from './category-dialog/category-dialog.compo
     OrderComponent,
     ExpansionPannelComponent,
     AllergensChipsComponent,
-    TableComponent,
     AddMenuDialogComponent,
     BasketComponent,
     CustomerTablesComponent,
@@ -94,7 +92,8 @@ import { CategoryDialogComponent } from './category-dialog/category-dialog.compo
     AddIngredientComponent,
     AddIngredientDialogComponent,
     PaymentComponent,
-    CategoryDialogComponent
+    CategoryDialogComponent,
+    LandingPageComponent
   ],
     imports: [
         BrowserModule,
