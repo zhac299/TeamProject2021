@@ -14,7 +14,7 @@
     <mat-form-field class="col">
       <mat-label>Ingredient</mat-label>
       <mat-select placeholder="Ingredient" [(ngModel)]="data.menu.ingredients" multiple>
-        <mat-option *ngFor="let ing of ingredients" [value]="ing.id">{{ing.name}}</mat-option>
+        <mat-option *ngFor="let ing of ingredients" [value]="ing.id" (click) = "updateSuggestedPriceRange()">{{ing.name}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="col">
