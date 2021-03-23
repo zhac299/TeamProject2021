@@ -16,15 +16,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+/**
+ * Controller of the Customer.
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping(path = "/api/v1/")
 public class CustomerController {
 
+  /**
+   * Autowires to CustomerRepository.
+   */
   @Autowired
   CustomerRepository customerRepo;
 
+  /**
+   * Autowires to CustomerService.
+   */
   @Autowired
   CustomerService customerService;
 
