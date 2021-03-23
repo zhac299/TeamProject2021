@@ -151,6 +151,11 @@ public class MenuController {
             calories);
         }
 
+    /**
+     * Gets the Menu according to the category.
+     * @param category of the menu you want.
+     * @return a List of menu items in the specified category.
+     */
     @GetMapping(path = "/menu/getMenuByCategory/{category}")
     public List<Menu> getMenuByCategory(@PathVariable("category") String category) {
         return this.menuService.getMenuByCategory(category);
