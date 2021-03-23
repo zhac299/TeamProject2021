@@ -56,6 +56,11 @@ public class RestaurantStockController {
 		return restaurantStockService.createNewStock(ingredient);
 	}
 
+	/**
+	 * Retrieves ingredient by its id.
+	 * @param id of the ingredient.
+	 * @return the ingredient object.
+	 */
 	@GetMapping("/stock/{id}")
 	public Ingredient getStockById(@PathVariable("id") Long id) {
 		return restaurantStockService.findStockById(id);
