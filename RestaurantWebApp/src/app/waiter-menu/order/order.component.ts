@@ -11,6 +11,10 @@ import {tap} from "rxjs/operators";
 import {Meal} from "../../../models/Meal";
 import {MealService} from "../../meal.service";
 
+/**
+ * Dialog component for Orders. Displays all information and controls for an order.
+ * Displays options to edit order if isWaiterStaff property is false.
+ */
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -37,10 +41,15 @@ export class OrderComponent implements OnInit {
     public menuService: MenuService,
     private mealService: MealService) {}
 
+
+  /**
+   * Subscribes to order service and menu service for real time changes
+    */
   ngOnInit(): void {
     this.updateOrderedMealItems();
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
+      console.log(menu);
     });
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
     this.orderService.getOrderById(this.data.order.id).subscribe((orders) => {
@@ -51,35 +60,59 @@ export class OrderComponent implements OnInit {
       this.data.isKitchenStaff = false;
     }
   }
-  
-  updateOrderReady(order: Order): void{
+
+  /**
+   * Updates a given order object
+   * @param order to update
+   */
+  updateOrderReady(order: Order): void {
     this.orderService.updateOrderReady(order).subscribe((order) => {
       this.orderSubject$.next(order);
     })
   }
 
+  /**
+   * Updates an order's delivery status
+   * @param order to change delivery status of
+   */
   updateOrderDelivered(order: Order): void {
     this.orderService.updateOrderDelivered(order).subscribe((order) => {
       this.orderSubject$.next(order);
     })
   }
 
+  /**
+   * Updates an orders confirmed status
+   * @param order to change update status of
+   */
   updateOrderConfirmed(order: Order): void {
     this.orderService.updateOrderConfirmed(order)
       .subscribe((newOrder) =>this.orderSubject$.next(newOrder));
     console.log(order);
   }
 
+  /**
+   * Updates paid status of order
+   * @param order to change isPaid status of
+   */
   updateOrderIsPaid(order: Order): void {
     this.orderService.updateIsPaid(order);
   }
 
+
+  /**
+   * Returns the id of the injected order that the dialog opens up with
+   * @return the id of current order
+   */
   getId(): number {
     let id = undefined;
     this.order$.subscribe((o) => id = o.id);
     return id;
   }
 
+  /**
+   * Adds or deletes meals from an order
+   */
   updateOrderedMealItems() {
     if(this.data.order.meal.length > 0){
       this.order$.subscribe((order) => {
@@ -89,13 +122,21 @@ export class OrderComponent implements OnInit {
     }
   }
 
+  /**
+   * Deletes this order
+   */
   deleteOrder(): void {
     console.log(this.data.order.id);
     this.orderService.deleteOrderById(this.data.order.id);
     this.dialogRef.close();
   }
 
-  addMenuToOrder(menu: Menu, order:Order) {
+  /**
+   * Adds a menu to the order
+   * @param menu
+   * @param order
+   */
+  addMenuToOrder(menu: Menu, order: Order) {
     const _orderedMealItems = this.orderedMealItemsSubject$.getValue();
     let alreadyOrdered = false;
     _orderedMealItems.forEach((meal) => {
