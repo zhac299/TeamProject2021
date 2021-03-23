@@ -34,6 +34,8 @@ export class AddMenuDialogComponent implements OnInit {
       this.categories = menuCategories;
     })
     this.suggestedPriceRange = [];
+    this.suggestedPriceRange[0] = 0;
+    this.suggestedPriceRange[1] = 0;
   }
 
   setCalories(value: number) {

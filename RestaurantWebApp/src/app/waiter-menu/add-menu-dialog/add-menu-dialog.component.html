@@ -6,8 +6,12 @@
       <input matInput [(ngModel)]="data.menu.name"/>
     </mat-form-field>
     <mat-form-field class="col">
-      <mat-label>Price</mat-label>
+      <mat-label>Price(suggested)</mat-label>
       <input matInput class="fixInput" [(ngModel)]="data.menu.price"/>
+      <span *ngIf = "suggestedPriceRange[0] != 0 else noSuggestionBlock">
+        {{suggestedPriceRange[0]}} - {{suggestedPriceRange[1]}} $
+      </span>
+      <ng-template #noSuggestionBlock>0$</ng-template>
     </mat-form-field>
   </div>
   <div class="row">
