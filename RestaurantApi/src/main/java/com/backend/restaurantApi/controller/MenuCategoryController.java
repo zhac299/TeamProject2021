@@ -38,6 +38,11 @@ public class MenuCategoryController {
         return menuCategoryRepository.findAll();
     }
 
+    /**
+     * Creates a new category and calls the service to add it to the repo.
+     * @param menuCategory the MenuCategory object to create.
+     * @return the MenuCategory object.
+     */
     @PostMapping("/menuCategory")
     public MenuCategory createNewCategory(@RequestBody MenuCategory menuCategory){
         return menuCategoryService.createNewCategory(menuCategory);
