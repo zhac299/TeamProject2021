@@ -72,8 +72,9 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
         menu.ingredients.push(element.ingredient.id);
       });
       const title = "Edit Dish";
+      const hasMenuItem: boolean = true;
       const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-        data: {menu,title},
+        data: {menu,title,hasMenuItem},
         width: '50%'
       });
 
