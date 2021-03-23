@@ -22,9 +22,15 @@ public class Menu {
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Column for the name of the Menu.
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * Column for the description of the menu.
+     */
     @Column(name = "description")
     private String description;
 
