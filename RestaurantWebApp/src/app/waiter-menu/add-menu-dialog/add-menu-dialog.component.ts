@@ -6,8 +6,8 @@ import {MenuCategory} from "../../../models/MenuCategory";
 import {MenuCategoryService} from "../../menu-category.service";
 import {map, tap} from "rxjs/operators";
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
-import { Ingredient } from 'src/models/Ingredient';
-import { IngredientService } from 'src/app/ingredient.service';
+import { Ingredient } from '../../../models/Ingredient';
+import { IngredientService } from '../../ingredient.service';
 
 @Component({
   selector: 'app-add-order-dialog',

@@ -1,7 +1,7 @@
 $background: #fdfdf3
 $pure-gold: #dbc028
 $gold-light: #e9c46a
-$maroon: #3b0d0d
+$maroon: rgb(59, 13, 13)
 $teal: #388572
 
 body
@@ -21,24 +21,26 @@ body
   color: $pure-gold
 
 .menu-item-name
-  font-family: 'Raleway', cursive
+  font-family: 'Reenie Beanie', cursive
   font-size: 30px
 
 .menu-item-description
-  font-family: 'Raleway', sans-serif
+  font-family: 'Reenie Beanie', cursive
   color: #0e0b00
-  background-color: $background
   padding: 5px
-  border-radius: 5px
+  height: 100px
+  text-align: justify
+  text-justify: inter-word
 
 .spacer
   flex: 1 1 auto
 
 .menuUI
   font-size: 30px
-  font-family: 'Calibri Light'
+  font-family: 'Reenie Beanie', cursive
   height: 100%
   width: 100%
+  padding: 10px
 
 .menuTitle
   font-family: 'Cedarville Cursive', cursive
@@ -46,37 +48,41 @@ body
   text-shadow: 5px 5px 5px #565656
 
 .card-actions
-  padding: 10px
+  padding: 0
+  margin: 0
 
 .selection-fab
-  background-color: #388572
-  font-family: 'Raleway', sans-serif
-  color: #b9a239
-  font-size: 20px
+  margin: 5px
+  background-color: #0e0b00
+  font-family: 'Reenie Beanie', cursive
+  color: white
+  height: 35px
+  width: 35px
+  border-radius: 50%
+  display: inline-block
+  text-align: center
 
 .an-2
   font-weight: 900
   font-size: 7vw
 
 .action-button
-  font-family: 'Raleway', sans-serif
+  font-family: 'Reenie Beanie', cursive
   background-color: #388572
-  color: #e9c46a
-  font-size: 20px
+  color: white
+  font-size: 15px
 
-.break-line
-  border: 1px solid black
-  margin-bottom: 10px
+.quantity-action-button
+  background-color: #388572
+  color: white
 
 .mat-card-header
-  padding: 0
-  margin: 0
-  height: 30px
+  height: 70px
 
 .category
   font-size: 3vw
-  font-family: 'Cedarville Cursive'
-  color: #b9a239
+  font-family: 'Reenie Beanie', cursive
+  color: $pure-gold
   border-radius: 3px
   background-color: #388572
   width: 100%
@@ -95,43 +101,49 @@ body
   background-color: #bbbbbbf2
   backdrop-filter: blur(4px)
   .badge
-  padding-left: 9px
-  padding-right: 9px
-  -webkit-border-radius: 9px
-  -moz-border-radius: 9px
-  border-radius: 9px
-
+    padding-left: 9px
+    padding-right: 9px
+    -webkit-border-radius: 9px
+    -moz-border-radius: 9px
+    border-radius: 9px
 
 .label-warning[href],
 .badge-warning[href]
   background-color: #c67605
 
 #lblCartCount
-    font-size: 12px
-    background-color: #388572
-    color: #fff
-    padding: 0 5px
-    vertical-align: top
-    margin-left: -10px
+  font-size: 12px
+  background-color: #388572
+  color: #fff
+  padding: 0 5px
+  vertical-align: top
+  margin-left: -10px
 
 .menuCard
   width: 90%
   border-radius: 10px
-  border: 1px double #c3b228
   padding: 10px
   margin: 50px
-  box-shadow: 15px 15px 15px 5px #626260
-  background: rgb(253,253,243)
-  background: radial-gradient(circle, rgba(253,253,243,1) 0%, rgb(236, 232, 225) 100%)
   min-height: 100vh
+  padding-bottom: 20px
+
+.card
+  padding: 15px
+  margin: 20px
+
+.foodImg
+  height: 250px
+  width: 250px
 
 .menuCard .innerBorder
   border-radius: 10px
   border: 1px dotted $teal
 
 .categoryTitle
-  font-size: 5vw
+  font-size: 6vw
   font-family: 'Cedarville Cursive', cursive
+  color: $pure-gold
+  text-shadow: 5px 5px 5px #565656
 
 .helpBubble
   position: absolute
@@ -152,4 +164,15 @@ body
 
 .expansionPannel
   padding: 20px
+  width: 100%
 
+.menu-item-name
+  height: 40px
+
+.menu-item-calories-allergens
+  font-family: 'Reenie Beanie', cursive
+  color: #0e0b00
+  padding: 5px
+  height: 40px
+  text-align: justify
+  text-justify: inter-word

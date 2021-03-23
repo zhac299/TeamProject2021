@@ -1,16 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-import { MealService } from 'src/app/meal.service';
-import { OrderService } from 'src/app/order.service';
-import { StaffService } from 'src/app/staff.service';
-import { TableService } from 'src/app/table.service';
-import { Customer } from 'src/models/Customer';
-import { Meal } from 'src/models/Meal';
-import { Table } from 'src/models/Table';
+import { MealService } from '../../meal.service';
+import { OrderService } from '../../order.service';
+import { TableService } from '../../table.service';
+import { Meal } from '../../../models/Meal';
+import { CustomerService } from '../../customer.service';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
+import { Router } from '@angular/router';
+import { Order } from '../../../models/Order';
 
 @Component({
   selector: 'app-basket',
@@ -20,36 +18,33 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
 export class BasketComponent implements OnInit {
 
   mealList: Meal[];
-  customerObservable: Observable<Customer>;
-  tableObservable: Observable<Table>;
-  customer: Customer;
-  table: Table;
-  orderPlaced: Boolean;
   orderTotal: number = 0;
+  customerId: number;
+  tableNumber: number;
+  orders: Order[] = [];
+  orderPlaced: boolean = false;
 
   constructor(
     private snackBar: MatSnackBar,
     private tableService: TableService,
     private mealService: MealService,
     private orderService: OrderService,
-    private staffService: StaffService,
+    private customerService: CustomerService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) data) {
     this.mealList = data.selectedMeals;
-    this.customerObservable = data.customer;
-    this.tableObservable = data.table;
-    for (let meal of this.mealList) {
-      this.orderTotal += meal.menu.price * meal.numberSelections;
-    }
+    this.customerId = data.customerId;
+    this.tableNumber = data.tableNumber;
   }
 
-  async ngOnInit(): Promise<void> {
-    this.customer = await this.customerObservable.pipe(take(1)).toPromise();
-    this.table = await this.tableObservable.pipe(take(1)).toPromise();
-    if (this.customer.orders.length == 0) {
-      this.orderPlaced = false;
-    } else {
-      this.orderPlaced = true;
+  ngOnInit(): void {
+    this.getInitialOrderTotal();
+  }
+
+  getInitialOrderTotal() {
+    for (let meal of this.mealList) {
+      this.orderTotal += meal.menu.price * meal.numberSelections;
     }
   }
 
@@ -79,25 +74,23 @@ export class BasketComponent implements OnInit {
 
   placeOrder(): void {
     if (this.orderPlaced == false) {
-      this.orderService.waiterId = this.table.waiterId;     
-
-      this.orderService.createNewOrder(this.customer, this.orderTotal).subscribe((order) => {
-        for (var i = 0; i < this.mealList.length; i++) {
-          this.mealList[i].order = order;
-          this.mealService.createNewMeal(this.mealList[i]).subscribe();
-        }
-      });
-
-      this.table.isReady = true;
-      this.tableService.updateRestaurantTableReadyToOrder(this.table, true).subscribe();
+      this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
+        this.orderService.waiterId = table.waiterId;  
+        table.isReady = true;
+        this.tableService.updateTable(table);
+      })       
+      this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
+        this.orderService.createNewOrder(customer, this.orderTotal).subscribe((order) => {
+          for (var i = 0; i < this.mealList.length; i++) {
+            this.mealList[i].order = order;
+            this.mealService.createNewMeal(this.mealList[i]).subscribe();
+          }
+          this.mealList = [];
+        });
+      })
       this.orderPlaced = true;
       this.openSnackBar("You placed your order", "Enjoy!")
     }
-  }
-
-  getMealList(): Meal[] {
-    console.log(this.mealList);
-    return this.mealList;
   }
 
   private openSnackBar(message: string, action: string) {
@@ -107,7 +100,16 @@ export class BasketComponent implements OnInit {
     });
   }
 
+  navigateToPayment(orderId: number): void {
+    this.router.navigate(['/payment'], 
+          { queryParams: { 
+            tableNumber: this.tableNumber,
+            orderId: orderId, 
+            customerId: this.customerId} });
+    this.dialogRef.close();
+  }
+
   close(): void {
-    this.dialogRef.close(this.orderPlaced);
+    this.dialogRef.close();
   }
 }

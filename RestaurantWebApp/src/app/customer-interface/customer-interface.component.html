@@ -4,83 +4,86 @@
   </div>
 </div>
 
-<mat-toolbar class="container-fluid toolbar">
-  <button mat-icon-button (click)="goHome()">
+<mat-toolbar class="container-fluid toolbar toolbarDiv">
+  <button mat-icon-button (click)="goHome()" title="Home page">
     <mat-icon>home</mat-icon>
   </button>
-  <span></span>
+  &nbsp;&nbsp;&nbsp;
   <ready-to-order></ready-to-order>
   <span class="spacer"></span>
-  <button mat-icon-button (click)="openTracker()">
+  <button mat-icon-button (click)="openTracker()" title="Order Tracker">
     <mat-icon>timer</mat-icon>
   </button>
-  <button mat-icon-button (click)="openBasket()">
+  &nbsp;&nbsp;&nbsp;
+  <button mat-icon-button (click)="openBasket()" title="Shopping Cart">
     <mat-icon>shopping_cart</mat-icon>
     <span class='badge badge-warning' id='lblCartCount'> {{selectedMeals.length}} </span>
   </button>
 </mat-toolbar>
 
-<br>
-<div class="container-fluid">
-  <mat-grid-list cols="4" rowHeight="150px" gutterSize="60px">
+<expansion-pannel class="expansionPannel"></expansion-pannel>
+<div class="container-fluid catDiv">
+  <mat-grid-list [cols]="categories.length" rowHeight="150px" gutterSize="60px">
     <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"
-                   (click)="selectCategory(category)">
+      (click)="selectCategory(category)">
       <button class="category" mat-raised-button>{{category.category}}</button>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
 
-<div class="container menuCard">
+<div class="container-fluid menuCard">
 
-  <div class="container-fluid display-1">
-    <p class="row justify-content-center categoryTitle"><u>{{this.selectedCategory.category}}</u></p>
+  <div class="container-fluid display-2 justify-content-center">
+    <p class="row justify-content-center categoryTitle">{{this.selectedCategory.category}}</p>
   </div>
-  <expansion-pannel class="expansionPannel"></expansion-pannel>
   <div class="container-fluid">
-    <div class="h-100 row" [@listAnimation]="menu.length">
-      <div id="list" class="col-4 menuUI" *ngFor="let menuItem of menu">
-        <mat-card class="mat-card">
-          <mat-card-header class="mat-card-header">
-            <mat-card-title class="menu-item-name ">
-              <p>{{menuItem.name}}</p>
-<!--              <p>£{{menuItem.price}}</p>-->
-            </mat-card-title>
-            <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
-          </mat-card-header>
-          <hr class="break-line">
-          <img mat-card-image class="foodImg" src="./assets/images/ismael-trevino-Y0zbn9lPCEU-unsplash.jpg" alt="Photo of a Taco">
-          <mat-card-content class="menu-item-description">
-            <p>
-              {{menuItem.description}}
-            </p>
-          </mat-card-content>
-          <mat-card-actions class="card-actions">
-            <button mat-raised-button class="action-button"
-                    *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections"
-                    (click)="addMeal(menuItem)">
-              Add to Cart
+    <div class="h-100 row justify-content-center">
+      <mat-card class="card col-4" id="list" *ngFor="let menuItem of menu">
+        <mat-card-header class="mat-card-header">
+          <mat-card-title class="menu-item-name ">
+            <p><b>{{menuItem.name}}</b></p>
+          </mat-card-title>
+          <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="foodImg" [src]="menuItem.pictureUrl">
+        <mat-card-content class="menu-item-description">
+          <p>
+            {{menuItem.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-content class="menu-item-calories-allergens">
+          <p>
+            <b>{{menuItem.calories}} calories</b>
+          </p>
+          <p class = "allergens">
+
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+          <button mat-raised-button class="action-button"
+            *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections" (click)="addMeal(menuItem)">
+            Add to Cart
+          </button>
+          <ng-template #editMealSelections>
+            <button mat-raised-button class="quantity-action-button" (click)="addMeal(menuItem)">
+              <mat-icon>add</mat-icon>
             </button>
-            <ng-template #editMealSelections>
-              <button mat-raised-button class="action-button" (click)="addMeal(menuItem)">
-                <mat-icon>add</mat-icon>
-              </button>
-              <button mat-raised-button class="action-button" (click)="removeMeal(menuItem)">
-                <mat-icon>remove</mat-icon>
-              </button>
-              <button mat-mini-fab class="selection-fab">
-                x{{getNumberOfSelections(menuItem)}}
-              </button>
-            </ng-template>
-          </mat-card-actions>
-        </mat-card>
-      </div>
+            <button class="selection-fab">
+              {{getNumberOfSelections(menuItem)}}
+            </button>
+            <button mat-raised-button class="quantity-action-button" (click)="removeMeal(menuItem)">
+              <mat-icon>remove</mat-icon>
+            </button>
+          </ng-template>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 
 </div>
 
 <div class="callWaiterFloat">
-  <i class="container-fluid my-float">
+  <i class="container-fluid my-float" data-toggle="popover" title="Need help? Click to call a waiter">
     <call-waiter class="row justify-content-center"></call-waiter>
   </i>
 </div>

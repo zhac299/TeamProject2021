@@ -1,20 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Table} from '../../models/Table';
-import {MatDialog} from '@angular/material/dialog';
-import {Order} from "../../models/Order";
-import {MenuService} from "../menu.service";
-import {Menu} from "../../models/Menu";
-import {Observable} from "rxjs";
-import {PickTableDialogComponent} from "./pick-table-dialog/pick-table-dialog.component";
+import { Component, OnInit } from '@angular/core';
+import { Table } from '../../models/Table';
+import { MatDialog } from '@angular/material/dialog';
+import { Order } from "../../models/Order";
+import { MenuService } from "../menu.service";
+import { Menu } from "../../models/Menu";
+import { Observable } from "rxjs";
+import { PickTableDialogComponent } from "./pick-table-dialog/pick-table-dialog.component";
 import { TableService } from '../table.service';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { Staff } from 'src/models/Staff';
+import { Staff } from '../../models/Staff';
 import { StaffService } from '../staff.service';
 import { CustomerService } from '../customer.service';
 import { OrderService } from '../order.service';
-import { TablesListDisplayComponent } from '../tables-list-display/tables-list-display.component';
-import { MenusListDisplayComponent } from '../menus-list-display/menus-list-display.component';
 import { AddMenuDialogComponent } from './add-menu-dialog/add-menu-dialog.component';
 
 @Component({
@@ -77,22 +75,21 @@ export class WaiterMenuComponent implements OnInit {
         switchMap((dialogResult) =>
           this.customerService.createCustomerWithTable(dialogResult))
       ).subscribe((a) =>
-      this.orderService.createNewOrderWithCustomer(a)
-    );
+        this.orderService.createNewOrderWithCustomer(a)
+      );
   }
 
   openAddMenuDialog() {
     const title = "Add New Dish";
     let menu: Menu = new Menu();
     const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-      data: {menu,title},
+      data: { menu, title },
       width: '50%',
       autoFocus: false
     });
 
     dialogRef.afterClosed().subscribe(menu => {
-      if(menu){
-        console.log(menu);
+      if (menu) {
         this.menuService.createMenuItem(menu);
       }
     })

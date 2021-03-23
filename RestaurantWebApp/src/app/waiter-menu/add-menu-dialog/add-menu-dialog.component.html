@@ -21,6 +21,10 @@
       <mat-label>Description</mat-label>
       <textarea matInput class="fixInput" [(ngModel)]="data.menu.description"></textarea>
     </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Picture URL</mat-label>
+      <textarea matInput [(ngModel)] = "data.menu.pictureUrl"></textarea>
+    </mat-form-field>
   </div>
   <div class="row">
     <div class="col" *ngFor="let category of categories;  let i = index">
@@ -83,7 +87,7 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  
+
   <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button (click)="closeDialog()">Ok</button>
 </mat-dialog-actions>

@@ -1,22 +1,17 @@
-import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs';
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
-import {MenuService} from "../menu.service";
-import {MenuFilterService} from "../menu-filter.service";
-import {Menu} from "../../models/Menu";
-import {Customer} from 'src/models/Customer';
-import {CustomerService} from '../customer.service';
-import {BasketComponent} from './basket/basket.component';
-import {Table} from 'src/models/Table';
-import {TableService} from '../table.service';
-import {animate, keyframes, query, stagger, style, transition, trigger} from "@angular/animations";
-import {Meal} from 'src/models/Meal';
-import {OrderTrackerComponent} from './order-tracker/order-tracker.component';
-import {MenuCategory} from "../../models/MenuCategory";
-import {MenuCategoryService} from '../menu-category.service';
+import { MenuService } from "../menu.service";
+import { MenuFilterService } from "../menu-filter.service";
+import { Menu } from "../../models/Menu";
+import { BasketComponent } from './basket/basket.component';
+import { animate, keyframes, query, stagger, style, transition, trigger } from "@angular/animations";
+import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
+import { MenuCategory } from "../../models/MenuCategory";
+import { MenuCategoryService } from '../menu-category.service';
 import anime from 'animejs/lib/anime.es.js'
+import { Meal } from '../../models/Meal';
 
 @Component({
   selector: 'app-customer-interface',
@@ -26,13 +21,13 @@ import anime from 'animejs/lib/anime.es.js'
   animations: [
     trigger('listAnimation', [
       transition('*=>*', [
-        query(':enter', style({opacity: 0}), {optional: true}),
+        query(':enter', style({ opacity: 0 }), { optional: true }),
 
         query(':enter', stagger('100ms', [
           animate('.5s ease-in', keyframes([
-            style({opacity: 0, transform: 'translateY(-50px)', offset: 0}),
-            style({opacity: .5, transform: 'translateY(15px)', offset: 0.3}),
-            style({opacity: 1, transform: 'translateY(0)', offset: 1})
+            style({ opacity: 0, transform: 'translateY(-50px)', offset: 0 }),
+            style({ opacity: .5, transform: 'translateY(15px)', offset: 0.3 }),
+            style({ opacity: 1, transform: 'translateY(0)', offset: 1 })
           ]))
         ]))
       ])
@@ -44,93 +39,24 @@ export class CustomerInterfaceComponent implements OnInit {
   selectedMeals: Meal[] = [];
   menu: Menu[];
   paramsObject: any;
-  customer: Observable<Customer>;
-  table:Observable<Table>;
   orderPlaced: Boolean = false;
   categories: MenuCategory[];
   selectedCategory: MenuCategory;
 
   constructor(private menuService: MenuService,
-              private menuCategoryService: MenuCategoryService,
-              private customerService: CustomerService,
-              private tableService: TableService,
-              private menuFilterService: MenuFilterService,
-              private route: ActivatedRoute,
-              private elementRef: ElementRef,
-              public dialog: MatDialog,
-              private router:Router) { }
+    private menuCategoryService: MenuCategoryService,
+    private menuFilterService: MenuFilterService,
+    private route: ActivatedRoute,
+    private elementRef: ElementRef,
+    public dialog: MatDialog,
+    private router: Router) { }
 
   ngAfterViewInit(): void {
-    // this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
-    // this.elementRef.nativeElement.ownerDocument.body.backgroundImage = 'url(assets/images/background.jpg)';
-
-    // Wrap every letter in a span
-    var textWrapper = document.querySelector('.menuTitle');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-    // ANIMATE TITLE
-    anime.timeline({loop: false})
-      .add({
-        delay: 1000
-      })
-      .add({
-        targets: '.menuTitle .letter',
-        opacity: [0,1],
-        scale: 2,
-        easing: "easeInOutQuad",
-        duration: 500,
-        delay: (el, i) => 50 * (i+1)
-      }).add({
-        targets: '.toolbar',
-        translateY: [100, 0],
-        opacity: [0,1],
-        duration: 500,
-        delay: (el, i) => {
-          return 1000 + 100 * i;
-        }
-      }).add({
-      targets: '.categoryTile',
-      translateY: [100, 0],
-      opacity: [0,1],
-      duration: 500,
-      delay: (el, i) => {
-        return 1000 + 100 * i;
-      }
-    }).add({
-      targets: '.menuCard',
-      translateY: [100, 0],
-      opacity: [0,1],
-      duration: 500,
-      delay: (el, i) => {
-        return 500 + 100 * i;
-      }
-    });
-    //ANIMATE ICON
-    // anime({
-    //   targets: '.dividerIcon',
-    //   opacity: [0,1],
-    //   easing: "easeInOutQuad",
-    //   duration: 500,
-    //   scale: {
-    //     value: [.5,1],
-    //     duration: 2000,
-    //     delay: 800,
-    //     easing: 'easeInOutQuart'
-    //   },
-    //   rotate: {
-    //     value: 360,
-    //     duration: 1000,
-    //     easing: 'easeInOutSine'
-    //   },
-    //   delay: 1000
-    // });
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
-      this.customer = this.customerService.getCustomerByID(this.paramsObject.params.customerID)
-      this.table = this.tableService.getTableByNumber(this.paramsObject.params.selectedTable)
     });
 
     this.menuCategoryService.getMenuCategories().subscribe((categories) => {
@@ -154,14 +80,14 @@ export class CustomerInterfaceComponent implements OnInit {
 
   async filter(filteredArgs: string): Promise<void> {
     this.menuFilterService.filter(filteredArgs).subscribe((filteredMenu) => {
-      for (var i = 0; i < this.menu.length; i++ ) {
+      for (var i = 0; i < this.menu.length; i++) {
         let containsItem = false;
         for (var j = 0; j < filteredMenu.length; j++) {
           if (this.menu[i].name == filteredMenu[j].name) {
             containsItem = true;
           }
         }
-        if(containsItem == false) {
+        if (containsItem == false) {
           this.menu.splice(i);
         }
       }
@@ -169,11 +95,8 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   addMeal(menuItem: Menu): void {
-    console.log(menuItem);
-    console.log(this.selectedMeals)
-    console.log(this.getNumberOfSelections(menuItem))
     var mealNotPresent: Boolean = true;
-    for(var i = 0 ; i < this.selectedMeals.length; i++) {
+    for (var i = 0; i < this.selectedMeals.length; i++) {
       if (this.selectedMeals[i].menu.name == menuItem.name) {
         this.selectedMeals[i].numberSelections += 1;
         mealNotPresent = false;
@@ -188,10 +111,10 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   removeMeal(menuItem: Menu): void {
-    for(var i = 0; i < this.selectedMeals.length; i++) {
-      if(this.selectedMeals[i].menu.name == menuItem.name) {
+    for (var i = 0; i < this.selectedMeals.length; i++) {
+      if (this.selectedMeals[i].menu.name == menuItem.name) {
         this.selectedMeals[i].numberSelections -= 1;
-        if(this.selectedMeals[i].numberSelections == 0) {
+        if (this.selectedMeals[i].numberSelections == 0) {
           this.selectedMeals.splice(i);
         }
       }
@@ -199,7 +122,7 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   clearMeal(menuItem: Menu): void {
-    for(var i = 0; i < this.selectedMeals.length; i++) {
+    for (var i = 0; i < this.selectedMeals.length; i++) {
       if (this.selectedMeals[i].menu.name == menuItem.name) {
         this.selectedMeals.splice(i);
       }
@@ -207,8 +130,8 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   getNumberOfSelections(menuItem: Menu): number {
-    for(let meal of this.selectedMeals) {
-      if(meal.menu.name == menuItem.name) {
+    for (let meal of this.selectedMeals) {
+      if (meal.menu.name == menuItem.name) {
         return meal.numberSelections;
       }
     }
@@ -217,10 +140,8 @@ export class CustomerInterfaceComponent implements OnInit {
 
   openBasket() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.data = {customer:this.customer, selectedMeals: this.selectedMeals, table: this.table};
+    dialogConfig.data = { customerId: this.paramsObject.params.customerID, selectedMeals: this.selectedMeals, tableNumber: this.paramsObject.params.selectedTable };
     dialogConfig.width = "60%";
-    dialogConfig.backdropClass = "basket";
     const dialogRef = this.dialog.open(BasketComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(orderPlaced => {
@@ -228,10 +149,9 @@ export class CustomerInterfaceComponent implements OnInit {
     });
   }
 
-  openTracker(){
+  openTracker() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.data = {customer: this.customer};
+    dialogConfig.data = { customerId: this.paramsObject.params.customerID, tableNumber: this.paramsObject.params.selectedTable };
     dialogConfig.width = "60%";
     const dialogRef = this.dialog.open(OrderTrackerComponent, dialogConfig);
 
@@ -250,14 +170,14 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   elevate(category: any) {
-    anime.timeline({loop: false})
+    anime.timeline({ loop: false })
       .add({
         targets: `${category}`,
-        opacity: [0,1],
+        opacity: [0, 1],
         scale: 2,
         easing: "easeInOutQuad",
         duration: 1000,
-        delay: (el, i) => 50 * (i+1)
+        delay: (el, i) => 50 * (i + 1)
       });
   }
 }
