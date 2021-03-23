@@ -76,6 +76,10 @@ public class CustomerController {
     return customerService.updateCustomer(id, Customer);
   }
 
+  /**
+   * Removes a Customer from the repo.
+   * @param id of the specific Customer object to delete.
+   */
   @DeleteMapping("/customer/{id}")
   public void deleteCustomer(@PathVariable("id") Long id) {
     customerService.deleteCustomer(id);
