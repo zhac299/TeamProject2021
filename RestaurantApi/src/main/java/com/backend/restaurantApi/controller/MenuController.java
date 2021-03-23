@@ -35,16 +35,30 @@ public class MenuController {
     @Autowired
     MealService mealService;
 
+    /**
+     * Gets all elements in the menu.
+     * @return list of Menu objects.
+     */
     @GetMapping(path = "/menu")
     public List<Menu> getMenu() {
         return menuRepository.findAll();
     }
 
+    /**
+     * Creates a new menu item.
+     * @param menu the menu object to be created.
+     * @return the created Menu object.
+     */
     @PostMapping(path = "/menu") 
     public Menu createNewMenu(@RequestBody Menu menu) {
         return menuService.createNewMenu(menu);
     }
 
+    /**
+     * Gets in the menu by its corresponding id.
+     * @param id of the meal you want to retreive.
+     * @return the retrieved menu object.
+     */
     @GetMapping("/menu/{id}")
     public Menu getMealById(@PathVariable("id") Long id) {
         return menuService.getMenuById(id);
