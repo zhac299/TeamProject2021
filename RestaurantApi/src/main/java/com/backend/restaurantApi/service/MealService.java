@@ -58,12 +58,23 @@ public class MealService {
         }
         return optionalMenu.get();
 	}
-
+    /**
+     * The method for updating the meals ID.
+     * 
+     * 
+     * @param id the new ID involved in the update.
+     * @param meal the object in which the ID will be replaced.
+     * @returnhe state of the meal repository after adding the meal.
+     */
 	public Meal updateMeal(Long id, Meal meal) {
 		meal.setId(id);
         return mealRepository.save(meal);
 	}
-
+    /**
+     * The method involved with deleting a meal from the database.
+     * 
+     * @param id the id of the meal to be deleted.
+     */
 	public void deleteMeal(Long id) {
         Optional<Meal> meal = mealRepository.findById(id);
         if (!meal.isPresent()) {

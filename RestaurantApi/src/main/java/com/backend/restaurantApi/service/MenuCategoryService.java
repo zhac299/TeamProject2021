@@ -11,13 +11,25 @@ import java.util.Optional;
 @Service
 public class MenuCategoryService {
 
+    /**
+     * The Menu Category Repository used to query the database.
+     */
     @Autowired
     MenuCategoryRepository menuCategoryRepository;
-
+    /**
+     * The method for creating a new menu category. 
+     * 
+     * @param menuCategory the category to be added.
+     * @return the state of the menu category repository after adding the category.
+     */
     public MenuCategory createNewCategory(MenuCategory menuCategory) {
         return this.menuCategoryRepository.save(menuCategory);
     }
-
+    /**
+     * The method involved in finding a paticular category.
+     * @param id the ID of the desired category.
+     * @return the desire category or exception if it doesn't exist.
+     */
     public MenuCategory findCategoryById(Long id) {
         Optional<MenuCategory> menuCategory =  this.menuCategoryRepository.findById(id);
         if (menuCategory.isPresent()) {
