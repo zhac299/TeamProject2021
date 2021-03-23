@@ -37,6 +37,10 @@ public class RestaurantStockController {
 	@Autowired
 	RestaurantStockService restaurantStockService;
 
+	/**
+	 * Gets all the ingredients from the ingredient repo.
+	 * @return a list of all ingredients.
+	 */
 	@GetMapping("/stock")
 	public List<Ingredient> findAll() {
 		return ingredientRepository.findAll();
