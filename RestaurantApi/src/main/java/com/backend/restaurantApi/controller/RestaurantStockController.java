@@ -17,14 +17,23 @@ import com.backend.restaurantApi.model.Ingredient;
 import com.backend.restaurantApi.repository.IngredientRepository;
 import com.backend.restaurantApi.service.RestaurantStockService;
 
+/**
+ * The Controller of the RestaurantStock.
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping(path = "/api/v1/")
 public class RestaurantStockController {
 
+	/**
+	 * Autowires to the Ingredient repo.
+	 */
 	@Autowired
 	IngredientRepository ingredientRepository;
 
+	/**
+	 * Autowires to the RestaurantStock service.
+	 */
 	@Autowired
 	RestaurantStockService restaurantStockService;
 
