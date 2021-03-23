@@ -46,6 +46,11 @@ public class RestaurantStockController {
 		return ingredientRepository.findAll();
 	}
 
+	/**
+	 * Creates a new ingredient to add to the stock.
+	 * @param ingredient you want to add.
+	 * @return the added ingredient object.
+	 */
 	@PostMapping("/stock")
 	public Ingredient createNewStock(@RequestBody Ingredient ingredient) {
 		return restaurantStockService.createNewStock(ingredient);
