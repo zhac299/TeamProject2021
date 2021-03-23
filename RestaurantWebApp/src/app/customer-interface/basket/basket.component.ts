@@ -86,7 +86,6 @@ export class BasketComponent implements OnInit {
           for (var i = 0; i < this.mealList.length; i++) {
             this.mealList[i].order = order;
             this.mealService.createNewMeal(this.mealList[i]).subscribe();
-            this.ingredientService.updateIngredient(())
           }
           this.mealList = [];
         });
