@@ -45,6 +45,11 @@ public class CustomerController {
     return customerRepo.findAll();
   }  
 
+  /**
+   * Creates a new Customer in the repo by calling the service. 
+   * @param Customer the created customer.
+   * @return the created Customer object.
+   */
   @PostMapping("/customer")
   public Customer newCustomer(@RequestBody Customer Customer){
     return customerService.createNewCustomer(Customer);
