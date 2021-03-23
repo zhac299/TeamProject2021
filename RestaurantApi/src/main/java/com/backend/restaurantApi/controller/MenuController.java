@@ -10,17 +10,28 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The Controller of the Menu.
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping(path = "/api/v1/")
 public class MenuController {
-
+    /**
+     * Autowires to the menu repo
+     */
     @Autowired
     MenuRepository menuRepository;
 
+    /**
+     * Autowires to the menu service
+     */
     @Autowired
     MenuService menuService;
 
+    /**
+     * Autowires to the meal service
+     */
     @Autowired
     MealService mealService;
 
