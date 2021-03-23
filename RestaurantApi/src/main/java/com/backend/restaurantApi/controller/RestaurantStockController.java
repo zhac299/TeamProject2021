@@ -66,6 +66,12 @@ public class RestaurantStockController {
 		return restaurantStockService.findStockById(id);
 	}
 
+	/**
+	 * Updates existing stock with new ingredient.
+	 * @param id of stock.
+	 * @param ingredient to update stock with.
+	 * @return the Ingredient object.
+	 */
 	@PutMapping("/stock/{id}")
 	public Ingredient updatStock(@PathVariable("id") Long id, @RequestBody Ingredient ingredient) {
 		return restaurantStockService.updatStock(id, ingredient);
