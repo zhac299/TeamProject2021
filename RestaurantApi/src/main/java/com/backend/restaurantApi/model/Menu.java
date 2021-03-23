@@ -173,10 +173,18 @@ public class Menu {
         this.calories = calories;
     }
 
+    /**
+     * Setter for the id of Menu object.
+     * @param id the id to be given.
+     */
     public void setMenuId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Getter for the name.
+     * @return a string to represent main.
+     */
     public String getName() {
         return name;
     }
