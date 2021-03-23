@@ -91,6 +91,13 @@ public class MenuService {
         return m;
     }
     
+    /**
+     * The method for retrieving ingredients from the database.
+     * 
+     * 
+     * @param id the id of the menu oject in which you want to get ingredients from.
+     * @return the list of ingredients of the menu object.
+     */
     public List<MenuIngredient> getIngredients(Long id) {
     	Optional<Menu> menu = menuRepository.findById(id);
     	Menu m = null;
@@ -102,6 +109,14 @@ public class MenuService {
         }
     }
 
+    /**
+     * The method for adding a meal to the menu in the database.
+     * 
+     * 
+     * @param meal the meal object to be added in the database.
+     * @param id 
+     * @return
+     */
     public Menu addMenuMeal(Meal meal, Long id) {
         // Check if menu with 'id' exists
         Optional<Menu> menu = menuRepository.findById(id);
