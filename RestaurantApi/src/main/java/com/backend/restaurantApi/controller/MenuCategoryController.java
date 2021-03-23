@@ -67,6 +67,10 @@ public class MenuCategoryController {
         return menuCategoryService.updateMenuCategory(id, menuCategory);
     }
 
+    /**
+     * Deletes a category depending on the given id.
+     * @param id of the category to delete.
+     */
     @DeleteMapping("/menuCategory/{id}")
     public void deleteMenuCategory(@PathVariable("id") Long id) {
         menuCategoryService.deleteMenuCategory(id);
