@@ -51,9 +51,6 @@ export class CustomerInterfaceComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router) { }
 
-  ngAfterViewInit(): void {
-  }
-
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
       this.paramsObject = { ...params.keys, ...params };
