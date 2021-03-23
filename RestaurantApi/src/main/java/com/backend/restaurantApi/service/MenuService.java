@@ -21,25 +21,54 @@ import com.backend.restaurantApi.repository.MenuRepository;
 @Service
 public class MenuService {
 
+    /**
+     * The Menu Repository used to query the database.
+     */
     @Autowired
     MenuRepository menuRepository;
 
+    /**
+     * The repository used to make ingredient related queries.
+     */
     @Autowired
     MenuIngredientRepository menuIngredientRepository;
 
+     /**
+     * The second repository used to make ingredient related queries.
+     */
     @Autowired
     IngredientRepository ingredientRepository;
-
+    
+    /**
+     * The service involved with the meals on the database. 
+     */
     @Autowired
     MealService mealService;
 
+    /**
+     * The enity manager.
+     */
     @Autowired
     EntityManager em;
 
+    /**
+     * The method for creating a new menu in the database.
+     * 
+     * @param menu the object to be added to the database.
+     * @return the state of the meal repository after adding the meal.
+     */
     public Menu createNewMenu(Menu menu) {
         return menuRepository.save(menu);
     }
 
+    /**
+     * The method for adding a list of ingredients to the meal.
+     * 
+     * 
+     * @param id the ID of the meal in which the ingredients will be added to.
+     * @param ingredients the list of ingredients to be added.
+     * @return the state of the meal repository after adding the ingredients.
+     */
     @Transactional
     public Menu addIngredients(Long id, List<Long> ingredients) {
     	Optional<Menu> menu = menuRepository.findById(id);
