@@ -95,30 +95,57 @@ public class Menu {
     @Column(name = "fish")
     private boolean fish = false;
 
+    /**
+     * Column for lupin.
+     */
     @Column(name = "lupin")
     private boolean lupin = false;
 
+    /**
+     * Column for milk.
+     */
     @Column(name = "milk")
     private boolean milk = false;
 
+    /**
+     * Column for molluscs.
+     */
     @Column(name = "molluscs")
     private boolean molluscs = false;
 
+    /**
+     * Column for mustard
+     */
     @Column(name = "mustard")
     private boolean mustard = false;
 
+    /**
+     * Column for nuts.
+     */
     @Column(name = "nuts")
     private boolean nuts = false;
 
+    /**
+     * Column for soya.
+     */
     @Column(name = "soya")
     private boolean soya = false;
 
+    /**
+     * Column for sesameSeeds
+     */
     @Column(name = "sesame_seeds")
     private boolean sesameSeeds = false;
 
+    /**
+     * Column for sulphites.
+     */
     @Column(name = "sulphites")
     private boolean sulphites = false;
 
+    /**
+     * Column for time to cook.
+     */
     @Column(name = "time_to_cook")
     private double timeToCook = 20;
     
