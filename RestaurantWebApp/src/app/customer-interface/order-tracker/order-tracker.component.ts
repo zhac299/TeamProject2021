@@ -32,6 +32,17 @@ export class OrderTrackerComponent implements OnInit {
    */
   orders: Order[]; 
 
+  /**
+   * The construstuctor of the class.
+   * Injects mat dialog data from the customer interface into the 
+   * customer id and table number.
+   * 
+   * @param dialogRef a dialog ref to handle the mat dialog
+   * @param customerService the customer service that handles get and put requests
+   * @param orderService the order service that handles get and put requests
+   * @param router a router to route to payment
+   * @param data the data being injected
+   */
   constructor(
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
     private customerService: CustomerService,
@@ -43,10 +54,21 @@ export class OrderTrackerComponent implements OnInit {
     this.orders = [];
   }
 
+  /**
+   * Set-up method that gets called once when the object is instantiated.
+   * Calls displayOrders().
+   */
   ngOnInit(): void {
     this.displayOrders();
   }
 
+  /**
+   * Displays the customer's orders.
+   * Makes a get request to the customer DB by subscribing to getCustomerById()
+   * that returns a Customer observable. Inside the subscription, it makes a get request to
+   * the orders db by subscribing to getOrders() that returns an Order[] observable. It 
+   * subscribes to it and adds to this.orders all the orders corresponding to the customer.
+   */
   displayOrders(): void {
     this.customerService.getCustomerByID(this.customerId).subscribe((customer) => {
       customer.orders.forEach((customerOrder) => {
@@ -61,6 +83,12 @@ export class OrderTrackerComponent implements OnInit {
     })
   }
 
+  /**
+   * Navigates to the payment page for that order by accesing an 
+   * activated route with the order id.
+   * 
+   * @param orderId the order id param used in the activated route
+   */
   navigateToPayment(orderId: number): void {
     this.router.navigate(['/payment'],
       {

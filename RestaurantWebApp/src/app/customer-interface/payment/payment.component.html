@@ -83,12 +83,12 @@
         <div class="doneBlock" *ngIf="this.isPaid == true && this.interacted == false;
          else notPaidBlock">
             <p>Payment Confirmed!</p>
-            <button mat-button (click) = "navigateToMenu()">Go back to Menu</button><br><br>
+            <button mat-button (click)="navigateToMenu()">Go back to Menu</button><br><br>
         </div>
         <ng-template #notPaidBlock>
             <div class="notPaidBlock">
                 <p>Please do all the steps first!</p>
-                <button mat-button (click) = "navigateToMenu()">Cancel</button><br><br>
+                <button mat-button (click)="navigateToMenu()">Cancel</button><br><br>
             </div>
         </ng-template>
         <button mat-button matStepperPrevious>Back</button>

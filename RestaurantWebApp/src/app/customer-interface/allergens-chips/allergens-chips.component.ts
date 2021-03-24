@@ -57,7 +57,7 @@ export class AllergensChipsComponent implements OnInit {
   allAllergens: string[] = ['Peanuts', 'Celery', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Sulphites'];
 
   /**
-   * The list of selected calories.
+   * The selected calories.
    */
   calories: number = 0;
 
