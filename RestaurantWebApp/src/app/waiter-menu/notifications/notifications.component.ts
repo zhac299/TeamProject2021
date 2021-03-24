@@ -4,7 +4,7 @@ import { TableService } from '../../table.service';
 import { NotificationsDialogComponent } from './notifications-dialog/notifications-dialog.component';
 
 /**
- * Notifications component to show which tables need assistance or are ready to order.
+ * Notifications button component to show which tables need assistance or are ready to order.
  * Tables can then also be dismissed if helped.
  */
 @Component({
