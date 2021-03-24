@@ -1,5 +1,8 @@
 import {MenuCategory} from "./MenuCategory";
 
+/**
+ * Menu object with id, name, category, price, ingredients, picture Url and allergens
+ */
 export class Menu{
   id: number;
   name: string;
