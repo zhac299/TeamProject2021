@@ -18,7 +18,14 @@ import {IngredientsDialogComponent} from "./ingredients-dialog/ingredients-dialo
 })
 export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
-
+  /**
+   * Constructor tasked with instatiating the neccessary object to filter through the menu.
+   * 
+   * @param {MenuService} menuService The service associated with the main menu interface.
+   * @param {CategoryService} categoryService The service associated with the category filter functionality.
+   * @param {Router} router An object which helps route to different pages.
+   * @param {MatDialog} dialog An object involved with creating pop-up panels for more user interaction. 
+   */
   constructor(private menuService: MenuService,
               private categoryService: MenuCategoryService,
               private router: Router,
@@ -30,8 +37,11 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   catSubscription: Subscription;
   refreshTimer$ = timer(0, 1000);
 
-  isAuth: boolean = true;
-
+    isAuth: boolean = true;
+    
+    /**
+     * On initialisation, the menu filtering will be insatiated and returned to the user interface.
+     */
   ngOnInit(): void {
     if(this.router.url === '/client-menu') {
       this.isAuth = false;
@@ -60,7 +70,11 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
+  /**
+   * This method is tasked with opening a pop-up panel so staff and manager can edit the menu.
+   * 
+   * @param {Menu} menu Menu item subject to modification.
+   */
   openEditMenuDialog(menu:Menu): void {
 
     this.menuService.getIngredients(menu.id).subscribe(ings => {
@@ -84,11 +98,20 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
       });
     });
   }
-
+  /**
+   *  Method for deleting a menu item from the menu.
+   * 
+   * @param {Menu} menu Menu item subject for deletion.
+   */
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu);
   }
 
+  /**
+   * Method for opening a pop-up display to edit a category.
+   * 
+   * @param {MenuCategory} category The category to be modified.
+   */
   openEditCategoryDialog(category: MenuCategory) {
     const dialogRef = this.dialog.open(CategoryDialogComponent, {
       data: category
@@ -98,11 +121,18 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
       this.categoryService.updateCategory(result).subscribe();
     });
   }
-
+  /**
+   * Method for opening a pop-up display to delete a category.
+   * 
+   * @param {MenuCategory} category the category to be deleted by the staff member.
+   */
   deleteCategoryItem(category: MenuCategory) {
     this.categoryService.deleteCategory(category).subscribe();
-  }
+}
 
+  /**
+   * This method is purposed with opening a pop-up display so a staff member can add a category. 
+   */
   openAddCategoryDialog() {
     const dialogRef = this.dialog.open(CategoryDialogComponent, {
       data: new MenuCategory()
@@ -112,7 +142,11 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
       this.categoryService.createNewCategory(result).subscribe();
     });
   }
-
+  /**
+   * This method is purposed with opening a pop-up display so a staff member can edit ingredients.
+   * 
+   * @param {Menu} menu the object in which the method will modify.
+   */
   openIngredientsDialog(menu: Menu) {
     this.dialog.open(IngredientsDialogComponent, {
       data: menu
