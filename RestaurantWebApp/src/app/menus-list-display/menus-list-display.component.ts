@@ -60,21 +60,10 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
       .subscribe((menus) => {
       this.menuList = menus;
     });
-    // this.menuList.forEach((menu) => {
-    //   this.menuService.getIngredients(menu.id).subscribe((ings) => {
-    //     menu.ingredients.push(ings);
-    //     console.log(ings);
-    //     menu.ingredientsName = "";
-    //     ings.forEach(name => {
-    //       menu.ingredientsName +=  name.ingredient.name+", ";
-    //     });
-    //     menu.ingredientsName = menu.ingredientsName.substring(0, menu.ingredientsName.length-2);
-    //   });
-    // });
   }
 
   ngOnDestroy(): void {
-    // this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   openEditMenuDialog(menu:Menu): void {
@@ -99,7 +88,6 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
         }
       });
     });
-
   }
 
   deleteMenuItem(menu: Menu) {

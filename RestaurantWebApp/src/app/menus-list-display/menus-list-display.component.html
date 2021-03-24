@@ -23,10 +23,6 @@
     <td>{{menu.price}}</td>
     <td>
       <button mat-raised-button (click)="openIngredientsDialog(menu)">See Ingredients</button>
-<!--      <p *ngFor="let ingredient of menu.ingredients">-->
-
-<!--        {{ingredient.ingredient.name}}-->
-<!--      </p>-->
     </td>
     <td class="text-right">
       <button *ngIf="isAuth" mat-button (click)="openEditMenuDialog(menu)"><b>Edit</b></button>
