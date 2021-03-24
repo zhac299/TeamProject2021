@@ -1,11 +1,3 @@
-// landing-page.component.ts
-/**
- * This is the doc comment for landing-page.component.ts
- *
- * Specify this is a module comment and rename it to my-module:
- * @module LandingPageComponent
- */
-
 import { AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
 import anime from "animejs/lib/anime.es";
 import {Router} from "@angular/router";

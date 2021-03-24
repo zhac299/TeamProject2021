@@ -25,7 +25,7 @@ export class LoginInputComponent implements OnInit {
         private snackBar: MatSnackBar) { }
 
     ngOnInit(): void {}
-
+    
     ngAfterViewInit(): void {
         this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
     }

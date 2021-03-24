@@ -12,7 +12,13 @@ export class InputService {
     private dbUrl ='http://localhost:8080/api/v1/staff'
     login: Login = new Login;
     constructor(private httpClient: HttpClient) {}
-    
+    /**
+     * The method for querying user input against the information in the staff database.
+     * 
+     * @param {string} username The username entered by the user.
+     * @param {string} password  The password entered by the user.
+     * @returns {Observable<Login>} An object incapsulating the login details which correpsond to the user input.
+     */
     public getLogin(username: string, password: string): Observable<Login> {
         const queryURL  = this.dbUrl.concat(`/${username}/${password}`);
          return this.httpClient.get<Login>(queryURL)
@@ -20,17 +26,4 @@ export class InputService {
             map(response => response)
           );
     }
-
-    public setOTP(login: Login) { 
-        login.otp = Math.floor(100000 + Math.random() * 900000);
-    }
-
-    public setLogin(login: Login) { 
-        this.login = login;
-    }
-
-    public retrieveLogin(): Login { 
-        return this.login;
-    }
-    
 }
