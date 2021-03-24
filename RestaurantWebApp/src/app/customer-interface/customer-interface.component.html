@@ -59,9 +59,9 @@
             No Allergens!
           </div>
           <ng-template #allergensListBlock>
-            <span class = "allergens" *ngFor="let allergen of this.allergensArray(menuItem)">
-              <span *ngIf="allergen != this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]"> 
-                {{allergen}}, 
+            <span class="allergens" *ngFor="let allergen of this.allergensArray(menuItem)">
+              <span *ngIf="allergen != this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]">
+                {{allergen}},
               </span>
               <span *ngIf="allergen == this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]">
                 {{allergen}}

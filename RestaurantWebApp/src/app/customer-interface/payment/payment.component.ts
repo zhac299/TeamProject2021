@@ -3,10 +3,11 @@ import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { formatDate } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Meal } from '../../../models/Meal';
 import { CustomerService } from '../../customer.service';
 import { OrderService } from '../../order.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'payment-stepper',
