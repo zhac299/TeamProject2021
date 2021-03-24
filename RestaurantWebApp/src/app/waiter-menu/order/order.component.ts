@@ -22,16 +22,51 @@ import {MealService} from "../../meal.service";
 })
 export class OrderComponent implements OnInit {
 
+  /**
+   * Total sum for the order bill
+   */
   total: number;
+
+  /**
+   * The current table the order belongs to
+   */
   table: Table;
+
+  /**
+   * The list of all menu item's that can be added to an order
+   */
   menuList: Menu[] = [];
 
+  /**
+   * Reactive subject to change the meals that have been ordered in this current order
+   * @private
+   */
   private orderedMealItemsSubject$ = new BehaviorSubject<Meal[]>([]);
+
+  /**
+   * Ordered Meal items as an observable that can be subscribed to
+   */
   orderedMealItems$ = this.orderedMealItemsSubject$.asObservable();
 
+  /**
+   * The current order as a reactive subject that can be changed and also subscribed to
+   * @private
+   */
   private orderSubject$ = new BehaviorSubject<Order>(this.data.order);
+
+  /**
+   * The order subject as an obsrevable that can be subscribed to
+   */
   order$ = this.orderSubject$.asObservable();
+
+  /**
+   * A subscription that uses the timer to get new
+   */
   subscription: Subscription;
+
+  /**
+   * A refresh timer that ticks every second
+   */
   refreshTimer$ = timer(0, 1000).pipe(tap());
 
   constructor(
@@ -43,7 +78,8 @@ export class OrderComponent implements OnInit {
 
 
   /**
-   * Subscribes to order service and menu service for real time changes
+   * Subscribes to order service and menu service for real time changes with
+   * 1 second polling
     */
   ngOnInit(): void {
     this.updateOrderedMealItems();
@@ -51,6 +87,7 @@ export class OrderComponent implements OnInit {
       this.menuList = menu;
       console.log(menu);
     });
+    // subscription uses 1s timer on the backend get request call
     this.subscription = this.refreshTimer$.subscribe(this.orderService.refresh$);
     this.orderService.getOrderById(this.data.order.id).subscribe((orders) => {
       this.orderSubject$.next(orders);
@@ -164,6 +201,11 @@ export class OrderComponent implements OnInit {
     this.orderedMealItemsSubject$.next(_orderedMealItems);
   }
 
+  /**
+   * Save's the curent order and closes the dialog. Sends a reference of changed order back
+   * to parent component.
+   * @param order to save and send to parent component
+   */
   save(order: Order) {
     console.log(this.orderSubject$.getValue());
     this.data.order = this.orderSubject$.getValue();
@@ -172,6 +214,10 @@ export class OrderComponent implements OnInit {
     this.dialogRef.close(order);
   }
 
+  /**
+   * Delete an ordered menu item from the current order
+   * @param meal to remove from current order
+   */
   deleteOrderedMenuItem(meal: Meal) {
     this.mealService.deleteMeal(meal).subscribe((deletedMeal) => console.log(deletedMeal));
     this.data.order.total -= meal.menu.price * meal.numberSelections;
