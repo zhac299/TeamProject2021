@@ -4,7 +4,7 @@ import {Table} from "../../models/Table";
 import {fromEvent, Subscription, timer} from "rxjs";
 import {debounceTime, map, tap} from "rxjs/operators";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Staff } from 'src/models/Staff';
+import { Staff } from '../../models/Staff';
 
 @Component({
   selector: 'app-tables-list-display',
@@ -20,7 +20,7 @@ export class TablesListDisplayComponent implements OnInit {
   tableList: Table[] = [];
   subscription: Subscription;
 
-  refreshTimer$ = timer(0, 5000).pipe(tap(() => console.log('Fetching Tables...')));
+  refreshTimer$ = timer(0, 1000).pipe(tap());
   ORDER_BUTTON_WIDTH = 300;
   resize$ = fromEvent(window, 'resize');
   windowWidth: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
@@ -38,7 +38,7 @@ export class TablesListDisplayComponent implements OnInit {
       this.subscription = this.refreshTimer$.subscribe(this.tableService.refresh$);
       this.resize$
         .pipe(debounceTime(250),
-          tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
+          tap(),
         )
         .subscribe((w) => {
           this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
@@ -52,7 +52,7 @@ export class TablesListDisplayComponent implements OnInit {
       this.subscription = this.refreshTimer$.subscribe(this.tableService.refresh$);
       this.resize$
         .pipe(debounceTime(250),
-          tap(evt=>console.log('window.innerWidth=', window.innerWidth, this.windowWidth)),
+          tap(),
         )
         .subscribe((w) => {
           this.windowWidth = Math.floor(window.innerWidth / this.ORDER_BUTTON_WIDTH
@@ -60,14 +60,12 @@ export class TablesListDisplayComponent implements OnInit {
     }
   }
 
-  createNewTable(): void {
-    this.tableService.createTable().subscribe();
-  }
-
   markAsHelped(table: Table): void {
     if(table.needsHelp) {
-      table.needsHelp = false;
-      this.tableService.updateRestaurantTableNeedsHelp(table, false).subscribe();
+      this.tableService.getTableByNumber(table.tableNumber).subscribe((updatedTable) => {
+        updatedTable.needsHelp = false;
+        this.tableService.updateTable(updatedTable);
+      })     
       this.openSnackBar("Table was marked as helped!","Close");
     } else {
       this.openSnackBar("Table doesn't need help!","Close");

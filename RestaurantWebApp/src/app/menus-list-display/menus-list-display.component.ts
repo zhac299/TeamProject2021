@@ -6,6 +6,9 @@ import {AddMenuDialogComponent} from "../waiter-menu/add-menu-dialog/add-menu-di
 import {Subscription, timer} from "rxjs";
 import {tap} from "rxjs/operators";
 import { Router } from '@angular/router';
+import {MenuCategoryService} from "../menu-category.service";
+import {MenuCategory} from "../../models/MenuCategory";
+import {CategoryDialogComponent} from "../category-dialog/category-dialog.component";
 
 @Component({
   selector: 'app-menus-list-display',
@@ -14,28 +17,39 @@ import { Router } from '@angular/router';
 })
 export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
-  constructor(private menuService: MenuService, private router: Router,
+
+  constructor(private menuService: MenuService,
+              private categoryService: MenuCategoryService,
+              private router: Router,
               public dialog: MatDialog) { }
 
+  categories: MenuCategory[];
   menuList: Menu[] = [];
   subscription: Subscription;
-  refreshTimer$ = timer(0, 60000)
-    .pipe(tap(() => console.log('Fetching Menus...')));
+  catSubscription: Subscription;
+  refreshTimer$ = timer(0, 1000)
+    .pipe(tap());
+
+  // refreshTimer$ = timer(0, 5000)
+  //   .pipe(tap(() => console.log('Fetching Menus...')));
   
   isAuth: boolean = true;
 
   ngOnInit(): void {
-    console.log(this.router.url)
     if(this.router.url === '/client-menu') {
       this.isAuth = false;
     }
-    this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
+    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
+    this.catSubscription = this.refreshTimer$.subscribe(this.categoryService.refresh$);
+    this.categoryService.categories$.subscribe((categories) => {
+      this.categories = categories;
+    })
+    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.menuService.getAllUpdatedMenus();
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
       this.menuList.forEach(element => {
         this.menuService.getIngredients(element.id).subscribe(ings => {
-          console.log(ings)
           element.ingredientsName = "";
           ings.forEach(name => {
             element.ingredientsName +=  name.ingredient.name+", ";
@@ -47,7 +61,7 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   openEditMenuDialog(menu:Menu): void {
@@ -58,14 +72,14 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
         menu.ingredients.push(element.ingredient.id);
       });
       const title = "Edit Dish";
+      const hasMenuItem: boolean = true;
       const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-        data: {menu,title},
+        data: {menu,title,hasMenuItem},
         width: '50%'
       });
 
       dialogRef.afterClosed().subscribe(result => {
         if (result){
-          console.log(result);
           this.menuService.update(result).subscribe();
           this.menuService.addIngredients(result.id, result.ingredients);
           this.refreshTimer$.subscribe();
@@ -79,20 +93,27 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
     this.menuService.deleteMenu(menu);
   }
 
-  openAddMenuDialog() {
-    const title = "Add New Dish";
-    let menu: Menu = new Menu();
-    const dialogRef = this.dialog.open(AddMenuDialogComponent, {
-      data: {menu,title},
-      width: '50%',
-      autoFocus: false
+  openEditCategoryDialog(category: MenuCategory) {
+    const dialogRef = this.dialog.open(CategoryDialogComponent, {
+      data: category
     });
 
-    dialogRef.afterClosed().subscribe(menu => {
-      if(menu){
-        console.log(menu);
-        this.menuService.createMenuItem(menu);
-      }
-    })
+    dialogRef.afterClosed().subscribe((result) => {
+      this.categoryService.updateCategory(result).subscribe();
+    });
+  }
+
+  deleteCategoryItem(category: MenuCategory) {
+    this.categoryService.deleteCategory(category).subscribe();
+  }
+
+  openAddCategoryDialog() {
+    const dialogRef = this.dialog.open(CategoryDialogComponent, {
+      data: new MenuCategory()
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.categoryService.createNewCategory(result).subscribe();
+    });
   }
 }

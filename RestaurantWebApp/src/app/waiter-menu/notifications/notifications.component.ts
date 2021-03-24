@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TableService } from 'src/app/table.service';
+import { TableService } from '../../table.service';
 
 import { NotificationsDialogComponent } from './notifications-dialog/notifications-dialog.component';
 

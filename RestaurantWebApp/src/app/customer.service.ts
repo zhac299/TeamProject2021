@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {Customer} from "../models/Customer";
 import {Table} from "../models/Table";
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,12 @@ import {Table} from "../models/Table";
 export class CustomerService {
 
   readonly restaurantWebApiUrl = 'http://localhost:8080/api/v1/customer';
+
+  private _refreshNeeded$ = new Subject<void>();
+
+  get refreshNeeded() {
+    return this._refreshNeeded$;
+  }
 
   constructor(private httpClient: HttpClient) { }
 
@@ -37,6 +44,11 @@ export class CustomerService {
 
   public getCustomerByID(id: number): Observable<Customer> {
     return this.httpClient.get<Customer>(`${this.restaurantWebApiUrl}/${id}`)
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      );
   }
 
 }

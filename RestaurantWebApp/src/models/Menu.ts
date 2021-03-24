@@ -7,6 +7,7 @@ export class Menu{
   suggested: string = "no";
   description: string;
   price: number;
+  pictureUrl: string;
   peanuts: boolean;
   celery: boolean;
   gluten: boolean;

@@ -1,10 +1,10 @@
-import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {Menu} from '../models/Menu';
-import { selectedCategory } from 'src/models/selectedCategory';
-import {Order} from "../models/Order";
-import {exhaustMap, map, repeat, share} from "rxjs/operators";
+import { Inject, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Menu } from '../models/Menu';
+import { selectedCategory } from '../models/selectedCategory';
+import { Order } from "../models/Order";
+import { exhaustMap, map, repeat, share } from "rxjs/operators";
 
 /**
  * Service to fetch Menu's from the Restaurant API
@@ -17,8 +17,8 @@ export class MenuService {
   mockDbUrl = 'http://localhost:3000/menu';
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu';
   orderList: Menu[] = [];
-sOrder: Menu[] = [];
-copyOrder: Menu[] = [];
+  sOrder: Menu[] = [];
+  copyOrder: Menu[] = [];
   cat: selectedCategory = new selectedCategory;
 
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
@@ -29,7 +29,7 @@ copyOrder: Menu[] = [];
     return this.httpClient.get<Menu[]>(this.restaurantWebApiUrl);
   }
   menus$ = this.refresh$.pipe(
-    exhaustMap( () => this.getMenus()),
+    exhaustMap(() => this.getMenus()),
     share()
   );
 
@@ -48,7 +48,7 @@ copyOrder: Menu[] = [];
       });
   }
 
-  public getMenuById(id: number): Observable<Menu>{
+  public getMenuById(id: number): Observable<Menu> {
     return this.httpClient.get<Menu>(`${this.restaurantWebApiUrl}/${id}`);
   }
 
@@ -67,13 +67,13 @@ copyOrder: Menu[] = [];
   addIngredients(id: number, ingredients: number[]): void {
     console.log(id)
     console.log(ingredients)
-    this.httpClient.get<Menu>(this.restaurantWebApiUrl + '/ingredients?id='+id+'&ingredients='+ingredients)
-    .subscribe((menuList) => {
-    });
+    this.httpClient.get<Menu>(this.restaurantWebApiUrl + '/ingredients?id=' + id + '&ingredients=' + ingredients)
+      .subscribe((menuList) => {
+      });
   }
 
   getIngredients(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.restaurantWebApiUrl + '/getIngredients?id='+id);
+    return this.httpClient.get<any>(this.restaurantWebApiUrl + '/getIngredients?id=' + id);
   }
 
   deleteMenu(menu: Menu): void {
@@ -91,7 +91,7 @@ copyOrder: Menu[] = [];
   }
 
   updateMenu(menu: Menu): void {
-    this.httpClient.put<Menu[]>(`${this.restaurantWebApiUrl}/${menu.id}`,menu)
+    this.httpClient.put<Menu[]>(`${this.restaurantWebApiUrl}/${menu.id}`, menu)
       .subscribe((menuList) => {
         this.menuSubject.next(menuList);
         this.getAllUpdatedMenus();
@@ -99,6 +99,6 @@ copyOrder: Menu[] = [];
   }
 
   update(menu: Menu): Observable<Menu> {
-    return this.httpClient.put<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`,menu);
+    return this.httpClient.put<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`, menu);
   }
 }

@@ -1,40 +1,73 @@
-import {OnInit } from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { OnInit } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
-import {CustomerInterfaceComponent} from "../customer-interface.component";
+import { CustomerInterfaceComponent } from "../customer-interface.component";
 import { MatSliderChange } from '@angular/material/slider';
 @Component({
   selector: 'allergens-chips',
   templateUrl: './allergens-chips.component.html',
   styleUrls: ['./allergens-chips.component.sass']
 })
+/**
+ * The class that handles the selection of the allergens
+ * and calories when filtering the menu.
+ */
 export class AllergensChipsComponent implements OnInit {
 
-  visible = true;
+  /**
+   * Defines the allergen mat chip as selectable.
+   */
   selectable = true;
+
+  /**
+   * Defines the allergen mat chip as removable.
+   */
   removable = true;
+
+  /**
+   * Defines the list of the key codes that sepparate the chips.
+   */
   separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  /**
+   * The form controller.
+   */
   allergensCtrl = new FormControl();
+
+  /**
+   * An async observable that gets the list of allergens filtered alphabetically.
+   */
   filteredAllergens: Observable<string[]>;
+
+  /**
+   * The list of selected allergens.
+   */
   allergens: string[] = ['Celery'];
+
+  /**
+   * The list of all the available allergens.
+   */
   allAllergens: string[] = ['Peanuts', 'Celery', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Sulphites'];
+  
+  /**
+   * The list of selected calories.
+   */
   calories: number = 0;
 
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-   constructor(
-     private customerInterfaceComponent: CustomerInterfaceComponent
-   ) {
+  constructor(
+    private customerInterfaceComponent: CustomerInterfaceComponent) {
     this.filteredAllergens = this.allergensCtrl.valueChanges.pipe(
-        startWith(null),
-        map((allergen: string | null) => allergen ? this._filter(allergen) : this.allAllergens.slice()));
+      startWith(null),
+      map((allergen: string | null) => allergen ? this._filter(allergen) : this.allAllergens.slice()));
   }
 
   add(event: MatChipInputEvent): void {

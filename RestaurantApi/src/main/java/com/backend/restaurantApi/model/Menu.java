@@ -27,6 +27,9 @@ public class Menu {
     @Column(name = "price")
     private Double price = 0.0;
 
+    @Column
+    private String pictureUrl;
+
     @ManyToOne
     @JoinColumn(name = "category", nullable = true)
     private MenuCategory category;
@@ -264,5 +267,13 @@ public class Menu {
 
     public void setTimeToCook(double timeToCook) {
         this.timeToCook = timeToCook;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 }

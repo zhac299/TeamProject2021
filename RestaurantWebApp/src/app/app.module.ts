@@ -45,7 +45,6 @@ import { PickTableDialogComponent } from './waiter-menu/pick-table-dialog/pick-t
 import { ReadyToOrderComponent } from './customer-interface/ready-to-order/ready-to-order.component';
 import { MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PaymentStepperComponent } from './customer-interface/basket/payment-stepper/payment-stepper.component';
 import { KitchenMenuComponent } from './kitchen-menu/kitchen-menu.component';
 import { MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OrdersListDisplayComponent } from './orders-list-display/orders-list-display.component';
@@ -61,9 +60,8 @@ import { MatRadioModule} from "@angular/material/radio";
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingredient.component';
 import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dialog/add-ingredient-dialog.component';
-import { ClientMenuComponent } from './customer-interface/client-menu/client-menu.component';
-import { ClientRegisterComponent } from './customer-interface/client-menu/client-register/client-register.component';
-import { CustomersListComponent } from './manager-menu/customers-list/customers-list.component';
+import { PaymentComponent } from './customer-interface/payment/payment.component';
+import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +86,6 @@ import { CustomersListComponent } from './manager-menu/customers-list/customers-
     KitchenMenuComponent,
     OrdersListDisplayComponent,
     ManagerMenuComponent,
-    PaymentStepperComponent,
     OrderTrackerComponent,
     MenusListDisplayComponent,
     AddStaffComponent,
@@ -96,9 +93,8 @@ import { CustomersListComponent } from './manager-menu/customers-list/customers-
     TablesListDisplayComponent,
     AddIngredientComponent,
     AddIngredientDialogComponent,
-    ClientMenuComponent,
-    ClientRegisterComponent,
-    CustomersListComponent
+    PaymentComponent,
+    CategoryDialogComponent
   ],
     imports: [
         BrowserModule,

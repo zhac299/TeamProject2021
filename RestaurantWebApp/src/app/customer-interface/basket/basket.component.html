@@ -2,15 +2,10 @@
   <mat-grid-list cols="1" rowHeight="50px">
     <mat-grid-tile colspan="1">
       <br>
-      <div class="title">Shopping Cart
-        <button mat-icon-button (click)=close()>
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </div>
+      <div class="title">Shopping Cart</div>
     </mat-grid-tile>
   </mat-grid-list>
-  <div *ngIf="orderPlaced == false" class = list>
-    <hr>
+  <div class = list *ngIf = "orderPlaced == false; else emptyShoppingCartBlock">
     <table class="table" class="selectedItems">
       <tbody>
         <tr *ngFor="let meal of mealList">
@@ -30,8 +25,7 @@
             </button>
           </td>
         </tr>
-        <hr>
-        <tr *ngIf="orderTotal > 0">
+        <tr *ngIf="orderTotal > 0 ">
           <td>
             <button mat-button>
               <mat-icon>attach_money</mat-icon>
@@ -48,14 +42,13 @@
             (click)="placeOrder()" class="placeOrder">
             Place Order
           </button>
-          <ng-template #emptyShoppingCartBlock>
-            <div class="emptyShoppingCartBlock">
-              <button mat-button> Empty Shopping Cart!</button>
-            </div>
-          </ng-template>
         </div>
       </mat-list-item>
     </mat-list>
   </div>
-  <payment-stepper *ngIf="orderPlaced == true"></payment-stepper>
+    <ng-template #emptyShoppingCartBlock>
+      <div class="center">
+        <button mat-button class="emptyShoppingCartBlock"> Empty Shopping Cart!</button>
+      </div>
+    </ng-template>
 </mat-dialog-content>

@@ -1,44 +1,34 @@
 <mat-dialog-content>
-  <mat-grid-list cols="1" rowHeight="50px">
-    <mat-grid-tile colspan="1">
-      <br>
-      <div class="title"> Order Tracker</div>
-      <div class=closeButton>
-        <button mat-icon-button (click)=close()>
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </div>
+  <mat-grid-list cols="1" rowHeight="80px">
+    <mat-grid-tile colspan="1" class="title">
+      Orders
     </mat-grid-tile>
     <br>
   </mat-grid-list>
-  <hr>
-  <div *ngIf="orderPlaced == true">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Order Items
-        </mat-panel-title>
-        <mat-panel-description>
-          Click to review contents of your order.
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <table class="table" class="selectedItems">
-        <tbody>
-          <tr *ngFor="let meal of mealList">
-            <th scope="row">{{meal.menu.name}}</th>
-            <td>{{meal.menu.price * meal.numberSelections}}$</td>
-            <td>x {{meal.numberSelections}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </mat-expansion-panel>
-    <br>
-  </div>
-  <div class="orderStatusTitle">
-    Order Status
-  </div>
-  <div class="orderStatusWrapper">
-    <!-- <mat-spinner class="loadingSpinner" *ngIf="orderPlaced == true"></mat-spinner> -->
-    <button mat-button class="orderStatus">{{orderStatus}}</button>
-  </div>
+  <table class="table">
+    <thead class = "tableHead">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Status</th>
+        <th scope="col">Total</th>
+        <th scope="col">Confirmed</th>
+        <th scope="col">Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td><b>{{order.id}}</b></td>
+        <td *ngIf = "!order.isConfirmed">A waiter has to confirm the order</td>
+        <td *ngIf = "order.isConfirmed">Order is being prepared</td>
+        <td *ngIf = "order.isReady">Order is ready</td>
+        <td *ngIf = "order.isDelivered">Order was delivered</td>
+        <td>{{order.total}}</td>
+        <td>{{order.isConfirmed}}</td>
+        <td>{{order.isPaid}}</td>
+        <td *ngIf="order.isPaid == false && order.isConfirmed == true">
+          <button mat-button (click)="navigateToPayment(order.id)">Pay</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </mat-dialog-content>

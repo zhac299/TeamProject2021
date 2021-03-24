@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TableService } from 'src/app/table.service';
-import { Table } from 'src/models/Table';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 import { MatSnackBar} from '@angular/material/snack-bar';
+import { TableService } from '../../table.service';
+import { Subscription, timer } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'call-waiter',
@@ -11,24 +12,44 @@ import { MatSnackBar} from '@angular/material/snack-bar';
 })
 export class CallWaiterComponent implements OnInit {
 
-  tables: Table[] = [];
-  waiterCalled: boolean = false;
+  waiterCalled: boolean;
+  tableNumber: number;
+  subscription: Subscription;
+  refreshTimer$ = timer(0, 1000).pipe(tap(() => console.log('Fetching Tables...')));
 
   constructor(
     private customerInterface: CustomerInterfaceComponent,
     private tableService: TableService,
     private snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tableNumber = this.customerInterface.paramsObject.params.selectedTable;
+    this.tableService.refreshNeeded.subscribe(() => {
+      this.getNeedHelp();
+    })
+    this.getNeedHelp();
+  }
+
+  getNeedHelp(): void {
+    this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
+      this.waiterCalled = table.needsHelp;
+    })
+  }
 
   callWaiter(): void {
-    this.customerInterface.table.subscribe((table) => {
-      console.log(table);
+    this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
       table.needsHelp = true;
-      this.tableService.updateRestaurantTableNeedsHelp(table,true).subscribe();
-    });
-    this.waiterCalled = true;
+      this.tableService.updateTable(table);
+    })
     this.openSnackBar("A waiter will come to you","Please Wait");
+  }
+
+  cancel(): void {
+    this.tableService.getTableByNumber(this.tableNumber).subscribe((table) => {
+      table.needsHelp = false;
+      this.tableService.updateTable(table);
+    })
+    this.openSnackBar("You canceled the waiter call","Still need help?");
   }
 
   private openSnackBar(message: string, action: string) {
@@ -36,15 +57,6 @@ export class CallWaiterComponent implements OnInit {
       duration: 3000,
       panelClass: ['orderSnackBar']
     });
-  }
-
-  cancel(): void {
-    this.customerInterface.table.subscribe((table) => {
-      table.needsHelp = false;
-      this.tableService.updateRestaurantTableNeedsHelp(table,false).subscribe();
-    });
-    this.waiterCalled = false;
-    this.openSnackBar("You canceled the waiter call","Still need help?");
   }
   
 }
