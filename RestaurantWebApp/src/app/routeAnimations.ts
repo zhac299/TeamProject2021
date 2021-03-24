@@ -1,6 +1,9 @@
 import {animate, query, style, transition, trigger} from "@angular/animations";
 
-
+/**
+ * Animates page by changing opacity from 0 to 1 and pulling it up from the bottom
+ * of the screen
+ */
 export const fader =
   trigger('routeAnimations',[
     transition('*<=>*',[

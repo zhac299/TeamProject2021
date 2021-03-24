@@ -14,33 +14,56 @@ import { exhaustMap, map, repeat, share } from "rxjs/operators";
 })
 export class MenuService {
 
-  mockDbUrl = 'http://localhost:3000/menu';
+
+  /**
+   * URL for menu's in the Restaurant Api
+   */
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/menu';
-  orderList: Menu[] = [];
+
   sOrder: Menu[] = [];
   copyOrder: Menu[] = [];
-  cat: selectedCategory = new selectedCategory;
 
+  /**
+   * Subject for menus that can be changed reactively
+   * @private
+   */
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
-  // readonly menus$ = this.menuSubject.asObservable();
+
+  /**
+   * Refresh field that can be called if new observables need to be emitted
+   */
   refresh$ = new BehaviorSubject(null);
 
+  /**
+   * Sends get request for menus
+   */
   public getMenus(): Observable<Menu[]> {
     return this.httpClient.get<Menu[]>(this.restaurantWebApiUrl);
   }
+
+  /**
+   * Public menus observable that can be subscribed to by components
+   */
   menus$ = this.refresh$.pipe(
     exhaustMap(() => this.getMenus()),
     share()
   );
 
+  /**
+   * Sets new menus value for menu Subject
+   * @param menus
+   * @private
+   */
   private setMenus(menus: Menu[]) {
     this.menuSubject.next(menus);
   }
 
   constructor(private httpClient: HttpClient) {
-    console.log('Instance created');
   }
 
+  /**
+   * Gets updaeted menu list by calling new get request
+   */
   getAllUpdatedMenus(): void {
     this.httpClient.get<Menu[]>(this.restaurantWebApiUrl)
       .subscribe((menuList) => {
@@ -48,10 +71,18 @@ export class MenuService {
       });
   }
 
+  /**
+   * Get menu by id
+   * @param id of menu
+   */
   public getMenuById(id: number): Observable<Menu> {
     return this.httpClient.get<Menu>(`${this.restaurantWebApiUrl}/${id}`);
   }
 
+  /**
+   * Create new menu by post request
+   * @param menu to post to api
+   */
   createMenuItem(menu: Menu): void {
     let ingredients = menu.ingredients;
     this.httpClient.post<Menu>(this.restaurantWebApiUrl, menu)
@@ -64,6 +95,11 @@ export class MenuService {
       });
   }
 
+  /**
+   * Adds ingredients to a menu item
+   * @param id of menu
+   * @param ingredients list of ingredients
+   */
   addIngredients(id: number, ingredients: number[]): void {
     console.log(id)
     console.log(ingredients)
@@ -72,10 +108,18 @@ export class MenuService {
       });
   }
 
+  /**
+   * Get ingredients of menu item
+   * @param id of menu
+   */
   getIngredients(id: number): Observable<any> {
     return this.httpClient.get<any>(this.restaurantWebApiUrl + '/getIngredients?id=' + id);
   }
 
+  /**
+   * Deletes a menu item
+   * @param menu item to delete
+   */
   deleteMenu(menu: Menu): void {
     this.httpClient.delete<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`)
       .subscribe((menu) => {
@@ -90,6 +134,10 @@ export class MenuService {
       });
   }
 
+  /**
+   * Updates a menu item
+   * @param menu item to update
+   */
   updateMenu(menu: Menu): void {
     this.httpClient.put<Menu[]>(`${this.restaurantWebApiUrl}/${menu.id}`, menu)
       .subscribe((menuList) => {
@@ -98,6 +146,10 @@ export class MenuService {
       });
   }
 
+  /**
+   * Put request for menu item
+   * @param menu to use in put request
+   */
   update(menu: Menu): Observable<Menu> {
     return this.httpClient.put<Menu>(`${this.restaurantWebApiUrl}/${menu.id}`, menu);
   }
