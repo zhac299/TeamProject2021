@@ -43,8 +43,8 @@ export class SelectTableDialogComponent implements OnInit {
    * 
    * @param router the router that is used for the activated route to the customer menu
    * @param tableService the table service that is used to make get requests.
-   * @param customerService 
-   * @param dialogRef 
+   * @param customerService the customer service that is used to make get requests
+   * @param dialogRef  a dialog ref
    */
   constructor(
     private router: Router,
@@ -52,18 +52,31 @@ export class SelectTableDialogComponent implements OnInit {
     private customerService: CustomerService,
     public dialogRef: MatDialogRef<SelectTableDialogComponent>) { }
 
+  /**
+   * A set up method that is called once when the class gets instantiated.
+   * It makes a get request to the Table DB to set the table list.
+   */
   ngOnInit(): void {
     this.tableService.getUnoccupiedTables().subscribe(tables => {
       this.tables = tables;
     });
   }
 
+  /**
+   * Creates a new Customer with the selected table.
+   */
   createNewCustomer(): void {
     this.customer = new Customer();
     this.customer.table = this.selectedTable;
     this.customer.orders = this.orders;
   }
 
+  /**
+   * Routes to the customer menu.
+   * With the selected table, the system creates a new Customer and assings the 
+   * table to a waiter a routes to the customer menu using an activated route with
+   * query params: customerId and selected table.
+   */
   forCustomer(): void {
     if (this.selectedTable != null) {
       this.createNewCustomer();

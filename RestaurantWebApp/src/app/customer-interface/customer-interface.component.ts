@@ -36,7 +36,7 @@ import { Meal } from '../../models/Meal';
 })
 
 /**
- * The class that handles the customer menu
+ * The class that handles the customer menu.
  */
 export class CustomerInterfaceComponent implements OnInit {
 
@@ -216,8 +216,7 @@ export class CustomerInterfaceComponent implements OnInit {
   /**
    * Opens the basket dialog.
    * It configures the data to be injected in the dialog using the dialog config, passing
-   * the customer ID, the selected meals and the table Number to the basket
-   * that will be used to place an order.
+   * the customer ID, the selected meals and the table Number.
    * After the dialog is closedm it uodates the orderPlaced field.
    */
   openBasket() {
@@ -234,8 +233,7 @@ export class CustomerInterfaceComponent implements OnInit {
   /**
    * Opens the order tacker dialog.
    * It configures the data to be injected in the dialog using the dialog config, passing
-   * the customer ID and table number to the orders tracker that will be used to 
-   * fetch all the customer orders and navigate to the payment page. 
+   * the customer ID and table number to the orders tracker.
    * After the dialog is closed, it updates the orderPlaced field.
    */
   openTracker() {
@@ -257,7 +255,7 @@ export class CustomerInterfaceComponent implements OnInit {
   }
 
   /**
-   * Selects a category anf calls findCategoryItems() to filter the menu
+   * Selects a category and calls findCategoryItems() to filter the menu
    * by the selected category.
    * @param category 
    */
