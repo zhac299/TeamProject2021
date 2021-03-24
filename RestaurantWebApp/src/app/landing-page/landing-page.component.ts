@@ -17,7 +17,6 @@ import {tap} from "rxjs/operators";
 export class LandingPageComponent implements OnInit, AfterViewInit {
 
   constructor(private elementRef: ElementRef,
-              private router:Router,
               private dialog: MatDialog) { }
   ngOnInit(): void {
   }
