@@ -8,9 +8,9 @@ describe('CallWaiterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CallWaiterComponent ]
+      declarations: [CallWaiterComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,8 +1,9 @@
-<div class = "callWaiterButton">
-    <button mat-icon-button (click) = callWaiter()
-    *ngIf = "waiterCalled == false else waiterCalledBlock" ><mat-icon>help</mat-icon></button>
+<div class="callWaiterButton">
+    <button mat-icon-button (click)=callWaiter() *ngIf="waiterCalled == false else waiterCalledBlock">
+        <mat-icon>help</mat-icon>
+    </button>
     <ng-template #waiterCalledBlock>
-        <button mat-icon-button (click) = cancel()>
+        <button mat-icon-button (click)=cancel()>
             <mat-icon>cancel</mat-icon>
         </button>
     </ng-template>
