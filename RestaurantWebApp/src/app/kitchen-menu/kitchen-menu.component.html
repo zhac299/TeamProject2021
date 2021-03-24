@@ -1,8 +1,9 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-toolbar class = "toolBar">
+  <mat-toolbar class="toolBar">
     <mat-toolbar-row>
-      <button mat-button (click) = "openAddMenuDialog()"><img class = "quickAddButton" src="assets/images/burito.png"></button>
-      <span class = "toolBarTitle">Kitchen Menu</span>
+      <button mat-button (click)="openAddMenuDialog()"><img class="quickAddButton"
+          src="assets/images/burito.png"></button>
+      <span class="toolBarTitle">Kitchen Menu</span>
       <span class="spacer"></span>
       <a routerLink="/home">
         <button mat-button><img class="quickAddButton" src="assets/images/door.png"></button>
@@ -10,11 +11,7 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <br><br><br><br><br><br>
-  <app-orders-list-display
-    [createPermission] = "false"
-    [isKitchenStaff]="true">
+  <app-orders-list-display [createPermission]="false" [isKitchenStaff]="true">
   </app-orders-list-display>
-<app-menus-list-display></app-menus-list-display>
+  <app-menus-list-display></app-menus-list-display>
 </mat-drawer-container>
-
-
