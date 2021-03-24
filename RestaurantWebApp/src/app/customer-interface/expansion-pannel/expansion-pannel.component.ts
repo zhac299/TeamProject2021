@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
 @Component({
   selector: 'expansion-pannel',
   templateUrl: './expansion-pannel.component.html',

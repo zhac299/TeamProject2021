@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerInterfaceComponent } from '../customer-interface.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { CustomerInterfaceComponent } from '../customer-interface.component';
 import { TableService } from '../../table.service';
 
 @Component({

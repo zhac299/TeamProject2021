@@ -9,10 +9,10 @@ describe('CustomerInterfaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomerInterfaceComponent, 
+      declarations: [CustomerInterfaceComponent,
         ExpansionPannelComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
