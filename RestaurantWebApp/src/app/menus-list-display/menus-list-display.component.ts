@@ -4,7 +4,7 @@ import {Menu} from "../../models/Menu";
 import {MatDialog} from "@angular/material/dialog";
 import {AddMenuDialogComponent} from "../waiter-menu/add-menu-dialog/add-menu-dialog.component";
 import {Subscription, timer} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import { Router } from '@angular/router';
 import {MenuCategoryService} from "../menu-category.service";
 import {MenuCategory} from "../../models/MenuCategory";
@@ -31,16 +31,12 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   refreshTimer$ = timer(0, 1000)
     .pipe(tap());
 
-  // refreshTimer$ = timer(0, 5000)
-  //   .pipe(tap(() => console.log('Fetching Menus...')));
-
   isAuth: boolean = true;
 
   ngOnInit(): void {
     if(this.router.url === '/client-menu') {
       this.isAuth = false;
     }
-    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.catSubscription = this.refreshTimer$.subscribe(this.categoryService.refresh$);
     this.categoryService.categories$.subscribe((categories) => {
       this.categories = categories;
@@ -119,7 +115,7 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   }
 
   openIngredientsDialog(menu: Menu) {
-    const dialogRef = this.dialog.open(IngredientsDialogComponent, {
+    this.dialog.open(IngredientsDialogComponent, {
       data: menu
     });
   }
