@@ -107,4 +107,7 @@ export class TableService {
     return this.httpClient.post<Table>(this.restaurantTablesURL + '/assignTable', table);
   }
 
+  public managerAssignTable(table: Table, staffId: number): Observable<Table> {
+    return this.httpClient.put<Table>(this.restaurantTablesURL + `/manager/assignTable/${staffId}/${table.tableNumber}`, table);
+  }
 }
