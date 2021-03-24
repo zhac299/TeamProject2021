@@ -26,7 +26,9 @@ export class KitchenMenuComponent implements OnInit {
     public dialog: MatDialog) { }
     
   ngOnInit(): void {}
-
+   /**
+    * Method for opening up panel to add a new dish.
+    */  
   openAddMenuDialog() {
     const title = "Add New Dish";
     let menu: Menu = new Menu();
