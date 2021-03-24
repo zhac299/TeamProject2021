@@ -122,4 +122,10 @@ public class RestaurantTableController {
     public RestaurantTable assignTableToWaiter(@RequestBody RestaurantTable restaurantTable){
         return restaurantTableService.assignTableToWaiter(restaurantTable);
     }
+
+    @PutMapping("/tables/manager/assignTable/{staffId}/{tableId}")
+    public RestaurantTable managerAssignTable(@PathVariable("staffId") long staffId, @PathVariable("tableId") long tableId) {
+        RestaurantTable table = restaurantTableRepository.findByTableNumber(tableId);
+        return restaurantTableService.mangagerAssignWaiterToTable(table, staffId);
+    }
 }
