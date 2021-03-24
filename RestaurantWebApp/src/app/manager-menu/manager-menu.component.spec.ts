@@ -8,9 +8,9 @@ describe('ManagerMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManagerMenuComponent ]
+      declarations: [ManagerMenuComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
