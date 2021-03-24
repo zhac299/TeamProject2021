@@ -138,11 +138,22 @@ public class OrderService {
         return menus;
     }
 
+
+    /**
+     * This function is tasked with removing a meal form an already confirmed order.
+     * 
+     * 
+     * @param order The order containing the meal in question.
+     * @param meal The meal to be removed from the order.
+     */
     public void removeOrderedMeal(Order order, Meal meal) {
         order.getMeal().remove(meal);
         this.updateOrder(order.getId(),order);
     }
-
+    /**
+     * This method is tasked with getting a list of confirmed orders form the database.
+     * @return The list of confirmed orders.
+     */
     public List<Order> getConfirmedOrders() {
         List<Order> confirmedOrders = new ArrayList<>();
         List<Order> allOrders = orderRepository.findAll();
@@ -155,7 +166,11 @@ public class OrderService {
 
         return confirmedOrders;
     }
-
+    /**
+     * This method is tasked with getting alll the orders that aren't confirmed in the database.
+     * 
+     * @return The list of orders which are not confirmed.
+     */
     public List<Order> getNoConfirmedOrders() {
         List<Order> noConfirmedOrders = new ArrayList<>();
         List<Order> allOrders = orderRepository.findAll();
@@ -168,7 +183,11 @@ public class OrderService {
 
         return noConfirmedOrders;
     }
-
+    /**
+     * This method is tasked with getting all orders that are ready to be served.
+     * 
+     * @return The list of orders that are ready to be served.
+     */
     public List<Order> getReadyOrders() {
         List<Order> readyOrders = new ArrayList<>();
         List<Order> allOrders = orderRepository.findAll();
@@ -181,7 +200,12 @@ public class OrderService {
 
         return readyOrders;
     }
-
+    /**
+     * This method is tasked with getting all the individual waiters orders.
+     * 
+     * @param waiterId The ID of the specific waiter.
+     * @return A list of orders assigned to the specific waiter.
+     */
     public List<Order> getWaiterOrders(long waiterId) {
         List<Order> allOrders = orderRepository.findAll();
         List<Order> waiterOrders = new ArrayList<>();
