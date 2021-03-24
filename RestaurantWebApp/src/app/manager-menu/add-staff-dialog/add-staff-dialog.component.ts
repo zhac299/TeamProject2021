@@ -1,19 +1,33 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import { Staff } from '../../../models/Staff';
+import { Table } from '../../../models/Table';
+import { StaffService } from '../../staff.service';
+import { TableService } from '../../table.service';
 
 @Component({
   selector: 'app-add-staff-dialog',
   templateUrl: './add-staff-dialog.component.html',
   styleUrls: ['./add-staff-dialog.component.sass']
 })
+
 export class AddStaffDialogComponent implements OnInit {
 
-  selected = -1;
   constructor(public dialogRef: MatDialogRef<AddStaffDialogComponent>,
+              public tableService: TableService,
+              public staffService: StaffService,
               @Inject(MAT_DIALOG_DATA) public data: { staff:Staff,title:string }) { }
 
-  ngOnInit(): void {}
+  tableList: Table[] = [];
+  selectedTable: Table = null;
+  selected = -1;
+  edit: boolean = this.staffService.edit;
+
+  ngOnInit(): void {
+    this.tableService.getTables().subscribe(table => {
+      this.tableList = table;
+    })
+  }
 
   setCalories(value: number) {
     return value;
@@ -26,6 +40,17 @@ export class AddStaffDialogComponent implements OnInit {
 
   setData(staff:Staff) {
     this.data.staff = staff;
+  } 
+
+  onYesClick(): void {
+    if (this.edit = true) {
+      this.setTable();
+    } 
   }
 
+  setTable(): void {
+    if (this.selectedTable != null) {
+      this.tableService.managerAssignTable(this.selectedTable, this.data.staff.id).subscribe((data) => {});    } 
+    this.dialogRef.close();
+  }  
 }

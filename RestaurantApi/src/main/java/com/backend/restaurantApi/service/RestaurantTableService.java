@@ -144,4 +144,11 @@ public class RestaurantTableService {
         table.setTableNumber(id);
         return restaurantTableRepository.save(table);
     }
+
+    public RestaurantTable mangagerAssignWaiterToTable(RestaurantTable table, long waiterId) {
+        RestaurantTable tableToBeSaved = restaurantTableRepository.findByTableNumber(table.getTableNumber());
+        tableToBeSaved.setWaiterId(waiterId);
+        restaurantTableRepository.save(tableToBeSaved);
+        return tableToBeSaved;
+    }
 }
