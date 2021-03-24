@@ -24,7 +24,7 @@ export class AddMenuDialogComponent implements OnInit {
               private ingredientService: IngredientService,
               private menuCategoryService: MenuCategoryService,
               @Inject(MAT_DIALOG_DATA) public data: { menu:Menu,title:string,hasMenuItem:boolean }) { }
-  
+
   ngOnInit(): void {
     this.ingredientService.getIngredients().subscribe((ing) => {
       this.ingredients = ing;
@@ -74,15 +74,16 @@ export class AddMenuDialogComponent implements OnInit {
   updateSuggestedPriceRange(): void {
     console.log(this.data);
     if (this.data.hasMenuItem == undefined) {
-      let total:number = 0;   
+      let total:number = 0;
       this.data.menu.ingredients.forEach((selectedIngredient) => {
         let includesIngredient: boolean = false;
         this.ingredients.forEach((ingredient) => {
+          // @ts-ignore
           if (ingredient.id == selectedIngredient) {
             includesIngredient = false;
             total += ingredient.pricePerItem;
           }
-        }) 
+        })
       })
       this.suggestedPriceRange[0] = total + 0.6 * total;
       this.suggestedPriceRange[1] = total + 1 * total;

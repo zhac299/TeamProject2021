@@ -28,8 +28,7 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
   menuList: Menu[] = [];
   subscription: Subscription;
   catSubscription: Subscription;
-  refreshTimer$ = timer(0, 1000)
-    .pipe(tap());
+  refreshTimer$ = timer(0, 1000);
 
   isAuth: boolean = true;
 
