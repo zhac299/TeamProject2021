@@ -1,4 +1,12 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
+// landing-page.component.ts
+/**
+ * This is the doc comment for landing-page.component.ts
+ *
+ * Specify this is a module comment and rename it to my-module:
+ * @module LandingPageComponent
+ */
+
+import { AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
 import anime from "animejs/lib/anime.es";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
@@ -16,9 +24,9 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
     /**
      * Constructor for landing page component taked with providing the intial UI to both customers annd staff.
      * 
-     * @param elementRef A reference to help set the compnents background theme.
-     * @param router An object which helps route to different pages.
-     * @param dialog An object purposed with providing pop-up displays so the user can interact.
+     * @param {ElementRef} elementRef A reference to help set the compnents background theme.
+     * @param {Router} router An object which helps route to different pages.
+     * @param {MatDialog} dialog An object purposed with providing pop-up displays so the user can interact.
      */
   constructor(private elementRef: ElementRef,
               private router:Router,

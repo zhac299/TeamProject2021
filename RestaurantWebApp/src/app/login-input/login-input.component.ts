@@ -29,7 +29,9 @@ export class LoginInputComponent implements OnInit {
     ngAfterViewInit(): void {
         this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
     }
-    
+    /**
+     * This method is purposed with taking the staff members login details and passing them to different webpages accordingly.
+     */
     onSubmit() {           
         this.input.getLogin(this.username, this.password).subscribe(user => {
             try {
@@ -49,11 +51,18 @@ export class LoginInputComponent implements OnInit {
         this.username = "";
         this.password = "";
     }
-
+    /**
+     * The method purposed with redirecting a user back to the home screen.
+     */
     goHome(): void {
         this.router.navigateByUrl('/home');
     }
-
+    /**
+     * The method purposed with providing an error message when the wrong credentials are entered.
+     * 
+     * @param {string} message The message stating what error has occured.
+     * @param {string} action The action depicting how a staff member should proceed.
+     */
     private openSnackBar(message: string, action: string) {
         this.snackBar.open(message, action, {
           duration: 3000,
