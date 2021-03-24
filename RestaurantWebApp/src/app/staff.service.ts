@@ -11,6 +11,8 @@ import { Order } from '../models/Order';
 })
 export class StaffService {
 
+  edit: boolean;
+
   constructor(private httpClient: HttpClient) {
   }
 
