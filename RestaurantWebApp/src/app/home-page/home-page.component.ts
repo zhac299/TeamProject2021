@@ -8,29 +8,45 @@ import { SelectTableDialogComponent } from './select-table-dialog/select-table-d
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.sass']
 })
+
+/**
+ * The class that handles the home page
+ */
 export class HomePageComponent implements OnInit {
 
+  /**
+   * The constructor of the class.
+   * 
+   * @param elementRef an element ref
+   * @param router the router to navigate to the staff login
+   * @param dialog a mat dialog
+   */
   constructor(
     private elementRef: ElementRef,
-    private router:Router,
+    private router: Router,
     private dialog: MatDialog) { }
 
-  ngOnInit(): void {}
-  
-  ngAfterViewInit(): void {
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#FFFDED';
-  }
+  /**
+   * A set-up method that gets called once when the class gets instantiated.
+   */
+  ngOnInit(): void { }
 
-  openSelectTableDialog() : void {
+  /**
+   * Opens the select table dialog.
+   */
+  openSelectTableDialog(): void {
     const dialogRef = this.dialog.open(SelectTableDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
-  
-  forEmployee() { 
-    this.router.navigateByUrl('login'); 
+
+  /**
+   * Routes to the staff login menu.
+   */
+  forEmployee() {
+    this.router.navigateByUrl('login');
   }
 
 }

@@ -8,9 +8,9 @@ describe('SelectTableDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectTableDialogComponent ]
+      declarations: [SelectTableDialogComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
