@@ -60,7 +60,7 @@ export class OrderComponent implements OnInit {
   order$ = this.orderSubject$.asObservable();
 
   /**
-   * A subscription that uses the timer to get new
+   * A subscription that uses the timer to get new data from the API
    */
   subscription: Subscription;
 
