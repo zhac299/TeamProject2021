@@ -13,7 +13,14 @@ import {TableService} from "../../table.service";
 })
 export class PickTableDialogComponent implements OnInit {
 
+  /**
+   * A list of all tables
+   */
   tables: Table[];
+
+  /**
+   * The selected table
+   */
   selectedTable: Table;
 
   constructor(public dialogRef: MatDialogRef<PickTableDialogComponent>,

@@ -34,7 +34,15 @@ export class WaiterMenuComponent implements OnInit {
     private orderService: OrderService
   ) { }
 
+  /**
+   * The staff that has logged in to the waiter component
+   */
   waiter: Staff;
+
+  /**
+   * Helper paramObject to route to this page with an ID
+   * after logging in
+   */
   paramsObject: any;
 
   /**
@@ -54,7 +62,7 @@ export class WaiterMenuComponent implements OnInit {
 
 
   /**
-   *
+   * Opens dialog that helps user to select a table
    */
   openSelectTableDialog(): Observable<Table> {
     const dialogRef = this.dialog.open(PickTableDialogComponent);
