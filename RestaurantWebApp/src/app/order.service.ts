@@ -20,28 +20,28 @@ export class OrderService {
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/orders';
 
   /**
-   * A subject that is called when a new request is needed
+   * A subject that is called when a new request is needed.
    * @private
    */
   private _refreshNeeded = new Subject<void>();
 
   /**
-   * Id for a waiter to get specified orders for a waiter
+   * Id for a waiter to get specified orders for a waiter.
    */
   public waiterId: number;
 
   /**
-   * Helper Subject to store orders for state management
+   * Helper Subject to store orders for state management.
    */
   orderSubject$ = new BehaviorSubject<Order[]>([]);
 
   /**
-   * A subject that can be called if new observables need to be emitted
+   * A subject that can be called if new observables need to be emitted.
    */
   refresh$ = new BehaviorSubject(null);
 
   /**
-   * A public observable that can be subscribed to by components
+   * A public observable that can be subscribed to by components.
    */
   orders$ = this.refresh$.pipe(
     exhaustMap(() => this.getOrders()),
@@ -52,14 +52,14 @@ export class OrderService {
   }
 
   /**
-   * Get all orders from the Api
+   * Get all orders from the Api.
    */
   public getOrders(): Observable<Order[]> {
     return this.httpClient.get<Order[]>(this.restaurantWebApiUrl);
   }
 
   /**
-   * Get updated orders by changing state of order subject
+   * Get updated orders by changing state of order subject.
    */
   public getUpdatedOrders(): void {
     this.httpClient.get<Order[]>(this.restaurantWebApiUrl)
@@ -69,7 +69,7 @@ export class OrderService {
   }
 
   /**
-   * Creates a new order with an assigned new customer
+   * Creates a new order with an assigned new customer.
    * @param customer to assign to the new order
    */
   createNewOrderWithCustomer(customer: Customer): void {
@@ -90,7 +90,7 @@ export class OrderService {
   }
 
   /**
-   * Creates new order with a total initialised to zero
+   * Creates new order with a total initialised to zero.
    * @param customer to assign to order
    * @param total to add to order
    */
@@ -103,7 +103,7 @@ export class OrderService {
   }
 
   /**
-   * Gets an order by querying by Id
+   * Gets an order by querying by Id.
    * @param orderId id of order
    */
   getOrderById(orderId: number): Observable<Order> {
@@ -115,7 +115,7 @@ export class OrderService {
   }
 
   /**
-   * Deletes an order by Id
+   * Deletes an order by Id.
    * @param orderId belonging to order that needs to be deleted
    */
   deleteOrderById(orderId: number): void {
@@ -131,7 +131,7 @@ export class OrderService {
   }
 
   /**
-   * Update the isDelivered property of an order
+   * Update the isDelivered property of an order.
    * @param order to be updated
    */
   updateOrderDelivered(order: Order): Observable<Order> {
@@ -139,7 +139,7 @@ export class OrderService {
   }
 
   /**
-   * Update the isConfirmed property of an order
+   * Update the isConfirmed property of an order.
    * @param order to be updated
    */
   updateOrderConfirmed(order: Order): Observable<Order> {
@@ -147,7 +147,7 @@ export class OrderService {
   }
 
   /**
-   * Update the isReady property of an order
+   * Update the isReady property of an order.
    * @param order to be updated
    */
   updateOrderReady(order: Order): Observable<Order> {
@@ -155,7 +155,7 @@ export class OrderService {
   }
 
   /**
-   * Updates an order using a put request
+   * Updates an order using a put request.
    * @param order to be updated
    */
   updateOrder(order: Order): void {
@@ -172,7 +172,7 @@ export class OrderService {
   }
 
   /**
-   * Updates total of an order
+   * Updates total of an order.
    * @param order to be updated
    */
   updateTotal(order: Order): void {
@@ -190,7 +190,7 @@ export class OrderService {
   }
 
   /**
-   * Updates isPaid property of order
+   * Updates isPaid property of order.
    * @param order to be updated
    */
   updateIsPaid(order: Order): void {
@@ -201,7 +201,7 @@ export class OrderService {
   }
 
   /**
-   * Gets ordered menu items for an order
+   * Gets ordered menu items for an order.
    * @param order to get ordered items of
    */
   public getOrderedMenuItems(order: Order): Observable<Menu[]> {
@@ -209,7 +209,7 @@ export class OrderService {
   }
 
   /**
-   * Updates isDelivered property of order
+   * Updates isDelivered property of order.
    * @param order to be updated
    * @param newIsDelivered new value of isDelivered
    */
@@ -225,7 +225,7 @@ export class OrderService {
   }
 
   /**
-   * Updates isDelivered property of order
+   * Updates isDelivered property of order.
    * @param order to be updated
    * @param newIsConfirmed new value of isConfirmed
    */
@@ -241,14 +241,14 @@ export class OrderService {
   }
 
   /**
-   * Get orders that have not been confirmed
+   * Get orders that have not been confirmed.
    */
   public getNoConfirmedOrders(): Observable<Order[]> {
     return this.httpClient.get<Order[]>(`${this.restaurantWebApiUrl}/noisconfirmed`);
   }
 
   /**
-   * Get orders that have only been assigned to a waiter
+   * Get orders that have only been assigned to a waiter.
    * @param waiterId Id of waiter
    */
   public getWaiterSpecificOrders(waiterId: number): Observable<Order[]> {
