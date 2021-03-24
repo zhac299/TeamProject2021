@@ -5,7 +5,7 @@
       <div class="title">Shopping Cart</div>
     </mat-grid-tile>
   </mat-grid-list>
-  <div class = list *ngIf = "orderPlaced == false; else emptyShoppingCartBlock">
+  <div class=list *ngIf="orderPlaced == false; else emptyShoppingCartBlock">
     <table class="table" class="selectedItems">
       <tbody>
         <tr *ngFor="let meal of mealList">
@@ -46,9 +46,9 @@
       </mat-list-item>
     </mat-list>
   </div>
-    <ng-template #emptyShoppingCartBlock>
-      <div class="center">
-        <button mat-button class="emptyShoppingCartBlock"> Empty Shopping Cart!</button>
-      </div>
-    </ng-template>
+  <ng-template #emptyShoppingCartBlock>
+    <div class="center">
+      <button mat-button class="emptyShoppingCartBlock"> Empty Shopping Cart!</button>
+    </div>
+  </ng-template>
 </mat-dialog-content>

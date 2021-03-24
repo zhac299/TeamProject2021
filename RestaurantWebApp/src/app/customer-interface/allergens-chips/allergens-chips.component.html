@@ -1,39 +1,25 @@
 <mat-form-field class="chip-list">
-    <mat-label></mat-label>
-    <mat-chip-list #chipList aria-label="Allergens selection">
-      <mat-chip 
-        *ngFor="let allergen of allergens"
-        [selectable]="selectable"
-        [removable]="removable"
-        (removed)="remove(allergen)"
-        class = "displayChip">
-        {{allergen}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
-      <input
-        placeholder="New allergen..."
-        #allergenInput
-        
-        [matAutocomplete]="auto"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let allergen of filteredAllergens | async" [value]="allergen" class = "chip">
-        {{allergen}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  <p class = "calories">Calories
-    <mat-slider
-    thumbLabel
-    [displayWith]="setCalories"
-    min="1"
-    max="2000"
-    (input)="onInputChange($event)"
-    class = "matSlider">
-    </mat-slider></p>
-  
-  <button mat-button (click) = "filterByAllergensAndCalories()" id="coolbutton">Filter</button>&nbsp;&nbsp;
-  <button mat-button (click) = "reset()" id="coolbutton">Reset</button>
+  <mat-label></mat-label>
+  <mat-chip-list #chipList aria-label="Allergens selection">
+    <mat-chip *ngFor="let allergen of allergens" [selectable]="selectable" [removable]="removable"
+      (removed)="remove(allergen)" class="displayChip">
+      {{allergen}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="New allergen..." #allergenInput [matAutocomplete]="auto" [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let allergen of filteredAllergens | async" [value]="allergen" class="chip">
+      {{allergen}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<p class="calories">Calories
+  <mat-slider thumbLabel [displayWith]="setCalories" min="1" max="2000" (input)="onInputChange($event)"
+    class="matSlider">
+  </mat-slider>
+</p>
+
+<button mat-button (click)="filterByAllergensAndCalories()" id="coolbutton">Filter</button>&nbsp;&nbsp;
+<button mat-button (click)="reset()" id="coolbutton">Reset</button>

@@ -55,7 +55,7 @@ export class AllergensChipsComponent implements OnInit {
    * The list of all the available allergens.
    */
   allAllergens: string[] = ['Peanuts', 'Celery', 'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Lupin', 'Milk', 'Molluscs', 'Mustard', 'Nuts', 'Soya', 'Sesame Seeds', 'Sulphites'];
-  
+
   /**
    * The list of selected calories.
    */
@@ -64,6 +64,11 @@ export class AllergensChipsComponent implements OnInit {
   @ViewChild('allergenInput') allergenInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
+  /**
+   * The constructor of the class.
+   * 
+   * @param customerInterfaceComponent a customer interface instance used in the class
+   */
   constructor(
     private customerInterfaceComponent: CustomerInterfaceComponent) {
     this.filteredAllergens = this.allergensCtrl.valueChanges.pipe(

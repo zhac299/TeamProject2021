@@ -8,9 +8,9 @@ describe('AllergensChipsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AllergensChipsComponent ]
+      declarations: [AllergensChipsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
