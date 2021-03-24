@@ -9,7 +9,7 @@ import { Staff } from '../../../models/Staff';
 })
 
 /**
- * The class that handles adding a new staff.
+ * The class that handles adding a new staff dialog.
  */
 export class AddStaffDialogComponent implements OnInit {
 
