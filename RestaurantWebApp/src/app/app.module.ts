@@ -34,7 +34,6 @@ import { AddMenuDialogComponent } from './waiter-menu/add-menu-dialog/add-menu-d
 import { NgOtpInputModule } from  'ng-otp-input';
 import { MatCheckboxModule} from "@angular/material/checkbox";
 import { BasketComponent } from './customer-interface/basket/basket.component';
-import { CustomerTablesComponent } from './waiter-menu/customer-tables/customer-tables.component';
 import { CallWaiterComponent } from './customer-interface/call-waiter/call-waiter.component';
 import { NotificationsComponent } from './waiter-menu/notifications/notifications.component';
 import { MatBadgeModule} from '@angular/material/badge';
@@ -74,7 +73,6 @@ import {LandingPageComponent} from "./landing-page/landing-page.component";
     AllergensChipsComponent,
     AddMenuDialogComponent,
     BasketComponent,
-    CustomerTablesComponent,
     CallWaiterComponent,
     NotificationsComponent,
     NotificationsDialogComponent,
