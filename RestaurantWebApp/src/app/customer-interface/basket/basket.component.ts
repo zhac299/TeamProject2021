@@ -9,6 +9,7 @@ import { CustomerService } from '../../customer.service';
 import { CustomerInterfaceComponent } from '../customer-interface.component';
 import { Router } from '@angular/router';
 import { Order } from '../../../models/Order';
+import { IngredientService } from '../../ingredient.service';
 
 @Component({
   selector: 'app-basket',
@@ -31,6 +32,7 @@ export class BasketComponent implements OnInit {
     private orderService: OrderService,
     private customerService: CustomerService,
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
+    private ingredientService: IngredientService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) data) {
     this.mealList = data.selectedMeals;
@@ -106,10 +108,6 @@ export class BasketComponent implements OnInit {
             tableNumber: this.tableNumber,
             orderId: orderId, 
             customerId: this.customerId} });
-    this.dialogRef.close();
-  }
-
-  close(): void {
     this.dialogRef.close();
   }
 }
