@@ -4,12 +4,14 @@ import {Menu} from "../../models/Menu";
 import {MatDialog} from "@angular/material/dialog";
 import {AddMenuDialogComponent} from "../waiter-menu/add-menu-dialog/add-menu-dialog.component";
 import {Subscription, timer} from "rxjs";
-import {tap} from "rxjs/operators";
 import { Router } from '@angular/router';
 import {MenuCategoryService} from "../menu-category.service";
 import {MenuCategory} from "../../models/MenuCategory";
 import {CategoryDialogComponent} from "../category-dialog/category-dialog.component";
 
+/**
+ * A Menu list component that displays all menu items in a table
+ */
 @Component({
   selector: 'app-menus-list-display',
   templateUrl: './menus-list-display.component.html',
@@ -23,18 +25,43 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
               private router: Router,
               public dialog: MatDialog) { }
 
+  /**
+   * Field to hold all menu categories
+   */
   categories: MenuCategory[];
+
+  /**
+   * Field to hold all menu items
+   */
   menuList: Menu[] = [];
+
+  /**
+   * A subscription that uses the timer to get new data from the API
+   */
   subscription: Subscription;
+
+  /**
+   * A subscription that uses the timer to get new data from the API
+   * for categories
+   */
   catSubscription: Subscription;
-  refreshTimer$ = timer(0, 1000)
-    .pipe(tap());
+
+  /**
+   * A refresh timer that ticks every second
+   */
+  refreshTimer$ = timer(0, 1000);
 
   // refreshTimer$ = timer(0, 5000)
   //   .pipe(tap(() => console.log('Fetching Menus...')));
-  
+
+  /**
+   * Field to set if a staff is authorised to extra permissions or not
+   */
   isAuth: boolean = true;
 
+  /**
+   * Initialises all menu items
+   */
   ngOnInit(): void {
     if(this.router.url === '/client-menu') {
       this.isAuth = false;
@@ -60,10 +87,17 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Unsubscribes from timer
+   */
   ngOnDestroy(): void {
     // this.subscription.unsubscribe();
   }
 
+  /**
+   * Opens edit dialog for menu
+   * @param menu to edit
+   */
   openEditMenuDialog(menu:Menu): void {
 
     this.menuService.getIngredients(menu.id).subscribe(ings => {
@@ -89,10 +123,18 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
   }
 
+  /**
+   * Deletes a menu item
+   * @param menu
+   */
   deleteMenuItem(menu: Menu) {
     this.menuService.deleteMenu(menu);
   }
 
+  /**
+   * Opens edit category dialog and edits resulting category after changes
+   * @param category to edit
+   */
   openEditCategoryDialog(category: MenuCategory) {
     const dialogRef = this.dialog.open(CategoryDialogComponent, {
       data: category
@@ -103,10 +145,18 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Deletes a category item
+   * @param category to delete
+   */
   deleteCategoryItem(category: MenuCategory) {
     this.categoryService.deleteCategory(category).subscribe();
   }
 
+  /**
+   * Opens add category dialog to add a new category. Sends a post request after a non null
+   * category is returned from the dialog
+   */
   openAddCategoryDialog() {
     const dialogRef = this.dialog.open(CategoryDialogComponent, {
       data: new MenuCategory()
