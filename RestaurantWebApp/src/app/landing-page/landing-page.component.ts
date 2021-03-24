@@ -5,13 +5,15 @@ import {MatDialog} from "@angular/material/dialog";
 import {SelectTableDialogComponent} from "../home-page/select-table-dialog/select-table-dialog.component";
 import {tap} from "rxjs/operators";
 
+/**
+ * Landing page component that greets the user as they connect in to the website
+ */
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.sass'],
   encapsulation: ViewEncapsulation.None
 })
-
 export class LandingPageComponent implements OnInit, AfterViewInit {
 
   constructor(private elementRef: ElementRef,
@@ -20,15 +22,19 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Opens the select table dialog and routes to the menu page
+   */
   toMenu(){
     const dialogRef = this.dialog.open(SelectTableDialogComponent);
     dialogRef.afterClosed().pipe(tap((result)=> console.log(result))).subscribe()
   }
 
+  /**
+   * Animates the title and sets background image
+   */
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.backgroundImage = 'url(assets/images/background.jpg)';
-    // var title = document.getElementById('title');
-    // title.style.width= `${this.windowWidth}px`;
 
     // ANIMATE TITLE
     anime.timeline({loop: false})
