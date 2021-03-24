@@ -8,9 +8,9 @@ describe('OrderTrackerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrderTrackerComponent ]
+      declarations: [OrderTrackerComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
