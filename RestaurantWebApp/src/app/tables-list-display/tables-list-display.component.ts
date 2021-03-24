@@ -46,6 +46,10 @@ export class TablesListDisplayComponent implements OnInit {
    * time the window changes
    */
   resize$ = fromEvent(window, 'resize');
+
+  /**
+   * Number of columns that the width should take up for each row
+   */
   windowWidth: number = Math.floor(window.innerWidth/this.ORDER_BUTTON_WIDTH);
 
   /**
