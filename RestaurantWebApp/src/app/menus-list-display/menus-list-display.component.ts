@@ -4,11 +4,12 @@ import {Menu} from "../../models/Menu";
 import {MatDialog} from "@angular/material/dialog";
 import {AddMenuDialogComponent} from "../waiter-menu/add-menu-dialog/add-menu-dialog.component";
 import {Subscription, timer} from "rxjs";
-import {tap} from "rxjs/operators";
+import {map, switchMap, tap} from "rxjs/operators";
 import { Router } from '@angular/router';
 import {MenuCategoryService} from "../menu-category.service";
 import {MenuCategory} from "../../models/MenuCategory";
 import {CategoryDialogComponent} from "../category-dialog/category-dialog.component";
+import {IngredientsDialogComponent} from "./ingredients-dialog/ingredients-dialog.component";
 
 @Component({
   selector: 'app-menus-list-display',
@@ -32,7 +33,7 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
   // refreshTimer$ = timer(0, 5000)
   //   .pipe(tap(() => console.log('Fetching Menus...')));
-  
+
   isAuth: boolean = true;
 
   ngOnInit(): void {
@@ -44,20 +45,32 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
     this.categoryService.categories$.subscribe((categories) => {
       this.categories = categories;
     })
-    // this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
+    this.subscription = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.menuService.getAllUpdatedMenus();
-    this.menuService.menus$.subscribe((menu) => {
-      this.menuList = menu;
-      this.menuList.forEach(element => {
-        this.menuService.getIngredients(element.id).subscribe(ings => {
-          element.ingredientsName = "";
-          ings.forEach(name => {
-            element.ingredientsName +=  name.ingredient.name+", ";
+    this.menuService.menus$
+      .pipe(
+        map((menus) => {
+           menus.forEach((menu) => {
+            this.menuService.getIngredients(menu.id)
+              .subscribe((ingredients) => menu.ingredients= ingredients);
           });
-          element.ingredientsName = element.ingredientsName.substring(0, element.ingredientsName.length-2);
-        });
-      });
+           return menus;
+        })
+      )
+      .subscribe((menus) => {
+      this.menuList = menus;
     });
+    // this.menuList.forEach((menu) => {
+    //   this.menuService.getIngredients(menu.id).subscribe((ings) => {
+    //     menu.ingredients.push(ings);
+    //     console.log(ings);
+    //     menu.ingredientsName = "";
+    //     ings.forEach(name => {
+    //       menu.ingredientsName +=  name.ingredient.name+", ";
+    //     });
+    //     menu.ingredientsName = menu.ingredientsName.substring(0, menu.ingredientsName.length-2);
+    //   });
+    // });
   }
 
   ngOnDestroy(): void {
@@ -114,6 +127,12 @@ export class MenusListDisplayComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       this.categoryService.createNewCategory(result).subscribe();
+    });
+  }
+
+  openIngredientsDialog(menu: Menu) {
+    const dialogRef = this.dialog.open(IngredientsDialogComponent, {
+      data: menu
     });
   }
 }

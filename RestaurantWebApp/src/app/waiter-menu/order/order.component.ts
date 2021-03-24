@@ -28,7 +28,8 @@ export class OrderComponent implements OnInit {
   private orderSubject$ = new BehaviorSubject<Order>(this.data.order);
   order$ = this.orderSubject$.asObservable();
   subscription: Subscription;
-  refreshTimer$ = timer(0, 1000).pipe(tap());
+  subscriptionMenus: Subscription;
+  refreshTimer$ = timer(0, 1000);
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
@@ -39,6 +40,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateOrderedMealItems();
+    this.subscriptionMenus = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
@@ -51,7 +53,7 @@ export class OrderComponent implements OnInit {
       this.data.isKitchenStaff = false;
     }
   }
-  
+
   updateOrderReady(order: Order): void{
     this.orderService.updateOrderReady(order).subscribe((order) => {
       this.orderSubject$.next(order);

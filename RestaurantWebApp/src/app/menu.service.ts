@@ -22,7 +22,6 @@ export class MenuService {
   cat: selectedCategory = new selectedCategory;
 
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
-  // readonly menus$ = this.menuSubject.asObservable();
   refresh$ = new BehaviorSubject(null);
 
   public getMenus(): Observable<Menu[]> {
