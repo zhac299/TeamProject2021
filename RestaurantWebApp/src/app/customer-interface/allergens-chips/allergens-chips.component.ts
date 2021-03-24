@@ -14,6 +14,7 @@ import { MatSliderChange } from '@angular/material/slider';
   templateUrl: './allergens-chips.component.html',
   styleUrls: ['./allergens-chips.component.sass']
 })
+
 /**
  * The class that handles the selection of the allergens
  * and calories when filtering the menu.
@@ -70,6 +71,17 @@ export class AllergensChipsComponent implements OnInit {
       map((allergen: string | null) => allergen ? this._filter(allergen) : this.allAllergens.slice()));
   }
 
+  /**
+   * Set up method that gets called once when the object gets instantiated.
+   */
+  ngOnInit(): void {
+  }
+
+  /**
+   * Adds an allergen to the allergens list when a MatChipInput happens.
+   * 
+   * @param event the emitter event
+   */
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -83,29 +95,50 @@ export class AllergensChipsComponent implements OnInit {
     this.allergensCtrl.setValue(null);
   }
 
-  remove(fruit: string): void {
-    const index = this.allergens.indexOf(fruit);
+  /**
+   * Removes an allergen from the selected list.
+   * 
+   * @param allergen the allergen to be removed
+   */
+  remove(allergen: string): void {
+    const index = this.allergens.indexOf(allergen);
 
     if (index >= 0) {
       this.allergens.splice(index, 1);
     }
   }
 
+  /**
+   * Adds the value of a MatAutoCompleted event and updates the value
+   * of the form controller.
+   * 
+   * @param event the emmiter event
+   */
   selected(event: MatAutocompleteSelectedEvent): void {
     this.allergens.push(event.option.viewValue);
     this.allergenInput.nativeElement.value = '';
     this.allergensCtrl.setValue(null);
   }
 
+  /**
+   * Converts the param to lower case.
+   * Filters the intial drop down list in alphabetical order.
+   * 
+   * @param value the value to be added to the filtered 
+   * @returns the list of allergen in aplhabetical order
+   */
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allAllergens.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.allAllergens.filter(allergen => allergen.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  ngOnInit(): void {
-  }
-
+  /**
+   * Forms from the selected allergens list a string with a boolean/
+   * format that will be used by the get request to filter the DB.
+   * 
+   * @returns a formatted string to be used by Api to filter the DB
+   */
   getAllergens(): string {
     let result: string = "/";
     for (let allergen of this.allAllergens) {
@@ -118,14 +151,31 @@ export class AllergensChipsComponent implements OnInit {
     return result;
   }
 
+  /**
+   * Sets a new value to the calories slider
+   * 
+   * @param value the new value of the slider
+   * @returns the value of slider
+   */
   setCalories(value: number) {
     return value;
   }
 
+  /**
+   * Sets the class field to the value of emitter event.
+   * 
+   * @param event the emmiter event
+   */
   onInputChange(event: MatSliderChange) {
     this.calories = event.value;
   }
 
+  /**
+   * Forms the string that will be used by the Menu Filter Service 
+   * to make the get request to the DB.
+   * 
+   * @returns a formatted string to be used by Api to filter the DB
+   */
   getAllergensAndCalories(): string {
     let result: string = '';
     result = result.concat(this.getAllergens());
@@ -133,10 +183,16 @@ export class AllergensChipsComponent implements OnInit {
     return result;
   }
 
+  /**
+   * Calls the Customer Interface Method to filter by allergens and calories.
+   */
   filterByAllergensAndCalories(): void {
     this.customerInterfaceComponent.filter(this.getAllergensAndCalories());
   }
 
+  /**
+   * Resets all the filters.
+   */
   reset(): void {
     this.customerInterfaceComponent.findCategoryItems();
   }
