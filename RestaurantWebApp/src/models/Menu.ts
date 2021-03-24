@@ -1,4 +1,5 @@
 import {MenuCategory} from "./MenuCategory";
+import {Ingredient} from "./Ingredient";
 
 export class Menu{
   id: number;
@@ -24,6 +25,6 @@ export class Menu{
   sulphites: boolean;
   calories: number;
   timeToCook: number;
-  ingredients: number[];
+  ingredients: Ingredient[];
   ingredientsName: string;
 }

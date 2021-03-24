@@ -5,6 +5,7 @@ import { Menu } from '../models/Menu';
 import { selectedCategory } from '../models/selectedCategory';
 import { Order } from "../models/Order";
 import { exhaustMap, map, repeat, share } from "rxjs/operators";
+import {Ingredient} from "../models/Ingredient";
 
 /**
  * Service to fetch Menu's from the Restaurant API
@@ -22,7 +23,6 @@ export class MenuService {
   cat: selectedCategory = new selectedCategory;
 
   private readonly menuSubject = new BehaviorSubject<Menu[]>(new Array<Menu>());
-  // readonly menus$ = this.menuSubject.asObservable();
   refresh$ = new BehaviorSubject(null);
 
   public getMenus(): Observable<Menu[]> {
@@ -56,6 +56,7 @@ export class MenuService {
     let ingredients = menu.ingredients;
     this.httpClient.post<Menu>(this.restaurantWebApiUrl, menu)
       .subscribe((menu) => {
+
         this.addIngredients(menu.id, ingredients);
         const currentList = this.menuSubject.getValue()
         currentList.push(menu)
@@ -64,9 +65,8 @@ export class MenuService {
       });
   }
 
-  addIngredients(id: number, ingredients: number[]): void {
-    console.log(id)
-    console.log(ingredients)
+  addIngredients(id: number, ingredients: Ingredient[]): void {
+    console.log(ingredients);
     this.httpClient.get<Menu>(this.restaurantWebApiUrl + '/ingredients?id=' + id + '&ingredients=' + ingredients)
       .subscribe((menuList) => {
       });
