@@ -22,22 +22,39 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService {
-
+    /**
+     * The order repository to be autowired.
+     */
     @Autowired
     OrderRepository orderRepository;
 
+     /**
+     * The menu service to be autowired.
+     */
     @Autowired
     MenuService menuService;
-
+    /**
+     * The customer service to be autowired.
+     */
     @Autowired
     CustomerService customerService;
     
+    /**
+     * The restaurant table repository to be autowired.
+     */
     @Autowired
     RestaurantTableRepository restaurantTableRepository;
-    
+    /**
+     *The customer repository to be autowired.
+     */
     @Autowired
     CustomerRepository customerRepository;
-
+    /**
+     * This method is tasked with creating a new order within the database.
+     * 
+     * @param order The order object to be added to the database.
+     * @return The state of the order repository after adding the new order.
+     */
     public Order createNewOrder(Order order) {
     	Optional<Customer> customer = customerRepository.findById(order.getCustomer().getId());
     	if(customer.isPresent()) {
@@ -51,7 +68,12 @@ public class OrderService {
     	}
         return orderRepository.save(order);
     }
-
+    /**
+     * This method is tasked with getting a specific order by ID.
+     * 
+     * @param OrderId The order ID associated with the desired order.
+     * @return The order which correlates with the given order ID.
+     */
 	public Order getOrderById(Long OrderId) {
 		Optional<Order> optionalOrder = orderRepository.findById(OrderId);
 
@@ -60,16 +82,31 @@ public class OrderService {
         }
         return optionalOrder.get();
 	}
-
+    /**
+     * This method is tasked with updating an existing order.
+     * 
+     * @param id The order ID associated with the desired order.
+     * @param Order The updated order object associated with the ID.
+     * @return The state of the order repository after updating the order.
+     */
 	public Order updateOrder(Long id, Order Order) {
 		Order.setOrderId(id);
         return orderRepository.save(Order);
 	}
-
+    /**
+     * This method is tasked with deleting an order.
+     * 
+     * @param id The order ID of the order subject for deletion.
+     */
 	public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
 	}
 
+    /**
+     * This method is purposed with converting the list of orders into a priority queue.
+     * 
+     * @return  The priority queue containing all orders.
+     */
     public PriorityQueue<Order> convertIntoQueue() {
         List<Order> listOfOrders = new ArrayList<>();
         listOfOrders = orderRepository.findAll();
@@ -80,7 +117,12 @@ public class OrderService {
         return priorityQueueByDate;
     }
     
-
+    /**
+     * This method is tasked with collecting all the meals ordered.
+     * 
+     * @param id The ID of the desired order.
+     * @return The meals that were ordered as part of the order.
+     */
     public List<Menu> getOrderedMeals(Long id) {
         Optional<Order>  order = orderRepository.findById(id);
         List<Menu> menus = new ArrayList<>();
