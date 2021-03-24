@@ -8,9 +8,9 @@ describe('ReadyToOrderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReadyToOrderComponent ]
+      declarations: [ReadyToOrderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
