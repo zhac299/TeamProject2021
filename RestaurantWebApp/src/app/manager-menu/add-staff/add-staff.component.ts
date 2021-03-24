@@ -15,6 +15,7 @@ export class AddStaffComponent implements OnInit {
     public dialog: MatDialog) { }
 
   staffs: Staff[] = [];
+  bool: boolean = false;
 
   ngOnInit(): void {
     this.staffService.getStaffs().subscribe((staff) => {
@@ -41,6 +42,7 @@ export class AddStaffComponent implements OnInit {
   openAddStaffDialog() {
     const title = "Add New Staff";
     let staff: Staff = new Staff();
+    this.staffService.edit = false;
     const dialogRef = this.dialog.open(AddStaffDialogComponent, {
       data: { staff, title },
       width: '50%',
@@ -63,6 +65,7 @@ export class AddStaffComponent implements OnInit {
 
   openEditMenuDialog(staff: Staff): void {
     const title = "Edit Staff";
+    this.staffService.edit = true;
     const dialogRef = this.dialog.open(AddStaffDialogComponent, {
       data: { staff, title },
       width: '50%',
