@@ -6,7 +6,7 @@
     <br>
   </mat-grid-list>
   <table class="table">
-    <thead class = "tableHead">
+    <thead class="tableHead">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Status</th>
@@ -18,10 +18,10 @@
     <tbody>
       <tr *ngFor="let order of orders">
         <td><b>{{order.id}}</b></td>
-        <td *ngIf = "!order.isConfirmed">A waiter has to confirm the order</td>
-        <td *ngIf = "order.isConfirmed">Order is being prepared</td>
-        <td *ngIf = "order.isReady">Order is ready</td>
-        <td *ngIf = "order.isDelivered">Order was delivered</td>
+        <td *ngIf="!order.isConfirmed">A waiter has to confirm the order</td>
+        <td *ngIf="order.isConfirmed">Order is being prepared</td>
+        <td *ngIf="order.isReady">Order is ready</td>
+        <td *ngIf="order.isDelivered">Order was delivered</td>
         <td>{{order.total}}</td>
         <td>{{order.isConfirmed}}</td>
         <td>{{order.isPaid}}</td>

@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Meal } from '../../../models/Meal';
 import { Order } from '../../../models/Order';
 import { CustomerService } from '../../customer.service';
 import { OrderService } from '../../order.service';
@@ -12,14 +11,26 @@ import { CustomerInterfaceComponent } from '../customer-interface.component';
   templateUrl: './order-tracker.component.html',
   styleUrls: ['./order-tracker.component.sass']
 })
+
+/**
+ * The class that handles the order tracker.
+ */
 export class OrderTrackerComponent implements OnInit {
 
-  mealList: Meal[];
+  /**
+   * The customer id that is used to make get requets.
+   */
   customerId: number;
-  orderPlaced: Boolean;
-  orderStatus: String;
-  orders: Order[] = [];
+
+  /**
+   * The table number that is used to make get requests.
+   */
   tableNumber: number;
+  
+  /**
+   * The list of customer's orders.
+   */
+  orders: Order[]; 
 
   constructor(
     private dialogRef: MatDialogRef<CustomerInterfaceComponent>,
@@ -29,6 +40,7 @@ export class OrderTrackerComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data) {
     this.customerId = data.customerId;
     this.tableNumber = data.tableNumber;
+    this.orders = [];
   }
 
   ngOnInit(): void {
@@ -50,11 +62,14 @@ export class OrderTrackerComponent implements OnInit {
   }
 
   navigateToPayment(orderId: number): void {
-    this.router.navigate(['/payment'], 
-          { queryParams: { 
-            tableNumber: this.tableNumber,
-            orderId: orderId, 
-            customerId: this.customerId} });
+    this.router.navigate(['/payment'],
+      {
+        queryParams: {
+          tableNumber: this.tableNumber,
+          orderId: orderId,
+          customerId: this.customerId
+        }
+      });
     this.dialogRef.close();
   }
 
