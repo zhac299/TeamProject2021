@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * The Service class of the MenuCategory model that handles the CRUD API functionality on the model.
+ */
 @Service
 public class MenuCategoryService {
 
