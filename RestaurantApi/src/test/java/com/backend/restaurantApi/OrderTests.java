@@ -1,7 +1,5 @@
 package com.backend.restaurantApi;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.List;
 
 import com.backend.restaurantApi.model.Customer;
