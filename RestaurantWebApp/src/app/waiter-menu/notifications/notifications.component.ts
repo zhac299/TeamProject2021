@@ -24,6 +24,11 @@ export class NotificationsComponent implements OnInit {
    */
   hideMatBadge: boolean;
 
+  /**
+   *
+   * @param dialog to open/close dialogs
+   * @param tableService to perform crud for tables
+   */
   constructor(
     public dialog: MatDialog,
     private tableService: TableService) {
