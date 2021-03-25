@@ -58,54 +58,16 @@ public class RestaurantTableController {
         return restaurantTableService.createNewRestaurantTable(table);
     }
 
+    /**
+     * Updates the table in the repo.
+     * 
+     * @param table the updated table
+     * @param id the table id
+     * @return the updated table saved in the repo
+     */
     @PutMapping("/tables/{id}")
     public RestaurantTable updateRestaurantTable(@RequestBody RestaurantTable table, @PathVariable Long id) {
-        System.out.println(table);
         return restaurantTableService.updateRestaurantTable(table, id);
-    }
-    /**
-     * Updates the tables number and calls the service to update the repo.
-     * 
-     * @param tableNumber the new table number
-     * @param table the intial table 
-     * @return the updated RestaurantTable
-     */
-    @PutMapping("/tables/updateTableNumber/{tableNumber}")
-    public RestaurantTable updateRestaurantTableNumber
-    (@PathVariable("tableNumber") long tableNumber, @RequestBody RestaurantTable table) {
-        return restaurantTableService.updateRestaurantTableNumber(table, tableNumber);
-    }
-
-    /**
-     * Updates the needsHelp field and calls the service to update the repo.
-     * 
-     * @param needsHelp the new needsHelp field
-     * @param table the intial table 
-     * @return the updated RestaurantTable
-     */
-    @PutMapping("/tables/updateNeedsHelp/{needsHelp}")
-    public RestaurantTable updateRestaurantTableNeedsHelp
-    (@PathVariable("needsHelp") boolean needsHelp, @RequestBody RestaurantTable table) {
-        return restaurantTableService.updateRestaurantTableNeedsHelp(table, needsHelp);
-    }
-
-    @PutMapping("/tables/updateIsReady/{isReady}")
-    public RestaurantTable updateRestaurantTableIsReady
-    (@PathVariable("isReady") boolean isReady, @RequestBody RestaurantTable table) {
-        return restaurantTableService.updateRestaurantTableIsReady(table, isReady);
-    }
-    
-    /**
-     * Updates the isOccupied field and calls the service to update the repo.
-     * 
-     * @param isOccupied the new isOccupied field
-     * @param table the table to be updated
-     * @return the updated table
-     */
-    @PutMapping("/tables/updateIsOccupied/{isOccupied}")
-    public RestaurantTable updateRestaurantTableIsOccupied
-    (@PathVariable("isOccupied") boolean isOccupied, @RequestBody RestaurantTable table) {
-        return restaurantTableService.updateRestaurantTableIsOccupied(table, isOccupied);
     }
 
     /**
@@ -159,5 +121,11 @@ public class RestaurantTableController {
     @PostMapping("/tables/assignTable")
     public RestaurantTable assignTableToWaiter(@RequestBody RestaurantTable restaurantTable){
         return restaurantTableService.assignTableToWaiter(restaurantTable);
+    }
+
+    @PutMapping("/tables/manager/assignTable/{staffId}/{tableId}")
+    public RestaurantTable managerAssignTable(@PathVariable("staffId") long staffId, @PathVariable("tableId") long tableId) {
+        RestaurantTable table = restaurantTableRepository.findByTableNumber(tableId);
+        return restaurantTableService.mangagerAssignWaiterToTable(table, staffId);
     }
 }

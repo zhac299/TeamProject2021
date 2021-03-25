@@ -7,7 +7,6 @@ import {Order} from "../../../models/Order";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
 import {BehaviorSubject, Subscription, timer} from "rxjs";
-import {tap} from "rxjs/operators";
 import {Meal} from "../../../models/Meal";
 import {MealService} from "../../meal.service";
 
@@ -28,9 +27,8 @@ export class OrderComponent implements OnInit {
   private orderSubject$ = new BehaviorSubject<Order>(this.data.order);
   order$ = this.orderSubject$.asObservable();
   subscription: Subscription;
-  refreshTimer$ = timer(0, 1000)
-    .pipe(tap(() => console.log('Fetching...')));
-
+  subscriptionMenus: Subscription;
+  refreshTimer$ = timer(0, 1000);
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
@@ -41,6 +39,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateOrderedMealItems();
+    this.subscriptionMenus = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
     });
@@ -52,9 +51,8 @@ export class OrderComponent implements OnInit {
     if(this.data.isKitchenStaff == undefined) {
       this.data.isKitchenStaff = false;
     }
-    console.log(this.data.order[0].total);
   }
-  
+
   updateOrderReady(order: Order): void{
     this.orderService.updateOrderReady(order).subscribe((order) => {
       this.orderSubject$.next(order);
@@ -123,7 +121,6 @@ export class OrderComponent implements OnInit {
         _orderedMealItems.push(meal);
       });
     }
-    console.log(this.total);
     this.orderedMealItemsSubject$.next(_orderedMealItems);
   }
 

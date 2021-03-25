@@ -14,12 +14,20 @@
     <mat-form-field class="col">
       <mat-label>Password</mat-label>
       <input matInput class="fixInput" [(ngModel)]="data.staff.password"/>
-    </mat-form-field>
-    <mat-checkbox [(ngModel)]="data.staff.waiter" labelPosition="before">Is Waiter
-    </mat-checkbox>
+    </mat-form-field><br>
   </div>
+  <mat-checkbox [(ngModel)]="data.staff.waiter">Is Waiter</mat-checkbox>
+
+  <div *ngIf="edit && data.staff.waiter">    <mat-form-field appearance="fill" id = "tableSelection" class = "formField">
+      <mat-label class = "label">Available tables</mat-label>
+      <mat-select [(ngModel)]="selectedTable" name="table">
+          <mat-option [value]="table" *ngFor="let table of tableList" class = "option">Table {{table.tableNumber}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+  </div>  
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="this.data.staff">Ok</button>
+  <button mat-button [mat-dialog-close]="this.data.staff" (click)="onYesClick()">Ok</button>
 </mat-dialog-actions>

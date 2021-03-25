@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TableService } from 'src/app/table.service';
-import { Table } from 'src/models/Table';
+import { TableService } from '../../../table.service';
+import { Table } from '../../../../models/Table';
 
 @Component({
   selector: 'notifications-dialog',
@@ -16,7 +16,7 @@ export class NotificationsDialogComponent implements OnInit {
   tables: Table[] = [];
 
   ngOnInit(): void {
-    this.tableService.getRefreshNeeded().subscribe(() => {
+    this.tableService.refreshNeeded.subscribe(() => {
       this.getNeedHelpTables();
     });
     this.getNeedHelpTables();  
@@ -29,7 +29,9 @@ export class NotificationsDialogComponent implements OnInit {
   }
 
   setTableHelped(table: Table) {
-    this.tableService.updateRestaurantTableNeedsHelp(table, false).subscribe();
+    this.tableService.getTableByNumber(table.tableNumber).subscribe((table) => {
+      this.tableService.updateTable(table);
+    })
     this.tableService.getNeedHelpTables().subscribe(tables => {
       this.tables = tables;
     })

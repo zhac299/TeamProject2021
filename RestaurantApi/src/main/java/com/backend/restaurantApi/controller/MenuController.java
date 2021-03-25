@@ -2,6 +2,7 @@ package com.backend.restaurantApi.controller;
 
 import com.backend.restaurantApi.model.Meal;
 import com.backend.restaurantApi.model.Menu;
+import com.backend.restaurantApi.model.MenuIngredient;
 import com.backend.restaurantApi.repository.MenuRepository;
 import com.backend.restaurantApi.service.MealService;
 import com.backend.restaurantApi.service.MenuService;
@@ -54,11 +55,16 @@ public class MenuController {
         return menuService.createNewMenu(menu);
     }
 
-    /**
-     * Gets in the menu by its corresponding id.
-     * @param id of the meal you want to retreive.
-     * @return the retrieved menu object.
-     */
+    @GetMapping(path = "/menu/ingredients") 
+    public Menu addIngredients(@RequestParam Long id, @RequestParam List<Long> ingredients) {
+        return menuService.addIngredients(id, ingredients);
+    }
+
+    @GetMapping(path = "/menu/getIngredients") 
+    public List<MenuIngredient> getIngredients(@RequestParam Long id) {
+        return menuService.getIngredients(id);
+    }
+
     @GetMapping("/menu/{id}")
     public Menu getMealById(@PathVariable("id") Long id) {
         return menuService.getMenuById(id);

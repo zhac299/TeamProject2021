@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerService } from 'src/app/customer.service';
-
-import { TableService } from 'src/app/table.service';
-import { Customer } from 'src/models/Customer';
-import { Order } from 'src/models/Order';
-import { Table } from 'src/models/Table';
+import { Customer } from '../../../models/Customer';
+import { Order } from '../../../models/Order';
+import { Table } from '../../../models/Table';
+import { CustomerService } from '../../customer.service';
+import { TableService } from '../../table.service';
 
 @Component({
   selector: 'select-table-dialog',

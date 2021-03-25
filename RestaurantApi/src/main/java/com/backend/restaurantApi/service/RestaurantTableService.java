@@ -36,8 +36,7 @@ public class RestaurantTableService {
      * @param restaurantTable the new restaurant table
      * @return the updated repository
      */
-    public RestaurantTable createNewRestaurantTable(RestaurantTable restaurantTable) {
-    	restaurantTable.setStaff(staffRepository.getRandomWaiter());
+    public RestaurantTable createNewRestaurantTable(RestaurantTable restaurantTable) {        
         return restaurantTableRepository.save(restaurantTable);
     }
 
@@ -132,11 +131,11 @@ public class RestaurantTableService {
      */
     public RestaurantTable assignTableToWaiter(RestaurantTable restaurantTable) {
     	RestaurantTable tableToBesaved = restaurantTableRepository.findByTableNumber(restaurantTable.getTableNumber());
+        long waiterID = tableToBesaved.getWaiterId();
+
     	if(tableToBesaved != null) {
-    		tableToBesaved.setStaff(staffRepository.getRandomWaiter());
+    		tableToBesaved.setWaiterId(waiterID);
             restaurantTableRepository.save(tableToBesaved);
-    	} else {
-    		throw new RestaurantTableNotFoundException("Restaurant Table Record is not available...");
     	}
     	return tableToBesaved;
     }
@@ -144,5 +143,12 @@ public class RestaurantTableService {
     public RestaurantTable updateRestaurantTable(RestaurantTable table, Long id) {
         table.setTableNumber(id);
         return restaurantTableRepository.save(table);
+    }
+
+    public RestaurantTable mangagerAssignWaiterToTable(RestaurantTable table, long waiterId) {
+        RestaurantTable tableToBeSaved = restaurantTableRepository.findByTableNumber(table.getTableNumber());
+        tableToBeSaved.setWaiterId(waiterId);
+        restaurantTableRepository.save(tableToBeSaved);
+        return tableToBeSaved;
     }
 }

@@ -1,30 +1,40 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-toolbar class = "toolBar">
+  <mat-toolbar class="toolBar">
     <a routerLink="/manager-menu">
       <button mat-button><img class="quickAddButton" src="assets/images/manager.jpg"></button>
     </a><br>
-    <span class = "toolBarTitle">Manager Menu</span>
+    <span class="toolBarTitle">Stock</span>
     <span class="spacer"></span>
     <a routerLink="/home">
-        <button mat-button><img class="quickAddButton" src="assets/images/door.png"></button>
+      <button mat-button><img class="quickAddButton" src="assets/images/door.png"></button>
     </a>
   </mat-toolbar>
-  <br><br><br><br>
+  <br><br><br><br><br>
 
   <img class = "ingredientsTitle" src="assets/images/ingredients.png">
-  <button mat-button (click)="openAddMenuDialog()">Add</button>
 
-  <mat-grid-list cols="3" rowHeight="15px">
-    <mat-grid-tile>Name</mat-grid-tile>
-    <mat-grid-tile>Quantity</mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
-  <mat-grid-list class="menuItem" cols="3" rowHeight="75px" *ngFor="let ing of ingredients">
+  <br><br>
+  <div class="tableTitle">
+    <mat-grid-list cols="6" rowHeight="35px">
+      <mat-grid-tile>Name</mat-grid-tile>
+      <mat-grid-tile>Quantity</mat-grid-tile>
+      <mat-grid-tile>Price/Item</mat-grid-tile>
+      <mat-grid-tile>Edit</mat-grid-tile>
+      <mat-grid-tile>Delete</mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-button (click)="openAddIngredientDialog()" class = "addButton">Add</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <mat-grid-list class="menuItem" cols="6" rowHeight="75px" *ngFor="let ing of ingredients">
     <mat-grid-tile>{{ing.name}}</mat-grid-tile>
     <mat-grid-tile>{{ing.quantity}}</mat-grid-tile>
+    <mat-grid-tile>{{ing.pricePerItem}}</mat-grid-tile>
     <mat-grid-tile>
       <button mat-button (click)="openEditMenuDialog(ing)">Edit</button>
-      <button mat-button (click)="delete(ing)">Delete</button>
     </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-button (click)="delete(ing)">Delete</button>
+    </mat-grid-tile>   
   </mat-grid-list>
 </mat-drawer-container>

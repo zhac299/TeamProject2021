@@ -3,24 +3,27 @@
     <a routerLink="/manager-menu">
       <button mat-button><img class="quickAddButton" src="assets/images/manager.jpg"></button>
     </a><br>
-    <span class="toolBarTitle">Manager Menu</span>
+    <span class="toolBarTitle">Staff</span>
     <span class="spacer"></span>
     <a routerLink="/home">
       <button mat-button><img class="quickAddButton" src="assets/images/door.png"></button>
     </a>
   </mat-toolbar>
-  <br><br><br><br>
+  <br><br><br><br><br>
   <img class="staffTitle" src="assets/images/staff.png">
-  <button mat-button (click)="openAddMenuDialog()">Add</button>
-
-  <mat-grid-list cols="6" rowHeight="15px">
-    <mat-grid-tile>Email</mat-grid-tile>
-    <mat-grid-tile>User Name</mat-grid-tile>
-    <mat-grid-tile>Staff</mat-grid-tile>
-    <mat-grid-tile>Sales Price</mat-grid-tile>
-    <mat-grid-tile>Delivered Orders</mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
+  <br><br>
+  <div class="tableTitle">
+    <mat-grid-list cols="6" rowHeight="35px">
+      <mat-grid-tile>Email</mat-grid-tile>
+      <mat-grid-tile>User Name</mat-grid-tile>
+      <mat-grid-tile>Staff</mat-grid-tile>
+      <mat-grid-tile>Sales</mat-grid-tile>
+<!--      <mat-grid-tile>Delivered Orders</mat-grid-tile>-->
+      <mat-grid-tile>
+        <button mat-button (click)="openAddStaffDialog()" class="addButton">Add</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
   <mat-grid-list class="menuItem" cols="6" rowHeight="75px" *ngFor="let staff of staffs">
     <mat-grid-tile>{{staff.email}}</mat-grid-tile>
     <mat-grid-tile>{{staff.userName}}</mat-grid-tile>
@@ -28,8 +31,13 @@
       <span *ngIf="staff.waiter === true">Waiter</span>
       <span *ngIf="staff.waiter === false">Kitchen Staff</span>
     </mat-grid-tile>
-    <mat-grid-tile>${{staff.salesPrice}}</mat-grid-tile>
-    <mat-grid-tile>{{staff.orderDelivered}}</mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button (click)="this.openStaffSalesDialog(staff)">
+        Sales
+      </button>
+    </mat-grid-tile>
+<!--    <mat-grid-tile>${{staff.salesPrice}}</mat-grid-tile>-->
+<!--    <mat-grid-tile>{{staff.orderDelivered}}</mat-grid-tile>-->
     <mat-grid-tile>
       <button mat-button (click)="openEditMenuDialog(staff)">Edit</button>
     </mat-grid-tile>

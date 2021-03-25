@@ -1,12 +1,9 @@
 package com.backend.restaurantApi.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -31,28 +28,31 @@ public class Staff {
 	@Column(name = "isWaiter")
 	private boolean isWaiter;
 
-	@JsonManagedReference(value = "staff_table")
-	@Column
-	@OneToMany(mappedBy = "staff")
-	private List<RestaurantTable> tables;
+	@Column(name = "isManager")
+	private boolean isManager;
 
-// used to serialize object to json
 	@Override
 	public String toString() {
-		return "Staff{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + password + '\'' + ", email='"
-				+ email + '\'' + ", isWaiter='" + isWaiter + '\'' + '}';
-	}
+		return "{" +
+			" id='" + getId() + "'" +
+			", userName='" + getUserName() + "'" +
+			", password='" + getPassword() + "'" +
+			", email='" + getEmail() + "'" +
+			", isWaiter='" + isWaiter() + "'" +
+			", isManager='" + isManager() + "'" +
+			"}";
+	}	
 
 	public Staff() {
 	}
 
-	public Staff(long id, String userName, String password, String email, boolean isWaiter, List<RestaurantTable> tables) {
+	public Staff(long id, String userName, String password, String email, boolean isWaiter, boolean isManager) {
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
 		this.isWaiter = isWaiter;
-		this.tables = tables;
+		this.isManager = isManager;
 	}
 
 	public long getId() {
@@ -95,11 +95,11 @@ public class Staff {
 		this.isWaiter = isWaiter;
 	}
 
-	public List<RestaurantTable> getTables() {
-		return tables;
+	public boolean isManager() {
+		return this.isManager;
 	}
 
-	public void setTables(List<RestaurantTable> tables) {
-		this.tables = tables;
+	public void setIsManager(boolean isManager) {
+		this.isManager = isManager;
 	}
 }

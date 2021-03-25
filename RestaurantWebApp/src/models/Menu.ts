@@ -1,4 +1,5 @@
 import {MenuCategory} from "./MenuCategory";
+import {Ingredient} from "./Ingredient";
 
 export class Menu{
   id: number;
@@ -7,6 +8,7 @@ export class Menu{
   suggested: string = "no";
   description: string;
   price: number;
+  pictureUrl: string;
   peanuts: boolean;
   celery: boolean;
   gluten: boolean;
@@ -23,4 +25,6 @@ export class Menu{
   sulphites: boolean;
   calories: number;
   timeToCook: number;
+  ingredients: Ingredient[];
+  ingredientsName: string;
 }
