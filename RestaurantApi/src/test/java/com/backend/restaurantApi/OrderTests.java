@@ -19,30 +19,54 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+/**
+ * A tester class for the Order Model.
+ */
 @SpringBootTest
 public class OrderTests {
 
+    /**
+     * Tester field that is used to make requests to the meal DB.
+     */
     @Autowired
     MealService mealService;
 
+    /**
+     * Tester field that is used to make requests to the order DB.
+     */
     @Autowired
     OrderService orderService;
 
+    /**
+     * The service used to make requests to the table DB.
+     */
     @Autowired
     RestaurantTableService tableService;
 
+    /**
+     * The service that is used to make requests to the customer DB.
+     */
     @Autowired
     CustomerService customerService;
 
+    /**
+     * The service used to make requests to the menu DB.
+     */
     @Autowired
     MenuService menuService;
 
+    /**
+     * Setting up Variables to be used in tests.
+     */
     static Meal meal;
     static Order order;
     static Menu menu;
     static RestaurantTable table;
     static Customer customer;
 
+    /**
+     * Set up test that is run before each test.
+     */
     @BeforeEach
     void setUp() {
         meal = new Meal();
@@ -74,18 +98,22 @@ public class OrderTests {
     //     Assertions.assertEquals(orderService.getOrderById(order.getId()).getIsPaid(), true);
     // }
 
+    /**
+     * Test 1.
+     * Check if deleting an order remoces all the items in the lists.
+     */
     @Test
     void testDeleteOrder() {
         List<Order> list1 = orderService.getNoConfirmedOrders();
-        // for (Order order : list1) {
-        //     System.out.println(order);
-        // }
+         for (Order order : list1) {
+             System.out.println(order);
+         }
         orderService.deleteOrder(order.getId());
 
         List<Order> list2 = orderService.getNoConfirmedOrders();
-        // for (Order order : list2) {
-        //     System.out.println(order);
-        // }
+         for (Order order : list2) {
+             System.out.println(order);
+         }
         Assertions.assertEquals(orderService.getNoConfirmedOrders(),null);
     }
 }
