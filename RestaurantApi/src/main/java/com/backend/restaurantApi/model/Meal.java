@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Model which contains and handles the data for meals.
+ */
 @Getter
 @Setter
 @Entity
