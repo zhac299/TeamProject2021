@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { Staff } from "../../../models/Staff";
 import { StaffService } from "../../staff.service"
 import { AddStaffDialogComponent } from '../add-staff-dialog/add-staff-dialog.component';
+import {SalesDialogComponent} from "./sales-dialog/sales-dialog.component";
 
 @Component({
   selector: 'app-add-staff',
@@ -82,6 +83,12 @@ export class AddStaffComponent implements OnInit {
       }
     });
 
+  }
+
+  openStaffSalesDialog(staff: Staff): void {
+    this.dialog.open(SalesDialogComponent, {
+      data: staff
+    });
   }
 
 }

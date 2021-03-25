@@ -63,6 +63,7 @@ import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dial
 import { PaymentComponent } from './customer-interface/payment/payment.component';
 import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 import { IngredientsDialogComponent } from './menus-list-display/ingredients-dialog/ingredients-dialog.component';
+import { SalesDialogComponent } from './manager-menu/add-staff/sales-dialog/sales-dialog.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { IngredientsDialogComponent } from './menus-list-display/ingredients-dia
     AddIngredientDialogComponent,
     PaymentComponent,
     CategoryDialogComponent,
-    IngredientsDialogComponent
+    IngredientsDialogComponent,
+    SalesDialogComponent
   ],
     imports: [
         BrowserModule,
