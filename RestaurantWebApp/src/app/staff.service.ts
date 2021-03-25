@@ -1,7 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Inject, Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {Staff} from '../models/Staff';
+import { selectedCategory } from '../models/selectedCategory';
+import {exhaustMap, map, repeat, share, tap} from "rxjs/operators";
 import { Order } from '../models/Order';
 
 /**
@@ -12,6 +14,8 @@ import { Order } from '../models/Order';
 })
 export class StaffService {
 
+  edit: boolean;
+
   constructor(private httpClient: HttpClient) {
   }
 
@@ -20,11 +24,13 @@ export class StaffService {
    */
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/staff';
 
-  /**
-   * Get staff by username and password
-   * @param username
-   * @param password
-   */
+  refresh$ = new BehaviorSubject(null);
+
+  staff$ = this.refresh$.pipe(
+    exhaustMap(() => this.getStaffs()),
+    share()
+  );
+
   public getStaffByUsernameAndPassword(username: String, password: String): Observable<Staff> {
     return this.httpClient.get<Staff>(this.restaurantWebApiUrl + `/${username}/${password}`);
   }
@@ -73,5 +79,9 @@ export class StaffService {
    */
   public getRandomWaiter(): Observable<Staff> {
     return this.httpClient.get<Staff>(this.restaurantWebApiUrl + '/randomwaiter')
+  }
+
+  public deleteStaff(staff: Staff): void{
+    this.httpClient.delete(`${this.restaurantWebApiUrl}/${staff.id}`).subscribe()
   }
 }

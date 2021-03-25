@@ -59,7 +59,8 @@ import { AddIngredientComponent } from './manager-menu/add-ingredient/add-ingred
 import { AddIngredientDialogComponent } from './manager-menu/add-ingredient-dialog/add-ingredient-dialog.component';
 import { PaymentComponent } from './customer-interface/payment/payment.component';
 import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
-import {LandingPageComponent} from "./landing-page/landing-page.component";
+import { IngredientsDialogComponent } from './menus-list-display/ingredients-dialog/ingredients-dialog.component';
+import { SalesDialogComponent } from './manager-menu/add-staff/sales-dialog/sales-dialog.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import {LandingPageComponent} from "./landing-page/landing-page.component";
     AddIngredientDialogComponent,
     PaymentComponent,
     CategoryDialogComponent,
-    LandingPageComponent
+    IngredientsDialogComponent,
+    SalesDialogComponent
   ],
     imports: [
         BrowserModule,

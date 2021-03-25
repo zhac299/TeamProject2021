@@ -22,20 +22,13 @@ export class InputService {
      * The login session object.
      */
     login: Login = new Login;
-
+    constructor(private httpClient: HttpClient) {}
     /**
-     * The constructor of the class.
+     * The method for querying user input against the information in the staff database.
      * 
-     * @param httpClient a http client used to make the requests
-     */
-    constructor(private httpClient: HttpClient) { }
-
-    /**
-     * Make a get request to the Staff DB and returns a Staff Observable.
-     * 
-     * @param username the passed username
-     * @param password the passed password
-     * @returns a Staff Observable
+     * @param {string} username The username entered by the user.
+     * @param {string} password  The password entered by the user.
+     * @returns {Observable<Login>} An object incapsulating the login details which correpsond to the user input.
      */
     public getLogin(username: string, password: string): Observable<Login> {
         const queryURL = this.dbUrl.concat(`/${username}/${password}`);
@@ -44,32 +37,4 @@ export class InputService {
                 map(response => response)
             );
     }
-
-    /**
-     * Sets OTP.
-     * 
-     * @param login the login session
-     */
-    public setOTP(login: Login) {
-        login.otp = Math.floor(100000 + Math.random() * 900000);
-    }
-
-    /**
-     * Sets the login session.
-     * 
-     * @param login the login obj
-     */
-    public setLogin(login: Login) {
-        this.login = login;
-    }
-
-    /**
-     * Gets the login object.
-     * 
-     * @returns the login obj
-     */
-    public retrieveLogin(): Login {
-        return this.login;
-    }
-
 }

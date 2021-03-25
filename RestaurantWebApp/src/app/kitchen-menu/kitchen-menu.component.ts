@@ -36,16 +36,12 @@ export class KitchenMenuComponent implements OnInit {
   constructor(
     private menuService: MenuService,
     public dialog: MatDialog) { }
-
-  /**
-   * A set-up method that gets called once when the class gets instantiated.
-   */
-  ngOnInit(): void { }
-
-  /**
-   * Opens the add menu dialog to add a new item.
-   * Injects in the dialog the menu and title.
-   */
+    
+    ngOnInit(): void { }
+    
+   /**
+    * Method for opening up panel to add a new dish.
+    */  
   openAddMenuDialog() {
     const title = "Add New Dish";
     let menu: Menu = new Menu();

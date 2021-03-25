@@ -15,12 +15,12 @@ import { AddIngredientDialogComponent } from '../add-ingredient-dialog/add-ingre
  */
 export class AddIngredientComponent implements OnInit {
 
-  /**
-   * The constructor of the class.
-   * 
-   * @param ingredientService the ingredient service that is used to make requests
-   * @param dialog a mat dialog
-   */
+/**
+ * Constructor tasked with instantiating the services and dialog neccessary for adding ingredients.
+ * 
+ * @param {IngredientService} ingredientService The service tasked with making changes the database according to user interaction.
+ * @param {MatDialog} dialog An object involved with creating pop-up panels for more user interaction.
+ */
   constructor(private ingredientService: IngredientService,
     public dialog: MatDialog) { }
 
@@ -36,12 +36,10 @@ export class AddIngredientComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
   }
-
   /**
-   * Deletes an ingredient.
-   * Makes a delete request to the Ingredient DB by subscribing to deleteIngredient().
+   * This method is purposed with deleting an ingredient on the database upon a button press.
    * 
-   * @param row the ingredient to be deleted
+   * @param {Ingredient} row The particular ingredient which needs deleting.
    */
   delete(row: Ingredient) {
     this.ingredientService.deleteIngredient(row).subscribe((ing) => {
@@ -49,19 +47,17 @@ export class AddIngredientComponent implements OnInit {
     });
   }
 
-  /**
-   * Gets all the ingtdient in the DB by making a get requst to th DB.
-   */
+    /**
+     * Method for populating a list of ingredients.
+     */
   getAll() {
     this.ingredientService.getIngredients().subscribe((ing) => {
       this.ingredients = ing;
     });
   }
-
-  /**
-   * Opens the add ingredient dialog. Injects in the dialog a new ingredient object 
-   * and title. After the dialog is closed, it creates a new ingredient with the provided data.
-   */
+/**
+ * This method is purposed with opening a pop-up display so a manger can add new ingredients.
+ */
   openAddIngredientDialog() {
     const title = "Add New Ingredient";
     let ingredient: Ingredient = new Ingredient();
@@ -79,15 +75,12 @@ export class AddIngredientComponent implements OnInit {
       }
     })
   }
-
-  /**
-   * Opens the edit ingredient dialog. 
-   * After closing the dialog, it makes a put request to update the ingredient
-   * with the provided data by the dialog.
-   * 
-   * @param ingredient the ingredient to be edited
-   */
-   openEditIngredientDialog(ingredient: Ingredient): void {
+/**
+ * This method is purposed with giving the manager the ability to edit ingredients.
+ * 
+ * @param {Ingredient} ingredient The ingredient subjected to modification.
+ */
+  openEditMenuDialog(ingredient: Ingredient): void {
     const title = "Edit Ingredient";
     const dialogRef = this.dialog.open(AddIngredientDialogComponent, {
       data: { ingredient, title },
@@ -103,6 +96,5 @@ export class AddIngredientComponent implements OnInit {
       }
     });
 
-  }
-
+    }
 }

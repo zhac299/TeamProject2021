@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
 import anime from "animejs/lib/anime.es";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
@@ -15,22 +15,26 @@ import {tap} from "rxjs/operators";
   encapsulation: ViewEncapsulation.None
 })
 export class LandingPageComponent implements OnInit, AfterViewInit {
-
+    /**
+     * Constructor for landing page component taked with providing the intial UI to both customers annd staff.
+     * 
+     * @param {ElementRef} elementRef A reference to help set the compnents background theme.
+     * @param {Router} router An object which helps route to different pages.
+     * @param {MatDialog} dialog An object purposed with providing pop-up displays so the user can interact.
+     */
   constructor(private elementRef: ElementRef,
               private dialog: MatDialog) { }
   ngOnInit(): void {
-  }
-
-  /**
-   * Opens the select table dialog and routes to the menu page
-   */
+    }
+    /**
+     * Method for displaying a panel to help the customer select their table.
+     */
   toMenu(){
     const dialogRef = this.dialog.open(SelectTableDialogComponent);
     dialogRef.afterClosed().pipe(tap((result)=> console.log(result))).subscribe()
   }
-
   /**
-   * Animates the title and sets background image
+   * Method for instantiating animations after the page is alreaady loaded.
    */
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.backgroundImage = 'url(assets/images/background.jpg)';

@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Staff } from '../../../models/Staff';
+import { Table } from '../../../models/Table';
+import { StaffService } from '../../staff.service';
+import { TableService } from '../../table.service';
 
 @Component({
   selector: 'app-add-staff-dialog',
@@ -8,26 +11,23 @@ import { Staff } from '../../../models/Staff';
   styleUrls: ['./add-staff-dialog.component.sass']
 })
 
-/**
- * The class that handles adding a new staff dialog.
- */
 export class AddStaffDialogComponent implements OnInit {
 
-
-  /**
-   * The constructor of the class.
-   * It injects the mat dialog data into staff and title.
-   * 
-   * @param dialogRef a dialog ref
-   * @param data the injectd mat dialog data
-   */
   constructor(public dialogRef: MatDialogRef<AddStaffDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { staff: Staff, title: string }) { }
+              public tableService: TableService,
+              public staffService: StaffService,
+              @Inject(MAT_DIALOG_DATA) public data: { staff:Staff,title:string }) { }
 
-  /**
-   * A set-up method that gets called once when the class gets instantiated.
-   */
-  ngOnInit(): void { }
+  tableList: Table[] = [];
+  selectedTable: Table = null;
+  selected = -1;
+  edit: boolean = this.staffService.edit;
+
+  ngOnInit(): void {
+    this.tableService.getTables().subscribe(table => {
+      this.tableList = table;
+    })
+  }
 
   /**
    * Sets the calories from the slider.
@@ -53,6 +53,25 @@ export class AddStaffDialogComponent implements OnInit {
    */
   setData(staff: Staff) {
     this.data.staff = staff;
+  } 
+
+  onYesClick(): void {
+    if (this.edit == true) {
+      this.setTable();
+    } else {
+      this.createNewStaff();
+    }
   }
 
+  setTable(): void {
+    if (this.selectedTable != null) {
+      this.tableService.managerAssignTable(this.selectedTable, this.data.staff.id).subscribe((data) => {});    
+    } 
+    this.dialogRef.close();
+  }  
+
+  createNewStaff(): void {
+    this.staffService.createStaff(this.data.staff).subscribe((data) => {});
+    this.dialogRef.close();
+  }
 }

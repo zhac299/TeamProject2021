@@ -7,7 +7,6 @@ import {Order} from "../../../models/Order";
 import {MenuService} from "../../menu.service";
 import {Menu} from "../../../models/Menu";
 import {BehaviorSubject, Subscription, timer} from "rxjs";
-import {tap} from "rxjs/operators";
 import {Meal} from "../../../models/Meal";
 import {MealService} from "../../meal.service";
 
@@ -63,11 +62,8 @@ export class OrderComponent implements OnInit {
    * A subscription that uses the timer to get new data from the API
    */
   subscription: Subscription;
-
-  /**
-   * A refresh timer that ticks every second
-   */
-  refreshTimer$ = timer(0, 1000).pipe(tap());
+  subscriptionMenus: Subscription;
+  refreshTimer$ = timer(0, 1000);
 
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
@@ -83,6 +79,7 @@ export class OrderComponent implements OnInit {
     */
   ngOnInit(): void {
     this.updateOrderedMealItems();
+    this.subscriptionMenus = this.refreshTimer$.subscribe(this.menuService.refresh$);
     this.menuService.menus$.subscribe((menu) => {
       this.menuList = menu;
       console.log(menu);
@@ -98,11 +95,7 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  /**
-   * Updates a given order object
-   * @param order to update
-   */
-  updateOrderReady(order: Order): void {
+  updateOrderReady(order: Order): void{
     this.orderService.updateOrderReady(order).subscribe((order) => {
       this.orderSubject$.next(order);
     })

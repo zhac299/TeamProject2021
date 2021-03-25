@@ -17,10 +17,10 @@
       <mat-grid-tile>Email</mat-grid-tile>
       <mat-grid-tile>User Name</mat-grid-tile>
       <mat-grid-tile>Staff</mat-grid-tile>
-      <mat-grid-tile>Sales Price</mat-grid-tile>
-      <mat-grid-tile>Delivered Orders</mat-grid-tile>
+      <mat-grid-tile>Sales</mat-grid-tile>
+<!--      <mat-grid-tile>Delivered Orders</mat-grid-tile>-->
       <mat-grid-tile>
-        <button mat-button (click)="openAddStaffDialog()" class="addButton">Add</button>
+        <button mat-button (click)="openAddStaffDialog()" class="addButton">Add/Edit</button>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
@@ -31,10 +31,14 @@
       <span *ngIf="staff.waiter === true">Waiter</span>
       <span *ngIf="staff.waiter === false">Kitchen Staff</span>
     </mat-grid-tile>
-    <mat-grid-tile>${{staff.salesPrice}}</mat-grid-tile>
-    <mat-grid-tile>{{staff.orderDelivered}}</mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button (click)="this.openStaffSalesDialog(staff)">
+        Sales
+      </button>
+    </mat-grid-tile>
     <mat-grid-tile>
       <button mat-button (click)="openEditMenuDialog(staff)">Edit</button>
+      <button mat-button color="warn" (click)="deleteStaff(staff)">Delete</button>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-drawer-container>

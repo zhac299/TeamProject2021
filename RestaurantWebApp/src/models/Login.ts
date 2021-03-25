@@ -7,5 +7,6 @@ export class Login {
     password: string;
     email: string;
     waiter: boolean;
+    manager: boolean;
     otp!: number;
   }

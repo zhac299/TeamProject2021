@@ -8,6 +8,7 @@ export class Staff{
   userName: string;
   password: string;
   waiter: boolean;
+  manager: boolean;
   salesPrice: number;
   orderDelivered: number
 }

@@ -3,6 +3,8 @@ import { MatDialog } from "@angular/material/dialog";
 import { Staff } from "../../../models/Staff";
 import { StaffService } from "../../staff.service"
 import { AddStaffDialogComponent } from '../add-staff-dialog/add-staff-dialog.component';
+import {SalesDialogComponent} from "./sales-dialog/sales-dialog.component";
+import {Subscription, timer} from "rxjs";
 
 @Component({
   selector: 'app-add-staff',
@@ -28,6 +30,9 @@ export class AddStaffComponent implements OnInit {
    * The list of staff in the DB.
    */
   staffs: Staff[] = [];
+  bool: boolean = false;
+  subscription: Subscription;
+  refreshTimer$ = timer(0, 1000);
 
   /**
    * A set-up method that gets called once when the class gets instantiated.
@@ -36,7 +41,8 @@ export class AddStaffComponent implements OnInit {
    * number of orders delivered by the staff and the sales done by the staff.
    */
   ngOnInit(): void {
-    this.staffService.getStaffs().subscribe((staff) => {
+    this.subscription = this.refreshTimer$.subscribe(this.staffService.refresh$);
+    this.staffService.staff$.subscribe((staff) => {
       this.staffs = staff;
       if (this.staffs && this.staffs.length > 0) {
         this.staffs.forEach((item, index) => {
@@ -63,6 +69,7 @@ export class AddStaffComponent implements OnInit {
   openAddStaffDialog() {
     const title = "Add New Staff";
     let staff: Staff = new Staff();
+    this.staffService.edit = false;
     const dialogRef = this.dialog.open(AddStaffDialogComponent, {
       data: { staff, title },
       width: '50%',
@@ -88,6 +95,7 @@ export class AddStaffComponent implements OnInit {
    */
   openEditMenuDialog(staff: Staff): void {
     const title = "Edit Staff";
+    this.staffService.edit = true;
     const dialogRef = this.dialog.open(AddStaffDialogComponent, {
       data: { staff, title },
       width: '50%',
@@ -106,4 +114,13 @@ export class AddStaffComponent implements OnInit {
 
   }
 
+  openStaffSalesDialog(staff: Staff): void {
+    this.dialog.open(SalesDialogComponent, {
+      data: staff
+    });
+  }
+
+  deleteStaff(staff: Staff) {
+    this.staffService.deleteStaff(staff);
+  }
 }

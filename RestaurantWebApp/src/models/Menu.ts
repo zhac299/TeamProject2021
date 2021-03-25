@@ -1,4 +1,5 @@
 import {MenuCategory} from "./MenuCategory";
+import {Ingredient} from "./Ingredient";
 
 /**
  * Menu object with id, name, category, price, ingredients, picture Url and allergens
@@ -27,6 +28,6 @@ export class Menu{
   sulphites: boolean;
   calories: number;
   timeToCook: number;
-  ingredients: number[];
+  ingredients: Ingredient[];
   ingredientsName: string;
 }

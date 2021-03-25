@@ -21,7 +21,9 @@
     <th scope="row">{{menu.name}}</th>
     <td>{{menu.description}}</td>
     <td>{{menu.price}}</td>
-    <td>{{menu.ingredientsName}}</td>
+    <td>
+      <button mat-raised-button (click)="openIngredientsDialog(menu)">See Ingredients</button>
+    </td>
     <td class="text-right">
       <button *ngIf="isAuth" mat-button (click)="openEditMenuDialog(menu)"><b>Edit</b></button>
       <button *ngIf="isAuth" mat-button (click)="deleteMenuItem(menu)"><b>Delete</b></button>
