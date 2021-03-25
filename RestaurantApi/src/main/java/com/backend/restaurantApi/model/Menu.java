@@ -215,6 +215,10 @@ public class Menu {
         this.price = price;
     }
 
+    /**
+     * Checks whether there are peanuts or not.
+     * @return true or false according to if there are peanuts or not.
+     */
     public boolean isPeanuts() {
         return peanuts;
     }
