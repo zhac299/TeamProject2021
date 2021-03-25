@@ -167,7 +167,9 @@ public class RestaurantTable {
     }
 
     /**
-     * Returns A Jason object containing all the tables details.
+     * Returns A JSON object containing all the tables details.
+     * 
+     * @return the attributes of the RestaurantTable model in a more readable format.
      */
 	@Override
 	public String toString() {
