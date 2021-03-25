@@ -165,6 +165,14 @@ public class OrderController {
         return order;
     }
 
+
+    
+    /** 
+     * Updates the total of an order.
+     * @param id the id of the order
+     * @param total the total of the order
+     * @return the Order which is getting its total updated.
+     */
     @PutMapping("/orders/total/{id}/{total}")
     public Order updateTotal(@PathVariable("id") Long id, @PathVariable("total") int total) {
         Order order = orderService.getOrderById(id);
