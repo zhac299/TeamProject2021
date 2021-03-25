@@ -89,15 +89,6 @@ public class OrderTests {
         Assertions.assertNotNull(orderService.getOrderById(order.getId()));
     }
 
-    // @Test
-    // void testUpdateOrder() {
-    //     order.setIsPaid(true);
-    //     order.setTotal(1000);
-    //     orderService.updateOrder(order.getId(), order);
-    //     Assertions.assertEquals(orderService.getOrderById(order.getId()).getTotal(), 1000);
-    //     Assertions.assertEquals(orderService.getOrderById(order.getId()).getIsPaid(), true);
-    // }
-
     /**
      * Test 1.
      * Check if deleting an order remoces all the items in the lists.
