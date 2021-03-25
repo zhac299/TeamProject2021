@@ -55,16 +55,35 @@ public class MenuController {
         return menuService.createNewMenu(menu);
     }
 
+    
+    /** 
+     * Adds Ingredients to a Menu item.
+     * @param id the id of the Menu item
+     * @param ingredients the list of ingredients for the menu item
+     * @return the menu item edited.
+     */
     @GetMapping(path = "/menu/ingredients") 
     public Menu addIngredients(@RequestParam Long id, @RequestParam List<Long> ingredients) {
         return menuService.addIngredients(id, ingredients);
     }
 
+    
+    /** 
+     * Gets all the ingredients for the menu item.
+     * @param id the id of the Menu item.
+     * @return the Ingredients associated with a menu item,
+     */
     @GetMapping(path = "/menu/getIngredients") 
     public List<MenuIngredient> getIngredients(@RequestParam Long id) {
         return menuService.getIngredients(id);
     }
 
+    
+    /** 
+     * Gets the meal item specific to the id.
+     * @param id the id of the Menu item.
+     * @return the Menu item being looked up by id.
+     */
     @GetMapping("/menu/{id}")
     public Menu getMealById(@PathVariable("id") Long id) {
         return menuService.getMenuById(id);
