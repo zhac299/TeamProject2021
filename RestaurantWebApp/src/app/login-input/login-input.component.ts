@@ -3,6 +3,7 @@ import { Login } from 'src/models/Login';
 import { InputService } from './login-input.service';
 import { Router } from '@angular/router'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Staff } from '../../models/Staff';
 
 @Component({
     selector: 'app-login-input',
@@ -17,6 +18,7 @@ export class LoginInputComponent implements OnInit {
     kitchen: boolean = false;
     correct: boolean = true;   
     html: string = "";
+    staff: Staff;
 
     constructor(
         private input: InputService,
@@ -34,15 +36,18 @@ export class LoginInputComponent implements OnInit {
      */
     onSubmit() {           
         this.input.getLogin(this.username, this.password).subscribe(user => {
+            this.staff = user[0];
+            console.log(this.staff);
             try {
-                if (Object.keys(user[0]).length > 0) {
-                    if(user[0].waiter) {
-                        this.router.navigate(['/waiter-menu'], 
-                        { queryParams: {staffId: user[0].id} });   
-                    } else {
-                        this.router.navigateByUrl('kitchen-menu');
-                    }              
-                }
+                if(this.staff.waiter && !this.staff.manager) {                    
+                    this.router.navigate(['/waiter-menu'], 
+                    { queryParams: {staffId: user[0].id} });   
+                } else if (!this.staff.waiter && this.staff.manager) {
+                    this.router.navigate(['/manager-menu'],
+                    { queryParams: {staffId: user[0].id} });   
+                } else if (!this.staff.waiter && !this.staff.manager) {
+                    this.router.navigateByUrl('kitchen-menu');
+                } 
             } catch {
                 this.correct = false;
                 this.openSnackBar("Login Credentials are wrong!","Try again")
