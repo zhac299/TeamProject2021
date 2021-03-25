@@ -65,6 +65,14 @@ export class OrderComponent implements OnInit {
   subscriptionMenus: Subscription;
   refreshTimer$ = timer(0, 1000);
 
+  /**
+   *
+   * @param dialogRef for opening/closing dialogs in the component
+   * @param data Injected data {Order, isKitchenStaff} from parent component
+   * @param orderService To perfrom crud on orders
+   * @param menuService To perform crud on menus
+   * @param mealService to perform crud on meals
+   */
   constructor(
     public dialogRef: MatDialogRef<WaiterMenuComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {order: Order, isKitchenStaff: boolean},
@@ -95,6 +103,10 @@ export class OrderComponent implements OnInit {
     }
   }
 
+  /**
+   * Updates isReady property for order
+   * @param order to update status of isReady
+   */
   updateOrderReady(order: Order): void{
     this.orderService.updateOrderReady(order).subscribe((order) => {
       this.orderSubject$.next(order);
