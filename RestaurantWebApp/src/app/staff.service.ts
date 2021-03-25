@@ -14,8 +14,16 @@ import { Order } from '../models/Order';
 })
 export class StaffService {
 
+  /**
+   * References if the manager accessed add staff dialog or edit staff dialog.
+   */
   edit: boolean;
 
+  /**
+   * The constructor of the class.
+   * 
+   * @param httpClient the http client that is used to make requests
+   */
   constructor(private httpClient: HttpClient) {
   }
 
