@@ -35,7 +35,7 @@ public class MenuCategoryTests {
     private MenuCategoryService menuCategoryService;
 
     /**
-     * The serice used to make requests to the menu DB.
+     * The service used to make requests to the menu DB.
      */
     @Autowired
     private MenuService menuService;
