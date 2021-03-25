@@ -9,6 +9,9 @@ import com.backend.restaurantApi.exception.MenuCategoryNotFoundException;
 import com.backend.restaurantApi.model.Ingredient;
 import com.backend.restaurantApi.repository.IngredientRepository;
 
+/**
+ * The Service class that handles the CRUD API functionality of the stock for dishes.
+ */
 @Service
 public class RestaurantStockService {
     /**
