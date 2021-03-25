@@ -43,14 +43,22 @@ export class AddStaffDialogComponent implements OnInit {
   } 
 
   onYesClick(): void {
-    if (this.edit = true) {
+    if (this.edit == true) {
       this.setTable();
-    } 
+    } else {
+      this.createNewStaff();
+    }
   }
 
   setTable(): void {
     if (this.selectedTable != null) {
-      this.tableService.managerAssignTable(this.selectedTable, this.data.staff.id).subscribe((data) => {});    } 
+      this.tableService.managerAssignTable(this.selectedTable, this.data.staff.id).subscribe((data) => {});    
+    } 
     this.dialogRef.close();
   }  
+
+  createNewStaff(): void {
+    this.staffService.createStaff(this.data.staff).subscribe((data) => {});
+    this.dialogRef.close();
+  }
 }
