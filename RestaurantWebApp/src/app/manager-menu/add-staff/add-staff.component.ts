@@ -4,6 +4,7 @@ import { Staff } from "../../../models/Staff";
 import { StaffService } from "../../staff.service"
 import { AddStaffDialogComponent } from '../add-staff-dialog/add-staff-dialog.component';
 import {SalesDialogComponent} from "./sales-dialog/sales-dialog.component";
+import {Subscription, timer} from "rxjs";
 
 @Component({
   selector: 'app-add-staff',
@@ -17,9 +18,12 @@ export class AddStaffComponent implements OnInit {
 
   staffs: Staff[] = [];
   bool: boolean = false;
+  subscription: Subscription;
+  refreshTimer$ = timer(0, 1000);
 
   ngOnInit(): void {
-    this.staffService.getStaffs().subscribe((staff) => {
+    this.subscription = this.refreshTimer$.subscribe(this.staffService.refresh$);
+    this.staffService.staff$.subscribe((staff) => {
       this.staffs = staff;
       if (this.staffs && this.staffs.length > 0) {
         this.staffs.forEach((item, index) => {
@@ -91,4 +95,7 @@ export class AddStaffComponent implements OnInit {
     });
   }
 
+  deleteStaff(staff: Staff) {
+    this.staffService.deleteStaff(staff);
+  }
 }

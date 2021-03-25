@@ -18,7 +18,12 @@ export class StaffService {
 
   restaurantWebApiUrl = 'http://localhost:8080/api/v1/staff';
 
-  private _refreshNeeded = new Subject<void>();
+  refresh$ = new BehaviorSubject(null);
+
+  staff$ = this.refresh$.pipe(
+    exhaustMap(() => this.getStaffs()),
+    share()
+  );
 
   public getStaffByUsernameAndPassword(username: String, password: String): Observable<Staff> {
     return this.httpClient.get<Staff>(this.restaurantWebApiUrl + `/${username}/${password}`);
@@ -37,24 +42,18 @@ export class StaffService {
   }
 
   createStaff(staff: Staff): Observable<Staff> {
-    return this.httpClient.post<Staff>(this.restaurantWebApiUrl, staff)
-      .pipe(
-        tap(() => {
-          this._refreshNeeded.next();
-        })
-      );
+    return this.httpClient.post<Staff>(this.restaurantWebApiUrl, staff);
   }
 
   updateStaff(staff: Staff): Observable<Staff> {
-    return this.httpClient.put<Staff>(this.restaurantWebApiUrl + '/'+staff.id, staff)
-      .pipe(
-        tap(() => {
-          this._refreshNeeded.next();
-        })
-      );
+    return this.httpClient.put<Staff>(this.restaurantWebApiUrl + '/'+staff.id, staff);
   }
 
   public getRandomWaiter(): Observable<Staff> {
     return this.httpClient.get<Staff>(this.restaurantWebApiUrl + '/randomwaiter')
+  }
+
+  public deleteStaff(staff: Staff): void{
+    this.httpClient.delete(`${this.restaurantWebApiUrl}/${staff.id}`).subscribe()
   }
 }
