@@ -29,7 +29,7 @@ public class Staff {
 	private boolean isWaiter;
 
 	@Column(name = "isManager")
-	private boolean isManager;
+	private boolean isManager = false;
 
 	@Override
 	public String toString() {
