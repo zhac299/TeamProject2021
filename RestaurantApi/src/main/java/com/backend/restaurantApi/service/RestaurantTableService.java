@@ -64,6 +64,14 @@ public class RestaurantTableService {
         return restaurantTableRepository.save(restaurantTable);
 	}
 
+    
+    /** 
+     * Changes the isReady field of a restaurant table with the value passed in the param.
+     * 
+     * @param restaurantTable the restaurant table that is being updated.
+     * @param newIsReady the value that the isReady field is being updated with.
+     * @return the updated restaurant table.
+     */
     public RestaurantTable updateRestaurantTableIsReady(RestaurantTable restaurantTable, boolean newIsReady) {
 		restaurantTable.setReady(newIsReady);
         return restaurantTableRepository.save(restaurantTable);
@@ -140,11 +148,27 @@ public class RestaurantTableService {
     	return tableToBesaved;
     }
 
+    
+    /** 
+     * Assigns a new table number to the table by updating it.
+     * 
+     * @param table the table being updated with a new table number.
+     * @param id the new table number being assigned to the table.
+     * @return the updated table with the new table number.
+     */
     public RestaurantTable updateRestaurantTable(RestaurantTable table, Long id) {
         table.setTableNumber(id);
         return restaurantTableRepository.save(table);
     }
 
+    
+    /** 
+     * Manager uses this service to assign a waiter to a table of their choosing.
+     * 
+     * @param table the table the waiter is being assigned to.
+     * @param waiterId the waiter that is being assigned to the table.
+     * @return the updated restaurant table with an assigned waiter.
+     */
     public RestaurantTable mangagerAssignWaiterToTable(RestaurantTable table, long waiterId) {
         RestaurantTable tableToBeSaved = restaurantTableRepository.findByTableNumber(table.getTableNumber());
         tableToBeSaved.setWaiterId(waiterId);
