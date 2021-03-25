@@ -28,22 +28,31 @@ public class Staff {
 	@Column(name = "isWaiter")
 	private boolean isWaiter;
 
-// used to serialize object to json
+	@Column(name = "isManager")
+	private boolean isManager;
+
 	@Override
 	public String toString() {
-		return "Staff{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + password + '\'' + ", email='"
-				+ email + '\'' + ", isWaiter='" + isWaiter + '\'' + '}';
-	}
+		return "{" +
+			" id='" + getId() + "'" +
+			", userName='" + getUserName() + "'" +
+			", password='" + getPassword() + "'" +
+			", email='" + getEmail() + "'" +
+			", isWaiter='" + isWaiter() + "'" +
+			", isManager='" + isManager() + "'" +
+			"}";
+	}	
 
 	public Staff() {
 	}
 
-	public Staff(long id, String userName, String password, String email, boolean isWaiter) {
+	public Staff(long id, String userName, String password, String email, boolean isWaiter, boolean isManager) {
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
 		this.isWaiter = isWaiter;
+		this.isManager = isManager;
 	}
 
 	public long getId() {
@@ -84,5 +93,13 @@ public class Staff {
 
 	public void setWaiter(boolean isWaiter) {
 		this.isWaiter = isWaiter;
+	}
+
+	public boolean isManager() {
+		return this.isManager;
+	}
+
+	public void setIsManager(boolean isManager) {
+		this.isManager = isManager;
 	}
 }
