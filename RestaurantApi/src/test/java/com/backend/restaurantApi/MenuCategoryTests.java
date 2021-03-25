@@ -12,19 +12,37 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 
+/**
+ * A tester class for the Category Model.
+ */
 @SpringBootTest
 public class MenuCategoryTests {
      
+    /**
+     * Tester field that is used to create a new MenuCategory instance.
+     */
     private MenuCategory menuCategory;
 
+    /**
+     * Tester field that is used to create a new MenuItem instance
+     */
     private Menu menuItem;
 
+    /**
+     * The service used to make requests to the category DB.
+     */
     @Autowired
     private MenuCategoryService menuCategoryService;
 
+    /**
+     * The serice used to make requests to the menu DB.
+     */
     @Autowired
     private MenuService menuService;
 
+    /**
+     * Set up test that is run before each test.
+     */
     @BeforeEach
     void setUp() {
         //creating a menu category
@@ -40,6 +58,11 @@ public class MenuCategoryTests {
         menuItem = menuService.createNewMenu(menuItem);
     }
 
+    /**
+     * Test1.
+     * Testing service getters.
+     * 
+     */
     @Transactional
     @Test
     void TestServiceGetters() {
@@ -51,7 +74,11 @@ public class MenuCategoryTests {
     }
 
     /**
+     * Test2.
      * Test if category deleted also deletes menu items in that category.
+     * 
+     * @throws MenuCategoryNotFoundException if the menu category is not found in the DB
+     * @throws MenuNotFoundException if the menu is not found in the DB
      */
     @Test
     @Transactional
@@ -65,6 +92,12 @@ public class MenuCategoryTests {
                 ()-> menuService.getMenuById(menuItem.getId()));
     }
 
+    /**
+     * Test3.
+     * Checks if menu category is deleted.
+     * 
+     * @throws MenuCategoryNotFoundException if the menu category is not found in the DB.
+     */
     @Transactional
     @Test
     void testDeleteMenuCategory() {
@@ -74,6 +107,10 @@ public class MenuCategoryTests {
         }, "Should throw an exception, since the menu category was deleted.");
     }
 
+    /**
+     * Test4.
+     * Checks if deleting a menu item removes it from the menu category.
+     */
     @Transactional
     @Test
     void testDeleteMenuCheckCategory() {
