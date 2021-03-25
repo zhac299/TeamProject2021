@@ -41,6 +41,11 @@ public class Customer {
   private RestaurantTable table;
 
 
+  /**
+   * The corresponding OneToMany attribute for the ManyToOne foreign key. 
+   * Relates a customer to a list of orders. JsonManagedReference is used to avoid the
+   * infinite JSON serialization problem such that only this item is serialised.
+  */
   @JsonManagedReference(value="customer_order")
   @Column(name = "orders", nullable = false)
   @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
@@ -82,10 +87,20 @@ public class Customer {
     this.table = newTable;
   }
 
+  
+  /** 
+   * Returns the orders for a customer
+   * @return a list of all the orders.
+   */
   public List<Order> getOrders() {
     return orders;
   }
 
+  
+  /** 
+   * Sets orders for a customer
+   * @param orders the order for the customer.
+   */
   public void setOrders(List<Order> orders) {
     this.orders = orders;
   }

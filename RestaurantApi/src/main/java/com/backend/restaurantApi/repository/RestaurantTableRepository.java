@@ -13,6 +13,10 @@ import com.backend.restaurantApi.model.RestaurantTable;
  */
 @Repository
 public interface RestaurantTableRepository extends JpaRepository<RestaurantTable, Long> {
+    /**
+     * Sellects everything from the restaurant table where is it marked as not occupied, to return all empty tables.
+     * @return a list of table that are empty.
+     */
     @Query
     (value = 
     "SELECT * FROM restaurant_table" +
@@ -20,6 +24,10 @@ public interface RestaurantTableRepository extends JpaRepository<RestaurantTable
      nativeQuery = true)
     public List<RestaurantTable> getUnoccupiedTables();
 
+    /**
+     * Gets all tables that need help.
+     * @return list of tables that need help.
+     */
     @Query
     (value = 
     "SELECT * FROM restaurant_table" +

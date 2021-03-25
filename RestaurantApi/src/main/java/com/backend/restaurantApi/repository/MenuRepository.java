@@ -9,9 +9,31 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository class for the Menu.
+ */
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 
+    /**
+     * Sends query to the database using SQL syntax for derived from input alergins.
+     * @param peanuts allergin.
+     * @param celery allergin.
+     * @param gluten allergin.
+     * @param crustaceans allergin.
+     * @param eggs allergin.
+     * @param fish allergin.
+     * @param lupin allergin.
+     * @param milk allergin.
+     * @param molluscs allergin.
+     * @param mustard allergin.
+     * @param nuts allergin.
+     * @param soya allergin.
+     * @param sesame_seeds allergin.
+     * @param sulphites allergin.
+     * @param calories allergin.
+     * @return a list of menu corresponding with the input allergins.
+     */
     @Query
     (value = 
     " SELECT * FROM restaurant_menu_item" +
@@ -49,6 +71,11 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
         @Param("sulphites") Boolean sulphites,
         @Param("calories") Double calories);
 
+    /**
+     * Gets menu according to a specific category by sending a query to the database using SQL syntax.
+     * @param category of the Menu you wish to return.
+     * @return list of menu items corresponding with the input category.
+     */
     @Query
     (value = "SELECT * FROM restaurant_menu_item WHERE :category = category", nativeQuery = true)
     public List<Menu> getMenuByCategory( @Param("category") String category);
