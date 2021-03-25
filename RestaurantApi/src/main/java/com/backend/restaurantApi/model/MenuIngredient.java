@@ -15,15 +15,26 @@ import javax.persistence.Table;
 @Table(name = "menu_ingredient")
 public class MenuIngredient {
 
+	/**
+	 * The primary key of the table.
+	 */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+	/**
+	 * The Foreign Key relation to Menu. This is a ManyToOne relation
+	 * as there can be many ingredients in a dish.
+	 */
     @ManyToOne
     @JoinColumn(name = "restaurant_menu_item", nullable = false)
     private Menu menu;
 
+	/**
+	 * The Foreign Key relation to each ingredient. This is a ManyToOne relation
+	 * as one ingredient can be used in multiple Menu items.
+	 */
     @ManyToOne
     @JoinColumn(name = "ingredient", nullable = false)
     private Ingredient ingredient;
@@ -76,6 +87,11 @@ public class MenuIngredient {
 		this.ingredient = ingredient;
 	}
 
+	/**
+	 * ToString method to convert model in backend to more readable form if needed.
+	 * 
+	 * @return all attributes of model in a more readable format.
+	 */
 	@Override
 	public String toString() {
 		return "MenuIngredient [id=" + id + ", menu=" + menu + ", ingredient=" + ingredient + "]";
