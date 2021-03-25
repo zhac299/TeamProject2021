@@ -9,6 +9,9 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Model which contains and handles the data for ingredients.
+ */
 @Entity
 @Table
 @JsonIgnoreProperties(value = { "ingredient" })
