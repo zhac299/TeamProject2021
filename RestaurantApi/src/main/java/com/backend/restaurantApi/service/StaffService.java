@@ -12,6 +12,9 @@ import com.backend.restaurantApi.model.Staff;
 import com.backend.restaurantApi.repository.OrderRepository;
 import com.backend.restaurantApi.repository.StaffRepository;
 
+/**
+ * The Service class of the Staff model that handles the CRUD API functionality on the model.
+ */
 @Service
 public class StaffService {
 

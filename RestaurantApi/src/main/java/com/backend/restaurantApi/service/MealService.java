@@ -10,6 +10,9 @@ import com.backend.restaurantApi.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The Service class of the Meal model that handles the CRUD API functionality on the model.
+ */
 @Service
 public class MealService {
 

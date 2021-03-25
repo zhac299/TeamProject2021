@@ -18,6 +18,9 @@ import com.backend.restaurantApi.repository.IngredientRepository;
 import com.backend.restaurantApi.repository.MenuIngredientRepository;
 import com.backend.restaurantApi.repository.MenuRepository;
 
+/**
+ * The Service class of the Menu model that handles the CRUD API functionality on the model.
+ */
 @Service
 public class MenuService {
 
@@ -128,6 +131,27 @@ public class MenuService {
         return menuRepository.save(menu.get());
     }
 
+    
+    /**
+     * Used to filter through each allergen. 
+     * 
+     * @param peanuts allergin.
+     * @param celery allergin.
+     * @param gluten allergin.
+     * @param crustaceans allergin.
+     * @param eggs allergin.
+     * @param fish allergin.
+     * @param lupin allergin.
+     * @param milk allergin.
+     * @param molluscs allergin.
+     * @param mustard allergin.
+     * @param nuts allergin.
+     * @param soya allergin.
+     * @param sesame_seeds allergin.
+     * @param sulphites allergin.
+     * @param calories allergin.
+     * @return a list of dishes filtered by allergen.
+     */
     public List<Menu> filter(
         Boolean peanuts, 
         Boolean celery,
@@ -161,14 +185,35 @@ public class MenuService {
             sulphites,
             calories);
     }
+    
+    /** 
+     * Updates the id of a Menu item.
+     * 
+     * @param id the value the Id is being set to.
+     * @param menu the menu item being updated.
+     * @return the updated menu item.
+     */
     public Menu updateMenuItem(Long id, Menu menu) {
 		menu.setMenuId(id);
         return menuRepository.save(menu);
 	}
+    
+    /** 
+     * Deletes the menu item from the database by id.
+     * 
+     * @param id the menu entry being deleted.
+     */
     public void deleteMenuItem(Long id) {
         menuRepository.deleteById(id);
 	}
 
+    
+    /** 
+     * Gets a specific menu item by its id. If it doesn't exist a MenuNotFoundException exception is thrown.
+     * 
+     * @param id the id of the menu item that is going to be returned.
+     * @return the menu item which the id is assocaited with.
+     */
     public Menu getMenuById(Long id) {
         Optional<Menu> menu = menuRepository.findById(id);
         if(!menu.isPresent()) {
@@ -177,6 +222,13 @@ public class MenuService {
         return menu.get();
     }
 
+    
+    /** 
+     * Gets and returns a list of menu items which are in a category specified by the param value.
+     * 
+     * @param category the category the menu items are being filterd by,
+     * @return the menu items in the specified category.
+     */
     public List<Menu> getMenuByCategory(String category) {
         return this.menuRepository.getMenuByCategory(category);
     }

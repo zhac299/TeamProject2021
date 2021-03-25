@@ -120,29 +120,56 @@ public class RestaurantTable {
         this.isOccupied = isOccupied;
     }
     
+    
+    /** 
+     * Assigns the param value to the attribute isReady.
+     * @param ready this indicates if a table is ready to place their order with the help of a waiter.
+     */
     public void setReady(boolean ready) {
         isReady = ready;
     }
 
+    
+    /** 
+     * Gets and returns the isReady attribute for a RestaurantTable entry.
+     * @return a value indicating if a table is ready to order or not with the help of the waiter.
+     */
     public boolean getIsReady() {
         return this.isReady;
     }
 
-	public void setOccupied(boolean isOccupied) {
+	
+    /** 
+     * Assigns the param value to the attribute isOccupied which indicates if a table is in use.
+     * @param isOccupied the value which indicates if a table is in use or not.
+     */
+    public void setOccupied(boolean isOccupied) {
 		this.isOccupied = isOccupied;
 	}
 
 
+    
+    /** 
+     * Gets and returns the waiterId attribute.
+     * @return the attribute which indicates which waiter is responsible for that table.
+     */
     public long getWaiterId() {
         return this.waiterId;
     }
 
+    
+    /** 
+     * Assigns the param value to the attribute waiterId.
+     * @param waiterId this value is the waiter who is being assigned to the table.
+     */
     public void setWaiterId(long waiterId) {
         this.waiterId = waiterId;
     }
 
     /**
-     * Returns A Jason object containing all the tables details.
+     * Returns A JSON object containing all the tables details.
+     * 
+     * @return the attributes of the RestaurantTable model in a more readable format.
      */
 	@Override
 	public String toString() {

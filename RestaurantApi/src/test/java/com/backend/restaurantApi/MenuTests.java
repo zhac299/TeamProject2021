@@ -1,10 +1,5 @@
 package com.backend.restaurantApi;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.backend.restaurantApi.exception.MealNotFoundException;
 import com.backend.restaurantApi.exception.OrderNotFoundException;
 import com.backend.restaurantApi.model.Customer;

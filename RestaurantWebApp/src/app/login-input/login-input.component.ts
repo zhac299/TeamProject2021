@@ -61,7 +61,6 @@ export class LoginInputComponent implements OnInit {
     onSubmit() {           
         this.input.getLogin(this.username, this.password).subscribe(user => {
             this.staff = user[0];
-            console.log(this.staff);
             try {
                 if(this.staff.waiter && !this.staff.manager) {                    
                     this.router.navigate(['/waiter-menu'], 

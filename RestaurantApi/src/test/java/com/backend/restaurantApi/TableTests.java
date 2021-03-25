@@ -1,14 +1,10 @@
 package com.backend.restaurantApi;
 import com.backend.restaurantApi.exception.CustomerNotFoundException;
-import com.backend.restaurantApi.exception.RestaurantTableNotFoundException;
 import com.backend.restaurantApi.model.Customer;
-import com.backend.restaurantApi.model.Order;
 import com.backend.restaurantApi.model.RestaurantTable;
 import com.backend.restaurantApi.service.CustomerService;
-import com.backend.restaurantApi.service.OrderService;
 import com.backend.restaurantApi.service.RestaurantTableService;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
