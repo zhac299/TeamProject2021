@@ -18,6 +18,9 @@ import com.backend.restaurantApi.repository.IngredientRepository;
 import com.backend.restaurantApi.repository.MenuIngredientRepository;
 import com.backend.restaurantApi.repository.MenuRepository;
 
+/**
+ * The Service class of the Menu model that handles the CRUD API functionality on the model.
+ */
 @Service
 public class MenuService {
 
