@@ -8,7 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+/**
+ * Model for the MenuIngredient.
+ */
 @Entity
 @Table(name = "menu_ingredient")
 public class MenuIngredient {
@@ -26,26 +28,50 @@ public class MenuIngredient {
     @JoinColumn(name = "ingredient", nullable = false)
     private Ingredient ingredient;
 
+	/**
+	 * Getter for the id.
+	 * @return id.
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Setter for the id.
+	 * @param id to set to.
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * Getter for the menu.
+	 * @return the menu object.
+	 */
 	public Menu getMenu() {
 		return menu;
 	}
 
+	/**
+	 * Setter for the menu.
+	 * @param menu the menu to set to.
+	 */
 	public void setMenu(Menu menu) {
 		this.menu = menu;
 	}
 
+	/**
+	 * Getter for the Ingredient.
+	 * @return and Ingreident object.
+	 */
 	public Ingredient getIngredient() {
 		return ingredient;
 	}
 
+	/**
+	 * Setter for the ingredient.
+	 * @param ingredient to set to.
+	 */
 	public void setIngredient(Ingredient ingredient) {
 		this.ingredient = ingredient;
 	}
