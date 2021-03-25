@@ -69,7 +69,7 @@ public class MenuTests {
     private CustomerService customerService;
 
     /**
-     * The service that is used to make requests to he order DB.
+     * The service that is used to make requests to the order DB.
      */
     @Autowired
     private OrderService orderService;

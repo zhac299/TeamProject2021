@@ -11,25 +11,44 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+/**
+ * A tester class for the Restaurant Api Application.
+ */
 @SpringBootTest
 class RestaurantApiApplicationTests {
 
+	/**
+	 * A service that is used to make requests to the Order DB.
+	 */
 	@Autowired
 	OrderService orderService;
 
+	/**
+	 * A service that is used to make requests to the Table DB.
+	 */
 	@Autowired
 	RestaurantTableService tableService;
 
+	/**
+	 * A service that is used to make requests to the Customer DB.
+	 */
 	@Autowired
 	CustomerService customerService;
 
-
+	/**
+	 * Test1.
+	 * Checking if a new table can be created.
+	 */
 	@Test
 	void testCreateTable(){
 		RestaurantTable t = tableService.createNewRestaurantTable(new RestaurantTable());
 		Assertions.assertNotNull(tableService.getTableByNumber(t.getTableNumber()));
 	}
 
+	/**
+	 * Test2.
+	 * Checking if a new customer can be created.
+	 */
 	@Test
 	void testCreateCustomer(){
 		// Customer needs table to be created
@@ -41,6 +60,10 @@ class RestaurantApiApplicationTests {
 		Assertions.assertNotNull(customerService.getCustomerById(newCustomer.getId()));
 	}
 
+	/**
+	 * Test2.
+	 * Checking if a new order can be created using the customer.
+	 */
 	@Test
 	void createOrderWithCustomer(){
 		// Customer needs table to be created

@@ -10,25 +10,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
-
+/**
+ * A tester class for the Meal Model.
+ */
 @SpringBootTest
 public class MealTests {
 
+    /**
+     * A service that is used to make requests to the Meal DB.
+     */
     @Autowired
     MealService mealService;
 
+    /**
+     * A service used to make requests to the Order DB.
+     */
     @Autowired
     OrderService orderService;
 
+    /**
+     * A service used to make requests to the Table DB.
+     */
     @Autowired
     RestaurantTableService tableService;
 
+    /**
+     * A service used to make requests to the Customer DB.
+     */
     @Autowired
     CustomerService customerService;
 
+    /**
+     * A service used to make requests to the Menu DB.
+     */
     @Autowired
     MenuService menuService;
 
+    /**
+     * Setting up Variables to be used in tests.
+     */
     static Meal meal;
     static Order order;
     static Menu menu;
@@ -36,6 +56,9 @@ public class MealTests {
     static Customer customer;
     static String MEAL_NAME = "MVP MEAL";
 
+    /**
+     * Set up test that is run before each test.
+     */
     @BeforeEach
     void setUp(){
         meal = new Meal();
@@ -65,6 +88,10 @@ public class MealTests {
         Assertions.assertNotNull(mealService.getMealById(meal.getId()));
     }
 
+    /**
+     * Test1.
+     * Checking Meal selections are added correctly.
+     */
     @Test
     @Transactional
     void testMealSelections(){
@@ -74,6 +101,10 @@ public class MealTests {
         "Returns true if the number of selections is correctly added.");
     }
 
+    /**
+     * Test2.
+     * Testing creating meal.
+     */
     @Test
     @Transactional
     void testCreateMeal(){
@@ -81,6 +112,12 @@ public class MealTests {
         Assertions.assertTrue(mealService.getMealById(meal.getId()).getMenu().getName().equals(MEAL_NAME));
     }
 
+    /**
+     * Test3.
+     * Test if deleting meal, also deletes the order.
+     * 
+     * @throws MealNotFoundException if the meal is not found in the DB
+     */
     @Test
     @Transactional
     void testDelete(){
