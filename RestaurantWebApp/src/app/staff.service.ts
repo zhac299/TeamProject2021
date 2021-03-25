@@ -16,6 +16,10 @@ export class StaffService {
 
   edit: boolean;
 
+  /**
+   *
+   * @param httpClient to perform http requests
+   */
   constructor(private httpClient: HttpClient) {
   }
 

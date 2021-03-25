@@ -22,6 +22,13 @@ import { StaffService } from '../staff.service';
 })
 export class OrdersListDisplayComponent implements OnInit, OnDestroy {
 
+  /**
+   *
+   * @param orderService to perform crud operations for Orders
+   * @param customerService to perform crud for customers
+   * @param route Activated route that routes to this page with staff parameters
+   * @param dialog To open/close dialogs
+   */
   constructor(private orderService: OrderService,
               private customerService: CustomerService,
               private route: ActivatedRoute,

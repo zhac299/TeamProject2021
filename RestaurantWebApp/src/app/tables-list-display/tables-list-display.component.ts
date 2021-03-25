@@ -17,6 +17,11 @@ import { Staff } from '../../models/Staff';
 })
 export class TablesListDisplayComponent implements OnInit {
 
+  /**
+   *
+   * @param tableService to perform crud operations for tables
+   * @param snackBar Snackbar that pops up to show messages
+   */
   constructor(
     public tableService: TableService,
     private snackBar: MatSnackBar) { }

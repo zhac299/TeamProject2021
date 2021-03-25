@@ -24,6 +24,16 @@ import { AddMenuDialogComponent } from './add-menu-dialog/add-menu-dialog.compon
 })
 export class WaiterMenuComponent implements OnInit {
 
+  /**
+   *
+   * @param route to access params from parent component
+   * @param menuService to perform crud on menus
+   * @param dialog to open/close dialogs
+   * @param staffService to perform crud on staff objects
+   * @param tableService to perform crud on tables
+   * @param customerService to perform crud on customers
+   * @param orderService to perform crud on orders
+   */
   constructor(
     private route: ActivatedRoute,
     private menuService: MenuService,

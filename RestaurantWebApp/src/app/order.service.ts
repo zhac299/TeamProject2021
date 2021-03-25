@@ -48,6 +48,10 @@ export class OrderService {
     share()
   );
 
+  /**
+   *
+   * @param httpClient to perform http requests
+   */
   constructor(private httpClient: HttpClient) {
   }
 

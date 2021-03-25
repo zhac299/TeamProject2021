@@ -40,11 +40,21 @@ export class AddMenuDialogComponent implements OnInit {
    */
   suggestedPriceRange: number[];
 
+  /**
+   *
+   * @param dialogRef to open/close dialogs
+   * @param ingredientService to perform crud for ingredients
+   * @param menuCategoryServiceto perform crud for menu categories
+   * @param data injected data {Menu, Title, hasMenuItem} from parent component
+   */
   constructor(public dialogRef: MatDialogRef<AddMenuDialogComponent>,
               private ingredientService: IngredientService,
               private menuCategoryService: MenuCategoryService,
               @Inject(MAT_DIALOG_DATA) public data: { menu:Menu,title:string,hasMenuItem:boolean }) { }
 
+  /**
+   * Gets ingredients, categories and sets suggested price range
+   */
   ngOnInit(): void {
     this.ingredientService.getIngredients().subscribe((ing) => {
       this.ingredients = ing;
