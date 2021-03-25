@@ -33,34 +33,74 @@ public class Meal {
 
     public Meal() {}
 
+    
+    /** 
+     * Gets the value of the Id for a meal.
+     * @return the id of a meal.
+     */
     public Long getId() {
         return id;
     }
 
+    
+    /** 
+     * Assigns a value to the id for a meal.
+     * @param id the value being set to id.
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    
+    /** 
+     * Gets the number of selections for the meal.
+     * @return int the number of selections.
+     */
     public int getNumberSelections() {
         return this.numberSelections;
     }
 
+    
+    /** 
+     * Assigns the parameter value to the variable numberSelections.
+     * @param newNumberSelections the value being assigned to numberSelection variable for a meal.
+     */
     public void setNumberSelections(int newNumberSelections) {
         this.numberSelections = newNumberSelections;
     }
 
+    
+    /** 
+     * Gets the menu attribute.
+     * @return the Menu item for meal.
+     */
     public Menu getMenu() {
         return menu;
     }
 
+    
+    /** 
+     * Assigns the id parameter to the menu attribute.
+     * @param menu_id the value being assigned to menu.
+     */
     public void setMenu(Menu menu_id) {
         this.menu = menu_id;
     }
 
+    
+    /** 
+     * Gets the order attribute and returns it
+     * @return the Order attribute.
+     */
     public Order getOrder() {
         return order;
     }
 
+    
+    /** 
+     * Assigns the parameter value order to the order attribute.
+     * @param order the value being assigned to the order attribute.
+     */
     public void setOrder(Order order) {
         this.order = order;
     }
