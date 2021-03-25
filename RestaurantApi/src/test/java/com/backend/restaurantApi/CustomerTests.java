@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * A teser class for the Model Customer.
+ * A teser class for the Customer Model.
  */
 @SpringBootTest
 public class CustomerTests {
