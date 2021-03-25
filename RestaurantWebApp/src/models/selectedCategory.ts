@@ -1,6 +1,14 @@
 import { Menu } from './Menu';
 
 export class selectedCategory {
-    name: String;
-    meal: Menu[];
+
+  /**
+   * Name of Category
+   */
+  name: String;
+
+  /**
+   * Menu items in the category
+   */
+  meal: Menu[];
 }
