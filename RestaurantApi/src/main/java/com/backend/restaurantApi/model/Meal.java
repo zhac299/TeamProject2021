@@ -13,24 +13,45 @@ import javax.persistence.*;
 @Table(name = "meal")
 public class Meal {
 
+    /**
+	 * The primary key of the table.
+	 */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    /**
+   * The foreign key of the menu item that references the Menu model.
+   * It uses a many to one annotation to realise it and JsonManagedReference
+   * to avoid to avoid the infinte JSON serialization problem such that only this item
+   * is serialised.
+   */
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "menu")
     private Menu menu;
 
+    /**
+   * The foreign key of the order that references the Order model.
+   * It uses a many to one annotation to realise it and JsonManagedReference
+   * to avoid to avoid the infinte JSON serialization problem such that only this item
+   * is serialised.
+   */
     @JsonBackReference(value = "order")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = true)
     private Order order;
 
+    /**
+     * The number of the item the customer has selected.
+     */
     @Column(name = "number_selections")
     private int numberSelections;
 
+    /**
+     * The default constructor.
+     */
     public Meal() {}
 
     
