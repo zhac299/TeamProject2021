@@ -123,6 +123,15 @@ public class RestaurantTableController {
         return restaurantTableService.assignTableToWaiter(restaurantTable);
     }
 
+
+    
+    /** 
+     * Allows a manager to assign a waiter to a table.
+     * 
+     * @param staffId the id of the waiter who is being assigned to a table.
+     * @param tableId the id/tableNumber of the table being assigned a waiter.
+     * @return the table which has been assigned a table.
+     */
     @PutMapping("/tables/manager/assignTable/{staffId}/{tableId}")
     public RestaurantTable managerAssignTable(@PathVariable("staffId") long staffId, @PathVariable("tableId") long tableId) {
         RestaurantTable table = restaurantTableRepository.findByTableNumber(tableId);
