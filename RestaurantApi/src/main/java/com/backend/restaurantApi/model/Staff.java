@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Model which contains and handles the data for Staff members.
+ */
 @Getter
 @Setter
 @Entity
