@@ -13,16 +13,44 @@ import { TableService } from '../../table.service';
 
 export class AddStaffDialogComponent implements OnInit {
 
+  /**
+   * The constructor of the class.
+   * Injects the mat dialog data into staff and title.
+   * 
+   * @param dialogRef the dialog ref
+   * @param tableService the table service that is used to make requests
+   * @param staffService the staff service that is used to make requests
+   * @param data the mat dialog data that is injected
+   */
   constructor(public dialogRef: MatDialogRef<AddStaffDialogComponent>,
               public tableService: TableService,
               public staffService: StaffService,
               @Inject(MAT_DIALOG_DATA) public data: { staff:Staff,title:string }) { }
 
+  /**
+   * The list of available tables.
+   */
   tableList: Table[] = [];
+
+  /**
+   * The selected table.
+   */
   selectedTable: Table = null;
+
+  /**
+   * Asserts if a table was selected.
+   */
   selected = -1;
+
+  /**
+   * References if the manager accessed add staff dialog or edit staff dialog.
+   */
   edit: boolean = this.staffService.edit;
 
+  /**
+   * Set-up method, gets called only once when the class is instantiated.
+   * Sets up the table list by making a get request to the Table DB.
+   */
   ngOnInit(): void {
     this.tableService.getTables().subscribe(table => {
       this.tableList = table;
