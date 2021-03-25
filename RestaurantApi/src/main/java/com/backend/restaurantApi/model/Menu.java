@@ -223,38 +223,74 @@ public class Menu {
         return peanuts;
     }
 
+    /**
+     * Setter for isPeanuts.
+     * @param peanuts boolean for if there are peanuts of not.
+     */
     public void setPeanuts(boolean peanuts) {
         this.peanuts = peanuts;
     }
 
+    /**
+     * Checks for Celery.
+     * @return true or false according to if there is celery in a meal or not.
+     */
     public boolean isCelery() {
         return celery;
     }
 
+    /**
+     * Setter for isCelery.
+     * @param celery boolean for if there is celery or not.
+     */
     public void setCelery(boolean celery) {
         this.celery = celery;
     }
 
+    /**
+     * Checks for gluten.
+     * @return true or false according to if there is Gluten or not.
+     */
     public boolean isGluten() {
         return gluten;
     }
 
+    /**
+     * Setter for isGluten.
+     * @param gluten boolean for if there is gluten or not.
+     */
     public void setGluten(boolean gluten) {
         this.gluten = gluten;
     }
 
+    /**
+     * Checks for Crustaceans.
+     * @return boolean according to if there are Crustaceans or not.
+     */
     public boolean isCrustaceans() {
         return crustaceans;
     }
 
+    /**
+     * Setter for isCrustaceans.
+     * @param gluten boolean for if there is Crustaceans or not.
+     */
     public void setCrustaceans(boolean crustaceans) {
         this.crustaceans = crustaceans;
     }
 
+    /**
+     * Checks for eggs.
+     * @return boolean according to if there are eggs or not.
+     */
     public boolean isEggs() {
         return eggs;
     }
 
+    /**
+     * Setter for eggs.
+     * @param gluten boolean for if there is eggs or not.
+     */
     public void setEggs(boolean eggs) {
         this.eggs = eggs;
     }
