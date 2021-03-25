@@ -1,0 +1,1381 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>restaurant-web-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">restaurant-web-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>BasketComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/customer-interface/basket/basket.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-basket</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./basket.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./basket.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#customerId">customerId</a>
+                            </li>
+                            <li>
+                                <a href="#mealList">mealList</a>
+                            </li>
+                            <li>
+                                <a href="#orderPlaced">orderPlaced</a>
+                            </li>
+                            <li>
+                                <a href="#orderTotal">orderTotal</a>
+                            </li>
+                            <li>
+                                <a href="#tableNumber">tableNumber</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#add">add</a>
+                            </li>
+                            <li>
+                                <a href="#clear">clear</a>
+                            </li>
+                            <li>
+                                <a href="#getInitialOrderTotal">getInitialOrderTotal</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#openSnackBar">openSnackBar</a>
+                            </li>
+                            <li>
+                                <a href="#placeOrder">placeOrder</a>
+                            </li>
+                            <li>
+                                <a href="#remove">remove</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(snackBar: MatSnackBar, tableService: <a href="../injectables/TableService.html">TableService</a>, mealService: <a href="../injectables/MealService.html">MealService</a>, orderService: <a href="../injectables/OrderService.html">OrderService</a>, customerService: <a href="../injectables/CustomerService.html">CustomerService</a>, data)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>The constructor of the class. 
+Injects the mat dialog data passed by the customer interface into the meal list,
+customer id and table number.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>snackBar</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>a snack bar </p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>tableService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TableService.html" target="_self" >TableService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the table service that is used to make get and put requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>mealService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MealService.html" target="_self" >MealService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the meal service that is used to make get and post requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>orderService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OrderService.html" target="_self" >OrderService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the order servic that is used to make get get and post requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>customerService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CustomerService.html" target="_self" >CustomerService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the customer service that is used to make get requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                  
+                                                        <td>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the Mat Dialog data to be injected</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="add"></a>
+                    <span class="name">
+                        <b>
+                            add
+                        </b>
+                        <a href="#add"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>add(meal: <a href="../classes/Meal.html">Meal</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a meal to the seletected meal list.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>meal</td>
+                                    <td>
+                                                <code><a href="../classes/Meal.html" target="_self" >Meal</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the meal to be added to the selected meal list</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clear"></a>
+                    <span class="name">
+                        <b>
+                            clear
+                        </b>
+                        <a href="#clear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clear(meal: <a href="../classes/Meal.html">Meal</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Deletes a meal from the selected meals list.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>meal</td>
+                                    <td>
+                                                <code><a href="../classes/Meal.html" target="_self" >Meal</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the meal item do be deleted</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getInitialOrderTotal"></a>
+                    <span class="name">
+                        <b>
+                            getInitialOrderTotal
+                        </b>
+                        <a href="#getInitialOrderTotal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getInitialOrderTotal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Calculates the intial order total(from the meal selection
+injected from the customer interface).</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:78</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A set up method that gets executed once when the class 
+gets instantiated.
+Intialises the order total.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openSnackBar"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            openSnackBar
+                        </b>
+                        <a href="#openSnackBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openSnackBar(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, action: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="168"
+                            class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:168</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens a snack bar to display an informative message when the user places an order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>message</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the snack bar message</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>action</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the action to be done by the snack bar</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="placeOrder"></a>
+                    <span class="name">
+                        <b>
+                            placeOrder
+                        </b>
+                        <a href="#placeOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>placeOrder()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="141"
+                            class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:141</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>If the order was not placed, it subscribes to getTableByNumber() that returns
+an observable of Table. Inside the subscription, it assigns a waiter to the order
+and sets the table as ready. It subscribes to the getCustomerId() with the customerId
+and it subscribes to createOrder() with the customer object returned by getCustomerById
+and the order total to create a new order. Inside the subscription, it loops through
+the meal list and creates the corresponding meals assigned to the order.
+Opens a snack bar to inform the user than an order was placed.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                        <b>
+                            remove
+                        </b>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>remove(meal: <a href="../classes/Meal.html">Meal</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:122</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Decreases the number of selections of a meal or, if meal nr of 
+selections is 1, deletes it from the list. </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>meal</td>
+                                    <td>
+                                                <code><a href="../classes/Meal.html" target="_self" >Meal</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the meal to be removed from the selected meal list</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="customerId"></a>
+                        <span class="name">
+                            <b>
+                            customerId</b>
+                            <a href="#customerId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The customer id that is used by the customer service to make 
+a get request.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mealList"></a>
+                        <span class="name">
+                            <b>
+                            mealList</b>
+                            <a href="#mealList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Meal.html" target="_self" >Meal[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The meal list selected by the customer.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderPlaced"></a>
+                        <span class="name">
+                            <b>
+                            orderPlaced</b>
+                            <a href="#orderPlaced"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Indicates if the order was placed or not.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderTotal"></a>
+                        <span class="name">
+                            <b>
+                            orderTotal</b>
+                            <a href="#orderTotal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The order total of the meal list.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tableNumber"></a>
+                        <span class="name">
+                            <b>
+                            tableNumber</b>
+                            <a href="#tableNumber"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/customer-interface/basket/basket.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The table number that is used by the table service to make 
+a get request.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject, OnInit } from &#x27;@angular/core&#x27;;
+import { MAT_DIALOG_DATA } from &#x27;@angular/material/dialog&#x27;;
+import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+
+import { MealService } from &#x27;../../meal.service&#x27;;
+import { OrderService } from &#x27;../../order.service&#x27;;
+import { TableService } from &#x27;../../table.service&#x27;;
+import { Meal } from &#x27;../../../models/Meal&#x27;;
+import { CustomerService } from &#x27;../../customer.service&#x27;;
+
+@Component({
+  selector: &#x27;app-basket&#x27;,
+  templateUrl: &#x27;./basket.component.html&#x27;,
+  styleUrls: [&#x27;./basket.component.sass&#x27;]
+})
+
+/**
+ * The class that handles the basket and placing an order.
+ */
+export class BasketComponent implements OnInit {
+
+  /**
+   * The meal list selected by the customer.
+   */
+  mealList: Meal[];
+  
+  /**
+   * The order total of the meal list.
+   */
+  orderTotal: number &#x3D; 0;
+
+  /**
+   * The customer id that is used by the customer service to make 
+   * a get request.
+   */
+  customerId: number;
+
+  /**
+   * The table number that is used by the table service to make 
+   * a get request.
+   */
+  tableNumber: number;
+
+  /**
+   * Indicates if the order was placed or not.
+   */
+  orderPlaced: boolean &#x3D; false;
+
+  /**
+   * The constructor of the class. 
+   * Injects the mat dialog data passed by the customer interface into the meal list,
+   * customer id and table number.
+   * 
+   * @param snackBar a snack bar 
+   * @param tableService the table service that is used to make get and put requests
+   * @param mealService the meal service that is used to make get and post requests
+   * @param orderService the order servic that is used to make get get and post requests
+   * @param customerService the customer service that is used to make get requests
+   * @param data the Mat Dialog data to be injected
+   */
+  constructor(
+    private snackBar: MatSnackBar,
+    private tableService: TableService,
+    private mealService: MealService,
+    private orderService: OrderService,
+    private customerService: CustomerService,
+    @Inject(MAT_DIALOG_DATA) data) {
+    this.mealList &#x3D; data.selectedMeals;
+    this.customerId &#x3D; data.customerId;
+    this.tableNumber &#x3D; data.tableNumber;
+  }
+
+  /**
+   * A set up method that gets executed once when the class 
+   * gets instantiated.
+   * Intialises the order total.
+   */
+  ngOnInit(): void {
+    this.getInitialOrderTotal();
+  }
+
+  /**
+   * Calculates the intial order total(from the meal selection
+   * injected from the customer interface).
+   */
+  getInitialOrderTotal() {
+    for (let meal of this.mealList) {
+      this.orderTotal +&#x3D; meal.menu.price * meal.numberSelections;
+    }
+  }
+
+  /**
+   * Deletes a meal from the selected meals list.
+   * 
+   * @param meal the meal item do be deleted
+   */
+  clear(meal: Meal): void {
+    const index &#x3D; this.mealList.indexOf(meal, 0);
+    this.orderTotal -&#x3D; meal.menu.price * meal.numberSelections;
+    if (index &gt; -1) {
+      this.mealList.splice(index, 1);
+    }
+  }
+
+  /**
+   * Adds a meal to the seletected meal list.
+   * 
+   * @param meal the meal to be added to the selected meal list
+   */
+  add(meal: Meal): void {
+    const index &#x3D; this.mealList.indexOf(meal, 0);
+    this.mealList[index].numberSelections++;
+    this.orderTotal +&#x3D; meal.menu.price;
+  }
+
+  /**
+   * Decreases the number of selections of a meal or, if meal nr of 
+   * selections is 1, deletes it from the list. 
+   * 
+   * @param meal the meal to be removed from the selected meal list
+   */
+  remove(meal: Meal): void {
+    const index &#x3D; this.mealList.indexOf(meal, 0);
+    this.orderTotal -&#x3D; meal.menu.price;
+    if (this.mealList[index].numberSelections &gt; 1) {
+      this.mealList[index].numberSelections--;
+    } else {
+      this.mealList.splice(index, 1);
+    }
+  }
+
+  /**
+   * If the order was not placed, it subscribes to getTableByNumber() that returns
+   * an observable of Table. Inside the subscription, it assigns a waiter to the order
+   * and sets the table as ready. It subscribes to the getCustomerId() with the customerId
+   * and it subscribes to createOrder() with the customer object returned by getCustomerById
+   * and the order total to create a new order. Inside the subscription, it loops through
+   * the meal list and creates the corresponding meals assigned to the order.
+   * Opens a snack bar to inform the user than an order was placed.
+   */
+  placeOrder(): void {
+    if (this.orderPlaced &#x3D;&#x3D; false) {
+      this.tableService.getTableByNumber(this.tableNumber).subscribe((table) &#x3D;&gt; {
+        this.orderService.waiterId &#x3D; table.waiterId;  
+        table.isReady &#x3D; true;
+        this.tableService.updateTable(table);
+      })       
+      this.customerService.getCustomerByID(this.customerId).subscribe((customer) &#x3D;&gt; {
+        this.orderService.createNewOrder(customer, this.orderTotal).subscribe((order) &#x3D;&gt; {
+          for (var i &#x3D; 0; i &lt; this.mealList.length; i++) {
+            this.mealList[i].order &#x3D; order;
+            this.mealService.createNewMeal(this.mealList[i]).subscribe();
+          }
+          this.mealList &#x3D; [];
+        });
+      })
+      this.orderPlaced &#x3D; true;
+      this.openSnackBar(&quot;You placed your order&quot;, &quot;Enjoy!&quot;)
+    }
+  }
+
+  /**
+   * Opens a snack bar to display an informative message when the user places an order.
+   * 
+   * @param message the snack bar message
+   * @param action the action to be done by the snack bar
+   */
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: [&#x27;orderSnackBar&#x27;]
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-dialog-content&gt;
+  &lt;mat-grid-list cols&#x3D;&quot;1&quot; rowHeight&#x3D;&quot;50px&quot;&gt;
+    &lt;mat-grid-tile colspan&#x3D;&quot;1&quot;&gt;
+      &lt;br&gt;
+      &lt;div class&#x3D;&quot;title&quot;&gt;Shopping Cart&lt;/div&gt;
+    &lt;/mat-grid-tile&gt;
+  &lt;/mat-grid-list&gt;
+  &lt;div class&#x3D;list *ngIf&#x3D;&quot;orderPlaced &#x3D;&#x3D; false; else emptyShoppingCartBlock&quot;&gt;
+    &lt;table class&#x3D;&quot;table&quot; class&#x3D;&quot;selectedItems&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr *ngFor&#x3D;&quot;let meal of mealList&quot;&gt;
+          &lt;td&gt;
+            &lt;button mat-button (click)&#x3D;&quot;clear(meal)&quot;&gt;
+              &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+            &lt;/button&gt;
+            &lt;span class&#x3D;&quot;mealName&quot;&gt;{{meal.menu.name}} ({{meal.menu.price * meal.numberSelections}}$)&lt;/span&gt;
+          &lt;/td&gt;
+          &lt;td class&#x3D;&quot;numberOfSelections&quot;&gt;
+            &lt;button mat-button (click)&#x3D;&quot;add(meal)&quot;&gt;
+              &lt;mat-icon&gt;add&lt;/mat-icon&gt;
+            &lt;/button&gt;
+            &lt;button mat-mini-fab class&#x3D;&quot;selection-fab&quot;&gt;x{{meal.numberSelections}}&lt;/button&gt;
+            &lt;button mat-button (click)&#x3D;&quot;remove(meal)&quot;&gt;
+              &lt;mat-icon&gt;remove&lt;/mat-icon&gt;
+            &lt;/button&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr *ngIf&#x3D;&quot;orderTotal &gt; 0 &quot;&gt;
+          &lt;td&gt;
+            &lt;button mat-button&gt;
+              &lt;mat-icon&gt;attach_money&lt;/mat-icon&gt;
+            &lt;/button&gt;
+            &lt;span&gt;&lt;b&gt;Total: {{orderTotal}}&lt;/b&gt;&lt;/span&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;mat-list&gt;
+      &lt;mat-list-item&gt;
+        &lt;div class&#x3D;&quot;center&quot; *ngIf&#x3D;&quot;orderPlaced &#x3D;&#x3D; false&quot;&gt;
+          &lt;button mat-raised-button *ngIf&#x3D;&quot; this.mealList.length !&#x3D;0; else emptyShoppingCartBlock&quot;
+            (click)&#x3D;&quot;placeOrder()&quot; class&#x3D;&quot;placeOrder&quot;&gt;
+            Place Order
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/mat-list-item&gt;
+    &lt;/mat-list&gt;
+  &lt;/div&gt;
+  &lt;ng-template #emptyShoppingCartBlock&gt;
+    &lt;div class&#x3D;&quot;center&quot;&gt;
+      &lt;button mat-button class&#x3D;&quot;emptyShoppingCartBlock&quot;&gt; Empty Shopping Cart!&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/ng-template&gt;
+&lt;/mat-dialog-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./basket.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.title
+  font-size: 30px
+  font-family: &#x27;Cedarville Cursive&#x27;, cursive
+  color: #b9a239
+
+.selectedItemsTitle
+  display: block
+  text-decoration: none
+  font-family: &#x27;Cedarville Cursive&#x27;, cursive
+  font-size: 30px
+  margin: auto
+  color: #b9a239
+  padding: 10px
+
+.orderPlacedMessage
+  display: block
+  font-family: &#x27;Raleway&#x27;, sans-serif
+
+.emptyShoppingCartBlock
+  text-align: center
+  display: block
+  background-color: #388572
+  color: #b9a239
+  font-family: &#x27;Raleway&#x27;, sans-serif
+  margin: auto
+
+.meal
+  font-family: &#x27;Raleway&#x27;, sans-serif
+  font-size: 15px
+
+.numberOfSelections
+  font-size: 15px
+
+.placeOrder
+  font-family: &#x27;Raleway&#x27;, sans-serif
+  background-color: #388572
+  font-size: 15px
+  color: #b9a239
+
+.selection-fab
+  background-color: #388572
+  font-size: 15px
+  font-family: &#x27;Raleway&#x27;, sans-serif
+  color: #b9a239
+
+.selectedItems
+  font-family: &#x27;Raleway&#x27;, sans-serif
+  font-size: 15px
+
+.list
+  text-align: center
+
+.center
+  display: block
+  margin: auto
+
+#emptyShoppingCartBlock
+  text-align: center
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-dialog-content>  <mat-grid-list cols="1" rowHeight="50px">    <mat-grid-tile colspan="1">      <br>      <div class="title">Shopping Cart</div>    </mat-grid-tile>  </mat-grid-list>  <div class=list *ngIf="orderPlaced == false; else emptyShoppingCartBlock">    <table class="table" class="selectedItems">      <tbody>        <tr *ngFor="let meal of mealList">          <td>            <button mat-button (click)="clear(meal)">              <mat-icon>delete</mat-icon>            </button>            <span class="mealName">{{meal.menu.name}} ({{meal.menu.price * meal.numberSelections}}$)</span>          </td>          <td class="numberOfSelections">            <button mat-button (click)="add(meal)">              <mat-icon>add</mat-icon>            </button>            <button mat-mini-fab class="selection-fab">x{{meal.numberSelections}}</button>            <button mat-button (click)="remove(meal)">              <mat-icon>remove</mat-icon>            </button>          </td>        </tr>        <tr *ngIf="orderTotal > 0 ">          <td>            <button mat-button>              <mat-icon>attach_money</mat-icon>            </button>            <span><b>Total: {{orderTotal}}</b></span>          </td>        </tr>      </tbody>    </table>    <mat-list>      <mat-list-item>        <div class="center" *ngIf="orderPlaced == false">          <button mat-raised-button *ngIf=" this.mealList.length !=0; else emptyShoppingCartBlock"            (click)="placeOrder()" class="placeOrder">            Place Order          </button>        </div>      </mat-list-item>    </mat-list>  </div>  <ng-template #emptyShoppingCartBlock>    <div class="center">      <button mat-button class="emptyShoppingCartBlock"> Empty Shopping Cart!</button>    </div>  </ng-template></mat-dialog-content></div>'
+    var COMPONENTS = [{'name': 'AddIngredientComponent', 'selector': 'app-add-ingredient'},{'name': 'AddIngredientDialogComponent', 'selector': 'app-add-ingredient-dialog'},{'name': 'AddMenuDialogComponent', 'selector': 'app-add-order-dialog'},{'name': 'AddStaffComponent', 'selector': 'app-add-staff'},{'name': 'AddStaffDialogComponent', 'selector': 'app-add-staff-dialog'},{'name': 'AllergensChipsComponent', 'selector': 'allergens-chips'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BasketComponent', 'selector': 'app-basket'},{'name': 'CallWaiterComponent', 'selector': 'call-waiter'},{'name': 'CategoryDialogComponent', 'selector': 'app-category-dialog'},{'name': 'CustomerInterfaceComponent', 'selector': 'app-customer-interface'},{'name': 'ExpansionPannelComponent', 'selector': 'expansion-pannel'},{'name': 'HomePageComponent', 'selector': 'app-home-page'},{'name': 'IngredientsDialogComponent', 'selector': 'app-ingredients-dialog'},{'name': 'KitchenMenuComponent', 'selector': 'app-kitchen-menu'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginInputComponent', 'selector': 'app-login-input'},{'name': 'ManagerMenuComponent', 'selector': 'app-manager-menu'},{'name': 'MenusListDisplayComponent', 'selector': 'app-menus-list-display'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'NotificationsDialogComponent', 'selector': 'notifications-dialog'},{'name': 'OrderComponent', 'selector': 'app-order'},{'name': 'OrdersListDisplayComponent', 'selector': 'app-orders-list-display'},{'name': 'OrderTrackerComponent', 'selector': 'app-order-tracker'},{'name': 'PaymentComponent', 'selector': 'payment-stepper'},{'name': 'PickTableDialogComponent', 'selector': 'app-pick-table-dialog'},{'name': 'ReadyToOrderComponent', 'selector': 'ready-to-order'},{'name': 'SalesDialogComponent', 'selector': 'app-sales-dialog'},{'name': 'SelectTableDialogComponent', 'selector': 'select-table-dialog'},{'name': 'TablesListDisplayComponent', 'selector': 'app-tables-list-display'},{'name': 'WaiterMenuComponent', 'selector': 'app-waiter-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'BasketComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'BasketComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

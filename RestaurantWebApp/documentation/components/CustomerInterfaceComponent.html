@@ -1,0 +1,2083 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>restaurant-web-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">restaurant-web-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>CustomerInterfaceComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/customer-interface/customer-interface.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-customer-interface</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./customer-interface.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./customer-interface.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#categories">categories</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                <a href="#menu">menu</a>
+                            </li>
+                            <li>
+                                <a href="#orderPlaced">orderPlaced</a>
+                            </li>
+                            <li>
+                                <a href="#paramsObject">paramsObject</a>
+                            </li>
+                            <li>
+                                <a href="#selectedCategory">selectedCategory</a>
+                            </li>
+                            <li>
+                                <a href="#selectedMeals">selectedMeals</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addMeal">addMeal</a>
+                            </li>
+                            <li>
+                                <a href="#allergensArray">allergensArray</a>
+                            </li>
+                            <li>
+                                <a href="#clearMeal">clearMeal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#filter">filter</a>
+                            </li>
+                            <li>
+                                <a href="#findCategoryItems">findCategoryItems</a>
+                            </li>
+                            <li>
+                                <a href="#getNumberOfSelections">getNumberOfSelections</a>
+                            </li>
+                            <li>
+                                <a href="#goHome">goHome</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openBasket">openBasket</a>
+                            </li>
+                            <li>
+                                <a href="#openTracker">openTracker</a>
+                            </li>
+                            <li>
+                                <a href="#removeMeal">removeMeal</a>
+                            </li>
+                            <li>
+                                <a href="#selectCategory">selectCategory</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(menuService: <a href="../injectables/MenuService.html">MenuService</a>, menuCategoryService: <a href="../injectables/MenuCategoryService.html">MenuCategoryService</a>, menuFilterService: <a href="../injectables/MenuFilterService.html">MenuFilterService</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, dialog: MatDialog, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:71</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>The constructor of the class.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>menuService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MenuService.html" target="_self" >MenuService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the menu service that is used to make get requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>menuCategoryService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MenuCategoryService.html" target="_self" >MenuCategoryService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the menu category service that is used to make get requets</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>menuFilterService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MenuFilterService.html" target="_self" >MenuFilterService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the menu filter service that is used to make get requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the activated route from the home page</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>a mat dialog</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>a router to navigate to the home page</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addMeal"></a>
+                    <span class="name">
+                        <b>
+                            addMeal
+                        </b>
+                        <a href="#addMeal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addMeal(menuItem: <a href="../classes/Menu.html">Menu</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:155</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a meal to the selected meals or increases the number of selections
+of that meal if already present.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>menuItem</td>
+                                    <td>
+                                                <code><a href="../classes/Menu.html" target="_self" >Menu</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the menu item to be added</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allergensArray"></a>
+                    <span class="name">
+                        <b>
+                            allergensArray
+                        </b>
+                        <a href="#allergensArray"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>allergensArray(item: <a href="../classes/Menu.html">Menu</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="273"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:273</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Forms a string with the allergens present in a menu item.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../classes/Menu.html" target="_self" >Menu</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the menu item</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Array&lt;String&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>a string with all the allergens</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearMeal"></a>
+                    <span class="name">
+                        <b>
+                            clearMeal
+                        </b>
+                        <a href="#clearMeal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearMeal(menuItem: <a href="../classes/Menu.html">Menu</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:193</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Deletes a meal from the selected meals list.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>menuItem</td>
+                                    <td>
+                                                <code><a href="../classes/Menu.html" target="_self" >Menu</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the menu item to be cleared</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filter"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            filter
+                        </b>
+                        <a href="#filter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>filter(filteredArgs: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="133"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:133</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters the menu items in the selected category by calories and allergens.
+It makes a get request to the Menu DB by subscribing to filter() that returns
+an Menu[] observable with the filtered menu items. Inside the subscription, 
+it filters the filtered by category menu with the allergies and callories.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filteredArgs</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the filter arguments</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findCategoryItems"></a>
+                    <span class="name">
+                        <b>
+                            findCategoryItems
+                        </b>
+                        <a href="#findCategoryItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>findCategoryItems()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a list of the menu items in that category.
+It makes a get request to the Menu DB by subscribing to getMenus() that
+returns a Menu[] observable. Then it filters the menu items by the selected category.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNumberOfSelections"></a>
+                    <span class="name">
+                        <b>
+                            getNumberOfSelections
+                        </b>
+                        <a href="#getNumberOfSelections"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNumberOfSelections(menuItem: <a href="../classes/Menu.html">Menu</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="207"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:207</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the number of selections of a meal.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>menuItem</td>
+                                    <td>
+                                                <code><a href="../classes/Menu.html" target="_self" >Menu</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the menu item </p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>the number of selections</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goHome"></a>
+                    <span class="name">
+                        <b>
+                            goHome
+                        </b>
+                        <a href="#goHome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goHome()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="253"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:253</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Navigates to the home page via a router.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:96</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A set-up method that gets called once when the class gets instantiated.
+It subscribed to activated route query params and sets the paramsObject.
+It makes a get reuqest to the the menuCategory DB by subscribing to getMenuCategories()
+that returns an Category[] Observale. Inside the subscription, it sets the categories.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openBasket"></a>
+                    <span class="name">
+                        <b>
+                            openBasket
+                        </b>
+                        <a href="#openBasket"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openBasket()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="222"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:222</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens the basket dialog.
+It configures the data to be injected in the dialog using the dialog config, passing
+the customer ID, the selected meals and the table Number.
+After the dialog is closedm it uodates the orderPlaced field.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openTracker"></a>
+                    <span class="name">
+                        <b>
+                            openTracker
+                        </b>
+                        <a href="#openTracker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openTracker()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="239"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:239</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens the order tacker dialog.
+It configures the data to be injected in the dialog using the dialog config, passing
+the customer ID and table number to the orders tracker.
+After the dialog is closed, it updates the orderPlaced field.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeMeal"></a>
+                    <span class="name">
+                        <b>
+                            removeMeal
+                        </b>
+                        <a href="#removeMeal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeMeal(menuItem: <a href="../classes/Menu.html">Menu</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="177"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:177</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Decreases the number of selections of a meal or removes it from the list
+if the number of selections is 1.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>menuItem</td>
+                                    <td>
+                                                <code><a href="../classes/Menu.html" target="_self" >Menu</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the menu item to be removed</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectCategory"></a>
+                    <span class="name">
+                        <b>
+                            selectCategory
+                        </b>
+                        <a href="#selectCategory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectCategory(category: <a href="../classes/MenuCategory.html">MenuCategory</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="262"
+                            class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:262</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Selects a category and calls findCategoryItems() to filter the menu
+by the selected category.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>category</td>
+                                    <td>
+                                                <code><a href="../classes/MenuCategory.html" target="_self" >MenuCategory</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="categories"></a>
+                        <span class="name">
+                            <b>
+                            categories</b>
+                            <a href="#categories"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MenuCategory[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The categories list of the menu.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:87</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">a mat dialog</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="menu"></a>
+                        <span class="name">
+                            <b>
+                            menu</b>
+                            <a href="#menu"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Menu.html" target="_self" >Menu[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:51</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The menu list.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderPlaced"></a>
+                        <span class="name">
+                            <b>
+                            orderPlaced</b>
+                            <a href="#orderPlaced"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:61</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Asserts if the order was placed or not.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paramsObject"></a>
+                        <span class="name">
+                            <b>
+                            paramsObject</b>
+                            <a href="#paramsObject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:56</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The params of the activated route</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedCategory"></a>
+                        <span class="name">
+                            <b>
+                            selectedCategory</b>
+                            <a href="#selectedCategory"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/MenuCategory.html" target="_self" >MenuCategory</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:71</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current selected category.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedMeals"></a>
+                        <span class="name">
+                            <b>
+                            selectedMeals</b>
+                            <a href="#selectedMeals"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Meal.html" target="_self" >Meal[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/customer-interface/customer-interface.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The meal list selected by the customer.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { MatDialog, MatDialogConfig } from &quot;@angular/material/dialog&quot;;
+import { animate, keyframes, query, stagger, style, transition, trigger } from &quot;@angular/animations&quot;;
+import anime from &#x27;animejs/lib/anime.es.js&#x27;
+
+import { MenuService } from &quot;../menu.service&quot;;
+import { MenuFilterService } from &quot;../menu-filter.service&quot;;
+import { Menu } from &quot;../../models/Menu&quot;;
+import { BasketComponent } from &#x27;./basket/basket.component&#x27;;
+import { OrderTrackerComponent } from &#x27;./order-tracker/order-tracker.component&#x27;;
+import { MenuCategory } from &quot;../../models/MenuCategory&quot;;
+import { MenuCategoryService } from &#x27;../menu-category.service&#x27;;
+import { Meal } from &#x27;../../models/Meal&#x27;;
+
+@Component({
+  selector: &#x27;app-customer-interface&#x27;,
+  templateUrl: &#x27;./customer-interface.component.html&#x27;,
+  styleUrls: [&#x27;./customer-interface.component.sass&#x27;],
+  encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger(&#x27;listAnimation&#x27;, [
+      transition(&#x27;*&#x3D;&gt;*&#x27;, [
+        query(&#x27;:enter&#x27;, style({ opacity: 0 }), { optional: true }),
+
+        query(&#x27;:enter&#x27;, stagger(&#x27;100ms&#x27;, [
+          animate(&#x27;.5s ease-in&#x27;, keyframes([
+            style({ opacity: 0, transform: &#x27;translateY(-50px)&#x27;, offset: 0 }),
+            style({ opacity: .5, transform: &#x27;translateY(15px)&#x27;, offset: 0.3 }),
+            style({ opacity: 1, transform: &#x27;translateY(0)&#x27;, offset: 1 })
+          ]))
+        ]))
+      ])
+    ])
+  ]
+})
+
+/**
+ * The class that handles the customer menu.
+ */
+export class CustomerInterfaceComponent implements OnInit {
+
+  /**
+   * The meal list selected by the customer.
+   */
+  selectedMeals: Meal[] &#x3D; [];
+
+  /**
+   * The menu list.
+   */
+  menu: Menu[];
+
+  /**
+   * The params of the activated route
+   */
+  paramsObject: any;
+
+  /**
+   * Asserts if the order was placed or not.
+   */
+  orderPlaced: Boolean &#x3D; false;
+
+  /**
+   * The categories list of the menu.
+   */
+  categories: MenuCategory[];
+
+  /**
+   * The current selected category.
+   */
+  selectedCategory: MenuCategory;
+
+  /**
+   * The constructor of the class.
+   * 
+   * @param menuService the menu service that is used to make get requests
+   * @param menuCategoryService the menu category service that is used to make get requets
+   * @param menuFilterService the menu filter service that is used to make get requests
+   * @param route the activated route from the home page
+   * @param dialog a mat dialog
+   * @param router a router to navigate to the home page
+   */
+  constructor(private menuService: MenuService,
+    private menuCategoryService: MenuCategoryService,
+    private menuFilterService: MenuFilterService,
+    private route: ActivatedRoute,
+    public dialog: MatDialog,
+    private router: Router) { }
+
+  /**
+   * A set-up method that gets called once when the class gets instantiated.
+   * It subscribed to activated route query params and sets the paramsObject.
+   * It makes a get reuqest to the the menuCategory DB by subscribing to getMenuCategories()
+   * that returns an Category[] Observale. Inside the subscription, it sets the categories.
+   */
+  ngOnInit(): void {
+    this.route.queryParamMap.subscribe((params) &#x3D;&gt; {
+      this.paramsObject &#x3D; { ...params.keys, ...params };
+    });
+
+    this.menuCategoryService.getMenuCategories().subscribe((categories) &#x3D;&gt; {
+      this.categories &#x3D; categories;
+      this.selectedCategory &#x3D; this.categories[0];
+    });
+
+    this.findCategoryItems();
+  }
+
+  /**
+   * Returns a list of the menu items in that category.
+   * It makes a get request to the Menu DB by subscribing to getMenus() that
+   * returns a Menu[] observable. Then it filters the menu items by the selected category.
+   */
+  findCategoryItems(): void {
+    this.menuService.getMenus().subscribe((menu) &#x3D;&gt; {
+      this.menu &#x3D; [];
+      menu.forEach((menuItem) &#x3D;&gt; {
+        if (menuItem.category.category &#x3D;&#x3D; this.selectedCategory.category) {
+          this.menu.push(menuItem);
+        }
+      })
+    });
+  }
+
+  /**
+   * Filters the menu items in the selected category by calories and allergens.
+   * It makes a get request to the Menu DB by subscribing to filter() that returns
+   * an Menu[] observable with the filtered menu items. Inside the subscription, 
+   * it filters the filtered by category menu with the allergies and callories.
+   * 
+   * @param filteredArgs the filter arguments
+   */
+  async filter(filteredArgs: string): Promise&lt;void&gt; {
+    this.menuFilterService.filter(filteredArgs).subscribe((filteredMenu) &#x3D;&gt; {
+      for (var i &#x3D; 0; i &lt; this.menu.length; i++) {
+        let containsItem &#x3D; false;
+        for (var j &#x3D; 0; j &lt; filteredMenu.length; j++) {
+          if (this.menu[i].name &#x3D;&#x3D; filteredMenu[j].name) {
+            containsItem &#x3D; true;
+          }
+        }
+        if (containsItem &#x3D;&#x3D; false) {
+          this.menu.splice(i);
+        }
+      }
+    })
+  }
+
+  /**
+   * Adds a meal to the selected meals or increases the number of selections
+   * of that meal if already present.
+   * 
+   * @param menuItem the menu item to be added
+   */
+  addMeal(menuItem: Menu): void {
+    var mealNotPresent: Boolean &#x3D; true;
+    for (var i &#x3D; 0; i &lt; this.selectedMeals.length; i++) {
+      if (this.selectedMeals[i].menu.name &#x3D;&#x3D; menuItem.name) {
+        this.selectedMeals[i].numberSelections +&#x3D; 1;
+        mealNotPresent &#x3D; false;
+      }
+    }
+    if (mealNotPresent) {
+      const newMeal &#x3D; new Meal();
+      newMeal.menu &#x3D; menuItem;
+      newMeal.numberSelections &#x3D; 1;
+      this.selectedMeals.push(newMeal);
+    }
+  }
+
+  /**
+   * Decreases the number of selections of a meal or removes it from the list
+   * if the number of selections is 1.
+   * 
+   * @param menuItem the menu item to be removed
+   */
+  removeMeal(menuItem: Menu): void {
+    for (var i &#x3D; 0; i &lt; this.selectedMeals.length; i++) {
+      if (this.selectedMeals[i].menu.name &#x3D;&#x3D; menuItem.name) {
+        this.selectedMeals[i].numberSelections -&#x3D; 1;
+        if (this.selectedMeals[i].numberSelections &#x3D;&#x3D; 0) {
+          this.selectedMeals.splice(i);
+        }
+      }
+    }
+  }
+
+  /**
+   * Deletes a meal from the selected meals list.
+   * 
+   * @param menuItem the menu item to be cleared
+   */
+  clearMeal(menuItem: Menu): void {
+    for (var i &#x3D; 0; i &lt; this.selectedMeals.length; i++) {
+      if (this.selectedMeals[i].menu.name &#x3D;&#x3D; menuItem.name) {
+        this.selectedMeals.splice(i);
+      }
+    }
+  }
+
+  /**
+   * Gets the number of selections of a meal.
+   * 
+   * @param menuItem the menu item 
+   * @returns the number of selections
+   */
+  getNumberOfSelections(menuItem: Menu): number {
+    for (let meal of this.selectedMeals) {
+      if (meal.menu.name &#x3D;&#x3D; menuItem.name) {
+        return meal.numberSelections;
+      }
+    }
+    return 0;
+  }
+
+  /**
+   * Opens the basket dialog.
+   * It configures the data to be injected in the dialog using the dialog config, passing
+   * the customer ID, the selected meals and the table Number.
+   * After the dialog is closedm it uodates the orderPlaced field.
+   */
+  openBasket() {
+    const dialogConfig &#x3D; new MatDialogConfig();
+    dialogConfig.data &#x3D; { customerId: this.paramsObject.params.customerID, selectedMeals: this.selectedMeals, tableNumber: this.paramsObject.params.selectedTable };
+    dialogConfig.width &#x3D; &quot;60%&quot;;
+    const dialogRef &#x3D; this.dialog.open(BasketComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(orderPlaced &#x3D;&gt; {
+      this.orderPlaced &#x3D; orderPlaced;
+    });
+  }
+
+  /**
+   * Opens the order tacker dialog.
+   * It configures the data to be injected in the dialog using the dialog config, passing
+   * the customer ID and table number to the orders tracker.
+   * After the dialog is closed, it updates the orderPlaced field.
+   */
+  openTracker() {
+    const dialogConfig &#x3D; new MatDialogConfig();
+    dialogConfig.data &#x3D; { customerId: this.paramsObject.params.customerID, tableNumber: this.paramsObject.params.selectedTable };
+    dialogConfig.width &#x3D; &quot;60%&quot;;
+    const dialogRef &#x3D; this.dialog.open(OrderTrackerComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(orderPlaced &#x3D;&gt; {
+      this.orderPlaced &#x3D; orderPlaced;
+    });
+  }
+
+  /**
+   * Navigates to the home page via a router.
+   */
+  goHome(): void {
+    this.router.navigateByUrl(&#x27;/home&#x27;);
+  }
+
+  /**
+   * Selects a category and calls findCategoryItems() to filter the menu
+   * by the selected category.
+   * @param category 
+   */
+  selectCategory(category: MenuCategory): void {
+    this.selectedCategory &#x3D; category;
+    this.findCategoryItems();
+  }
+
+  /**
+   * Forms a string with the allergens present in a menu item.
+   * 
+   * @param item the menu item
+   * @returns a string with all the allergens
+   */
+  allergensArray(item: Menu): Array&lt;String&gt; {
+    var allergyArray: Array&lt;String&gt; &#x3D; []
+    if (item.peanuts &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Peanuts&quot;);
+    }
+    if (item.celery &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Celery&quot;);
+    }
+    if (item.gluten &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Gluten&quot;);
+    }
+    if (item.crustaceans &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Crustaceans&quot;);
+    }
+    if (item.eggs &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Eggs&quot;);
+    }
+    if (item.fish &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Fish&quot;);
+    }
+    if (item.lupin &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Lupin&quot;);
+    }
+    if (item.milk &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Milk&quot;);
+    }
+    if (item.molluscs &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Molluscs&quot;);
+    }
+    if (item.mustard &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Mustard&quot;);
+    }
+    if (item.nuts &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Nuts&quot;);
+    }
+    if (item.soya &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Soya&quot;);
+    }
+    if (item.sesameSeeds &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Sesame Seeds&quot;);
+    }
+    if (item.sulphites &#x3D;&#x3D; true) {
+      allergyArray.push(&quot;Sulphites&quot;);
+    }
+    return allergyArray;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;h-100 container-fluid&quot;&gt;
+  &lt;div class&#x3D;&quot;row justify-content-center &quot;&gt;
+    &lt;p class&#x3D;&quot;display-1 menuTitle&quot;&gt;Menu&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;mat-toolbar class&#x3D;&quot;container-fluid toolbar toolbarDiv&quot;&gt;
+  &lt;button mat-icon-button (click)&#x3D;&quot;goHome()&quot; title&#x3D;&quot;Home page&quot;&gt;
+    &lt;mat-icon&gt;home&lt;/mat-icon&gt;
+  &lt;/button&gt;
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;
+  &lt;ready-to-order&gt;&lt;/ready-to-order&gt;
+  &lt;span class&#x3D;&quot;spacer&quot;&gt;&lt;/span&gt;
+  &lt;button mat-icon-button (click)&#x3D;&quot;openTracker()&quot; title&#x3D;&quot;Order Tracker&quot;&gt;
+    &lt;mat-icon&gt;timer&lt;/mat-icon&gt;
+  &lt;/button&gt;
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;
+  &lt;button mat-icon-button (click)&#x3D;&quot;openBasket()&quot; title&#x3D;&quot;Shopping Cart&quot;&gt;
+    &lt;mat-icon&gt;shopping_cart&lt;/mat-icon&gt;
+    &lt;span class&#x3D;&#x27;badge badge-warning&#x27; id&#x3D;&#x27;lblCartCount&#x27;&gt; {{selectedMeals.length}} &lt;/span&gt;
+  &lt;/button&gt;
+&lt;/mat-toolbar&gt;
+
+&lt;expansion-pannel class&#x3D;&quot;expansionPannel&quot;&gt;&lt;/expansion-pannel&gt;
+&lt;div class&#x3D;&quot;container-fluid catDiv&quot;&gt;
+  &lt;mat-grid-list [cols]&#x3D;&quot;categories.length&quot; rowHeight&#x3D;&quot;150px&quot; gutterSize&#x3D;&quot;60px&quot;&gt;
+    &lt;mat-grid-tile colspan&#x3D;&quot;1&quot; *ngFor&#x3D;&quot;let category of categories&quot; class&#x3D;&quot;categoryTile&quot;
+      (click)&#x3D;&quot;selectCategory(category)&quot;&gt;
+      &lt;button class&#x3D;&quot;category&quot; mat-raised-button&gt;{{category.category}}&lt;/button&gt;
+    &lt;/mat-grid-tile&gt;
+  &lt;/mat-grid-list&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;container-fluid menuCard&quot;&gt;
+
+  &lt;div class&#x3D;&quot;container-fluid display-2 justify-content-center&quot;&gt;
+    &lt;p class&#x3D;&quot;row justify-content-center categoryTitle&quot;&gt;{{this.selectedCategory.category}}&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;container-fluid&quot;&gt;
+    &lt;div class&#x3D;&quot;h-100 row justify-content-center&quot;&gt;
+      &lt;mat-card class&#x3D;&quot;card col-4&quot; id&#x3D;&quot;list&quot; *ngFor&#x3D;&quot;let menuItem of menu&quot;&gt;
+        &lt;mat-card-header class&#x3D;&quot;mat-card-header&quot;&gt;
+          &lt;mat-card-title class&#x3D;&quot;menu-item-name &quot;&gt;
+            &lt;p&gt;&lt;b&gt;{{menuItem.name}}&lt;/b&gt;&lt;/p&gt;
+          &lt;/mat-card-title&gt;
+          &lt;mat-card-subtitle class&#x3D;&quot;menu-item-price&quot;&gt;£{{menuItem.price}}&lt;/mat-card-subtitle&gt;
+        &lt;/mat-card-header&gt;
+        &lt;img mat-card-image class&#x3D;&quot;foodImg&quot; [src]&#x3D;&quot;menuItem.pictureUrl&quot;&gt;
+        &lt;mat-card-content class&#x3D;&quot;menu-item-description&quot;&gt;
+          &lt;p&gt;
+            {{menuItem.description}}
+          &lt;/p&gt;
+        &lt;/mat-card-content&gt;
+        &lt;mat-card-content class&#x3D;&quot;menu-item-calories-allergens&quot;&gt;
+          &lt;p&gt;
+            &lt;b&gt;{{menuItem.calories}} calories&lt;/b&gt;
+          &lt;/p&gt;
+          &lt;div *ngIf&#x3D;&quot;this.allergensArray(menuItem) &#x3D;&#x3D; []; else allergensListBlock&quot;&gt;
+            No Allergens!
+          &lt;/div&gt;
+          &lt;ng-template #allergensListBlock&gt;
+            &lt;span class&#x3D;&quot;allergens&quot; *ngFor&#x3D;&quot;let allergen of this.allergensArray(menuItem)&quot;&gt;
+              &lt;span *ngIf&#x3D;&quot;allergen !&#x3D; this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]&quot;&gt;
+                {{allergen}},
+              &lt;/span&gt;
+              &lt;span *ngIf&#x3D;&quot;allergen &#x3D;&#x3D; this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]&quot;&gt;
+                {{allergen}}
+              &lt;/span&gt;
+            &lt;/span&gt;
+          &lt;/ng-template&gt;
+        &lt;/mat-card-content&gt;
+        &lt;mat-card-actions class&#x3D;&quot;card-actions&quot;&gt;
+          &lt;button mat-raised-button class&#x3D;&quot;action-button&quot;
+            *ngIf&#x3D;&quot;getNumberOfSelections(menuItem) &#x3D;&#x3D; 0 else editMealSelections&quot; (click)&#x3D;&quot;addMeal(menuItem)&quot;&gt;
+            Add to Cart
+          &lt;/button&gt;
+          &lt;ng-template #editMealSelections&gt;
+            &lt;button mat-raised-button class&#x3D;&quot;quantity-action-button&quot; (click)&#x3D;&quot;addMeal(menuItem)&quot;&gt;
+              &lt;mat-icon&gt;add&lt;/mat-icon&gt;
+            &lt;/button&gt;
+            &lt;button class&#x3D;&quot;selection-fab&quot;&gt;
+              {{getNumberOfSelections(menuItem)}}
+            &lt;/button&gt;
+            &lt;button mat-raised-button class&#x3D;&quot;quantity-action-button&quot; (click)&#x3D;&quot;removeMeal(menuItem)&quot;&gt;
+              &lt;mat-icon&gt;remove&lt;/mat-icon&gt;
+            &lt;/button&gt;
+          &lt;/ng-template&gt;
+        &lt;/mat-card-actions&gt;
+      &lt;/mat-card&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;callWaiterFloat&quot;&gt;
+  &lt;i class&#x3D;&quot;container-fluid my-float&quot; data-toggle&#x3D;&quot;popover&quot; title&#x3D;&quot;Need help? Click to call a waiter&quot;&gt;
+    &lt;call-waiter class&#x3D;&quot;row justify-content-center&quot;&gt;&lt;/call-waiter&gt;
+  &lt;/i&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./customer-interface.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">$background: #fdfdf3
+$pure-gold: #dbc028
+$gold-light: #e9c46a
+$maroon: rgb(59, 13, 13)
+$teal: #388572
+
+body
+  background-image: url(&#x27;../../assets/images/background.jpg&#x27;)
+  background-size: cover
+  background-repeat: no-repeat
+  background-attachment: fixed
+
+.toolbar
+  color: #264653
+  background-color: #e9c46a
+  border-radius: 3px
+
+.mat-card
+  max-width: 300px
+
+.menu-item-price
+  font-size: 13px
+  color: $pure-gold
+
+.menu-item-name
+  font-family: &#x27;Reenie Beanie&#x27;, cursive
+  font-size: 30px
+
+.menu-item-description
+  font-family: &#x27;Reenie Beanie&#x27;, cursive
+  color: #0e0b00
+  padding: 5px
+  height: 100px
+  text-align: justify
+  text-justify: inter-word
+
+.spacer
+  flex: 1 1 auto
+
+.menuUI
+  font-size: 30px
+  font-family: &#x27;Reenie Beanie&#x27;, cursive
+  height: 100%
+  width: 100%
+  padding: 10px
+
+.menuTitle
+  font-family: &#x27;Cedarville Cursive&#x27;, cursive
+  color: $pure-gold
+  text-shadow: 5px 5px 5px #565656
+
+.card-actions
+  padding: 0
+  margin: 0
+
+.selection-fab
+  margin: 5px
+  background-color: #0e0b00
+  font-family: &#x27;Reenie Beanie&#x27;, cursive
+  color: white
+  height: 35px
+  width: 35px
+  border-radius: 50%
+  display: inline-block
+  text-align: center
+
+.an-2
+  font-weight: 900
+  font-size: 7vw
+
+.action-button
+  font-family: &#x27;Reenie Beanie&#x27;, cursive
+  background-color: #388572
+  color: white
+  font-size: 15px
+
+.quantity-action-button
+  background-color: #388572
+  color: white
+
+.mat-card-header
+  height: 70px
+
+.category
+  font-size: 3vw
+  font-family: &#x27;Reenie Beanie&#x27;, cursive
+  color: $pure-gold
+  border-radius: 3px
+  background-color: #388572
+  width: 100%
+  height: 100%
+  text-align: center
+  padding: 15px
+
+.catRow
+  height: 150px
+
+.categoryTile:hover
+  transform: translateY(-7px)
+  transition: 0.2s
+
+.basket
+  background-color: #bbbbbbf2
+  backdrop-filter: blur(4px)
+  .badge
+    padding-left: 9px
+    padding-right: 9px
+    -webkit-border-radius: 9px
+    -moz-border-radius: 9px
+    border-radius: 9px
+
+.label-warning[href],
+.badge-warning[href]
+  background-color: #c67605
+
+#lblCartCount
+  font-size: 12px
+  background-color: #388572
+  color: #fff
+  padding: 0 5px
+  vertical-align: top
+  margin-left: -10px
+
+.menuCard
+  width: 90%
+  border-radius: 10px
+  padding: 10px
+  margin: 50px
+  min-height: 100vh
+  padding-bottom: 20px
+
+.card
+  padding: 15px
+  margin: 20px
+
+.foodImg
+  height: 250px
+  width: 250px
+
+.menuCard .innerBorder
+  border-radius: 10px
+  border: 1px dotted $teal
+
+.categoryTitle
+  font-size: 6vw
+  font-family: &#x27;Cedarville Cursive&#x27;, cursive
+  color: $pure-gold
+  text-shadow: 5px 5px 5px #565656
+
+.helpBubble
+  position: absolute
+  bottom: 0
+  right: 0
+
+.callWaiterFloat
+  position: fixed
+  width: 80px
+  height: 80px
+  bottom: 40px
+  right: 40px
+  background-color: #0C9
+  color: #FFF
+  border-radius: 50px
+  text-align: center
+  box-shadow: 2px 2px 3px #999
+
+.expansionPannel
+  padding: 20px
+  width: 100%
+
+.menu-item-name
+  height: 40px
+
+.menu-item-calories-allergens
+  font-family: &#x27;Reenie Beanie&#x27;, cursive
+  color: #0e0b00
+  padding: 5px
+  height: 60px
+  text-align: justify
+  text-justify: inter-word
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="h-100 container-fluid">  <div class="row justify-content-center ">    <p class="display-1 menuTitle">Menu</p>  </div></div><mat-toolbar class="container-fluid toolbar toolbarDiv">  <button mat-icon-button (click)="goHome()" title="Home page">    <mat-icon>home</mat-icon>  </button>  &nbsp;&nbsp;&nbsp;  <ready-to-order></ready-to-order>  <span class="spacer"></span>  <button mat-icon-button (click)="openTracker()" title="Order Tracker">    <mat-icon>timer</mat-icon>  </button>  &nbsp;&nbsp;&nbsp;  <button mat-icon-button (click)="openBasket()" title="Shopping Cart">    <mat-icon>shopping_cart</mat-icon>    <span class=\'badge badge-warning\' id=\'lblCartCount\'> {{selectedMeals.length}} </span>  </button></mat-toolbar><expansion-pannel class="expansionPannel"></expansion-pannel><div class="container-fluid catDiv">  <mat-grid-list [cols]="categories.length" rowHeight="150px" gutterSize="60px">    <mat-grid-tile colspan="1" *ngFor="let category of categories" class="categoryTile"      (click)="selectCategory(category)">      <button class="category" mat-raised-button>{{category.category}}</button>    </mat-grid-tile>  </mat-grid-list></div><div class="container-fluid menuCard">  <div class="container-fluid display-2 justify-content-center">    <p class="row justify-content-center categoryTitle">{{this.selectedCategory.category}}</p>  </div>  <div class="container-fluid">    <div class="h-100 row justify-content-center">      <mat-card class="card col-4" id="list" *ngFor="let menuItem of menu">        <mat-card-header class="mat-card-header">          <mat-card-title class="menu-item-name ">            <p><b>{{menuItem.name}}</b></p>          </mat-card-title>          <mat-card-subtitle class="menu-item-price">£{{menuItem.price}}</mat-card-subtitle>        </mat-card-header>        <img mat-card-image class="foodImg" [src]="menuItem.pictureUrl">        <mat-card-content class="menu-item-description">          <p>            {{menuItem.description}}          </p>        </mat-card-content>        <mat-card-content class="menu-item-calories-allergens">          <p>            <b>{{menuItem.calories}} calories</b>          </p>          <div *ngIf="this.allergensArray(menuItem) == []; else allergensListBlock">            No Allergens!          </div>          <ng-template #allergensListBlock>            <span class="allergens" *ngFor="let allergen of this.allergensArray(menuItem)">              <span *ngIf="allergen != this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]">                {{allergen}},              </span>              <span *ngIf="allergen == this.allergensArray(menuItem)[this.allergensArray(menuItem).length - 1]">                {{allergen}}              </span>            </span>          </ng-template>        </mat-card-content>        <mat-card-actions class="card-actions">          <button mat-raised-button class="action-button"            *ngIf="getNumberOfSelections(menuItem) == 0 else editMealSelections" (click)="addMeal(menuItem)">            Add to Cart          </button>          <ng-template #editMealSelections>            <button mat-raised-button class="quantity-action-button" (click)="addMeal(menuItem)">              <mat-icon>add</mat-icon>            </button>            <button class="selection-fab">              {{getNumberOfSelections(menuItem)}}            </button>            <button mat-raised-button class="quantity-action-button" (click)="removeMeal(menuItem)">              <mat-icon>remove</mat-icon>            </button>          </ng-template>        </mat-card-actions>      </mat-card>    </div>  </div></div><div class="callWaiterFloat">  <i class="container-fluid my-float" data-toggle="popover" title="Need help? Click to call a waiter">    <call-waiter class="row justify-content-center"></call-waiter>  </i></div></div>'
+    var COMPONENTS = [{'name': 'AddIngredientComponent', 'selector': 'app-add-ingredient'},{'name': 'AddIngredientDialogComponent', 'selector': 'app-add-ingredient-dialog'},{'name': 'AddMenuDialogComponent', 'selector': 'app-add-order-dialog'},{'name': 'AddStaffComponent', 'selector': 'app-add-staff'},{'name': 'AddStaffDialogComponent', 'selector': 'app-add-staff-dialog'},{'name': 'AllergensChipsComponent', 'selector': 'allergens-chips'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BasketComponent', 'selector': 'app-basket'},{'name': 'CallWaiterComponent', 'selector': 'call-waiter'},{'name': 'CategoryDialogComponent', 'selector': 'app-category-dialog'},{'name': 'CustomerInterfaceComponent', 'selector': 'app-customer-interface'},{'name': 'ExpansionPannelComponent', 'selector': 'expansion-pannel'},{'name': 'HomePageComponent', 'selector': 'app-home-page'},{'name': 'IngredientsDialogComponent', 'selector': 'app-ingredients-dialog'},{'name': 'KitchenMenuComponent', 'selector': 'app-kitchen-menu'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginInputComponent', 'selector': 'app-login-input'},{'name': 'ManagerMenuComponent', 'selector': 'app-manager-menu'},{'name': 'MenusListDisplayComponent', 'selector': 'app-menus-list-display'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'NotificationsDialogComponent', 'selector': 'notifications-dialog'},{'name': 'OrderComponent', 'selector': 'app-order'},{'name': 'OrdersListDisplayComponent', 'selector': 'app-orders-list-display'},{'name': 'OrderTrackerComponent', 'selector': 'app-order-tracker'},{'name': 'PaymentComponent', 'selector': 'payment-stepper'},{'name': 'PickTableDialogComponent', 'selector': 'app-pick-table-dialog'},{'name': 'ReadyToOrderComponent', 'selector': 'ready-to-order'},{'name': 'SalesDialogComponent', 'selector': 'app-sales-dialog'},{'name': 'SelectTableDialogComponent', 'selector': 'select-table-dialog'},{'name': 'TablesListDisplayComponent', 'selector': 'app-tables-list-display'},{'name': 'WaiterMenuComponent', 'selector': 'app-waiter-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CustomerInterfaceComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CustomerInterfaceComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

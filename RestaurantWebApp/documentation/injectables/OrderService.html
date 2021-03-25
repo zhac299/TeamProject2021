@@ -1,0 +1,2051 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>restaurant-web-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">restaurant-web-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>OrderService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/order.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service that performs create, read, update, delete operations using the Restaurant Api</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_refreshNeeded">_refreshNeeded</a>
+                            </li>
+                            <li>
+                                <a href="#orders$">orders$</a>
+                            </li>
+                            <li>
+                                <a href="#orderSubject$">orderSubject$</a>
+                            </li>
+                            <li>
+                                <a href="#refresh$">refresh$</a>
+                            </li>
+                            <li>
+                                <a href="#restaurantWebApiUrl">restaurantWebApiUrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#waiterId">waiterId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createNewOrder">createNewOrder</a>
+                            </li>
+                            <li>
+                                <a href="#createNewOrderWithCustomer">createNewOrderWithCustomer</a>
+                            </li>
+                            <li>
+                                <a href="#deleteOrderById">deleteOrderById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getNoConfirmedOrders">getNoConfirmedOrders</a>
+                            </li>
+                            <li>
+                                <a href="#getOrderById">getOrderById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getOrderedMenuItems">getOrderedMenuItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getOrders">getOrders</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getUpdatedOrders">getUpdatedOrders</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getWaiterSpecificOrders">getWaiterSpecificOrders</a>
+                            </li>
+                            <li>
+                                <a href="#updateIsPaid">updateIsPaid</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrder">updateOrder</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrderConfirmed">updateOrderConfirmed</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrderDelivered">updateOrderDelivered</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#updateOrderIsConfirmed">updateOrderIsConfirmed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#updateOrderIsDelivered">updateOrderIsDelivered</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrderReady">updateOrderReady</a>
+                            </li>
+                            <li>
+                                <a href="#updateTotal">updateTotal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/order.service.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>httpClient</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to perform http requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewOrder"></a>
+                    <span class="name">
+                        <b>
+                            createNewOrder
+                        </b>
+                        <a href="#createNewOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createNewOrder(customer: <a href="../classes/Customer.html">Customer</a>, total: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/order.service.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates new order with a total initialised to zero.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>customer</td>
+                                    <td>
+                                                <code><a href="../classes/Customer.html" target="_self" >Customer</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to assign to order</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>total</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to add to order</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewOrderWithCustomer"></a>
+                    <span class="name">
+                        <b>
+                            createNewOrderWithCustomer
+                        </b>
+                        <a href="#createNewOrderWithCustomer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createNewOrderWithCustomer(customer: <a href="../classes/Customer.html">Customer</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/order.service.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a new order with an assigned new customer.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>customer</td>
+                                    <td>
+                                                <code><a href="../classes/Customer.html" target="_self" >Customer</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to assign to the new order</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteOrderById"></a>
+                    <span class="name">
+                        <b>
+                            deleteOrderById
+                        </b>
+                        <a href="#deleteOrderById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteOrderById(orderId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">src/app/order.service.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Deletes an order by Id.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>orderId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>belonging to order that needs to be deleted</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNoConfirmedOrders"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            getNoConfirmedOrders
+                        </b>
+                        <a href="#getNoConfirmedOrders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNoConfirmedOrders()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="250"
+                            class="link-to-prism">src/app/order.service.ts:250</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get orders that have not been confirmed.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order[]&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOrderById"></a>
+                    <span class="name">
+                        <b>
+                            getOrderById
+                        </b>
+                        <a href="#getOrderById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOrderById(orderId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/app/order.service.ts:113</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets an order by querying by Id.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>orderId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>id of order</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOrderedMenuItems"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            getOrderedMenuItems
+                        </b>
+                        <a href="#getOrderedMenuItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getOrderedMenuItems(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">src/app/order.service.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets ordered menu items for an order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to get ordered items of</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Menu.html" target="_self" >Observable&lt;Menu[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOrders"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            getOrders
+                        </b>
+                        <a href="#getOrders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getOrders()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/order.service.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get all orders from the Api.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order[]&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUpdatedOrders"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            getUpdatedOrders
+                        </b>
+                        <a href="#getUpdatedOrders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUpdatedOrders()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/order.service.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get updated orders by changing state of order subject.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getWaiterSpecificOrders"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            getWaiterSpecificOrders
+                        </b>
+                        <a href="#getWaiterSpecificOrders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getWaiterSpecificOrders(waiterId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="258"
+                            class="link-to-prism">src/app/order.service.ts:258</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get orders that have only been assigned to a waiter.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>waiterId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Id of waiter</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateIsPaid"></a>
+                    <span class="name">
+                        <b>
+                            updateIsPaid
+                        </b>
+                        <a href="#updateIsPaid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateIsPaid(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="200"
+                            class="link-to-prism">src/app/order.service.ts:200</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates isPaid property of order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to be updated</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrder"></a>
+                    <span class="name">
+                        <b>
+                            updateOrder
+                        </b>
+                        <a href="#updateOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrder(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">src/app/order.service.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates an order using a put request.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to be updated</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderConfirmed"></a>
+                    <span class="name">
+                        <b>
+                            updateOrderConfirmed
+                        </b>
+                        <a href="#updateOrderConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrderConfirmed(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/order.service.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update the isConfirmed property of an order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to be updated</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderDelivered"></a>
+                    <span class="name">
+                        <b>
+                            updateOrderDelivered
+                        </b>
+                        <a href="#updateOrderDelivered"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrderDelivered(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="141"
+                            class="link-to-prism">src/app/order.service.ts:141</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update the isDelivered property of an order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to be updated</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderIsConfirmed"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            updateOrderIsConfirmed
+                        </b>
+                        <a href="#updateOrderIsConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOrderIsConfirmed(order: <a href="../classes/Order.html">Order</a>, newIsConfirmed: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="236"
+                            class="link-to-prism">src/app/order.service.ts:236</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates isDelivered property of order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to be updated</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>newIsConfirmed</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>new value of isConfirmed</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderIsDelivered"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            updateOrderIsDelivered
+                        </b>
+                        <a href="#updateOrderIsDelivered"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOrderIsDelivered(order: <a href="../classes/Order.html">Order</a>, newIsDelivered: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="220"
+                            class="link-to-prism">src/app/order.service.ts:220</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates isDelivered property of order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to be updated</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>newIsDelivered</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>new value of isDelivered</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderReady"></a>
+                    <span class="name">
+                        <b>
+                            updateOrderReady
+                        </b>
+                        <a href="#updateOrderReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrderReady(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="157"
+                            class="link-to-prism">src/app/order.service.ts:157</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update the isReady property of an order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to be updated</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Order.html" target="_self" >Observable&lt;Order&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateTotal"></a>
+                    <span class="name">
+                        <b>
+                            updateTotal
+                        </b>
+                        <a href="#updateTotal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateTotal(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="182"
+                            class="link-to-prism">src/app/order.service.ts:182</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates total of an order.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to be updated</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_refreshNeeded"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _refreshNeeded</b>
+                            <a href="#_refreshNeeded"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/order.service.ts:26</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A subject that is called when a new request is needed.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orders$"></a>
+                        <span class="name">
+                            <b>
+                            orders$</b>
+                            <a href="#orders$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.refresh$.pipe(
+    exhaustMap(() &#x3D;&gt; this.getOrders()),
+    share()
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/order.service.ts:46</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A public observable that can be subscribed to by components.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderSubject$"></a>
+                        <span class="name">
+                            <b>
+                            orderSubject$</b>
+                            <a href="#orderSubject$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject&lt;Order[]&gt;([])</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/order.service.ts:36</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Helper Subject to store orders for state management.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="refresh$"></a>
+                        <span class="name">
+                            <b>
+                            refresh$</b>
+                            <a href="#refresh$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject(null)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/order.service.ts:41</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A subject that can be called if new observables need to be emitted.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="restaurantWebApiUrl"></a>
+                        <span class="name">
+                            <b>
+                            restaurantWebApiUrl</b>
+                            <a href="#restaurantWebApiUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;http://localhost:8080/api/v1/orders&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/order.service.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>URL for orders in the Api</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="waiterId"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            waiterId</b>
+                            <a href="#waiterId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/order.service.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Id for a waiter to get specified orders for a waiter.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { BehaviorSubject, Observable, Subject } from &#x27;rxjs&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Order } from &#x27;../models/Order&#x27;;
+import { exhaustMap, share, tap } from &#x27;rxjs/operators&#x27;;
+import { Menu } from &quot;../models/Menu&quot;;
+import { Customer } from &quot;../models/Customer&quot;;
+
+/**
+ * Service that performs create, read, update, delete operations using the Restaurant Api
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class OrderService {
+
+  /**
+   * URL for orders in the Api
+   */
+  restaurantWebApiUrl &#x3D; &#x27;http://localhost:8080/api/v1/orders&#x27;;
+
+  /**
+   * A subject that is called when a new request is needed.
+   * @private
+   */
+  private _refreshNeeded &#x3D; new Subject&lt;void&gt;();
+
+  /**
+   * Id for a waiter to get specified orders for a waiter.
+   */
+  public waiterId: number;
+
+  /**
+   * Helper Subject to store orders for state management.
+   */
+  orderSubject$ &#x3D; new BehaviorSubject&lt;Order[]&gt;([]);
+
+  /**
+   * A subject that can be called if new observables need to be emitted.
+   */
+  refresh$ &#x3D; new BehaviorSubject(null);
+
+  /**
+   * A public observable that can be subscribed to by components.
+   */
+  orders$ &#x3D; this.refresh$.pipe(
+    exhaustMap(() &#x3D;&gt; this.getOrders()),
+    share()
+  );
+
+  /**
+   *
+   * @param httpClient to perform http requests
+   */
+  constructor(private httpClient: HttpClient) {
+  }
+
+  /**
+   * Get all orders from the Api.
+   */
+  public getOrders(): Observable&lt;Order[]&gt; {
+    return this.httpClient.get&lt;Order[]&gt;(this.restaurantWebApiUrl);
+  }
+
+  /**
+   * Get updated orders by changing state of order subject.
+   */
+  public getUpdatedOrders(): void {
+    this.httpClient.get&lt;Order[]&gt;(this.restaurantWebApiUrl)
+      .subscribe((orders) &#x3D;&gt; {
+        this.orderSubject$.next(orders);
+      });
+  }
+
+  /**
+   * Creates a new order with an assigned new customer.
+   * @param customer to assign to the new order
+   */
+  createNewOrderWithCustomer(customer: Customer): void {
+    const orderWithCustomer &#x3D; new Order();
+    orderWithCustomer.customer &#x3D; customer;
+    orderWithCustomer.isPaid &#x3D; false;
+    orderWithCustomer.total &#x3D; 0;
+    orderWithCustomer.waiterId &#x3D; this.waiterId;
+    this.httpClient.post&lt;Order&gt;(this.restaurantWebApiUrl, orderWithCustomer)
+      .subscribe((order) &#x3D;&gt; {
+        const _orders &#x3D; this.orderSubject$.getValue();
+        _orders.push(order);
+        this.orderSubject$.next(
+          _orders
+        );
+        this.getUpdatedOrders();
+      });
+  }
+
+  /**
+   * Creates new order with a total initialised to zero.
+   * @param customer to assign to order
+   * @param total to add to order
+   */
+  createNewOrder(customer: Customer, total: number): Observable&lt;Order&gt; {
+    const orderWithCustomer &#x3D; new Order();
+    orderWithCustomer.customer &#x3D; customer;
+    orderWithCustomer.total &#x3D; total;
+    orderWithCustomer.isPaid &#x3D; false;
+    return this.httpClient.post&lt;Order&gt;(this.restaurantWebApiUrl, orderWithCustomer);
+  }
+
+  /**
+   * Gets an order by querying by Id.
+   * @param orderId id of order
+   */
+  getOrderById(orderId: number): Observable&lt;Order&gt; {
+    return this.refresh$.pipe(
+      exhaustMap(() &#x3D;&gt;
+        this.httpClient.get&lt;Order&gt;(&#x60;${this.restaurantWebApiUrl}/${orderId}&#x60;)
+      )
+    );
+  }
+
+  /**
+   * Deletes an order by Id.
+   * @param orderId belonging to order that needs to be deleted
+   */
+  deleteOrderById(orderId: number): void {
+    this.httpClient.delete&lt;Order&gt;(&#x60;${this.restaurantWebApiUrl}/${orderId}&#x60;)
+      .subscribe(() &#x3D;&gt; {
+        this.orderSubject$.next(
+          this.orderSubject$.getValue()
+            .filter(
+              (ignoreOrder) &#x3D;&gt;
+                ignoreOrder.id !&#x3D;&#x3D; orderId)
+        );
+      });
+  }
+
+  /**
+   * Update the isDelivered property of an order.
+   * @param order to be updated
+   */
+  updateOrderDelivered(order: Order): Observable&lt;Order&gt; {
+    return this.httpClient.put&lt;Order&gt;(&#x60;${this.restaurantWebApiUrl}/${order.id}/isdelivered/${order.isDelivered}&#x60;, order);
+  }
+
+  /**
+   * Update the isConfirmed property of an order.
+   * @param order to be updated
+   */
+  updateOrderConfirmed(order: Order): Observable&lt;Order&gt; {
+    return this.httpClient.put&lt;Order&gt;(&#x60;${this.restaurantWebApiUrl}/${order.id}/isconfirmed/${order.isConfirmed}&#x60;, order);
+  }
+
+  /**
+   * Update the isReady property of an order.
+   * @param order to be updated
+   */
+  updateOrderReady(order: Order): Observable&lt;Order&gt; {
+    return this.httpClient.put&lt;Order&gt;(&#x60;${this.restaurantWebApiUrl}/${order.id}/isready/${order.isReady}&#x60;, order);
+  }
+
+  /**
+   * Updates an order using a put request.
+   * @param order to be updated
+   */
+  updateOrder(order: Order): void {
+    this.httpClient.put&lt;Order&gt;(&#x60;${this.restaurantWebApiUrl}/${order.id}&#x60;, order)
+      .subscribe((order) &#x3D;&gt; {
+        let _orders &#x3D; this.orderSubject$.getValue();
+        _orders.forEach((whichOrder) &#x3D;&gt; {
+          if (whichOrder.id &#x3D;&#x3D; order.id) {
+            whichOrder &#x3D; order;
+          }
+        });
+        this.orderSubject$.next(_orders);
+      });
+  }
+
+  /**
+   * Updates total of an order.
+   * @param order to be updated
+   */
+  updateTotal(order: Order): void {
+    let updateTotalUrl &#x3D; this.restaurantWebApiUrl + &quot;/total&quot;;
+    this.httpClient.put&lt;Order&gt;(&#x60;${updateTotalUrl}/${order.id}/${order.total}&#x60;, order)
+      .subscribe((order) &#x3D;&gt; {
+        let _orders &#x3D; this.orderSubject$.getValue();
+        _orders.forEach((whichOrder) &#x3D;&gt; {
+          if (whichOrder.id &#x3D;&#x3D; order.id) {
+            whichOrder &#x3D; order;
+          }
+        });
+        this.orderSubject$.next(_orders);
+      })
+  }
+
+  /**
+   * Updates isPaid property of order.
+   * @param order to be updated
+   */
+  updateIsPaid(order: Order): void {
+    let updateIsPaidUrl &#x3D; this.restaurantWebApiUrl + &quot;/isPaid&quot;;
+    this.httpClient.put&lt;Order&gt;(&#x60;${updateIsPaidUrl}/${order.id}/${order.isPaid}&#x60;, order).subscribe((order) &#x3D;&gt; {
+      console.log(order);
+    })
+  }
+
+  /**
+   * Gets ordered menu items for an order.
+   * @param order to get ordered items of
+   */
+  public getOrderedMenuItems(order: Order): Observable&lt;Menu[]&gt; {
+    return this.httpClient.get&lt;Menu[]&gt;(&#x60;${this.restaurantWebApiUrl}/${order.id}/orderedMenuItems&#x60;);
+  }
+
+  /**
+   * Updates isDelivered property of order.
+   * @param order to be updated
+   * @param newIsDelivered new value of isDelivered
+   */
+  public updateOrderIsDelivered(order: Order, newIsDelivered: boolean): Observable&lt;Order&gt; {
+    let restaurantOrderIsDeliveredURL: string &#x3D; this.restaurantWebApiUrl + &#x27;/&#x27; + order.id + &#x27;/isdelivered&#x27;;
+    order.isDelivered &#x3D; newIsDelivered;
+    return this.httpClient.put&lt;Order&gt;(&#x60;${restaurantOrderIsDeliveredURL}/${newIsDelivered.valueOf()}&#x60;, order)
+      .pipe(
+        tap(() &#x3D;&gt; {
+          this._refreshNeeded.next();
+        })
+      )
+  }
+
+  /**
+   * Updates isDelivered property of order.
+   * @param order to be updated
+   * @param newIsConfirmed new value of isConfirmed
+   */
+  public updateOrderIsConfirmed(order: Order, newIsConfirmed: boolean): Observable&lt;Order&gt; {
+    let restaurantOrderIsConfirmedURL: string &#x3D; this.restaurantWebApiUrl + &#x27;/&#x27; + order.id + &#x27;/isconfirmed&#x27;;
+    order.isConfirmed &#x3D; newIsConfirmed;
+    return this.httpClient.put&lt;Order&gt;(&#x60;${restaurantOrderIsConfirmedURL}/${newIsConfirmed.valueOf()}&#x60;, order)
+      .pipe(
+        tap(() &#x3D;&gt; {
+          this._refreshNeeded.next();
+        })
+      )
+  }
+
+  /**
+   * Get orders that have not been confirmed.
+   */
+  public getNoConfirmedOrders(): Observable&lt;Order[]&gt; {
+    return this.httpClient.get&lt;Order[]&gt;(&#x60;${this.restaurantWebApiUrl}/noisconfirmed&#x60;);
+  }
+
+  /**
+   * Get orders that have only been assigned to a waiter.
+   * @param waiterId Id of waiter
+   */
+  public getWaiterSpecificOrders(waiterId: number): Observable&lt;Order[]&gt; {
+    return this.httpClient.get&lt;Order[]&gt;(&#x60;${this.restaurantWebApiUrl}/waiterid/${waiterId}&#x60;);
+  }
+
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'OrderService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

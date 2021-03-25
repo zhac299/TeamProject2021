@@ -1,0 +1,1085 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>restaurant-web-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">restaurant-web-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>WaiterMenuComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/waiter-menu/waiter-menu.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for all waiter staff specific features including their related permissions</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-waiter-menu</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./waiter-menu.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./waiter-menu.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                <a href="#paramsObject">paramsObject</a>
+                            </li>
+                            <li>
+                                <a href="#waiter">waiter</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createNewOrder">createNewOrder</a>
+                            </li>
+                            <li>
+                                <a href="#createNewTable">createNewTable</a>
+                            </li>
+                            <li>
+                                <a href="#deleteMenuItem">deleteMenuItem</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openAddMenuDialog">openAddMenuDialog</a>
+                            </li>
+                            <li>
+                                <a href="#openSelectTableDialog">openSelectTableDialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, menuService: <a href="../injectables/MenuService.html">MenuService</a>, dialog: MatDialog, staffService: <a href="../injectables/StaffService.html">StaffService</a>, tableService: <a href="../injectables/TableService.html">TableService</a>, customerService: <a href="../injectables/CustomerService.html">CustomerService</a>, orderService: <a href="../injectables/OrderService.html">OrderService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to access params from parent component</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>menuService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MenuService.html" target="_self" >MenuService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to perform crud on menus</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to open/close dialogs</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>staffService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StaffService.html" target="_self" >StaffService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to perform crud on staff objects</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>tableService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TableService.html" target="_self" >TableService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to perform crud on tables</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>customerService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CustomerService.html" target="_self" >CustomerService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to perform crud on customers</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>orderService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OrderService.html" target="_self" >OrderService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to perform crud on orders</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewOrder"></a>
+                    <span class="name">
+                        <b>
+                            createNewOrder
+                        </b>
+                        <a href="#createNewOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createNewOrder()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a new order with a new customer</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewTable"></a>
+                    <span class="name">
+                        <b>
+                            createNewTable
+                        </b>
+                        <a href="#createNewTable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createNewTable()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates new table</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteMenuItem"></a>
+                    <span class="name">
+                        <b>
+                            deleteMenuItem
+                        </b>
+                        <a href="#deleteMenuItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteMenuItem(menu: <a href="../classes/Menu.html">Menu</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Deletes a menu</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>menu</td>
+                                    <td>
+                                                <code><a href="../classes/Menu.html" target="_self" >Menu</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to delete</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:62</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Initialises with given waiter ID through the activated route
+and initialises order and table services with this waiter Id.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openAddMenuDialog"></a>
+                    <span class="name">
+                        <b>
+                            openAddMenuDialog
+                        </b>
+                        <a href="#openAddMenuDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openAddMenuDialog()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens dialog to add menu item</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openSelectTableDialog"></a>
+                    <span class="name">
+                        <b>
+                            openSelectTableDialog
+                        </b>
+                        <a href="#openSelectTableDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openSelectTableDialog()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens dialog that helps user to select a table</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Table.html" target="_self" >Observable&lt;Table&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:40</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">to open/close dialogs</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paramsObject"></a>
+                        <span class="name">
+                            <b>
+                            paramsObject</b>
+                            <a href="#paramsObject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:56</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Helper paramObject to route to this page with an ID
+after logging in</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="waiter"></a>
+                        <span class="name">
+                            <b>
+                            waiter</b>
+                            <a href="#waiter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Staff.html" target="_self" >Staff</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/waiter-menu/waiter-menu.component.ts:50</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The staff that has logged in to the waiter component</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Table } from &#x27;../../models/Table&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { MenuService } from &quot;../menu.service&quot;;
+import { Menu } from &quot;../../models/Menu&quot;;
+import { Observable } from &quot;rxjs&quot;;
+import { PickTableDialogComponent } from &quot;./pick-table-dialog/pick-table-dialog.component&quot;;
+import { TableService } from &#x27;../table.service&#x27;;
+import { switchMap } from &#x27;rxjs/operators&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Staff } from &#x27;../../models/Staff&#x27;;
+import { StaffService } from &#x27;../staff.service&#x27;;
+import { CustomerService } from &#x27;../customer.service&#x27;;
+import { OrderService } from &#x27;../order.service&#x27;;
+import { AddMenuDialogComponent } from &#x27;./add-menu-dialog/add-menu-dialog.component&#x27;;
+
+/**
+ * Component for all waiter staff specific features including their related permissions
+ */
+@Component({
+  selector: &#x27;app-waiter-menu&#x27;,
+  templateUrl: &#x27;./waiter-menu.component.html&#x27;,
+  styleUrls: [&#x27;./waiter-menu.component.sass&#x27;],
+})
+export class WaiterMenuComponent implements OnInit {
+
+  /**
+   *
+   * @param route to access params from parent component
+   * @param menuService to perform crud on menus
+   * @param dialog to open/close dialogs
+   * @param staffService to perform crud on staff objects
+   * @param tableService to perform crud on tables
+   * @param customerService to perform crud on customers
+   * @param orderService to perform crud on orders
+   */
+  constructor(
+    private route: ActivatedRoute,
+    private menuService: MenuService,
+    public dialog: MatDialog,
+    private staffService: StaffService,
+    private tableService: TableService,
+    private customerService: CustomerService,
+    private orderService: OrderService
+  ) { }
+
+  /**
+   * The staff that has logged in to the waiter component
+   */
+  waiter: Staff;
+
+  /**
+   * Helper paramObject to route to this page with an ID
+   * after logging in
+   */
+  paramsObject: any;
+
+  /**
+   * Initialises with given waiter ID through the activated route
+   * and initialises order and table services with this waiter Id.
+   */
+  ngOnInit(): void {
+    this.route.queryParamMap.subscribe((params) &#x3D;&gt; {
+      this.paramsObject &#x3D; { ...params.keys, ...params };
+      this.staffService.getStaffById(this.paramsObject.params.staffId).subscribe((staff) &#x3D;&gt; {
+        this.waiter &#x3D; staff;
+        this.orderService.waiterId &#x3D; this.waiter.id;
+        this.tableService.currentStaff &#x3D; this.waiter.id;
+      })
+    });
+  }
+
+
+  /**
+   * Opens dialog that helps user to select a table
+   */
+  openSelectTableDialog(): Observable&lt;Table&gt; {
+    const dialogRef &#x3D; this.dialog.open(PickTableDialogComponent);
+    return dialogRef.afterClosed();
+  }
+
+
+  /**
+   * Deletes a menu
+   * @param menu to delete
+   */
+  deleteMenuItem(menu: Menu) {
+    this.menuService.deleteMenu(menu);
+  }
+
+  /**
+   * Creates new table
+   */
+  createNewTable(): void {
+    this.tableService.createTable().subscribe();
+  }
+
+  /**
+   * Creates a new order with a new customer
+   */
+  createNewOrder(): void {
+    this.openSelectTableDialog()
+      .pipe(
+        switchMap((dialogResult) &#x3D;&gt;
+          this.customerService.createCustomerWithTable(dialogResult))
+      ).subscribe((a) &#x3D;&gt;
+        this.orderService.createNewOrderWithCustomer(a)
+      );
+  }
+
+  /**
+   * Opens dialog to add menu item
+   */
+  openAddMenuDialog() {
+    const title &#x3D; &quot;Add New Dish&quot;;
+    let menu: Menu &#x3D; new Menu();
+    const hasMenuItem: boolean &#x3D; false;
+    const dialogRef &#x3D; this.dialog.open(AddMenuDialogComponent, {
+      data: { menu, title, hasMenuItem },
+      width: &#x27;50%&#x27;,
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(menu &#x3D;&gt; {
+      if (menu) {
+        this.menuService.createMenuItem(menu);
+      }
+    })
+  }
+
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-drawer-container class&#x3D;&quot;example-container&quot; autosize&gt;
+    &lt;mat-toolbar class &#x3D; &quot;toolBar&quot;&gt;
+      &lt;mat-toolbar-row&gt;
+        &lt;button mat-button (click) &#x3D; &quot;createNewTable()&quot;&gt;&lt;img class &#x3D; &quot;quickAddButton&quot; src&#x3D;&quot;assets/images/table-dinner-restaurant-furniture-chair-512.png&quot;&gt;&lt;/button&gt;
+        &lt;button mat-button (click) &#x3D; &quot;createNewOrder()&quot;&gt;&lt;img class &#x3D; &quot;quickAddButton&quot; src&#x3D;&quot;assets/images/food.png&quot;&gt;&lt;/button&gt;
+        &lt;button mat-button (click) &#x3D; &quot;openAddMenuDialog()&quot;&gt;&lt;img class &#x3D; &quot;quickAddButton&quot; src&#x3D;&quot;assets/images/burito.png&quot;&gt;&lt;/button&gt;
+        &lt;span class &#x3D; &quot;toolBarTitle&quot;&gt;Waiter Menu&lt;/span&gt;
+        &lt;span class&#x3D;&quot;spacer&quot;&gt;&lt;/span&gt;
+        &lt;notifications&gt;&lt;/notifications&gt;
+        &lt;a routerLink&#x3D;&quot;/home&quot;&gt;
+          &lt;button mat-button&gt;&lt;img class&#x3D;&quot;quickAddButton&quot; src&#x3D;&quot;assets/images/door.png&quot;&gt;&lt;/button&gt;
+        &lt;/a&gt;
+      &lt;/mat-toolbar-row&gt;
+    &lt;/mat-toolbar&gt;
+  &lt;br&gt;&lt;br&gt;&lt;br&gt;
+  &lt;app-tables-list-display [isWaiter] &#x3D; &quot;true&quot;&gt;&lt;/app-tables-list-display&gt;
+  &lt;app-orders-list-display [createPermission] &#x3D; &quot;true&quot; [isWaiter] &#x3D; &quot;true&quot;&gt;
+  &lt;/app-orders-list-display&gt;
+&lt;app-menus-list-display&gt;&lt;/app-menus-list-display&gt;
+
+&lt;/mat-drawer-container&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./waiter-menu.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">$noOrder: red
+$hasOrder: green
+$h1Col: teal
+$btnSize: 75%
+
+$tableButCol: brown
+
+.tableList
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr))
+  gap: 1rem
+  width: border-box
+
+.quickAddButton
+  width: 35px
+  height: 35px
+
+li
+  display: flex
+  flex-direction: row
+  border: 5px
+  width: auto
+  height: 50px
+  list-style-type: none
+
+.confirmDeliverButton
+  border-color: $noOrder
+  width: $btnSize
+  height: $btnSize
+
+.readyToOrder
+  border-color: $hasOrder
+  width: $btnSize
+  height: $btnSize
+
+.noIsReadyToOrder
+  border-color: $noOrder
+  width: $btnSize
+  height: $btnSize
+
+.addOrder
+  border-color: yellow
+
+.tableBut
+  border-color: $tableButCol
+  width: $btnSize
+  height: $btnSize
+
+.toolBarTitle
+  font-family: &#x27;Raleway&#x27;, sans-serif
+  font-size: 50px
+  padding-left: 280px
+
+.toolBar
+  background-color: #76cfb9
+  z-index: 1
+  color: white
+  position: fixed
+
+.buttonRow
+  list-style: none
+  padding-left: 0
+
+.flex-item
+  width: 100%
+  -webkit-flex-direction: column
+  flex-direction: column
+  float: left
+
+.botButtonRow
+  width: 100%
+  position: absolute
+  bottom: 0
+
+.spacer
+  flex: 1 1 auto
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-drawer-container class="example-container" autosize>    <mat-toolbar class = "toolBar">      <mat-toolbar-row>        <button mat-button (click) = "createNewTable()"><img class = "quickAddButton" src="assets/images/table-dinner-restaurant-furniture-chair-512.png"></button>        <button mat-button (click) = "createNewOrder()"><img class = "quickAddButton" src="assets/images/food.png"></button>        <button mat-button (click) = "openAddMenuDialog()"><img class = "quickAddButton" src="assets/images/burito.png"></button>        <span class = "toolBarTitle">Waiter Menu</span>        <span class="spacer"></span>        <notifications></notifications>        <a routerLink="/home">          <button mat-button><img class="quickAddButton" src="assets/images/door.png"></button>        </a>      </mat-toolbar-row>    </mat-toolbar>  <br><br><br>  <app-tables-list-display [isWaiter] = "true"></app-tables-list-display>  <app-orders-list-display [createPermission] = "true" [isWaiter] = "true">  </app-orders-list-display><app-menus-list-display></app-menus-list-display></mat-drawer-container></div>'
+    var COMPONENTS = [{'name': 'AddIngredientComponent', 'selector': 'app-add-ingredient'},{'name': 'AddIngredientDialogComponent', 'selector': 'app-add-ingredient-dialog'},{'name': 'AddMenuDialogComponent', 'selector': 'app-add-order-dialog'},{'name': 'AddStaffComponent', 'selector': 'app-add-staff'},{'name': 'AddStaffDialogComponent', 'selector': 'app-add-staff-dialog'},{'name': 'AllergensChipsComponent', 'selector': 'allergens-chips'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BasketComponent', 'selector': 'app-basket'},{'name': 'CallWaiterComponent', 'selector': 'call-waiter'},{'name': 'CategoryDialogComponent', 'selector': 'app-category-dialog'},{'name': 'CustomerInterfaceComponent', 'selector': 'app-customer-interface'},{'name': 'ExpansionPannelComponent', 'selector': 'expansion-pannel'},{'name': 'HomePageComponent', 'selector': 'app-home-page'},{'name': 'IngredientsDialogComponent', 'selector': 'app-ingredients-dialog'},{'name': 'KitchenMenuComponent', 'selector': 'app-kitchen-menu'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginInputComponent', 'selector': 'app-login-input'},{'name': 'ManagerMenuComponent', 'selector': 'app-manager-menu'},{'name': 'MenusListDisplayComponent', 'selector': 'app-menus-list-display'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'NotificationsDialogComponent', 'selector': 'notifications-dialog'},{'name': 'OrderComponent', 'selector': 'app-order'},{'name': 'OrdersListDisplayComponent', 'selector': 'app-orders-list-display'},{'name': 'OrderTrackerComponent', 'selector': 'app-order-tracker'},{'name': 'PaymentComponent', 'selector': 'payment-stepper'},{'name': 'PickTableDialogComponent', 'selector': 'app-pick-table-dialog'},{'name': 'ReadyToOrderComponent', 'selector': 'ready-to-order'},{'name': 'SalesDialogComponent', 'selector': 'app-sales-dialog'},{'name': 'SelectTableDialogComponent', 'selector': 'select-table-dialog'},{'name': 'TablesListDisplayComponent', 'selector': 'app-tables-list-display'},{'name': 'WaiterMenuComponent', 'selector': 'app-waiter-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'WaiterMenuComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'WaiterMenuComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1995 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>restaurant-web-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">restaurant-web-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>OrderComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/waiter-menu/order/order.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Dialog component for Orders. Displays all information and controls for an order.
+Displays options to edit order if isWaiterStaff property is false.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-order</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./order.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./order.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#data">data</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialogRef">dialogRef</a>
+                            </li>
+                            <li>
+                                <a href="#menuList">menuList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#menuService">menuService</a>
+                            </li>
+                            <li>
+                                <a href="#order$">order$</a>
+                            </li>
+                            <li>
+                                <a href="#orderedMealItems$">orderedMealItems$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#orderedMealItemsSubject$">orderedMealItemsSubject$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#orderSubject$">orderSubject$</a>
+                            </li>
+                            <li>
+                                <a href="#refreshTimer$">refreshTimer$</a>
+                            </li>
+                            <li>
+                                <a href="#subscription">subscription</a>
+                            </li>
+                            <li>
+                                <a href="#subscriptionMenus">subscriptionMenus</a>
+                            </li>
+                            <li>
+                                <a href="#table">table</a>
+                            </li>
+                            <li>
+                                <a href="#total">total</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addMenuToOrder">addMenuToOrder</a>
+                            </li>
+                            <li>
+                                <a href="#deleteOrder">deleteOrder</a>
+                            </li>
+                            <li>
+                                <a href="#deleteOrderedMenuItem">deleteOrderedMenuItem</a>
+                            </li>
+                            <li>
+                                <a href="#getId">getId</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#save">save</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrderConfirmed">updateOrderConfirmed</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrderDelivered">updateOrderDelivered</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrderedMealItems">updateOrderedMealItems</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrderIsPaid">updateOrderIsPaid</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrderReady">updateOrderReady</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialogRef: <a href="../classes/Menu.html">MatDialogRef<WaiterMenuComponent></a>, data: literal type, orderService: <a href="../injectables/OrderService.html">OrderService</a>, menuService: <a href="../injectables/MenuService.html">MenuService</a>, mealService: <a href="../injectables/MealService.html">MealService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialogRef</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/Menu.html" target="_self" >MatDialogRef&lt;WaiterMenuComponent&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>for opening/closing dialogs in the component</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                  
+                                                        <td>
+                                                                    <code>literal type</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Injected data {Order, isKitchenStaff} from parent component</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>orderService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OrderService.html" target="_self" >OrderService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>To perfrom crud on orders</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>menuService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MenuService.html" target="_self" >MenuService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>To perform crud on menus</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>mealService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MealService.html" target="_self" >MealService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>to perform crud on meals</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addMenuToOrder"></a>
+                    <span class="name">
+                        <b>
+                            addMenuToOrder
+                        </b>
+                        <a href="#addMenuToOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addMenuToOrder(menu: <a href="../classes/Menu.html">Menu</a>, order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a menu to the order</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>menu</td>
+                                    <td>
+                                                <code><a href="../classes/Menu.html" target="_self" >Menu</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteOrder"></a>
+                    <span class="name">
+                        <b>
+                            deleteOrder
+                        </b>
+                        <a href="#deleteOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteOrder()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:170</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Deletes this order</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteOrderedMenuItem"></a>
+                    <span class="name">
+                        <b>
+                            deleteOrderedMenuItem
+                        </b>
+                        <a href="#deleteOrderedMenuItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteOrderedMenuItem(meal: <a href="../classes/Meal.html">Meal</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:226</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Delete an ordered menu item from the current order</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>meal</td>
+                                    <td>
+                                                <code><a href="../classes/Meal.html" target="_self" >Meal</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to remove from current order</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getId"></a>
+                    <span class="name">
+                        <b>
+                            getId
+                        </b>
+                        <a href="#getId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getId()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns the id of the injected order that the dialog opens up with</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>the id of current order</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:88</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscribes to order service and menu service for real time changes with
+1 second polling</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <b>
+                            save
+                        </b>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>save(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="214"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:214</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Save&#39;s the curent order and closes the dialog. Sends a reference of changed order back
+to parent component.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to save and send to parent component</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderConfirmed"></a>
+                    <span class="name">
+                        <b>
+                            updateOrderConfirmed
+                        </b>
+                        <a href="#updateOrderConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrderConfirmed(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:130</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates an orders confirmed status</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to change update status of</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderDelivered"></a>
+                    <span class="name">
+                        <b>
+                            updateOrderDelivered
+                        </b>
+                        <a href="#updateOrderDelivered"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrderDelivered(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:120</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates an order&#39;s delivery status</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to change delivery status of</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderedMealItems"></a>
+                    <span class="name">
+                        <b>
+                            updateOrderedMealItems
+                        </b>
+                        <a href="#updateOrderedMealItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrderedMealItems()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds or deletes meals from an order</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderIsPaid"></a>
+                    <span class="name">
+                        <b>
+                            updateOrderIsPaid
+                        </b>
+                        <a href="#updateOrderIsPaid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrderIsPaid(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates paid status of order</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to change isPaid status of</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrderReady"></a>
+                    <span class="name">
+                        <b>
+                            updateOrderReady
+                        </b>
+                        <a href="#updateOrderReady"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrderReady(order: <a href="../classes/Order.html">Order</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/waiter-menu/order/order.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates isReady property for order</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>to update status of isReady</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            data</b>
+                            <a href="#data"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Inject(MAT_DIALOG_DATA)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:78</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Injected data {Order, isKitchenStaff} from parent component</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialogRef"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialogRef</b>
+                            <a href="#dialogRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Menu.html" target="_self" >MatDialogRef&lt;WaiterMenuComponent&gt;</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:77</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">for opening/closing dialogs in the component</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="menuList"></a>
+                        <span class="name">
+                            <b>
+                            menuList</b>
+                            <a href="#menuList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Menu.html" target="_self" >Menu[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The list of all menu item&#39;s that can be added to an order</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="menuService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            menuService</b>
+                            <a href="#menuService"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/MenuService.html" target="_self" >MenuService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:80</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">To perform crud on menus</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="order$"></a>
+                        <span class="name">
+                            <b>
+                            order$</b>
+                            <a href="#order$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.orderSubject$.asObservable()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The order subject as an obsrevable that can be subscribed to</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderedMealItems$"></a>
+                        <span class="name">
+                            <b>
+                            orderedMealItems$</b>
+                            <a href="#orderedMealItems$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.orderedMealItemsSubject$.asObservable()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Ordered Meal items as an observable that can be subscribed to</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderedMealItemsSubject$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            orderedMealItemsSubject$</b>
+                            <a href="#orderedMealItemsSubject$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject&lt;Meal[]&gt;([])</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Reactive subject to change the meals that have been ordered in this current order</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderSubject$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            orderSubject$</b>
+                            <a href="#orderSubject$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject&lt;Order&gt;(this.data.order)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current order as a reactive subject that can be changed and also subscribed to</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="refreshTimer$"></a>
+                        <span class="name">
+                            <b>
+                            refreshTimer$</b>
+                            <a href="#refreshTimer$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>timer(0, 1000)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="subscription"></a>
+                        <span class="name">
+                            <b>
+                            subscription</b>
+                            <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subscription</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:64</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A subscription that uses the timer to get new data from the API</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="subscriptionMenus"></a>
+                        <span class="name">
+                            <b>
+                            subscriptionMenus</b>
+                            <a href="#subscriptionMenus"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subscription</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:65</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="table"></a>
+                        <span class="name">
+                            <b>
+                            table</b>
+                            <a href="#table"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Table.html" target="_self" >Table</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current table the order belongs to</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="total"></a>
+                        <span class="name">
+                            <b>
+                            total</b>
+                            <a href="#total"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/waiter-menu/order/order.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Total sum for the order bill</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, Inject, OnInit} from &#x27;@angular/core&#x27;;
+import {Table} from &#x27;../../../models/Table&#x27;;
+import {MAT_DIALOG_DATA, MatDialogRef} from &quot;@angular/material/dialog&quot;;
+import {WaiterMenuComponent} from &quot;../waiter-menu.component&quot;;
+import {OrderService} from &quot;../../order.service&quot;;
+import {Order} from &quot;../../../models/Order&quot;;
+import {MenuService} from &quot;../../menu.service&quot;;
+import {Menu} from &quot;../../../models/Menu&quot;;
+import {BehaviorSubject, Subscription, timer} from &quot;rxjs&quot;;
+import {Meal} from &quot;../../../models/Meal&quot;;
+import {MealService} from &quot;../../meal.service&quot;;
+
+/**
+ * Dialog component for Orders. Displays all information and controls for an order.
+ * Displays options to edit order if isWaiterStaff property is false.
+ */
+@Component({
+  selector: &#x27;app-order&#x27;,
+  templateUrl: &#x27;./order.component.html&#x27;,
+  styleUrls: [&#x27;./order.component.sass&#x27;],
+})
+export class OrderComponent implements OnInit {
+
+  /**
+   * Total sum for the order bill
+   */
+  total: number;
+
+  /**
+   * The current table the order belongs to
+   */
+  table: Table;
+
+  /**
+   * The list of all menu item&#x27;s that can be added to an order
+   */
+  menuList: Menu[] &#x3D; [];
+
+  /**
+   * Reactive subject to change the meals that have been ordered in this current order
+   * @private
+   */
+  private orderedMealItemsSubject$ &#x3D; new BehaviorSubject&lt;Meal[]&gt;([]);
+
+  /**
+   * Ordered Meal items as an observable that can be subscribed to
+   */
+  orderedMealItems$ &#x3D; this.orderedMealItemsSubject$.asObservable();
+
+  /**
+   * The current order as a reactive subject that can be changed and also subscribed to
+   * @private
+   */
+  private orderSubject$ &#x3D; new BehaviorSubject&lt;Order&gt;(this.data.order);
+
+  /**
+   * The order subject as an obsrevable that can be subscribed to
+   */
+  order$ &#x3D; this.orderSubject$.asObservable();
+
+  /**
+   * A subscription that uses the timer to get new data from the API
+   */
+  subscription: Subscription;
+  subscriptionMenus: Subscription;
+  refreshTimer$ &#x3D; timer(0, 1000);
+
+  /**
+   *
+   * @param dialogRef for opening/closing dialogs in the component
+   * @param data Injected data {Order, isKitchenStaff} from parent component
+   * @param orderService To perfrom crud on orders
+   * @param menuService To perform crud on menus
+   * @param mealService to perform crud on meals
+   */
+  constructor(
+    public dialogRef: MatDialogRef&lt;WaiterMenuComponent&gt;,
+    @Inject(MAT_DIALOG_DATA) public data: {order: Order, isKitchenStaff: boolean},
+    private orderService: OrderService,
+    public menuService: MenuService,
+    private mealService: MealService) {}
+
+
+  /**
+   * Subscribes to order service and menu service for real time changes with
+   * 1 second polling
+    */
+  ngOnInit(): void {
+    this.updateOrderedMealItems();
+    this.subscriptionMenus &#x3D; this.refreshTimer$.subscribe(this.menuService.refresh$);
+    this.menuService.menus$.subscribe((menu) &#x3D;&gt; {
+      this.menuList &#x3D; menu;
+      console.log(menu);
+    });
+    // subscription uses 1s timer on the backend get request call
+    this.subscription &#x3D; this.refreshTimer$.subscribe(this.orderService.refresh$);
+    this.orderService.getOrderById(this.data.order.id).subscribe((orders) &#x3D;&gt; {
+      this.orderSubject$.next(orders);
+      this.data.order &#x3D; orders;
+    });
+    if(this.data.isKitchenStaff &#x3D;&#x3D; undefined) {
+      this.data.isKitchenStaff &#x3D; false;
+    }
+  }
+
+  /**
+   * Updates isReady property for order
+   * @param order to update status of isReady
+   */
+  updateOrderReady(order: Order): void{
+    this.orderService.updateOrderReady(order).subscribe((order) &#x3D;&gt; {
+      this.orderSubject$.next(order);
+    })
+  }
+
+  /**
+   * Updates an order&#x27;s delivery status
+   * @param order to change delivery status of
+   */
+  updateOrderDelivered(order: Order): void {
+    this.orderService.updateOrderDelivered(order).subscribe((order) &#x3D;&gt; {
+      this.orderSubject$.next(order);
+    })
+  }
+
+  /**
+   * Updates an orders confirmed status
+   * @param order to change update status of
+   */
+  updateOrderConfirmed(order: Order): void {
+    this.orderService.updateOrderConfirmed(order)
+      .subscribe((newOrder) &#x3D;&gt;this.orderSubject$.next(newOrder));
+    console.log(order);
+  }
+
+  /**
+   * Updates paid status of order
+   * @param order to change isPaid status of
+   */
+  updateOrderIsPaid(order: Order): void {
+    this.orderService.updateIsPaid(order);
+  }
+
+
+  /**
+   * Returns the id of the injected order that the dialog opens up with
+   * @return the id of current order
+   */
+  getId(): number {
+    let id &#x3D; undefined;
+    this.order$.subscribe((o) &#x3D;&gt; id &#x3D; o.id);
+    return id;
+  }
+
+  /**
+   * Adds or deletes meals from an order
+   */
+  updateOrderedMealItems() {
+    if(this.data.order.meal.length &gt; 0){
+      this.order$.subscribe((order) &#x3D;&gt; {
+        this.orderedMealItemsSubject$.next(order.meal);
+        this.total &#x3D; order.total;
+      })
+    }
+  }
+
+  /**
+   * Deletes this order
+   */
+  deleteOrder(): void {
+    console.log(this.data.order.id);
+    this.orderService.deleteOrderById(this.data.order.id);
+    this.dialogRef.close();
+  }
+
+  /**
+   * Adds a menu to the order
+   * @param menu
+   * @param order
+   */
+  addMenuToOrder(menu: Menu, order: Order) {
+    const _orderedMealItems &#x3D; this.orderedMealItemsSubject$.getValue();
+    let alreadyOrdered &#x3D; false;
+    _orderedMealItems.forEach((meal) &#x3D;&gt; {
+      if (meal.menu.name &#x3D;&#x3D; menu.name){
+        meal.numberSelections +&#x3D; 1;
+        order.total +&#x3D; meal.menu.price
+        this.total &#x3D; order.total;
+        this.orderService.updateTotal(order);
+        this.mealService.updateNumberSelections(meal);
+        alreadyOrdered &#x3D; true;
+      }
+    });
+    if(alreadyOrdered &#x3D;&#x3D; false) {
+      const newMeal &#x3D; new Meal();
+      newMeal.numberSelections &#x3D; 1;
+      newMeal.menu &#x3D; menu;
+      newMeal.order &#x3D; order;
+      order.total +&#x3D; menu.price
+      this.total &#x3D; order.total;
+      this.orderService.updateTotal(order);
+      this.mealService.createNewMeal(newMeal).subscribe((meal) &#x3D;&gt;{
+        _orderedMealItems.push(meal);
+      });
+    }
+    this.orderedMealItemsSubject$.next(_orderedMealItems);
+  }
+
+  /**
+   * Save&#x27;s the curent order and closes the dialog. Sends a reference of changed order back
+   * to parent component.
+   * @param order to save and send to parent component
+   */
+  save(order: Order) {
+    console.log(this.orderSubject$.getValue());
+    this.data.order &#x3D; this.orderSubject$.getValue();
+    this.orderedMealItemsSubject$.complete();
+    this.orderedMealItemsSubject$.complete();
+    this.dialogRef.close(order);
+  }
+
+  /**
+   * Delete an ordered menu item from the current order
+   * @param meal to remove from current order
+   */
+  deleteOrderedMenuItem(meal: Meal) {
+    this.mealService.deleteMeal(meal).subscribe((deletedMeal) &#x3D;&gt; console.log(deletedMeal));
+    this.data.order.total -&#x3D; meal.menu.price * meal.numberSelections;
+    this.total &#x3D; this.data.order.total;
+    this.orderService.updateTotal(this.data.order);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div&gt;
+  &lt;mat-grid-list cols&#x3D;&quot;5&quot; rowHeight&#x3D;&quot;60px&quot;&gt;
+    &lt;mat-grid-tile&gt;
+      &lt;h1 mat-dialog-title&gt;Order #{{data.order.id}}&lt;/h1&gt;
+    &lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;
+      &lt;mat-checkbox *ngIf&#x3D;&quot;!data.isKitchenStaff&quot; [(ngModel)]&#x3D;&quot;data.order.isConfirmed&quot; (change)&#x3D;&quot;updateOrderConfirmed(data.order)&quot;&gt;Confirmed&lt;/mat-checkbox&gt;
+    &lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;
+
+      &lt;mat-checkbox *ngIf&#x3D;&quot;!data.isKitchenStaff&quot; [(ngModel)]&#x3D;&quot;data.order.isPaid&quot; (change)&#x3D;&quot;updateOrderIsPaid(data.order)&quot;&gt;Paid&lt;/mat-checkbox&gt;
+
+    &lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;
+      
+      &lt;mat-checkbox *ngIf&#x3D;&quot;!data.isKitchenStaff &amp;&amp; data.order.isReady&quot; [(ngModel)]&#x3D;&quot;data.order.isDelivered&quot; (change)&#x3D;&quot;updateOrderDelivered(data.order)&quot;&gt;Delivered&lt;/mat-checkbox&gt;
+      
+    &lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;
+
+      &lt;mat-checkbox *ngIf&#x3D;&quot;data.isKitchenStaff&quot; [(ngModel)]&#x3D;&quot;data.order.isReady&quot; (change)&#x3D;&quot;updateOrderReady(data.order)&quot;&gt;Ready&lt;/mat-checkbox&gt;
+
+    &lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;&lt;/mat-grid-tile&gt;
+  &lt;/mat-grid-list&gt;
+
+  &lt;hr&gt;
+  &lt;mat-dialog-content class&#x3D;&quot;mat-dialog&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot; *ngIf&#x3D;&quot;!data.isKitchenStaff else isWaiter&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-5&quot;&gt;
+          &lt;div class&#x3D;&quot;table-wrapper-scroll-y my-custom-scrollbar&quot;&gt;
+            &lt;table class&#x3D;&quot;table table-striped orderedItemsTable&quot;&gt;
+              &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th scope&#x3D;&quot;col&quot;&gt;#&lt;/th&gt;
+                &lt;th scope&#x3D;&quot;col&quot;&gt;Item&lt;/th&gt;
+                &lt;th scope&#x3D;&quot;col&quot;&gt;Price&lt;/th&gt;
+                &lt;th scope&#x3D;&quot;col&quot;&gt;Qty&lt;/th&gt;
+                &lt;th scope&#x3D;&quot;col&quot;&gt;Delete&lt;/th&gt;
+              &lt;/tr&gt;
+              &lt;/thead&gt;
+              &lt;tbody&gt;
+              &lt;tr *ngFor&#x3D;&quot;let meal of orderedMealItems$ | async; let i &#x3D; index&quot;&gt;
+                &lt;td&gt;{{i+1}}&lt;/td&gt;
+                &lt;td&gt;{{meal.menu.name}}&lt;/td&gt;
+                &lt;td&gt;£{{meal.menu.price}}&lt;/td&gt;
+                &lt;td&gt;x{{meal.numberSelections}}&lt;/td&gt;
+                &lt;td&gt;&lt;button mat-button (click)&#x3D;&quot;deleteOrderedMenuItem(meal)&quot;&gt;&lt;mat-icon&gt;delete&lt;/mat-icon&gt;&lt;/button&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;/tbody&gt;
+            &lt;/table&gt;
+          &lt;/div&gt;
+            &lt;h3&gt;Total: £{{total}}&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-7&quot;&gt;
+          &lt;h2&gt;Add to Order&lt;/h2&gt;
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div *ngFor&#x3D;&quot;let menu of menuList&quot; class&#x3D;&quot;col&quot;&gt;
+              &lt;button mat-raised-button class&#x3D;&quot;foodBtn&quot;
+                      (click)&#x3D;&quot;addMenuToOrder(menu, data.order)&quot;&gt;{{menu.name}}&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;ng-template #isWaiter&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;div class&#x3D;&quot;table-wrapper-scroll-y my-custom-scrollbar&quot;&gt;
+              &lt;table class&#x3D;&quot;table table-striped orderedItemsTable&quot;&gt;
+                &lt;thead&gt;
+                &lt;tr&gt;
+                  &lt;th scope&#x3D;&quot;col&quot;&gt;#&lt;/th&gt;
+                  &lt;th scope&#x3D;&quot;col&quot;&gt;Item&lt;/th&gt;
+                  &lt;th scope&#x3D;&quot;col&quot;&gt;Qty&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                &lt;tr *ngFor&#x3D;&quot;let meal of orderedMealItems$ | async; let i &#x3D; index&quot;&gt;
+                  &lt;td&gt;{{i+1}}&lt;/td&gt;
+                  &lt;td&gt;{{meal.menu.name}}&lt;/td&gt;
+                  &lt;td&gt;x{{meal.numberSelections}}&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;/tbody&gt;
+              &lt;/table&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/ng-template&gt;
+  &lt;/mat-dialog-content&gt;
+  &lt;mat-dialog-actions align&#x3D;&quot;end&quot;&gt;
+    &lt;button mat-button mat-dialog-close&gt;Cancel&lt;/button&gt;
+    &lt;button mat-button mat-dialog-close (click)&#x3D;&quot;save(data.order)&quot;&gt;Save&lt;/button&gt;
+    &lt;button mat-button (click)&#x3D;&quot;deleteOrder()&quot;&gt;
+      &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+    &lt;/button&gt;
+  &lt;/mat-dialog-actions&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./order.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.card
+  width: 99%
+  height: 100%
+  border-color: white
+
+.tile
+  border-color: white
+
+.foodBtn
+  color: red
+  padding: 5px
+  color: green
+  width: 100%
+
+.tableNumberInput
+  width: 50px
+
+.orderedItemsTable
+  font-size: 15px
+
+.my-custom-scrollbar
+  //position: relative
+  height: 90%
+  overflow: auto
+
+.table-wrapper-scroll-y
+  display: block
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div>  <mat-grid-list cols="5" rowHeight="60px">    <mat-grid-tile>      <h1 mat-dialog-title>Order #{{data.order.id}}</h1>    </mat-grid-tile>    <mat-grid-tile>      <mat-checkbox *ngIf="!data.isKitchenStaff" [(ngModel)]="data.order.isConfirmed" (change)="updateOrderConfirmed(data.order)">Confirmed</mat-checkbox>    </mat-grid-tile>    <mat-grid-tile>      <mat-checkbox *ngIf="!data.isKitchenStaff" [(ngModel)]="data.order.isPaid" (change)="updateOrderIsPaid(data.order)">Paid</mat-checkbox>    </mat-grid-tile>    <mat-grid-tile>            <mat-checkbox *ngIf="!data.isKitchenStaff && data.order.isReady" [(ngModel)]="data.order.isDelivered" (change)="updateOrderDelivered(data.order)">Delivered</mat-checkbox>          </mat-grid-tile>    <mat-grid-tile>      <mat-checkbox *ngIf="data.isKitchenStaff" [(ngModel)]="data.order.isReady" (change)="updateOrderReady(data.order)">Ready</mat-checkbox>    </mat-grid-tile>    <mat-grid-tile></mat-grid-tile>  </mat-grid-list>  <hr>  <mat-dialog-content class="mat-dialog">    <div class="container" *ngIf="!data.isKitchenStaff else isWaiter">      <div class="row">        <div class="col-5">          <div class="table-wrapper-scroll-y my-custom-scrollbar">            <table class="table table-striped orderedItemsTable">              <thead>              <tr>                <th scope="col">#</th>                <th scope="col">Item</th>                <th scope="col">Price</th>                <th scope="col">Qty</th>                <th scope="col">Delete</th>              </tr>              </thead>              <tbody>              <tr *ngFor="let meal of orderedMealItems$ | async; let i = index">                <td>{{i+1}}</td>                <td>{{meal.menu.name}}</td>                <td>£{{meal.menu.price}}</td>                <td>x{{meal.numberSelections}}</td>                <td><button mat-button (click)="deleteOrderedMenuItem(meal)"><mat-icon>delete</mat-icon></button></td>              </tr>              </tbody>            </table>          </div>            <h3>Total: £{{total}}</h3>        </div>        <div class="col-7">          <h2>Add to Order</h2>          <div class="row">            <div *ngFor="let menu of menuList" class="col">              <button mat-raised-button class="foodBtn"                      (click)="addMenuToOrder(menu, data.order)">{{menu.name}}</button>            </div>          </div>        </div>      </div>    </div>    <ng-template #isWaiter>      <div class="container">        <div class="row">          <div class="col">            <div class="table-wrapper-scroll-y my-custom-scrollbar">              <table class="table table-striped orderedItemsTable">                <thead>                <tr>                  <th scope="col">#</th>                  <th scope="col">Item</th>                  <th scope="col">Qty</th>                </tr>                </thead>                <tbody>                <tr *ngFor="let meal of orderedMealItems$ | async; let i = index">                  <td>{{i+1}}</td>                  <td>{{meal.menu.name}}</td>                  <td>x{{meal.numberSelections}}</td>                </tr>                </tbody>              </table>            </div>          </div>        </div>      </div>    </ng-template>  </mat-dialog-content>  <mat-dialog-actions align="end">    <button mat-button mat-dialog-close>Cancel</button>    <button mat-button mat-dialog-close (click)="save(data.order)">Save</button>    <button mat-button (click)="deleteOrder()">      <mat-icon>delete</mat-icon>    </button>  </mat-dialog-actions></div>'
+    var COMPONENTS = [{'name': 'AddIngredientComponent', 'selector': 'app-add-ingredient'},{'name': 'AddIngredientDialogComponent', 'selector': 'app-add-ingredient-dialog'},{'name': 'AddMenuDialogComponent', 'selector': 'app-add-order-dialog'},{'name': 'AddStaffComponent', 'selector': 'app-add-staff'},{'name': 'AddStaffDialogComponent', 'selector': 'app-add-staff-dialog'},{'name': 'AllergensChipsComponent', 'selector': 'allergens-chips'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BasketComponent', 'selector': 'app-basket'},{'name': 'CallWaiterComponent', 'selector': 'call-waiter'},{'name': 'CategoryDialogComponent', 'selector': 'app-category-dialog'},{'name': 'CustomerInterfaceComponent', 'selector': 'app-customer-interface'},{'name': 'ExpansionPannelComponent', 'selector': 'expansion-pannel'},{'name': 'HomePageComponent', 'selector': 'app-home-page'},{'name': 'IngredientsDialogComponent', 'selector': 'app-ingredients-dialog'},{'name': 'KitchenMenuComponent', 'selector': 'app-kitchen-menu'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginInputComponent', 'selector': 'app-login-input'},{'name': 'ManagerMenuComponent', 'selector': 'app-manager-menu'},{'name': 'MenusListDisplayComponent', 'selector': 'app-menus-list-display'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'NotificationsDialogComponent', 'selector': 'notifications-dialog'},{'name': 'OrderComponent', 'selector': 'app-order'},{'name': 'OrdersListDisplayComponent', 'selector': 'app-orders-list-display'},{'name': 'OrderTrackerComponent', 'selector': 'app-order-tracker'},{'name': 'PaymentComponent', 'selector': 'payment-stepper'},{'name': 'PickTableDialogComponent', 'selector': 'app-pick-table-dialog'},{'name': 'ReadyToOrderComponent', 'selector': 'ready-to-order'},{'name': 'SalesDialogComponent', 'selector': 'app-sales-dialog'},{'name': 'SelectTableDialogComponent', 'selector': 'select-table-dialog'},{'name': 'TablesListDisplayComponent', 'selector': 'app-tables-list-display'},{'name': 'WaiterMenuComponent', 'selector': 'app-waiter-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'OrderComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'OrderComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

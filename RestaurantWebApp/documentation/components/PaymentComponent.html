@@ -1,0 +1,1560 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>restaurant-web-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">restaurant-web-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>PaymentComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/customer-interface/payment/payment.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true }
+}</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>payment-stepper</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./payment.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./payment.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#correctInputs">correctInputs</a>
+                            </li>
+                            <li>
+                                <a href="#interacted">interacted</a>
+                            </li>
+                            <li>
+                                <a href="#isConfirmed">isConfirmed</a>
+                            </li>
+                            <li>
+                                <a href="#isPaid">isPaid</a>
+                            </li>
+                            <li>
+                                <a href="#mealList">mealList</a>
+                            </li>
+                            <li>
+                                <a href="#needToReview">needToReview</a>
+                            </li>
+                            <li>
+                                <a href="#paramsObject">paramsObject</a>
+                            </li>
+                            <li>
+                                <a href="#paymentGroup">paymentGroup</a>
+                            </li>
+                            <li>
+                                <a href="#reviewOrderGroup">reviewOrderGroup</a>
+                            </li>
+                            <li>
+                                <a href="#wrongDetails">wrongDetails</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkCardInput">checkCardInput</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToMenu">navigateToMenu</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#openSnackBar">openSnackBar</a>
+                            </li>
+                            <li>
+                                <a href="#orderReviewed">orderReviewed</a>
+                            </li>
+                            <li>
+                                <a href="#pay">pay</a>
+                            </li>
+                            <li>
+                                <a href="#updateMealList">updateMealList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, snackBar: MatSnackBar, _formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, customerService: <a href="../injectables/CustomerService.html">CustomerService</a>, orderService: <a href="../injectables/OrderService.html">OrderService</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:74</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>The constructor of the class.
+Sets the default value of the stepper params as false.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>a router to route back to the customer menu</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>snackBar</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>a snack bar</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the form builder for the card details</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>customerService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CustomerService.html" target="_self" >CustomerService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the customer service that handles get requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>orderService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OrderService.html" target="_self" >OrderService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the order service tha that is used to make get and post requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the activate route from the customer menu</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkCardInput"></a>
+                    <span class="name">
+                        <b>
+                            checkCardInput
+                        </b>
+                        <a href="#checkCardInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkCardInput()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Checks if the card input is correct. Checks if the card number and
+CVC code are of the right format and if the date provided is one from
+the future and update the class vars accordingly.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToMenu"></a>
+                    <span class="name">
+                        <b>
+                            navigateToMenu
+                        </b>
+                        <a href="#navigateToMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToMenu()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="218"
+                            class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:218</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Navigates back to the customer menu with an activated route
+with the customer id and selectedTable params.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Set-up method that gets called once when the class is instantiated.
+Defines the form builder for the review order and the form builder 
+for the payment group of the stepper.
+Subscribes to the activated route&#39;s params observable and instantiates the paramsObject.
+It susbcribes to the customer service refresh needed Subject to handle incoming DB changes
+to the order (refreshes only it detects a change has been done to the DB) and calls updateMealList()</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openSnackBar"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            openSnackBar
+                        </b>
+                        <a href="#openSnackBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openSnackBar(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, action: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="234"
+                            class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:234</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens a snack bar that informs the user the order was paid.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>message</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the message of the snack bar</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>action</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the action of the snack bar</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orderReviewed"></a>
+                    <span class="name">
+                        <b>
+                            orderReviewed
+                        </b>
+                        <a href="#orderReviewed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>orderReviewed()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets interacted to false.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pay"></a>
+                    <span class="name">
+                        <b>
+                            pay
+                        </b>
+                        <a href="#pay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>pay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:195</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Pays for the order. 
+If the card input is corrct, it makes a get request to get the order from the DB, by 
+subscribing to getOrderById() that returns an Order observable. Inside the subscription,
+it makes a put reqest to update order isPaid to true by calling the order service
+updateIsPaid method. It updates all the class vars accordingly.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateMealList"></a>
+                    <span class="name">
+                        <b>
+                            updateMealList
+                        </b>
+                        <a href="#updateMealList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateMealList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:134</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the meal list of the order.
+It subscribes to getOrderById() that returns an Order Observable. Inside the 
+subscription, it updates the meal list and sets isPaid and isConfirmed to true.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="correctInputs"></a>
+                        <span class="name">
+                            <b>
+                            correctInputs</b>
+                            <a href="#correctInputs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Var that asserts if the inputs are correct.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="interacted"></a>
+                        <span class="name">
+                            <b>
+                            interacted</b>
+                            <a href="#interacted"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:44</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Defines the stepper peoperty interacted.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isConfirmed"></a>
+                        <span class="name">
+                            <b>
+                            isConfirmed</b>
+                            <a href="#isConfirmed"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Var that asserts if the order is confirmed or not.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isPaid"></a>
+                        <span class="name">
+                            <b>
+                            isPaid</b>
+                            <a href="#isPaid"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:64</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Var that asserts if the order is paid or not.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mealList"></a>
+                        <span class="name">
+                            <b>
+                            mealList</b>
+                            <a href="#mealList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Meal.html" target="_self" >Meal[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The meal list of the order.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="needToReview"></a>
+                        <span class="name">
+                            <b>
+                            needToReview</b>
+                            <a href="#needToReview"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Var that asserts if the user needs to review his order.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paramsObject"></a>
+                        <span class="name">
+                            <b>
+                            paramsObject</b>
+                            <a href="#paramsObject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:74</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The activated route params object.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paymentGroup"></a>
+                        <span class="name">
+                            <b>
+                            paymentGroup</b>
+                            <a href="#paymentGroup"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The paymentGroup inside the stepper.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="reviewOrderGroup"></a>
+                        <span class="name">
+                            <b>
+                            reviewOrderGroup</b>
+                            <a href="#reviewOrderGroup"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The reviewOrder group inside the stepper.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="wrongDetails"></a>
+                        <span class="name">
+                            <b>
+                            wrongDetails</b>
+                            <a href="#wrongDetails"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/customer-interface/payment/payment.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Var that asserts if the card details are wrong.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { STEPPER_GLOBAL_OPTIONS } from &#x27;@angular/cdk/stepper&#x27;;
+import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+import { formatDate } from &#x27;@angular/common&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+
+import { Meal } from &#x27;../../../models/Meal&#x27;;
+import { CustomerService } from &#x27;../../customer.service&#x27;;
+import { OrderService } from &#x27;../../order.service&#x27;;
+
+@Component({
+  selector: &#x27;payment-stepper&#x27;,
+  templateUrl: &#x27;./payment.component.html&#x27;,
+  styleUrls: [&#x27;./payment.component.sass&#x27;],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true }
+  }]
+})
+
+/**
+ * The class that handles the payment of an order.
+ */
+export class PaymentComponent implements OnInit {
+
+  /**
+   * The reviewOrder group inside the stepper.
+   */
+  reviewOrderGroup: FormGroup;
+  
+  /**
+   * The paymentGroup inside the stepper.
+   */
+  paymentGroup: FormGroup;
+
+  /**
+   * The meal list of the order.
+   */
+  mealList: Meal[];
+
+  /**
+   * Defines the stepper peoperty interacted.
+   */
+  interacted: Boolean;
+
+  /**
+   * Var that asserts if the inputs are correct.
+   */
+  correctInputs: Boolean;
+
+  /**
+   * Var that asserts if the user needs to review his order.
+   */
+  needToReview: Boolean;
+
+  /**
+   * Var that asserts if the card details are wrong.
+   */
+  wrongDetails: Boolean;
+
+  /**
+   * Var that asserts if the order is paid or not.
+   */
+  isPaid: Boolean;
+
+  /**
+   * Var that asserts if the order is confirmed or not.
+   */
+  isConfirmed: Boolean;
+  
+  /**
+   * The activated route params object.
+   */
+  paramsObject: any;
+
+  /**
+   * The constructor of the class.
+   * Sets the default value of the stepper params as false.
+   * 
+   * @param router a router to route back to the customer menu
+   * @param snackBar a snack bar
+   * @param _formBuilder the form builder for the card details
+   * @param customerService the customer service that handles get requests
+   * @param orderService the order service tha that is used to make get and post requests
+   * @param route the activate route from the customer menu
+   */
+  constructor(
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private _formBuilder: FormBuilder,
+    private customerService: CustomerService,
+    private orderService: OrderService,
+    private route: ActivatedRoute,) { 
+      this.interacted &#x3D; false;
+      this.correctInputs &#x3D; false;
+      this.needToReview &#x3D; false;
+      this.wrongDetails &#x3D; false;
+      this.isPaid &#x3D; false;
+      this.isConfirmed &#x3D; false;
+    }
+
+  /**
+   * Set-up method that gets called once when the class is instantiated.
+   * Defines the form builder for the review order and the form builder 
+   * for the payment group of the stepper.
+   * Subscribes to the activated route&#x27;s params observable and instantiates the paramsObject.
+   * It susbcribes to the customer service refresh needed Subject to handle incoming DB changes
+   * to the order (refreshes only it detects a change has been done to the DB) and calls updateMealList()
+   */
+  ngOnInit(): void {
+    this.reviewOrderGroup &#x3D; this._formBuilder.group({
+      firstCtrl: [&#x27;&#x27;, Validators.required]
+    });
+    this.paymentGroup &#x3D; this._formBuilder.group({
+      cardNumberControl: [&#x27;&#x27;, Validators.required],
+      expDateControl: [&#x27;&#x27;, Validators.required],
+      cvvCodeControl: [&#x27;&#x27;, Validators.required]
+    });
+
+    this.route.queryParamMap.subscribe((params) &#x3D;&gt; {
+      this.paramsObject &#x3D; { ...params.keys, ...params };
+    });
+    this.customerService.refreshNeeded.subscribe(() &#x3D;&gt; {
+      this.updateMealList();
+    })
+    this.updateMealList();
+  }
+
+  /**
+   * Updates the meal list of the order.
+   * It subscribes to getOrderById() that returns an Order Observable. Inside the 
+   * subscription, it updates the meal list and sets isPaid and isConfirmed to true.
+   */
+  updateMealList(): void {
+    this.orderService.getOrderById(this.paramsObject.params.orderId).subscribe((order) &#x3D;&gt; {
+      if (order.isPaid &#x3D;&#x3D; true) {
+        this.isPaid &#x3D; true;
+      }
+      if (order.isConfirmed &#x3D;&#x3D; true) {
+        this.isConfirmed &#x3D; true;
+      }
+      this.mealList &#x3D; order.meal;
+    })
+  }
+
+  /**
+   * Sets interacted to false.
+   */
+  orderReviewed(): void {
+    this.interacted &#x3D; false;
+  }
+
+  /**
+   * Checks if the card input is correct. Checks if the card number and
+   * CVC code are of the right format and if the date provided is one from
+   * the future and update the class vars accordingly.
+   */
+  checkCardInput(): void {
+    if (this.paymentGroup.get(&#x27;cardNumberControl&#x27;).value.length &#x3D;&#x3D; 19) {
+      if (this.paymentGroup.get(&#x27;expDateControl&#x27;).value.length &#x3D;&#x3D; 5
+        || this.paymentGroup.get(&#x27;expDateControl&#x27;).value.length &#x3D;&#x3D; 7) {
+        let trueDate &#x3D; formatDate(new Date(), &#x27;yyyy/MM/dd&#x27;, &#x27;en&#x27;);
+        let trueDateString &#x3D; trueDate.split(&quot;/&quot;, 2);
+        let date &#x3D; this.paymentGroup.get(&#x27;expDateControl&#x27;).value.split(&quot;/&quot;, 2);
+        let temp &#x3D; trueDate.split(&quot;&quot;);
+        let century &#x3D; temp[0] + temp[1]
+        if (date[1].length &#x3D;&#x3D; 2) {
+          date[1] &#x3D; century + date[1];
+        }
+        if ((parseInt(date[0]) &lt; 13 &amp;&amp; parseInt(date[1]) &gt; parseInt(trueDateString[0]))
+          || (parseInt(date[0]) &lt; 13 &amp;&amp; parseInt(date[0]) &gt; parseInt(trueDateString[1]) - 1 &amp;&amp; parseInt(date[1]) &#x3D;&#x3D; parseInt(trueDateString[0]))) {
+          if (this.paymentGroup.get(&#x27;cvvCodeControl&#x27;).value.length &#x3D;&#x3D; 3) {
+            this.correctInputs &#x3D; false;
+          } else {
+            this.correctInputs &#x3D; true;
+          }
+        } else {
+          this.correctInputs &#x3D; true;
+        }
+      } else {
+        this.correctInputs &#x3D; true;
+      }
+    } else {
+      this.correctInputs &#x3D; true;
+    }
+  }
+
+  /**
+   * Pays for the order. 
+   * If the card input is corrct, it makes a get request to get the order from the DB, by 
+   * subscribing to getOrderById() that returns an Order observable. Inside the subscription,
+   * it makes a put reqest to update order isPaid to true by calling the order service
+   * updateIsPaid method. It updates all the class vars accordingly.
+   */
+  pay(): void {
+    if (!this.interacted) {
+      this.needToReview &#x3D; false;
+      if (!this.correctInputs) {
+        this.wrongDetails &#x3D; false;
+        this.orderService.getOrderById(this.paramsObject.params.orderId).subscribe((order) &#x3D;&gt; {
+          order.isPaid &#x3D; true;
+          this.orderService.updateIsPaid(order);
+        })
+      } else {
+        this.wrongDetails &#x3D; true;
+      }
+    } else {
+      this.needToReview &#x3D; true;
+    }
+    this.isPaid &#x3D; true;
+    this.openSnackBar(&quot;Your payment is confirmed&quot;, &quot;Muchas Gracias!&quot;)
+  }
+
+  /**
+   * Navigates back to the customer menu with an activated route
+   * with the customer id and selectedTable params.
+   */
+  navigateToMenu(): void {
+    this.router.navigate([&#x27;/customer-menu&#x27;],
+      {
+        queryParams: {
+          customerId: this.paramsObject.params.customerId,
+          selectedTable: this.paramsObject.params.tableNumber
+        }
+      });
+  }
+
+  /**
+   * Opens a snack bar that informs the user the order was paid.
+   * 
+   * @param message the message of the snack bar
+   * @param action the action of the snack bar
+   */
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h1 class&#x3D;&quot;paymentTitle&quot;&gt;Payment&lt;/h1&gt;
+&lt;mat-horizontal-stepper #stepper class&#x3D;&quot;paymentStepper&quot;&gt;
+    &lt;mat-step [stepControl]&#x3D;&quot;reviewOrderGroup&quot; #step errorMessage&#x3D;&quot;Order Confirmation Required!&quot;
+        [hasError]&#x3D;&quot;this.interacted&quot;&gt;
+        &lt;form [formGroup]&#x3D;&quot;reviewOrderGroup&quot;&gt;
+            &lt;ng-template matStepLabel&gt;Review your Order&lt;/ng-template&gt;
+            &lt;mat-accordion&gt;
+                &lt;mat-expansion-panel hideToggle&gt;
+                    &lt;mat-expansion-panel-header&gt;
+                        &lt;mat-panel-title&gt;
+                            Order Items
+                        &lt;/mat-panel-title&gt;
+                        &lt;mat-panel-description&gt;
+                            Click to review contents of your order.
+                        &lt;/mat-panel-description&gt;
+                    &lt;/mat-expansion-panel-header&gt;
+                    &lt;table class&#x3D;&quot;table&quot; class&#x3D;&quot;selectedItems&quot;&gt;
+                        &lt;tbody&gt;
+                            &lt;tr *ngFor&#x3D;&quot;let meal of mealList&quot;&gt;
+                                &lt;th scope&#x3D;&quot;row&quot;&gt;{{meal.menu.name}}&lt;/th&gt;
+                                &lt;td&gt;({{meal.menu.price * meal.numberSelections}}$)&lt;/td&gt;
+                                &lt;td&gt;x {{meal.numberSelections}}&lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/tbody&gt;
+                    &lt;/table&gt;
+                &lt;/mat-expansion-panel&gt;
+            &lt;/mat-accordion&gt;
+            &lt;br&gt;&lt;br&gt;
+            &lt;div&gt;
+                &lt;button mat-button matStepperNext (click)&#x3D;&quot;orderReviewed()&quot;&gt;Next&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/mat-step&gt;
+    &lt;mat-step [stepControl]&#x3D;&quot;paymentGroup&quot; #step errorMessage&#x3D;&quot;Payment is required&quot; [hasError]&#x3D;&quot;this.correctInputs&quot;&gt;
+        &lt;form [formGroup]&#x3D;&quot;paymentGroup&quot;&gt;
+            &lt;ng-template matStepLabel&gt;Insert Your Card Details&lt;/ng-template&gt;
+            &lt;mat-form-field&gt;
+                &lt;mat-label&gt;Card Number&lt;/mat-label&gt;
+                &lt;input matInput onkeyup&#x3D;&quot;this.value&#x3D;this.value.replace(/(\d\d\d\d)(\d)/g,&#x27;$1-$2&#x27;)&quot;
+                    placeholder&#x3D;&quot;XXXX-XXXX-XXXX-XXXX&quot; (input)&#x3D;&quot;checkCardInput()&quot; formControlName&#x3D;&quot;cardNumberControl&quot;
+                    [maxLength]&#x3D;&quot;19&quot; required&gt;
+            &lt;/mat-form-field&gt;
+            &lt;mat-form-field&gt;
+                &lt;mat-label&gt;Expiration Date&lt;/mat-label&gt;
+                &lt;input matInput onkeyup&#x3D;&quot;this.value&#x3D;this.value.replace(/^(\d\d)(\d)$/g,&#x27;$1/$2&#x27;)&quot; placeholder&#x3D;&quot;XX/XXXX&quot;
+                    (input)&#x3D;&quot;checkCardInput()&quot; formControlName&#x3D;&quot;expDateControl&quot; [maxLength]&#x3D;&quot;7&quot; required&gt;
+            &lt;/mat-form-field&gt;
+            &lt;mat-form-field&gt;
+                &lt;mat-label&gt;CVV Code&lt;/mat-label&gt;
+                &lt;input matInput placeholder&#x3D;&quot;XXX&quot; (input)&#x3D;&quot;checkCardInput()&quot; formControlName&#x3D;&quot;cvvCodeControl&quot;
+                    [maxLength]&#x3D;&quot;3&quot; required&gt;
+            &lt;/mat-form-field&gt;
+            &lt;div *ngIf&#x3D;&quot;this.interacted &#x3D;&#x3D; false &amp;&amp; this.correctInputs &#x3D;&#x3D; false &amp;&amp; this.isPaid &#x3D;&#x3D; false 
+        &amp;&amp; this.isConfirmed &#x3D;&#x3D; true; else isPaidBlock&quot;&gt;
+                &lt;button mat-button matStepperNext (click)&#x3D;&quot;pay()&quot;&gt;Pay&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;ng-template #isPaidBlock&gt;
+                &lt;div class&#x3D;&quot;isPaidBlock&quot;
+                    *ngIf&#x3D;&quot;this.isPaid &#x3D;&#x3D; true &amp;&amp; this.isConfirmed &#x3D;&#x3D; true; else wrongDetailsBlock&quot;&gt;
+                    &lt;b&gt;You have already paid!&lt;/b&gt;
+                &lt;/div&gt;
+            &lt;/ng-template&gt;
+            &lt;ng-template #wrongDetailsBlock&gt;
+                &lt;div class&#x3D;&quot;wrongDetailsBlock&quot; *ngIf&#x3D;&quot;this.interacted &#x3D;&#x3D; false &amp;&amp; this.correctInputs &#x3D;&#x3D; true 
+          &amp;&amp; this.isPaid &#x3D;&#x3D; false &amp;&amp; this.isConfirmed &#x3D;&#x3D; true; else notConfirmedBlock&quot;&gt;
+                    &lt;b&gt;The Card Details are Wrong!&lt;/b&gt;
+                &lt;/div&gt;
+            &lt;/ng-template&gt;
+            &lt;ng-template #notConfirmedBlock&gt;
+                &lt;div class&#x3D;&quot;notConfirmedBlock&quot; *ngIf&#x3D;&quot;this.isConfirmed &#x3D;&#x3D; false&quot;&gt;
+                    &lt;b&gt;Your Order has not been confirmed yet!&lt;/b&gt;
+                &lt;/div&gt;
+            &lt;/ng-template&gt;
+            &lt;br&gt;
+            &lt;div&gt;
+                &lt;button mat-button matStepperPrevious&gt;Back&lt;/button&gt;&amp;nbsp;&amp;nbsp;
+                &lt;button mat-button matStepperNext&gt;Next&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/mat-step&gt;
+    &lt;mat-step&gt;
+        &lt;ng-template matStepLabel&gt;Done&lt;/ng-template&gt;
+        &lt;div class&#x3D;&quot;doneBlock&quot; *ngIf&#x3D;&quot;this.isPaid &#x3D;&#x3D; true &amp;&amp; this.interacted &#x3D;&#x3D; false;
+         else notPaidBlock&quot;&gt;
+            &lt;p&gt;Payment Confirmed!&lt;/p&gt;
+            &lt;button mat-button (click)&#x3D;&quot;navigateToMenu()&quot;&gt;Go back to Menu&lt;/button&gt;&lt;br&gt;&lt;br&gt;
+        &lt;/div&gt;
+        &lt;ng-template #notPaidBlock&gt;
+            &lt;div class&#x3D;&quot;notPaidBlock&quot;&gt;
+                &lt;p&gt;Please do all the steps first!&lt;/p&gt;
+                &lt;button mat-button (click)&#x3D;&quot;navigateToMenu()&quot;&gt;Cancel&lt;/button&gt;&lt;br&gt;&lt;br&gt;
+            &lt;/div&gt;
+        &lt;/ng-template&gt;
+        &lt;button mat-button matStepperPrevious&gt;Back&lt;/button&gt;
+    &lt;/mat-step&gt;
+&lt;/mat-horizontal-stepper&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./payment.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.mat-form-field
+  margin-top: 16px
+
+.paymentTitle
+  display: block
+  font-family: &#x27;Cedarville Cursive&#x27;, cursive
+  font-size: 40px
+  margin: auto
+  color: #b9a239
+  padding: 10px
+
+.orderReview
+  display: block
+  font-family: &#x27;Cedarville Cursive&#x27;, cursive
+  font-size: 25px
+  margin: auto
+  color: #b9a239
+  padding: 10px
+
+.paymentStepper
+  font-family: &#x27;Raleway&#x27;, sans-serif
+  font-size: 15px
+
+.orderReviewBlock
+  display: block
+  font-family: &#x27;Raleway&#x27;, sans-serif
+
+.wrongDetailsBlock
+  display: block
+  font-family: &#x27;Raleway&#x27;, sans-serif
+
+.isPaidBlock
+  display: block
+  font-family: &#x27;Raleway&#x27;, sans-serif
+
+.notConfirmedBlock
+  display: block
+  font-family: &#x27;Raleway&#x27;, sans-serif
+
+.doneBlock
+  display: block
+  font-family: &#x27;Raleway&#x27;, sans-serif
+
+.notPaidBlock
+  display: block
+  font-family: &#x27;Raleway&#x27;, sans-serif
+
+#yesOption
+  width: 100%
+
+.inner
+  display: inline-block
+
+button
+  font-family: &#x27;Raleway&#x27;, sans-serif
+  background-color: #388572
+  color: #e9c46a
+  font-size: 20px
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h1 class="paymentTitle">Payment</h1><mat-horizontal-stepper #stepper class="paymentStepper">    <mat-step [stepControl]="reviewOrderGroup" #step errorMessage="Order Confirmation Required!"        [hasError]="this.interacted">        <form [formGroup]="reviewOrderGroup">            <ng-template matStepLabel>Review your Order</ng-template>            <mat-accordion>                <mat-expansion-panel hideToggle>                    <mat-expansion-panel-header>                        <mat-panel-title>                            Order Items                        </mat-panel-title>                        <mat-panel-description>                            Click to review contents of your order.                        </mat-panel-description>                    </mat-expansion-panel-header>                    <table class="table" class="selectedItems">                        <tbody>                            <tr *ngFor="let meal of mealList">                                <th scope="row">{{meal.menu.name}}</th>                                <td>({{meal.menu.price * meal.numberSelections}}$)</td>                                <td>x {{meal.numberSelections}}</td>                            </tr>                        </tbody>                    </table>                </mat-expansion-panel>            </mat-accordion>            <br><br>            <div>                <button mat-button matStepperNext (click)="orderReviewed()">Next</button>            </div>        </form>    </mat-step>    <mat-step [stepControl]="paymentGroup" #step errorMessage="Payment is required" [hasError]="this.correctInputs">        <form [formGroup]="paymentGroup">            <ng-template matStepLabel>Insert Your Card Details</ng-template>            <mat-form-field>                <mat-label>Card Number</mat-label>                <input matInput onkeyup="this.value=this.value.replace(/(\d\d\d\d)(\d)/g,\'$1-$2\')"                    placeholder="XXXX-XXXX-XXXX-XXXX" (input)="checkCardInput()" formControlName="cardNumberControl"                    [maxLength]="19" required>            </mat-form-field>            <mat-form-field>                <mat-label>Expiration Date</mat-label>                <input matInput onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,\'$1/$2\')" placeholder="XX/XXXX"                    (input)="checkCardInput()" formControlName="expDateControl" [maxLength]="7" required>            </mat-form-field>            <mat-form-field>                <mat-label>CVV Code</mat-label>                <input matInput placeholder="XXX" (input)="checkCardInput()" formControlName="cvvCodeControl"                    [maxLength]="3" required>            </mat-form-field>            <div *ngIf="this.interacted == false && this.correctInputs == false && this.isPaid == false         && this.isConfirmed == true; else isPaidBlock">                <button mat-button matStepperNext (click)="pay()">Pay</button>            </div>            <ng-template #isPaidBlock>                <div class="isPaidBlock"                    *ngIf="this.isPaid == true && this.isConfirmed == true; else wrongDetailsBlock">                    <b>You have already paid!</b>                </div>            </ng-template>            <ng-template #wrongDetailsBlock>                <div class="wrongDetailsBlock" *ngIf="this.interacted == false && this.correctInputs == true           && this.isPaid == false && this.isConfirmed == true; else notConfirmedBlock">                    <b>The Card Details are Wrong!</b>                </div>            </ng-template>            <ng-template #notConfirmedBlock>                <div class="notConfirmedBlock" *ngIf="this.isConfirmed == false">                    <b>Your Order has not been confirmed yet!</b>                </div>            </ng-template>            <br>            <div>                <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;                <button mat-button matStepperNext>Next</button>            </div>        </form>    </mat-step>    <mat-step>        <ng-template matStepLabel>Done</ng-template>        <div class="doneBlock" *ngIf="this.isPaid == true && this.interacted == false;         else notPaidBlock">            <p>Payment Confirmed!</p>            <button mat-button (click)="navigateToMenu()">Go back to Menu</button><br><br>        </div>        <ng-template #notPaidBlock>            <div class="notPaidBlock">                <p>Please do all the steps first!</p>                <button mat-button (click)="navigateToMenu()">Cancel</button><br><br>            </div>        </ng-template>        <button mat-button matStepperPrevious>Back</button>    </mat-step></mat-horizontal-stepper></div>'
+    var COMPONENTS = [{'name': 'AddIngredientComponent', 'selector': 'app-add-ingredient'},{'name': 'AddIngredientDialogComponent', 'selector': 'app-add-ingredient-dialog'},{'name': 'AddMenuDialogComponent', 'selector': 'app-add-order-dialog'},{'name': 'AddStaffComponent', 'selector': 'app-add-staff'},{'name': 'AddStaffDialogComponent', 'selector': 'app-add-staff-dialog'},{'name': 'AllergensChipsComponent', 'selector': 'allergens-chips'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BasketComponent', 'selector': 'app-basket'},{'name': 'CallWaiterComponent', 'selector': 'call-waiter'},{'name': 'CategoryDialogComponent', 'selector': 'app-category-dialog'},{'name': 'CustomerInterfaceComponent', 'selector': 'app-customer-interface'},{'name': 'ExpansionPannelComponent', 'selector': 'expansion-pannel'},{'name': 'HomePageComponent', 'selector': 'app-home-page'},{'name': 'IngredientsDialogComponent', 'selector': 'app-ingredients-dialog'},{'name': 'KitchenMenuComponent', 'selector': 'app-kitchen-menu'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginInputComponent', 'selector': 'app-login-input'},{'name': 'ManagerMenuComponent', 'selector': 'app-manager-menu'},{'name': 'MenusListDisplayComponent', 'selector': 'app-menus-list-display'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'NotificationsDialogComponent', 'selector': 'notifications-dialog'},{'name': 'OrderComponent', 'selector': 'app-order'},{'name': 'OrdersListDisplayComponent', 'selector': 'app-orders-list-display'},{'name': 'OrderTrackerComponent', 'selector': 'app-order-tracker'},{'name': 'PaymentComponent', 'selector': 'payment-stepper'},{'name': 'PickTableDialogComponent', 'selector': 'app-pick-table-dialog'},{'name': 'ReadyToOrderComponent', 'selector': 'ready-to-order'},{'name': 'SalesDialogComponent', 'selector': 'app-sales-dialog'},{'name': 'SelectTableDialogComponent', 'selector': 'select-table-dialog'},{'name': 'TablesListDisplayComponent', 'selector': 'app-tables-list-display'},{'name': 'WaiterMenuComponent', 'selector': 'app-waiter-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PaymentComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PaymentComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,905 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>restaurant-web-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">restaurant-web-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AddIngredientComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/manager-menu/add-ingredient/add-ingredient.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-add-ingredient</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./add-ingredient.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./add-ingredient.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                <a href="#ingredients">ingredients</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#delete">delete</a>
+                            </li>
+                            <li>
+                                <a href="#getAll">getAll</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openAddIngredientDialog">openAddIngredientDialog</a>
+                            </li>
+                            <li>
+                                <a href="#openEditMenuDialog">openEditMenuDialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ingredientService: <a href="../injectables/IngredientService.html">IngredientService</a>, dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/manager-menu/add-ingredient/add-ingredient.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor tasked with instantiating the services and dialog neccessary for adding ingredients.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ingredientService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/IngredientService.html" target="_self" >IngredientService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The service tasked with making changes the database according to user interaction.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>An object involved with creating pop-up panels for more user interaction.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <b>
+                            delete
+                        </b>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete(row: <a href="../classes/Ingredient.html">Ingredient</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/manager-menu/add-ingredient/add-ingredient.component.ts:44</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This method is purposed with deleting an ingredient on the database upon a button press.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>row</td>
+                                    <td>
+                                                <code><a href="../classes/Ingredient.html" target="_self" >Ingredient</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The particular ingredient which needs deleting.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAll"></a>
+                    <span class="name">
+                        <b>
+                            getAll
+                        </b>
+                        <a href="#getAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAll()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/manager-menu/add-ingredient/add-ingredient.component.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method for populating a list of ingredients.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/manager-menu/add-ingredient/add-ingredient.component.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A set-up method that gets called once when the class gets instantiated.
+Gets all the ingredients from the DB.= by calling getAll().</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openAddIngredientDialog"></a>
+                    <span class="name">
+                        <b>
+                            openAddIngredientDialog
+                        </b>
+                        <a href="#openAddIngredientDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openAddIngredientDialog()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/manager-menu/add-ingredient/add-ingredient.component.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This method is purposed with opening a pop-up display so a manger can add new ingredients.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openEditMenuDialog"></a>
+                    <span class="name">
+                        <b>
+                            openEditMenuDialog
+                        </b>
+                        <a href="#openEditMenuDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openEditMenuDialog(ingredient: <a href="../classes/Ingredient.html">Ingredient</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/app/manager-menu/add-ingredient/add-ingredient.component.ts:83</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This method is purposed with giving the manager the ability to edit ingredients.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ingredient</td>
+                                    <td>
+                                                <code><a href="../classes/Ingredient.html" target="_self" >Ingredient</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The ingredient subjected to modification.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/manager-menu/add-ingredient/add-ingredient.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">An object involved with creating pop-up panels for more user interaction.</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ingredients"></a>
+                        <span class="name">
+                            <b>
+                            ingredients</b>
+                            <a href="#ingredients"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Ingredient.html" target="_self" >Ingredient[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/manager-menu/add-ingredient/add-ingredient.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The ingredients list from the DB.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { MatDialog } from &quot;@angular/material/dialog&quot;;
+import { Ingredient } from &#x27;../../../models/Ingredient&#x27;;
+import { IngredientService } from &quot;../../ingredient.service&quot;
+import { AddIngredientDialogComponent } from &#x27;../add-ingredient-dialog/add-ingredient-dialog.component&#x27;;
+
+@Component({
+  selector: &#x27;app-add-ingredient&#x27;,
+  templateUrl: &#x27;./add-ingredient.component.html&#x27;,
+  styleUrls: [&#x27;./add-ingredient.component.sass&#x27;]
+})
+
+/**
+ * The class that handles the stock page.
+ */
+export class AddIngredientComponent implements OnInit {
+
+/**
+ * Constructor tasked with instantiating the services and dialog neccessary for adding ingredients.
+ * 
+ * @param {IngredientService} ingredientService The service tasked with making changes the database according to user interaction.
+ * @param {MatDialog} dialog An object involved with creating pop-up panels for more user interaction.
+ */
+  constructor(private ingredientService: IngredientService,
+    public dialog: MatDialog) { }
+
+  /**
+   * The ingredients list from the DB.
+   */
+  ingredients: Ingredient[] &#x3D; [];
+
+  /**
+   * A set-up method that gets called once when the class gets instantiated.
+   * Gets all the ingredients from the DB.&#x3D; by calling getAll().
+   */
+  ngOnInit(): void {
+    this.getAll();
+  }
+  /**
+   * This method is purposed with deleting an ingredient on the database upon a button press.
+   * 
+   * @param {Ingredient} row The particular ingredient which needs deleting.
+   */
+  delete(row: Ingredient) {
+    this.ingredientService.deleteIngredient(row).subscribe((ing) &#x3D;&gt; {
+      this.getAll();
+    });
+  }
+
+    /**
+     * Method for populating a list of ingredients.
+     */
+  getAll() {
+    this.ingredientService.getIngredients().subscribe((ing) &#x3D;&gt; {
+      this.ingredients &#x3D; ing;
+    });
+  }
+/**
+ * This method is purposed with opening a pop-up display so a manger can add new ingredients.
+ */
+  openAddIngredientDialog() {
+    const title &#x3D; &quot;Add New Ingredient&quot;;
+    let ingredient: Ingredient &#x3D; new Ingredient();
+    const dialogRef &#x3D; this.dialog.open(AddIngredientDialogComponent, {
+      data: { ingredient, title },
+      width: &#x27;50%&#x27;,
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(staff &#x3D;&gt; {
+      if (ingredient &amp;&amp; ingredient.name &amp;&amp; ingredient.quantity) {
+        this.ingredientService.createIngredient(ingredient).subscribe((st) &#x3D;&gt; {
+          this.getAll();
+        });
+      }
+    })
+  }
+/**
+ * This method is purposed with giving the manager the ability to edit ingredients.
+ * 
+ * @param {Ingredient} ingredient The ingredient subjected to modification.
+ */
+  openEditMenuDialog(ingredient: Ingredient): void {
+    const title &#x3D; &quot;Edit Ingredient&quot;;
+    const dialogRef &#x3D; this.dialog.open(AddIngredientDialogComponent, {
+      data: { ingredient, title },
+      width: &#x27;50%&#x27;,
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      if (ingredient) {
+        this.ingredientService.updateIngredient(ingredient).subscribe((st) &#x3D;&gt; {
+          this.getAll();
+        });
+      }
+    });
+
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-drawer-container class&#x3D;&quot;example-container&quot; autosize&gt;
+  &lt;mat-toolbar class&#x3D;&quot;toolBar&quot;&gt;
+    &lt;a routerLink&#x3D;&quot;/manager-menu&quot;&gt;
+      &lt;button mat-button&gt;&lt;img class&#x3D;&quot;quickAddButton&quot; src&#x3D;&quot;assets/images/manager.jpg&quot;&gt;&lt;/button&gt;
+    &lt;/a&gt;&lt;br&gt;
+    &lt;span class&#x3D;&quot;toolBarTitle&quot;&gt;Stock&lt;/span&gt;
+    &lt;span class&#x3D;&quot;spacer&quot;&gt;&lt;/span&gt;
+    &lt;a routerLink&#x3D;&quot;/home&quot;&gt;
+      &lt;button mat-button&gt;&lt;img class&#x3D;&quot;quickAddButton&quot; src&#x3D;&quot;assets/images/door.png&quot;&gt;&lt;/button&gt;
+    &lt;/a&gt;
+  &lt;/mat-toolbar&gt;
+  &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+  &lt;img class&#x3D;&quot;ingredientsTitle&quot; src&#x3D;&quot;assets/images/ingredients.png&quot;&gt;
+
+  &lt;br&gt;&lt;br&gt;
+  &lt;div class&#x3D;&quot;tableTitle&quot;&gt;
+    &lt;mat-grid-list cols&#x3D;&quot;6&quot; rowHeight&#x3D;&quot;35px&quot;&gt;
+      &lt;mat-grid-tile&gt;Name&lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile&gt;Quantity&lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile&gt;Price/Item&lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile&gt;Edit&lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile&gt;Delete&lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile&gt;
+        &lt;button mat-button (click)&#x3D;&quot;openAddIngredientDialog()&quot; class&#x3D;&quot;addButton&quot;&gt;Add&lt;/button&gt;
+      &lt;/mat-grid-tile&gt;
+    &lt;/mat-grid-list&gt;
+  &lt;/div&gt;
+  &lt;mat-grid-list class&#x3D;&quot;menuItem&quot; cols&#x3D;&quot;6&quot; rowHeight&#x3D;&quot;75px&quot; *ngFor&#x3D;&quot;let ing of ingredients&quot;&gt;
+    &lt;mat-grid-tile&gt;{{ing.name}}&lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;{{ing.quantity}}&lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;{{ing.pricePerItem}}&lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;
+      &lt;button mat-button (click)&#x3D;&quot;openEditMenuDialog(ing)&quot;&gt;Edit&lt;/button&gt;
+    &lt;/mat-grid-tile&gt;
+    &lt;mat-grid-tile&gt;
+      &lt;button mat-button (click)&#x3D;&quot;delete(ing)&quot;&gt;Delete&lt;/button&gt;
+    &lt;/mat-grid-tile&gt;
+  &lt;/mat-grid-list&gt;
+&lt;/mat-drawer-container&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./add-ingredient.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">a
+  color: #000000
+
+.example-sidenav
+  position: fixed
+
+.quickAddButton
+  width: 35px
+  height: 35px
+
+.toolBar
+  background-color: #76cfb9
+  z-index: 1
+  color: white
+  position: fixed
+
+.ingredientsTitle
+  display: block
+  margin-left: auto
+  margin-right: auto
+  width: 100px
+  height: 100px
+  background-color: #76cfb9
+  border-radius: 4em
+
+.spacer
+  flex: 1 1 auto
+
+.tableTitle
+  background-color: #76cfb9
+  font-size: 25px
+  color: white
+  font-weight: bold
+
+.addButton
+  font-size: 25px
+  font-weight: bold
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-drawer-container class="example-container" autosize>  <mat-toolbar class="toolBar">    <a routerLink="/manager-menu">      <button mat-button><img class="quickAddButton" src="assets/images/manager.jpg"></button>    </a><br>    <span class="toolBarTitle">Stock</span>    <span class="spacer"></span>    <a routerLink="/home">      <button mat-button><img class="quickAddButton" src="assets/images/door.png"></button>    </a>  </mat-toolbar>  <br><br><br><br><br>  <img class="ingredientsTitle" src="assets/images/ingredients.png">  <br><br>  <div class="tableTitle">    <mat-grid-list cols="6" rowHeight="35px">      <mat-grid-tile>Name</mat-grid-tile>      <mat-grid-tile>Quantity</mat-grid-tile>      <mat-grid-tile>Price/Item</mat-grid-tile>      <mat-grid-tile>Edit</mat-grid-tile>      <mat-grid-tile>Delete</mat-grid-tile>      <mat-grid-tile>        <button mat-button (click)="openAddIngredientDialog()" class="addButton">Add</button>      </mat-grid-tile>    </mat-grid-list>  </div>  <mat-grid-list class="menuItem" cols="6" rowHeight="75px" *ngFor="let ing of ingredients">    <mat-grid-tile>{{ing.name}}</mat-grid-tile>    <mat-grid-tile>{{ing.quantity}}</mat-grid-tile>    <mat-grid-tile>{{ing.pricePerItem}}</mat-grid-tile>    <mat-grid-tile>      <button mat-button (click)="openEditMenuDialog(ing)">Edit</button>    </mat-grid-tile>    <mat-grid-tile>      <button mat-button (click)="delete(ing)">Delete</button>    </mat-grid-tile>  </mat-grid-list></mat-drawer-container></div>'
+    var COMPONENTS = [{'name': 'AddIngredientComponent', 'selector': 'app-add-ingredient'},{'name': 'AddIngredientDialogComponent', 'selector': 'app-add-ingredient-dialog'},{'name': 'AddMenuDialogComponent', 'selector': 'app-add-order-dialog'},{'name': 'AddStaffComponent', 'selector': 'app-add-staff'},{'name': 'AddStaffDialogComponent', 'selector': 'app-add-staff-dialog'},{'name': 'AllergensChipsComponent', 'selector': 'allergens-chips'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BasketComponent', 'selector': 'app-basket'},{'name': 'CallWaiterComponent', 'selector': 'call-waiter'},{'name': 'CategoryDialogComponent', 'selector': 'app-category-dialog'},{'name': 'CustomerInterfaceComponent', 'selector': 'app-customer-interface'},{'name': 'ExpansionPannelComponent', 'selector': 'expansion-pannel'},{'name': 'HomePageComponent', 'selector': 'app-home-page'},{'name': 'IngredientsDialogComponent', 'selector': 'app-ingredients-dialog'},{'name': 'KitchenMenuComponent', 'selector': 'app-kitchen-menu'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginInputComponent', 'selector': 'app-login-input'},{'name': 'ManagerMenuComponent', 'selector': 'app-manager-menu'},{'name': 'MenusListDisplayComponent', 'selector': 'app-menus-list-display'},{'name': 'NotificationsComponent', 'selector': 'notifications'},{'name': 'NotificationsDialogComponent', 'selector': 'notifications-dialog'},{'name': 'OrderComponent', 'selector': 'app-order'},{'name': 'OrdersListDisplayComponent', 'selector': 'app-orders-list-display'},{'name': 'OrderTrackerComponent', 'selector': 'app-order-tracker'},{'name': 'PaymentComponent', 'selector': 'payment-stepper'},{'name': 'PickTableDialogComponent', 'selector': 'app-pick-table-dialog'},{'name': 'ReadyToOrderComponent', 'selector': 'ready-to-order'},{'name': 'SalesDialogComponent', 'selector': 'app-sales-dialog'},{'name': 'SelectTableDialogComponent', 'selector': 'select-table-dialog'},{'name': 'TablesListDisplayComponent', 'selector': 'app-tables-list-display'},{'name': 'WaiterMenuComponent', 'selector': 'app-waiter-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AddIngredientComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AddIngredientComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
