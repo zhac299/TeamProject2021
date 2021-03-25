@@ -1,12 +1,10 @@
 package com.backend.restaurantApi.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
+
 /**
  * Model for the MenuCategory.
  */
@@ -15,17 +13,31 @@ import java.util.List;
 @JsonIgnoreProperties(value = { "menu" })
 public class MenuCategory {
 
+    /**
+	 * The primary key of the table.
+	 */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    /**
+     * The name of the category.
+     */
     @Column
     private String category;
 
+    /**
+     * This is used to relate each menu item to a category via a
+     * Foreign Key. This model has a OneToMany relationship with
+     * Menu.
+     */
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Menu> menus;
 
+    /**
+     * The default constructor.
+     */
     public MenuCategory(){};
 
     /**
