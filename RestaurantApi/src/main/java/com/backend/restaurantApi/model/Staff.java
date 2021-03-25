@@ -11,26 +11,47 @@ import javax.persistence.*;
 @Table
 public class Staff {
 
+	/**
+	 * The primary key of the table.
+	 */
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	/**
+	 * The username of the member of Staff.
+	 */
 	@Column(name = "userName")
 	private String userName;
 
+	/**
+	 * The password of the member of Staff.
+	 */
 	@Column(name = "password")
 	private String password;
 
+	/**
+	 * The email of the member of Staff.
+	 */
 	@Column(name = "email")
 	private String email;
 
+	/**
+	 * Gives Staff member a position. Used to check if Staff is Waiter or Kitchen Staff.
+	 */
 	@Column(name = "isWaiter")
 	private boolean isWaiter;
 
+	/**
+	 * Used to identify if member of Staff is a Manager or not.
+	 */
 	@Column(name = "isManager")
 	private boolean isManager = false;
 
+	/**
+	 * Used to show data in a more readable format like a JSON.
+	 */
 	@Override
 	public String toString() {
 		return "{" +
@@ -43,6 +64,9 @@ public class Staff {
 			"}";
 	}	
 
+	/**
+	 * The default constructor.
+	 */
 	public Staff() {
 	}
 
