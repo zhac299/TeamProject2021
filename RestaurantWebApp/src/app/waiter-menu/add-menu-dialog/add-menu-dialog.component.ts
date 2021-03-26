@@ -138,11 +138,8 @@ export class AddMenuDialogComponent implements OnInit {
     if (this.data.hasMenuItem == undefined) {
       let total:number = 0;
       this.data.menu.ingredients.forEach((selectedIngredient) => {
-        let includesIngredient: boolean = false;
         this.ingredients.forEach((ingredient) => {
-          // @ts-ignore
-          if (ingredient.id == selectedIngredient) {
-            includesIngredient = false;
+          if (ingredient.id == selectedIngredient.id) {
             total += ingredient.pricePerItem;
           }
         })
